@@ -1,0 +1,88 @@
+/*-----------------------------------------------------------------------------------*/
+/* VARIABLES */
+/*-----------------------------------------------------------------------------------*/
+
+$gutter: 15px;
+$columns: 12;
+
+$breakpoint-widths: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1500px
+);
+
+$cell-fixed-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1350px
+);
+
+
+/*-----------------------------------------------------------------------------------*/
+/* MIXINS */
+/*-----------------------------------------------------------------------------------*/
+
+@mixin cell-row {
+  @include d-flex;
+  @include flex-wrap(wrap);
+  margin-right: -$gutter;
+  margin-left: -$gutter;
+}
+
+@mixin cell {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: $gutter;
+  padding-left: $gutter;
+}
+
+@mixin cell-span($size) {
+  
+  @for $i from 1 through $columns {
+    $width: percentage($i / $columns);
+    @if($size == $i)  {
+      @include flex(0 0 $width);
+      -webkit-box-flex: 0;
+      max-width: $width;
+    } 
+  }
+
+  @if($size == 0) {
+    @include flex-grow(1);
+    @include flex-basis(0);
+    -ms-flex-preferred-size: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    max-width: 100%;
+  } @else if ($size == auto) {
+    @include flex(0 0 auto);
+    -webkit-box-flex: 0;
+    width: auto;
+    max-width: none;
+  }
+  
+}
+
+@mixin cell-fixed-widths($max-widths: $cell-fixed-max-widths, $breakpoints: $breakpoint-widths) {
+  @each $breakpoint, $cell-fixed-max-width in $max-widths {
+    @include media-up($breakpoint) {
+      max-width: $cell-fixed-max-width;
+    }
+  }
+}
+
+@mixin cell-fixed {
+  @include cell;
+  @include cell-fixed-widths;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@mixin cell-fluid {
+  @include cell;
+}

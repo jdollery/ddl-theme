@@ -1,0 +1,33 @@
+.banner {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: $color-grey-700;
+  padding-top: 40px;
+  padding-bottom: 50px;
+
+  @include media-up(sm) {
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+
+  &__title {
+    color: $color-white;
+    font-size: 45px;
+
+    @include media-up(sm) {
+      font-size: 50px;
+    }
+
+    @include media-up(lg) {
+      font-size: 53px;
+    }
+
+  }
+
+  &__subtitle {
+    color: $color-grey-200;
+  }
+
+
+}

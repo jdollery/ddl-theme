@@ -1,0 +1,100 @@
+/*-----------------------------------------------------------------------------------*/
+/* VARIABLES */
+/*-----------------------------------------------------------------------------------*/
+
+/* --------- USED IN NAVIGATION AND MAIN --------- */
+
+$header-height-lg: 93px;
+$header-height-sm: 88px;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLING */
+/*-----------------------------------------------------------------------------------*/
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  z-index: 9999;
+  width: 100%;
+  background: $color-brand;
+  color: $color-white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  // @include transition(box-shadow 0.3s ease-out);
+
+  a {
+    font-weight: 400;
+    color: $color-grey-200;
+    @include transition(all 0.3s ease-out);
+
+    @include hover-focus {
+      color: $color-white;
+    }
+
+    i {
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+
+  }
+
+  @include media-up(md) {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  &__content{
+    @include cell-fixed;
+  }
+
+  &__row {
+    @include cell-row;
+    @include flex-items(center);
+    @include flex-content-x(space-between);  
+  }
+
+  &__left {
+    @include cell;
+    @include cell-span(auto);
+    text-align: left;
+  }
+
+  &__center {
+    @include cell;
+    @include cell-span(0);
+    text-align: center;
+  }
+
+  &__right {
+    @include cell;
+    @include cell-span(auto);
+    text-align: right;
+  }
+
+  // &.sticky {
+  //   @include box-shadow (0 0 20px -10px rgba($color-black,0.75));
+  // }
+
+}
+
+
+/* --------- HEADER LOGO --------- */
+
+.logo {
+  display: inline-block;
+  width: 140px;
+  vertical-align: middle;
+
+  @include media-up(md) {
+    width: 150px;
+  }
+
+  @include media-up(lg) {
+    width: 170px;
+  }
+
+}

@@ -1,0 +1,43 @@
+/*!
+  Theme Name: DDL THEME
+  Author: Dental Design
+  Author URI: https://dental-design.marketing/
+*/
+
+@charset "UTF-8";
+
+@import "abstracts/properties";
+@import "abstracts/states";
+@import "abstracts/animation";
+@import "abstracts/flexbox";
+@import "abstracts/media";
+@import "abstracts/grid";
+@import "abstracts/block";
+@import "abstracts/hidden";
+
+@import "utility/fonts";
+@import "utility/fontawesome";
+
+@import "vendor/slick";
+
+@import "partials/reset";
+@import "partials/paragraph";
+@import "partials/headings";
+@import "partials/links";
+@import "partials/lists";
+@import "partials/divider";
+@import "partials/image";
+@import "partials/buttons";
+@import "partials/tables";
+@import "partials/forms";
+
+@import "layout/header";
+@import "layout/navigation";
+@import "layout/main";
+// @import "layout/footer";
+@import "layout/templates";
+
+@import "components/intro";
+@import "components/component";
+@import "components/banner";
+@import "components/carousel";

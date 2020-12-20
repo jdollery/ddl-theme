@@ -1,0 +1,32 @@
+/*-----------------------------------------------------------------------------------*/
+/* VARIABLES */
+/*-----------------------------------------------------------------------------------*/
+
+$paragraph-margin-top-lg:     15px;
+$paragraph-margin-bottom-lg:  15px;
+$paragraph-margin-top-sm:     10px;
+$paragraph-margin-bottom-sm:  10px;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLING */
+/*-----------------------------------------------------------------------------------*/
+
+p {
+  margin-top: $paragraph-margin-top-sm;
+  margin-bottom: $paragraph-margin-bottom-sm;
+
+  @include media-up(md) {
+    margin-top: $paragraph-margin-top-lg;
+    margin-bottom: $paragraph-margin-bottom-lg;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+}

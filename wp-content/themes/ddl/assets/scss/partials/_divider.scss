@@ -1,0 +1,25 @@
+/*-----------------------------------------------------------------------------------*/
+/* VARIABLES */
+/*-----------------------------------------------------------------------------------*/
+
+$divider-margin-top-lg:      40px;
+$divider-margin-bottom-lg:   40px;
+$divider-margin-top-sm:      20px;
+$divider-margin-bottom-sm:   20px;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLING */
+/*-----------------------------------------------------------------------------------*/
+
+hr {
+  display: block;
+  margin-top: $divider-margin-top-sm;
+  margin-bottom: $divider-margin-bottom-sm;
+
+  @include media-up(md) {
+    margin-top: $divider-margin-top-lg;
+    margin-bottom: $divider-margin-bottom-lg;
+  }
+
+}

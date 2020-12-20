@@ -1,0 +1,40 @@
+/*-----------------------------------------------------------------------------------*/
+/* VARIABLES */
+/*-----------------------------------------------------------------------------------*/
+
+$block-padding-sm: 60px;
+$block-padding-lg: 100px;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* MIXINS */
+/*-----------------------------------------------------------------------------------*/
+
+@mixin block {
+  padding-top: $block-padding-sm;
+  padding-bottom: $block-padding-sm;
+
+  @include media-up(sm) {
+    padding-top: $block-padding-lg;
+    padding-bottom: $block-padding-lg;
+  }
+
+}
+
+@mixin block-top {
+  padding-top: $block-padding-sm;
+
+  @include media-up(sm) {
+    padding-top: $block-padding-lg;
+  }
+
+}
+
+@mixin block-bottom {
+  padding-bottom: $block-padding-lg;
+
+  @include media-up(sm) {
+    padding-bottom: $block-padding-lg;
+  }
+
+}

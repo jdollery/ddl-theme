@@ -1,0 +1,26 @@
+.main {
+  position: relative;
+  left: 0;
+  background: $color-white;
+  overflow-x: hidden;
+  padding-top: $header-height-sm; //variable in header.scss
+  @include transition (left 0.3s ease-out);
+
+  @include media-up(md) {
+    padding-top: $header-height-lg; //variable in header.scss
+  }
+
+}
+
+
+@include media-down($nav-breakpoint) {
+
+  .js-nav-active {
+    
+    .main {
+      left: $nav-width-sm;
+    }
+
+  }
+
+}

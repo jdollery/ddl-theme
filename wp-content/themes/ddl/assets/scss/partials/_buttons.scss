@@ -1,0 +1,625 @@
+/*-----------------------------------------------------------------------------------*/
+/* VARIABLES */
+/*-----------------------------------------------------------------------------------*/
+
+/* --------- GLOBAL --------- */
+
+$button-font-lg:             17px;
+$button-font-sm:             16px;
+$button-line-height:         1;
+$button-font-weight:         400;
+
+$button-border-width:        2px;
+$button-border-style:        solid;
+$button-border-radius:       7px;
+
+$button-padding-top-lg:      17px;
+$button-padding-right-lg:    25px;
+$button-padding-bottom-lg:   17px;
+$button-padding-left-lg:     25px;
+
+$button-padding-top-sm:      15px;
+$button-padding-right-sm:    20px;
+$button-padding-bottom-sm:   15px;
+$button-padding-left-sm:     20px;
+
+$button-margin-top-lg:       4px;
+$button-margin-bottom-lg:    4px;
+$button-margin-top-sm:       4px;
+$button-margin-bottom-sm:    4px;
+
+$button-disabled-color:      $color-grey-400;
+$button-hover-percentage:    20%;
+
+
+/* --------- BUTTON PRIMARY --------- */
+
+$button-primary-color:                      $color-black;
+$button-primary-color-hover:                $color-white;
+$button-primary-color-disabled:             $button-disabled-color;
+
+$button-primary-background:                 transparent;
+$button-primary-background-hover:           $color-black;
+$button-primary-background-hover:           darken($button-primary-color, $button-hover-percentage);
+$button-primary-background-disabled:        transparent;
+
+$button-primary-border-color:               $button-primary-color;
+$button-primary-border-color-hover:         $button-primary-background-hover;
+$button-primary-border-color-disabled:      $button-disabled-color;
+
+
+/* --------- BUTTON SECONDARY --------- */
+
+$button-secondary-color:                    $color-white;
+$button-secondary-color-hover:              $button-secondary-color;
+$button-secondary-color-disabled:           $button-secondary-color;
+
+$button-secondary-background:               $color-brand;
+$button-secondary-background-hover:         darken($button-secondary-background, $button-hover-percentage);
+$button-secondary-background-disabled:      $button-disabled-color;
+
+$button-secondary-border-color:             $button-secondary-background;
+$button-secondary-border-color-hover:       $button-secondary-background-hover;
+$button-secondary-border-color-disabled:    $button-disabled-color;
+
+
+/* --------- BUTTON SUCCESS --------- */
+
+$button-success-color:                      $color-white;
+$button-success-color-hover:                $button-secondary-color;
+$button-success-color-disabled:             $button-secondary-color;
+
+$button-success-background:                 $color-success;
+$button-success-background-hover:           darken($button-success-background, $button-hover-percentage);
+$button-success-background-disabled:        $button-disabled-color;
+
+$button-success-border-color:               $button-success-background;
+$button-success-border-color-hover:         $button-success-background-hover;
+$button-success-border-color-disabled:      $button-disabled-color;
+
+
+/* --------- BUTTON WARNING --------- */
+
+$button-warning-color:                      $color-white;
+$button-warning-color-hover:                $button-secondary-color;
+$button-warning-color-disabled:             $button-secondary-color;
+
+$button-warning-background:                 $color-warning;
+$button-warning-background-hover:           darken($button-warning-background, $button-hover-percentage);
+$button-warning-background-disabled:        $button-disabled-color;
+
+$button-warning-border-color:               $button-warning-background;
+$button-warning-border-color-hover:         $button-warning-background-hover;
+$button-warning-border-color-disabled:      $button-disabled-color;
+
+
+/* --------- BUTTON DANGER --------- */
+
+$button-danger-color:                      $color-white;
+$button-danger-color-hover:                $button-secondary-color;
+$button-danger-color-disabled:             $button-secondary-color;
+
+$button-danger-background:                 $color-danger;
+$button-danger-background-hover:           darken($button-danger-background, $button-hover-percentage);
+$button-danger-background-disabled:        $button-disabled-color;
+
+$button-danger-border-color:               $button-danger-background;
+$button-danger-border-color-hover:         $button-danger-background-hover;
+$button-danger-border-color-disabled:      $button-disabled-color;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* MIXINS */
+/*-----------------------------------------------------------------------------------*/
+
+@mixin button {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  font-size: $button-font-sm;
+  font-weight: $button-font-weight;
+  line-height: $button-line-height;
+  border-width: $button-border-width;
+  border-style: $button-border-style;
+  padding: $button-padding-top-sm $button-padding-right-sm $button-padding-bottom-sm $button-padding-left-sm;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  @include transition(color 0.3s ease-out, background 0.3s ease-out, border-color 0.3s ease-out);
+  @include border-radius($button-border-radius);
+  margin-top: $button-margin-top-sm;
+  margin-bottom: $button-margin-bottom-sm;
+
+  @include media-up(md) {
+    font-size: $button-font-lg;
+    padding: $button-padding-top-lg $button-padding-right-lg $button-padding-bottom-lg $button-padding-left-lg;
+    margin-top: $button-margin-top-lg;
+    margin-bottom: $button-margin-bottom-lg;
+  }
+
+  .icon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    vertical-align: baseline;
+    position: relative;
+    
+    &--left {
+      margin-right: 4px;
+    }
+
+    &--right {
+      margin-left: 4px;
+    }
+
+    @include media-up(sm) {
+      width: 13px;
+      height: 13px;
+    }
+    
+    svg {
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      @include transform (translate(-50%, -50%));
+      @include transition(all 0.15s ease-in-out);
+
+      @include media-up(sm) {
+        width: 13px;
+        height: 13px;
+      }
+
+    }
+
+  }
+
+  &:disabled, &.disabled {
+    cursor: not-allowed;
+    pointer-events: none;   
+  }
+
+}
+
+
+/* --------- BUTTON PRIMARY --------- */
+
+@mixin button-primary {
+  @include button;
+  color: $button-primary-color;
+  background: $button-primary-background;
+  border-color: $button-primary-border-color;
+
+  .icon {
+      
+    svg {
+      fill: $button-primary-color;
+    }
+
+  }
+
+  @include hover-focus {
+    color: $button-primary-color-hover;
+    background: $button-primary-background-hover;
+    border-color: $button-primary-border-color-hover;
+
+    .icon {
+      
+      svg {
+        fill: $button-primary-color-hover;
+      }
+  
+    }
+
+  }
+
+  &:disabled, &.disabled {
+    color: $button-primary-color-disabled;
+    background: $button-primary-background-disabled;
+    border-color: $button-primary-border-color-disabled;
+
+    .icon {
+      
+      svg {
+        fill: $button-primary-color-disabled;
+      }
+  
+    }
+
+    @include hover-focus {
+      color: $button-primary-color-disabled;
+      background: $button-primary-background-disabled;
+      border-color: $button-primary-border-color-disabled;
+  
+      .icon {
+        
+        svg {
+          fill: $button-primary-color-disabled;
+        }
+    
+      }
+  
+    }
+    
+  }
+
+}
+
+
+/* --------- BUTTON SECONDARY --------- */
+
+@mixin button-secondary {
+  @include button;
+  color: $button-secondary-color;
+  background: $button-secondary-background;
+  border-color: $button-secondary-border-color;
+
+  .icon {
+      
+    svg {
+      fill: $button-secondary-color;
+    }
+
+  }
+
+  @include hover-focus {
+    color: $button-secondary-color-hover;
+    background: $button-secondary-background-hover;
+    border-color: $button-secondary-border-color-hover;
+
+    .icon {
+      
+      svg {
+        fill: $button-secondary-color-hover;
+      }
+  
+    }
+
+  }
+
+  &:disabled, &.disabled {
+    color: $button-secondary-color-disabled;
+    background: $button-secondary-background-disabled;
+    border-color: $button-secondary-border-color-disabled;
+
+    .icon {
+      
+      svg {
+        fill: $button-secondary-color-disabled;
+      }
+  
+    }
+
+    @include hover-focus {
+      color: $button-secondary-color-disabled;
+      background: $button-secondary-background-disabled;
+      border-color: $button-secondary-border-color-disabled;
+  
+      .icon {
+        
+        svg {
+          fill: $button-secondary-color-disabled;
+        }
+    
+      }
+  
+    }
+    
+  }
+
+}
+
+
+/* --------- BUTTON SUCCESS --------- */
+
+@mixin button-success {
+  @include button;
+  color: $button-success-color;
+  background: $button-success-background;
+  border-color: $button-success-border-color;
+
+  .icon {
+      
+    svg {
+      fill: $button-success-color;
+    }
+
+  }
+
+  @include hover-focus {
+    color: $button-success-color-hover;
+    background: $button-success-background-hover;
+    border-color: $button-success-border-color-hover;
+
+    .icon {
+      
+      svg {
+        fill: $button-success-color-hover;
+      }
+  
+    }
+
+  }
+
+  &:disabled, &.disabled {
+    color: $button-success-color-disabled;
+    background: $button-success-background-disabled;
+    border-color: $button-success-border-color-disabled;
+
+    .icon {
+      
+      svg {
+        fill: $button-success-color-disabled;
+      }
+  
+    }
+
+    @include hover-focus {
+      color: $button-success-color-disabled;
+      background: $button-success-background-disabled;
+      border-color: $button-success-border-color-disabled;
+  
+      .icon {
+        
+        svg {
+          fill: $button-success-color-disabled;
+        }
+    
+      }
+  
+    }
+    
+  }
+
+}
+
+
+/* --------- BUTTON WARNING --------- */
+
+@mixin button-warning {
+  @include button;
+  color: $button-warning-color;
+  background: $button-warning-background;
+  border-color: $button-warning-border-color;
+
+  .icon {
+      
+    svg {
+      fill: $button-warning-color;
+    }
+
+  }
+
+  @include hover-focus {
+    color: $button-warning-color-hover;
+    background: $button-warning-background-hover;
+    border-color: $button-warning-border-color-hover;
+
+    .icon {
+      
+      svg {
+        fill: $button-warning-color-hover;
+      }
+  
+    }
+
+  }
+
+  &:disabled, &.disabled {
+    color: $button-warning-color-disabled;
+    background: $button-warning-background-disabled;
+    border-color: $button-warning-border-color-disabled;
+
+    .icon {
+      
+      svg {
+        fill: $button-warning-color-disabled;
+      }
+  
+    }
+
+    @include hover-focus {
+      color: $button-warning-color-disabled;
+      background: $button-warning-background-disabled;
+      border-color: $button-warning-border-color-disabled;
+  
+      .icon {
+        
+        svg {
+          fill: $button-warning-color-disabled;
+        }
+    
+      }
+  
+    }
+    
+  }
+
+}
+
+
+/* --------- BUTTON DANGER --------- */
+
+@mixin button-danger {
+  @include button;
+  color: $button-danger-color;
+  background: $button-danger-background;
+  border-color: $button-danger-border-color;
+
+  .icon {
+      
+    svg {
+      fill: $button-danger-color;
+    }
+
+  }
+
+  @include hover-focus {
+    color: $button-danger-color-hover;
+    background: $button-danger-background-hover;
+    border-color: $button-danger-border-color-hover;
+
+    .icon {
+      
+      svg {
+        fill: $button-danger-color-hover;
+      }
+  
+    }
+
+  }
+
+  &:disabled, &.disabled {
+    color: $button-danger-color-disabled;
+    background: $button-danger-background-disabled;
+    border-color: $button-danger-border-color-disabled;
+
+    .icon {
+      
+      svg {
+        fill: $button-danger-color-disabled;
+      }
+  
+    }
+
+    @include hover-focus {
+      color: $button-danger-color-disabled;
+      background: $button-danger-background-disabled;
+      border-color: $button-danger-border-color-disabled;
+  
+      .icon {
+        
+        svg {
+          fill: $button-danger-color-disabled;
+        }
+    
+      }
+  
+    }
+    
+  }
+
+}
+
+
+/* --------- BUTTON HEADER --------- */
+
+@mixin button-header {
+  @include button;
+  color: $color-white;
+  background: transparent;
+  border-color: $color-white;
+
+  .icon {
+      
+    svg {
+      fill: $color-white;
+    }
+
+  }
+
+  @include hover-focus {
+    color: $color-grey-900;
+    background: $color-white;
+    border-color: $color-white;
+
+    .icon {
+      
+      svg {
+        fill: $color-grey-900;
+      }
+  
+    }
+
+  }
+
+  &:disabled, &.disabled {
+    color: $button-danger-color-disabled;
+    background: transparent;
+    border-color: $button-danger-border-color-disabled;
+
+    .icon {
+      
+      svg {
+        fill: $button-danger-color-disabled;
+      }
+  
+    }
+
+    @include hover-focus {
+      color: $button-danger-color-disabled;
+      background: transparent;
+      border-color: $button-danger-border-color-disabled;
+  
+      .icon {
+        
+        svg {
+          fill: $button-danger-color-disabled;
+        }
+    
+      }
+  
+    }
+    
+  }
+
+}
+
+
+
+/* --------- BUTTON LINK --------- */
+
+@mixin button-link {
+  background: transparent;
+  border: none;
+  color: $link-color;
+  text-decoration: none;
+  font-weight: $link-weight;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+  cursor: pointer;
+
+  @include hover {
+    color: $link-hover-color;
+    text-decoration: none;
+    outline: 0;
+    background: transparent;
+    border: none;
+  }
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLING */
+/*-----------------------------------------------------------------------------------*/
+
+.button-primary {
+  @include button-primary;
+}
+
+.button-secondary {
+  @include button-secondary;
+}
+
+.button-success {
+  @include button-success;
+}
+
+.button-warning {
+  @include button-warning;
+}
+
+.button-danger {
+  @include button-danger;
+}
+
+.button-link {
+  @include button-link;
+}
+
+.button-header {
+  @include button-header;
+}

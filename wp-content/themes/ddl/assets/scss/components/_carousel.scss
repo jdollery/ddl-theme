@@ -1,0 +1,55 @@
+.carousel {
+
+
+  .slide {
+    display: flex;
+    height: 400px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $color-grey-500;
+
+    .content {
+      height: 100%;
+
+      &__row {
+        height: 100%;
+      }
+
+    }
+
+    &__inner {
+      @include cell;
+      @include cell-span(12);
+      @include flex-self(center);
+      padding-top: 60px;
+      padding-bottom: 60px;
+
+      // @include media-up(sm) {
+      //   padding: 60px 0 60px;
+      // }
+
+    }
+
+  }
+
+
+  &__title {
+    color: $color-white;
+    font-size: 45px;
+
+    @include media-up(sm) {
+      font-size: 50px;
+    }
+
+    @include media-up(lg) {
+      font-size: 53px;
+    }
+
+  }
+
+  &__subtitle {
+    color: $color-grey-200;
+  }
+
+}
