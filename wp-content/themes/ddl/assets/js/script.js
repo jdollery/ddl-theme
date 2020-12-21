@@ -65,8 +65,10 @@ jQuery(document).ready(function () { //doc ready start
   });
 
 
+/*-----------------------------------------------------------------------------------*/
+/* SLICK SLIDER */
+/*-----------------------------------------------------------------------------------*/
 
-  
   jQuery('#homeCarousel').slick({
     dots: false,
     // arrows: false,
@@ -75,5 +77,6 @@ jQuery(document).ready(function () { //doc ready start
     infinite: true,
     rows: 0 // Fix vor v1.8.0-1
   });
+  
 
 }); //doc ready end

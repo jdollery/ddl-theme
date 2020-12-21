@@ -1,16 +1,16 @@
 <?php
 
-if ( ! function_exists( 'root_setup' ) ) :
+if ( ! function_exists( 'ddl_setup' ) ) :
 
 	/*-----------------------------------------------------------------------------------*/
 	/* BASIC THEAME SETUP */
 	/*-----------------------------------------------------------------------------------*/
 
-	function root_setup() {
+	function ddl_setup() {
 
 		/* --------------------- Make theme available for translation --------------------- */
 
-		load_theme_textdomain( 'root', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'ddl', get_template_directory() . '/languages' );
 
 		/* --------------------- Add default posts and comments RSS feed links to head --------------------- */
 
@@ -26,7 +26,9 @@ if ( ! function_exists( 'root_setup' ) ) :
 
 		/* --------------------- Switch default core markup for search form, comment form, and comments to output valid HTML5 --------------------- */
 
-		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+		// add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+
+		add_theme_support( 'html5', array( 'gallery', 'caption' ) );
 
 		/* --------------------- Add theme support for selective refresh for widgets --------------------- */
 
@@ -36,7 +38,7 @@ if ( ! function_exists( 'root_setup' ) ) :
 
 endif;
 
-add_action( 'after_setup_theme', 'root_setup' );
+add_action( 'after_setup_theme', 'ddl_setup' );
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -47,7 +49,7 @@ function register_menus() {
 
 	register_nav_menus( array(
     'primary-menu' => __( 'Primary Menu'),
-    'secondary-menu' => __( 'Secondary Menu'),
+    // 'secondary-menu' => __( 'Secondary Menu'),
 		// 'footer-top-menu' => __( 'Footer Top Menu'),
 		// 'footer-menu' => __( 'Footer Menu')
 	) );
@@ -61,12 +63,12 @@ add_action( 'init', 'register_menus' );
 /* REGISTER WIDGETS */
 /*-----------------------------------------------------------------------------------*/
 
-function root_widgets_init() {
+function ddl_widgets_init() {
   
   register_sidebar( array(
-		'name'          => esc_html__( 'News Sidebar', 'root' ),
+		'name'          => esc_html__( 'News Sidebar', 'ddl' ),
 		'id'            => 'news-sidebar',
-		'description'   => esc_html__( 'Add widgets here.', 'root' ),
+		'description'   => esc_html__( 'Add widgets here.', 'ddl' ),
 		'before_widget' => '',
 		'after_widget'  => '',
 		'before_title'  => '',
@@ -74,9 +76,9 @@ function root_widgets_init() {
   ) );
 
   register_sidebar( array(
-		'name'          => esc_html__( 'Footer Top Widget One', 'root' ),
+		'name'          => esc_html__( 'Footer Top Widget One', 'ddl' ),
 		'id'            => 'footer-top-widget-one',
-		'description'   => esc_html__( 'Add widgets here.', 'root' ),
+		'description'   => esc_html__( 'Add widgets here.', 'ddl' ),
 		'before_widget' => '',
 		'after_widget'  => '',
 		'before_title'  => '<div class="footer__widget__title">',
@@ -84,9 +86,9 @@ function root_widgets_init() {
   ) );
 
   register_sidebar( array(
-		'name'          => esc_html__( 'Footer Top Widget Two', 'root' ),
+		'name'          => esc_html__( 'Footer Top Widget Two', 'ddl' ),
 		'id'            => 'footer-top-widget-two',
-		'description'   => esc_html__( 'Add widgets here.', 'root' ),
+		'description'   => esc_html__( 'Add widgets here.', 'ddl' ),
 		'before_widget' => '',
 		'after_widget'  => '',
 		'before_title'  => '<div class="footer__widget__title">',
@@ -94,9 +96,9 @@ function root_widgets_init() {
   ) );
 
   register_sidebar( array(
-		'name'          => esc_html__( 'Footer Top Widget Three', 'root' ),
+		'name'          => esc_html__( 'Footer Top Widget Three', 'ddl' ),
 		'id'            => 'footer-top-widget-three',
-		'description'   => esc_html__( 'Add widgets here.', 'root' ),
+		'description'   => esc_html__( 'Add widgets here.', 'ddl' ),
 		'before_widget' => '',
 		'after_widget'  => '',
 		'before_title'  => '<div class="footer__widget__title">',
@@ -104,9 +106,9 @@ function root_widgets_init() {
   ) );
 
   register_sidebar( array(
-		'name'          => esc_html__( 'Footer Top Widget Four', 'root' ),
+		'name'          => esc_html__( 'Footer Top Widget Four', 'ddl' ),
 		'id'            => 'footer-top-widget-four',
-		'description'   => esc_html__( 'Add widgets here.', 'root' ),
+		'description'   => esc_html__( 'Add widgets here.', 'ddl' ),
 		'before_widget' => '',
 		'after_widget'  => '',
 		'before_title'  => '<div class="footer__widget__title">',
@@ -114,9 +116,9 @@ function root_widgets_init() {
   ) );
 
 	register_sidebar( array(
-		'name'          => esc_html__( 'Footer Bottom', 'root' ),
+		'name'          => esc_html__( 'Footer Bottom', 'ddl' ),
 		'id'            => 'footer-bottom-widget',
-		'description'   => esc_html__( 'Add widgets here.', 'root' ),
+		'description'   => esc_html__( 'Add widgets here.', 'ddl' ),
 		'before_widget' => '',
 		'after_widget'  => '',
 		'before_title'  => '',
@@ -125,28 +127,28 @@ function root_widgets_init() {
 
 }
 
-add_action( 'widgets_init', 'root_widgets_init' );
+add_action( 'widgets_init', 'ddl_widgets_init' );
 
 
 /*-----------------------------------------------------------------------------------*/
 /* ENQUEUE SCRIPTS & STYLES */
 /*-----------------------------------------------------------------------------------*/
 
-function root_scripts() {
-  wp_enqueue_style( 'root-style', get_stylesheet_uri(), array(), '1.0.0', 'all' );
-	wp_enqueue_script( 'root-script', get_template_directory_uri() . '/script.js', array(), '1.0.0', true );
+function ddl_scripts() {
+  wp_enqueue_style( 'ddl-style', get_stylesheet_uri(), array(), '1.0.0', 'all' );
+	wp_enqueue_script( 'ddl-script', get_template_directory_uri() . '/script.js', array(), '1.0.0', true );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-  }
+	// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	// 	wp_enqueue_script( 'comment-reply' );
+  // }
 
   // if ( (is_page('home')) ) {
-  //   wp_enqueue_script( 'root-carousel', get_template_directory_uri() . '/assets/js/carousel.js', array(), '1.0.0', true );
+  //   wp_enqueue_script( 'ddl-carousel', get_template_directory_uri() . '/assets/js/carousel.js', array(), '1.0.0', true );
   // } 
 
 }
 
-add_action( 'wp_enqueue_scripts', 'root_scripts' );
+add_action( 'wp_enqueue_scripts', 'ddl_scripts' );
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -155,12 +157,12 @@ add_action( 'wp_enqueue_scripts', 'root_scripts' );
 
 function theme_dependencies() {
 
-  if ( is_plugin_inactive( 'root-extensions/root-extensions.php' ) ) {
-    echo '<div class="error"><p>' . __( 'Warning: The theme needs the Extensions Plugin to function.', 'root' ) . '</p></div>';
+  if ( is_plugin_inactive( 'ddl-extensions/ddl-extensions.php' ) ) {
+    echo '<div class="error"><p>' . __( 'Warning: The theme needs the Extensions Plugin to function.', 'ddl' ) . '</p></div>';
   }
 
-  if ( is_plugin_inactive( 'root-cpt/root-cpt.php' ) ) {
-    echo '<div class="error"><p>' . __( 'Warning: The theme needs the Custom Post Types Plugin to function.', 'root' ) . '</p></div>';
+  if ( is_plugin_inactive( 'ddl-cpt/ddl-cpt.php' ) ) {
+    echo '<div class="error"><p>' . __( 'Warning: The theme needs the Custom Post Types Plugin to function.', 'ddl' ) . '</p></div>';
   }
 
 }
@@ -265,25 +267,6 @@ add_filter( 'the_content', 'shortcode_unautop', 100 );
 
 remove_filter ('the_exceprt', 'wpautop');
 remove_filter('term_description','wpautop');
-
-
-/* --------------------- Remove auto p from Contact Form 7 shortcode output  --------------------- */
-
-function wpcf7_autop_return_false() {
-  return false;
-}
-add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
-
-function wpex_clean_shortcodes($content){   
-  $array = array (
-    '<p>[' => '[', 
-    ']</p>' => ']', 
-    ']<br />' => ']'
-  );
-  $content = strtr($content, $array);
-  return $content;
-  }
-add_filter('the_content', 'wpex_clean_shortcodes');
 
 
 /* --------------------- Stop img being wrapped in p tag  --------------------- */
