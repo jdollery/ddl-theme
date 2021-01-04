@@ -1,0 +1,25 @@
+.footer {
+  color: $color-white;
+  background-color: $body-background;
+
+  &__content{
+    @include cell-fixed;
+  }
+
+  &__row {
+    @include cell-row;
+    @include flex-items(center);
+    @include flex-content-x(space-between);  
+  }
+
+  .inner {
+    @include cell;
+    @include cell-span(12);
+  
+    &__row {
+      @include cell-row;
+    }
+  
+  }
+
+}

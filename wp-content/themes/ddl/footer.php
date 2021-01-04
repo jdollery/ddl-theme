@@ -2,9 +2,9 @@
 
   <footer class="footer">
 
-    <div class="footer__container">        
-      <div class="footer__content">
-        <div class="footer__body">
+    <div class="footer__content">        
+      <div class="footer__row">
+        <div class="footer__inner">
           <ul>
               <li>Site updated: <?php echo date('F Y'); ?></li>
               <?php wp_nav_menu( array (

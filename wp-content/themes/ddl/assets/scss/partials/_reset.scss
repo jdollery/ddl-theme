@@ -36,8 +36,7 @@ $body-size-sm:        15px;
 $body-line-height:    1.6;
 $body-weight:         400;
 $body-color:          $color-grey-900;
-$body-background:     $color-grey-100; // background of footer so it bleeds off the bottom (main.scss for content background)
-
+$body-background:     $color-black; // this is also the background of footer to make it bleed off the bottom (see layout/main.scss for content background)
 
 /*-----------------------------------------------------------------------------------*/
 /* RESET BROWSER STYLING */

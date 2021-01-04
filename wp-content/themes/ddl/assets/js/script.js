@@ -75,8 +75,8 @@ jQuery(document).ready(function () { //doc ready start
     slidesToShow: 1,
     slidesToScroll: 1,
     infinite: true,
-    rows: 0 // Fix vor v1.8.0-1
+    rows: 0 // Fix to remove extra div v1.8.0-1
   });
-  
+
 
 }); //doc ready end

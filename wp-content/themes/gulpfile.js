@@ -17,7 +17,7 @@ const paths = {
     src: [
       './ddl/assets/js/jquery.js',
       './ddl/assets/js/navigation.js',
-      './ddl/assets/js/validate.js',
+      // './ddl/assets/js/validate.js',
       './ddl/assets/js/slick.js',
       './ddl/assets/js/script.js'
     ],
