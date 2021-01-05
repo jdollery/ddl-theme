@@ -592,6 +592,37 @@ $button-danger-border-color-disabled:      $button-disabled-color;
 }
 
 
+/* --------- BUTTON EDIT --------- */
+
+@mixin button-edit {
+  @include button;
+  color: $color-grey-600;
+  background: $color-white;
+  border-color: $color-white;
+  // display: inline-block;
+  // background: #fff;
+  // padding: 15px 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  @include border-radius(0);
+
+  @include media-up(md) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  @include hover-focus {
+    color: $color-grey-900;
+    background: $color-white;
+    border-color: $color-white;
+  }
+
+}
+
+
 /*-----------------------------------------------------------------------------------*/
 /* STYLING */
 /*-----------------------------------------------------------------------------------*/
@@ -622,4 +653,8 @@ $button-danger-border-color-disabled:      $button-disabled-color;
 
 .button-header {
   @include button-header;
+}
+
+.button-edit {
+  @include button-edit;
 }

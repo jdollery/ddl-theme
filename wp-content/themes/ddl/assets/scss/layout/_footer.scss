@@ -1,3 +1,7 @@
+/*-----------------------------------------------------------------------------------*/
+/* STYLING */
+/*-----------------------------------------------------------------------------------*/
+
 .footer {
   color: $color-white;
   background-color: $body-background;
@@ -12,9 +16,10 @@
     @include flex-content-x(space-between);  
   }
 
-  .inner {
+  &__inner {
     @include cell;
     @include cell-span(12);
+    text-align: center;
   
     &__row {
       @include cell-row;

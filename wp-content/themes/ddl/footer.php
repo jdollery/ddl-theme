@@ -20,6 +20,8 @@
         </div>
       </div>
     </div>
+
+    <?php edit_post_link( __( 'Edit', 'textdomain' ), null, null, null, 'button-edit' ); ?>
       
   </footer>
   
