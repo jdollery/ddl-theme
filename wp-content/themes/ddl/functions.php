@@ -193,6 +193,8 @@ add_filter('excerpt_more', 'excerpt_more');
 
 /* --------------------- Change character length of excerpt and add ellipsis --------------------- */
 
+// echo strip_tags( get_excerpt(165) ); //use this to print excerpt with x characters 
+
 function get_excerpt($limit, $source = null){
 
   $excerpt = $source == "content" ? get_the_content() : get_the_excerpt();
@@ -205,8 +207,6 @@ function get_excerpt($limit, $source = null){
   $excerpt = $excerpt.'...';
   return $excerpt;
 }
-
-// echo strip_tags( get_excerpt(165) );
 
 
 /* --------------------- Remove menu options form wp-admin --------------------- */
@@ -228,7 +228,7 @@ function remove_menus() {
 add_action( 'admin_menu', 'remove_menus' );
 
 
-/* --------------------- Unregister all widgets --------------------- */
+/* --------------------- Unregister widgets --------------------- */
 
 function unregister_default_widgets() {
     unregister_widget('WP_Widget_Pages');
@@ -430,6 +430,52 @@ function remove_default_category_description() {
       });
     </script>
   <?php }
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* ADD CUSTOM PAGINATION TO ANY POST TYPE */
+/*-----------------------------------------------------------------------------------*/
+
+// echo pagination(); // use this inside the loop
+
+function pagination( \WP_Query $wp_query = null, $echo = true ) {
+
+	if ( null === $wp_query ) {
+		global $wp_query;
+  }
+  
+	$pages = paginate_links( [
+			'root'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+			'format'       => '?paged=%#%',
+			'current'      => max( 1, get_query_var( 'paged' ) ),
+			'total'        => $wp_query->max_num_pages,
+			'type'         => 'array',
+			'show_all'     => false,
+			'end_size'     => 3,
+			'mid_size'     => 1,
+			'prev_next'    => true,
+			'prev_text'    => __( 'Previous' ),
+			'next_text'    => __( 'Next' ),
+			'add_args'     => false,
+			'add_fragment' => ''
+		]
+	);
+
+	if ( is_array( $pages ) ) {
+		$pagination = '<nav class="pagination" role="navigation"><ul class="pagination__list">';
+		foreach ( $pages as $page ) {
+			$pagination .= '<li class="pagination__list__item '.(strpos($page, 'current') !== false ? 'active' : '').'"> ' . str_replace( 'page-numbers', 'page-link', $page ) . '</li>';
+		}
+		$pagination .= '</ul></nav>';
+		if ( $echo ) {
+			echo $pagination;
+		} else {
+			return $pagination;
+		}
+	}
+
+	return null;
 }
 
 

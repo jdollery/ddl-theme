@@ -16,17 +16,17 @@
 
               <?php if (is_sticky()) { ?>
 
-                <article class="post post--sticky">
+                <article class="item item--sticky">
 
-                  <!-- <?php get_template_part( 'template-parts/content/content', 'post' ); ?> -->
+                  <?php get_template_part( 'inc/post' ); ?>
 
                 </article>
 
               <?php } else { ?>
 
-                <article class="post">
+                <article class="item">
 
-                  <!-- <?php get_template_part( 'template-parts/content/content', 'post' ); ?> -->
+                  <?php get_template_part( 'inc/post' ); ?>
 
                 </article>
 
@@ -34,44 +34,44 @@
 
             <?php endwhile; ?>
 
-            <!-- <?php echo pagination(); ?> -->
+            <?php echo pagination(); ?>
 
           </div>
         </div>
-        <div class="aside">
-          <div class="block__aside__content" role="complementary">
-            <aside class="block__aside__widgets">
+        <aside class="aside" role="complementary">
+          <div class="aside__content" >
+            <div class="aside__row">
               <?php dynamic_sidebar('sidebar'); ?>
-            </aside>
+            </div>
           </div>
-        </div>
+        </aside>
       </div>
     </div>
   </div>
       
   <?php } else { ?>
 
-  <div class="block" id="mainContent">
-    <div class="block__container">
-      <div class="block__content">
-        <div class="block__feed">
-          <div class="block__feed__content">
+  <div class="posts" id="mainContent">
+    <div class="content">
+      <div class="content__row">
+        <div class="inner">
+          <div class="inner__row">
 
             <?php while ( have_posts() ) : the_post(); ?>
 
               <?php if (is_sticky()) { ?>
 
-                <article class="post post--sticky">
+                <article class="item">
 
-                  <!-- <?php get_template_part( 'template-parts/content/content', 'post' ); ?> -->
+                  <?php get_template_part( 'inc/post' ); ?>
 
                 </article>
 
               <?php } else { ?>
 
-                <article class="post">
+                <article class="item">
 
-                  <!-- <?php get_template_part( 'template-parts/content/content', 'post' ); ?> -->
+                  <?php get_template_part( 'inc/post' ); ?>
 
                 </article>
 
@@ -79,7 +79,7 @@
 
             <?php endwhile; ?>
 
-            <!-- <?php echo pagination(); ?> -->
+            <?php echo pagination(); ?>
 
           </div>
         </div>
@@ -91,11 +91,19 @@
 
 <?php } else { ?>
 
-  <!-- <?php get_template_part( 'template-parts/component/component', 'title' ); ?> -->
+  <?php get_template_part('inc/banner'); ?>
 
-  <div class="block" id="mainContent">
-    <div class="block__container">
-      <!-- <?php get_template_part( 'template-parts/content/content', 'none' ); ?> -->
+  <div class="posts" id="mainContent">
+    <div class="content">
+      <div class="content__row">
+        <div class="inner">
+          <div class="inner__row">
+            <article class="post">
+              Sorry, no posts yet.
+            </article>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
