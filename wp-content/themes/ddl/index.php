@@ -2,7 +2,7 @@
 
 <?php if ( have_posts() ) { ?>
 
-  <?php get_template_part('inc/banner'); ?>
+  <?php get_template_part('template-parts/component', 'banner'); ?>
 
   <?php if( is_active_sidebar('sidebar') ) { ?>
 
@@ -18,7 +18,7 @@
 
                 <article class="item item--sticky">
 
-                  <?php get_template_part( 'inc/post' ); ?>
+                  <?php get_template_part( 'template-parts/component', 'post' ); ?>
 
                 </article>
 
@@ -26,7 +26,7 @@
 
                 <article class="item">
 
-                  <?php get_template_part( 'inc/post' ); ?>
+                  <?php get_template_part( 'template-parts/component', 'post' ); ?>
 
                 </article>
 
@@ -63,7 +63,7 @@
 
                 <article class="item">
 
-                  <?php get_template_part( 'inc/post' ); ?>
+                  <?php get_template_part( 'template-parts/component', 'post' ); ?>
 
                 </article>
 
@@ -71,7 +71,7 @@
 
                 <article class="item">
 
-                  <?php get_template_part( 'inc/post' ); ?>
+                  <?php get_template_part( 'template-parts/component', 'post' ); ?>
 
                 </article>
 
@@ -91,7 +91,7 @@
 
 <?php } else { ?>
 
-  <?php get_template_part('inc/banner'); ?>
+  <?php get_template_part('template-parts/component', 'banner'); ?>
 
   <div class="posts" id="mainContent">
     <div class="content">

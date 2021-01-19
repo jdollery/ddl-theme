@@ -29,7 +29,7 @@
             </a>
           </div>
           <div class="header__center">
-            <?php get_template_part('inc/navigation'); ?>
+            <?php get_template_part('template-parts/component', 'navigation'); ?>
           </div>
           <div class="header__right">
             <a href="#"><i class="fas fa-phone-alt"></i> 01234567891</a>

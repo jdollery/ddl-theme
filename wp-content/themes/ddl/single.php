@@ -2,7 +2,7 @@
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-<?php get_template_part('inc/banner'); ?>
+<?php get_template_part('template-parts/component', 'banner'); ?>
 
 <article class="article">
   <div class="content">
