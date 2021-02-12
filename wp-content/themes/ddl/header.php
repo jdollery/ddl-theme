@@ -13,7 +13,7 @@
 		<link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/assets/img/favicon-96x96.png" sizes="92x92">
 		<link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/assets/img/favicon-32x32.png" sizes="32x32">
 		<link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/assets/img/favicon-16x16.png" sizes="16x16"> -->
-    <meta name="author" content="Dental Design - dental-design.marketing">
+    <meta name="author" content="Dental Design - https://dental-design.marketing">
     <?php wp_head(); ?>
     <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Yj0cZfmd380OOF1JZQfSZEAxt_NbAtI&callback=initMap" type="text/javascript"></script> -->
 	</head>
