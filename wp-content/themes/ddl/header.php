@@ -21,25 +21,26 @@
   <body <?php body_class(); ?> >
 
     <header class="header" id="mainHeader">
-      <div class="header__content">
-        <div class="header__row">
-          <div class="header__left">
+      <div class="header__outer">
+        <div class="header__outer__row">
+          <div class="header__one">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" title="Back to the home page">
               <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" role="img" alt="<?php bloginfo( 'name' ); ?>" width="170" height="42">
             </a>
           </div>
-          <div class="header__center">
+          <div class="header__two">
             <?php get_template_part('template-parts/component', 'navigation'); ?>
           </div>
-          <div class="header__right">
+          <div class="header__three">
             <a href="#"><i class="fas fa-phone-alt"></i> 01234567891</a>
-            <button class="button-header" type="button">Contact Us</button>
+            <button class="button button-primary" type="button">Contact Us</button>
             <button class="burger" id="navToggle" type="button" title="Main menu">
               <span class="burger__inner"></span>
             </button>
           </div>
         </div>
       </div>
+      <?php get_template_part('template-parts/component', 'navigation'); ?>
     </header>
     <main class="main">
 

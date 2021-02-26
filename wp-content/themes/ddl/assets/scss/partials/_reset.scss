@@ -16,10 +16,11 @@ $color-grey-800:      #343a40;
 $color-grey-900:      #212529; 
 $color-black:         #0C090C;
 
-$color-brand:         #5fbdad;
 $color-danger:        #dc3545;
 $color-warning:       #f2ab10;
 $color-success:       #3caa5a;
+
+$color-brand:         #5fbdad;
 
 
 /* --------- FONT FAMILIES --------- */
@@ -28,11 +29,19 @@ $font-sourcesans: 'SourceSans', arial, sans-serif;
 $font-fontawesome: 'Font Awesome';
 
 
+/* --------- FONT WEIGHTS --------- */
+
+$weight-light:    300; // Proxima Nova Light
+$weight-regular:  400; // Proxima Nova Regular
+$weight-medium:   500; // Proxima Nova Medium
+$weight-bold:     700; // Proxima Nova Bold
+
+
 /* --------- BODY VARIABLES --------- */
 
 $body-font:           $font-sourcesans;
-$body-size-lg:        17px;
-$body-size-sm:        15px;
+$body-size-lg:        1.7rem;
+$body-size-sm:        1.5rem;
 $body-line-height:    1.6;
 $body-weight:         400;
 $body-color:          $color-grey-900;
@@ -59,7 +68,7 @@ $body-background:     $color-black; // this is also the background of footer to 
 
 html{
   font-family: sans-serif;
-  // font-size: 62.5%; //setting rem to match px
+  font-size: 62.5%; //setting rem to match px
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -210,11 +219,11 @@ template {
 }
 
 strong {
-  font-weight: 700;
+  font-weight: $weight-bold;
 }
 
 strong > a {
-  font-weight: 700;
+  font-weight: $weight-bold;
 }
 
 address {
@@ -237,7 +246,7 @@ li {
 }
 
 dt {
-  font-weight: 700;
+  font-weight: $weight-bold;
 }
 
 dl,
@@ -252,7 +261,7 @@ i {
 pre {
   display: block;
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
   overflow: auto;
 }
 

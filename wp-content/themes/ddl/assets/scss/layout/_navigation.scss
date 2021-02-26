@@ -2,8 +2,99 @@
 /* VARIABLES */
 /*-----------------------------------------------------------------------------------*/
 
-$nav-breakpoint: md;
-$nav-width-sm: 300px;
+$nav-breakpoint:                      md;
+$nav-width-sm:                        30rem;
+
+
+/* --------- LARGE DEVICE --------- */
+
+/* --- LEVEL ONE --- */
+
+$level-one-color-lg:                  $color-grey-200;
+$level-one-color-hover-lg:            $color-white;
+$level-one-color-current-lg:          $color-white;
+$level-one-color-ancestor-lg:         $color-grey-400;
+$level-one-color-ancestor-hover-lg:   $color-white;
+
+
+/* --- LEVEL TWO --- */
+
+$level-two-color-lg:                  $color-white;
+$level-two-color-hover-lg:            $color-white;
+$level-two-bg-lg:                     $color-grey-500;
+$level-two-bg-hover-lg:               $color-grey-800;
+$level-two-border-lg:                 $color-grey-600;
+$level-two-border-hover-lg:           $level-two-bg-hover-lg;
+
+$level-two-color-current-lg:          $color-white;
+$level-two-bg-current-lg:             $color-grey-600;
+$level-two-border-current-lg:         $level-two-bg-current-lg;
+
+$level-two-color-ancestor-lg:         $level-two-color-lg;
+$level-two-color-ancestor-hover-lg:   $level-two-color-hover-lg;
+$level-two-bg-ancestor-lg:            $color-grey-600;
+$level-two-bg-ancestor-hover-lg:      $level-two-bg-hover-lg;
+$level-two-border-ancestor-lg:        $level-two-border-lg;
+$level-two-border-ancestor-hover-lg:  $level-two-border-hover-lg;
+
+
+/* --- LEVEL THREE --- */
+
+$level-three-color-lg:                $color-white;
+$level-three-color-hover-lg:          $color-white;
+$level-three-bg-lg:                   $color-grey-500;
+$level-three-bg-hover-lg:             $color-grey-800;
+$level-three-border-lg:               $color-grey-600;
+$level-three-border-hover-lg:         $color-grey-800;
+
+$level-three-color-current-lg:        $color-white;
+$level-three-bg-current-lg:           $color-black;
+$level-three-border-current-lg:       $color-black;
+
+
+/* --------- SMALL DEVICE --------- */
+
+$nav-background-sm:                   color-grey-900;
+
+
+/* --- LEVEL ONE --- */
+
+$level-one-color-sm:                  $color-white;
+$level-one-bg-sm:                     $color-grey-700;
+$level-one-border-sm:                 $color-grey-800;
+
+$level-one-color-current-sm:          $color-white;
+$level-one-bg-current-sm:             $color-black;
+
+$level-one-color-ancestor-sm:         $color-white;
+$level-one-bg-ancestor-sm:            $color-black;
+
+
+/* --- LEVEL TWO --- */
+
+$level-two-color-sm:                  $color-white;
+$level-two-bg-sm:                     $color-grey-700;
+$level-two-border-sm:                 $color-grey-800;
+
+$level-two-color-current-sm:          $color-white;
+$level-two-bg-current-sm:             $color-black;
+
+$level-two-color-ancestor-sm:         $color-white;
+$level-two-bg-ancestor-sm:            $color-black;
+
+
+/* --- LEVEL THREE --- */
+
+$level-three-color-sm:                $color-white;
+$level-three-color-hover-sm:          $color-white;
+$level-three-bg-sm:                   $color-grey-500;
+$level-three-bg-hover-sm:             $color-grey-800;
+$level-three-border-sm:               $color-grey-600;
+$level-three-border-hover-sm:         $color-grey-800;
+
+$level-three-color-current-sm:        $color-white;
+$level-three-bg-current-sm:           $color-black;
+$level-three-border-current-sm:       $color-black;
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -39,6 +130,10 @@ html {
 
   .navigation {
     position: relative !important;
+    text-align: center;
+
+
+    /* --- LEVEL ONE --- */
 
     ul {
       list-style: none;
@@ -48,7 +143,7 @@ html {
       li {
         position: relative;
         white-space: nowrap;
-        padding: 15px 0;
+        padding: 1.5rem 0;
         line-height: 1;
 
         &:before,
@@ -62,12 +157,15 @@ html {
           display: block;
         }
 
+
+        /* --- ALL LEVELS --- */
+
         a {
           display: block;
           white-space: nowrap;
-          font-weight: 400;
-          font-size: 16px;
-          padding: 2px 4px;
+          font-weight: $weight-regular;
+          font-size: 1.6rem;
+          padding: 0.2rem 0.4rem;
           @include transition(color 0.3s ease-out);
         }
 
@@ -75,17 +173,19 @@ html {
 
           > a::after {
             display: inline-block;
-            margin-left: 7px;
+            margin-left: 0.7rem;
             font-family: $font-fontawesome;
             font-style: normal;
             line-height: 1;
-            font-weight: 900;
+            font-weight: $weight-bold;
             content: '\f107';
-            margin-left: 10px;
+            margin-left: 1rem;
             @include transition(all 0.3s ease-out);
           }
         
         }
+
+        /* --- LEVEL TWO & THREE --- */
 
         ul,
         ul ul {
@@ -107,11 +207,11 @@ html {
 
             a {
               width: 100%;
-              min-width: 140px;
+              min-width: 14rem;
               font-weight: 400;
-              font-size: 14px;
+              font-size: 1.4rem;
               border-top: 0;
-              padding: 12px;
+              padding: 1.2rem;
             }
 
             &:hover,
@@ -126,7 +226,7 @@ html {
             &.menu-item-has-children {
 
               > a::after {
-                margin-left: 10px;
+                margin-left: 1rem;
                 content: '\f105';
               }
       
@@ -141,7 +241,7 @@ html {
     }
 
 
-    /* --- LEVEL ONE UNIQUE --- */
+    /* --- LEVEL ONE ONLY --- */
 
     > ul {
 
@@ -149,14 +249,14 @@ html {
         display: inline-block;
 
         &:not(:last-child) {
-          margin-right: 15px;
+          margin-right: 1.5rem;
         }
 
         > a {
-          color: $color-grey-200;
+          color: $level-one-color-lg;
 
           @include hover-focus {
-            color: $color-white;
+            color: $level-one-color-hover-lg;
           }
 
         }
@@ -181,10 +281,10 @@ html {
         &.current-menu-item {
 
           > a {
-            color: $color-black;
+            color: $level-one-color-current-lg;
 
             &::after {
-              color: $color-black;
+              color: $level-one-color-current-lg;
             }
 
           }
@@ -193,10 +293,10 @@ html {
           &:focus-within {
 
             > a {
-              color: $color-black;
+              color: $level-one-color-current-lg;
 
               &::after {
-                color: $color-black;
+                color: $level-one-color-current-lg;
               }
 
             }
@@ -205,20 +305,20 @@ html {
 
         }
 
-        &.current-menu-parent {
+        &.current-menu-ancestor {
 
           > a {
-            color: $color-black;
+            color: $level-one-color-ancestor-lg;
           }
 
           &:hover,
           &:focus-within {
 
             > a {
-              color: $color-black;
+              color: $level-one-color-ancestor-hover-lg;
 
               &::after {
-                color: $color-black;
+                color: $level-one-color-ancestor-hover-lg;
               }
 
             }
@@ -228,7 +328,7 @@ html {
         }
 
 
-        /* --- LEVEL TWO UNIQUE --- */
+        /* --- LEVEL TWO ONLY --- */
 
         > ul {
           top: 100%;
@@ -238,14 +338,14 @@ html {
             padding: 0;
 
             > a {
-              color: $color-white;
-              background-color: $color-grey-500;
+              color: $level-two-color-lg;
+              background-color: $level-two-bg-lg;
             }
 
             &:not(:last-child) {
               
               > a {
-                border-bottom: 1px solid $color-grey-600;
+                border-bottom: 0.1rem solid $level-two-border-lg;
               }
 
             }
@@ -254,7 +354,9 @@ html {
             &:focus-within {
 
               > a {
-                background: $color-grey-700;
+                color: $level-two-color-hover-lg;
+                background-color: $level-two-bg-hover-lg;
+                border-color: $level-two-border-hover-lg;
               }
 
             }
@@ -262,56 +364,88 @@ html {
             &.current-menu-item {
 
               > a {
-                background: $color-black;
+                color: $level-two-color-current-lg;
+                background-color: $level-two-bg-current-lg;
+                border-color: $level-two-border-current-lg;
               }
 
               &:hover,
               &:focus-within {
 
                 > a {
-                  background: $color-black;
+                  color: $level-two-color-current-lg;
+                  background-color: $level-two-bg-current-lg;
+                  border-color: $level-two-border-current-lg;
                 }
 
               }
 
             }
 
-            /* --- LEVEL THREE UNIQUE --- */
+            &.current-menu-ancestor {
+
+              > a {
+                color: $level-two-color-ancestor-lg;
+                background-color: $level-two-bg-ancestor-lg;
+                border-color: $level-two-border-ancestor-lg;
+              }
+    
+              &:hover,
+              &:focus-within {
+    
+                > a {
+                  color: $level-two-color-ancestor-hover-lg;
+                  background-color: $level-two-bg-ancestor-hover-lg;
+                  border-color: $level-two-border-ancestor-hover-lg;
+    
+                  &::after {
+                    color: $level-two-color-ancestor-hover-lg;
+                  }
+    
+                }
+    
+              }
+    
+            }
+
+
+            /* --- LEVEL THREE ONLY --- */
 
             > ul {
               top: 0;
               left: 100%;
-              margin: -1px 0 0 0;
+              // margin: -0.1rem 0 0 0;
 
               > li {
 
                 > a {
-                  color: $color-white;
-                  background-color: $color-grey-500;
+                  color: $level-three-color-lg;
+                  background-color: $level-three-bg-lg;
                 }
       
                 &:not(:last-child) {
                   
                   > a {
-                    border-bottom: 1px solid $color-grey-600;
+                    border-bottom: 0.1rem solid $level-three-border-lg;
                   }
       
                 }
 
-                &:first-child {
+                // &:first-child {
 
-                  > a {
-                    border-top: 1px solid $color-grey-600;
-                  }
+                //   > a {
+                //     border-top: 0.1rem solid $level-three-border-lg;
+                //   }
 
-                }
+                // }
       
                 &:hover,
                 &:focus-within {
       
                   > a {
-                    color: $color-white;
-                    background-color: $color-grey-700;
+                    color: $level-three-color-hover-lg;
+                    background-color: $level-three-bg-hover-lg;
+                    border-color: $level-three-border-hover-lg;
                   }
       
                 }
@@ -319,14 +453,18 @@ html {
                 &.current-menu-item {
       
                   > a {
-                    background: $color-black;
+                    color: $level-three-color-current-lg;
+                    background-color: $level-three-bg-current-lg;
+                    border-color: $level-three-border-current-lg;
                   }
       
                   &:hover,
                   &:focus-within {
       
                     > a {
-                      background: $color-black;
+                      color: $level-three-color-current-lg;
+                      background-color: $level-three-bg-current-lg;
+                      border-color: $level-three-border-current-lg;
                     }
       
                   }
@@ -361,7 +499,7 @@ html {
     top: $header-height-sm; //variable in header.scss
     bottom: 0;
     z-index: 1000;
-    background-color: $color-grey-900;
+    background-color: $nav-background-sm;
     height: 100vh;
     overflow-x: hidden;
     -ms-overflow-style: none;
@@ -396,9 +534,9 @@ html {
 
         a {
           display: block;
-          font-size: 16px;
-          font-weight: 400;
-          padding: 15px;
+          font-size: 1.6rem;
+          font-weight: $weight-regular;
+          padding: 1.5rem;
         }
 
         ul {
@@ -418,27 +556,44 @@ html {
     /* --- LEVEL ONE UNIQUE --- */
 
     > ul {
-      padding-bottom: 200px;
+      padding-bottom: 20rem;
       
       > li {
-        border-bottom: 1px solid $color-grey-700;
+        border-bottom: 0.1rem solid $level-one-border-sm;
 
         > a {
-          color: $color-white;
-          background-color: $color-grey-600;
+          color: $level-one-color-sm;
+          background-color: $level-one-bg-sm;
         }
 
         &.current-menu-item {
 
           > a {
-            background-color: $color-black;
+            color: $level-one-color-current-sm;
+            background-color: $level-one-bg-current-sm;
 
             &::after {
-              background-color: $color-black;
+              color: $level-one-color-current-sm;
+              background-color: $level-one-bg-current-sm;
             }
 
           }
 
+        }
+
+        &.current-menu-ancestor {
+
+          > a {
+            color: $level-one-color-ancestor-sm;
+            background-color: $level-one-bg-ancestor-sm;
+
+            &::after {
+              color: $level-one-color-ancestor-sm;
+              background-color: $level-one-bg-ancestor-sm;
+            }
+
+          }
+        
         }
 
 
@@ -449,7 +604,7 @@ html {
           > li {
 
             &:not(:last-child) {
-              border-bottom: 1px solid $color-grey-800;
+              border-bottom: 0.1rem solid $level-two-border-sm;
             }
 
             > a {
@@ -564,7 +719,7 @@ html {
 .burger {
   position: relative;
   display: inline-block;
-  background: transparent;
+  background: transancestor;
   border: 0;
   cursor: pointer;
   height: 36px;

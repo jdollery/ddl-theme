@@ -4,29 +4,29 @@
 
 /* --------- GLOBAL --------- */
 
-$button-font-lg:             17px;
-$button-font-sm:             16px;
+$button-font-lg:             1.7rem;
+$button-font-sm:             1.6rem;
 $button-line-height:         1;
-$button-font-weight:         400;
+$button-font-weight:         $weight-regular;
 
-$button-border-width:        2px;
+$button-border-width:        0.2rem;
 $button-border-style:        solid;
-$button-border-radius:       7px;
+$button-border-radius:       0.7rem;
 
-$button-padding-top-lg:      17px;
-$button-padding-right-lg:    25px;
-$button-padding-bottom-lg:   17px;
-$button-padding-left-lg:     25px;
+$button-padding-top-lg:      1.7rem;
+$button-padding-right-lg:    2.5rem;
+$button-padding-bottom-lg:   1.7rem;
+$button-padding-left-lg:     2.5rem;
 
-$button-padding-top-sm:      15px;
-$button-padding-right-sm:    20px;
-$button-padding-bottom-sm:   15px;
-$button-padding-left-sm:     20px;
+$button-padding-top-sm:      1.5rem;
+$button-padding-right-sm:    2rem;
+$button-padding-bottom-sm:   1.5rem;
+$button-padding-left-sm:     2rem;
 
-$button-margin-top-lg:       4px;
-$button-margin-bottom-lg:    4px;
-$button-margin-top-sm:       4px;
-$button-margin-bottom-sm:    4px;
+$button-margin-top-lg:       0.4rem;
+$button-margin-bottom-lg:    0.4rem;
+$button-margin-top-sm:       0.4rem;
+$button-margin-bottom-sm:    0.4rem;
 
 $button-disabled-color:      $color-grey-400;
 $button-hover-percentage:    20%;
@@ -504,71 +504,6 @@ $button-danger-border-color-disabled:      $button-disabled-color;
 }
 
 
-/* --------- BUTTON HEADER --------- */
-
-@mixin button-header {
-  @include button;
-  color: $color-white;
-  background: transparent;
-  border-color: $color-white;
-
-  .icon {
-      
-    svg {
-      fill: $color-white;
-    }
-
-  }
-
-  @include hover-focus {
-    color: $color-grey-900;
-    background: $color-white;
-    border-color: $color-white;
-
-    .icon {
-      
-      svg {
-        fill: $color-grey-900;
-      }
-  
-    }
-
-  }
-
-  &:disabled, &.disabled {
-    color: $button-danger-color-disabled;
-    background: transparent;
-    border-color: $button-danger-border-color-disabled;
-
-    .icon {
-      
-      svg {
-        fill: $button-danger-color-disabled;
-      }
-  
-    }
-
-    @include hover-focus {
-      color: $button-danger-color-disabled;
-      background: transparent;
-      border-color: $button-danger-border-color-disabled;
-  
-      .icon {
-        
-        svg {
-          fill: $button-danger-color-disabled;
-        }
-    
-      }
-  
-    }
-    
-  }
-
-}
-
-
-
 /* --------- BUTTON LINK --------- */
 
 @mixin button-link {
@@ -595,13 +530,6 @@ $button-danger-border-color-disabled:      $button-disabled-color;
 /* --------- BUTTON EDIT --------- */
 
 @mixin button-edit {
-  @include button;
-  color: $color-grey-600;
-  background: $color-white;
-  border-color: $color-white;
-  // display: inline-block;
-  // background: #fff;
-  // padding: 15px 20px;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -612,12 +540,6 @@ $button-danger-border-color-disabled:      $button-disabled-color;
   @include media-up(md) {
     margin-top: 0;
     margin-bottom: 0;
-  }
-
-  @include hover-focus {
-    color: $color-grey-900;
-    background: $color-white;
-    border-color: $color-white;
   }
 
 }
@@ -651,10 +573,7 @@ $button-danger-border-color-disabled:      $button-disabled-color;
   @include button-link;
 }
 
-.button-header {
-  @include button-header;
-}
-
 .button-edit {
+  @include button-secondary;
   @include button-edit;
 }

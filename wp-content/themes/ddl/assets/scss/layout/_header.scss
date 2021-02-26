@@ -4,8 +4,10 @@
 
 /* --------- USED IN NAVIGATION AND MAIN --------- */
 
-$header-height-lg: 93px;
-$header-height-sm: 88px;
+$header-height-lg: 12.3rem;
+$header-height-lg-sticky: 12.3rem;
+
+$header-height-sm: 8.8rem;
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -22,9 +24,44 @@ $header-height-sm: 88px;
   width: 100%;
   background: $color-brand;
   color: $color-white;
-  padding-top: 15px;
-  padding-bottom: 15px;
   // @include transition(box-shadow 0.3s ease-out);
+
+  &__outer {
+    @include cell-fixed;
+    @include transition(all 0.3s ease-out);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    @include media-up(lg) {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    &__row {
+      @include cell-row;
+      @include flex-items(center);
+      @include flex-content-x(space-between);  
+    }
+
+  }
+
+  &__one {
+    @include cell;
+    @include cell-span(auto);
+    text-align: left;
+  }
+
+  &__two {
+    @include cell;
+    @include cell-span(0);
+    text-align: center;
+  }
+
+  &__three {
+    @include cell;
+    @include cell-span(auto);
+    text-align: right;
+  }
 
   a {
     font-weight: 400;
@@ -36,43 +73,10 @@ $header-height-sm: 88px;
     }
 
     i {
-      margin-right: 4px;
+      margin-right: 0.4rem;
       vertical-align: middle;
     }
 
-  }
-
-  @include media-up(md) {
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-
-  &__content{
-    @include cell-fixed;
-  }
-
-  &__row {
-    @include cell-row;
-    @include flex-items(center);
-    @include flex-content-x(space-between);  
-  }
-
-  &__left {
-    @include cell;
-    @include cell-span(auto);
-    text-align: left;
-  }
-
-  &__center {
-    @include cell;
-    @include cell-span(0);
-    text-align: center;
-  }
-
-  &__right {
-    @include cell;
-    @include cell-span(auto);
-    text-align: right;
   }
 
   // &.sticky {
@@ -86,15 +90,34 @@ $header-height-sm: 88px;
 
 .logo {
   display: inline-block;
-  width: 140px;
   vertical-align: middle;
-
+  width: 14rem;
+  
   @include media-up(md) {
-    width: 150px;
+    width: 15rem;
   }
 
   @include media-up(lg) {
-    width: 170px;
+    width: 17rem;
+  }
+
+}
+
+
+/* --------- HEADER STICKY --------- */
+
+.sticky {
+
+  .logo {
+  
+    @include media-up(md) {
+      width: 14rem;
+    }
+
+    @include media-up(lg) {
+      width: 16rem;
+    }
+
   }
 
 }

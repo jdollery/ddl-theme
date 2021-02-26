@@ -11,6 +11,26 @@ $block-padding-lg: 100px;
 /*-----------------------------------------------------------------------------------*/
 
 @mixin block {
+  padding: $block-padding-sm $block-padding-sm;
+
+  @include media-up(sm) {
+    padding: $block-padding-lg $block-padding-lg;
+  }
+
+}
+
+@mixin block-x {
+  padding-left: $block-padding-sm;
+  padding-right: $block-padding-sm;
+
+  @include media-up(sm) {
+    padding-left: $block-padding-lg;
+    padding-right: $block-padding-lg;
+  }
+
+}
+
+@mixin block-y {
   padding-top: $block-padding-sm;
   padding-bottom: $block-padding-sm;
 
@@ -35,6 +55,24 @@ $block-padding-lg: 100px;
 
   @include media-up(sm) {
     padding-bottom: $block-padding-lg;
+  }
+
+}
+
+@mixin block-left {
+  padding-left: $block-padding-lg;
+
+  @include media-up(sm) {
+    padding-left: $block-padding-lg;
+  }
+
+}
+
+@mixin block-right {
+  padding-right: $block-padding-lg;
+
+  @include media-up(sm) {
+    padding-right: $block-padding-lg;
   }
 
 }
