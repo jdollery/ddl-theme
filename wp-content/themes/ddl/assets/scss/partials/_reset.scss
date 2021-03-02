@@ -43,7 +43,7 @@ $body-font:           $font-sourcesans;
 $body-size-lg:        1.7rem;
 $body-size-sm:        1.5rem;
 $body-line-height:    1.6;
-$body-weight:         400;
+$body-weight:         $weight-regular;
 $body-color:          $color-grey-900;
 $body-background:     $color-black; // this is also the background of footer to make it bleed off the bottom (see layout/main.scss for content background)
 

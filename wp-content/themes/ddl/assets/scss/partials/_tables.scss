@@ -7,17 +7,17 @@ $table-margin-bottom-lg:    $paragraph-margin-top-lg;
 $table-margin-top-sm:       $paragraph-margin-top-sm;
 $table-margin-bottom-sm:    $paragraph-margin-top-sm;
 
-$table-padding-top-lg:      15px;
-$table-padding-right-lg:    18px;
-$table-padding-bottom-lg:   15px;
-$table-padding-left-lg:     18px;
+$table-padding-top-lg:      1.5rem;
+$table-padding-right-lg:    1.8rem;
+$table-padding-bottom-lg:   $table-padding-top-lg;
+$table-padding-left-lg:     $table-padding-right-lg;
 
-$table-padding-top-sm:      4px;
-$table-padding-right-sm:    10px;
-$table-padding-bottom-sm:   4px;
-$table-padding-left-sm:     10px;
+$table-padding-top-sm:      0.4rem;
+$table-padding-right-sm:    1rem;
+$table-padding-bottom-sm:   $table-padding-top-sm;
+$table-padding-left-sm:     $table-padding-right-sm;
 
-$table-th-border-width:     1px;
+$table-th-border-width:     0.1rem;
 $table-th-border-style:     solid;
 $table-th-border-color:     $color-grey-500;
 
@@ -25,7 +25,7 @@ $table-td-border-width:     0;
 $table-td-border-style:     solid;
 $table-td-border-color:     $color-grey-500;
 
-$table-th-font-weight:      700;
+$table-th-font-weight:      $weight-bold;
 
 $table-tr-even-background:  $color-white;
 $table-tr-odd-background:   $color-grey-200;
@@ -110,8 +110,8 @@ table {
   }
 
   caption {
-    margin-bottom: 10px;
-    font-weight: 400;
+    margin-bottom: 1rem;
+    font-weight: $weight-regular;
   }
   
 
@@ -142,8 +142,8 @@ table {
 
     thead tr { 
       position: absolute;
-      top: -9999px;
-      left: -9999px;
+      top: -999.9rem;
+      left: -999.9rem;
     }
 
     tbody {

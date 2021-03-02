@@ -7,10 +7,10 @@ $list-margin-bottom-lg:   $paragraph-margin-top-lg;
 $list-margin-top-sm:      $paragraph-margin-top-sm;
 $list-margin-bottom-sm:   $paragraph-margin-top-sm;
 
-$list-indent:             25px;
-$list-bullet-size:        6px;
+$list-indent:             2.5rem;
+$list-bullet-size:        0.6rem;
 $list-bullet-color:       $body-color;
-$list-weight:             600;
+$list-bullet-weight:      $weight-bold;
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -33,7 +33,7 @@ $list-weight:             600;
     &::before {
       position: absolute;
       left: -$list-indent;
-      top: 10px;
+      top: 1rem;
       display: block;
       content: '';
       width: $list-bullet-size;
@@ -63,7 +63,7 @@ $list-weight:             600;
       display: block;
       content: counter(custom-counter) ". ";
       color: $list-bullet-color;
-      font-weight: $list-weight;
+      font-weight: $list-bullet-weight;
     }
 
   }

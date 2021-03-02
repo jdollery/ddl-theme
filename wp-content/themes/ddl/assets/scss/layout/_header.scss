@@ -47,7 +47,7 @@ $header-height-sm: 8.8rem;
 
   &__one {
     @include cell;
-    @include cell-span(auto);
+    @include cell-span(4);
     text-align: left;
   }
 
@@ -59,7 +59,7 @@ $header-height-sm: 8.8rem;
 
   &__three {
     @include cell;
-    @include cell-span(auto);
+    @include cell-span(4);
     text-align: right;
   }
 

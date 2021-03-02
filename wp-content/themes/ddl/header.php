@@ -40,7 +40,6 @@
           </div>
         </div>
       </div>
-      <?php get_template_part('template-parts/component', 'navigation'); ?>
     </header>
     <main class="main">
 
