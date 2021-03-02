@@ -79,22 +79,21 @@ $level-two-border-sm:                 $color-grey-800;
 $level-two-color-current-sm:          $color-white;
 $level-two-bg-current-sm:             $color-black;
 
-$level-two-color-ancestor-sm:         $color-white;
-$level-two-bg-ancestor-sm:            $color-black;
+// $level-two-color-ancestor-sm:         $color-white;
+// $level-two-bg-ancestor-sm:            $color-black;
 
 
 /* --- LEVEL THREE --- */
 
 $level-three-color-sm:                $color-white;
-$level-three-color-hover-sm:          $color-white;
-$level-three-bg-sm:                   $color-grey-500;
-$level-three-bg-hover-sm:             $color-grey-800;
-$level-three-border-sm:               $color-grey-600;
-$level-three-border-hover-sm:         $color-grey-800;
+$level-three-bg-sm:                   $color-grey-800;
+$level-three-border-sm:               $color-grey-900;
 
 $level-three-color-current-sm:        $color-white;
 $level-three-bg-current-sm:           $color-black;
-$level-three-border-current-sm:       $color-black;
+
+// $level-two-color-ancestor-sm:         $color-white;
+// $level-two-bg-ancestor-sm:            $color-black;
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -608,17 +607,18 @@ html {
             }
 
             > a {
-              color: $color-white;
-              background-color: $color-grey-700;
+              color: $level-two-color-sm;
+              background-color: $level-two-bg-sm;
             }
 
             &.current-menu-item {
 
               > a {
-                background-color: $color-black;
+                color: $level-two-color-current-sm;
+                background-color: $level-two-bg-current-sm;
     
                 &::after {
-                  background-color: $color-black;
+                  background-color: $level-two-bg-current-sm;
                 }
     
               }
@@ -633,12 +633,12 @@ html {
               > li {
 
                 &:not(:last-child) {
-                  border-bottom: 1px solid $color-grey-900;
+                  border-bottom: 1px solid $level-three-border-sm;
                 }
 
                 > a {
-                  color: $color-white;
-                  background-color: $color-grey-800;
+                  color: $level-three-color-sm;
+                  background-color: $level-three-bg-sm;
                 }
 
               }
@@ -646,10 +646,12 @@ html {
               &.current-menu-item {
 
                 > a {
+                  color: $level-three-color-sm;
                   background-color: $color-black;
       
                   &::after {
-                    background-color: $color-black;
+                    color: $level-three-color-current-sm;
+                    background-color: $level-three-bg-current-sm;
                   }
       
                 }
@@ -675,11 +677,11 @@ html {
 
 .dropdown-toggle {
   position: absolute;
-  top: 6px;
-  right: 15px;
+  top: 0.6rem;
+  right: 1.5rem;
   content: "";
-  height: 33px;
-  width: 33px;
+  height: 3.3rem;
+  width: 3.3rem;
   border: 0;
   color: $color-grey-100;
   background-color: $color-black;
@@ -687,15 +689,11 @@ html {
   margin: 0;
   font-family: $font-fontawesome;
   font-style: normal;
-  font-size: 11px;
+  font-size: 1.1rem;
   line-height: 1;
-  font-weight: 900;
+  font-weight: $weight-bold;
   @include transition(all 0.3s ease-out);
-
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px;
+  @include border-radius(0.5rem);
   cursor: pointer;
   outline: none;
 
@@ -722,9 +720,9 @@ html {
   background: transancestor;
   border: 0;
   cursor: pointer;
-  height: 36px;
-  width: 41px;
-  padding: 0 6px 4px;
+  height: 3.6rem;
+  width: 4.1rem;
+  padding: 0 0.6rem 0.4rem;
   vertical-align: middle;
 
   @include media-up($nav-breakpoint) {
@@ -736,8 +734,8 @@ html {
   &__inner::before {
     position: absolute;
     display: block;
-    width: 30px;
-    height: 4px;
+    width: 3rem;
+    height: 0.4rem;
     transition-timing-function: ease;
     transition-duration: .15s;
     transition-property: transform;

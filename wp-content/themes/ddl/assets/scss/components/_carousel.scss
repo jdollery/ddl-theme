@@ -1,9 +1,8 @@
 .carousel {
 
-
   .slide {
     display: flex;
-    height: 400px;
+    height: 40rem;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -22,28 +21,28 @@
       @include cell;
       @include cell-span(12);
       @include flex-self(center);
-      padding-top: 60px;
-      padding-bottom: 60px;
+      padding-top: 6rem;
+      padding-bottom: 6rem;
 
-      // @include media-up(sm) {
-      //   padding: 60px 0 60px;
-      // }
+      @include media-up(sm) {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+      }
 
     }
 
   }
 
-
   &__title {
     color: $color-white;
-    font-size: 45px;
+    font-size: 4.5rem;
 
     @include media-up(sm) {
-      font-size: 50px;
+      font-size: 5rem;
     }
 
     @include media-up(lg) {
-      font-size: 53px;
+      font-size: 5.3rem;
     }
 
   }

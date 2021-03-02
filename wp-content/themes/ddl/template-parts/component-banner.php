@@ -36,7 +36,7 @@ if ( has_post_thumbnail() ) { ?>
 
 <?php } ?>
 
-  <div class="content">
+  <div class="outer">
 
   <?php if ( is_front_page() && is_home() ) { //home/blog ?>
 
@@ -99,6 +99,5 @@ if ( has_post_thumbnail() ) { ?>
   <?php } ?>
   
   </div>
-
 
 </div>

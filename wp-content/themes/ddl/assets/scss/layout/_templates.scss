@@ -2,9 +2,40 @@
 /* GLOBAL TEMPLATES */
 /*-----------------------------------------------------------------------------------*/
 
-/* --------- COMPONANT CONTENT WRAPPER (FIXED WIDTHS) --------- */
+/* --------- GENERIC COMPONANT --------- */
 
-.content {
+.block {
+  @include block;
+}
+
+.block-y {
+  @include block-y;
+}
+
+.block-x {
+  @include block-x;
+}
+
+.block-top {
+  @include block-left;
+}
+
+.block-bottom {
+  @include block-left;
+}
+
+.block-left {
+  @include block-left;
+}
+
+.block-right {
+  @include block-left;
+}
+
+
+/* --------- COMPONANT OUTER WRAPPER (FIXED WIDTHS) --------- */
+
+.outer {
   @include cell-fixed;
 
   &__row {
@@ -15,7 +46,7 @@
 }
 
 
-/* --------- COMPONANT CONTENT WRAPPER INNER (REDUCE CONTENT WIDTH) --------- */
+/* --------- COMPONANT INNER WRAPPER INNER (REDUCE CONTENT WIDTH) --------- */
 
 .inner {
   @include cell;
@@ -37,7 +68,7 @@
 .title {
   @include cell;
   @include cell-span(12);
-  padding-bottom: 40px;
+  padding-bottom: 4rem;
 
   &__heading {
     @include h2;
@@ -45,7 +76,7 @@
 
   &__subheading {
     @include h4;
-    margin-top: 20px;
+    margin-top: 2rem;
   }
 
 }
@@ -53,10 +84,11 @@
 
 /* --------- ITEM (USED FOR A LOOP OF POSTS, SERVICES ETC...) --------- */
 
-$item-padding-top: 30px;
-$item-padding-bottom: 130px;
-$item-padding-x: $item-padding-top;
-$item-background: $color-white;
+$item-padding-top:      3rem;
+$item-padding-bottom:   13rem;
+$item-padding-x:        $item-padding-top;
+$item-background:       $color-white;
+$item-img-height:       20rem;
 
 .item {
   @include cell;
@@ -82,7 +114,7 @@ $item-background: $color-white;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      height: 200px;
+      height: $item-img-height;
       width: 100%;
     }
 
@@ -99,7 +131,7 @@ $item-background: $color-white;
   }
 
   &__text {
-    padding: $item-padding-top $item-padding-x 130px;
+    padding: $item-padding-top $item-padding-x $item-padding-bottom;
   }
 
   &__footer {

@@ -3,24 +3,24 @@
   background-repeat: no-repeat;
   background-position: center;
   background-color: $color-grey-700;
-  padding-top: 40px;
-  padding-bottom: 50px;
+  padding-top: 4rem;
+  padding-bottom: 5rem;
 
   @include media-up(sm) {
-    padding-top: 60px;
-    padding-bottom: 70px;
+    padding-top: 6rem;
+    padding-bottom: 7rem;
   }
 
   &__title {
     color: $color-white;
-    font-size: 45px;
+    font-size: 4.5rem;
 
     @include media-up(sm) {
-      font-size: 50px;
+      font-size: 5rem;
     }
 
     @include media-up(lg) {
-      font-size: 53px;
+      font-size: 5.3rem;
     }
 
   }

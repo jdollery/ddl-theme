@@ -6,22 +6,6 @@ $gutter: 20px;
 $columns: 12;
 $max-width: 1440px;
 
-$breakpoint-widths: (
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1500px
-);
-
-// $cell-fixed-max-widths: (
-//   sm: 540px,
-//   md: 720px,
-//   lg: 960px,
-//   xl: 1140px,
-//   xxl: 1440px
-// );
-
 
 /*-----------------------------------------------------------------------------------*/
 /* MIXINS */
@@ -74,17 +58,8 @@ $breakpoint-widths: (
   
 }
 
-// @mixin cell-fixed-widths($max-widths: $cell-fixed-max-widths, $breakpoints: $breakpoint-widths) {
-//   @each $breakpoint, $cell-fixed-max-width in $max-widths {
-//     @include media-up($breakpoint) {
-//       max-width: $cell-fixed-max-width;
-//     }
-//   }
-// }
-
 @mixin cell-fixed {
   @include cell;
-  // @include cell-fixed-widths;
   width: 100%;
   max-width: $max-width;
   margin-right: auto;

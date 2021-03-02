@@ -6,9 +6,9 @@
 
   <?php if( is_active_sidebar('sidebar') ) { ?>
 
-  <div class="posts" id="mainContent">
-    <div class="content">
-      <div class="content__row">
+  <div class="block-y" id="mainContent">
+    <div class="outer">
+      <div class="outer__row">
         <div class="inner">
           <div class="inner__row">
 
@@ -39,8 +39,8 @@
           </div>
         </div>
         <aside class="aside" role="complementary">
-          <div class="aside__content" >
-            <div class="aside__row">
+          <div class="aside__outer" >
+            <div class="aside__outer__row">
               <?php dynamic_sidebar('sidebar'); ?>
             </div>
           </div>
@@ -51,9 +51,9 @@
       
   <?php } else { ?>
 
-  <div class="posts" id="mainContent">
-    <div class="content">
-      <div class="content__row">
+  <div class="block-y" id="mainContent">
+    <div class="outer">
+      <div class="outer__row">
         <div class="inner">
           <div class="inner__row">
 
@@ -93,9 +93,9 @@
 
   <?php get_template_part('template-parts/component', 'banner'); ?>
 
-  <div class="posts" id="mainContent">
-    <div class="content">
-      <div class="content__row">
+  <div class="block-y" id="mainContent">
+    <div class="outer">
+      <div class="outer__row">
         <div class="inner">
           <div class="inner__row">
             <article class="post">

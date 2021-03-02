@@ -4,9 +4,9 @@
 
   <?php get_template_part('template-parts/component', 'banner'); ?>
 
-  <div class="posts" id="mainContent">
-    <div class="content">
-      <div class="content__row">
+  <div class="block-y" id="mainContent">
+    <div class="outer">
+      <div class="outer__row">
         <div class="inner">
           <div class="inner__row">
 
