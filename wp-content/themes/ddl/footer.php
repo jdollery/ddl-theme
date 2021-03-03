@@ -2,8 +2,8 @@
 
   <footer class="footer">
 
-    <div class="footer__content">        
-      <div class="footer__row">
+    <div class="footer__outer">        
+      <div class="footer__outer__row">
         <div class="footer__inner">
           <ul>
               <li>Site updated: <?php echo date('F Y'); ?></li>

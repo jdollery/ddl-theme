@@ -17,7 +17,7 @@ $thumb_url = $thumb_url_array[0];
       </figure>
     <?php } else { ?>
       <figure style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/placeholder.jpg')">
-        <img src="('<?php echo get_template_directory_uri(); ?>/assets/img/placeholder.jpg')" alt="<?php the_title(); ?>">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder.jpg" alt="<?php the_title(); ?>">
       </figure>
     <?php } ?>
     </div>

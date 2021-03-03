@@ -2,11 +2,13 @@
 
 if ( is_front_page() && is_home() || is_search() || is_404() ) { ?>
       
-<div class="banner" style="background-image: url('/assets/img/rio-arc-product-01.jpg')">
+<div class="banner">
+<!-- <div class="banner" style="background-image: url('/assets/img/rio-arc-product-01.jpg')"> -->
 
 <?php } elseif ( is_archive() ) { ?>   
 
-<div class="banner" style="background-image: url('/assets/img/rio-arc-product-01.jpg')">
+<div class="banner">
+<!-- <div class="banner" style="background-image: url('/assets/img/rio-arc-product-01.jpg')"> -->
 
 <?php } else {
 
@@ -82,12 +84,12 @@ if ( has_post_thumbnail() ) { ?>
 
   <?php } elseif ( is_singular( 'post' ) ) { ?>
 
+    <h1 class="banner__title"><?php the_title(); ?></h1>
+    <h4 class="banner__subtitle"><?php echo $pageDescription ?></h4>
     <div class="banner__meta">
       <span class="banner__categories"><?php echo get_the_category_list(); ?></span>
       <span class="banner__date"><i class="far fa-calendar"></i> <?php echo get_the_date(); ?></span>
     </div>
-    <h1 class="banner__title"><?php the_title(); ?></h1>
-    <h4 class="banner__subtitle"><?php echo $pageDescription ?></h4>
 
   <?php } else { ?>
 

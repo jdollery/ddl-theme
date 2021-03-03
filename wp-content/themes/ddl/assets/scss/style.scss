@@ -17,6 +17,7 @@
 @import "utility/fonts";
 @import "utility/fontawesome";
 
+// @import "vendor/animate";
 @import "vendor/slick";
 
 @import "partials/reset";
@@ -32,6 +33,8 @@
 @import "partials/tables";
 @import "partials/forms";
 @import "partials/loading";
+
+@import "vendor/select2";
 
 @import "layout/header";
 @import "layout/navigation";
