@@ -48,10 +48,8 @@ add_action( 'after_setup_theme', 'ddl_setup' );
 function register_menus() {
 
 	register_nav_menus( array(
-    'primary-menu' => __( 'Primary Menu'),
-    // 'secondary-menu' => __( 'Secondary Menu'),
-		// 'footer-top-menu' => __( 'Footer Top Menu'),
-		// 'footer-menu' => __( 'Footer Menu')
+    'header-menu' => __( 'Header Menu'),
+		'footer-menu' => __( 'Footer Menu')
 	) );
 
 }
@@ -76,54 +74,35 @@ function ddl_widgets_init() {
   ) );
 
   register_sidebar( array(
-		'name'          => esc_html__( 'Footer Top Widget One', 'ddl' ),
-		'id'            => 'footer-top-widget-one',
+		'name'          => esc_html__( 'Footer Widget One', 'ddl' ),
+		'id'            => 'footer-widget-one',
 		'description'   => esc_html__( 'Add widgets here.', 'ddl' ),
 		'before_widget' => '',
 		'after_widget'  => '',
-		'before_title'  => '<div class="footer__widget__title">',
-		'after_title'   => '</div>',
-  ) );
-
-  register_sidebar( array(
-		'name'          => esc_html__( 'Footer Top Widget Two', 'ddl' ),
-		'id'            => 'footer-top-widget-two',
-		'description'   => esc_html__( 'Add widgets here.', 'ddl' ),
-		'before_widget' => '',
-		'after_widget'  => '',
-		'before_title'  => '<div class="footer__widget__title">',
-		'after_title'   => '</div>',
-  ) );
-
-  register_sidebar( array(
-		'name'          => esc_html__( 'Footer Top Widget Three', 'ddl' ),
-		'id'            => 'footer-top-widget-three',
-		'description'   => esc_html__( 'Add widgets here.', 'ddl' ),
-		'before_widget' => '',
-		'after_widget'  => '',
-		'before_title'  => '<div class="footer__widget__title">',
-		'after_title'   => '</div>',
-  ) );
-
-  register_sidebar( array(
-		'name'          => esc_html__( 'Footer Top Widget Four', 'ddl' ),
-		'id'            => 'footer-top-widget-four',
-		'description'   => esc_html__( 'Add widgets here.', 'ddl' ),
-		'before_widget' => '',
-		'after_widget'  => '',
-		'before_title'  => '<div class="footer__widget__title">',
-		'after_title'   => '</div>',
+		'before_title'  => '<h5>',
+		'after_title'   => '</h5>',
   ) );
 
 	register_sidebar( array(
-		'name'          => esc_html__( 'Footer Bottom', 'ddl' ),
-		'id'            => 'footer-bottom-widget',
+		'name'          => esc_html__( 'Footer Widget Two', 'ddl' ),
+		'id'            => 'footer-widget-two',
 		'description'   => esc_html__( 'Add widgets here.', 'ddl' ),
 		'before_widget' => '',
 		'after_widget'  => '',
-		'before_title'  => '',
-		'after_title'   => '',
-	) );
+		'before_title'  => '<h5>',
+		'after_title'   => '</h5>',
+  ) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Widget Three', 'ddl' ),
+		'id'            => 'footer-widget-three',
+		'description'   => esc_html__( 'Add widgets here.', 'ddl' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '<h5>',
+		'after_title'   => '</h5>',
+  ) );
+
 
 }
 

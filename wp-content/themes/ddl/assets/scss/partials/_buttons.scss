@@ -54,7 +54,7 @@ $button-secondary-color:                    $color-white;
 $button-secondary-color-hover:              $button-secondary-color;
 $button-secondary-color-disabled:           $button-secondary-color;
 
-$button-secondary-background:               $color-brand;
+$button-secondary-background:               $color-accent;
 $button-secondary-background-hover:         darken($button-secondary-background, $button-hover-percentage);
 $button-secondary-background-disabled:      $button-disabled-color;
 

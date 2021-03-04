@@ -108,7 +108,7 @@ h1, h2, h3, h4, h5, h6,
   font-family: $heading-font;
   font-weight: $heading-font-weight;
   line-height: $heading-line-height;
-  color: $heading-color;
+  color: inherit;
   text-transform: $heading-case;
   letter-spacing: $heading-spacing;
   margin-top: $heading-margin-top-sm;

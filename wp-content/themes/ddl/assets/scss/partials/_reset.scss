@@ -20,7 +20,7 @@ $color-danger:        #dc3545;
 $color-warning:       #f2ab10;
 $color-success:       #3caa5a;
 
-$color-brand:         #5fbdad;
+$color-accent:        #5fbdad;
 
 
 /* --------- FONT FAMILIES --------- */
@@ -45,7 +45,7 @@ $body-size-sm:        1.5rem;
 $body-line-height:    1.6;
 $body-weight:         $weight-regular;
 $body-color:          $color-grey-900;
-$body-background:     $color-black; // this is also the background of footer to make it bleed off the bottom (see layout/main.scss for content background)
+$body-background:     $color-grey-900; // this is also the background of footer to make it bleed off the bottom (see layout/main.scss for content background)
 
 
 /*-----------------------------------------------------------------------------------*/

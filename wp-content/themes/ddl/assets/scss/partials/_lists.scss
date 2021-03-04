@@ -22,6 +22,21 @@ $list-bullet-weight:      $weight-bold;
   padding-left: 0;
 }
 
+@mixin list-inline {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+
+  }
+
+}
+
 @mixin list-bullet {
   list-style: none;
   padding-left: $list-indent;
@@ -100,6 +115,10 @@ ul {
 
 .list-unstyled {
   @include list-unstyled;
+}
+
+.list-inline {
+  @include list-inline;
 }
 
 
