@@ -1,9 +1,11 @@
+// npm init
 // npm install --save-dev gulp
-
-// npm install node-sass gulp-sass gulp-concat gulp-uglify --save-dev
+// npm install node-sass gulp-sass gulp-concat gulp-uglify gulp-sourcemaps --save-dev
+// npm install node-sass gulp-sass gulp-sourcemaps --save-dev
 
 const gulp = require('gulp');
 const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 
@@ -29,7 +31,9 @@ const paths = {
 function css() {
   return gulp
   .src(paths.styles.src)
+  .pipe(sourcemaps.init())
   .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+  .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest(paths.styles.dest))
 }
 

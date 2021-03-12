@@ -27,7 +27,7 @@
         <?php } else { ?>
 
         <p>Sorry, but nothing matched your search. Please try again using some different keywords.</p>
-        <?php get_template_part('template-parts/component', 'search-form'); ?>
+        <?php get_template_part('template-parts/component', 'search'); ?>
 
         <?php } ?>
 

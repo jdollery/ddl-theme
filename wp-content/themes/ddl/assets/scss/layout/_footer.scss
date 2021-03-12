@@ -15,7 +15,6 @@
 
     &__row {
       @include cell-row;
-      @include flex-items(center);
       @include flex-content-x(space-between);  
     }
 
