@@ -56,8 +56,8 @@
     background-color: $input-background;
     background-clip: padding-box;
     border: $input-border-width $input-border-style $input-border-color;
-    @include border-radius($input-border-radius);
-    @include transition(border-color 0.3s ease-in-out);
+    border-radius: $input-border-radius;
+    transition: border-color 0.3s ease-in-out;
 
     @include media-up(md) {
       font-size: $input-font-lg;
@@ -66,7 +66,7 @@
 
     &:focus {
       border-color: $input-border-color-focus;
-      @include box-shadow (0 2px 3px rgba($color-grey-600, 0.2));
+      box-shadow: 0 2px 3px rgba($color-grey-600, 0.2);
     }
 
     .select2-selection__arrow {
@@ -85,7 +85,7 @@
           position: absolute;
           left: 0;
           top: 50%;
-          @include transform (translateY(-50%));
+          transform: translateY(-50%);
           width: 100%;
           font-family: $font-fontawesome;
           font-weight: 900;
@@ -154,8 +154,8 @@
   background-color: $input-background;
   background-clip: padding-box;
   border: $input-border-width $input-border-style $input-border-color-focus;
-  @include border-radius($input-border-radius);
-  @include box-shadow (0 2px 3px rgba($color-grey-600, 0.2));
+  border-radius: $input-border-radius;
+  box-shadow: 0 2px 3px rgba($color-grey-600, 0.2);
 }
 
 .select2-container--open .select2-dropdown {
@@ -213,7 +213,7 @@
 
 .select2-results__option[aria-selected] {
   cursor: pointer;
-  // @include transition($transition-base-lg);
+  // transition: $transition-base-lg;
 }
 
 .select2-container--default .select2-results__option[aria-selected=true] {

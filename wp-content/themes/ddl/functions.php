@@ -319,6 +319,34 @@ add_filter( 'post_thumbnail_html', 'remove_image_size_attributes' );
 add_filter( 'image_send_to_editor', 'remove_image_size_attributes' );
 
 
+/* --------------------- Add target _blank to edit button --------------------- */
+
+add_filter( 'edit_post_link', function( $link, $post_id, $text )
+{
+    // Add the target attribute 
+    if( false === strpos( $link, 'target=' ) )
+        $link = str_replace( '<a ', '<a target="_blank" ', $link );
+
+    return $link;
+}, 10, 3 );
+
+
+/* --------------------- Hide the content editor on multiple pages --------------------- */
+
+function hide_editor() {
+  $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
+  if( !isset( $post_id ) ) return;
+  $home = get_the_title($post_id);
+  $contact = get_the_title($post_id);
+	$treatments = get_the_title($post_id);
+  if($home == 'Home' || $contact == 'Contact'){ 
+    remove_post_type_support('page', 'editor');
+  }
+}
+
+add_action( 'admin_init', 'hide_editor' );
+
+
 /*-----------------------------------------------------------------------------------*/
 /* ADD CUSTOM META BOXES ON POST AND PAGE FOR BANNER DESCRIPTION */
 /*-----------------------------------------------------------------------------------*/
@@ -460,31 +488,3 @@ function pagination( \WP_Query $wp_query = null, $echo = true ) {
 
 	return null;
 }
-
-
-/*-----------------------------------------------------------------------------------*/
-/* DATE TIME TEST */
-/*-----------------------------------------------------------------------------------*/
-
-function showtime_shortcode(){
-
-	// $now = new DateTime();
-	// $launch = new DateTime('2021-05-27T15:16');
-	// if ($now < $launch ){
-	//   return 'Live';
-	// } else {
-	// 	return 'Off';
-	// }
-
-	date_default_timezone_set("Europe/London");
-	$currentHour = date("G:i:s");
-	$openTime = '15:20:00';
-	if ($currentHour >= $openTime){
-		return 'Live';
-	} else {
-		return 'Off';
-	}
-
-}
-
-add_shortcode('showtime', 'showtime_shortcode');

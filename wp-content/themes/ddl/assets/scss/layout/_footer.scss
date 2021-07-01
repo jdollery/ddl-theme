@@ -62,7 +62,7 @@
   a {
     font-weight: $weight-regular;
     color: $color-grey-600;
-    @include transition(all 0.3s ease-out);
+    transition: all 0.3s ease-out;
 
     @include hover-focus {
       color: $color-grey-200;

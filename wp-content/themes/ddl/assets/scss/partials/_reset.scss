@@ -57,7 +57,6 @@ html{
   font-size: 62.5%; //setting rem to match px
   line-height: 1.15;
   word-break: normal;
-  -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; 
   -webkit-text-size-adjust: 100%;
@@ -129,7 +128,6 @@ body {
   outline: 0;
   outline: -webkit-focus-ring-color 0;
   border-color: inherit;
-  -webkit-box-shadow: none;
   box-shadow: none;
 }
 
@@ -200,7 +198,6 @@ label,
 select,
 summary,
 textarea {
-  -ms-touch-action: manipulation;
   touch-action: manipulation;
 }
 

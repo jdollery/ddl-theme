@@ -20,14 +20,7 @@ $thumb_url = $thumb_url_array[0];
       </a>
     <?php } ?>
     <div class="card__text">
-      <ul>
-        <?php $categories = get_categories();
-        foreach($categories as $category) { ?>
-          <li><a href="<?php echo get_category_link($category->term_id) ?>" > <?php echo $category->name ?></a></li>
-        <?php } ?>
-      </ul>
       <h4 class="card__title"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h4>
-      <small class="card__date"><i class="far fa-calendar"></i> <?php echo get_the_date(); ?></small>
       <p class="card__summary"><?php echo strip_tags( get_excerpt(165) ); ?></p>
     </div>
   </div>

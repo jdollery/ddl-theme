@@ -14,10 +14,10 @@
 // <positive-number>, initial, auto, or none
 @mixin flex($values) {
   -webkit-box-flex: $values;
-     -moz-box-flex: $values;
-      -webkit-flex: $values;
-  	  -ms-flex: $values;
-  	      flex: $values;
+  -moz-box-flex: $values;
+  -webkit-flex: $values;
+  -ms-flex: $values;
+  flex: $values;
 }
 
 
@@ -106,38 +106,38 @@
 // flex-start | flex-end | center | space-between | space-around
 @mixin flex-content-x($justify) {
   -webkit-justify-content: $justify;
-     -moz-justify-content: $justify;
-      -ms-justify-content: $justify;
-          justify-content: $justify;
-            -ms-flex-pack: $justify;
-        -webkit-box-pack: $justify;
+  -moz-justify-content: $justify;
+  -ms-justify-content: $justify;
+  justify-content: $justify;
+  -ms-flex-pack: $justify;
+  -webkit-box-pack: $justify;
 }
 
 
 // flex-start | flex-end | center | space-between | space-around | stretch
 @mixin flex-content-y($align) {
   -webkit-align-content: $align;
-     -moz-align-content: $align;
-      -ms-align-content: $align;
-          align-content: $align;
+  -moz-align-content: $align;
+  -ms-align-content: $align;
+  align-content: $align;
 }
 
 
 // flex-start | flex-end | center | baseline | stretch
 @mixin flex-items($align) {
   -webkit-align-items: $align;
-     -moz-align-items: $align;
-      -ms-align-items: $align;
-          align-items: $align;
+  -moz-align-items: $align;
+  -ms-align-items: $align;
+  align-items: $align;
 }
 
 
 // auto | flex-start | flex-end | center | baseline | stretch
 @mixin flex-self($align) {
   -webkit-align-self: $align;
-     -moz-align-self: $align;
-      -ms-align-self: $align;
-          align-self: $align;
+  -moz-align-self: $align;
+  -ms-align-self: $align;
+  align-self: $align;
 }
 
 

@@ -182,8 +182,8 @@ textarea {
   background-color: $input-background;
   background-clip: padding-box;
   border: $input-border-width $input-border-style $input-border-color;
-  @include border-radius ($input-border-radius);
-  @include transition (border 0.3s ease-in-out, background-color 0.3s ease-in-out);
+  border-radius: $input-border-radius;
+  transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
   @include media-up(md) {
     font-size: $input-font-lg;
@@ -196,7 +196,7 @@ textarea {
 
   &:focus {
     border-color: $input-border-color-focus;
-    @include box-shadow (0 2px 3px rgba($color-grey-600, 0.2));
+    box-shadow: 0 2px 3px rgba($color-grey-600, 0.2);
   }
 
   &:disabled, &[readonly] {
@@ -207,7 +207,7 @@ textarea {
 
     // &:focus {
     //   border-color: $input-border-color;
-    //   @include box-shadow (0 0 0 rgba($color-grey-600, 0));
+    //   box-shadow: 0 0 0 rgba($color-grey-600, 0);
     // }
 
   }
@@ -240,7 +240,7 @@ input[type=radio] {
   margin-right: 1rem;
   padding: 0;
   border: 0;
-  @include border-radius(0);
+  border-radius: 0;
 
   @include media-up(md) {
     height: $checkboxradio-height-lg;
@@ -257,10 +257,9 @@ input[type=radio]::after {
   background-color: $input-background;
   background-clip: padding-box;
   border: $input-border-width $input-border-style $input-border-color;
-  @include border-radius ($input-border-radius);
+  border-radius: $input-border-radius;
   height: $checkboxradio-height-sm;
   width: $checkboxradio-width-sm;
-  // @include border-radius (10px);
 
   @include media-up(md) {
     height: $checkboxradio-height-lg;

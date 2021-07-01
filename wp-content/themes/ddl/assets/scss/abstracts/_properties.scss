@@ -2,49 +2,6 @@
 /* MIXINS */
 /*-----------------------------------------------------------------------------------*/
 
-@mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-  -moz-border-radius: $radius;
-  -ms-border-radius: $radius;
-  border-radius: $radius;
-}
-
-@mixin transition($transition...){
- -webkit-transition: $transition;
- -moz-transition: $transition;
- -o-transition: $transition;
- -ms-transition: $transition;
- transition: $transition;
-}
-
-@mixin transform($transform...){
- -webkit-transform: $transform;
- -moz-transform: $transform;
- -o-transform: $transform;
- -ms-transform: $transform;
- transform: $transform;
-}
-
-@mixin box-shadow($box-shadow){
- -webkit-box-shadow: $box-shadow;
- -moz-box-shadow: $box-shadow;
- box-shadow: $box-shadow;
-}
-
-@mixin text-shadow($text-shadow){
- -webkit-text-shadow: $text-shadow;
- -moz-text-shadow: $text-shadow;
- -o-text-shadow: $text-shadow;
- -ms-text-shadow: $text-shadow;
- text-shadow: $text-shadow;
-}
-
-@mixin appearance($appearance) {
-  -webkit-appearance: $appearance;
-  -moz-appearance: $appearance;
-  appearance: $appearance;
-}
-
 @mixin transition-timing-function($transition-timing-function) {
   -webkit-transition-timing-function: $transition-timing-function;
   -moz-transition-timing-function: $transition-timing-function;
@@ -73,14 +30,6 @@
   transition-delay: $transition-delay;
 }
 
-@mixin transform-origin($transition-origin) {
-  -webkit-transform-origin: $transition-origin;
-  -moz-transform-origin: $transition-origin;
-  -o-transform-origin: $transition-origin;
-  -ms-transform-origin: $transition-origin;
-  transform-origin: $transition-origin;
-}
-
 @mixin user-select($user-select) {
   -webkit-user-select: $user-select;
   -moz-user-select: $user-select;
@@ -88,25 +37,14 @@
   user-select: $user-select;
 }
 
-@mixin backface-visibility ($backface-visibility) {
-  -webkit-backface-visibility: $backface-visibility;
-  -moz-backface-visibility: $backface-visibility;
-  -ms-backface-visibility: $backface-visibility;
-  -o-backface-visibility: $backface-visibility;
-  backface-visibility: $backface-visibility;
-}
-
 @mixin perspective ($perspective) {
   -webkit-perspective: $perspective;
   -moz-perspective: $perspective;
   -ms-perspective: $perspective;
-  -o-perspective: $perspective;
   perspective: $perspective;
 }
 
-@mixin background-size ($background-size) {
-  -webkit-background-size: $background-size;
-  -moz-background-size: $background-size;
-  -o-background-size: $background-size;
-  background-size: $background-size;
+@mixin object-fit ($object-fit) {
+  -o-object-fit: $object-fit;
+  object-fit: $object-fit;
 }

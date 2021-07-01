@@ -54,7 +54,7 @@ $list-bullet-weight:      $weight-bold;
       width: $list-bullet-size;
       height: $list-bullet-size;
       background: $list-bullet-color;
-      @include border-radius (50%);
+      border-radius: 50%;
     }
     
   }
