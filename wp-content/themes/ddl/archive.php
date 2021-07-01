@@ -14,7 +14,7 @@
 
               <?php if (is_sticky()) { ?>
 
-                <article class="item">
+                <article class="card">
 
                   <?php get_template_part( 'template-parts/component', 'post' ); ?>
 
@@ -22,7 +22,7 @@
 
               <?php } else { ?>
 
-                <article class="item">
+                <article class="card">
 
                   <?php get_template_part( 'template-parts/component', 'post' ); ?>
 

@@ -82,15 +82,14 @@
 }
 
 
-/* --------- ITEM (USED FOR A LOOP OF POSTS, SERVICES ETC...) --------- */
+/* --------- Card (USED FOR A LOOP OF POSTS, SERVICES ETC...) --------- */
 
-$item-padding-top:      3rem;
-$item-padding-bottom:   13rem;
-$item-padding-x:        $item-padding-top;
-$item-background:       $color-white;
-$item-img-height:       20rem;
+$card-padding-x:        3rem;
+$card-padding-y:        3rem;
+$card-background:       $color-white;
+$card-img-height:       20rem;
 
-.item {
+.card {
   @include cell;
   @include cell-span(12);
   padding-top: $gutter;
@@ -108,39 +107,38 @@ $item-img-height:       20rem;
     @include cell-row;
   }
 
-  &__media {
-    
-    figure {
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: $item-img-height;
-      width: 100%;
-    }
-
-    img {
-      display: none;
-    }
-
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    background-color: $card-background;
   }
 
   &__body {
     position: relative;
-    height: 100%;
-    background-color: $item-background;
+    display: block;
+  }
+    
+  &__figure {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: $card-img-height;
+    width: 100%;
+  }
+
+  &__img {
+    display: none;
   }
 
   &__text {
-    padding: $item-padding-top $item-padding-x $item-padding-bottom;
+    padding: $card-padding-y $card-padding-x;
   }
 
   &__footer {
     display: block;
-    position: absolute;
-    width: 100%;
-    bottom: $item-padding-x;
-    left: 0;
-    padding: 0 $item-padding-x;
+    padding: 0 $card-padding-x $card-padding-y;
   }
 
 }
