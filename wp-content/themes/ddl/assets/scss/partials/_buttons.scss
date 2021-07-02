@@ -164,7 +164,7 @@ $button-danger-border-color-disabled:      $button-disabled-color;
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      @include transform (translate(-50%, -50%));
       transition: all 0.15s ease-in-out;
 
       @include media-up(sm) {

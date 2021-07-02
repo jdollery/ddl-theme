@@ -42,7 +42,7 @@ $card-img-height:       20rem;
     transition: all 0.3s ease-in-out;
 
     @include hover-focus {
-      transform: scale(1.1);
+      @include transform (scale(1.1));
     }
 
   }

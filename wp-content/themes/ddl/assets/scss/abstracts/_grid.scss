@@ -60,7 +60,6 @@ $max-width: 1440px;
 
 @mixin cell-fixed {
   @include cell;
-  width: 100%;
   max-width: $max-width;
   margin-right: auto;
   margin-left: auto;
@@ -69,3 +68,5 @@ $max-width: 1440px;
 @mixin cell-fluid {
   @include cell;
 }
+
+

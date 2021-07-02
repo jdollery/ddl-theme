@@ -2,6 +2,12 @@
 /* MIXINS */
 /*-----------------------------------------------------------------------------------*/
 
+@mixin transform($transform...){
+  -webkit-transform: $transform;
+  -ms-transform: $transform;
+  transform: $transform;
+ }
+
 @mixin transition-timing-function($transition-timing-function) {
   -webkit-transition-timing-function: $transition-timing-function;
   -moz-transition-timing-function: $transition-timing-function;
@@ -35,6 +41,12 @@
   -moz-user-select: $user-select;
   -ms-user-select: $user-select;
   user-select: $user-select;
+}
+
+@mixin appearance($appearance) {
+  -webkit-appearance: $appearance;
+  -moz-appearance: $appearance;
+  appearance: $appearance;
 }
 
 @mixin perspective ($perspective) {

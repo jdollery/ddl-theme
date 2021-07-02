@@ -268,7 +268,7 @@ html {
             > a {
 
               &::after {
-                transform: rotate(180deg);
+                @include transform (rotate(180deg));
               }
 
             }
@@ -760,7 +760,7 @@ html {
     &::after {
       bottom: -10px;
       transition: bottom 75ms ease .12s;
-      transform: 75ms cubic-bezier(.55,.055,.675,.19);
+      @include transform (75ms cubic-bezier(.55,.055,.675,.19));
     }
 
   }
@@ -772,7 +772,7 @@ html {
       &__inner {
         transition-delay: .12s;
         transition-timing-function: cubic-bezier(.215,.61,.355,1);
-        transform: rotate(45deg);
+        @include transform (rotate(45deg));
 
         &::before {
           top: 0;
@@ -783,7 +783,7 @@ html {
         &::after {
           bottom: 0;
           transition: bottom 75ms ease,transform 75ms cubic-bezier(.215,.61,.355,1) .12s;
-          transform: rotate(-90deg);
+          @include transform (rotate(-90deg));
         }
 
       }

@@ -25,6 +25,6 @@ $thumb_url = $thumb_url_array[0];
     </div>
   </div>
   <div class="card__footer">
-    <a class="button-primary" href="<?php echo get_permalink(); ?>">Continue reading</a>
+    <a class="button-primary" href="<?php echo get_permalink(); ?>" aria-label="View this treatment">Learn more</a>
   </div>
 </div>
