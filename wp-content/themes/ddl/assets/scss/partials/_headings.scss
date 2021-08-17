@@ -3,7 +3,7 @@
 /*-----------------------------------------------------------------------------------*/
 
 $heading-font:               $body-font;
-$heading-line-height:        1.3;
+$heading-line-height:        1.2;
 $heading-font-weight:        $body-weight;
 $heading-color:              $body-color;
 $heading-case:               inherit;
@@ -13,15 +13,29 @@ $heading-margin-bottom-lg:   1.5rem;
 $heading-margin-top-sm:      2rem;
 $heading-margin-bottom-sm:   1rem;
 
-$heading-1-size:             5rem;
-$heading-2-size:             4rem;
-$heading-3-size:             2.8rem;
+$heading-1-size-lg:          6.8rem;
+$heading-1-size-md:          6.5rem;
+$heading-1-size-sm:          5.4rem;
 
-$heading-4-size-lg:          2.3rem;
-$heading-4-size-md:          2rem;
-$heading-4-size-sm:          1.8rem;
+$heading-2-size-lg:          5.3rem;
+$heading-2-size-md:          4.8rem;
+$heading-2-size-sm:          4.3rem;
 
-$heading-5-size:             2rem;
+$heading-3-size-lg:          4rem;
+$heading-3-size-md:          3.5rem;
+$heading-3-size-sm:          2.8rem;
+
+$heading-4-size-lg:          3rem;
+$heading-4-size-md:          2.6rem;
+$heading-4-size-sm:          2rem;
+
+$heading-5-size-lg:          2.2rem;
+$heading-5-size-md:          1.9rem;
+$heading-5-size-sm:          1.6rem;
+
+$heading-6-size-lg:          $body-size-lg;
+$heading-6-size-md:          $body-size-lg;
+$heading-6-size-sm:          $body-size-sm;
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -29,42 +43,15 @@ $heading-5-size:             2rem;
 /*-----------------------------------------------------------------------------------*/
 
 @mixin h1 {
-  font-size: $heading-1-size - 15;
-
-  @include media-up(sm) {
-    font-size: $heading-1-size - 10;
-  }
-
-  @include media-up(lg) {
-    font-size: $heading-1-size;
-  }
-
+  @include fluid-type($heading-1-size-sm, $heading-1-size-md, $heading-1-size-lg);
 }
 
 @mixin h2 {
-  font-size: $heading-2-size - 11;
-
-  @include media-up(sm) {
-    font-size: $heading-2-size - 6;
-  }
-
-  @include media-up(lg) {
-    font-size: $heading-2-size;
-  }
-
+  @include fluid-type($heading-2-size-sm, $heading-2-size-md, $heading-2-size-lg);
 }
 
 @mixin h3 {
-  font-size: $heading-3-size - 4;
-
-  @include media-up(sm) {
-    font-size: $heading-3-size - 2;
-  }
-
-  @include media-up(lg) {
-    font-size: $heading-3-size;
-  }
-
+  @include fluid-type($heading-3-size-sm, $heading-3-size-md, $heading-3-size-lg);
 }
 
 @mixin h4 {
@@ -72,25 +59,11 @@ $heading-5-size:             2rem;
 }
 
 @mixin h5 {
-  font-size: $heading-5-size - 3;
-
-  @include media-up(sm) {
-    font-size: $heading-5-size - 1;
-  }
-
-  @include media-up(lg) {
-    font-size: $heading-5-size;
-  }
-
+  @include fluid-type($heading-5-size-sm, $heading-5-size-md, $heading-5-size-lg);
 }
 
 @mixin h6 {
-  font-size: $body-size-sm;
-
-  @include media-up(sm) {
-    font-size: $body-size-lg;
-  }
-
+  @include fluid-type($heading-6-size-sm, $heading-6-size-md, $heading-6-size-lg);
 }
 
 

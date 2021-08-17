@@ -3,6 +3,9 @@
   background-repeat: no-repeat;
   background-position: center;
   background-color: $color-grey-700;
+  @include d-flex;
+  @include flex-wrap(wrap);
+  align-content: center;
   padding-top: 4rem;
   padding-bottom: 5rem;
 
@@ -11,18 +14,13 @@
     padding-bottom: 7rem;
   }
 
+  @include media-up(md) {
+    min-height: 35rem;
+  }
+
+
   &__title {
     color: $color-white;
-    font-size: 4.5rem;
-
-    @include media-up(sm) {
-      font-size: 5rem;
-    }
-
-    @include media-up(lg) {
-      font-size: 5.3rem;
-    }
-
   }
 
   &__subtitle {

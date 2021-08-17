@@ -317,6 +317,40 @@ input[type=number] {
 }
 
 
+/* --------- GROUP --------- */
+
+.form {
+
+  &__group {
+    position: relative;
+    @include d-flex;
+    @include flex-wrap(wrap);
+
+    input[type=text],
+    input[type=number],
+    input[type=email],
+    input[type=phone],
+    textarea {
+      position: relative;
+      @include flex (1 1 auto);
+      width: 1%;
+      min-width: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    button {
+      margin: 0 0 0 -0.2rem;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      z-index: 1;
+    }
+
+  }
+
+}
+
+
 /* --------- VALIDATION --------- */
 
 input[type=text],

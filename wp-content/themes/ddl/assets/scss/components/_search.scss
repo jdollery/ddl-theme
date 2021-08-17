@@ -1,0 +1,21 @@
+.search-form {
+
+  input[type=text] {
+    padding-left: 4.5rem;
+
+    @include media-up(md) {
+      padding-left: 5rem;
+    }
+
+  }
+
+  i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 1.9rem;
+    z-index: 1;
+  }
+
+}

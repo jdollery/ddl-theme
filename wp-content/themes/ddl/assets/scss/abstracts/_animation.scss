@@ -89,3 +89,117 @@
       @content;
   }
 }
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLING - TAKEN FROM https://animate.style/ */
+/*-----------------------------------------------------------------------------------*/
+
+@include keyframes(fadeIn) {
+
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+}
+
+.fadeIn {
+  @include animation(fadeIn);
+}
+
+
+@include keyframes(fadeOut) {
+
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+
+}
+
+.fadeOut {
+  @include animation(fadeOut);
+}
+
+
+@include keyframes(fadeInUp) {
+
+  0% {
+    opacity: 0;
+    @include transform (translateY(2rem));
+  }
+
+  100% {
+    opacity: 1;
+    @include transform (translateY(0));
+  }
+
+}
+
+.fadeInUp {
+  @include animation(fadeInUp);
+}
+
+
+@include keyframes(fadeInDown) {
+
+  0% {
+    opacity: 0;
+    @include transform (translateY(-2rem));
+  }
+
+  100% {
+    opacity: 1;
+    @include transform (translateY(0));
+  }
+
+}
+
+.fadeInDown {
+  @include animation(fadeInDown);
+}
+
+
+@include keyframes(fadeInLeft) {
+
+  0% {
+    opacity: 0;
+    @include transform (translateX(-2rem));
+  }
+
+  100% {
+    opacity: 1;
+    @include transform (translateX(0));
+  }
+
+}
+
+.fadeInLeft {
+  @include animation(fadeInLeft);
+}
+
+
+@include keyframes(fadeInRight) {
+
+  0% {
+    opacity: 0;
+    @include transform (translateX(2rem));
+  }
+
+  100% {
+    opacity: 1;
+    @include transform (translateX(0));
+  }
+
+}
+
+.fadeInRight {
+  @include animation(fadeInRight);
+}
