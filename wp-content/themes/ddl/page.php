@@ -4,6 +4,7 @@
 
 <?php get_template_part('template-parts/component', 'banner'); ?>
 
+<?php if ( !empty( get_the_content() ) ) { ?>
 <article class="block-y">
   <div class="outer">
     <div class="outer__row">
@@ -13,6 +14,7 @@
     </div>
   </div>
 </article>
+<?php } ?>
 
 <?php endwhile; ?>
 
