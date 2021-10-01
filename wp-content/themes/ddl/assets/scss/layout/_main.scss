@@ -11,16 +11,3 @@
   }
 
 }
-
-
-@include media-down($nav-breakpoint) {
-
-  .js-nav-active {
-    
-    .main {
-      left: $nav-width-sm;
-    }
-
-  }
-
-}

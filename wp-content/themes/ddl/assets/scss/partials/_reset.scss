@@ -53,27 +53,32 @@ $body-background:     $color-grey-900; // this is also the background of footer 
 /*-----------------------------------------------------------------------------------*/
 
 html{
-  font-family: sans-serif;
   font-size: 62.5%; //setting rem to match px
-  line-height: 1.15;
-  word-break: normal;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; 
+  line-height: 1.5;
+  overflow-x: hidden;
+  box-sizing: border-box;
+
+  -webkit-overflow-scrolling: touch;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+
   -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -ms-overflow-style: scrollbar;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  // -ms-text-size-adjust: 100%;
+  // -ms-overflow-style: scrollbar;
 }
 
 *,:after,:before {
-  background-repeat: no-repeat;
-  box-sizing: inherit
+  // background-repeat: no-repeat;
+  box-sizing: inherit; 
 }
 
-:after,:before {
-  text-decoration: inherit;
-  vertical-align: inherit
-}
+// :after,:before {
+//   text-decoration: inherit;
+//   vertical-align: inherit
+// }
 
 * {
   padding: 0;
@@ -98,24 +103,20 @@ body {
   color: $body-color;
   background-color: $body-background;
   text-align: left;
-  text-align: start;
-  text-decoration: none;
-  text-shadow: none;
-  text-transform: none;
-  letter-spacing: normal;
-  word-break: normal;
-  word-spacing: normal;
-  white-space: normal;
-  line-break: auto;
-  margin: 0;
-  padding: 0;
-  -webkit-overflow-scrolling: touch;
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
+ 
+  // text-align: start;
+  // text-decoration: none;
+  // text-shadow: none;
+  // text-transform: none;
+  // letter-spacing: normal;
+  // word-break: normal;
+  // word-spacing: normal;
+  // white-space: normal;
+  // line-break: auto;
+  // text-size-adjust: none;
+
   min-height: 100vh;
-  scroll-behavior: smooth;
-  text-size-adjust: none;
+  
 
   @include media-up(sm) {
     font-size: $body-size-lg;

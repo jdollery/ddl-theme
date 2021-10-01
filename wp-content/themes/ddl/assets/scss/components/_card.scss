@@ -14,7 +14,7 @@ $card-img-height:       20rem;
   }
 
   @include media-up(lg) {
-    @include cell-span(4);
+    @include cell-span(0);
   }
 
   &__row {

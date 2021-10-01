@@ -12,21 +12,20 @@ $max-width: 1440px;
 /*-----------------------------------------------------------------------------------*/
 
 @mixin cell-row {
-  @include d-flex;
-  @include flex-wrap(wrap);
+  display: flex;
+  flex-wrap: wrap;
   margin-right: -$gutter;
   margin-left: -$gutter;
 }
 
 @mixin cell-row-no-margin {
-  @include d-flex;
-  @include flex-wrap(wrap);
+  display: flex;
+  flex-wrap: wrap;
 }
 
 @mixin cell {
   position: relative;
-  width: 100%;
-  min-height: 1px;
+  max-width: 100%;
   padding-right: $gutter;
   padding-left: $gutter;
 }
@@ -36,31 +35,23 @@ $max-width: 1440px;
   @for $i from 1 through $columns {
     $width: percentage($i / $columns);
     @if($size == $i)  {
-      @include flex(0 0 $width);
-      -webkit-box-flex: 0;
-      max-width: $width;
+      flex: 0 0 auto;
+      width: $width;
     } 
   }
 
   @if($size == 0) {
-    @include flex-grow(1);
-    @include flex-basis(0);
-    -ms-flex-preferred-size: 0;
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    max-width: 100%;
+    flex: 1 0 0%;
   } @else if ($size == auto) {
-    @include flex(0 0 auto);
-    -webkit-box-flex: 0;
+    flex: 0 0 auto;
     width: auto;
-    max-width: none;
   }
   
 }
 
 @mixin cell-fixed {
   @include cell;
-  max-width: $max-width;
+  width: $max-width;
   margin-right: auto;
   margin-left: auto;
 }

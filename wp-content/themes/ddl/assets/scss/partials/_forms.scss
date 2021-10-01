@@ -82,7 +82,7 @@ form {
 
   &__row {
     @include cell-row;
-    // @include flex-content-x(center);
+    // @include justify-content(center);
   }
 
   &__col {

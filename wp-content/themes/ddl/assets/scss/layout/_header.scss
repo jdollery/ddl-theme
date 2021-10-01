@@ -38,8 +38,8 @@ $header-height-sm: 8.8rem;
 
     &__row {
       @include cell-row;
-      @include flex-items(center);
-      @include flex-content-x(space-between);  
+      @include align-items(center);
+      @include justify-content(space-between);  
     }
 
   }

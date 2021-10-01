@@ -15,7 +15,7 @@
 
     &__row {
       @include cell-row;
-      @include flex-content-x(space-between);  
+      @include justify-content(space-between);  
     }
 
   }

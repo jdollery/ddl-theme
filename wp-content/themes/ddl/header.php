@@ -41,6 +41,7 @@
         </div>
       </div>
     </header>
-    <main class="main">
+    <div class="view">
+      <main class="main">
 
   

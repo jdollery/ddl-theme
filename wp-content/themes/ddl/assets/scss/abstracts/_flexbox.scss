@@ -104,18 +104,18 @@
 
 
 // flex-start | flex-end | center | space-between | space-around
-@mixin flex-content-x($justify) {
+@mixin justify-content($justify) {
   -webkit-justify-content: $justify;
   -moz-justify-content: $justify;
   -ms-justify-content: $justify;
-  justify-content: $justify;
   -ms-flex-pack: $justify;
   -webkit-box-pack: $justify;
+  justify-content: $justify;
 }
 
 
 // flex-start | flex-end | center | space-between | space-around | stretch
-@mixin flex-content-y($align) {
+@mixin align-content($align) {
   -webkit-align-content: $align;
   -moz-align-content: $align;
   -ms-align-content: $align;
@@ -124,7 +124,7 @@
 
 
 // flex-start | flex-end | center | baseline | stretch
-@mixin flex-items($align) {
+@mixin align-items($align) {
   -webkit-align-items: $align;
   -moz-align-items: $align;
   -ms-align-items: $align;
@@ -133,7 +133,7 @@
 
 
 // auto | flex-start | flex-end | center | baseline | stretch
-@mixin flex-self($align) {
+@mixin align-self($align) {
   -webkit-align-self: $align;
   -moz-align-self: $align;
   -ms-align-self: $align;
