@@ -114,7 +114,9 @@ add_action( 'widgets_init', 'ddl_widgets_init' );
 /*-----------------------------------------------------------------------------------*/
 
 function ddl_scripts() {
+  // wp_enqueue_style( 'ddl-font', 'https://use.typekit.net/irb6piy.css', array(), '', false );
   wp_enqueue_style( 'ddl-style', get_stylesheet_uri(), array(), '1.0.0', 'all' );
+	wp_enqueue_script( 'ddl-jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), '3.6.0', false );
 	wp_enqueue_script( 'ddl-script', get_template_directory_uri() . '/script.js', array(), '1.0.0', true );
 
 	// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -240,13 +242,38 @@ add_action('widgets_init', 'unregister_default_widgets', 11);
 // add_action( 'init', 'unregister_tags' );
 
 
-/* --------------------- Disabling WordPress wpautop and wptexturize filters (removes p from shortcode) --------------------- */
-
-add_filter( 'the_content', 'shortcode_unautop', 100 );
+/* --------------------- Disabling WordPress wpautop and wptexturize filters --------------------- */
 
 remove_filter ('the_exceprt', 'wpautop');
 remove_filter('term_description','wpautop');
 remove_filter ('acf_the_content', 'wpautop');
+
+
+/* --------------------- Removes extra p from shortcode --------------------- */
+
+add_filter( 'the_content', 'shortcode_unautop', 100 );
+
+function shortcode_empty_paragraph_fix( $content ) {
+
+	// define your shortcodes to filter, '' filters all shortcodes
+	$shortcodes = array( 'feature-green', 'feature-blue' ); //define shortcodes used in ddl-extensions/ddl-extensions.php
+
+	foreach ( $shortcodes as $shortcode ) {
+
+			$array = array (
+					'<p>[' . $shortcode => '[' .$shortcode,
+					'<p>[/' . $shortcode => '[/' .$shortcode,
+					$shortcode . ']</p>' => $shortcode . ']',
+					$shortcode . ']<br />' => $shortcode . ']'
+			);
+
+			$content = strtr( $content, $array );
+	}
+
+	return $content;
+}
+
+add_filter( 'the_content', 'shortcode_empty_paragraph_fix' );
 
 
 /* --------------------- Stop img, script and iframe being wrapped in p tag  --------------------- */
@@ -255,6 +282,7 @@ function remove_some_ptags( $content ) {
 	$content = preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
 	$content = preg_replace('/<p>\s*(<script.*>*.<\/script>)\s*<\/p>/iU', '\1', $content);
 	$content = preg_replace('/<p>\s*(<iframe.*>*.<\/iframe>)\s*<\/p>/iU', '\1', $content);
+	$content = preg_replace('/<p>\s*(<video.*>*.<\/video>)\s*<\/p>/iU', '\1', $content);
 	return $content;
 }
 
@@ -337,9 +365,10 @@ function hide_editor() {
   $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
   if( !isset( $post_id ) ) return;
   $home = get_the_title($post_id);
-  $contact = get_the_title($post_id);
-	$treatments = get_the_title($post_id);
-  if($home == 'Home' || $contact == 'Contact'){ 
+  // $contact = get_the_title($post_id);
+	$team = get_the_title($post_id);
+	// $treatments = get_the_title($post_id);
+  if($home == 'Home' || $team == 'Meet the team'){ 
     remove_post_type_support('page', 'editor');
   }
 }

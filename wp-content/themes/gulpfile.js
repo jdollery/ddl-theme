@@ -1,10 +1,10 @@
-// npm init
+// npm init -y
 // npm install --save-dev gulp
-// npm install node-sass gulp-sass gulp-concat gulp-uglify gulp-sourcemaps --save-dev
-// npm install node-sass gulp-sass gulp-sourcemaps --save-dev
+// npm install sass node-sass gulp-sass gulp-sourcemaps --save-dev
+// npm install gulp-concat gulp-uglify --save-dev
 
 const gulp = require('gulp');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
@@ -17,10 +17,11 @@ const paths = {
   },
   scripts: {
     src: [
-      './ddl/assets/js/jquery.js',
       './ddl/assets/js/navigation.js',
-      // './ddl/assets/js/validate.js',
+      './ddl/assets/js/select2.js',
       './ddl/assets/js/slick.js',
+      './ddl/assets/js/wow.js',
+      './ddl/assets/js/validate.js',
       './ddl/assets/js/script.js'
     ],
     dest: './ddl'

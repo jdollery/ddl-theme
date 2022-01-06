@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 /*-----------------------------------------------------------------------------------*/
 /* VARIABLES */
 /*-----------------------------------------------------------------------------------*/
@@ -33,7 +35,8 @@ $max-width: 1440px;
 @mixin cell-span($size) {
   
   @for $i from 1 through $columns {
-    $width: percentage($i / $columns);
+    // $width: percentage($i / $columns);
+    $width: math.percentage(math.div($i, $columns));
     @if($size == $i)  {
       flex: 0 0 auto;
       width: $width;
