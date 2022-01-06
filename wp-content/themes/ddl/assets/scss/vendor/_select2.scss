@@ -66,7 +66,7 @@
 
     &:focus {
       border-color: $input-border-color-focus;
-      box-shadow: 0 2px 3px rgba($color-grey-600, 0.2);
+      box-shadow: 0 2px 3px rgba($color-grey-dark, 0.2);
     }
 
     .select2-selection__arrow {
@@ -155,7 +155,7 @@
   background-clip: padding-box;
   border: $input-border-width $input-border-style $input-border-color-focus;
   border-radius: $input-border-radius;
-  box-shadow: 0 2px 3px rgba($color-grey-600, 0.2);
+  box-shadow: 0 2px 3px rgba($color-grey-dark, 0.2);
 }
 
 .select2-container--open .select2-dropdown {
@@ -217,7 +217,7 @@
 }
 
 .select2-container--default .select2-results__option[aria-selected=true] {
-  background-color: $color-grey-500;
+  background-color: $color-grey;
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {

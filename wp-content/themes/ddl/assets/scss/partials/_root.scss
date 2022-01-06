@@ -2,25 +2,27 @@
 /* VARIABLES */
 /*-----------------------------------------------------------------------------------*/
 
+$theme-name:          the-old-stables;
+
 /* --------- COLOURS --------- */
 
-$color-white:         #fefefe;
-$color-grey-100:      #f8f9fa;
-$color-grey-200:      #e9ecef;
-$color-grey-300:      #dee2e6;
-$color-grey-400:      #ced4da;
-$color-grey-500:      #8c8c8c;
-$color-grey-600:      #6c757d;
-$color-grey-700:      #495057;
-$color-grey-800:      #343a40;
-$color-grey-900:      #212529; 
-$color-black:         #0C090C;
+$color-white:         #fefefe; 
+$color-black:         #2e2e2e;
+
+$color-grey:          #8c8c8c;
+$color-grey-light:    #f3f3f3;
+$color-grey-dark:     #495057;
+
+$color-green-dark:    #1c3f31;
+$color-green:         #81a1a0;
+$color-green-light:   #d1f0e0;
+
+$color-blue:          #00123b;
+$color-blue-light:    #9da5b8;
 
 $color-danger:        #dc3545;
 $color-warning:       #f2ab10;
 $color-success:       #3caa5a;
-
-$color-accent:        #5fbdad;
 
 
 /* --------- FONT FAMILIES --------- */
@@ -31,21 +33,23 @@ $font-fontawesome: 'Font Awesome';
 
 /* --------- FONT WEIGHTS --------- */
 
-$weight-light:    300; // Proxima Nova Light
-$weight-regular:  400; // Proxima Nova Regular
-$weight-medium:   500; // Proxima Nova Medium
-$weight-bold:     700; // Proxima Nova Bold
+$weight-light:    300;
+$weight-regular:  400;
+$weight-semibold: 600;
+$weight-bold:     700;
+$weight-black:    900;
 
 
 /* --------- BODY VARIABLES --------- */
 
 $body-font:           $font-sourcesans;
-$body-size-lg:        1.7rem;
-$body-size-sm:        1.5rem;
-$body-line-height:    1.6;
+$body-size-lg:        1.8rem;
+$body-size-md:        1.7rem;
+$body-size-sm:        1.6rem;
+$body-line-height:    1.7;
 $body-weight:         $weight-regular;
-$body-color:          $color-grey-900;
-$body-background:     $color-grey-900; // this is also the background of footer to make it bleed off the bottom (see layout/main.scss for content background)
+$body-color:          $color-black;
+$body-background:     $color-green; // this is also the background of footer to make it bleed off the bottom (see layout/main.scss for content background)
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -62,7 +66,7 @@ html{
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  scroll-behavior: smooth;
+  // scroll-behavior: smooth;
 
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
@@ -71,14 +75,8 @@ html{
 }
 
 *,:after,:before {
-  // background-repeat: no-repeat;
   box-sizing: inherit; 
 }
-
-// :after,:before {
-//   text-decoration: inherit;
-//   vertical-align: inherit
-// }
 
 * {
   padding: 0;
@@ -103,22 +101,13 @@ body {
   color: $body-color;
   background-color: $body-background;
   text-align: left;
- 
-  // text-align: start;
-  // text-decoration: none;
-  // text-shadow: none;
-  // text-transform: none;
-  // letter-spacing: normal;
-  // word-break: normal;
-  // word-spacing: normal;
-  // white-space: normal;
-  // line-break: auto;
-  // text-size-adjust: none;
+  overflow-x: hidden;
 
-  min-height: 100vh;
-  
+  @include media-up(md) {
+    font-size: $body-size-md;
+  }
 
-  @include media-up(sm) {
+  @include media-up(xl) {
     font-size: $body-size-lg;
   }
 
@@ -408,4 +397,9 @@ progress {
 
 [aria-disabled] {
   cursor: default
+}
+
+::selection {
+  background-color: $color-grey;
+  color: $color-white;
 }

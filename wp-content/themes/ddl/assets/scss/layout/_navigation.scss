@@ -10,10 +10,10 @@ $nav-width-sm:                        30rem;
 
 /* --- LEVEL ONE --- */
 
-$level-one-color-lg:                  $color-grey-200;
+$level-one-color-lg:                  $color-grey-light;
 $level-one-color-hover-lg:            $color-white;
 $level-one-color-current-lg:          $color-white;
-$level-one-color-ancestor-lg:         $color-grey-400;
+$level-one-color-ancestor-lg:         $color-grey;
 $level-one-color-ancestor-hover-lg:   $color-white;
 
 
@@ -21,18 +21,18 @@ $level-one-color-ancestor-hover-lg:   $color-white;
 
 $level-two-color-lg:                  $color-white;
 $level-two-color-hover-lg:            $color-white;
-$level-two-bg-lg:                     $color-grey-500;
-$level-two-bg-hover-lg:               $color-grey-800;
-$level-two-border-lg:                 $color-grey-600;
+$level-two-bg-lg:                     $color-grey;
+$level-two-bg-hover-lg:               $color-grey-dark;
+$level-two-border-lg:                 $color-grey-dark;
 $level-two-border-hover-lg:           $level-two-bg-hover-lg;
 
 $level-two-color-current-lg:          $color-white;
-$level-two-bg-current-lg:             $color-grey-600;
+$level-two-bg-current-lg:             $color-grey-dark;
 $level-two-border-current-lg:         $level-two-bg-current-lg;
 
 $level-two-color-ancestor-lg:         $level-two-color-lg;
 $level-two-color-ancestor-hover-lg:   $level-two-color-hover-lg;
-$level-two-bg-ancestor-lg:            $color-grey-600;
+$level-two-bg-ancestor-lg:            $color-grey-dark;
 $level-two-bg-ancestor-hover-lg:      $level-two-bg-hover-lg;
 $level-two-border-ancestor-lg:        $level-two-border-lg;
 $level-two-border-ancestor-hover-lg:  $level-two-border-hover-lg;
@@ -42,10 +42,10 @@ $level-two-border-ancestor-hover-lg:  $level-two-border-hover-lg;
 
 $level-three-color-lg:                $color-white;
 $level-three-color-hover-lg:          $color-white;
-$level-three-bg-lg:                   $color-grey-500;
-$level-three-bg-hover-lg:             $color-grey-800;
-$level-three-border-lg:               $color-grey-600;
-$level-three-border-hover-lg:         $color-grey-800;
+$level-three-bg-lg:                   $color-grey;
+$level-three-bg-hover-lg:             $color-grey-dark;
+$level-three-border-lg:               $color-grey-dark;
+$level-three-border-hover-lg:         $color-grey-dark;
 
 $level-three-color-current-lg:        $color-white;
 $level-three-bg-current-lg:           $color-black;
@@ -54,14 +54,14 @@ $level-three-border-current-lg:       $color-black;
 
 /* --------- SMALL DEVICE --------- */
 
-$nav-background-sm:                   $color-grey-900;
+$nav-background-sm:                   $color-grey-dark;
 
 
 /* --- LEVEL ONE --- */
 
 $level-one-color-sm:                  $color-white;
-$level-one-bg-sm:                     $color-grey-700;
-$level-one-border-sm:                 $color-grey-800;
+$level-one-bg-sm:                     $color-grey-dark;
+$level-one-border-sm:                 $color-grey-dark;
 
 $level-one-color-current-sm:          $color-white;
 $level-one-bg-current-sm:             $color-black;
@@ -73,8 +73,8 @@ $level-one-bg-ancestor-sm:            $color-black;
 /* --- LEVEL TWO --- */
 
 $level-two-color-sm:                  $color-white;
-$level-two-bg-sm:                     $color-grey-700;
-$level-two-border-sm:                 $color-grey-800;
+$level-two-bg-sm:                     $color-grey-dark;
+$level-two-border-sm:                 $color-grey-dark;
 
 $level-two-color-current-sm:          $color-white;
 $level-two-bg-current-sm:             $color-black;
@@ -86,8 +86,8 @@ $level-two-bg-current-sm:             $color-black;
 /* --- LEVEL THREE --- */
 
 $level-three-color-sm:                $color-white;
-$level-three-bg-sm:                   $color-grey-800;
-$level-three-border-sm:               $color-grey-900;
+$level-three-bg-sm:                   $color-grey-dark;
+$level-three-border-sm:               $color-grey-dark;
 
 $level-three-color-current-sm:        $color-white;
 $level-three-bg-current-sm:           $color-black;
@@ -683,7 +683,7 @@ html {
   height: 3.3rem;
   width: 3.3rem;
   border: 0;
-  color: $color-grey-100;
+  color: $color-grey-light;
   background-color: $color-black;
   padding: 0;
   margin: 0;

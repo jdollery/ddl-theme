@@ -26,11 +26,11 @@ $input-font-weight:              $weight-regular;
 $input-border-width:             $button-border-width;
 $input-border-style:             $button-border-style;
 $input-border-radius:            $button-border-radius;
-$input-border-color:             $color-grey-400;
-$input-border-color-focus:       $color-grey-500;
+$input-border-color:             $color-grey;
+$input-border-color-focus:       $color-grey-dark;
 
 $input-color:                    $body-color;
-$input-placeholder-color:        $color-grey-500;
+$input-placeholder-color:        $color-grey;
 
 $input-background:               $color-white;
 
@@ -123,7 +123,7 @@ form {
   &__help {
     display: block;
     font-size: $input-small-size;
-    color: $color-grey-600;
+    color: $color-grey;
     margin-top: 1rem;
   }
 
@@ -196,11 +196,11 @@ textarea {
 
   &:focus {
     border-color: $input-border-color-focus;
-    box-shadow: 0 2px 3px rgba($color-grey-600, 0.2);
+    box-shadow: 0 2px 3px rgba($color-grey-dark, 0.2);
   }
 
   &:disabled, &[readonly] {
-    background-color: $color-grey-300;
+    background-color: $color-grey-light;
     color: $input-placeholder-color;
     opacity: 1;
     pointer-events: none;

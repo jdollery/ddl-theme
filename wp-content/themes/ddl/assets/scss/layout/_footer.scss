@@ -7,7 +7,7 @@
 .footer {
   position: relative;
   color: $color-white;
-  background-color: $body-background; //set in reset.scss line 48
+  background-color: $body-background; //set in root.scss line 48
 
   &__outer {
     @include cell-fixed;
@@ -53,19 +53,19 @@
 
 .copyright {
   position: relative;
-  color: $color-grey-600;
+  color: $color-grey-dark;
   font-size: 1.4rem;
-  border-top: 0.1rem solid $color-grey-800;
+  border-top: 0.1rem solid $color-grey-dark;
   padding-top: 30px;
   padding-bottom: 30px;
 
   a {
     font-weight: $weight-regular;
-    color: $color-grey-600;
+    color: $color-grey-dark;
     transition: all 0.3s ease-out;
 
     @include hover-focus {
-      color: $color-grey-200;
+      color: $color-grey-light;
     }
 
   }

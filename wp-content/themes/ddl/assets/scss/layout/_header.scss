@@ -22,7 +22,7 @@ $header-height-sm: 8.8rem;
   bottom: auto;
   z-index: 9999;
   width: 100%;
-  background: $color-accent;
+  background: $color-green;
   color: $color-white;
 
   &__outer {
@@ -64,7 +64,7 @@ $header-height-sm: 8.8rem;
 
   a {
     font-weight: 400;
-    color: $color-grey-200;
+    color: $color-white;
     transition: all 0.3s ease-out;
 
     @include hover-focus {

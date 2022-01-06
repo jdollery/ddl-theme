@@ -6,7 +6,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: $color-grey-500;
+    background-color: $color-grey-dark;
 
     .content {
       height: 100%;
@@ -48,7 +48,7 @@
   }
 
   &__subtitle {
-    color: $color-grey-200;
+    color: $color-grey-light;
   }
 
 }

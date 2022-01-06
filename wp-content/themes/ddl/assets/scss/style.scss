@@ -15,12 +15,13 @@
 @import "abstracts/grid";
 @import "abstracts/block";
 
+@import "partials/root";
+
 @import "utility/fonts";
 @import "utility/fontawesome";
 
 @import "vendor/slick";
 
-@import "partials/root";
 @import "partials/hidden";
 @import "partials/paragraph";
 @import "partials/headings";
