@@ -142,36 +142,3 @@ $block-breakpoint-xl: xxl;
   }
 
 }
-
-
-/*-----------------------------------------------------------------------------------*/
-/* STYLING */
-/*-----------------------------------------------------------------------------------*/
-
-.block {
-  @include block;
-}
-
-.block-y {
-  @include block-y;
-}
-
-.block-x {
-  @include block-x;
-}
-
-.block-top {
-  @include block-left;
-}
-
-.block-bottom {
-  @include block-left;
-}
-
-.block-left {
-  @include block-left;
-}
-
-.block-right {
-  @include block-left;
-}

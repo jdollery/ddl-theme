@@ -51,7 +51,7 @@
       
   <?php } else { ?>
 
-  <div class="block-y" id="mainContent">
+  <div class="block-y bg-grey" id="mainContent">
     <div class="outer">
       <div class="outer__row">
         <div class="inner">

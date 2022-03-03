@@ -57,27 +57,3 @@
   object-fit: $object-fit;
 }
 
-
-/*-----------------------------------------------------------------------------------*/
-/* TYPOGRATHY */
-/*-----------------------------------------------------------------------------------*/
-
-@mixin fluid-type(
-  $sm-font-size: $body-size-sm,
-  $md-font-size: $body-size-lg,
-  $lg-font-size: $body-size-lg,
-  $md-breakpoint: map-get($breakpoint-widths, "md"),
-  $lg-breakpoint: map-get($breakpoint-widths, "lg")
-) {
-
-  font-size: $sm-font-size;
-
-  @media (min-width: $md-breakpoint) {
-    font-size: $md-font-size;
-  }
-
-  @media (min-width: $lg-breakpoint) {
-    font-size: $lg-font-size;
-  }
-
-}

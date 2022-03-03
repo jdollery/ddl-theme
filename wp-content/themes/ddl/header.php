@@ -43,6 +43,7 @@
       </div>
     </header>
     <div class="view">
+      <span class="view__overlay" id="viewOverlay"></span>
       <main class="main">
 
   

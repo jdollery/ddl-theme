@@ -1,7 +1,7 @@
 .view {
   position: relative;
 
-  &::before {
+  &__overlay {
     display: block;
     position: absolute;
     top: 0;
@@ -13,7 +13,7 @@
     height: 100%;
     opacity: 0;
     visibility: hidden;
-    background: $color-green;
+    background: $color-green-dark;
     z-index: 10;
     transition: all .5s ease-out;
   }
@@ -29,7 +29,7 @@
       
       .view {
 
-        &:before {
+        &__overlay {
           opacity: .8;
           visibility: visible;
         }

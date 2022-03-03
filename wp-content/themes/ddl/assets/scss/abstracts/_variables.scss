@@ -1,0 +1,48 @@
+$theme-name:          ddl;
+
+/* --------- COLOURS --------- */
+
+$color-white:         #fefefe; 
+$color-black:         #2e2e2e;
+
+$color-grey:          #8c8c8c;
+$color-grey-light:    #f3f3f3;
+$color-grey-dark:     #495057;
+
+$color-green-dark:    #1c3f31;
+$color-green:         #81a1a0;
+$color-green-light:   #d1f0e0;
+
+$color-blue:          #00123b;
+$color-blue-light:    #9da5b8;
+
+$color-danger:        #dc3545;
+$color-warning:       #f2ab10;
+$color-success:       #3caa5a;
+
+
+/* --------- FONT FAMILIES --------- */
+
+$font-sourcesans: 'SourceSans', arial, sans-serif;
+$font-fontawesome: 'Font Awesome';
+
+
+/* --------- FONT WEIGHTS --------- */
+
+$weight-light:    300;
+$weight-regular:  400;
+$weight-semibold: 600;
+$weight-bold:     700;
+$weight-black:    900;
+
+
+/* --------- BODY VARIABLES --------- */
+
+$body-font:           $font-sourcesans;
+$body-size-lg:        1.8rem;
+$body-size-md:        1.7rem;
+$body-size-sm:        1.6rem;
+$body-line-height:    1.7;
+$body-weight:         $weight-regular;
+$body-color:          $color-black;
+$body-background:     $color-green; // this is also the background of footer to make it bleed off the bottom (see layout/main.scss for content background)

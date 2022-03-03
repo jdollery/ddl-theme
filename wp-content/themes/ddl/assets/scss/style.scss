@@ -13,11 +13,15 @@
 @import "abstracts/media";
 @import "abstracts/grid";
 @import "abstracts/block";
+@import "abstracts/variables";
 
-@import "partials/root";
+@import "partials/reset";
 
 @import "utility/fonts";
 @import "utility/fontawesome";
+
+@import "abstracts/functions";
+@import "abstracts/utility";
 
 @import "vendor/slick";
 
