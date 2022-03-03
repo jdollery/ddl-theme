@@ -127,6 +127,10 @@ function ddl_scripts() {
   //   wp_enqueue_script( 'ddl-carousel', get_template_directory_uri() . '/assets/js/carousel.js', array(), '1.0.0', true );
   // } 
 
+	// if ( (is_page(array(14, 12))) ) { //Contact and Referral Pages
+  //   wp_enqueue_script( 'ddl-validate', get_template_directory_uri() . '/assets/js/validate.js', array(), '1.0.0', true );
+  // } 
+
 }
 
 add_action( 'wp_enqueue_scripts', 'ddl_scripts' );
@@ -374,103 +378,6 @@ function hide_editor() {
 }
 
 add_action( 'admin_init', 'hide_editor' );
-
-
-/*-----------------------------------------------------------------------------------*/
-/* ADD CUSTOM META BOXES ON POST AND PAGE FOR BANNER DESCRIPTION */
-/*-----------------------------------------------------------------------------------*/
-
-function add_title_description_add() {
-
-  $post_types = array ( 'post', 'page' );
-
-  foreach( $post_types as $post_type ) {
-    add_meta_box(
-      'title_description_meta_box', // $id
-      'Title Description', // $title 
-      'title_description_callback', // $callback
-      $post_type,
-      'normal', // $context
-      'high' // $priority
-    );
-  }
-
-}
-
-add_action( 'add_meta_boxes', 'add_title_description_add' );
-
-
-function title_description_callback ( $post ) { ?>
-  
-  <div class="title_description_box">
-    <p class="meta-options title_description_field">
-      <label style="display:block; margin-bottom:10px;" for="title_description">Title Description</label>
-      <textarea style="display:block; width:100%; min-height:80px;" id="title_description" name="title_description"><?php echo esc_attr( get_post_meta( get_the_ID(), 'title_description', true ) ); ?></textarea>
-    </p>
-  </div>
-
-<?php } 
-
-
-function title_description_save ( $post_id ) {
-
-  if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
-  if ( $parent_id = wp_is_post_revision( $post_id ) ) {
-    $post_id = $parent_id;
-  }
-  $fields = [
-    'title_description',
-  ];
-  foreach ( $fields as $field ) {
-    if ( array_key_exists( $field, $_POST ) ) {
-        update_post_meta( $post_id, $field, sanitize_text_field( $_POST[$field] ) );
-    }
-  }
-}
-
-add_action( 'save_post', 'title_description_save' );
-
-
-/*-----------------------------------------------------------------------------------*/
-/* ADD TINYMCE WYSIWYG TO ARCHIVE DESCRIPTION IN THE TITLE COMPONENT */
-/*-----------------------------------------------------------------------------------*/
-
-remove_filter( 'pre_term_description', 'wp_filter_kses' );
-remove_filter( 'term_description', 'wp_kses_data' );
-add_filter( 'edit_category_form_fields', 'cat_description' );
- 
-function cat_description($tag) { ?>
-  <table class="form-table">
-    <tr class="form-field">
-      <th scope="row" valign="top"><label for="description"><?php _ex('Description', 'Taxonomy Description'); ?></label></th>
-      <td>
-        <?php
-        $settings = array(
-          'wpautop' => true,
-          'media_buttons' => true,
-          'quicktags' => true,
-          'textarea_rows' => '15',
-          'textarea_name' => 'description'
-        );
-        $content = html_entity_decode( $tag->description );
-        wp_editor( wp_kses_post( $content, ENT_QUOTES, 'UTF-8'), 'cat_description', $settings);
-        ?>
-      </td>
-    </tr>
-  </table>
-<?php }
-add_action('admin_head', 'remove_default_category_description');
-
-function remove_default_category_description() {
-  global $current_screen;
-  if ( $current_screen->id == 'edit-category' ){ ?>
-    <script type="text/javascript">
-      jQuery(function($) {
-        jQuery('textarea#description').closest('tr.form-field').remove();
-      });
-    </script>
-  <?php }
-}
 
 
 /*-----------------------------------------------------------------------------------*/

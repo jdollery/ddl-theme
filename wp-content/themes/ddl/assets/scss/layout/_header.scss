@@ -36,28 +36,32 @@ $header-height-sm: 8.8rem;
       padding-bottom: 3rem;
     }
 
-    &__row {
-      @include cell-row;
-      @include align-items(center);
-      @include justify-content(space-between);  
-    }
+  }
 
+  &__row {
+    @include cell-row;
+    @include cell-row-gutter;
+    align-items: center;
+    justify-content: space-between;  
   }
 
   &__one {
     @include cell;
+    @include cell-gutter;
     @include cell-span(4);
     text-align: left;
   }
 
   &__two {
     @include cell;
+    @include cell-gutter;
     @include cell-span(0);
     text-align: center;
   }
 
   &__three {
     @include cell;
+    @include cell-gutter;
     @include cell-span(4);
     text-align: right;
   }

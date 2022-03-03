@@ -2,8 +2,14 @@
 /* VARIABLES */
 /*-----------------------------------------------------------------------------------*/
 
-$block-padding-sm: 6rem;
+$block-padding-sm: 4rem;
+$block-padding-md: 6rem;
 $block-padding-lg: 10rem;
+$block-padding-xl: 10rem;
+
+$block-breakpoint-md: sm;
+$block-breakpoint-lg: lg;
+$block-breakpoint-xl: xxl;
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -11,10 +17,18 @@ $block-padding-lg: 10rem;
 /*-----------------------------------------------------------------------------------*/
 
 @mixin block {
-  padding: $block-padding-sm $block-padding-sm;
+  padding: $block-padding-sm;
 
-  @include media-up(sm) {
-    padding: $block-padding-lg $block-padding-lg;
+  @include media-up($block-breakpoint-md) {
+    padding: $block-padding-md;
+  }
+
+  @include media-up($block-breakpoint-lg) {
+    padding: $block-padding-lg;
+  }
+
+  @include media-up($block-breakpoint-xl) {
+    padding: $block-padding-xl;
   }
 
 }
@@ -23,9 +37,19 @@ $block-padding-lg: 10rem;
   padding-left: $block-padding-sm;
   padding-right: $block-padding-sm;
 
-  @include media-up(sm) {
+  @include media-up($block-breakpoint-md) {
+    padding-left: $block-padding-md;
+    padding-right: $block-padding-md;
+  }
+
+  @include media-up($block-breakpoint-lg) {
     padding-left: $block-padding-lg;
     padding-right: $block-padding-lg;
+  }
+
+  @include media-up($block-breakpoint-xl) {
+    padding-left: $block-padding-xl;
+    padding-right: $block-padding-xl;
   }
 
 }
@@ -34,9 +58,19 @@ $block-padding-lg: 10rem;
   padding-top: $block-padding-sm;
   padding-bottom: $block-padding-sm;
 
-  @include media-up(sm) {
+  @include media-up($block-breakpoint-md) {
+    padding-top: $block-padding-md;
+    padding-bottom: $block-padding-md;
+  }
+
+  @include media-up($block-breakpoint-lg) {
     padding-top: $block-padding-lg;
     padding-bottom: $block-padding-lg;
+  }
+
+  @include media-up($block-breakpoint-xl) {
+    padding-top: $block-padding-xl;
+    padding-bottom: $block-padding-xl;
   }
 
 }
@@ -44,8 +78,16 @@ $block-padding-lg: 10rem;
 @mixin block-top {
   padding-top: $block-padding-sm;
 
-  @include media-up(sm) {
+  @include media-up($block-breakpoint-md) {
+    padding-top: $block-padding-md;
+  }
+
+  @include media-up($block-breakpoint-lg) {
     padding-top: $block-padding-lg;
+  }
+
+  @include media-up($block-breakpoint-xl) {
+    padding-top: $block-padding-xl;
   }
 
 }
@@ -53,8 +95,16 @@ $block-padding-lg: 10rem;
 @mixin block-bottom {
   padding-bottom: $block-padding-lg;
 
-  @include media-up(sm) {
+  @include media-up($block-breakpoint-md) {
+    padding-bottom: $block-padding-md;
+  }
+
+  @include media-up($block-breakpoint-lg) {
     padding-bottom: $block-padding-lg;
+  }
+
+  @include media-up($block-breakpoint-xl) {
+    padding-bottom: $block-padding-xl;
   }
 
 }
@@ -62,8 +112,16 @@ $block-padding-lg: 10rem;
 @mixin block-left {
   padding-left: $block-padding-lg;
 
-  @include media-up(sm) {
+  @include media-up($block-breakpoint-md) {
+    padding-left: $block-padding-md;
+  }
+
+  @include media-up($block-breakpoint-lg) {
     padding-left: $block-padding-lg;
+  }
+
+  @include media-up($block-breakpoint-xl) {
+    padding-left: $block-padding-xl;
   }
 
 }
@@ -71,8 +129,49 @@ $block-padding-lg: 10rem;
 @mixin block-right {
   padding-right: $block-padding-lg;
 
-  @include media-up(sm) {
+  @include media-up($block-breakpoint-md) {
+    padding-right: $block-padding-md;
+  }
+
+  @include media-up($block-breakpoint-lg) {
     padding-right: $block-padding-lg;
   }
 
+  @include media-up($block-breakpoint-xl) {
+    padding-right: $block-padding-xl;
+  }
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLING */
+/*-----------------------------------------------------------------------------------*/
+
+.block {
+  @include block;
+}
+
+.block-y {
+  @include block-y;
+}
+
+.block-x {
+  @include block-x;
+}
+
+.block-top {
+  @include block-left;
+}
+
+.block-bottom {
+  @include block-left;
+}
+
+.block-left {
+  @include block-left;
+}
+
+.block-right {
+  @include block-left;
 }

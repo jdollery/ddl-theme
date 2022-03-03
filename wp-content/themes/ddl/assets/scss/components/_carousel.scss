@@ -20,7 +20,8 @@
     &__inner {
       @include cell;
       @include cell-span(12);
-      @include align-self(center);
+      @include cell-row-gutter;
+      align-self: center;
       padding-top: 6rem;
       padding-bottom: 6rem;
 

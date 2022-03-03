@@ -16,18 +16,19 @@ $max-width: 1440px;
 @mixin cell-row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -$gutter;
-  margin-left: -$gutter;
 }
 
-@mixin cell-row-no-margin {
-  display: flex;
-  flex-wrap: wrap;
+@mixin cell-row-gutter {
+  margin-right: -$gutter;
+  margin-left: -$gutter;
 }
 
 @mixin cell {
   position: relative;
   max-width: 100%;
+}
+
+@mixin cell-gutter {
   padding-right: $gutter;
   padding-left: $gutter;
 }
@@ -35,7 +36,6 @@ $max-width: 1440px;
 @mixin cell-span($size) {
   
   @for $i from 1 through $columns {
-    // $width: percentage($i / $columns);
     $width: math.percentage(math.div($i, $columns));
     @if($size == $i)  {
       flex: 0 0 auto;
@@ -54,6 +54,7 @@ $max-width: 1440px;
 
 @mixin cell-fixed {
   @include cell;
+  @include cell-gutter;
   width: $max-width;
   margin-right: auto;
   margin-left: auto;
@@ -61,6 +62,7 @@ $max-width: 1440px;
 
 @mixin cell-fluid {
   @include cell;
+  @include cell-gutter;
 }
 
 

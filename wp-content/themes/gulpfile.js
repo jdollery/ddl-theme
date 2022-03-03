@@ -2,6 +2,7 @@
 // npm install --save-dev gulp
 // npm install sass node-sass gulp-sass gulp-sourcemaps --save-dev
 // npm install gulp-concat gulp-uglify --save-dev
+// npm i gulp sass node-sass gulp-sass gulp-sourcemaps gulp-concat gulp-uglify --save-dev
 
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
@@ -21,7 +22,7 @@ const paths = {
       './ddl/assets/js/select2.js',
       './ddl/assets/js/slick.js',
       './ddl/assets/js/wow.js',
-      './ddl/assets/js/validate.js',
+      // './ddl/assets/js/validate.js',
       './ddl/assets/js/script.js'
     ],
     dest: './ddl'

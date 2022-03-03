@@ -3,21 +3,25 @@
   background-repeat: no-repeat;
   background-position: center;
   background-color: $color-grey-dark;
-  @include d-flex;
-  @include flex-wrap(wrap);
+  display: flex;
+  flex-wrap: wrap;
   align-content: center;
-  padding-top: 4rem;
-  padding-bottom: 5rem;
+  @include block-y;
 
-  @include media-up(sm) {
-    padding-top: 6rem;
-    padding-bottom: 7rem;
+  &__outer {
+    @include cell-fixed;
   }
 
-  @include media-up(md) {
-    min-height: 35rem;
+  &__row {
+    @include cell-row;
+    @include cell-row-gutter;
   }
 
+  &__one {
+    @include cell;
+    @include cell-gutter;
+    @include cell-span(12);
+  }
 
   &__title {
     color: $color-white;
@@ -26,6 +30,5 @@
   &__subtitle {
     color: $color-grey-light;
   }
-
 
 }

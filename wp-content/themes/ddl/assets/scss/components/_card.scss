@@ -6,6 +6,7 @@ $card-img-height:       20rem;
 .card {
   @include cell;
   @include cell-span(12);
+  @include cell-gutter;
   padding-top: $gutter;
   padding-bottom: $gutter;
 
@@ -19,6 +20,7 @@ $card-img-height:       20rem;
 
   &__row {
     @include cell-row;
+    @include cell-row-gutter;
   }
 
   &__inner {

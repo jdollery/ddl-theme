@@ -2,36 +2,6 @@
 /* GLOBAL TEMPLATES */
 /*-----------------------------------------------------------------------------------*/
 
-/* --------- GENERIC COMPONANT --------- */
-
-.block {
-  @include block;
-}
-
-.block-y {
-  @include block-y;
-}
-
-.block-x {
-  @include block-x;
-}
-
-.block-top {
-  @include block-left;
-}
-
-.block-bottom {
-  @include block-left;
-}
-
-.block-left {
-  @include block-left;
-}
-
-.block-right {
-  @include block-left;
-}
-
 
 /* --------- COMPONANT OUTER WRAPPER (FIXED WIDTHS) --------- */
 
@@ -40,7 +10,8 @@
 
   &__row {
     @include cell-row;
-    @include justify-content(center);
+    @include cell-row-gutter;
+    justify-content: center;
   }
 
 }
@@ -50,6 +21,7 @@
 
 .inner {
   @include cell;
+  @include cell-gutter;
   @include cell-span(12);
 
   @include media-up(xl) {
@@ -58,6 +30,7 @@
 
   &__row {
     @include cell-row;
+    @include cell-row-gutter;
   }
 
 }
@@ -67,6 +40,7 @@
 
 .title {
   @include cell;
+  @include cell-gutter;
   @include cell-span(12);
   padding-bottom: 4rem;
 

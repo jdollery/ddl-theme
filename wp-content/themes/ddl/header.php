@@ -22,10 +22,11 @@
 
     <header class="header" id="mainHeader">
       <div class="header__outer">
-        <div class="header__outer__row">
+        <div class="header__row">
           <div class="header__one">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" title="Back to the home page">
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" role="img" alt="<?php bloginfo( 'name' ); ?>" width="170" height="42">
+              <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" role="img" alt="<?php bloginfo( 'name' ); ?>" width="170" height="42"> -->
+              Logo
             </a>
           </div>
           <div class="header__two">

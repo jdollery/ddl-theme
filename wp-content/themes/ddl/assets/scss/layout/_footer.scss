@@ -15,7 +15,8 @@
 
     &__row {
       @include cell-row;
-      @include justify-content(space-between);  
+      @include cell-row-gutter;
+      justify-content: space-between;  
     }
 
   }
@@ -23,26 +24,31 @@
   &__inner {
     @include cell;
     @include cell-span(12);
+    @include cell-gutter;
     text-align: center;
   
     &__row {
       @include cell-row;
+      @include cell-row-gutter;
     }
   
   }
 
   &__one {
     @include cell;
+    @include cell-gutter;
     @include cell-span(3);
   }
 
   &__two {
     @include cell;
+    @include cell-gutter;
     @include cell-span(3);
   }
 
   &__three {
     @include cell;
+    @include cell-gutter;
     @include cell-span(3);
   }
 
@@ -88,18 +94,21 @@
     @include cell-fixed;
 
     &__row {
-      @include cell-row;  
+      @include cell-row;
+      @include cell-row-gutter;  
     }
 
   }
 
   &__one {
     @include cell;
+    @include cell-gutter;
     @include cell-span(0);
   }
 
   &__two {
     @include cell;
+    @include cell-gutter;
     @include cell-span(0);
     text-align: right;
   }
