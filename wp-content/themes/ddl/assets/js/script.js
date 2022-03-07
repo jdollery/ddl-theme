@@ -1,4 +1,4 @@
-console.info('%cSite designed and developed by Dental Design - https://dental-design.marketing', 'color: black' );
+console.info('%cSite designed and developed by Dental Design - https://dental-design.marketing', 'color: #00b0ad; font-weight: 700; font-size: 15px;' );
 
 /*-----------------------------------------------------------------------------------*/
 /* FORCE PAGE RELOAD TO STOP SAFARI & EDGE PAGE CHACHE */
@@ -65,8 +65,7 @@ jQuery(document).ready(function () { //doc ready start
   });
 
   var close = document.getElementById("viewOverlay");
-  close.addEventListener("click", function (e) {
-    e.preventDefault();
+  close.addEventListener("click", function () {
     nav.close();
   }, false);
 

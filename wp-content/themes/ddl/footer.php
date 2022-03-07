@@ -1,3 +1,5 @@
+    <?php get_template_part('template-parts/component', 'cta'); ?>
+    
     </main>
 
     <footer class="footer">
