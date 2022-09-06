@@ -32,15 +32,15 @@ if ( has_post_thumbnail() ) { ?>
 
 <?php } else { ?>
 
-<div class="banner">
+<div class="banner cell-row">
 
 <?php } ?>
 
 <?php } ?>
 
-  <div class="banner__outer">
-    <div class="banner__row">
-      <div class="banner__one block-y span-lg-6 span-xl-3 bg-green">
+  <!-- <div class="cell span-12"> -->
+    <!-- <div class="cell-row"> -->
+      <div class="cell cell-gutter span-lg-6 span-xl-3 bg-green">
 
         <?php if ( is_front_page() && is_home() ) { //home/blog ?>
 
@@ -103,7 +103,7 @@ if ( has_post_thumbnail() ) { ?>
         <?php } ?>
 
       </div>
-    </div>
-  </div>
+    <!-- </div> -->
+  <!-- </div> -->
 
 </div>

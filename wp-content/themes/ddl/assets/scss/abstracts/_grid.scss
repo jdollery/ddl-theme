@@ -18,6 +18,10 @@ $max-width: 1440px;
   flex-wrap: wrap;
 }
 
+.cell-row {
+  @include cell-row;
+}
+
 @mixin cell-row-gutter {
   margin-right: -$gutter;
   margin-left: -$gutter;
@@ -28,9 +32,17 @@ $max-width: 1440px;
   max-width: 100%;
 }
 
+.cell {
+  @include cell;
+}
+
 @mixin cell-gutter {
   padding-right: $gutter;
   padding-left: $gutter;
+}
+
+.cell-gutter {
+  @include cell-gutter;
 }
 
 @mixin cell-span($size) {
@@ -52,6 +64,45 @@ $max-width: 1440px;
   
 }
 
+
+@each $breakpoint in map-keys($breakpoint-widths) {
+  @include media-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
+
+    @for $i from 1 through $columns {
+      $width: math.percentage(math.div($i, $columns));
+
+      .span#{$infix}-#{$i} {
+        flex: 0 0 auto;
+        width: $width;
+      }
+
+    }
+
+    .span#{$infix}-0 {
+      flex: 1 0 0%;
+    }
+
+    .span#{$infix}-auto {
+      flex: 0 0 auto;
+      width: auto;
+    }
+
+  }
+
+}
+
+
+@for $i from 1 through $columns {
+  $width: math.percentage(math.div($i, $columns));
+
+  .span-#{$i} {
+    flex: 0 0 auto;
+    width: $width;
+  }
+
+}
+
 @mixin cell-fixed {
   @include cell;
   @include cell-gutter;
@@ -64,5 +115,3 @@ $max-width: 1440px;
   @include cell;
   @include cell-gutter;
 }
-
-
