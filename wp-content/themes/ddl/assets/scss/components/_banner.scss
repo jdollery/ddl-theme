@@ -20,7 +20,7 @@
   &__one {
     @include cell;
     @include cell-gutter;
-    @include cell-span(12);
+    // @include cell-span(12);
   }
 
   &__title {

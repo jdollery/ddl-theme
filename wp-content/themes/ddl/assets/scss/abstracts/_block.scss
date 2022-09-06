@@ -7,9 +7,9 @@ $block-padding-md: 6rem;
 $block-padding-lg: 10rem;
 $block-padding-xl: 10rem;
 
-$block-breakpoint-md: sm;
-$block-breakpoint-lg: lg;
-$block-breakpoint-xl: xxl;
+$block-breakpoint-tablet: sm;
+$block-breakpoint-laptop: lg;
+$block-breakpoint-desktop: xxl;
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -19,15 +19,15 @@ $block-breakpoint-xl: xxl;
 @mixin block {
   padding: $block-padding-sm;
 
-  @include media-up($block-breakpoint-md) {
+  @include media-up($block-breakpoint-tablet) {
     padding: $block-padding-md;
   }
 
-  @include media-up($block-breakpoint-lg) {
+  @include media-up($block-breakpoint-laptop) {
     padding: $block-padding-lg;
   }
 
-  @include media-up($block-breakpoint-xl) {
+  @include media-up($block-breakpoint-desktop) {
     padding: $block-padding-xl;
   }
 
@@ -37,17 +37,17 @@ $block-breakpoint-xl: xxl;
   padding-left: $block-padding-sm;
   padding-right: $block-padding-sm;
 
-  @include media-up($block-breakpoint-md) {
+  @include media-up($block-breakpoint-tablet) {
     padding-left: $block-padding-md;
     padding-right: $block-padding-md;
   }
 
-  @include media-up($block-breakpoint-lg) {
+  @include media-up($block-breakpoint-laptop) {
     padding-left: $block-padding-lg;
     padding-right: $block-padding-lg;
   }
 
-  @include media-up($block-breakpoint-xl) {
+  @include media-up($block-breakpoint-desktop) {
     padding-left: $block-padding-xl;
     padding-right: $block-padding-xl;
   }
@@ -58,17 +58,17 @@ $block-breakpoint-xl: xxl;
   padding-top: $block-padding-sm;
   padding-bottom: $block-padding-sm;
 
-  @include media-up($block-breakpoint-md) {
+  @include media-up($block-breakpoint-tablet) {
     padding-top: $block-padding-md;
     padding-bottom: $block-padding-md;
   }
 
-  @include media-up($block-breakpoint-lg) {
+  @include media-up($block-breakpoint-laptop) {
     padding-top: $block-padding-lg;
     padding-bottom: $block-padding-lg;
   }
 
-  @include media-up($block-breakpoint-xl) {
+  @include media-up($block-breakpoint-desktop) {
     padding-top: $block-padding-xl;
     padding-bottom: $block-padding-xl;
   }
@@ -78,15 +78,15 @@ $block-breakpoint-xl: xxl;
 @mixin block-top {
   padding-top: $block-padding-sm;
 
-  @include media-up($block-breakpoint-md) {
+  @include media-up($block-breakpoint-tablet) {
     padding-top: $block-padding-md;
   }
 
-  @include media-up($block-breakpoint-lg) {
+  @include media-up($block-breakpoint-laptop) {
     padding-top: $block-padding-lg;
   }
 
-  @include media-up($block-breakpoint-xl) {
+  @include media-up($block-breakpoint-desktop) {
     padding-top: $block-padding-xl;
   }
 
@@ -95,15 +95,15 @@ $block-breakpoint-xl: xxl;
 @mixin block-bottom {
   padding-bottom: $block-padding-lg;
 
-  @include media-up($block-breakpoint-md) {
+  @include media-up($block-breakpoint-tablet) {
     padding-bottom: $block-padding-md;
   }
 
-  @include media-up($block-breakpoint-lg) {
+  @include media-up($block-breakpoint-laptop) {
     padding-bottom: $block-padding-lg;
   }
 
-  @include media-up($block-breakpoint-xl) {
+  @include media-up($block-breakpoint-desktop) {
     padding-bottom: $block-padding-xl;
   }
 
@@ -112,15 +112,15 @@ $block-breakpoint-xl: xxl;
 @mixin block-left {
   padding-left: $block-padding-lg;
 
-  @include media-up($block-breakpoint-md) {
+  @include media-up($block-breakpoint-tablet) {
     padding-left: $block-padding-md;
   }
 
-  @include media-up($block-breakpoint-lg) {
+  @include media-up($block-breakpoint-laptop) {
     padding-left: $block-padding-lg;
   }
 
-  @include media-up($block-breakpoint-xl) {
+  @include media-up($block-breakpoint-desktop) {
     padding-left: $block-padding-xl;
   }
 
@@ -129,15 +129,15 @@ $block-breakpoint-xl: xxl;
 @mixin block-right {
   padding-right: $block-padding-lg;
 
-  @include media-up($block-breakpoint-md) {
+  @include media-up($block-breakpoint-tablet) {
     padding-right: $block-padding-md;
   }
 
-  @include media-up($block-breakpoint-lg) {
+  @include media-up($block-breakpoint-laptop) {
     padding-right: $block-padding-lg;
   }
 
-  @include media-up($block-breakpoint-xl) {
+  @include media-up($block-breakpoint-desktop) {
     padding-right: $block-padding-xl;
   }
 

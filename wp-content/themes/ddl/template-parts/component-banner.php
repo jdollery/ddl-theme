@@ -40,7 +40,7 @@ if ( has_post_thumbnail() ) { ?>
 
   <div class="banner__outer">
     <div class="banner__row">
-      <div class="banner__one">
+      <div class="banner__one block-y span-lg-6 span-xl-3 bg-green">
 
         <?php if ( is_front_page() && is_home() ) { //home/blog ?>
 

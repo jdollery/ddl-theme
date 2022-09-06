@@ -26,7 +26,7 @@ $header-height-sm: 8.8rem;
   color: $color-white;
 
   &__outer {
-    @include cell-fixed;
+    // @include cell-fixed;
     transition: all 0.3s ease-out;
     padding-top: 2rem;
     padding-bottom: 2rem;

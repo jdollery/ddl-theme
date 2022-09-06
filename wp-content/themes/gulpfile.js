@@ -1,8 +1,5 @@
 // npm init -y
-// npm install --save-dev gulp
-// npm install sass node-sass gulp-sass gulp-sourcemaps --save-dev
-// npm install gulp-concat gulp-uglify --save-dev
-// npm i gulp sass node-sass gulp-sass gulp-sourcemaps gulp-concat gulp-uglify --save-dev
+// npm install gulp sass node-sass gulp-sass gulp-sourcemaps gulp-concat gulp-uglify --save-dev
 
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));

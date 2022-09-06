@@ -91,3 +91,16 @@ $breakpoint-widths: (
 //     font-weight: bold;
 //   }
 // }
+
+
+@mixin media-min($breakpoint) { 
+  @media (min-width: ($breakpoint)) {
+    @content;
+  }
+}
+
+@mixin media-max($breakpoint) { 
+  @media (max-width: ($breakpoint - 1)) {
+    @content;
+  }
+}

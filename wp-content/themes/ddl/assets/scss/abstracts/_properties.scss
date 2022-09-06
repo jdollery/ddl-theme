@@ -57,3 +57,8 @@
   object-fit: $object-fit;
 }
 
+@mixin object-position ($object-position) {
+  -o-object-position: $object-position;
+  object-position: $object-position;
+}
+
