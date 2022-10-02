@@ -1,0 +1,189 @@
+.split {
+  background: var(--white);
+
+  @include media-up(xl) {
+    margin-top: $block-padding-lg;
+    margin-bottom: $block-padding-lg;
+  }
+
+  @include media-up(xxl) {
+    margin-top: $block-padding-xl;
+    margin-bottom: $block-padding-xl;
+  }
+
+  &:first-child {
+    
+    @include media-up(xl) {
+      margin-top: 0;
+      padding-top: $block-padding-lg;
+    }
+  
+    @include media-up(xxl) {
+      margin-top: 0;
+      padding-top: $block-padding-xl;
+    }
+
+  }
+
+  &:last-child {
+
+    @include media-up(xl) {
+      margin-bottom: 0;
+      padding-bottom: $block-padding-lg;
+    }
+  
+    @include media-up(xxl) {
+      margin-bottom: 0;
+      padding-bottom: $block-padding-xl;
+    }
+
+  }
+
+  &--odd {
+    
+    @include media-up(xl) {
+      @include block-right;
+    }
+
+    .split {
+
+      &__media {
+        order: 2;
+
+        @include media-up(xl) {
+          order: 1;
+        }
+
+      }
+
+      &__content {
+        order: 1;
+
+        @include media-up(xl) {
+          order: 2;
+        }
+
+      }
+
+    }
+
+  }
+
+  &--even {
+
+    @include media-up(xl) {
+      @include block-left;
+    }
+
+    .split {
+
+      &__media {
+        order: 2;
+      }
+
+      &__content {
+        order: 1;
+      }
+
+    }
+
+  }
+
+  &__row {
+    @include cell-row;
+    background: var(--grey);
+  }
+
+  &--half {
+
+    .split {
+
+      &__media,
+      &__content {
+        @include cell;
+        @include cell-span(12);
+
+        @include media-up(xl) {
+          @include cell-span(6);
+        }
+
+      }
+
+    }
+
+  }
+
+  &--quarter {
+
+    .split {
+
+      &__media {
+        @include cell;
+        @include cell-span(12);
+
+        @include media-up(xl) {
+          @include cell-span(4);
+        }
+
+      }
+
+      &__content {
+        @include cell;
+        @include cell-span(12);
+
+        @include media-up(xl) {
+          @include cell-span(8);
+        }
+
+      }
+
+    }
+
+  }
+
+  &__media {
+
+    @include media-down(xl) {
+      max-height: 50vw;
+    }
+
+    @include media-down(md) {
+      max-height: 45vw;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      @include object-fit (cover);
+      @include object-position(center);
+
+      @include media-up(xl) {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+    }
+
+  }
+
+  &__content {
+    @include block;
+    align-self: center;
+    font-weight: var(--medium);
+  }
+
+}
+
+.home .split--even {
+
+  .split__media {
+    min-height: 80vw;
+
+    @include media-up(xl) {
+      min-height: 36vw;
+    }
+
+  }
+
+}

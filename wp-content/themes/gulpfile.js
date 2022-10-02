@@ -10,19 +10,19 @@ const uglify = require('gulp-uglify');
 
 const paths = {
   styles: {
-    src: './ddl/assets/scss/**/*.scss',
-    dest: './ddl'
+    src: './ddl-v2/assets/scss/**/*.scss',
+    dest: './ddl-v2'
   },
   scripts: {
     src: [
-      './ddl/assets/js/navigation.js',
+      './ddl-v2/assets/js/navigation.js',
       // './ddl/assets/js/select2.js',
-      './ddl/assets/js/slick.js',
+      './ddl-v2/assets/js/slick.js',
       // './ddl/assets/js/wow.js',
       // './ddl/assets/js/validate.js',
-      './ddl/assets/js/script.js'
+      './ddl-v2/assets/js/script.js'
     ],
-    dest: './ddl'
+    dest: './ddl-v2'
   }
 };
 

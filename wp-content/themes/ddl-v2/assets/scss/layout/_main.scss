@@ -1,0 +1,26 @@
+.main {
+  position: relative;
+  background: var(--white);
+  padding-top: 16rem;
+
+  @include media-up(sm) {
+    padding-top: 12.6rem;
+  }
+
+  @include media-up(md) {
+    padding-top: 14.1rem;
+  }
+
+  @include media-min(950px) {
+    padding-top: 7.5rem;
+  }
+
+  @include media-up(xl) {
+    padding-top: 8.5rem;
+  }
+
+  @include media-up(xxl) {
+    padding-top: 8.8rem;
+  }
+
+}

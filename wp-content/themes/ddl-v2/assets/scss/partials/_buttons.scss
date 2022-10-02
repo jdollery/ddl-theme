@@ -1,0 +1,67 @@
+$button-padding: 1.6rem 3rem 1.2rem;
+
+@mixin button {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  @include user-select(none);
+  vertical-align: middle;
+  @include fluid-type(1.6rem, 1.7rem, 1.8rem);
+  font-weight: var(--medium);
+  line-height: 1.3;
+  background-color: transparent;
+  border-width: 0.3rem;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 0;
+  padding: $button-padding;
+  transition: all 0.3s ease-out;
+
+  &--edit {
+    display: block;
+    color: var(--white);
+    background: var(--black);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    padding: 2rem 2.5rem 1.5rem;
+  }
+
+  &--blue {
+    color: var(--white);
+    background: var(--accent);
+    border-color: var(--accent);
+
+    @include hover-focus {
+      color: var(--black);
+      background: transparent;
+      border-color: var(--accent);
+    }
+
+  }
+
+  &--body {
+    margin-top: $paragraph-margin-top-sm;
+    margin-bottom: $paragraph-margin-bottom-sm;
+
+    @include media-up(md) {
+      margin-top: $paragraph-margin-top-lg;
+      margin-bottom: $paragraph-margin-bottom-lg;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+  }
+
+}
+
+.button {
+  @include button;
+}

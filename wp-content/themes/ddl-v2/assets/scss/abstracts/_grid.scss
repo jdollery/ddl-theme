@@ -1,0 +1,228 @@
+@use 'sass:math';
+
+/*-----------------------------------------------------------------------------------*/
+/* VARIABLES */
+/*-----------------------------------------------------------------------------------*/
+
+$gutter: 2rem;
+$columns: 12;
+$max-width: 144rem;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* MIXINS */
+/*-----------------------------------------------------------------------------------*/
+
+/* --------------------- ROW --------------------- */
+
+@mixin cell-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+/* --------- Row gutter x --------- */
+
+@mixin cell-row-gutter {
+  margin-right: -$gutter;
+  margin-left: -$gutter;
+}
+
+.cell-row-gutter {
+  @include cell-row-gutter;
+}
+
+
+/* --------- Row gutter y --------- */
+
+@mixin cell-row-gutter-y {
+  margin-top: -$gutter;
+  margin-bottom: -$gutter;
+}
+
+.cell-row-gutter-y {
+  @include cell-row-gutter-y;
+}
+
+
+/* --------------------- CELLS --------------------- */
+
+@mixin cell {
+  position: relative;
+  max-width: 100%;
+}
+
+.cell {
+  @include cell;
+}
+
+
+/* --------- Cell gutter x --------- */
+
+@mixin cell-gutter {
+  padding-right: $gutter;
+  padding-left: $gutter;
+}
+
+.cell-gutter {
+  @include cell-gutter;
+}
+
+
+/* --------- Cell gutter y --------- */
+
+@mixin cell-gutter-y {
+  padding-top: $gutter;
+  padding-bottom: $gutter;
+}
+
+.cell-gutter-y {
+  @include cell-gutter-y;
+}
+
+@mixin cell-gutter-sm {
+  padding-right: $gutter-sm;
+  padding-left: $gutter-sm;
+}
+
+
+/* --------------------- SPANS --------------------- */
+
+@mixin cell-span($size) {
+  
+  @for $i from 1 through $columns {
+    $width: math.percentage(math.div($i, $columns));
+    @if($size == $i)  {
+      flex: 0 0 auto;
+      width: $width;
+    } 
+  }
+
+  @if($size == 0) {
+    flex: 1 0 0%;
+  } @else if ($size == auto) {
+    flex: 0 0 auto;
+    width: auto;
+  }
+  
+}
+
+
+// @each $breakpoint in map-keys($breakpoint-widths) {
+//   @include media-up($breakpoint) {
+//     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
+
+//     @for $i from 1 through $columns {
+//       $width: math.percentage(math.div($i, $columns));
+
+//       .span#{$infix}-#{$i} {
+//         flex: 0 0 auto;
+//         width: $width;
+//       }
+
+//     }
+
+//     .span#{$infix}-0 {
+//       flex: 1 0 0%;
+//     }
+
+//     .span#{$infix}-auto {
+//       flex: 0 0 auto;
+//       width: auto;
+//     }
+
+//   }
+
+// }
+
+
+// @for $i from 1 through $columns {
+//   $width: math.percentage(math.div($i, $columns));
+
+//   .span-#{$i} {
+//     flex: 0 0 auto;
+//     width: $width;
+//   }
+
+// }
+
+// .span-0 {
+//   flex: 1 0 0%;
+// }
+
+// .span-auto {
+//   flex: 0 0 auto;
+//   width: auto;
+// }
+
+// @mixin cell-offset($size) {
+  
+//   @for $i from 1 through $columns {
+//     $num: math.percentage(math.div($i, $columns));
+//     @if($size == $i)  {
+//       margin-left: $num;
+//     } 
+//   }
+  
+// }
+
+// @each $breakpoint in map-keys($breakpoint-widths) {
+//   @include media-up($breakpoint) {
+//     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
+
+//     @for $i from 1 through $columns {
+//       $num: math.percentage(math.div($i, $columns));
+
+//       .span-offset#{$infix}-#{$i} {
+//         margin-left: $num;
+//       }
+
+//     }
+
+//   }
+
+// }
+
+
+// @for $i from 1 through $columns {
+//   $num: math.percentage(math.div($i, $columns));
+
+//   .span-offset-#{$i} {
+//     margin-left: $num;
+//   }
+
+// }
+
+
+// @mixin cell-fixed {
+//   @include cell;
+//   @include cell-gutter;
+//   max-width: $max-width;
+//   margin-right: auto;
+//   margin-left: auto;
+// }
+
+// .cell-fixed {
+//   @include cell-fixed;
+// }
+
+// @mixin cell-fluid {
+//   @include cell;
+//   width: 100%;
+// }
+
+// .cell-fluid {
+//   @include cell-fluid;
+// }
+
+// @mixin cell-inner {
+//   @include cell;
+//   @include cell-gutter;
+//   max-width: $max-inner-width;
+//   margin-right: auto;
+//   margin-left: auto;
+// }
+
+// .cell-inner {
+//   @include cell-inner;
+// }

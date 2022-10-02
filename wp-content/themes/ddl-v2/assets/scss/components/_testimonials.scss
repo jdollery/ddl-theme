@@ -1,0 +1,39 @@
+.testimonials {
+  background: var(--grey-dark);
+  padding: 4rem;
+  color: var(--white);
+  font-weight: var(--medium);
+
+  &__row {
+    @include cell-row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__one {
+    @include cell;
+    @include cell-span(auto);
+    padding: 0 0 2rem 0;
+
+    @include media-up(lg) {
+      padding: 0 5rem 0 0;
+    }
+
+  }
+
+  &__two {
+    @include cell;
+    @include cell-span(12);
+    text-align: center;
+
+    @include media-up(lg) {
+      @include cell-span(6);
+    }
+
+  }
+
+  img {
+    width: 18rem;
+  }
+
+}
