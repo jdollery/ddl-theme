@@ -10,7 +10,7 @@ $max-width: 144rem;
 
 
 /*-----------------------------------------------------------------------------------*/
-/* MIXINS */
+/* STYLES */
 /*-----------------------------------------------------------------------------------*/
 
 /* --------------------- ROW --------------------- */
@@ -80,13 +80,8 @@ $max-width: 144rem;
   @include cell-gutter-y;
 }
 
-@mixin cell-gutter-sm {
-  padding-right: $gutter-sm;
-  padding-left: $gutter-sm;
-}
 
-
-/* --------------------- SPANS --------------------- */
+/* --------------------- SPANS - SASS MIXIN --------------------- */
 
 @mixin cell-span($size) {
   
@@ -108,52 +103,56 @@ $max-width: 144rem;
 }
 
 
-// @each $breakpoint in map-keys($breakpoint-widths) {
-//   @include media-up($breakpoint) {
-//     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
+/* --------------------- SPANS - CLASS FUNCTION --------------------- */
 
-//     @for $i from 1 through $columns {
-//       $width: math.percentage(math.div($i, $columns));
+@each $breakpoint in map-keys($breakpoint-widths) {
+  @include media-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
 
-//       .span#{$infix}-#{$i} {
-//         flex: 0 0 auto;
-//         width: $width;
-//       }
+    @for $i from 1 through $columns {
+      $width: math.percentage(math.div($i, $columns));
 
-//     }
+      .span#{$infix}-#{$i} {
+        flex: 0 0 auto;
+        width: $width;
+      }
 
-//     .span#{$infix}-0 {
-//       flex: 1 0 0%;
-//     }
+    }
 
-//     .span#{$infix}-auto {
-//       flex: 0 0 auto;
-//       width: auto;
-//     }
+    .span#{$infix}-0 {
+      flex: 1 0 0%;
+    }
 
-//   }
+    .span#{$infix}-auto {
+      flex: 0 0 auto;
+      width: auto;
+    }
 
-// }
+  }
+
+}
+
+@for $i from 1 through $columns {
+  $width: math.percentage(math.div($i, $columns));
+
+  .span-#{$i} {
+    flex: 0 0 auto;
+    width: $width;
+  }
+
+}
+
+.span-0 {
+  flex: 1 0 0%;
+}
+
+.span-auto {
+  flex: 0 0 auto;
+  width: auto;
+}
 
 
-// @for $i from 1 through $columns {
-//   $width: math.percentage(math.div($i, $columns));
-
-//   .span-#{$i} {
-//     flex: 0 0 auto;
-//     width: $width;
-//   }
-
-// }
-
-// .span-0 {
-//   flex: 1 0 0%;
-// }
-
-// .span-auto {
-//   flex: 0 0 auto;
-//   width: auto;
-// }
+/* --------------------- OFFSET - SASS MIXIN --------------------- */
 
 // @mixin cell-offset($size) {
   
@@ -165,6 +164,9 @@ $max-width: 144rem;
 //   }
   
 // }
+
+
+/* --------------------- OFFSET - CLASS FUNCTION --------------------- */
 
 // @each $breakpoint in map-keys($breakpoint-widths) {
 //   @include media-up($breakpoint) {
@@ -194,35 +196,28 @@ $max-width: 144rem;
 // }
 
 
-// @mixin cell-fixed {
-//   @include cell;
-//   @include cell-gutter;
-//   max-width: $max-width;
-//   margin-right: auto;
-//   margin-left: auto;
-// }
+/* --------------------- FIXED WIDTH --------------------- */
 
-// .cell-fixed {
-//   @include cell-fixed;
-// }
+@mixin cell-fixed {
+  @include cell;
+  @include cell-gutter;
+  max-width: $max-width;
+  margin-right: auto;
+  margin-left: auto;
+}
 
-// @mixin cell-fluid {
-//   @include cell;
-//   width: 100%;
-// }
+.cell-fixed {
+  @include cell-fixed;
+}
 
-// .cell-fluid {
-//   @include cell-fluid;
-// }
 
-// @mixin cell-inner {
-//   @include cell;
-//   @include cell-gutter;
-//   max-width: $max-inner-width;
-//   margin-right: auto;
-//   margin-left: auto;
-// }
+/* --------------------- FLUID WIDTH --------------------- */
 
-// .cell-inner {
-//   @include cell-inner;
-// }
+@mixin cell-fluid {
+  @include cell;
+  width: 100%;
+}
+
+.cell-fluid {
+  @include cell-fluid;
+}
