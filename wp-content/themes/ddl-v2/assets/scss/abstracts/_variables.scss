@@ -10,13 +10,15 @@ $theme-name: observatory;
   --grey-dark: #505050;
   --grey-light: #f6f6f6;
   --accent: #1171ae;
-  // --accent-dark: #00b0ad;
   --accent-light: #73aed3;
   --danger: #b81c23;
 
   /* --------- GLOBAL --------- */
 
-  --body-font: "itc-avant-garde-gothic-pro";
+  --body-font:  'Urbanist';
+
+  --body-bg: var(--black);
+  --main-bg: var(--white);
   
   --regular: 300;
   --medium: 500;

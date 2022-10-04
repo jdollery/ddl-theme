@@ -83,7 +83,7 @@ add_action( 'init', 'register_menus' );
 /*-----------------------------------------------------------------------------------*/
 
 function ddl_scripts() {
-  wp_enqueue_style( 'ddl-font', 'https://use.typekit.net/zmv1bfw.css', array(), '', false );
+  // wp_enqueue_style( 'ddl-font', 'https://use.typekit.net/zmv1bfw.css', array(), '', false );
   wp_enqueue_style( 'ddl-style', get_stylesheet_uri(), array(), '1.0.0', 'all' );
 	wp_enqueue_script( 'ddl-jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), '3.6.1', false );
 	wp_enqueue_script( 'ddl-script', get_template_directory_uri() . '/script.js', array(), '1.0.0', true );

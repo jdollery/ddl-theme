@@ -42,10 +42,10 @@ body {
   font-family: sans-serif; /* This is fallback font for old browsers */
   font-family: var(--body-font);
   line-height: 1.5;
-  letter-spacing: 0.1rem;
+  // letter-spacing: 0.1rem;
   font-weight: var(--regular);
   color: var(--black);
-  background: var(--grey-dark);
+  background: var(--body-bg);
   text-align: left;
   overflow-x: hidden;
   @include fluid-type(1.4rem, 1.6rem, 1.7rem);
