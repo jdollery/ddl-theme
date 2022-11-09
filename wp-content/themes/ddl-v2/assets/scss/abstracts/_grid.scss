@@ -5,6 +5,7 @@
 /*-----------------------------------------------------------------------------------*/
 
 $gutter: 2rem;
+$gutter-sm: 1rem;
 $columns: 12;
 $max-width: 144rem;
 
@@ -20,20 +21,35 @@ $max-width: 144rem;
   flex-wrap: wrap;
 }
 
+.cell-row {
+  @include cell-row;
+}
 
-/* --------- Row gutter x --------- */
 
-@mixin cell-row-gutter {
+/* --------------------- ROW GUTTERS --------------------- */
+
+/* --------- HOZ GUTTERS --------- */
+
+@mixin cell-row-gutter-x {
   margin-right: -$gutter;
   margin-left: -$gutter;
 }
 
-.cell-row-gutter {
-  @include cell-row-gutter;
+.cell-row-gutter-x {
+  @include cell-row-gutter-x;
+}
+
+@mixin cell-row-gutter-x-sm {
+  margin-right: -$gutter-sm;
+  margin-left: -$gutter-sm;
+}
+
+.cell-row-gutter-x-sm {
+  @include cell-row-gutter-x-sm;
 }
 
 
-/* --------- Row gutter y --------- */
+/* --------- VERT GUTTERS --------- */
 
 @mixin cell-row-gutter-y {
   margin-top: -$gutter;
@@ -42,6 +58,15 @@ $max-width: 144rem;
 
 .cell-row-gutter-y {
   @include cell-row-gutter-y;
+}
+
+@mixin cell-row-gutter-y-sm {
+  margin-top: -$gutter-sm;
+  margin-bottom: -$gutter-sm;
+}
+
+.cell-row-gutter-y {
+  @include cell-row-gutter-y-sm;
 }
 
 
@@ -57,19 +82,30 @@ $max-width: 144rem;
 }
 
 
-/* --------- Cell gutter x --------- */
+/* --------------------- CELL GUTTERS --------------------- */
 
-@mixin cell-gutter {
+/* --------- HOZ GUTTERS --------- */
+
+@mixin cell-gutter-x {
   padding-right: $gutter;
   padding-left: $gutter;
 }
 
-.cell-gutter {
-  @include cell-gutter;
+.cell-gutter-x {
+  @include cell-gutter-x;
+}
+
+@mixin cell-gutter-x-sm {
+  padding-right: $gutter-sm;
+  padding-left: $gutter-sm;
+}
+
+.cell-gutter-x-sm {
+  @include cell-gutter-x-sm;
 }
 
 
-/* --------- Cell gutter y --------- */
+/* --------- VERT GUTTERS --------- */
 
 @mixin cell-gutter-y {
   padding-top: $gutter;
@@ -80,8 +116,17 @@ $max-width: 144rem;
   @include cell-gutter-y;
 }
 
+@mixin cell-gutter-y-sm {
+  padding-top: $gutter-sm;
+  padding-bottom: $gutter-sm;
+}
 
-/* --------------------- SPANS - SASS MIXIN --------------------- */
+.cell-gutter-y-sm {
+  @include cell-gutter-y-sm;
+}
+
+
+/* --------------------- SPANS - MIXIN --------------------- */
 
 @mixin cell-span($size) {
   
@@ -103,7 +148,7 @@ $max-width: 144rem;
 }
 
 
-/* --------------------- SPANS - CLASS FUNCTION --------------------- */
+/* --------------------- SPANS - CLASS --------------------- */
 
 @each $breakpoint in map-keys($breakpoint-widths) {
   @include media-up($breakpoint) {
@@ -112,18 +157,18 @@ $max-width: 144rem;
     @for $i from 1 through $columns {
       $width: math.percentage(math.div($i, $columns));
 
-      .span#{$infix}-#{$i} {
+      .cell-span#{$infix}-#{$i} {
         flex: 0 0 auto;
         width: $width;
       }
 
     }
 
-    .span#{$infix}-0 {
+    .cell-span#{$infix}-0 {
       flex: 1 0 0%;
     }
 
-    .span#{$infix}-auto {
+    .cell-span#{$infix}-auto {
       flex: 0 0 auto;
       width: auto;
     }
@@ -135,24 +180,24 @@ $max-width: 144rem;
 @for $i from 1 through $columns {
   $width: math.percentage(math.div($i, $columns));
 
-  .span-#{$i} {
+  .cell-span-#{$i} {
     flex: 0 0 auto;
     width: $width;
   }
 
 }
 
-.span-0 {
+.cell-span-0 {
   flex: 1 0 0%;
 }
 
-.span-auto {
+.cell-span-auto {
   flex: 0 0 auto;
   width: auto;
 }
 
 
-/* --------------------- OFFSET - SASS MIXIN --------------------- */
+/* --------------------- OFFSET - MIXIN --------------------- */
 
 // @mixin cell-offset($size) {
   
@@ -166,7 +211,7 @@ $max-width: 144rem;
 // }
 
 
-/* --------------------- OFFSET - CLASS FUNCTION --------------------- */
+/* --------------------- OFFSET - CLASS --------------------- */
 
 // @each $breakpoint in map-keys($breakpoint-widths) {
 //   @include media-up($breakpoint) {
@@ -196,11 +241,11 @@ $max-width: 144rem;
 // }
 
 
-/* --------------------- FIXED WIDTH --------------------- */
+/* --------------------- FIXED CONTAINER --------------------- */
 
 @mixin cell-fixed {
   @include cell;
-  @include cell-gutter;
+  @include cell-gutter-x;
   max-width: $max-width;
   margin-right: auto;
   margin-left: auto;
@@ -211,7 +256,7 @@ $max-width: 144rem;
 }
 
 
-/* --------------------- FLUID WIDTH --------------------- */
+/* --------------------- FLUID CONTAINER --------------------- */
 
 @mixin cell-fluid {
   @include cell;

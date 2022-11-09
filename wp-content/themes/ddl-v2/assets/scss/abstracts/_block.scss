@@ -33,112 +33,130 @@ $block-breakpoint-desktop: xxl;
 
 }
 
-@mixin block-x {
-  padding-left: $block-padding-sm;
-  padding-right: $block-padding-sm;
+.block {
+  @include block;
+}
 
-  @include media-up($block-breakpoint-tablet) {
-    padding-left: $block-padding-md;
-    padding-right: $block-padding-md;
+@mixin direction($tag) {
+
+  @if $tag == 'y' {
+    padding-top: $block-padding-sm;
+    padding-bottom: $block-padding-sm;
+
+    @include media-up($block-breakpoint-tablet) {
+      padding-top: $block-padding-md;
+      padding-bottom: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      padding-top: $block-padding-lg;
+      padding-bottom: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      padding-top: $block-padding-xl;
+      padding-bottom: $block-padding-xl;
+    }
+
   }
 
-  @include media-up($block-breakpoint-laptop) {
-    padding-left: $block-padding-lg;
-    padding-right: $block-padding-lg;
+  @if $tag == 'x' {
+    padding-left: $block-padding-sm;
+    padding-right: $block-padding-sm;
+
+    @include media-up($block-breakpoint-tablet) {
+      padding-left: $block-padding-md;
+      padding-right: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      padding-left: $block-padding-lg;
+      padding-right: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      padding-left: $block-padding-xl;
+      padding-right: $block-padding-xl;
+    }
+
   }
 
-  @include media-up($block-breakpoint-desktop) {
-    padding-left: $block-padding-xl;
-    padding-right: $block-padding-xl;
+  @if $tag == 'top' {
+    padding-top: $block-padding-sm;
+
+    @include media-up($block-breakpoint-tablet) {
+      padding-top: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      padding-top: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      padding-top: $block-padding-xl;
+    }
+
+  }
+
+  @if $tag == 'bottom' {
+    padding-bottom: $block-padding-sm;
+
+    @include media-up($block-breakpoint-tablet) {
+      padding-bottom: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      padding-bottom: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      padding-bottom: $block-padding-xl;
+    }
+
+  }
+
+  @if $tag == 'left' {
+    padding-left: $block-padding-sm;
+
+    @include media-up($block-breakpoint-tablet) {
+      padding-left: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      padding-left: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      padding-left: $block-padding-xl;
+    }
+
+  }
+
+  @if $tag == 'right' {
+    padding-right: $block-padding-sm;
+
+    @include media-up($block-breakpoint-tablet) {
+      padding-right: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      padding-right: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      padding-right: $block-padding-xl;
+    }
+
   }
 
 }
 
-@mixin block-y {
-  padding-top: $block-padding-sm;
-  padding-bottom: $block-padding-sm;
+$tags: x, y, top, bottom, right, left;
 
-  @include media-up($block-breakpoint-tablet) {
-    padding-top: $block-padding-md;
-    padding-bottom: $block-padding-md;
-  }
+@each $tag in $tags {
 
-  @include media-up($block-breakpoint-laptop) {
-    padding-top: $block-padding-lg;
-    padding-bottom: $block-padding-lg;
-  }
-
-  @include media-up($block-breakpoint-desktop) {
-    padding-top: $block-padding-xl;
-    padding-bottom: $block-padding-xl;
-  }
-
-}
-
-@mixin block-top {
-  padding-top: $block-padding-sm;
-
-  @include media-up($block-breakpoint-tablet) {
-    padding-top: $block-padding-md;
-  }
-
-  @include media-up($block-breakpoint-laptop) {
-    padding-top: $block-padding-lg;
-  }
-
-  @include media-up($block-breakpoint-desktop) {
-    padding-top: $block-padding-xl;
-  }
-
-}
-
-@mixin block-bottom {
-  padding-bottom: $block-padding-lg;
-
-  @include media-up($block-breakpoint-tablet) {
-    padding-bottom: $block-padding-md;
-  }
-
-  @include media-up($block-breakpoint-laptop) {
-    padding-bottom: $block-padding-lg;
-  }
-
-  @include media-up($block-breakpoint-desktop) {
-    padding-bottom: $block-padding-xl;
-  }
-
-}
-
-@mixin block-left {
-  padding-left: $block-padding-lg;
-
-  @include media-up($block-breakpoint-tablet) {
-    padding-left: $block-padding-md;
-  }
-
-  @include media-up($block-breakpoint-laptop) {
-    padding-left: $block-padding-lg;
-  }
-
-  @include media-up($block-breakpoint-desktop) {
-    padding-left: $block-padding-xl;
-  }
-
-}
-
-@mixin block-right {
-  padding-right: $block-padding-lg;
-
-  @include media-up($block-breakpoint-tablet) {
-    padding-right: $block-padding-md;
-  }
-
-  @include media-up($block-breakpoint-laptop) {
-    padding-right: $block-padding-lg;
-  }
-
-  @include media-up($block-breakpoint-desktop) {
-    padding-right: $block-padding-xl;
+  .block-#{$tag} {
+    @include direction($tag);
   }
 
 }

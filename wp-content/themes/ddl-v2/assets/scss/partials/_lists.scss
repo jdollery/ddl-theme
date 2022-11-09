@@ -110,7 +110,7 @@ $list-bullet-color:       var(--accent);
   flex-wrap: wrap;
   padding: 0;
   @include cell-row;
-  @include cell-row-gutter;
+  @include cell-row-gutter-x;
   justify-content: center;
   margin-top: $paragraph-margin-top-sm;
   margin-bottom: $paragraph-margin-bottom-sm;

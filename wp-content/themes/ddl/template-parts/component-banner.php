@@ -40,7 +40,7 @@ if ( has_post_thumbnail() ) { ?>
 
   <div class="cell-fixed">
     <div class="cell-row">
-      <div class="cell cell-gutter span-lg-6 span-xl-3 bg-green">
+      <div class="cell cell-gutter-x span-lg-6 span-xl-3 bg-green">
 
         <?php if ( is_front_page() && is_home() ) { //home/blog ?>
 
