@@ -105,13 +105,20 @@ $max-width: 1440px;
 
 @mixin cell-fixed {
   @include cell;
-  @include cell-gutter;
   width: $max-width;
   margin-right: auto;
   margin-left: auto;
 }
 
+.cell-fixed {
+  @include cell-fixed;
+}
+
 @mixin cell-fluid {
   @include cell;
-  @include cell-gutter;
+  width: 100%;
+}
+
+.cell-fluid {
+  @include cell-fluid;
 }

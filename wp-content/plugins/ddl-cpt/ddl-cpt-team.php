@@ -34,7 +34,7 @@ function create_team() {
     'hierarchical'				=> false,
     //'rewrite'						=> array( 'slug' => 'styling' ),
     'menu_icon'						=> 'dashicons-groups',
-    'supports'						=> array( 'title', 'editor', 'thumbnail'),
+    'supports'						=> array( 'title', 'editor', 'thumbnail', 'revisions'),
     'show_in_rest'				=> false // true enables Gutenberg
   );
 

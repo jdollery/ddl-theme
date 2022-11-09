@@ -34,7 +34,7 @@ function create_treatments() {
     'hierarchical'				=> true,
     //'rewrite'						=> array( 'slug' => 'styling' ),
     'menu_icon'						=> 'dashicons-clipboard',
-    'supports'						=> array( 'title', 'editor', 'thumbnail', 'page-attributes', 'excerpt'),
+    'supports'						=> array( 'title', 'editor', 'thumbnail', 'page-attributes', 'excerpt', 'revisions'),
     'show_in_rest'				=> false // true enables Gutenberg
   );
 

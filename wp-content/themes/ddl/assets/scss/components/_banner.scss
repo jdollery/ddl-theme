@@ -3,25 +3,6 @@
   background-repeat: no-repeat;
   background-position: center;
   background-color: $color-grey-dark;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  @include block-y;
-
-  &__outer {
-    @include cell-fixed;
-  }
-
-  &__row {
-    @include cell-row;
-    @include cell-row-gutter;
-  }
-
-  &__one {
-    @include cell;
-    @include cell-gutter;
-    // @include cell-span(12);
-  }
 
   &__title {
     color: $color-white;

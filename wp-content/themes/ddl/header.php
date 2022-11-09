@@ -21,7 +21,7 @@
   <body <?php body_class(); ?> >
 
     <header class="header" id="mainHeader">
-      <div class="header__outer">
+      <div class="cell-fixed">
         <div class="header__row">
           <div class="header__one">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" title="Back to the home page">

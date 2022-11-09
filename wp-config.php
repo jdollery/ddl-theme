@@ -88,3 +88,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
+
+/** Disable/Enable Theme editor */
+define( 'DISALLOW_FILE_EDIT', true );
+
+/** Disable/Enable Plugin Upload */
+define( 'DISALLOW_FILE_MODS', false );
+
+/** Enable Revisions */
+define( 'WP_POST_REVISIONS', true);
+define( 'WP_PAGE_REVISIONS', true);
