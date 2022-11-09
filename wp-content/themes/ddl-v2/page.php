@@ -4,12 +4,13 @@
 
 <?php get_template_part('inc/banner'); ?>
 
-<article class="content">
-  <div class="cell-fluid cell-gutter-x">
+<article class="content block">
+  <div class="cell-fluid">
     <div class="cell-row cell-row-gutter-x">
       <div class="cell cell-gutter-x cell-gutter-y cell-span-12">
         <h1><?php the_title(); ?></h1>
         <?php the_content(); ?>
+        <a href="/" class="button button--black button--body">Test</a>
       </div>
     </div>
   </div>

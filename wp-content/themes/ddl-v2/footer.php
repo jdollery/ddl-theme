@@ -14,7 +14,7 @@
 
     </footer>
 
-    <?php edit_post_link( __( 'Edit', 'textdomain' ), null, null, null, 'button--edit' ); ?>
+    <?php edit_post_link( __( 'Edit', 'textdomain' ), null, null, null, 'button button--edit' ); ?>
 
     <?php wp_footer(); ?>
 

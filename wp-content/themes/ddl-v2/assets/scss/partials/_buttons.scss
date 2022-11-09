@@ -28,7 +28,20 @@ $button-padding: 1.6rem 3rem 1.2rem;
     padding: 2rem 2.5rem 1.5rem;
   }
 
-  &--blue {
+  &--black {
+    color: var(--white);
+    background: var(--black);
+    border-color: var(--black);
+
+    @include hover-focus {
+      color: var(--black);
+      background: transparent;
+      border-color: var(--black);
+    }
+
+  }
+
+  &--accent {
     color: var(--white);
     background: var(--accent);
     border-color: var(--accent);

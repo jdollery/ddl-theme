@@ -1,4 +1,4 @@
-$theme-name: observatory;
+$theme-name: ddl-v2;
 
 :root {
 
@@ -25,3 +25,16 @@ $theme-name: observatory;
   --bold: 700;
 
 }
+
+
+/* --------- MAPS --------- */
+
+$colors: (
+  "grey": var(--grey),
+  "grey-light": var(--grey-light),
+  "grey-dark": var(--grey-dark),
+  "accent": var(--accent),
+  "accent-light": var(--accent-light),
+  "white": var(--white),
+  "black": var(--black)
+);

@@ -118,10 +118,6 @@ small {
   font-size: 80%;
 }
 
-a {
-  background-color: transparent
-}
-
 a:active, 
 a:hover {
   outline-width: 0
@@ -269,6 +265,15 @@ address {
   font-style: normal;
 }
 
+ul {
+  list-style: disc;
+}
+
+ul,
+ol {
+  list-style-position: inside;
+}
+
 ol ol,
 ul ul,
 ol ul,
@@ -342,29 +347,19 @@ img {
   color: var(--white);
 }
 
-a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: var(--regular);
-  background-color: transparent;
-  -webkit-text-decoration-skip: objects;
-  transition: all 0.3s ease-out;
-
-  @include hover {
-    color: var(--accent-light);
-    text-decoration: none;
-    outline: 0;
-  }
-
-}
-
+a,
 a:not([href]):not([tabindex]) {
   color: inherit;
   text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
 
   @include hover-focus {
     color: inherit;
     text-decoration: none;
+    outline: 0;
+    outline-width: 0;
+    background-color: transparent;
   }
 
   &:focus {
