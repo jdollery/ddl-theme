@@ -150,7 +150,6 @@ select {
 
   &:placeholder-shown:not(:focus) + label {
     left: 3rem;
-    
     color: var(--color-one);
     opacity: 1;
     font-weight: var(--regular);
@@ -162,24 +161,29 @@ select {
 
   }
 
-  &:not(textarea) {
+}
 
-    &:placeholder-shown:not(:focus) + label {
-      top: 50%;
-      @include transform (translateY(-50%));
-    }
+input[type=text],
+input[type=number],
+input[type=email],
+input[type=phone],
+textarea,
+select {
 
+  &:placeholder-shown:not(:focus) + label {
+    top: 50%;
+    @include transform (translateY(-50%));
   }
 
 }
 
 textarea {
-    
+
   &:placeholder-shown:not(:focus) + label {
-    top: 0.2rem;
+    top: 2.7rem;
   }
 
-} 
+}
 
 
 /* --------- CHECKBOX & RADIO --------- */
