@@ -19,20 +19,20 @@ $input-border-width: 0.1rem;
 $input-border-style: solid;
 $input-border-color: var(--grey);
 $input-border-radius: 0;
-$input-padding-sm: 1.6rem 2rem 1.3rem;
-$input-padding-lg: 1.8rem 2rem 1.5rem;
+$input-padding-sm: 2.5rem 2rem 1rem;
+$input-padding-lg: 2.5rem 2rem 1rem;
 
-$checkboxradio-width-lg:         2.5rem;
-$checkboxradio-height-lg:        2.5rem;
-$checkboxradio-width-sm:         2.5rem;
-$checkboxradio-height-sm:        2.5rem;
+$checkboxradio-width-lg:    2.5rem;
+$checkboxradio-height-lg:   2.5rem;
+$checkboxradio-width-sm:    2.5rem;
+$checkboxradio-height-sm:   2.5rem;
 
 
 /*-----------------------------------------------------------------------------------*/
 /* STYLING */
 /*-----------------------------------------------------------------------------------*/
 
-form {
+.form {
   margin-top: $form-margin-top-sm;
   margin-bottom: $form-margin-bottom-sm;
 
@@ -47,6 +47,14 @@ form {
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  &__input {
+    position: relative;
+    // display: flex;
+    // flex-wrap: wrap;
+    // width: 100%;
+    margin-bottom: $gutter;
   }
 
 }
@@ -149,14 +157,14 @@ select {
   }
 
   &:placeholder-shown:not(:focus) + label {
-    left: 3rem;
+    left: 2rem;
     color: var(--color-one);
     opacity: 1;
     font-weight: var(--regular);
     @include input-font-size;
 
     @include media-up(xxl) {
-      left: 3rem;
+      left: 2rem;
     }
 
   }
