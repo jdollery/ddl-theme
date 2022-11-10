@@ -235,43 +235,6 @@ remove_filter ('acf_the_content', 'wpautop');
 add_filter( 'the_content', 'shortcode_unautop', 100 );
 add_filter( 'acf_the_content', 'shortcode_unautop', 100 );
 
-// remove_filter('acf_the_content', 'wpautop');
-
-// function shortcode_empty_paragraph_fix( $content ) {
-
-// 	// define your shortcodes to filter, '' filters all shortcodes
-// 	$shortcodes = array( 'feature-list' ); //define shortcodes used in ddl-extensions/ddl-extensions.php
-
-// 	foreach ( $shortcodes as $shortcode ) {
-
-// 			$array = array (
-// 					'<p>[' . $shortcode => '[' .$shortcode,
-// 					'<p>[/' . $shortcode => '[/' .$shortcode,
-// 					$shortcode . ']</p>' => $shortcode . ']',
-// 					$shortcode . ']<br />' => $shortcode . ']'
-// 			);
-
-// 			$content = strtr( $content, $array );
-// 	}
-
-// 	return $content;
-// }
-
-// add_filter( 'the_content', 'shortcode_empty_paragraph_fix' );
-
-
-// function my_acf_load_value( $value, $post_id, $field ) {
-
-// 	$content = apply_filters('the_content',$value);
-// 	$content = force_balance_tags( $content );
-// 	$content = preg_replace( '#<p>\s*+(<br\s*/*>)?\s*</p>#i', '', $content );
-// 	$content = preg_replace( '~\s?<p>(\s| )+</p>\s?~', '', $content );
-
-// 	return $content;
-//  }
-
-//  add_filter('acf/load_value/type=wysiwyg', 'my_acf_load_value', 10, 3);
-
 
 /* --------------------- Stop img, script and iframe being wrapped in p tag  --------------------- */
 
@@ -280,6 +243,7 @@ function remove_some_ptags( $content ) {
 	$content = preg_replace('/<p>\s*(<script.*>*.<\/script>)\s*<\/p>/iU', '\1', $content);
 	$content = preg_replace('/<p>\s*(<iframe.*>*.<\/iframe>)\s*<\/p>/iU', '\1', $content);
 	$content = preg_replace('/<p>\s*(<video.*>*.<\/video>)\s*<\/p>/iU', '\1', $content);
+	$content = preg_replace('/<p>\s*(<img.*>*.<\/img>)\s*<\/p>/iU', '\1', $content);
 	return $content;
 }
 
@@ -291,6 +255,7 @@ function remove_acf_some_ptags( $content ) {
 	$content = preg_replace('/<p>\s*(<script.*>*.<\/script>)\s*<\/p>/iU', '\1', $content);
 	$content = preg_replace('/<p>\s*(<iframe.*>*.<\/iframe>)\s*<\/p>/iU', '\1', $content);
 	$content = preg_replace('/<p>\s*(<video.*>*.<\/video>)\s*<\/p>/iU', '\1', $content);
+	$content = preg_replace('/<p>\s*(<img.*>*.<\/img>)\s*<\/p>/iU', '\1', $content);
 	return $content;
 }
 

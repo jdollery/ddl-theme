@@ -1,0 +1,68 @@
+/*-----------------------------------------------------------------------------------*/
+/* VARIABLES */
+/*-----------------------------------------------------------------------------------*/
+
+$image-margin-top-lg:      4rem;
+$image-margin-bottom-lg:   4rem;
+$image-margin-top-sm:      2rem;
+$image-margin-bottom-sm:   2rem;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLING */
+/*-----------------------------------------------------------------------------------*/
+
+img {
+  display: block;
+  margin-top: $image-margin-top-sm;
+  margin-bottom: $image-margin-bottom-sm;
+
+  @include media-up(md) {
+    margin-top: $image-margin-top-lg;
+    margin-bottom: $image-margin-bottom-lg;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+}
+
+@mixin img-object-fit {
+  @include object-fit (cover);
+  @include object-position (center);
+  width: 100%;
+  height: 100%;
+}
+
+.img {
+
+  &--fluid {
+    width: 100%;
+  }
+
+  &--object-fit {
+    @include img-object-fit;
+  }
+
+}
+
+// .size {
+
+//   &-medium {
+//     max-width: 30rem;
+//   }
+
+// }
+
+// .align {
+
+//   &right {
+//     float: right;
+//   }
+
+// }

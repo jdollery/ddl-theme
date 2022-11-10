@@ -20,12 +20,20 @@ $button-padding: 1.6rem 3rem 1.2rem;
   &--edit {
     display: block;
     color: var(--white);
-    background: var(--black);
+    background: var(--grey-dark);
+    border-color: var(--grey-dark);
     position: fixed;
     bottom: 0;
     left: 0;
     z-index: 9999;
     padding: 2rem 2.5rem 1.5rem;
+
+    @include hover-focus {
+      color: var(--grey-dark);
+      background: var(--white);
+      border-color: var(--grey-dark);
+    }
+
   }
 
   &--black {

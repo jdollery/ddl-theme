@@ -1,8 +1,6 @@
 /*-----------------------------------------------------------------------------------*/
-/* GLOBAL UTILITYS */
+/* BLOCK */
 /*-----------------------------------------------------------------------------------*/
-
-/* --------------------- BLOCK --------------------- */
 
 $block-padding-sm: 2rem;
 $block-padding-md: 4rem;
@@ -160,7 +158,9 @@ $tags: x, y, top, bottom, right, left;
 }
 
 
-/* --------------------- TYPOGRATHY --------------------- */
+/*-----------------------------------------------------------------------------------*/
+/* FONT SIZE */
+/*-----------------------------------------------------------------------------------*/
 
 @mixin fluid-type(
   $sm-font-size: $body-size-sm,
@@ -183,30 +183,9 @@ $tags: x, y, top, bottom, right, left;
 }
 
 
-/* --------------------- PLACEHOLDER --------------------- */
-
-@mixin placeholder {
-
-  ::-webkit-input-placeholder {
-    @content;
-  }
-
-  ::-moz-placeholder {
-    @content;
-  }
-
-  :-ms-input-placeholder {
-    @content;
-  }
-
-  :-moz-placeholder {
-    @content;
-  }
-
-}
-
-
-/* --------------------- BACKGROUND COLOUR --------------------- */
+/*-----------------------------------------------------------------------------------*/
+/* BACKGROUND COLOUR */
+/*-----------------------------------------------------------------------------------*/
 
 @each $name, $color in $colors {
   .bg-#{$name} {
@@ -215,7 +194,9 @@ $tags: x, y, top, bottom, right, left;
 }
 
 
-/* --------------------- MARGIN AND PADDING --------------------- */
+/*-----------------------------------------------------------------------------------*/
+/* MARGIN AND PADDING */
+/*-----------------------------------------------------------------------------------*/
 
 $spacer: 1rem !default;
 $spacers: () !default;
@@ -333,8 +314,15 @@ $spacers: map-merge(
 
 }
 
+.mx-auto {
+  margin-right: auto!important;
+  margin-left: auto!important;
+}
 
-/* --------------------- TEXT ALIGN --------------------- */
+
+/*-----------------------------------------------------------------------------------*/
+/* TEXT ALIGN */
+/*-----------------------------------------------------------------------------------*/
 
 .text-center { text-align: center !important; }
 .text-right  { text-align: right !important; }
@@ -348,6 +336,69 @@ $spacers: map-merge(
     .text#{$infix}-left   { text-align: left !important; }
     .text#{$infix}-right  { text-align: right !important; }
     .text#{$infix}-center { text-align: center !important; }
+  }
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* HIDDEN */
+/*-----------------------------------------------------------------------------------*/
+
+@mixin hidden($breakpoints: $breakpoint-widths) {
+  @each $breakpoint in $breakpoints {
+    @include media-up ($breakpoint) {
+      display: none !important;
+    }
+  }
+}
+
+
+@mixin visible($breakpoints: $breakpoint-widths) {
+  @each $breakpoint in $breakpoints {
+    @include media-down ($breakpoint) {
+      display: none !important;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+
+  &-xs {
+    @include hidden(md);
+  }
+
+  &-sm {
+    @include hidden(md);
+  }
+
+  &-md {
+    @include hidden(md);
+  }
+
+  &-lg {
+    @include hidden(lg);
+  }
+
+}
+
+.visible {
+
+  &-xs {
+    @include visible(md);
+  }
+
+  &-sm {
+    @include visible(md);
+  }
+
+  &-md {
+    @include visible(md);
+  }
+
+  &-lg {
+    @include visible(lg);
   }
 
 }
