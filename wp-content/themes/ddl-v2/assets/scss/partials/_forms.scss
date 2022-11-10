@@ -1,14 +1,55 @@
-$input-font-size: 1.5rem;
+/*-----------------------------------------------------------------------------------*/
+/* VARIABLES */
+/*-----------------------------------------------------------------------------------*/
+
+$form-margin-top-lg:      $margin-top-lg;
+$form-margin-bottom-lg:   $margin-bottom-lg;
+$form-margin-top-sm:      $margin-top-sm;
+$form-margin-bottom-sm:   $margin-bottom-sm;
+
+@mixin input-font-size {
+  @include fluid-type(1.4rem, 1.6rem, 1.7rem);
+}
+
 $input-font-weight: var(--medium);
 $input-line-height: 1.4;
 $input-color: var(--black);
 $input-background: var(--grey-light);
-$input-border-width: 0 0 0.3rem 0;
+$input-border-width: 0.1rem;
 $input-border-style: solid;
-$input-border-color: var(--accent);
+$input-border-color: var(--grey);
+$input-border-radius: 0;
 $input-padding-sm: 1.6rem 2rem 1.3rem;
 $input-padding-lg: 1.8rem 2rem 1.5rem;
 
+$checkboxradio-width-lg:         2.5rem;
+$checkboxradio-height-lg:        2.5rem;
+$checkboxradio-width-sm:         2.5rem;
+$checkboxradio-height-sm:        2.5rem;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLING */
+/*-----------------------------------------------------------------------------------*/
+
+form {
+  margin-top: $form-margin-top-sm;
+  margin-bottom: $form-margin-bottom-sm;
+
+  @include media-up(md) {
+    margin-top: $form-margin-top-lg;
+    margin-bottom: $form-margin-bottom-lg;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+}
 
 // label {
 //   font-size: 1.6rem;
@@ -21,7 +62,7 @@ textarea {
     display: block;
     width: 100%;
     padding: $input-padding-sm;
-    // font-size: $input-font-size;
+    @include input-font-size;
     font-weight: $input-font-weight;
     line-height: $input-line-height;
     color: $input-color;
@@ -30,6 +71,7 @@ textarea {
     border-width: $input-border-width;
     border-style: solid;
     border-color: $input-border-color;
+    border-radius: $input-border-radius;
     transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
     @include media-up(xl) {
@@ -40,7 +82,6 @@ textarea {
 
 }
 
-
 textarea {
   min-height: 18rem;
   height: 100%;
@@ -48,12 +89,179 @@ textarea {
   resize: vertical;
 }
 
-@include placeholder {
-  color: #878787;
+// @include placeholder {
+//   color: #878787;
+//   font-weight: var(--regular);
+// }
+
+
+/* --------- FOCUS FLOATING LABLES --------- */
+
+label, .label {
+  display: block;
+  font-size: 1.1rem;
   font-weight: var(--regular);
+  position: absolute;
+  top: 0.4rem;
+  left: 0.8rem;
+  opacity: 0.6;
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+
+  @include media-up(xxl) {
+    top: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  &--sm {
+    position: relative;
+    top: 0;
+    left: 0;
+    @include cell-span(0);
+    font-size: 1rem;
+
+    @include media-up(md) {
+      font-size: 1.2rem;
+    }
+
+  }
+
 }
 
-/* --------------------- Remove arrows form numner input --------------------- */
+input[type=text],
+input[type=number],
+input[type=email],
+input[type=phone],
+textarea,
+select {
+
+  &::placeholder {
+    opacity: 1;
+    transition: all .2s;
+  }
+
+  &:placeholder-shown:not(:focus) {
+    background-color: $input-background;
+  }
+
+  &:placeholder-shown:not(:focus)::placeholder {
+    opacity: 0;
+  }
+
+  &:placeholder-shown:not(:focus) + label {
+    left: 3rem;
+    
+    color: var(--color-one);
+    opacity: 1;
+    font-weight: var(--regular);
+    @include input-font-size;
+
+    @include media-up(xxl) {
+      left: 3rem;
+    }
+
+  }
+
+  &:not(textarea) {
+
+    &:placeholder-shown:not(:focus) + label {
+      top: 50%;
+      @include transform (translateY(-50%));
+    }
+
+  }
+
+}
+
+textarea {
+    
+  &:placeholder-shown:not(:focus) + label {
+    top: 0.2rem;
+  }
+
+} 
+
+
+/* --------- CHECKBOX & RADIO --------- */
+
+input[type=checkbox],
+input[type=radio] {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  height: 2.3rem;
+  width: 2.3rem;
+  display: inline-block;
+  vertical-align: text-bottom;
+  margin-right: 1rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+input[type=checkbox]::after,
+input[type=radio]::after {
+  position: relative;
+  content: "";
+  display: block;
+  background-color: $input-background;
+  background-clip: padding-box;
+  border-width: $input-border-width;
+  border-style: solid;
+  border-color: $input-border-color;
+  border-radius: $input-border-radius;
+  transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  height: 2.3rem;
+  width: 2.3rem;
+}
+
+input[type=checkbox]::before,
+input[type=radio]::before {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  content: url("data:image/svg+xml,%3Csvg version='1.1' focusable='false' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 512 512' style='enable-background:new 0 0 512 512;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23444444;%7D%0A%3C/style%3E%3Cpath class='st0' d='M173.9,439.4L7.5,273c-10-10-10-26.2,0-36.2l36.2-36.2c10-10,26.2-10,36.2,0L192,312.7L432.1,72.6 c10-10,26.2-10,36.2,0l36.2,36.2c10,10,10,26.2,0,36.2L210.1,439.4C200.1,449.4,183.9,449.4,173.9,439.4L173.9,439.4z'/%3E%3C/svg%3E");
+  display: block;
+  height: 1.4rem;
+  width: 1.4rem;
+  color: transparent;
+  z-index: 1;
+  opacity: 0;
+
+  @include media-up(lg) {
+    top: 0.2rem;
+  }
+
+}
+
+input[type=checkbox]:focus, 
+input[type=radio]:focus {
+  outline: 0;
+  outline-offset: 0;
+}
+
+input[type=checkbox]:checked::before,
+input[type=radio]:checked::before {
+  opacity: 1;
+}
+
+input[type=checkbox] + label,
+input[type=radio] + label { 
+  @include input-font-size;
+  position: relative;
+  left: 0;
+  top: 0;
+  opacity: 1;
+  z-index: 0;
+  display: inline;
+}
+
+
+/* --------------------- REMOVE BROWSER INPUT STYLING --------------------- */
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
