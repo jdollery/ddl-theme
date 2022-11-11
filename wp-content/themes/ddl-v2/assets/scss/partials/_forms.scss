@@ -51,17 +51,10 @@ $checkboxradio-height-sm:   2.5rem;
 
   &__input {
     position: relative;
-    // display: flex;
-    // flex-wrap: wrap;
-    // width: 100%;
     margin-bottom: $gutter;
   }
 
 }
-
-// label {
-//   font-size: 1.6rem;
-// }
 
 input,
 textarea {
@@ -97,13 +90,8 @@ textarea {
   resize: vertical;
 }
 
-// @include placeholder {
-//   color: #878787;
-//   font-weight: var(--regular);
-// }
 
-
-/* --------- FOCUS FLOATING LABLES --------- */
+/* --------------------- FOCUS FLOATING LABLES --------------------- */
 
 label, .label {
   display: block;
@@ -194,7 +182,7 @@ textarea {
 }
 
 
-/* --------- CHECKBOX & RADIO --------- */
+/* --------------------- CHECKBOX & RADIO --------------------- */
 
 input[type=checkbox],
 input[type=radio] {
@@ -273,6 +261,87 @@ input[type=radio] + label {
 }
 
 
+/* --------------------- FILE UPLOAD --------------------- */
+
+.form__input--upload {
+
+  .upload {
+    width: 0.01rem;
+    height: 0.01rem;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  
+    & + label {
+  
+      * {
+        pointer-events: none;
+      }
+  
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      cursor: pointer;
+      display: block;
+      overflow: hidden;
+      font-weight: $input-font-weight;
+      line-height: $input-line-height;
+      color: $input-color;
+      background-color: $input-background;
+      background-clip: padding-box;
+      border-width: $input-border-width;
+      border-style: $input-border-style;
+      border-color: $input-border-color;
+      border-radius: $input-border-radius;
+      transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+  
+      .upload__file {
+        @include cell-span(0);
+        min-height: 0.1rem;
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: left;
+        @include input-font-size;
+        padding: 1.8rem 2rem 1.6rem 2rem;
+      }
+  
+      .upload__button {
+        @include cell-span(auto);
+        display: flex;
+        align-items: center;
+        padding: 2rem 4rem 1.6rem 4rem;
+        letter-spacing: 0;
+        @include input-font-size;
+        font-weight: var(--medium);
+        line-height: 1.3;
+        transition: all 0.3s ease-out;
+        border-radius: 0;
+        color: var(--white);
+        background: var(--black);
+
+        @include hover-focus {
+          color: var(--white);
+          background: var(--black);
+        }
+
+      }
+  
+    }
+  
+  }
+
+}
+
+
 /* --------------------- REMOVE BROWSER INPUT STYLING --------------------- */
 
 /* Chrome, Safari, Edge, Opera */
@@ -285,4 +354,52 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+
+/* --------------------- VALIDATION --------------------- */
+
+input[type=text],
+input[type=number],
+input[type=email],
+input[type=phone],
+textarea,
+select,
+.select2-container {
+
+  &.error {
+    border-color: var(--danger);
+    margin-bottom: 3.5rem;
+
+    .select2-selection--single {
+      border-color: var(--danger);
+    }
+
+  }
+
+}
+
+strong.error {
+  display: block;
+  font-size: 1.3rem;
+  color: var(--white);
+  background: var(--danger);
+  font-weight: var(--regular);
+  position: absolute;
+  left: 0;
+  top: 5.8rem;
+  z-index: 1;
+  left: 0;
+  width: 100%;
+  padding: 0.3rem 0.8rem;
+  text-align: left;
+
+  &::before {
+    display: inline-block;
+    // font-family: $font-fontawesome;
+    font-weight: 900;
+    content: "\f071";
+    margin-right: 0.8rem;
+  }
+
 }
