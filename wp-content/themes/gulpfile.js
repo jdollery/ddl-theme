@@ -16,10 +16,10 @@ const paths = {
   scripts: {
     src: [
       // './ddl-v2/assets/js/navigation.js',
-      './ddl/assets/js/select2.js',
+      // './ddl/assets/js/select2.js',
       // './ddl-v2/assets/js/slick.js',
       // './ddl/assets/js/wow.js',
-      './ddl/assets/js/validate.js',
+      // './ddl/assets/js/validate.js',
       './ddl-v2/assets/js/script.js'
     ],
     dest: './ddl-v2'

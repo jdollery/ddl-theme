@@ -311,14 +311,14 @@ input[type=radio] + label {
         overflow: hidden;
         text-align: left;
         @include input-font-size;
-        padding: 1.8rem 2rem 1.6rem 2rem;
+        padding: 1.8rem 2rem;
       }
   
       .upload__button {
         @include cell-span(auto);
         display: flex;
         align-items: center;
-        padding: 2rem 4rem 1.6rem 4rem;
+        padding: 1.8rem 4rem;
         letter-spacing: 0;
         @include input-font-size;
         font-weight: var(--medium);
@@ -396,10 +396,11 @@ strong.error {
 
   &::before {
     display: inline-block;
-    // font-family: $font-fontawesome;
-    font-weight: 900;
-    content: "\f071";
+    content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 512 512' style='enable-background:new 0 0 512 512;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23ffffff;%7D%0A%3C/style%3E%3Cpath class='st0' d='M256,32c14.2,0,27.3,7.5,34.5,19.8l216,368c7.3,12.4,7.3,27.7,0.2,40.1S486.3,480,472,480H40 c-14.3,0-27.6-7.7-34.7-20.1s-7-27.8,0.2-40.1l216-368C228.7,39.5,241.8,32,256,32z M256,160c-13.3,0-24,10.7-24,24v112 c0,13.3,10.7,24,24,24c13.3,0,24-10.7,24-24V184C280,170.7,269.3,160,256,160z M288,384c0-17.7-14.3-32-32-32s-32,14.3-32,32 s14.3,32,32,32S288,401.7,288,384z'/%3E%3C/svg%3E%0A");
     margin-right: 0.8rem;
+    height: 1.4rem;
+    width: 1.4rem;
+    vertical-align: middle;
   }
 
 }
