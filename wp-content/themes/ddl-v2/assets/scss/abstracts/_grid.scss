@@ -150,6 +150,26 @@ $max-width: 144rem;
 
 /* --------------------- SPANS - CLASS --------------------- */
 
+@for $i from 1 through $columns {
+  $width: math.percentage(math.div($i, $columns));
+
+  .cell-span-#{$i} {
+    flex: 0 0 auto;
+    width: $width;
+  }
+
+}
+
+.cell-span-0 {
+  flex: 1 0 0%;
+}
+
+.cell-span-auto {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+
 @each $breakpoint in map-keys($breakpoint-widths) {
   @include media-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
@@ -175,25 +195,6 @@ $max-width: 144rem;
 
   }
 
-}
-
-@for $i from 1 through $columns {
-  $width: math.percentage(math.div($i, $columns));
-
-  .cell-span-#{$i} {
-    flex: 0 0 auto;
-    width: $width;
-  }
-
-}
-
-.cell-span-0 {
-  flex: 1 0 0%;
-}
-
-.cell-span-auto {
-  flex: 0 0 auto;
-  width: auto;
 }
 
 

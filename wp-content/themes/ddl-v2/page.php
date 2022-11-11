@@ -267,7 +267,7 @@
                 </div>
               </div>
 
-              <div class="cell cell-gutter-x-sm cell-span-auto pt-3 pt-lg-0">
+              <div class="cell cell-gutter-x-sm cell-span-12 cell-span-lg-auto pt-3 pt-lg-0">
                 <button class="button button--black" type="submit">Submit referral</button>
               </div>
 
