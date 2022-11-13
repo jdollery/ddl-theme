@@ -45,12 +45,12 @@ jQuery(document).ready(function () { //doc ready start
   /*-----------------------------------------------------------------------------------*/
 
   jQuery("#dropItem > dt").on("click", function() {
-    if (jQuery(this).hasClass("active")) {
-      jQuery(this).removeClass("active");
+    if (jQuery(this).hasClass("open")) {
+      jQuery(this).removeClass("open");
       jQuery(this).siblings("dd").slideUp(200);
     } else {
-      jQuery("#dropItem > dt").removeClass("active");
-      jQuery(this).addClass("active");
+      jQuery("#dropItem > dt").removeClass("open");
+      jQuery(this).addClass("open");
       jQuery("dd").slideUp(200);
       jQuery(this).siblings("dd").slideDown(200);
     }
@@ -114,6 +114,43 @@ jQuery(document).ready(function () { //doc ready start
 
 
 }); //doc ready end
+
+
+/*-----------------------------------------------------------------------------------*/
+/* ACCORDION */
+/*-----------------------------------------------------------------------------------*/
+
+// var headers = document.querySelectorAll('#dropItem > dt');
+
+// for(var i = 0; i < headers.length; i++) {
+// 	headers[i].addEventListener('click', openCurrAccordion);
+// }
+
+// //Use this as the callback if you would like multiple dropdowns to be open
+// function openAccordion(e) {
+// 	var parent = this.parentElement;
+	
+// 	if (!parent.classList.contains('open')) {
+// 		parent.classList.add('open');
+// 	}
+// 	else {
+// 		parent.classList.remove('open');
+// 	}
+// }
+
+// //Use this as the callback if you would like no more than one dropdown to be open
+// function openCurrAccordion(e) {
+// 	for(var i = 0; i < headers.length; i++) {
+// 		var parent = headers[i].parentElement;
+
+// 		if (this === headers[i] && !parent.classList.contains('open')) {
+// 			parent.classList.add('open');
+// 		}
+// 		else {
+// 			parent.classList.remove('open');
+// 		}
+// 	}
+// }
 
 
 /*-----------------------------------------------------------------------------------*/

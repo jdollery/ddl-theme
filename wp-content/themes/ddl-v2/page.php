@@ -124,7 +124,8 @@
                   <select 
                     id="referral_type" 
                     name="referral_type" 
-                    data-placeholder="Choose a referral type"  
+                    data-placeholder="Choose a referral type" 
+                    required
                     >
                     <option></option>
                     <option label="Implant referral" value="Implant referral">Implant referral</option>
@@ -282,6 +283,108 @@
           <input name="not_ok_url" type="hidden" id="not_ok_url" value="<?php echo site_url() ?>/sorry/"> -->
 
         </form>
+
+        <table class="table-responsive ">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Private Price</th>
+              <th>Membership Plan Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-title="">New Patient Consultation</td>
+              <td data-title="Private Price">£150.00</td>
+              <td data-title="Membership Plan Price">N/A</td>
+            </tr>
+            <tr>
+              <td data-title="">New Patient Hygiene</td>
+              <td data-title="Private Price">£120.00</td>
+              <td data-title="Membership Plan Price">N/A</td>
+            </tr>
+            <tr>
+              <td data-title="">Dental Health Assessment</td>
+              <td data-title="Private Price">£67.50</td>
+              <td data-title="Membership Plan Price">Inclusive</td>
+            </tr>
+            <tr>
+              <td data-title="">Child&rsquo;s Dental Health Assessment</td>
+              <td data-title="Private Price">£34.00</td>
+              <td data-title="Membership Plan Price">Inclusive</td>
+            </tr>
+            <tr>
+              <td data-title="">Emergency Assessment</td>
+              <td data-title="Private Price">£62.00</td>
+              <td data-title="Membership Plan Price">Inclusive</td>
+            </tr>
+            <tr>
+              <td data-title="">Implant Review</td>
+              <td data-title="Private Price">£67.50</td>
+              <td data-title="Membership Plan Price">Inclusive</td>
+            </tr>
+            <tr>
+              <td data-title="">Endodontic Assessment</td>
+              <td data-title="Private Price">£84.00</td>
+              <td data-title="Membership Plan Price">Inclusive</td>
+            </tr>
+            <tr>
+              <td data-title="">Small X-ray</td>
+              <td data-title="Private Price">£15.00</td>
+              <td data-title="Membership Plan Price">Inclusive</td>
+            </tr>
+            <tr>
+              <td data-title="">Large X-ray</td>
+              <td data-title="Private Price">£45.00</td>
+              <td data-title="Membership Plan Price">Inclusive</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <?php
+
+          $questions = array(
+
+            array(
+              "heading"     =>  "Why should I choose implants?",
+              "description" =>  "Lorem ipsum dolor sit amet, consectetur adipiscing aliquam vitae mi eu leo rutrum rhoncus eros."
+            ),
+
+            array(
+              "heading"     =>  "Am I suitable for implant treatment?",
+              "description" =>  "Lorem ipsum dolor sit amet, consectetur adipiscing aliquam vitae mi eu leo rutrum rhoncus eros."
+            ),
+
+            array(
+              "heading"     =>  "How long does the dental implant treatment process take?",
+              "description" =>  "Lorem ipsum dolor sit amet, consectetur adipiscing aliquam vitae mi eu leo rutrum rhoncus eros."
+            ),
+            
+          );
+
+        ?>
+
+        <ul class="accordion">
+
+          <?php // while( have_rows($accordion_list) ): the_row(); ?>
+          <?php foreach($questions as $question) { ?>
+          <li class="accordion__item" id="dropItem">
+            <dt class="accordion__term">
+              <h4 class="accordion__title">
+                <?php //echo the_sub_field('accordion_title'); ?>
+                <?php echo $question['heading'] ?>
+              </h4>
+              <span class="icon icon--arrow"><svg role="img"><use xlink:href="#arrow" href="#arrow"></use></svg></span>
+            </dt>
+            <dd class="accordion__desc" id="dropDesc">
+              <?php //echo the_sub_field('accordion_description'); ?>
+              <?php echo $question['description'] ?>
+            </dd>
+          </li>
+          <?php } ?>
+          <?php //endwhile; ?>
+
+        </ul>
 
       </div>
     </div>

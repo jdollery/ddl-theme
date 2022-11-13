@@ -1,0 +1,222 @@
+/*-----------------------------------------------------------------------------------*/
+/* VARIABLES */
+/*-----------------------------------------------------------------------------------*/
+
+$table-margin-top-lg:       $margin-top-lg;
+$table-margin-bottom-lg:    $margin-bottom-lg;
+$table-margin-top-sm:       $margin-top-sm;
+$table-margin-bottom-sm:    $margin-bottom-sm;
+
+$table-padding-top-lg:      1.5rem;
+$table-padding-right-lg:    1.5rem;
+$table-padding-bottom-lg:   $table-padding-top-lg;
+$table-padding-left-lg:     $table-padding-right-lg;
+
+$table-padding-top-sm:      1.3rem;
+$table-padding-right-sm:    1.3rem;
+$table-padding-bottom-sm:   $table-padding-top-sm;
+$table-padding-left-sm:     $table-padding-right-sm;
+
+$table-th-border-width:     0.1rem;
+$table-th-border-style:     solid;
+$table-th-background:       var(--grey-dark);
+$table-th-border-color:     var(--grey);
+
+$table-td-border-width:     0.1rem;
+$table-td-border-style:     solid;
+$table-td-border-color:     var(--grey-dark);
+
+$table-th-font-weight:      var(--bold);
+$table-th-font-color:       var(--white);
+
+$table-td-font-color:       var(--black);
+
+$table-tr-even-background:  var(--grey);
+$table-tr-odd-background:   var(--grey-light);
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLING */
+/*-----------------------------------------------------------------------------------*/
+
+table {
+  width: 100%;
+  max-width: 100%;
+  background-color: transparent;
+  margin-top: $table-margin-top-sm;
+  margin-bottom: $table-margin-bottom-sm;
+
+  @include media-up(md) {
+    margin-top: $table-margin-top-lg;
+    margin-bottom: $table-margin-bottom-lg;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  thead {
+
+    th {
+      text-align: left;
+
+      &:nth-child(even) {
+        text-align: left;
+      }
+  
+    }
+
+  }
+
+  tbody {
+
+    td {
+      text-align: left;
+
+      &:nth-child(even) {
+        text-align: left;
+      }
+  
+    }
+
+  }
+
+  th, td {
+    vertical-align: top;
+    padding: $table-padding-top-sm $table-padding-right-sm $table-padding-bottom-sm $table-padding-left-sm;
+
+    @include media-up(sm) {
+      padding: $table-padding-top-lg $table-padding-right-lg $table-padding-bottom-lg $table-padding-left-lg;
+    }
+
+  }
+
+  tbody {
+
+    th, td {
+      border-width: $table-td-border-width;
+      border-style: $table-td-border-style;
+      border-color: $table-td-border-color;
+    }
+
+  }
+
+  thead th {
+    vertical-align: top;
+    border-width: $table-th-border-width;
+    border-style: $table-th-border-style;
+    border-color: $table-th-background $table-th-border-color;
+    font-weight: $table-th-font-weight;
+    background: $table-th-background;
+    color: $table-th-font-color;
+    line-height: 1.2;
+
+    &:nth-child(1) {
+      width: 30%;
+    }
+
+    &:nth-child(2),
+    &:nth-child(3) {
+      width: 20%;
+    }
+
+    &:first-child {
+      border-color: $table-th-background $table-th-border-color $table-th-background $table-th-background;
+    }
+  
+    &:last-child {
+      border-color: $table-th-background $table-th-background $table-th-background $table-th-border-color;
+    }
+
+  }
+
+  // tr {
+
+  //   &:nth-child(even) {
+  //     background: $table-tr-even-background;
+  //   }
+
+  //   &:nth-child(odd) {
+  //     background: $table-tr-odd-background;
+  //   }
+
+  // }
+  
+  td {
+    color: $table-td-font-color;
+  }
+
+}
+
+
+.table-responsive {
+  margin-top: $table-margin-top-lg;
+  margin-bottom: $table-margin-bottom-lg;
+
+  @include media-down(sm) {
+    margin-top: $table-margin-top-sm;
+    margin-bottom: $table-margin-bottom-sm;
+
+    table {
+      margin: 0;
+    }
+
+    caption,
+    table,
+    thead, 
+    tbody, 
+    th, 
+    td, 
+    tr { 
+      display: block; 
+    }
+
+    thead tr { 
+      position: absolute;
+      top: -999.9rem;
+      left: -999.9rem;
+    }
+
+    tbody {
+      border-top: $table-th-border-width $table-th-border-style$table-th-border-color;
+
+      th, td { 
+        border-width: 0 $table-td-border-width $table-td-border-width;
+        border-style: $table-td-border-style;
+        border-color: $table-td-border-color;
+        position: relative;
+        white-space: normal;
+        text-align: left;
+        padding: $table-padding-top-sm $table-padding-left-sm;
+        
+        &:before { 
+          top: $table-padding-top-sm;
+          left: $table-padding-left-sm;
+          width: 100%;  
+          display: block;
+          white-space: nowrap;
+          font-weight: $table-th-font-weight;
+          content: attr(data-title);
+        }
+  
+      }
+
+      td {
+
+        &:first-child {
+          font-weight: $table-th-font-weight;
+          background: $table-th-background;
+          color: $table-th-font-color;
+        }
+
+      }
+
+    }
+
+  }
+
+}
