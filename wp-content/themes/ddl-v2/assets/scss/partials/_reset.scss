@@ -48,7 +48,7 @@ body {
   background: var(--body-bg);
   text-align: left;
   overflow-x: hidden;
-  @include fluid-type(1.4rem, 1.6rem, 1.7rem);
+  @include body-size;
 }
 
 *:focus {

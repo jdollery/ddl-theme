@@ -8,7 +8,8 @@ $form-margin-top-sm:      $margin-top-sm;
 $form-margin-bottom-sm:   $margin-bottom-sm;
 
 @mixin input-font-size {
-  @include fluid-type(1.4rem, 1.6rem, 1.7rem);
+  // @include fluid-type(1.4rem, 1.6rem, 1.7rem);
+  @include body-size;
 }
 
 $input-font-weight: var(--medium);

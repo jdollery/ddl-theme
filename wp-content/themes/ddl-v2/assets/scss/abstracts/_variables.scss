@@ -36,6 +36,10 @@
 
 $theme-name: ddl-v2;
 
+@mixin body-size {
+  @include fluid-type(1.4rem, 1.6rem, 1.7rem);
+}
+
 
 /* --------- MARGINS FOR IMAGES, FORMS, TABLES --------- */
 

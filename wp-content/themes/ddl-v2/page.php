@@ -370,10 +370,10 @@
           <?php foreach($questions as $question) { ?>
           <li class="accordion__item" id="dropItem">
             <dt class="accordion__term">
-              <h4 class="accordion__title">
+              <h5 class="accordion__title">
                 <?php //echo the_sub_field('accordion_title'); ?>
                 <?php echo $question['heading'] ?>
-              </h4>
+              </h5>
               <span class="icon icon--arrow"><svg role="img"><use xlink:href="#arrow" href="#arrow"></use></svg></span>
             </dt>
             <dd class="accordion__desc" id="dropDesc">

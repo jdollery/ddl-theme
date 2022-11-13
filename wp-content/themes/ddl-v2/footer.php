@@ -14,11 +14,11 @@
 
     </footer>
 
+    <?php get_template_part('inc/icons'); ?>
+
     <?php edit_post_link( __( 'Edit', 'textdomain' ), null, null, null, 'button button--edit' ); ?>
 
     <?php wp_footer(); ?>
-
-    <?php get_template_part('inc', 'icons'); ?>
 
   </body>
 </html>

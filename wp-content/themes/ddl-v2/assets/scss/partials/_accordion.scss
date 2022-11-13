@@ -6,7 +6,7 @@
   &__item {
     border-width: 0 0 0.2rem;
     border-style: solid;
-    border-color: var(--grey);
+    border-color: var(--grey-dark);
 
     &:first-child {
       border-width: 0.2rem 0;
@@ -24,12 +24,15 @@
     font-weight: var(--bold);
     @include cell-row;
     justify-content: space-between;
+    align-items: center;
     color: var(--white);
     background: var(--grey-dark);
+    text-align: left;
+    padding: 1.5rem;
 
-    &.active {
+    &.open {
 
-      .accordion__arrow {
+      .icon {
         @include transform (rotate(180deg))
       }
 
@@ -40,21 +43,12 @@
   dt {
     @include cell-span(0);
     margin: 0;
-    text-align: left;
-    padding: 2.5rem 0;
+  }
 
-    h4 {
-      display: block;
-      margin: 0;
-      width: 85%;
-      font-size: 1.6rem;
-
-      @include media-up(md) {
-        font-size: 1.9rem;
-      }
-
-    }
-
+  &__title {
+    margin: 0;
+    @include cell-span(0);
+    @include body-size;
   }
 
   .icon {
@@ -72,12 +66,7 @@
   &__desc {
     @include cell-span(auto);
     display: none;
-    padding-top: 1.5rem;
-    font-size: 1.6rem;
-
-    @include media-up(md) {
-      font-size: 1.8rem;
-    }
+    padding: 1.5rem;
 
     p {
       margin-top: 1.5rem;

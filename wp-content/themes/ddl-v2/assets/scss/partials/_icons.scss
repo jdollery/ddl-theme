@@ -15,14 +15,8 @@
   }
 
   &--arrow {
-    width: 1.5rem;
-    height: 0.9rem;
-
-    @include media-up(md) {
-      width: 2rem;
-      height: 1.2rem;
-    }
-
+    width: 1.7rem;
+    height: 1rem;
   }
 
 }
