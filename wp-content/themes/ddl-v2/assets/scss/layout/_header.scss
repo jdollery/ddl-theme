@@ -1,3 +1,19 @@
+/*-----------------------------------------------------------------------------------*/
+/* VARIABLES */
+/*-----------------------------------------------------------------------------------*/
+
+/* --------- USED IN NAVIGATION UL UL AND MAIN --------- */
+
+$header-height-lg: 12.2rem;
+$header-height-sm: 8.8rem;
+
+$header-height-lg-sticky: 12.3rem;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* HEADER */
+/*-----------------------------------------------------------------------------------*/
+
 .header {
   position: fixed;
   top: 0;
@@ -7,196 +23,19 @@
   z-index: 9999;
   width: 100%;
   background: var(--white);
-  -webkit-box-shadow: 0 0 40px rgb(0 0 0 / 40%);
-  box-shadow: 0 0 40px rgb(0 0 0 / 40%);
-
-  &__row {
-    @include cell-row;
-
-    @include media-min(950px) {
-      justify-content: center;
-      align-items: center;
-    }
-
-  }
-
-  &__one {
-    @include cell;
-    @include cell-span(12);
-    order: 2;
-
-    @include media-up(sm) {
-      @include cell-span(0);
-    }
-
-    @include media-min(950px) {
-      @include cell-span(auto);
-      order: 1;
-    }
-
-  }
-
-  &__two {
-    @include cell;
-    @include cell-span(12);
-    order: 1;
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem;
-
-    @include media-min(950px) {
-      @include cell-span(auto);
-      order: 2;
-      padding: 0;
-    }
-
-  }
-
-  &__three {
-    @include cell;
-    @include cell-span(12);
-    order: 3;
-
-    @include media-up(sm) {
-      @include cell-span(0);
-    }
-
-    @include media-min(950px) {
-      @include cell-span(auto);
-      order: 3;
-    }
-
-  }
-
-  a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-
-  ul.navigation {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    @include cell-row;
-
-    li {
-      display: inline-block;
-      text-align: center;
-
-      @include media-max(950px) {
-        @include cell-span(0);
-        border-right: 0.1rem solid var(--white);
-      }
-
-      @include media-down(sm) {
-        border-top: 0.1rem solid var(--white);
-      }
-      
-      a {
-        color: var(--grey-dark);
-        text-decoration: none;
-        @include fluid-type(1.2rem, 1.6rem, 2rem);
-        padding: 2.5rem 1.6rem;
-        font-weight: var(--medium);
-
-        @include media-max(950px) {
-          padding: 2rem 1.5rem;
-          background: var(--grey);
-        }
-
-        @include media-down(md) {
-          padding: 1.3rem;
-        }
-
-        @include media-up(xl) {
-          padding: 3rem 1.8rem;
-        }
-      
-        @include media-up(xxl) {
-          padding: 3rem 2rem;
-        }
-
-        @include hover-focus {
-          background: var(--grey-light);
-          color: var(--accent);
-        }
-
-      }
-
-    }
-
-  }
-
+  box-shadow: 0 0 2rem rgb(0 0 0 / 30%);
 }
+
+
+/*-----------------------------------------------------------------------------------*/
+/* LOGO */
+/*-----------------------------------------------------------------------------------*/
 
 .logo {
-  // display: inline-block;
-  // vertical-align: middle;
-  
-  max-width: 20rem;
-  // margin: 0 auto;
+  width: 28rem;
 
-  @include media-up(sm) {
-    max-width: 23rem;
-  }
-
-  @include media-min(950px) {
-    max-width: 28rem;
-    padding: 0 2rem;
-  }
-
-  // @include media-up(xl) {
-  //   max-width: 28rem;
-  //   padding: 0 2rem;
-  // }
-
-  @include media-up(xxl) {
-    max-width: 32rem;
-  }
-
-  @include hover-focus {
-    opacity: 0.8;
+  img {
+    width: 100%;
   }
 
 }
-
-.header__basket {
-
-  &--lg {
-    display: none;
-
-    @include media-min(950px) {
-      display: block;
-    }
-
-  }
-
-}
-
-ul.header__basket {
-
-  &--sm {
-    display: block;
-    list-style: none;
-
-    @include media-min(950px) {
-      display: none;
-    }
-
-  }
-
-}
-
-.cart-contents:before {
-  display: block;
-  content: url('./assets/img/basket.svg');
-  width: 2rem;
-  margin: 0 0.5rem;
-}
-

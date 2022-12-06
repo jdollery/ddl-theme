@@ -147,14 +147,52 @@ $block-breakpoint-desktop: xxl;
 
 }
 
-$tags: x, y, top, bottom, right, left;
 
-@each $tag in $tags {
+$tags: top, bottom, right, left;
 
-  .block-#{$tag} {
-    @include direction($tag);
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @each $tag in $tags {
+
+    .block-#{$abbrev}-#{$tag} {
+
+      #{$prop}-#{$tag} : $block-padding-sm;
+
+      @include media-up($block-breakpoint-tablet) {
+        #{$prop}-#{$tag} : $block-padding-md;
+      }
+
+      @include media-up($block-breakpoint-laptop) {
+        #{$prop}-#{$tag} : $block-padding-lg;
+      }
+
+      @include media-up($block-breakpoint-desktop) {
+        #{$prop}-#{$tag} : $block-padding-xl;
+      }
+
+    }
+
+    //Duplicating - need to fix
+
+    .block-#{$abbrev}-y {
+
+      #{$prop}-top : $block-padding-sm;
+
+      @include media-up($block-breakpoint-tablet) {
+        #{$prop}-top : $block-padding-md;
+      }
+
+      @include media-up($block-breakpoint-laptop) {
+        #{$prop}-top : $block-padding-lg;
+      }
+
+      @include media-up($block-breakpoint-desktop) {
+        #{$prop}-top : $block-padding-xl;
+      }
+
+    }
+
   }
-
+  
 }
 
 
@@ -324,19 +362,56 @@ $spacers: map-merge(
 /* TEXT ALIGN */
 /*-----------------------------------------------------------------------------------*/
 
-.text-center { text-align: center !important; }
-.text-right  { text-align: right !important; }
-.text-left   { text-align: left !important; }
+.t-center { text-align: center !important; }
+.t-right  { text-align: right !important; }
+.t-left   { text-align: left !important; }
 
 @each $breakpoint in map-keys($breakpoint-widths) {
 
   @include media-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
 
-    .text#{$infix}-left   { text-align: left !important; }
-    .text#{$infix}-right  { text-align: right !important; }
-    .text#{$infix}-center { text-align: center !important; }
+    .t#{$infix}-left   { text-align: left !important; }
+    .t#{$infix}-right  { text-align: right !important; }
+    .t#{$infix}-center { text-align: center !important; }
   }
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* FLEX ALIGN */
+/*-----------------------------------------------------------------------------------*/
+
+.cell { 
+
+  $justify-positions: (
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    around: space-around,
+    between: space-between,
+    evenly: space-evenly
+  );
+
+  $align-positions: (
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    stretch: stretch,
+    baseline: baseline
+  );
+
+  @mixin just-align($name,$prop,$arr) {
+    @each $mod, $dir in $arr {
+      &-#{$name}-#{$mod} {
+          #{$prop}: #{$dir};
+      }
+    }
+  }
+
+  @include just-align('align','align-items', $align-positions);
+  @include just-align('justify','justify-content', $justify-positions);
 
 }
 

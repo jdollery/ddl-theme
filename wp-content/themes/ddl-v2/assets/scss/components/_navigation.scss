@@ -1,0 +1,842 @@
+/*-----------------------------------------------------------------------------------*/
+/* ANIMATION */
+/*-----------------------------------------------------------------------------------*/
+
+@include keyframes (navFadeIn) {
+      
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-2rem);
+    -ms-transform: translateY(-2rem);
+    transform: translateY(-2rem);
+    visibility: hidden;
+    display: none;
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    visibility: visible;
+    display: block;
+  }
+
+}
+
+@include keyframes (navFadeOut) {
+
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    visibility: visible;
+    display: block;
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-2rem);
+    -ms-transform: translateY(-2rem);
+    transform: translateY(-2rem);
+    visibility: hidden;
+    display: none;
+  }
+
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* VARIABLES */
+/*-----------------------------------------------------------------------------------*/
+
+$nav-breakpoint: md;
+$nav-width-sm: 30rem;
+
+/* --------- LARGE DEVICE --------- */
+
+/* --- LEVEL ONE --- */
+
+$level-one-color-lg:                  var(--black);
+$level-one-color-hover-lg:            var(--accent);
+$level-one-color-current-lg:          var(--accent-light);
+$level-one-color-ancestor-lg:         var(--black);
+$level-one-color-ancestor-hover-lg:   $level-one-color-hover-lg;
+
+
+/* --- LEVEL TWO --- */
+
+$level-two-color-lg:                  var(--black);
+$level-two-color-hover-lg:            var(--white);
+$level-two-bg-lg:                     var(--grey);
+$level-two-bg-hover-lg:               var(--accent);
+$level-two-border-lg:                 var(--accent-light);
+$level-two-border-hover-lg:           $level-two-bg-hover-lg;
+
+$level-two-color-current-lg:          var(--white);
+$level-two-bg-current-lg:             var(--grey-dark);
+$level-two-border-current-lg:         $level-two-bg-current-lg;
+
+$level-two-color-ancestor-lg:         $level-two-color-lg;
+$level-two-color-ancestor-hover-lg:   $level-two-color-hover-lg;
+$level-two-bg-ancestor-lg:            var(--accent-light);
+$level-two-bg-ancestor-hover-lg:      $level-two-bg-hover-lg;
+$level-two-border-ancestor-lg:        $level-two-border-lg;
+$level-two-border-ancestor-hover-lg:  $level-two-border-hover-lg;
+
+
+/* --- LEVEL THREE --- */
+
+$level-three-color-lg:                var(--white);
+$level-three-color-hover-lg:          var(--white);
+$level-three-bg-lg:                   var(--grey);
+$level-three-bg-hover-lg:             var(--grey-dark);
+$level-three-border-lg:               var(--grey-dark);
+$level-three-border-hover-lg:         var(--grey-dark);
+
+$level-three-color-current-lg:        var(--white);
+$level-three-bg-current-lg:           var(--black);
+$level-three-border-current-lg:       var(--black);
+
+
+/* --------- SMALL DEVICE --------- */
+
+$nav-background-sm:                   var(--grey-dark);
+
+
+/* --- LEVEL ONE --- */
+
+$level-one-color-sm:                  var(--white);
+$level-one-bg-sm:                     var(--grey-dark);
+$level-one-border-sm:                 var(--grey-dark);
+
+$level-one-color-current-sm:          var(--white);
+$level-one-bg-current-sm:             var(--black);
+
+$level-one-color-ancestor-sm:         var(--white);
+$level-one-bg-ancestor-sm:            var(--black);
+
+
+/* --- LEVEL TWO --- */
+
+$level-two-color-sm:                  var(--white);
+$level-two-bg-sm:                     var(--grey-dark);
+$level-two-border-sm:                 var(--grey-dark);
+
+$level-two-color-current-sm:          var(--white);
+$level-two-bg-current-sm:             var(--black);
+
+// $level-two-color-ancestor-sm:         $color-white;
+// $level-two-bg-ancestor-sm:            $color-black;
+
+
+/* --- LEVEL THREE --- */
+
+$level-three-color-sm:                var(--white);
+$level-three-bg-sm:                   var(--grey-dark);
+$level-three-border-sm:               var(--grey-dark);
+
+$level-three-color-current-sm:        var(--white);
+$level-three-bg-current-sm:           var(--black);
+
+// $level-two-color-ancestor-sm:         $color-white;
+// $level-two-bg-ancestor-sm:            $color-black;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLING */
+/*-----------------------------------------------------------------------------------*/
+
+/* --------- LOCK BODY SCROLL WHEN NAV OPEN --------- */
+
+html {
+
+  &.js-nav-active {
+    overflow: hidden;
+  }
+
+  /* --- TURN OFF SCROLL BARS FOR SMALL SCREEN (FOR DEV ON DESKTOP) --- */
+
+  @include media-down($nav-breakpoint) { 
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+
+    &::-webkit-scrollbar {
+        width: 0px; /* For Chrome, Safari, and Opera */
+    }
+
+  }
+
+}
+
+
+/* --------- LARGE DEVICE --------- */
+
+@include media-up($nav-breakpoint) {
+
+  .navigation {
+    position: relative !important;
+
+    /* --- LEVEL ONE --- */
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        position: relative;
+        white-space: nowrap;
+        padding: 1.5rem 0;
+        line-height: 1;
+        transition: all 0.3s ease-out;
+
+        &:before,
+        .dropdown-toggle {
+          display: none;
+        }
+
+
+        &:hover > ul,
+        &:focus-within > ul {
+          visibility: visible;
+          display: block;
+          @include animation (navFadeIn 0.5s);
+        }
+
+
+        /* --- ALL LEVELS --- */
+
+        a {
+          display: block;
+          white-space: nowrap;
+          font-weight: var(--regular);
+          padding: 0.2rem 0.4rem;
+          transition: all 0.3s ease-out;
+        }
+
+        &.menu-item-has-children {
+
+          > a::after {
+            display: inline-block;
+            margin-left: 0.7rem;
+            width: 1.7rem;
+            height: 1.7rem;
+            content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 36.1 20.8' style='enable-background:new 0 0 36.1 20.8;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%233A4145;%7D%0A%3C/style%3E%3Cpath class='st0' d='M16.2,20c1,1,2.6,1,3.7,0L35.4,4.5c1-1,1-2.6,0-3.7c-1-1-2.6-1-3.7,0L18.1,14.5L4.4,0.9c-1-1-2.6-1-3.7,0 s-1,2.6,0,3.7L16.2,20L16.2,20z'/%3E%3C/svg%3E%0A");
+            margin-left: 1rem;
+            transition: all 0.3s ease-out;
+          }
+        
+        }
+
+        /* --- LEVEL TWO & THREE --- */
+
+        ul,
+        ul ul {
+          position: absolute;
+          display: none;
+          visibility: hidden;
+          width: 100%;
+          width: fit-content;
+          z-index: 99999;
+          text-align: left;
+          border-radius: 0.8rem;
+          // overflow: hidden;
+          // -webkit-box-shadow: 0 0.1rem 1.5rem 0.1rem rgba($color-black, 0.3);
+          // box-shadow: 0 0.1rem 1.5rem 0.1rem rgba($color-black, 0.3);
+
+          li {
+            display: block;
+            height: auto;
+            width: 100%;
+            border: 0;
+            padding: 0;
+            line-height: 1;
+
+            a {
+              width: 100%;
+              min-width: 25rem;
+              font-weight: 400;
+              font-size: 1.5rem;
+              border-top: 0;
+              padding: 1.8rem 2rem;
+            }
+
+            &:hover,
+            &:focus-within {
+
+              > a {
+                text-decoration: none;
+              }
+
+            }
+
+            &.menu-item-has-children {
+
+              > a::after {
+                margin-left: 1rem;
+                content: '\f105';
+              }
+      
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+
+    /* --- LEVEL ONE ONLY --- */
+
+    > ul {
+
+      > li {
+        display: inline-block;
+
+        &:not(:last-child) {
+          margin-right: 3.5rem;
+        }
+
+        > a {
+          font-size: 2rem;
+          color: $level-one-color-lg;
+
+          @include hover-focus {
+            color: $level-one-color-hover-lg;
+          }
+
+        }
+
+        &.menu-item-has-children {
+
+          &:hover,
+          &:focus-within {
+
+            > a {
+
+              &::after {
+                @include transform (rotate(180deg));
+              }
+
+            }
+
+          }
+
+        }
+
+        &.current-menu-item {
+
+          > a {
+            color: $level-one-color-current-lg;
+
+            &::after {
+              color: $level-one-color-current-lg;
+            }
+
+          }
+
+          &:hover,
+          &:focus-within {
+
+            > a {
+              color: $level-one-color-current-lg;
+
+              &::after {
+                color: $level-one-color-current-lg;
+              }
+
+            }
+
+          }
+
+        }
+
+        &.current-menu-ancestor {
+
+          > a {
+            color: $level-one-color-ancestor-lg;
+          }
+
+          &:hover,
+          &:focus-within {
+
+            > a {
+              color: $level-one-color-ancestor-hover-lg;
+
+              &::after {
+                color: $level-one-color-ancestor-hover-lg;
+              }
+
+            }
+
+          }
+
+        }
+
+
+        /* --- LEVEL TWO ONLY --- */
+
+        > ul {
+          top: 100%;
+          left: 0;
+
+          > li {
+            padding: 0;
+
+            > a {
+              color: $level-two-color-lg;
+              background-color: $level-two-bg-lg;
+            }
+
+            &:not(:last-child) {
+              
+              > a {
+                border-bottom: 0.1rem solid $level-two-border-lg;
+              }
+
+            }
+
+            &:hover,
+            &:focus-within {
+
+              > a {
+                color: $level-two-color-hover-lg;
+                background-color: $level-two-bg-hover-lg;
+                border-color: $level-two-border-hover-lg;
+              }
+
+            }
+
+            &.current-menu-item {
+
+              > a {
+                color: $level-two-color-current-lg;
+                background-color: $level-two-bg-current-lg;
+                border-color: $level-two-border-current-lg;
+              }
+
+              &:hover,
+              &:focus-within {
+
+                > a {
+                  color: $level-two-color-current-lg;
+                  background-color: $level-two-bg-current-lg;
+                  border-color: $level-two-border-current-lg;
+                }
+
+              }
+
+            }
+
+            &.current-menu-ancestor {
+
+              > a {
+                color: $level-two-color-ancestor-lg;
+                background-color: $level-two-bg-ancestor-lg;
+                border-color: $level-two-border-ancestor-lg;
+              }
+    
+              &:hover,
+              &:focus-within {
+    
+                > a {
+                  color: $level-two-color-ancestor-hover-lg;
+                  background-color: $level-two-bg-ancestor-hover-lg;
+                  border-color: $level-two-border-ancestor-hover-lg;
+    
+                  &::after {
+                    color: $level-two-color-ancestor-hover-lg;
+                  }
+    
+                }
+    
+              }
+    
+            }
+
+
+            /* --- LEVEL THREE ONLY --- */
+
+            > ul {
+              top: 0;
+              left: 100%;
+              // margin: -0.1rem 0 0 0;
+
+              > li {
+
+                > a {
+                  color: $level-three-color-lg;
+                  background-color: $level-three-bg-lg;
+                }
+      
+                &:not(:last-child) {
+                  
+                  > a {
+                    border-bottom: 0.1rem solid $level-three-border-lg;
+                  }
+      
+                }
+
+                // &:first-child {
+
+                //   > a {
+                //     border-top: 0.1rem solid $level-three-border-lg;
+                //   }
+
+                // }
+      
+                &:hover,
+                &:focus-within {
+      
+                  > a {
+                    color: $level-three-color-hover-lg;
+                    background-color: $level-three-bg-hover-lg;
+                    border-color: $level-three-border-hover-lg;
+                  }
+      
+                }
+      
+                &.current-menu-item {
+      
+                  > a {
+                    color: $level-three-color-current-lg;
+                    background-color: $level-three-bg-current-lg;
+                    border-color: $level-three-border-current-lg;
+                  }
+      
+                  &:hover,
+                  &:focus-within {
+      
+                    > a {
+                      color: $level-three-color-current-lg;
+                      background-color: $level-three-bg-current-lg;
+                      border-color: $level-three-border-current-lg;
+                    }
+      
+                  }
+      
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+
+/* --------- SMALL DEVICE --------- */
+
+@include media-down($nav-breakpoint) {
+
+  .navigation {
+    position: fixed !important;
+    left: -$nav-width-sm;
+    width: $nav-width-sm;
+    top: $header-height-sm; //variable in header.scss
+    bottom: 0;
+    z-index: 1000;
+    background-color: $nav-background-sm;
+    height: 100vh;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+    transition: left 0.3s ease-out;
+
+    &.opened {
+      left: 0;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        position: relative;
+        display: block;
+        white-space: nowrap;
+        padding: 0;
+        margin: 0;
+        line-height: 1;
+        text-align: left;
+
+        &:before {
+          display: none;
+        }
+
+        .dropdown-toggle {
+          display: inline-block;
+        }
+
+        a {
+          display: block;
+          font-size: 1.6rem;
+          font-weight: var(--regular);
+          padding: 1.5rem;
+        }
+
+        ul {
+          display: none;
+
+          &.toggled {
+            display: block;
+          }
+
+        }
+
+      }
+
+    }
+
+
+    /* --- LEVEL ONE UNIQUE --- */
+
+    > ul {
+      padding-bottom: 20rem;
+      
+      > li {
+        border-bottom: 0.1rem solid $level-one-border-sm;
+
+        > a {
+          color: $level-one-color-sm;
+          background-color: $level-one-bg-sm;
+        }
+
+        &.current-menu-item {
+
+          > a {
+            color: $level-one-color-current-sm;
+            background-color: $level-one-bg-current-sm;
+
+            &::after {
+              color: $level-one-color-current-sm;
+              background-color: $level-one-bg-current-sm;
+            }
+
+          }
+
+        }
+
+        &.current-menu-ancestor {
+
+          > a {
+            color: $level-one-color-ancestor-sm;
+            background-color: $level-one-bg-ancestor-sm;
+
+            &::after {
+              color: $level-one-color-ancestor-sm;
+              background-color: $level-one-bg-ancestor-sm;
+            }
+
+          }
+        
+        }
+
+
+        /* --- LEVEL TWO UNIQUE --- */
+
+        > ul {
+
+          > li {
+
+            &:not(:last-child) {
+              border-bottom: 0.1rem solid $level-two-border-sm;
+            }
+
+            > a {
+              color: $level-two-color-sm;
+              background-color: $level-two-bg-sm;
+            }
+
+            &.current-menu-item {
+
+              > a {
+                color: $level-two-color-current-sm;
+                background-color: $level-two-bg-current-sm;
+    
+                &::after {
+                  background-color: $level-two-bg-current-sm;
+                }
+    
+              }
+    
+            }
+
+
+            /* --- LEVEL THREE UNIQUE --- */
+
+            > ul {
+    
+              > li {
+
+                &:not(:last-child) {
+                  border-bottom: 1px solid $level-three-border-sm;
+                }
+
+                > a {
+                  color: $level-three-color-sm;
+                  background-color: $level-three-bg-sm;
+                }
+
+              }
+
+              &.current-menu-item {
+
+                > a {
+                  color: $level-three-color-sm;
+                  background-color: $level-three-bg-current-sm;
+      
+                  &::after {
+                    color: $level-three-color-current-sm;
+                    background-color: $level-three-bg-current-sm;
+                  }
+      
+                }
+      
+              }
+    
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+
+/* --------- SUBMENU DROPDOWN TOGGLE --------- */
+
+.dropdown-toggle {
+  position: absolute;
+  top: 0.6rem;
+  right: 1.5rem;
+  content: "";
+  height: 3.3rem;
+  width: 3.3rem;
+  border: 0;
+  color: var(--grey-light);
+  background-color: var(--black);
+  padding: 0;
+  margin: 0;
+  font-style: normal;
+  line-height: 1;
+  transition: all 0.3s ease-out;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  outline: none;
+
+  &::after {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z'/%3E%3C/svg%3E");
+  }
+
+  &.toggled {
+
+    &::after {
+      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z'/%3E%3C/svg%3E");
+    }
+
+  }
+
+}
+
+
+/* --------- BURGER TOGGLE --------- */
+
+.burger {
+  position: relative;
+  display: inline-block;
+  background: transancestor;
+  border: 0;
+  cursor: pointer;
+  height: 3.6rem;
+  width: 4.1rem;
+  padding: 0 0.6rem 0.4rem;
+  vertical-align: middle;
+
+  @include media-up($nav-breakpoint) {
+    display: none;
+  }
+
+  &__inner,
+  &__inner::after,
+  &__inner::before {
+    position: absolute;
+    display: block;
+    width: 3rem;
+    height: 0.4rem;
+    transition-timing-function: ease;
+    transition-duration: .15s;
+    transition-property: transform;
+    background-color: var(--white);
+  }
+
+  &__inner {
+    transition-timing-function: cubic-bezier(.55,.055,.675,.19);
+    transition-duration: 75ms; 
+    
+    &::after,
+    &::before {
+      display: block;
+      content: "";
+    }
+
+    &::before {
+      top: -10px;
+      transition: top 75ms ease .12s,opacity 75ms ease;
+    }
+
+    &::after {
+      bottom: -10px;
+      transition: bottom 75ms ease .12s;
+      @include transform (75ms cubic-bezier(.55,.055,.675,.19));
+    }
+
+  }
+
+  &.active {
+
+    .burger {
+
+      &__inner {
+        transition-delay: .12s;
+        transition-timing-function: cubic-bezier(.215,.61,.355,1);
+        @include transform (rotate(45deg));
+
+        &::before {
+          top: 0;
+          opacity: 0;
+          transition: top 75ms ease,opacity 75ms ease .12s;
+        }
+
+        &::after {
+          bottom: 0;
+          transition: bottom 75ms ease,transform 75ms cubic-bezier(.215,.61,.355,1) .12s;
+          @include transform (rotate(-90deg));
+        }
+
+      }
+
+    }
+
+  }
+
+}
