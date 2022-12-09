@@ -11,28 +11,6 @@ $block-breakpoint-tablet: sm;
 $block-breakpoint-laptop: lg;
 $block-breakpoint-desktop: xxl;
 
-
-@mixin block {
-  padding: $block-padding-sm;
-
-  @include media-up($block-breakpoint-tablet) {
-    padding: $block-padding-md;
-  }
-
-  @include media-up($block-breakpoint-laptop) {
-    padding: $block-padding-lg;
-  }
-
-  @include media-up($block-breakpoint-desktop) {
-    padding: $block-padding-xl;
-  }
-
-}
-
-.block {
-  @include block;
-}
-
 @mixin direction($tag) {
 
   @if $tag == 'y' {
@@ -153,26 +131,8 @@ $tags: top, bottom, right, left;
 @each $prop, $abbrev in (margin: m, padding: p) {
   @each $tag in $tags {
 
-    .block-#{$abbrev}-#{$tag} {
-
-      #{$prop}-#{$tag} : $block-padding-sm;
-
-      @include media-up($block-breakpoint-tablet) {
-        #{$prop}-#{$tag} : $block-padding-md;
-      }
-
-      @include media-up($block-breakpoint-laptop) {
-        #{$prop}-#{$tag} : $block-padding-lg;
-      }
-
-      @include media-up($block-breakpoint-desktop) {
-        #{$prop}-#{$tag} : $block-padding-xl;
-      }
-
-    }
-
-    //Duplicating - need to fix
-
+    .block-#{$abbrev},
+    .block-#{$abbrev}-t,
     .block-#{$abbrev}-y {
 
       #{$prop}-top : $block-padding-sm;
@@ -187,6 +147,66 @@ $tags: top, bottom, right, left;
 
       @include media-up($block-breakpoint-desktop) {
         #{$prop}-top : $block-padding-xl;
+      }
+
+    }
+
+    .block-#{$abbrev},
+    .block-#{$abbrev}-b,
+    .block-#{$abbrev}-y {
+
+      #{$prop}-bottom : $block-padding-sm;
+
+      @include media-up($block-breakpoint-tablet) {
+        #{$prop}-bottom : $block-padding-md;
+      }
+
+      @include media-up($block-breakpoint-laptop) {
+        #{$prop}-bottom : $block-padding-lg;
+      }
+
+      @include media-up($block-breakpoint-desktop) {
+        #{$prop}-bottom : $block-padding-xl;
+      }
+
+    }
+
+    .block-#{$abbrev},
+    .block-#{$abbrev}-l,
+    .block-#{$abbrev}-x {
+
+      #{$prop}-left : $block-padding-sm;
+
+      @include media-up($block-breakpoint-tablet) {
+        #{$prop}-left : $block-padding-md;
+      }
+
+      @include media-up($block-breakpoint-laptop) {
+        #{$prop}-left : $block-padding-lg;
+      }
+
+      @include media-up($block-breakpoint-desktop) {
+        #{$prop}-left : $block-padding-xl;
+      }
+
+    }
+
+    .block-#{$abbrev},
+    .block-#{$abbrev}-r,
+    .block-#{$abbrev}-x {
+
+      #{$prop}-right : $block-padding-sm;
+
+      @include media-up($block-breakpoint-tablet) {
+        #{$prop}-right : $block-padding-md;
+      }
+
+      @include media-up($block-breakpoint-laptop) {
+        #{$prop}-right : $block-padding-lg;
+      }
+
+      @include media-up($block-breakpoint-desktop) {
+        #{$prop}-right : $block-padding-xl;
       }
 
     }

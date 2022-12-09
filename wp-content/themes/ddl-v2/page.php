@@ -4,7 +4,7 @@
 
 <?php //get_template_part('inc/banner'); ?>
 
-<article class="content block">
+<article class="content block-m-r">
   <div class="cell-fluid">
     <div class="cell-row cell-row-gutter-x">
       <div class="cell cell-gutter-x cell-gutter-y cell-span-12">
