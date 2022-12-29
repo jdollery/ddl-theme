@@ -4,10 +4,10 @@
 
 <?php //get_template_part('inc/banner'); ?>
 
-<article class="content block-m-r">
+<article class="content block-p">
   <div class="cell-fluid">
     <div class="cell-row cell-row-gutter-x">
-      <div class="cell cell-gutter-x cell-gutter-y cell-span-12">
+      <div class="cell cell-gutter-x cell-span-12">
 
         <h1><?php the_title(); ?></h1>
         <?php the_content(); ?>
@@ -110,8 +110,6 @@
 
           </fieldset>
 
-          <hr>
-
           <fieldset>
 
             <legend>Referral Details</legend>
@@ -181,8 +179,6 @@
             </div>
 
           </fieldset>
-
-          <hr>
 
           <fieldset>
 

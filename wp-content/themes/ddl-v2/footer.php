@@ -8,7 +8,7 @@
         'container' => false,
         'items_wrap' => '%3$s'
         ) ); ?>
-        <li>Built &amp; managed by <a href="https://dental-design.marketing/" target="_blank" rel="noopener noreferrer">Dental Design</a></li>
+        <li>Made &amp; marketed with <span class="icon icon--heart"><svg role="img"><use xlink:href="#heart" href="#heart"></use></svg></span> by <a href="https://dental-design.marketing/" target="_blank" rel="noopener noreferrer">Dental Design</a></li>
         <li>Site last updated: <?php echo date('F Y'); ?></li>
       </ul>  
 

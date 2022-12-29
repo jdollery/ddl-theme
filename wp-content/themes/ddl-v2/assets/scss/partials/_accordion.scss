@@ -4,13 +4,6 @@
   padding: 0;
 
   &__item {
-    border-width: 0 0 0.2rem;
-    border-style: solid;
-    border-color: var(--grey-dark);
-
-    &:first-child {
-      border-width: 0.2rem 0;
-    }
 
     &:last-child {
       margin-bottom: 0;
@@ -30,7 +23,12 @@
     text-align: left;
     padding: 1.5rem;
 
+    @include hover-focus {
+      background: var(--black);
+    }
+
     &.open {
+      background: var(--black);
 
       .icon {
         @include transform (rotate(180deg))
@@ -66,7 +64,8 @@
   &__desc {
     @include cell-span(auto);
     display: none;
-    padding: 1.5rem;
+    padding: $gutter;
+    background: var(--grey-light);
 
     p {
       margin-top: 1.5rem;
@@ -74,26 +73,5 @@
     }
 
   }
-
-  // &__term {
-
-  //   &.open {
-
-  //     .icon {
-  //       transform: rotate(180deg);
-  //     }
-
-  //     dd {
-  //       max-height: 90rem;
-
-  //       // @include media-up(sm) {
-  //       //   max-height: 30rem;
-  //       // }
-
-  //     }
-
-  //   }
-
-  // }
 
 }

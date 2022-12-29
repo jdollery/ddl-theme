@@ -19,6 +19,7 @@ $input-background: var(--grey-light);
 $input-border-width: 0.1rem;
 $input-border-style: solid;
 $input-border-color: var(--grey);
+$input-border-focus: var(--grey-dark);
 $input-border-radius: 0;
 $input-padding-sm: 2.5rem 2rem 1rem;
 $input-padding-lg: 2.5rem 2rem 1rem;
@@ -80,6 +81,10 @@ textarea {
       padding: $input-padding-lg;
     }
 
+    @include focus {
+      border-color: $input-border-focus;
+    }
+
   }
 
 }
@@ -89,6 +94,35 @@ textarea {
   height: 100%;
   overflow: auto;
   resize: vertical;
+}
+
+legend {
+  @include h4;
+  line-height: 1.4;
+  font-family: var(--heading-font);
+  font-weight: var(--regular);
+  margin-top: $heading-margin-top-sm;
+  margin-bottom: $heading-margin-bottom-sm;
+
+  @include media-up(md) {
+    margin-top: $heading-margin-top-lg;
+    margin-bottom: $heading-margin-bottom-lg;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+}
+
+fieldset:not(:last-child) {
+  margin-bottom: $gutter + 1rem;
+  border-bottom: 0.2rem solid var(--grey-dark);
+  padding-bottom: $gutter;
 }
 
 
@@ -243,6 +277,11 @@ input[type=checkbox]:focus,
 input[type=radio]:focus {
   outline: 0;
   outline-offset: 0;
+
+  &::after {
+    border-color: $input-border-focus;
+  }
+
 }
 
 input[type=checkbox]:checked::before,
@@ -336,6 +375,14 @@ input[type=radio] + label {
 
       }
   
+    }
+
+    @include focus {
+
+      & + label { 
+        border-color: var(--black);
+      }
+
     }
   
   }

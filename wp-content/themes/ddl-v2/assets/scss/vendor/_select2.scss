@@ -66,10 +66,9 @@
     //   padding: $input-padding-lg;
     // }
 
-    // &:focus {
-    //   border-color: $input-border-color-focus;
-    //   box-shadow: 0 0.2rem 0.3rem rgba($color-grey-dark, 0.2);
-    // }
+    &:focus {
+      border-color: $input-border-focus;
+    }
 
     .select2-selection__arrow {
       position: absolute;
@@ -227,7 +226,7 @@
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-  background-color: var(--accent);
+  background-color: var(--black);
   color: var(--white);
 }
 

@@ -1,4 +1,70 @@
 /*-----------------------------------------------------------------------------------*/
+/* MAPS */
+/*-----------------------------------------------------------------------------------*/
+
+$colors: (
+  "grey": var(--grey),
+  "grey-light": var(--grey-light),
+  "grey-dark": var(--grey-dark),
+  "accent": var(--accent),
+  "accent-light": var(--accent-light),
+  "white": var(--white),
+  "black": var(--black)
+);
+
+
+$spacer: 1rem !default;
+$spacers: () !default;
+$spacers: map-merge(
+  (
+    0:  0,
+    1:  ($spacer * .25),
+    2:  ($spacer * .5),
+    3:  $spacer,
+    4:  ($spacer * 1.5),
+    5:  ($spacer * 2),
+    6:  ($spacer * 2.5),
+    7:  ($spacer * 3),
+    8:  ($spacer * 3.5),
+    9:  ($spacer * 4),
+    10: ($spacer * 4.5),
+    11: ($spacer * 5),
+    12: ($spacer * 5.5),
+    13: ($spacer * 6),
+    14: ($spacer * 6.5),
+    15: ($spacer * 7),
+    16: ($spacer * 7.5),
+    17: ($spacer * 8),
+    18: ($spacer * 8.5),
+    19: ($spacer * 9),
+    20: ($spacer * 9.5),
+    21: ($spacer * 10),
+    22: ($spacer * 10.5),
+    23: ($spacer * 11),
+    24: ($spacer * 11.5),
+    25: ($spacer * 12),
+    26: ($spacer * 12.5),
+    27: ($spacer * 13),
+    28: ($spacer * 13.5),
+    29: ($spacer * 14),
+    30: ($spacer * 14.5),
+    31: ($spacer * 15),
+    32: ($spacer * 15.5),
+    33: ($spacer * 16),
+    34: ($spacer * 16.5),
+    35: ($spacer * 17),
+    36: ($spacer * 17.5),
+    37: ($spacer * 18),
+    38: ($spacer * 18.5),
+    39: ($spacer * 19),
+    40: ($spacer * 19.5),
+    41: ($spacer * 20)
+  ),
+  $spacers
+);
+
+
+/*-----------------------------------------------------------------------------------*/
 /* BLOCK */
 /*-----------------------------------------------------------------------------------*/
 
@@ -255,56 +321,6 @@ $tags: top, bottom, right, left;
 /*-----------------------------------------------------------------------------------*/
 /* MARGIN AND PADDING */
 /*-----------------------------------------------------------------------------------*/
-
-$spacer: 1rem !default;
-$spacers: () !default;
-$spacers: map-merge(
-  (
-    0:  0,
-    1:  ($spacer * .25),
-    2:  ($spacer * .5),
-    3:  $spacer,
-    4:  ($spacer * 1.5),
-    5:  ($spacer * 2),
-    6:  ($spacer * 2.5),
-    7:  ($spacer * 3),
-    8:  ($spacer * 3.5),
-    9:  ($spacer * 4),
-    10: ($spacer * 4.5),
-    11: ($spacer * 5),
-    12: ($spacer * 5.5),
-    13: ($spacer * 6),
-    14: ($spacer * 6.5),
-    15: ($spacer * 7),
-    16: ($spacer * 7.5),
-    17: ($spacer * 8),
-    18: ($spacer * 8.5),
-    19: ($spacer * 9),
-    20: ($spacer * 9.5),
-    21: ($spacer * 10),
-    22: ($spacer * 10.5),
-    23: ($spacer * 11),
-    24: ($spacer * 11.5),
-    25: ($spacer * 12),
-    26: ($spacer * 12.5),
-    27: ($spacer * 13),
-    28: ($spacer * 13.5),
-    29: ($spacer * 14),
-    30: ($spacer * 14.5),
-    31: ($spacer * 15),
-    32: ($spacer * 15.5),
-    33: ($spacer * 16),
-    34: ($spacer * 16.5),
-    35: ($spacer * 17),
-    36: ($spacer * 17.5),
-    37: ($spacer * 18),
-    38: ($spacer * 18.5),
-    39: ($spacer * 19),
-    40: ($spacer * 19.5),
-    41: ($spacer * 20)
-  ),
-  $spacers
-);
 
 @each $prop, $abbrev in (margin: m, padding: p) {
   @each $size, $length in $spacers {

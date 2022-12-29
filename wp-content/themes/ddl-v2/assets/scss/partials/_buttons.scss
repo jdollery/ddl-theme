@@ -63,12 +63,14 @@ $button-padding: 1.6rem 3rem 1.2rem;
   }
 
   &--body {
-    margin-top: $paragraph-margin-top-sm;
-    margin-bottom: $paragraph-margin-bottom-sm;
+    margin-top: $margin-top-sm;
+    margin-bottom: $margin-bottom-sm;
 
     @include media-up(md) {
-      margin-top: $paragraph-margin-top-lg;
-      margin-bottom: $paragraph-margin-bottom-lg;
+      margin-top: $margin-top-lg;
+      margin-bottom: $margin-bottom-lg;
+      display: block;
+      width: fit-content;
     }
 
     &:first-child {

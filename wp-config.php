@@ -20,8 +20,8 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-// define( 'DB_NAME', 'ddl' );
-define( 'DB_NAME', 'ddl_theme' );
+define( 'DB_NAME', 'ddl' );
+// define( 'DB_NAME', 'ddl_theme' );
 
 /** MySQL database username */
 define( 'DB_USER', 'root' );
@@ -97,5 +97,5 @@ define( 'DISALLOW_FILE_EDIT', true );
 define( 'DISALLOW_FILE_MODS', false );
 
 /** Enable Revisions */
-define( 'WP_POST_REVISIONS', true);
+// define( 'WP_POST_REVISIONS', true);
 define( 'WP_PAGE_REVISIONS', true);
