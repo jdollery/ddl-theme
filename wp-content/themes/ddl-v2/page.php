@@ -373,11 +373,11 @@
           <?php // while( have_rows($accordion_list) ): the_row(); ?>
           <?php foreach($questions as $question) { ?>
           <li class="accordion__item" id="dropItem">
-            <dt class="accordion__term" role="tab">
-              <h5 class="accordion__title">
+            <dt class="accordion__term">
+              <button class="accordion__title">
                 <?php //echo the_sub_field('accordion_title'); ?>
                 <?php echo $question['heading'] ?>
-              </h5>
+              </button>
               <span class="icon icon--arrow"><svg role="img"><use xlink:href="#arrow" href="#arrow"></use></svg></span>
             </dt>
             <dd class="accordion__desc" id="dropDesc">

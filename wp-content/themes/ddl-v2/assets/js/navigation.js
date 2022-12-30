@@ -244,7 +244,7 @@
           jsClass: "js",                    // String: 'JS enabled' class which is added to <html> element
           enableFocus: false,               // Boolean: Do we add 'focus' class in nav elements
           enableDropdown: false,            // Boolean: Do we use multi level dropdown
-          menuItems: "menu-items",          // String: Class that is added only to top ul element
+          menuItems: "menu-item",          // String: Class that is added only to top ul element
           subMenu: "sub-menu",              // String: Class that is added to sub menu ul elements
           openDropdown: "Open sub menu",    // String: Label for opening sub menu
           closeDropdown: "Close sub menu",  // String: Label for closing sub menu
