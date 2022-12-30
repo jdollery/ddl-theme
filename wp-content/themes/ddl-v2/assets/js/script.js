@@ -31,10 +31,10 @@ jQuery(document).ready(function () { //doc ready start
 
   function setSticky() {
     if (jQuery(window).scrollTop() > 1) {
-      jQuery('#mainHeader').addClass("sticky");
+      jQuery('#mainHeader').addClass("header--sticky");
     }
     else{
-      jQuery('#mainHeader').removeClass("sticky");
+      jQuery('#mainHeader').removeClass("header--sticky");
     }
   }
 
