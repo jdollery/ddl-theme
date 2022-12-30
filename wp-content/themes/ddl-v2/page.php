@@ -11,6 +11,14 @@
 
         <h1><?php the_title(); ?></h1>
         <?php the_content(); ?>
+
+        <figure class="quote">
+          <blockquote cite="https://www.huxley.net/bnw/four.html">
+            Words can be like X-rays, if you use them properly—they’ll go through anything. You read and you’re pierced.
+          </blockquote>
+          <figcaption>—Aldous Huxley, <cite>Brave New World</cite></figcaption>
+        </figure>
+
         <a href="/" class="button button--black button--body">Test</a>
 
         <form class="form" id="validateForm" novalidate="true" method="post" action="https://www.securedent.net/submit.ashx">

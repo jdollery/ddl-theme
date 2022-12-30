@@ -294,6 +294,10 @@ dd {
   margin: 0;
 }
 
+dl dd + dt {
+  margin-top: 1rem;
+}
+
 i {
   font-style: normal;
 }

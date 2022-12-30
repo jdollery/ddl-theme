@@ -51,7 +51,7 @@ jQuery(document).ready(function () { //doc ready start
     } else {
       jQuery("#dropItem > dt").removeClass("open");
       jQuery(this).addClass("open");
-      jQuery("dd").slideUp(200);
+      jQuery("#dropItem > dd").slideUp(200);
       jQuery(this).siblings("dd").slideDown(200);
     }
   });
