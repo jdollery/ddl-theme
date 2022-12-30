@@ -9,7 +9,7 @@
 
 @import "abstracts/properties";
 @import "abstracts/states";
-// @import "abstracts/animation"; //remove not used
+@import "abstracts/animation"; //remove not used
 @import "abstracts/media";
 @import "abstracts/variables";
 
@@ -33,7 +33,7 @@
 @import "layout/main";
 @import "layout/footer";
 
-// @import "components/navigation";
+@import "components/navigation";
 // @import "components/banner";
 // @import "components/content";
 // @import "components/split";

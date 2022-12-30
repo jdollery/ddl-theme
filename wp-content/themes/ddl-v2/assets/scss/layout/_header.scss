@@ -25,6 +25,9 @@ $nav-width-sm: 30rem;
   bottom: auto;
   z-index: 9999;
   width: 100%;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  @include block(x);
   background: var(--white);
   box-shadow: 0 0 2rem rgb(0 0 0 / 30%);
 }

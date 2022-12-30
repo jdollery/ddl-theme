@@ -393,6 +393,6 @@ a:not([class]) {
 a:focus,
 button:focus,
 input[type="submit"]:focus {
-	outline: 0.1rem dotted var(--grey);
+	outline: 0.1rem dotted var(--grey-dark);
   text-decoration: none;
 }

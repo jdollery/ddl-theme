@@ -1,4 +1,9 @@
+/* --------------------- VARIABLES --------------------- */
+
 $button-padding: 1.6rem 3rem 1.2rem;
+
+
+/* --------------------- MIXINS --------------------- */
 
 @mixin button {
   display: inline-block;
@@ -62,7 +67,7 @@ $button-padding: 1.6rem 3rem 1.2rem;
 
   }
 
-  &--body {
+  &--block {
     margin-top: $margin-top-sm;
     margin-bottom: $margin-bottom-sm;
 
@@ -84,6 +89,9 @@ $button-padding: 1.6rem 3rem 1.2rem;
   }
 
 }
+
+
+/* --------------------- STYLING --------------------- */
 
 .button {
   @include button;

@@ -19,7 +19,7 @@
           <figcaption>—Aldous Huxley, <cite>Brave New World</cite></figcaption>
         </figure>
 
-        <a href="/" class="button button--black button--body">Test</a>
+        <a href="/" class="button button--black button--block">Test</a>
 
         <form class="form" id="validateForm" novalidate="true" method="post" action="https://www.securedent.net/submit.ashx">
     
@@ -373,7 +373,7 @@
           <?php // while( have_rows($accordion_list) ): the_row(); ?>
           <?php foreach($questions as $question) { ?>
           <li class="accordion__item" id="dropItem">
-            <dt class="accordion__term">
+            <dt class="accordion__term" role="tab">
               <h5 class="accordion__title">
                 <?php //echo the_sub_field('accordion_title'); ?>
                 <?php echo $question['heading'] ?>

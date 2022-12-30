@@ -21,6 +21,63 @@ window.onpageshow = function(event) {
 jQuery(document).ready(function () { //doc ready start
 
   /*-----------------------------------------------------------------------------------*/
+  /* STICKY NAV */
+  /*-----------------------------------------------------------------------------------*/
+
+  jQuery(function(){
+    setSticky();
+    jQuery(window).scroll(setSticky);
+  });
+
+  function setSticky() {
+    if (jQuery(window).scrollTop() > 1) {
+      jQuery('#mainHeader').addClass("sticky");
+    }
+    else{
+      jQuery('#mainHeader').removeClass("sticky");
+    }
+  }
+
+
+  /*-----------------------------------------------------------------------------------*/
+  /* RESPONSIVE NAV */
+  /*-----------------------------------------------------------------------------------*/
+
+  jQuery('.navigation li').parent().find("ul").addClass('sub-menu');
+  jQuery('.sub-menu').parent().addClass('menu-item-has-children');
+
+  var customToggle = document.getElementById('navToggle');
+
+  var nav = responsiveNav("#headerNav", {
+    customToggle: "#navToggle", // Selector: Specify the ID of a custom toggle
+    enableFocus: true,
+    enableDropdown: true,
+    openDropdown: '<span class="hidden">Open sub menu</span>',
+    closeDropdown: '<span class="hidden">Close sub menu</span>',
+    // open: function () {
+    //     customToggle.innerHTML = '<div class="burger__inner"></div><span class="hidden">Close menu</span>';
+    // },
+    // close: function () {
+    //     customToggle.innerHTML = '<div class="burger__inner"></div><span class="hidden">Open menu</span>';
+    // },
+    
+    resizeMobile: function () {
+      customToggle.setAttribute( 'aria-controls', 'headerNav' );
+    },
+    
+    resizeDesktop: function () {
+      customToggle.removeAttribute( 'aria-controls' );
+    },
+    
+  });
+
+  var close = document.getElementById("viewOverlay");
+  close.addEventListener("click", function () {
+    nav.close();
+  }, false);
+
+
+  /*-----------------------------------------------------------------------------------*/
   /* SLICK SLIDER */
   /*-----------------------------------------------------------------------------------*/
 
@@ -55,6 +112,25 @@ jQuery(document).ready(function () { //doc ready start
       jQuery(this).siblings("dd").slideDown(200);
     }
   });
+
+
+  /*-----------------------------------------------------------------------------------*/
+  /* TEAM SLIDEOUT */
+  /*-----------------------------------------------------------------------------------*/
+
+  // Open Team Member Slideout
+	jQuery('[data-open]').on('click', function () {
+		var member_id = jQuery(this).attr('data-open');
+		jQuery('[data-sideout="' + member_id + '"]').addClass('active');
+		jQuery('html').addClass('slideout-active');
+	});
+
+	// Close Team Member Slideout
+	jQuery('[data-close]').on('click', function () {
+		var member_id = jQuery(this).attr('data-close');
+		jQuery('[data-sideout="' + member_id + '"]').removeClass('active');
+		jQuery('html').removeClass('slideout-active');
+	});
 
 
   /*-----------------------------------------------------------------------------------*/
@@ -114,43 +190,6 @@ jQuery(document).ready(function () { //doc ready start
 
 
 }); //doc ready end
-
-
-/*-----------------------------------------------------------------------------------*/
-/* ACCORDION */
-/*-----------------------------------------------------------------------------------*/
-
-// var headers = document.querySelectorAll('#dropItem > dt');
-
-// for(var i = 0; i < headers.length; i++) {
-// 	headers[i].addEventListener('click', openCurrAccordion);
-// }
-
-// //Use this as the callback if you would like multiple dropdowns to be open
-// function openAccordion(e) {
-// 	var parent = this.parentElement;
-	
-// 	if (!parent.classList.contains('open')) {
-// 		parent.classList.add('open');
-// 	}
-// 	else {
-// 		parent.classList.remove('open');
-// 	}
-// }
-
-// //Use this as the callback if you would like no more than one dropdown to be open
-// function openCurrAccordion(e) {
-// 	for(var i = 0; i < headers.length; i++) {
-// 		var parent = headers[i].parentElement;
-
-// 		if (this === headers[i] && !parent.classList.contains('open')) {
-// 			parent.classList.add('open');
-// 		}
-// 		else {
-// 			parent.classList.remove('open');
-// 		}
-// 	}
-// }
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -266,3 +305,10 @@ jQuery('a[href*="#"]')
 //   }
 // )
 // wow.init();
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STICKY IMAGE */
+/*-----------------------------------------------------------------------------------*/
+
+// var sticky = new Sticky('[data-sticky]');

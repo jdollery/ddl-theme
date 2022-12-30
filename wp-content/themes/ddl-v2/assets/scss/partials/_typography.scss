@@ -36,10 +36,38 @@ p {
 /* HEADINGS */
 /*-----------------------------------------------------------------------------------*/
 
+/* --------------------- VARIABLES --------------------- */
+
 $heading-margin-top-lg:      3.5rem;
 $heading-margin-bottom-lg:   2.5rem;
 $heading-margin-top-sm:      2rem;
 $heading-margin-bottom-sm:   2rem;
+
+
+/* --------------------- MIXINS --------------------- */
+
+@mixin h1 {
+  @include fluid-type(2.8rem, 3.5rem, 3.8rem);
+}
+
+@mixin h2 {
+  @include fluid-type(2.8rem, 3.5rem, 3.8rem);
+}
+
+@mixin h3 {
+  @include fluid-type(2.5rem, 2.8rem, 3rem);
+}
+
+@mixin h4 {
+  @include fluid-type(2rem, 2.3rem, 2.5rem);
+}
+
+@mixin h5 {
+  @include fluid-type(1.8rem, 2rem, 2.2rem);
+}
+
+
+/* --------------------- STYLING --------------------- */
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: var(--regular);
@@ -66,26 +94,6 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: var(--medium);
   }
 
-}
-
-@mixin h1 {
-  @include fluid-type(2.8rem, 3.5rem, 3.8rem);
-}
-
-@mixin h2 {
-  @include fluid-type(2.8rem, 3.5rem, 3.8rem);
-}
-
-@mixin h3 {
-  @include fluid-type(2.5rem, 2.8rem, 3rem);
-}
-
-@mixin h4 {
-  @include fluid-type(2rem, 2.3rem, 2.5rem);
-}
-
-@mixin h5 {
-  @include fluid-type(1.8rem, 2rem, 2.2rem);
 }
 
 h1 {
@@ -129,10 +137,15 @@ a {
 /* LISTS */
 /*-----------------------------------------------------------------------------------*/
 
+/* --------------------- VARIABLES --------------------- */
+
 $list-indent:             2rem;
 $list-gutter:             0.5rem;
 $list-bullet-size:        0.6rem;
 $list-bullet-color:       var(--accent);
+
+
+/* --------------------- STYLING --------------------- */
 
 ul,
 ol {
@@ -217,13 +230,23 @@ ol {
 
 }
 
+
 /*-----------------------------------------------------------------------------------*/
 /* BLOCKQUOTE */
 /*-----------------------------------------------------------------------------------*/
 
+/* --------------------- VARIABLES --------------------- */
+
+$blockquote-indent:          2rem;
+$blockquote-border-width:    0.5rem;
+$blockquote-border-color:    var(--accent);
+
+
+/* --------------------- STYLING --------------------- */
+
 blockquote {
-  border-left: 0.5rem solid var(--accent);
-  padding-left: 1.5rem;
+  border-left: $blockquote-border-width solid $blockquote-border-color;
+  padding-left: $blockquote-indent;
   margin-left: 0;
   margin-top: $paragraph-margin-top-sm;
   margin-bottom: $paragraph-margin-bottom-sm;
@@ -244,8 +267,8 @@ blockquote {
 }
 
 figure.quote {
-  border-left: 0.5rem solid var(--accent);
-  padding-left: 1.5rem;
+  border-left: $blockquote-border-width solid $blockquote-border-color;
+  padding-left: $blockquote-indent;
   margin-left: 0;
   margin-top: $paragraph-margin-top-sm;
   margin-bottom: $paragraph-margin-bottom-sm;

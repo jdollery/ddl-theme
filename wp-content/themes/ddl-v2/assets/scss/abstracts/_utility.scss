@@ -77,7 +77,7 @@ $block-breakpoint-tablet: sm;
 $block-breakpoint-laptop: lg;
 $block-breakpoint-desktop: xxl;
 
-@mixin direction($tag) {
+@mixin block($tag) {
 
   @if $tag == 'y' {
     padding-top: $block-padding-sm;
