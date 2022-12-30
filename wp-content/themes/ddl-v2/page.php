@@ -220,7 +220,7 @@
                 </div>
 
               </div>
-              <div class="cell cell-gutter-x-sm cell-span-6">
+              <div class="cell cell-gutter-x-sm cell-span-md-6">
 
                 <div class="form__input">
                   <input
@@ -234,7 +234,7 @@
                 </div>
 
               </div>
-              <div class="cell cell-gutter-x-sm cell-span-6">
+              <div class="cell cell-gutter-x-sm cell-span-md-6">
 
                 <div class="form__input">
                   <input
