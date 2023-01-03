@@ -21,38 +21,36 @@
 
     <header class="header" id="mainHeader">
       
-      <div class="cell-fluid">
-        <div class="cell-row cell-row-gutter-x cell-align-center cell-justify-between">
+      <div class="cell-row cell-row-gutter-x cell-align-center cell-justify-between">
 
-          <div class="cell cell-gutter-x cell-span-auto">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" title="Back to the home page">
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" role="img" alt="<?php bloginfo( 'name' ); ?>" width="260" height="82">
-            </a>
-          </div>
+        <div class="cell-auto cell-gutter-x">
+          <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" title="Back to the home page">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" role="img" alt="<?php bloginfo( 'name' ); ?>" width="260" height="82">
+          </a>
+        </div>
 
-          <div class="cell cell-gutter-x cell-span-0 text-center">
-            <nav class="navigation" id="headerNav">
-              <ul>
-                <?php wp_nav_menu( array (
-                  'theme_location' => 'header-menu',
-                  'container' => false,
-                  'items_wrap' => '%3$s'
-                ) ); ?>
-              </ul>
-            </nav> 
-          </div>
+        <div class="cell-0 cell-gutter-x text-center">
+          <nav class="navigation" id="headerNav">
+            <ul>
+              <?php wp_nav_menu( array (
+                'theme_location' => 'header-menu',
+                'container' => false,
+                'items_wrap' => '%3$s'
+              ) ); ?>
+            </ul>
+          </nav> 
+        </div>
 
-          <div class="cell cell-gutter-x cell-span-auto">
+        <div class="cell-auto cell-gutter-x">
 
-            <a class="button button--accent" href="<?php echo site_url() ?>/contact/">Book an appointment</a>
-            
-            <button class="burger" id="navToggle" type="button" title="Main menu">
-              <span class="burger__inner"></span>
-            </button>
-
-          </div>
+          <a class="button button--accent" href="<?php echo site_url() ?>/contact/">Book an appointment</a>
+          
+          <button class="burger" id="navToggle" type="button" title="Main menu">
+            <span class="burger__inner"></span>
+          </button>
 
         </div>
+
       </div>
 
     </header>

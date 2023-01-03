@@ -1,6 +1,6 @@
 .banner {
   position: relative;
-  background: var(--white);
+  background: var(--grey-light);
 
   img {
     position: absolute;
@@ -13,26 +13,7 @@
     @include object-position(top);
   }
 
-  &__inner {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    min-height: 42rem;
-    justify-content: center;
-  }
-
-  &__top {
-    @include block-direction(y);
-  }
-
-  &__bottom {
-    background: var(--accent-dark);
-    color: var(--white);
-    padding: 6rem;
-  }
-
   &__intro {
-    font-family: var(--body-font);
     @include fluid-type(1.7rem, 1.8rem, 2rem);
   }
 

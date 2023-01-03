@@ -14,6 +14,23 @@ $max-width: 144rem;
 /* STYLES */
 /*-----------------------------------------------------------------------------------*/
 
+/* --------------------- CELLS --------------------- */
+
+// @mixin cell {
+//   position: relative;
+//   flex-shrink: 0;
+//   width: 100%;
+//   max-width: 100%;
+// }
+
+.cell {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+
 /* --------------------- ROW --------------------- */
 
 @mixin cell-row {
@@ -23,6 +40,13 @@ $max-width: 144rem;
 
 .cell-row {
   @include cell-row;
+}
+
+.cell-row > * {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 
@@ -67,20 +91,6 @@ $max-width: 144rem;
 
 .cell-row-gutter-y {
   @include cell-row-gutter-y-sm;
-}
-
-
-/* --------------------- CELLS --------------------- */
-
-@mixin cell {
-  position: relative;
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 100%;
-}
-
-.cell {
-  @include cell;
 }
 
 
@@ -130,7 +140,7 @@ $max-width: 144rem;
 
 /* --------------------- SPANS - MIXIN --------------------- */
 
-@mixin cell-span($size) {
+@mixin cell($size) {
   
   @for $i from 1 through $columns {
     $width: math.percentage(math.div($i, $columns));
@@ -155,18 +165,18 @@ $max-width: 144rem;
 @for $i from 1 through $columns {
   $width: math.percentage(math.div($i, $columns));
 
-  .cell-span-#{$i} {
+  .cell-#{$i} {
     flex: 0 0 auto;
     width: $width;
   }
 
 }
 
-.cell-span-0 {
+.cell-0 {
   flex: 1 0 0%;
 }
 
-.cell-span-auto {
+.cell-auto {
   flex: 0 0 auto;
   width: auto;
 }
@@ -179,18 +189,18 @@ $max-width: 144rem;
     @for $i from 1 through $columns {
       $width: math.percentage(math.div($i, $columns));
 
-      .cell-span#{$infix}-#{$i} {
+      .cell#{$infix}-#{$i} {
         flex: 0 0 auto;
         width: $width;
       }
 
     }
 
-    .cell-span#{$infix}-0 {
+    .cell#{$infix}-0 {
       flex: 1 0 0%;
     }
 
-    .cell-span#{$infix}-auto {
+    .cell#{$infix}-auto {
       flex: 0 0 auto;
       width: auto;
     }
@@ -247,7 +257,10 @@ $max-width: 144rem;
 /* --------------------- FIXED CONTAINER --------------------- */
 
 @mixin cell-fixed {
-  @include cell;
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
   @include cell-gutter-x;
   max-width: $max-width;
   margin-right: auto;
@@ -256,16 +269,4 @@ $max-width: 144rem;
 
 .cell-fixed {
   @include cell-fixed;
-}
-
-
-/* --------------------- FLUID CONTAINER --------------------- */
-
-@mixin cell-fluid {
-  @include cell;
-  width: 100%;
-}
-
-.cell-fluid {
-  @include cell-fluid;
 }

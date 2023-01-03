@@ -1,8 +1,14 @@
 <?php get_header(); ?>
 
+<?php get_template_part('inc/banner'); ?>
+
 <?php while ( have_posts() ) : the_post(); ?>
 
-<?php get_template_part('inc/banner'); ?>
+<article class="content block-p">
+  <div class="cell">
+    <?php the_content(); ?>
+  </div>
+</article>
 
 <?php endwhile; ?>
 

@@ -398,18 +398,18 @@ $tags: top, bottom, right, left;
 /* TEXT ALIGN */
 /*-----------------------------------------------------------------------------------*/
 
-.t-center { text-align: center !important; }
-.t-right  { text-align: right !important; }
-.t-left   { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-right  { text-align: right !important; }
+.text-left   { text-align: left !important; }
 
 @each $breakpoint in map-keys($breakpoint-widths) {
 
   @include media-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
 
-    .t#{$infix}-left   { text-align: left !important; }
-    .t#{$infix}-right  { text-align: right !important; }
-    .t#{$infix}-center { text-align: center !important; }
+    .text#{$infix}-left   { text-align: left !important; }
+    .text#{$infix}-right  { text-align: right !important; }
+    .text#{$infix}-center { text-align: center !important; }
   }
 
 }
