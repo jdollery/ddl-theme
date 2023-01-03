@@ -1,0 +1,32 @@
+.quicklinks {
+  position: relative;
+
+  &__list {
+    list-style: none;
+    @include cell-row; 
+    @include cell-row-gutter-x;
+    @include cell-row-gutter-y;
+  }
+
+  &__item {
+    @include cell(4); 
+    @include cell-gutter-x;
+    @include cell-gutter-y;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    padding: $gutter;
+    background-color: var(--grey-light);
+  }
+
+  .button {
+    display: block;
+    width: fit-content;
+    margin-top: 4rem;
+  }
+
+}

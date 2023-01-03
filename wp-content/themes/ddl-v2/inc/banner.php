@@ -17,16 +17,32 @@ $archive_description = get_the_archive_description();
 
 $blog_title = get_the_title( get_option('page_for_posts', true) );
 
+$banner_alt = get_field('banner_alt');
 $banner_intro = get_field('banner_intro');
+$banner_position = get_field('banner_position');
 
 ?>
 
 <div class="banner">
 
   <?php  if ( has_post_thumbnail() ) { ?>
-    <img class="banner__img" src="<?php echo $thumb_url ?>" alt="<?php echo $thumb_alt ?>" loading="lazy" width="1920" height="1080">
-  <?php // } else { ?>
-    <!-- <img class="banner__img" src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-banner.jpg" alt="<?php echo get_bloginfo( 'name' ) ?>" loading="lazy" width="1920" height="1080"> -->
+    <img 
+      class="banner__img banner__img--<?php echo esc_html($banner_position['value']); ?>"
+      src="<?php echo $thumb_url ?>"
+      alt="<?php echo $thumb_alt ?>" 
+      loading="lazy" 
+      width="1920" 
+      height="1080"
+    >
+  <?php  } else { ?>
+    <!-- <img 
+      class="banner__img"
+      src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-banner.jpg"
+      alt="<?php echo get_bloginfo( 'name' ) ?>"
+      loading="lazy"
+      width="1920"
+      height="1080"
+    > -->
   <?php } ?>
 
   <div class="block-p">
@@ -58,6 +74,15 @@ $banner_intro = get_field('banner_intro');
 
           <?php if($banner_intro) { ?>
             <h4 class="banner__intro"><?php echo $banner_intro ?></h4>
+          <?php } ?>
+
+        <?php } elseif ( is_post_type_archive('treatments') ) { //treatment archive ?>
+
+          <h1 class="banner__title"><?php echo get_the_archive_title() ?></h1>
+          <?php get_template_part('inc/breadcrumb'); ?>
+
+          <?php if ( get_field('treatment_archive_intro', 'option') ) { ?>
+            <h4 class="banner__intro"><?php echo get_field('treatment_archive_intro', 'option'); ?></h4>
           <?php } ?>
 
         <?php } elseif ( is_archive() ) { ?>
@@ -97,7 +122,11 @@ $banner_intro = get_field('banner_intro');
 
         <?php } else { ?>
 
-          <h1 class="banner__title"><?php the_title(); ?></h1>
+          <?php if($banner_alt) { ?>
+            <h1 class="banner__title"><?php echo $banner_alt ?></h1>
+          <?php } else { ?>
+            <h1 class="banner__title"><?php the_title(); ?></h1>
+          <?php } ?>
           <?php get_template_part('inc/breadcrumb'); ?>
 
           <?php if($banner_intro) { ?>
