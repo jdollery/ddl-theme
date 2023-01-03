@@ -4,10 +4,8 @@
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-<article class="content block-p">
-  <div class="cell">
-    <?php the_content(); ?>
-  </div>
+<article class="block-p">
+  <?php the_content(); ?>
 </article>
 
 <?php endwhile; ?>

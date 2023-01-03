@@ -14,23 +14,6 @@ $max-width: 144rem;
 /* STYLES */
 /*-----------------------------------------------------------------------------------*/
 
-/* --------------------- CELLS --------------------- */
-
-// @mixin cell {
-//   position: relative;
-//   flex-shrink: 0;
-//   width: 100%;
-//   max-width: 100%;
-// }
-
-.cell {
-  position: relative;
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 100%;
-}
-
-
 /* --------------------- ROW --------------------- */
 
 @mixin cell-row {
@@ -94,51 +77,9 @@ $max-width: 144rem;
 }
 
 
-/* --------------------- CELL GUTTERS --------------------- */
+/* --------------------- CELLS --------------------- */
 
-/* --------- HOZ GUTTERS --------- */
-
-@mixin cell-gutter-x {
-  padding-right: $gutter;
-  padding-left: $gutter;
-}
-
-.cell-gutter-x {
-  @include cell-gutter-x;
-}
-
-@mixin cell-gutter-x-sm {
-  padding-right: $gutter-sm;
-  padding-left: $gutter-sm;
-}
-
-.cell-gutter-x-sm {
-  @include cell-gutter-x-sm;
-}
-
-
-/* --------- VERT GUTTERS --------- */
-
-@mixin cell-gutter-y {
-  padding-top: $gutter;
-  padding-bottom: $gutter;
-}
-
-.cell-gutter-y {
-  @include cell-gutter-y;
-}
-
-@mixin cell-gutter-y-sm {
-  padding-top: $gutter-sm;
-  padding-bottom: $gutter-sm;
-}
-
-.cell-gutter-y-sm {
-  @include cell-gutter-y-sm;
-}
-
-
-/* --------------------- SPANS - MIXIN --------------------- */
+/* --------- MIXIN --------- */
 
 @mixin cell($size) {
   
@@ -160,7 +101,7 @@ $max-width: 144rem;
 }
 
 
-/* --------------------- SPANS - CLASS --------------------- */
+/* --------- CLASS --------- */
 
 @for $i from 1 through $columns {
   $width: math.percentage(math.div($i, $columns));
@@ -210,51 +151,51 @@ $max-width: 144rem;
 }
 
 
-/* --------------------- OFFSET - MIXIN --------------------- */
+/* --------------------- CELL GUTTERS --------------------- */
 
-// @mixin cell-offset($size) {
-  
-//   @for $i from 1 through $columns {
-//     $num: math.percentage(math.div($i, $columns));
-//     @if($size == $i)  {
-//       margin-left: $num;
-//     } 
-//   }
-  
-// }
+/* --------- HOZ GUTTERS --------- */
 
+@mixin cell-gutter-x {
+  padding-right: $gutter;
+  padding-left: $gutter;
+}
 
-/* --------------------- OFFSET - CLASS --------------------- */
+.cell-gutter-x {
+  @include cell-gutter-x;
+}
 
-// @each $breakpoint in map-keys($breakpoint-widths) {
-//   @include media-up($breakpoint) {
-//     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
+@mixin cell-gutter-x-sm {
+  padding-right: $gutter-sm;
+  padding-left: $gutter-sm;
+}
 
-//     @for $i from 1 through $columns {
-//       $num: math.percentage(math.div($i, $columns));
-
-//       .span-offset#{$infix}-#{$i} {
-//         margin-left: $num;
-//       }
-
-//     }
-
-//   }
-
-// }
+.cell-gutter-x-sm {
+  @include cell-gutter-x-sm;
+}
 
 
-// @for $i from 1 through $columns {
-//   $num: math.percentage(math.div($i, $columns));
+/* --------- VERT GUTTERS --------- */
 
-//   .span-offset-#{$i} {
-//     margin-left: $num;
-//   }
+@mixin cell-gutter-y {
+  padding-top: $gutter;
+  padding-bottom: $gutter;
+}
 
-// }
+.cell-gutter-y {
+  @include cell-gutter-y;
+}
+
+@mixin cell-gutter-y-sm {
+  padding-top: $gutter-sm;
+  padding-bottom: $gutter-sm;
+}
+
+.cell-gutter-y-sm {
+  @include cell-gutter-y-sm;
+}
 
 
-/* --------------------- FIXED CONTAINER --------------------- */
+/* --------------------- CELL FIXED --------------------- */
 
 @mixin cell-fixed {
   position: relative;

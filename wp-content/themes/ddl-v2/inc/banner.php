@@ -85,13 +85,15 @@ $banner_intro = get_field('banner_intro');
 
         <?php } elseif ( is_singular( 'post' ) ) { ?>
 
+          <?php $categories_list = preg_replace('/<a /', '<li><a ', get_the_category_list( ', ' )); ?>
+
           <h1 class="banner__title"><?php the_title(); ?></h1>
           <?php get_template_part('inc/breadcrumb'); ?>
 
-          <ul class="banner__meta">
-            <li class="banner__categories"><?php echo get_the_category_list(); ?></li>
-            <li class="banner__date"><i class="far fa-calendar"></i> <?php echo get_the_date(); ?></li>
-          </ul>
+          <div class="banner__meta">
+            <ul class="banner__categories"><?php echo $categories_list ?></ul>
+            <time class="banner__date"><i class="far fa-calendar"></i> <?php echo get_the_date(); ?></time>
+          </div>
 
         <?php } else { ?>
 
