@@ -6,7 +6,7 @@ wp-content/themes/node_modules
 /*
 !.gitignore
 !wp-content/
-!wp-config.php
+# !wp-config.php
 
 # Ignore everything in the "wp-content" directory, except the "plugins"
 # and "themes" directories.
@@ -21,3 +21,4 @@ wp-content/plugins/advanced-custom-fields-pro
 wp-content/plugins/wordpress-seo
 wp-content/plugins/wp-migrate-db
 wp-content/uploads/wp-migrate-db
+# wp-config.php
