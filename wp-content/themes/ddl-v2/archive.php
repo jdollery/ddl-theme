@@ -2,8 +2,8 @@
 
 <?php get_template_part('inc/banner'); ?>
 
-<section class="quicklinks block-p">
-  <ul class="quicklinks__list">
+<section class="archive block-p">
+  <ul class="archive__list">
 
     <?php
     
@@ -16,15 +16,13 @@
 
     while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
-      <li class="quicklinks__item">
-        <a class="quicklinks__body" href="<?php echo get_permalink(); ?>">
-
-        <div class="quicklinks__text">
-          <h3 class="quicklinks__heading"><?php the_title(); ?></h3>
-          <div class="quicklinks__summary"><?php echo strip_tags( the_excerpt() ); ?></div>
-        </div>
-        <span class="button button--black">Learn more</span>
-
+      <li class="archive__item">
+        <a class="archive__link" href="<?php echo get_permalink(); ?>">
+          <div class="archive__body">
+            <h3 class="archive__heading"><?php the_title(); ?></h3>
+            <div class="archive__summary"><?php echo strip_tags( the_excerpt() ); ?></div>
+          </div>
+          <span class="btn btn--black btn--block">Learn more</span>
         </a>
       </li>
 

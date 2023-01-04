@@ -19,7 +19,7 @@ get_header(); ?>
     <figcaption>—Aldous Huxley, <cite>Brave New World</cite></figcaption>
   </figure>
 
-  <a href="/" class="button button--black button--block">Test</a>
+  <a href="/" class="btn btn--black btn--block">Test</a>
 
   <form class="form" id="validateForm" novalidate="true" method="post" action="https://www.securedent.net/submit.ashx">
 
@@ -273,7 +273,7 @@ get_header(); ?>
         </div>
 
         <div class="cell cell-gutter-x-sm cell-12 cell-lg-auto pt-3 pt-lg-0">
-          <button class="button button--black" type="submit">Submit referral</button>
+          <button class="btn btn--black" type="submit">Submit referral</button>
         </div>
 
       </div>

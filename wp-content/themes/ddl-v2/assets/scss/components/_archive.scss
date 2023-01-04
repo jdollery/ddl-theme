@@ -1,4 +1,4 @@
-.quicklinks {
+.archive {
   position: relative;
 
   &__list {
@@ -14,7 +14,7 @@
     @include cell-gutter-y;
   }
 
-  &__body {
+  &__link {
     display: flex;
     flex-direction: column;
     height: 100%;

@@ -77,7 +77,7 @@ $block-breakpoint-tablet: sm;
 $block-breakpoint-laptop: lg;
 $block-breakpoint-desktop: xxl;
 
-@mixin block($tag) {
+@mixin block-p($tag) {
 
   @if $tag == 'y' {
     padding-top: $block-padding-sm;
@@ -185,6 +185,66 @@ $block-breakpoint-desktop: xxl;
 
     @include media-up($block-breakpoint-desktop) {
       padding-right: $block-padding-xl;
+    }
+
+  }
+
+}
+
+
+@mixin block-m($tag) {
+
+  @if $tag == 'y' {
+    margin-top: $block-padding-sm;
+    margin-bottom: $block-padding-sm;
+
+    @include media-up($block-breakpoint-tablet) {
+      margin-top: $block-padding-md;
+      margin-bottom: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      margin-top: $block-padding-lg;
+      margin-bottom: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      margin-top: $block-padding-xl;
+      margin-bottom: $block-padding-xl;
+    }
+
+  }
+
+  @if $tag == 'top' {
+    margin-top: $block-padding-sm;
+
+    @include media-up($block-breakpoint-tablet) {
+      margin-top: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      margin-top: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      margin-top: $block-padding-xl;
+    }
+
+  }
+
+  @if $tag == 'bottom' {
+    margin-bottom: $block-padding-sm;
+
+    @include media-up($block-breakpoint-tablet) {
+      margin-bottom: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      margin-bottom: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      margin-bottom: $block-padding-xl;
     }
 
   }

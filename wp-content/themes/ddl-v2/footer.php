@@ -16,7 +16,7 @@
 
     <?php get_template_part('inc/icons'); ?>
 
-    <?php edit_post_link( __( 'Edit', 'textdomain' ), null, null, null, 'button button--edit' ); ?>
+    <?php edit_post_link( __( 'Edit', 'textdomain' ), null, null, null, 'btn btn--edit' ); ?>
 
     <?php wp_footer(); ?>
 
