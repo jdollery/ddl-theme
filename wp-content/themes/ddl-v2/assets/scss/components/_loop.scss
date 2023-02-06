@@ -1,0 +1,18 @@
+.loop {
+  list-style: none;
+  @include cell-row; 
+  @include cell-row-gutter-x;
+  margin-top: -$gutter * 2 !important;
+
+  &__item {
+    @include cell(12);
+    @include cell-gutter-x;
+    padding-top: $gutter * 2;
+
+    @include media-up(md) {
+      @include cell(6);
+    }
+
+  }
+
+}

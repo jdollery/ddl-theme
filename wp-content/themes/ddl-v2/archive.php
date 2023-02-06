@@ -2,33 +2,22 @@
 
 <?php get_template_part('inc/banner'); ?>
 
-<section class="archive block-p">
-  <ul class="archive__list">
+<?php if ( have_posts() ) { ?>
 
-    <?php
-    
-    $loop = new WP_Query( array(
-      'post_type' => 'post', 
-      'order'  => 'ASC', 
-      // 'post__not_in' => array(51, 59), //Exclude these posts
-      // 'post__in' => array(140, 142) //Only these posts
-    ) );
+<section class="block-p">
+  <ul class="loop">
 
-    while ( $loop->have_posts() ) : $loop->the_post(); ?>
+    <?php while ( have_posts() ) : the_post(); ?>
 
-      <li class="archive__item">
-        <a class="archive__link" href="<?php echo get_permalink(); ?>">
-          <div class="archive__body">
-            <h3 class="archive__heading"><?php the_title(); ?></h3>
-            <div class="archive__summary"><?php echo strip_tags( the_excerpt() ); ?></div>
-          </div>
-          <span class="btn btn--black btn--block">Learn more</span>
-        </a>
+      <li class="loop__item">
+        <?php get_template_part('inc/post'); ?>
       </li>
 
     <?php endwhile; wp_reset_query(); ?>
 
   </ul>
 </section>
+
+<?php } ?>
 
 <?php get_footer();?>

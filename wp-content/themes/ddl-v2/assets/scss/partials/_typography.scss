@@ -171,61 +171,78 @@ ol {
   
 }
 
-.list {
+@mixin list-bullet {
+  list-style: none;
+  padding-left: $list-indent;
+
+  li {
+    position: relative;
+    margin: 0;
+
+    &::marker {
+      display: none;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: $list-gutter;
+    }
+
+    &::before {
+      position: absolute;
+      left: -$list-indent;
+      top: 0.9rem;
+      display: block;
+      content: '';
+      width: $list-bullet-size;
+      height: $list-bullet-size;
+      background: $list-bullet-color;
+      border-radius: 50%;
+    }
+    
+  }
+
+}
+
+@mixin list-number {
+  padding-left: $list-indent;
+  counter-reset: custom-counter;
   list-style: none;
 
-  &--bullet {
-    padding-left: $list-indent;
+  li {
+    position: relative;
+    margin: 0;
+    counter-increment: custom-counter;
 
-    li {
-      position: relative;
-      margin: 0;
-  
-      &:not(:last-child) {
-        margin-bottom: $list-gutter;
-      }
-  
-      &::before {
-        position: absolute;
-        left: -$list-indent;
-        top: 0.9rem;
-        display: block;
-        content: '';
-        width: $list-bullet-size;
-        height: $list-bullet-size;
-        background: $list-bullet-color;
-        border-radius: 50%;
-      }
-      
+    &::marker {
+      display: none;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: $list-gutter;
+    }
+
+    &::before {
+      position: absolute;
+      left: -$list-indent;
+      top: 0;
+      display: block;
+      content: counter(custom-counter) ".";
+      font-weight: var(--bold);
+      color: $list-bullet-color;
     }
 
   }
 
-  &--number {
-    padding-left: $list-indent;
-    counter-reset: custom-counter;
+}
 
-    li {
-      position: relative;
-      margin: 0;
-      counter-increment: custom-counter;
+.list {
 
-      &:not(:last-child) {
-        margin-bottom: $list-gutter;
-      }
+  &--bullet { 
+    @include list-bullet;
+  }
 
-      &::before {
-        position: absolute;
-        left: -$list-indent;
-        top: 0;
-        display: block;
-        content: counter(custom-counter) " ";
-        font-weight: var(--bold);
-        color: var(--grey-dark);
-      }
-
-    }
-
+  &--number { 
+    @include list-number;
   }
 
 }

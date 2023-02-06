@@ -215,6 +215,27 @@ $block-breakpoint-desktop: xxl;
 
   }
 
+  @if $tag == 'x' {
+    margin-left: $block-padding-sm;
+    margin-right: $block-padding-sm;
+
+    @include media-up($block-breakpoint-tablet) {
+      margin-left: $block-padding-md;
+      margin-right: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      margin-left: $block-padding-lg;
+      margin-right: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      margin-left: $block-padding-xl;
+      margin-right: $block-padding-xl;
+    }
+
+  }
+
   @if $tag == 'top' {
     margin-top: $block-padding-sm;
 
@@ -470,6 +491,23 @@ $tags: top, bottom, right, left;
     .text#{$infix}-left   { text-align: left !important; }
     .text#{$infix}-right  { text-align: right !important; }
     .text#{$infix}-center { text-align: center !important; }
+  }
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* HEIGHT */
+/*-----------------------------------------------------------------------------------*/
+
+.h-100 { height: 100% !important; }
+
+@each $breakpoint in map-keys($breakpoint-widths) {
+
+  @include media-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
+
+    .h#{$infix}-100   { height: 100% !important; }
   }
 
 }

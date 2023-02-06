@@ -273,6 +273,10 @@ add_filter( 'get_the_archive_title', function ($title) {
 			$title = single_tag_title( '', false );
 		} elseif ( is_author() ) {
 			$title = '<span class="vcard">' . get_the_author() . '</span>' ;
+		} elseif ( is_tax() ) { //for custom post types
+			$title = sprintf( __( '%1$s' ), single_term_title( '', false ) );
+		} elseif (is_post_type_archive(array('treatments'))) {
+			$title = post_type_archive_title( '', false );
 		}
 
 	return $title;
@@ -352,3 +356,49 @@ function remove_editor() {
 }
 
 add_action('init', 'remove_editor');
+
+
+/*-----------------------------------------------------------------------------------*/
+/* ADD CUSTOM PAGINATION TO ANY POST TYPE */
+/*-----------------------------------------------------------------------------------*/
+
+// echo pagination(); // use this inside the loop
+
+function pagination( \WP_Query $wp_query = null, $echo = true ) {
+
+	if ( null === $wp_query ) {
+		global $wp_query;
+  }
+  
+	$pages = paginate_links( [
+			'root'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+			'format'       => '?paged=%#%',
+			'current'      => max( 1, get_query_var( 'paged' ) ),
+			'total'        => $wp_query->max_num_pages,
+			'type'         => 'array',
+			'show_all'     => false,
+			'end_size'     => 3,
+			'mid_size'     => 1,
+			'prev_next'    => true,
+			'prev_text'    => __( 'Previous' ),
+			'next_text'    => __( 'Next' ),
+			'add_args'     => false,
+			'add_fragment' => ''
+		]
+	);
+
+	if ( is_array( $pages ) ) {
+		$pagination = '<nav class="pagination" role="navigation"><ul class="pagination__list">';
+		foreach ( $pages as $page ) {
+			$pagination .= '<li class="pagination__list__item '.(strpos($page, 'current') !== false ? 'active' : '').'"> ' . str_replace( 'page-numbers', 'page-link', $page ) . '</li>';
+		}
+		$pagination .= '</ul></nav>';
+		if ( $echo ) {
+			echo $pagination;
+		} else {
+			return $pagination;
+		}
+	}
+
+	return null;
+}

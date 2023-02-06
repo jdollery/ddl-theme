@@ -1,0 +1,94 @@
+.post {
+  display: block;
+  background: var(--grey-light);
+  color: var(--accent);
+  font-weight: var(--regular);
+  height: 100%;
+
+  &__row {
+    @include cell-row;
+    height: 100%;
+
+    @include media-down(xl) {
+      flex-direction: column;
+    } 
+
+  }
+
+  &__one {
+    @include cell(12); 
+
+    @include media-down(xl) {
+      max-height: 24vw;
+    }
+
+    @include media-down(md) {
+      max-height: 40vw;
+    }
+
+    @include media-down(sm) {
+      max-height: 55vw;
+    }
+
+    @include media-up(xl) {
+      @include cell(5);
+    }
+
+  }
+
+  &__two {
+    @include cell(0);
+  }
+
+  img {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    @include object-fit (cover);
+    @include object-position (center);
+  }
+
+  .btn {
+    margin-top: 0;
+    color: var(--white);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  &__body {
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__heading {
+    line-height: 1.2;
+    margin-bottom: $gutter;
+  }
+
+  @include hover-focus {
+    color: var(--white);
+    background: var(--accent);
+    
+    .btn {
+      color: var(--white);
+      background: var(--accent-light);
+      border-color: var(--accent-light);
+    }
+
+  }
+
+  .btn {
+    margin-top: $gutter + 1rem;
+
+    @include hover-focus {
+      color: var(--accent);
+      background: var(--white);
+      border-color: var(--white);
+    }
+
+  }
+
+}
