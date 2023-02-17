@@ -22,6 +22,10 @@ $btn-padding: 1.6rem 3rem 1.2rem;
   padding: $btn-padding;
   transition: all 0.3s ease-out;
 
+  &--lg {
+    @include fluid-type(1.6rem, 1.8rem, 2rem);
+  }
+
   &--edit {
     display: block;
     color: var(--white);
@@ -84,6 +88,19 @@ $btn-padding: 1.6rem 3rem 1.2rem;
 
     &:last-child {
       margin-bottom: 0;
+    }
+
+  }
+
+  &--inline {
+    margin-top: $margin-top-sm;
+
+    @include media-up(md) {
+      margin-top: $margin-top-lg;
+    }
+
+    &:not(:first-child) {
+      margin-right: $gutter;
     }
 
   }

@@ -32,7 +32,7 @@ img {
 
 }
 
-@mixin img-object-fit {
+@mixin img-fit {
   @include object-fit (cover);
   @include object-position (center);
   width: 100%;
@@ -45,8 +45,8 @@ img {
     width: 100%;
   }
 
-  &--object-fit {
-    @include img-object-fit;
+  &--fit {
+    @include img-fit;
   }
 
 }

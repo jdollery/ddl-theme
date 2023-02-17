@@ -12,7 +12,7 @@ $form-margin-bottom-sm:   $margin-bottom-sm;
   @include body-size;
 }
 
-$input-font-weight: var(--medium);
+$input-font-weight: var(--regular);
 $input-line-height: 1.4;
 $input-color: var(--black);
 $input-background: var(--grey-light);
@@ -54,6 +54,19 @@ $checkboxradio-height-sm:   2.5rem;
   &__input {
     position: relative;
     margin-bottom: $gutter;
+
+    &--textarea {
+      height: 100%;
+    }
+
+    &--flex {
+      display: flex;
+    }
+
+    &--note {
+      font-size: 1.3rem;
+    }
+
   }
 
 }
@@ -169,6 +182,7 @@ select {
   &::placeholder {
     opacity: 1;
     transition: all .2s;
+    color: var(--grey);
   }
 
   &:placeholder-shown:not(:focus) {
@@ -181,7 +195,7 @@ select {
 
   &:placeholder-shown:not(:focus) + label {
     left: 2rem;
-    color: var(--color-one);
+    color: var(--black);
     opacity: 1;
     font-weight: var(--regular);
     @include input-font-size;
@@ -298,6 +312,30 @@ input[type=radio] + label {
   opacity: 1;
   z-index: 0;
   display: inline;
+}
+
+.form__input--flex {
+
+  input[type=checkbox],
+  input[type=radio] {
+    flex: 0 0 auto;
+    width: auto;
+    display: block;
+    // margin-top: 0.4rem;
+  }
+
+  input[type=checkbox]+label,
+  input[type=radio]+label {
+    flex: 1 0 0%;
+    width: auto;
+    font-size: 1.5rem;
+
+    a {
+      text-decoration: underline;
+    }
+
+  }
+
 }
 
 

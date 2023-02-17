@@ -91,7 +91,6 @@ h1, h2, h3, h4, h5, h6 {
 
   span {
     color: var(--accent);
-    font-weight: var(--medium);
   }
 
 }
@@ -235,6 +234,22 @@ ol {
 
 }
 
+@mixin list-inline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: inline-block;
+
+    &:not(:first-child) {
+      margin-left: $list-indent;
+    }
+
+  }
+
+}
+
 .list {
 
   &--bullet { 
@@ -243,6 +258,10 @@ ol {
 
   &--number { 
     @include list-number;
+  }
+
+  &--inline {
+    @include list-inline;
   }
 
 }
@@ -254,7 +273,7 @@ ol {
 
 /* --------------------- VARIABLES --------------------- */
 
-$blockquote-indent:          2rem;
+$blockquote-indent:          $gutter-lg;
 $blockquote-border-width:    0.5rem;
 $blockquote-border-color:    var(--accent);
 
