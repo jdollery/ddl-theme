@@ -90,7 +90,7 @@ function ddl_scripts() {
 	wp_enqueue_script( 'ddl-validate', get_template_directory_uri() . '/assets/js/validate.js', array(), '1.19.3', true );
 	wp_enqueue_script( 'ddl-select2', get_template_directory_uri() . '/assets/js/select2.js', array(), '5.0.0', true );
 	// wp_enqueue_script( 'ddl-sticky', get_template_directory_uri() . '/assets/js/sticky.min.js', array(), '1.3.0', true );
-	wp_enqueue_script( 'ddl-script', get_template_directory_uri() . '/script.js', array(), '1.0.0', true );
+	wp_enqueue_script( 'ddl-script', get_template_directory_uri() . '/assets/js/script.js', array(), '1.0.0', true );
 
   // if ( (is_page('19')) ) {
   //   wp_enqueue_script( 'ddl-map', get_template_directory_uri() . '/assets/js/map.js', array(), '1.0.0', true );
