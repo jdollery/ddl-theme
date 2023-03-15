@@ -1,0 +1,191 @@
+/*-----------------------------------------------------------------------------------*/
+/* TEAM STYLING */
+/*-----------------------------------------------------------------------------------*/
+
+.team {
+  background: var(--black);
+  @include block-p(x);
+  @include block-p(y);
+
+  &__row {
+    @include cell-row;
+    @include cell-row-gutter-y-sm;
+    @include cell-row-gutter-x-sm;
+
+    @include media-up(sm) {
+      @include cell-row-gutter-y;
+      @include cell-row-gutter-x;
+    }
+
+  }
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* MEMBER STYLING */
+/*-----------------------------------------------------------------------------------*/
+
+.member {
+  @include cell(12);
+  @include cell-gutter-y-sm;
+  @include cell-gutter-x-sm;
+
+  @include media-up(sm) {
+    @include cell(6);
+    @include cell-gutter-y;
+    @include cell-gutter-x;
+  }
+
+  @include media-up(lg) {
+    @include cell(4);
+  }
+
+  @include media-up(xxl) {
+    @include cell(3);
+  }
+
+  &__body {
+    background: var(--blue);
+    padding: $gutter-lg;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  [data-open] {
+    cursor: pointer;
+  }
+
+  &__edit {
+    display: block;
+    margin-top: 2rem;
+    width: fit-content;
+  }
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* SLIDEOUT STYLING */
+/*-----------------------------------------------------------------------------------*/
+
+html.slideout-active {
+	overflow: hidden;
+}
+
+.slideout {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 9999999;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+
+  &__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background: var(--blue);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+  }
+
+  &__row {
+    display: flex;
+    height: 100%;
+    justify-content: flex-end;
+  }
+
+  &__body {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 60rem;
+    overflow-y: scroll;
+    background: var(--black);
+    padding: $gutter;
+    z-index: 2;
+    right: -100%;
+    transition: right 0.7s cubic-bezier(0.5, 0, 0.5, 1);
+
+    @include media-up(sm) {
+      padding: $gutter-lg;
+    }
+
+  }
+
+  &__media {
+    max-width: 35rem;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    @include object-fit (cover);
+    @include object-position (center);
+  }
+
+  &__meta {
+    margin-bottom: 3rem;
+  }
+
+  &__job {
+    color: var(--cyan);
+  }
+
+  &__close {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    display: block;
+    width: 3.5rem;
+    height: 3.5rem;
+    background: var(--blue);
+    line-height: 2.8rem;
+    padding: 0.3rem;
+    border: 0.2rem solid var(--white);
+    border-radius: 50%;
+    z-index: 1;
+    -webkit-box-shadow: 0rem 0rem 1.5rem 0 rgba(20, 23, 49, 0.25); 
+    box-shadow: 0rem 0rem 1.5rem 0 rgba(20, 23, 49, 0.25);
+
+    svg {
+      fill: var(--white);
+    }
+
+  }
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+
+    .slideout {
+
+      &__backdrop {
+        visibility: visible;
+        opacity: 0.8;
+      }
+
+      &__body {
+        right: 0;
+      }
+
+    }
+
+  }
+
+}

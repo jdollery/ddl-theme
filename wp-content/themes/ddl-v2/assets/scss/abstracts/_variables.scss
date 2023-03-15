@@ -2,6 +2,17 @@
 /* CSS GLOBAL VARIABLES */
 /*-----------------------------------------------------------------------------------*/
 
+$white: #ffffff;
+$black: #3A4145;
+$grey: #ededed;
+$grey-dark: #505050;
+$grey-light: #f6f6f6;
+$accent: #1171ae;
+$accent-light: #73aed3;
+$danger: #b81c23;
+
+// lighten(map-get($colors, "blue"), 10%)
+
 :root {
 
   /* --------- COLOURS --------- */

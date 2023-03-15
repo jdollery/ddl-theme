@@ -15,6 +15,7 @@ $form-margin-bottom-sm:   $margin-bottom-sm;
 $input-font-weight: var(--regular);
 $input-line-height: 1.4;
 $input-color: var(--black);
+$input-placeholder: var(--grey);
 $input-background: var(--grey-light);
 $input-border-width: 0.1rem;
 $input-border-style: solid;
@@ -182,7 +183,7 @@ select {
   &::placeholder {
     opacity: 1;
     transition: all .2s;
-    color: var(--grey);
+    color: $input-placeholder;
   }
 
   &:placeholder-shown:not(:focus) {
@@ -195,7 +196,7 @@ select {
 
   &:placeholder-shown:not(:focus) + label {
     left: 2rem;
-    color: var(--black);
+    color: $input-color;
     opacity: 1;
     font-weight: var(--regular);
     @include input-font-size;

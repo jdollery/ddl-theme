@@ -3,13 +3,14 @@
 /*-----------------------------------------------------------------------------------*/
 
 $colors: (
-  "grey": var(--grey),
-  "grey-light": var(--grey-light),
-  "grey-dark": var(--grey-dark),
-  "accent": var(--accent),
-  "accent-light": var(--accent-light),
-  "white": var(--white),
-  "black": var(--black)
+  "white": $white,
+  "black": $black,
+  "grey": $grey,
+  "grey-dark": $grey-dark,
+  "grey-light": $grey-light,
+  "accent": $accent,
+  "accent-light": $accent-light,
+  "danger": $danger,
 );
 
 
@@ -400,6 +401,17 @@ $tags: top, bottom, right, left;
 
 
 /*-----------------------------------------------------------------------------------*/
+/* TEXT COLOUR */
+/*-----------------------------------------------------------------------------------*/
+
+@each $name, $color in $colors {
+  .color-#{$name} {
+    background: $color;
+  }
+}
+
+
+/*-----------------------------------------------------------------------------------*/
 /* MARGIN AND PADDING */
 /*-----------------------------------------------------------------------------------*/
 
@@ -497,7 +509,7 @@ $tags: top, bottom, right, left;
 
 
 /*-----------------------------------------------------------------------------------*/
-/* HEIGHT */
+/* HEIGHT & Width */
 /*-----------------------------------------------------------------------------------*/
 
 .h-100 { height: 100% !important; }
@@ -508,6 +520,19 @@ $tags: top, bottom, right, left;
     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
 
     .h#{$infix}-100   { height: 100% !important; }
+  }
+
+}
+
+
+.w-100 { width: 100% !important; }
+
+@each $breakpoint in map-keys($breakpoint-widths) {
+
+  @include media-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
+
+    .w#{$infix}-100   { width: 100% !important; }
   }
 
 }
