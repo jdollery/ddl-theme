@@ -56,11 +56,16 @@
   }
 
   &__body {
-    padding: 5rem;
+    padding: $gutter;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+
+    @include media-up(md) {
+      padding: $gutter-lg;
+    }
+
   }
 
   &__heading {

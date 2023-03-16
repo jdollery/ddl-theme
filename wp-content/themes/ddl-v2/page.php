@@ -10,7 +10,7 @@
 
 } ?>
 
-<?php if ( the_content() ) { ?>
+<?php if ( !empty( get_the_content() ) ) { ?>
 
   <article class="block-p">
     <?php the_content(); ?>
@@ -20,11 +20,11 @@
 
   get_template_part('inc/sections'); 
 
-} ?>
+}  ?>
 
-<?php if ( is_page(9) ) { 
+<?php if ( is_page('team') ) { 
 
-  get_template_part('inc/team'); 
+  get_template_part('inc/team');
 
 } ?>
 

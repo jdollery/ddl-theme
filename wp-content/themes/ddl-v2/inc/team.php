@@ -52,7 +52,7 @@
             </div>
           </div>
           <div class="cell-row cell-justify-center">
-            <span class="btn btn--pink w-100" data-open="<?php echo $i; ?>" >Read profile</span>
+            <span class="btn btn--accent w-100" data-open="<?php echo $i; ?>" >Read profile</span>
             <?php edit_post_link( __( 'Edit', 'textdomain' ), null, null, null, 'member__edit' ); ?>
           </div>
         </div>
@@ -61,7 +61,7 @@
           <div class="slideout__backdrop" data-close="<?php echo $i; ?>">&nbsp;</div>
           <div class="slideout__row">
             <div class="slideout__body">
-              <button class="slideout__close" data-close="<?php echo $i; ?>"><i class="fa-solid fa-xmark"></i></button>
+              <!-- <button class="slideout__close" data-close="<?php echo $i; ?>"><span class="icon icon--close"><svg role="img"><use xlink:href="#close" href="#close"></use></svg></span></button> -->
               <div class="slideout__content">
               <div class="slideout__media" data-open="<?php echo $i; ?>">
                 <?php if ( has_post_thumbnail() ) { ?>
@@ -83,7 +83,7 @@
                   <?php } ?>
                 </div>
                 <div class="slideout__profile"><?php the_content(); ?></div>
-                <button class="btn btn--pink btn--block w-100" data-close="<?php echo $i; ?>">Close profile</button>
+                <button class="btn btn--accent btn--block w-100" data-close="<?php echo $i; ?>">Close profile</button>
               </div>
             </div>
           </div>

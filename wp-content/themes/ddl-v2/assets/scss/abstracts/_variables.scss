@@ -51,10 +51,16 @@ $theme-name: ddl-v2;
   @include fluid-type(1.4rem, 1.6rem, 1.7rem);
 }
 
+/* --------- GUTTERS --------- */
+
+$gutter: 2rem;
+$gutter-lg: 4rem;
+$gutter-sm: 1rem;
+
 
 /* --------- MARGINS FOR IMAGES, FORMS, TABLES --------- */
 
-$margin-top-lg:      4rem;
-$margin-bottom-lg:   4rem;
-$margin-top-sm:      2rem;
-$margin-bottom-sm:   2rem;
+$margin-top-lg:      $gutter-lg;
+$margin-bottom-lg:   $gutter-lg;
+$margin-top-sm:      $gutter;
+$margin-bottom-sm:   $gutter;

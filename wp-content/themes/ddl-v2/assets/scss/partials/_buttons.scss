@@ -99,8 +99,13 @@ $btn-padding: 1.6rem 3rem 1.2rem;
       margin-top: $margin-top-lg;
     }
 
-    &:not(:first-child) {
-      margin-right: $gutter;
+    &:not(:last-child) {
+      margin-right: $gutter-sm;
+
+      @include media-up(sm) {
+        margin-right: $gutter;
+      }
+
     }
 
   }

@@ -1,0 +1,14 @@
+hr {
+  display: block;
+  border-width: 0.2rem 0 0;
+  border-style: solid;
+  border-color: var(--accent);
+  margin-top: $margin-top-sm;
+  margin-bottom: $margin-bottom-sm;
+
+  @include media-up(md) {
+    margin-top: $margin-top-lg;
+    margin-bottom: $margin-bottom-lg;
+  }
+
+}

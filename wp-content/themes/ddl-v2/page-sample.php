@@ -102,7 +102,7 @@ get_header(); ?>
 
         <div class="cell-12 cell-gutter-x-sm">
 
-          <div class="form__input form__input--textarea">
+          <div class="form__input form__input">
             <textarea 
               id="patient_address"
               name="patient_address"
@@ -144,7 +144,7 @@ get_header(); ?>
         </div>
         <div class="cell-12 cell-gutter-x-sm">
 
-          <div class="form__input form__input--textarea">
+          <div class="form__input form__input">
             <textarea 
               id="referral_reason"
               name="referral_reason"
@@ -158,7 +158,8 @@ get_header(); ?>
 
         <div class="cell-12 cell-gutter-x-sm">
 
-          <div class="form__input form__input--textarea">
+          <!-- <div class="form__input form__input--textarea"> -->
+          <div class="form__input form__input">
             <textarea 
               id="referral_history"
               name="referral_history"

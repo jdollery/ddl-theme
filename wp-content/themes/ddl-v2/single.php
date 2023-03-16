@@ -2,8 +2,16 @@
 
 <?php get_template_part('inc/banner'); ?>
 
-<article class="block-p">
-  <?php the_content(); ?>
-</article>
+<?php if ( !empty( get_the_content() ) ) { ?>
+
+  <article class="block-p">
+    <?php the_content(); ?>
+  </article>
+
+<?php } else {  
+
+  get_template_part('inc/sections'); 
+
+}  ?>
 
 <?php get_footer();?>
