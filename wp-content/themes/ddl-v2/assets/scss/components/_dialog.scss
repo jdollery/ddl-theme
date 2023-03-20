@@ -1,0 +1,140 @@
+/*-----------------------------------------------------------------------------------*/
+/* LOCK BODY SCROLL WHEN DIALOG OPEN */
+/*-----------------------------------------------------------------------------------*/
+
+html {
+
+  &.js-video-active {
+    overflow: hidden;
+  }
+
+  /* --- TURN OFF SCROLL BARS FOR SMALL SCREEN (FOR DEV ON DESKTOP) --- */
+
+  @include media-down($nav-breakpoint) { 
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+
+    &::-webkit-scrollbar {
+        width: 0px; /* For Chrome, Safari, and Opera */
+    }
+
+  }
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* VIDEO DIALOG */
+/*-----------------------------------------------------------------------------------*/
+
+#videoToggle {
+	cursor: pointer;
+}
+
+.video-dialog {
+  position: fixed;
+  padding: $gutter;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  left: 0;
+  top: 0;
+  z-index: 999999;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+
+  &__overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--black);
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &__inner {
+    position: relative;
+    width: 100rem;
+    max-width: 100%;
+    z-index: 5;
+  }
+  
+  video,
+  iframe {
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 0 19px rgba(0, 0, 0, 0.16);
+    width: 100%;
+    height: auto;
+    max-height: 85vh;
+    display: block;
+  }
+
+  video {
+    @include object-fit (cover);
+    @include object-position (center);
+  }
+
+  &__close {
+    background-color: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: -1.5rem;
+    top: -1.5rem;
+    width: 4rem;
+    height: 4rem;
+    overflow: hidden;
+    border-radius: 100%;
+    border: 0.3rem solid var(--black);
+    padding: 0;
+    transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+    z-index: 150;
+  
+    .icon {
+  
+      svg {
+        display: block;
+        fill: var(--black);
+        transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+      }
+  
+    }
+  
+    @include hover-focus {
+      background-color: var(--black);
+  
+      .icon {
+  
+        svg {
+          fill: var(--white);
+        }
+  
+      }
+  
+    }
+  
+  }
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+
+    .video-dialog {
+    
+      &__overlay {
+        opacity: 0.9;
+      }
+
+    }
+
+  }
+
+}

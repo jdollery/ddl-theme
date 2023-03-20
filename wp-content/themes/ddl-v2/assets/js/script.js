@@ -312,3 +312,53 @@ jQuery('a[href*="#"]')
 /*-----------------------------------------------------------------------------------*/
 
 // var sticky = new Sticky('[data-sticky]');
+
+/*-----------------------------------------------------------------------------------*/
+/* VIDEO POP-UP */
+/*-----------------------------------------------------------------------------------*/
+
+document.querySelectorAll("#videoToggle").forEach((d) => d.addEventListener("click", playVideos));
+
+const html = document.querySelector("html");
+
+function playVideos(e) {
+
+  videoDialog(e.currentTarget.dataset.url);
+
+  html.classList.add("js-video-active");
+
+  var videoWrap = document.createElement("DIV");
+  videoWrap.setAttribute("id", "videoWrap");
+  videoWrap.setAttribute("class", "video-dialog");
+  document.body.appendChild(videoWrap);
+
+  const wrapper = document.getElementById("videoWrap");
+  // wrapper.classList.add("video-dialog--active");
+  window.setTimeout(function(){wrapper.classList.add("video-dialog--active");}, 10);
+
+  const url = this.dataset.url;
+
+  const startModal = '<span onclick="videoDialogClose();" class="video-dialog__overlay"></span> <div class="video-dialog__inner">';
+  const finishModal = '<button onclick="videoDialogClose();" class="video-dialog__close"><span class="icon icon--close"><svg role="img"><use xlink:href="#close" href="#close"></use></svg></span></button></div>';
+  
+  if (url.indexOf("mp4") !== -1 || url.indexOf("m4v") !== -1) {
+    
+    document.getElementById(
+      "videoWrap"
+    ).innerHTML = `${startModal}<video controls loop playsinline autoplay><source src='${this.dataset.url}' type="video/mp4"></video>${finishModal}`;
+  } else {
+    alert("No video link found.");
+  }
+
+}
+
+const videoDialogClose = () => {
+  html.classList.remove("js-video-active");
+
+  const wrapper = document.getElementById("videoWrap");
+  wrapper.parentNode.removeChild(wrapper);
+
+};
+
+
+function videoDialog(){}

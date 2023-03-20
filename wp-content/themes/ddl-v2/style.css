@@ -16376,4 +16376,104 @@ html.slideout-active {
 .slideout.active .slideout__body {
   right: 0
 }
+html.js-video-active {
+  overflow: hidden
+}
+@media (max-width:767px) {
+  html {
+    scrollbar-width: none;
+    -ms-overflow-style: none
+  }
+  html::-webkit-scrollbar {
+    width: 0
+  }
+}
+#videoToggle {
+  cursor: pointer
+}
+.video-dialog {
+  position: fixed;
+  padding: 2rem;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  left: 0;
+  top: 0;
+  z-index: 999999;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s cubic-bezier(.5,0,.5,1)
+}
+.video-dialog__overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--black);
+  opacity: 0;
+  cursor: pointer
+}
+.video-dialog__inner {
+  position: relative;
+  width: 100rem;
+  max-width: 100%;
+  z-index: 5
+}
+.video-dialog iframe,
+.video-dialog video {
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 0 19px rgba(0,0,0,.16);
+  width: 100%;
+  height: auto;
+  max-height: 85vh;
+  display: block
+}
+.video-dialog video {
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center
+}
+.video-dialog__close {
+  background-color: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: -1.5rem;
+  top: -1.5rem;
+  width: 4rem;
+  height: 4rem;
+  overflow: hidden;
+  border-radius: 100%;
+  border: .3rem solid var(--black);
+  padding: 0;
+  transition: all .3s cubic-bezier(.5,0,.5,1);
+  z-index: 150
+}
+.video-dialog__close .icon svg {
+  display: block;
+  fill: var(--black);
+  transition: all .3s cubic-bezier(.5,0,.5,1)
+}
+.video-dialog__close:focus,
+.video-dialog__close:hover {
+  background-color: var(--black)
+}
+.video-dialog__close:focus .icon svg,
+.video-dialog__close:hover .icon svg {
+  fill: var(--white)
+}
+.video-dialog--active {
+  opacity: 1;
+  visibility: visible
+}
+.video-dialog--active .video-dialog__overlay {
+  opacity: .9
+}
 /*# sourceMappingURL=style.css.map */

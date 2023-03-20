@@ -26,9 +26,13 @@ if( have_rows('split_section') ){
         <div class="split__media<?php if($split_border == true) { ?> split__media--border<?php } ?>" >
 
           <?php if($split_video) { ?>
-            <video src="<?php echo $split_video ?>" controls type="video/mp4" poster="<?php echo $split_poster ?>"> 
+            
+            <!-- <video src="<?php echo $split_video ?>" controls type="video/mp4" poster="<?php echo $split_poster ?>"> 
               Sorry, your browser doesn’t support embedded videos.
-            </video>
+            </video> -->
+
+            <img id="videoToggle" src="<?php echo $split_poster ?>" alt="<?php the_sub_field('title'); ?>" data-url="<?php echo $split_video ?>">
+
           <?php } elseif($split_embed) { ?>
             <?php echo $split_embed ?>
           <?php } else { ?>
