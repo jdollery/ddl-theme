@@ -8,18 +8,6 @@ html {
     overflow: hidden;
   }
 
-  /* --- TURN OFF SCROLL BARS FOR SMALL SCREEN (FOR DEV ON DESKTOP) --- */
-
-  @include media-down($nav-breakpoint) { 
-    scrollbar-width: none; /* For Firefox */
-    -ms-overflow-style: none; /* For Internet Explorer and Edge */
-
-    &::-webkit-scrollbar {
-        width: 0px; /* For Chrome, Safari, and Opera */
-    }
-
-  }
-
 }
 
 
