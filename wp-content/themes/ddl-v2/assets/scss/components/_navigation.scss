@@ -554,6 +554,15 @@ html {
 
         }
 
+        &.menu-item-has-children:last-child {
+
+          > ul {
+            left: auto;
+            right: 0;
+          }
+
+        }
+
       }
 
     }
