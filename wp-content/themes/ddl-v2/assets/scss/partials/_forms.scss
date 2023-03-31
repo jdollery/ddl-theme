@@ -380,24 +380,34 @@ input[type=radio] + label {
       padding: 0;
       display: flex;
       flex-wrap: wrap;
+      flex-direction: column;
+
+      @include media-up(sm) {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex-direction: row;
+      }
   
       .upload__file {
         @include cell(0);
         min-height: 0.1rem;
         display: block;
-        text-overflow: ellipsis;
-        white-space: nowrap;
         overflow: hidden;
         text-align: left;
         @include input-font-size;
         padding: 1.8rem 2rem;
+
+        @include media-up(sm) {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
       }
   
       .upload__button {
         @include cell(auto);
-        display: flex;
-        align-items: center;
-        padding: 1.8rem 4rem;
+        text-align: center;
+        padding: 1rem 2rem;
         letter-spacing: 0;
         @include input-font-size;
         font-weight: var(--medium);
@@ -410,6 +420,10 @@ input[type=radio] + label {
         @include hover-focus {
           color: var(--white);
           background: var(--black);
+        }
+
+        @include media-up(sm) {
+          padding: 1.8rem 4rem;
         }
 
       }
