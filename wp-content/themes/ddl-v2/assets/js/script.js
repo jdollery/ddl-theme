@@ -132,6 +132,15 @@ jQuery(document).ready(function () { //doc ready start
 		jQuery('html').removeClass('slideout-active');
 	});
 
+  // Open Team Member With Hash
+  const current_url = location.hash
+  const member_slug = current_url.replace('#','')
+
+  if (current_url) {
+		jQuery('[data-sideout="' + member_slug + '"]').addClass('active');
+    jQuery('html').addClass('slideout-active');
+  }
+
 
   /*-----------------------------------------------------------------------------------*/
   /* CONTACT FORM */

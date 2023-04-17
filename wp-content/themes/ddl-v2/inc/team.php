@@ -10,8 +10,6 @@
       'orderby' => 'menu_order',
     ) );
 
-    $i=0;
-
     while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
       <article class="member">
@@ -28,12 +26,15 @@
         $member_gdc = get_field('member_gdc'); 
         $member_creds = get_field('member_creds');
 
+        global $post;
+        $member_id = $post->post_name;
+
         ?>
 
         <div class="member__body">
           <div class="cell-row cell-row-gutter">
             <div class="cell cell-gutter span-12 pb-6 pb-sm-9">
-              <picture class="member__media" data-open="<?php echo $i; ?>" >
+              <picture class="member__media" data-open="<?php echo $member_id ; ?>" >
                 <?php if ( has_post_thumbnail() ) { ?>
                 <img src="<?php echo $thumb_url ?>" alt="<?php echo $thumb_alt ?>">
                 <?php } else { ?>
@@ -52,18 +53,18 @@
             </div>
           </div>
           <div class="cell-row cell-justify-center">
-            <span class="btn btn--accent w-100" data-open="<?php echo $i; ?>" >Read profile</span>
+            <span class="btn btn--accent w-100" data-open="<?php echo $member_id ; ?>" >Read profile</span>
             <?php edit_post_link( __( 'Edit', 'textdomain' ), null, null, null, 'member__edit' ); ?>
           </div>
         </div>
 
-        <div class="slideout" data-sideout="<?php echo $i; ?>">
-          <div class="slideout__backdrop" data-close="<?php echo $i; ?>">&nbsp;</div>
+        <div class="slideout" data-sideout="<?php echo $member_id ; ?>">
+          <div class="slideout__backdrop" data-close="<?php echo $member_id ; ?>">&nbsp;</div>
           <div class="slideout__row">
             <div class="slideout__body">
-              <!-- <button class="slideout__close" data-close="<?php echo $i; ?>"><span class="icon icon--close"><svg role="img"><use xlink:href="#close" href="#close"></use></svg></span></button> -->
+              <!-- <button class="slideout__close" data-close="<?php echo $member_id ; ?>"><span class="icon icon--close"><svg role="img"><use xlink:href="#close" href="#close"></use></svg></span></button> -->
               <div class="slideout__content">
-              <div class="slideout__media" data-open="<?php echo $i; ?>">
+              <div class="slideout__media" data-open="<?php echo $member_id ; ?>">
                 <?php if ( has_post_thumbnail() ) { ?>
                   <img class="slideout__img" src="<?php echo $thumb_url ?>" alt="<?php echo $thumb_alt ?>">
                 <?php } else { ?>
@@ -83,7 +84,7 @@
                   <?php } ?>
                 </div>
                 <div class="slideout__profile"><?php the_content(); ?></div>
-                <button class="btn btn--accent btn--block w-100" data-close="<?php echo $i; ?>">Close profile</button>
+                <button class="btn btn--accent btn--block w-100" data-close="<?php echo $member_id ; ?>">Close profile</button>
               </div>
             </div>
           </div>
@@ -92,8 +93,6 @@
       </article>
 
     <?php 
-    
-    $i++; 
 
     endwhile; wp_reset_query(); 
     
