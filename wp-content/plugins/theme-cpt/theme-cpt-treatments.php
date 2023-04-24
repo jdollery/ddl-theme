@@ -31,7 +31,7 @@ function create_treatments() {
     'exclude_from_search'	=> false,
     'show_ui'							=> true,
     'has_archive'					=> true,
-    'hierarchical'				=> false,
+    'hierarchical'				=> true,
     // 'rewrite'						  => array( 'slug' => 'treatments' ),
     'menu_icon'						=> 'dashicons-clipboard',
     'supports'						=> array( 'title', 'thumbnail', 'page-attributes', 'excerpt'),
@@ -48,38 +48,38 @@ add_action( 'init', 'create_treatments' );
 /* REGISTER CUSTOM POST TYPE TAXONOMY (CATEGORIES) */
 /*-----------------------------------------------------------------------------------*/
 
-function create_treatment_taxonomy() {
+// function create_treatment_taxonomy() {
 
-  $labels = array(
-		'name'              => __( 'Treatment Categories' ),
-    'singular_name'     => __( 'Treatment Category' ),
-    'search_items'      => __( 'Search Treatment Categories' ),
-    'all_items'         => __( 'All Treatment Categories' ),
-    'parent_item'       => __( 'Parent Treatment Category' ),
-    'parent_item_colon' => __( 'Parent Treatment Category:' ),
-    'edit_item'         => __( 'Edit Treatment Category' ),
-    'update_item'       => __( 'Update Treatment Category' ),
-    'add_new_item'      => __( 'Add New Treatment Category' ),
-    'new_item_name'     => __( 'New Treatment Category' ),
-    'menu_name'         => __( 'Treatment Categories' ),
-	);
+//   $labels = array(
+// 		'name'              => __( 'Treatment Categories' ),
+//     'singular_name'     => __( 'Treatment Category' ),
+//     'search_items'      => __( 'Search Treatment Categories' ),
+//     'all_items'         => __( 'All Treatment Categories' ),
+//     'parent_item'       => __( 'Parent Treatment Category' ),
+//     'parent_item_colon' => __( 'Parent Treatment Category:' ),
+//     'edit_item'         => __( 'Edit Treatment Category' ),
+//     'update_item'       => __( 'Update Treatment Category' ),
+//     'add_new_item'      => __( 'Add New Treatment Category' ),
+//     'new_item_name'     => __( 'New Treatment Category' ),
+//     'menu_name'         => __( 'Treatment Categories' ),
+// 	);
 
-	register_taxonomy( 'treatment_categories', array('treatments'), array(
-		'hierarchical'			=> true,
-		'labels'						=> $labels,
-    'public'            => true,
-    //'rewrite'					=> array('slug' => 'brands'),
-		'query_var'					=> true,
-    "show_ui"           => true,
-    "show_in_menu"      => true,
-    "show_in_nav_menus" => true,
-    'show_admin_column' => true,
-    'show_in_rest'			=> true // true enables Gutenberg
-	) );
+// 	register_taxonomy( 'treatment_categories', array('treatments'), array(
+// 		'hierarchical'			=> true,
+// 		'labels'						=> $labels,
+//     'public'            => true,
+//     //'rewrite'					=> array('slug' => 'brands'),
+// 		'query_var'					=> true,
+//     "show_ui"           => true,
+//     "show_in_menu"      => true,
+//     "show_in_nav_menus" => true,
+//     'show_admin_column' => true,
+//     'show_in_rest'			=> true // true enables Gutenberg
+// 	) );
 
-}
+// }
 
-add_action( 'init', 'create_treatment_taxonomy' );
+// add_action( 'init', 'create_treatment_taxonomy' );
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -90,9 +90,9 @@ function create_treatment_options() {
 
   if(function_exists('acf_add_options_page')) {
     acf_add_options_sub_page(array(
-      'page_title'      => 'Treatment Settings',
-      'parent_slug'     => 'edit.php?post_type=treatments',
-      'capability' => 'manage_options'
+      'page_title'   =>   'Treatments Page',
+      'parent_slug'  =>   'edit.php?post_type=treatments',
+      'capability'   =>   'manage_options'
     ));
   }
 

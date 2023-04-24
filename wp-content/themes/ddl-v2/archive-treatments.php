@@ -17,6 +17,8 @@ get_header(); ?>
       'order'  => 'ASC', 
       // 'post__not_in' => array(51, 59), //Exclude these posts
       // 'post__in' => array(140, 142) //Only these posts
+      'post_parent' => get_the_ID(),
+      'numberposts' => -1,
     ) );
 
     while ( $loop->have_posts() ) : $loop->the_post(); ?>
