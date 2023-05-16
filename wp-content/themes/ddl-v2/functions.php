@@ -109,8 +109,23 @@ add_action( 'wp_enqueue_scripts', 'ddl_scripts' );
 /* REMOVE WP GLOBAL STYLES */
 /*-----------------------------------------------------------------------------------*/
 
-remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
-remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 );
+// remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
+// remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 );
+
+function remove_jquery() {
+	if (!is_admin()) {
+		wp_deregister_script('jquery');
+		wp_register_script('jquery', false);
+	}
+}
+
+add_action('init', 'remove_jquery');
+
+function mywptheme_child_deregister_styles() {
+  wp_dequeue_style( 'classic-theme-styles' );
+}
+
+add_action( 'wp_enqueue_scripts', 'mywptheme_child_deregister_styles', 20 );
 
 
 /*-----------------------------------------------------------------------------------*/
