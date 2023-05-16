@@ -13758,11 +13758,12 @@ a[href^=tel] {
 a:not([class]) {
   text-decoration-skip-ink: auto
 }
-a:focus,
-button:focus,
-input[type=submit]:focus {
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
   outline: .1rem dotted var(--grey-dark);
-  text-decoration: none
+  text-decoration: none;
+  outline-offset: .1rem
 }
 p {
   margin-top: 2rem;
@@ -14568,17 +14569,23 @@ input[type=radio] + label {
   transition: border .3s ease-in-out,background-color .3s ease-in-out;
   padding: 0;
   display: flex;
-  flex-wrap: wrap
+  flex-wrap: wrap;
+  flex-direction: column
 }
 .form__input--upload .upload + label * {
   pointer-events: none
+}
+@media (min-width:576px) {
+  .form__input--upload .upload + label {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-direction: row
+  }
 }
 .form__input--upload .upload + label .upload__file {
   flex: 1 0 0%;
   min-height: .1rem;
   display: block;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   overflow: hidden;
   text-align: left;
   font-size: 1.4rem;
@@ -14594,12 +14601,17 @@ input[type=radio] + label {
     font-size: 1.7rem
   }
 }
+@media (min-width:576px) {
+  .form__input--upload .upload + label .upload__file {
+    text-overflow: ellipsis;
+    white-space: nowrap
+  }
+}
 .form__input--upload .upload + label .upload__button {
   flex: 0 0 auto;
   width: auto;
-  display: flex;
-  align-items: center;
-  padding: 1.8rem 4rem;
+  text-align: center;
+  padding: 1rem 2rem;
   letter-spacing: 0;
   font-size: 1.4rem;
   font-weight: var(--medium);
@@ -14623,6 +14635,11 @@ input[type=radio] + label {
 .form__input--upload .upload + label .upload__button:hover {
   color: var(--white);
   background: var(--black)
+}
+@media (min-width:576px) {
+  .form__input--upload .upload + label .upload__button {
+    padding: 1.8rem 4rem
+  }
 }
 .form__input--upload .upload:focus + label,
 .form__input--upload .upload:focus:active + label {
@@ -15621,6 +15638,12 @@ html.js-nav-active {
     border-color: var(--black)
   }
 }
+@media (min-width:768px) {
+  .navigation > ul > li.menu-item-has-children:last-child > ul {
+    left: auto;
+    right: 0
+  }
+}
 @media (max-width:767px) {
   .navigation {
     position: fixed!important;
@@ -16271,6 +16294,14 @@ html.js-nav-active {
 .member [data-open] {
   cursor: pointer
 }
+.member__img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center
+}
 .member__edit {
   display: block;
   margin-top: 2rem;
@@ -16378,15 +16409,6 @@ html.slideout-active {
 }
 html.js-video-active {
   overflow: hidden
-}
-@media (max-width:767px) {
-  html {
-    scrollbar-width: none;
-    -ms-overflow-style: none
-  }
-  html::-webkit-scrollbar {
-    width: 0
-  }
 }
 #videoToggle {
   cursor: pointer

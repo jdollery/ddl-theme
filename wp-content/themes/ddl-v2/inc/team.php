@@ -34,11 +34,11 @@
         <div class="member__body">
           <div class="cell-row cell-row-gutter">
             <div class="cell cell-gutter span-12 pb-6 pb-sm-9">
-              <picture class="member__media" <?php if( get_the_content() ) { ?>data-open="<?php echo $member_id ?><?php } ?>" >
+              <picture class="member__media" <?php if( get_the_content() ) { ?>data-open="<?php echo $member_id ?><?php } ?>" role="button" aria-pressed="false" aria-expanded="false" aria-controls="<?php echo $member_id ; ?>" >
                 <?php if ( has_post_thumbnail() ) { ?>
-                <img src="<?php echo $thumb_url ?>" alt="<?php echo $thumb_alt ?>">
+                <img class="member__img" src="<?php echo $thumb_url ?>" alt="<?php echo $thumb_alt ?>">
                 <?php } else { ?>
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-profile.jpg" alt="<?php the_title(); ?>">
+                <img class="member__img" src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-profile.jpg" alt="<?php the_title(); ?>">
                 <?php } ?>
               </picture>
             </div>
@@ -54,13 +54,13 @@
           </div>
           <?php if( get_the_content() ) { ?>
           <div class="cell-row cell-justify-center">
-            <span class="btn btn--accent w-100" data-open="<?php echo $member_id ; ?>" >Read profile</span>
+            <button class="btn btn--accent w-100" data-open="<?php echo $member_id ; ?>" aria-pressed="false" aria-expanded="false" aria-controls="<?php echo $member_id ; ?>">Read profile</button>
             <?php edit_post_link( __( 'Edit', 'textdomain' ), null, null, null, 'member__edit' ); ?>
           </div>
           <?php } ?>
         </div>
 
-        <div class="slideout" data-sideout="<?php echo $member_id ; ?>">
+        <div class="slideout" id="<?php echo $member_id ; ?>" data-sideout="<?php echo $member_id ; ?>">
           <div class="slideout__backdrop" data-close="<?php echo $member_id ; ?>">&nbsp;</div>
           <div class="slideout__row">
             <div class="slideout__body">

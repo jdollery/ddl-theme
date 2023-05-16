@@ -202,6 +202,33 @@ jQuery(document).ready(function () { //doc ready start
 
 
 /*-----------------------------------------------------------------------------------*/
+/* ACCESSIBILITY CONTROLS */
+/*-----------------------------------------------------------------------------------*/
+
+const pressed = document.querySelectorAll('[aria-pressed]');
+
+pressed.forEach(function(press) {
+
+  press.addEventListener('click', (e) => {  
+    let pressed = e.target.getAttribute('aria-pressed') === 'true';
+    e.target.setAttribute('aria-pressed', String(!pressed));
+  });
+
+});
+
+const expanded = document.querySelectorAll('[aria-expanded]');
+
+expanded.forEach(function(expand) {
+
+  expand.addEventListener('click', (e) => {  
+    let expanded = e.target.getAttribute('aria-expanded') === 'true';
+    e.target.setAttribute('aria-expanded', String(!expanded));
+  });
+
+});
+
+
+/*-----------------------------------------------------------------------------------*/
 /* CUSTOM FILE UPLOAD */
 /*-----------------------------------------------------------------------------------*/
 

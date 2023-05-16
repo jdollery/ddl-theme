@@ -325,12 +325,12 @@ img {
 
 @media screen {
   [hidden~=screen] {
-      display: inherit
+    display: inherit
   }
 
   [hidden~=screen]:not(:active):not(:focus):not(:target) {
-      position: absolute!important;
-      clip: rect(0 0 0 0)!important
+    position: absolute!important;
+    clip: rect(0 0 0 0)!important
   }
 }
 
@@ -390,9 +390,10 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
-a:focus,
-button:focus,
-input[type="submit"]:focus {
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
 	outline: 0.1rem dotted var(--grey-dark);
   text-decoration: none;
+  outline-offset: 0.1rem;
 }
