@@ -78,37 +78,26 @@ function admin_init_cookie_dialog() {
 
   /* --- ADD FIELDS --- */
 
-	// add_settings_field ('cookie-message','Pop-up message:','render_cookie_message','cookie-options-page','cookie-dialog-section');
   add_settings_field ('cookie-policy-link','Policy page link URL:','render_cookie_policy_link','cookie-options-page','cookie-dialog-section');
   add_settings_field ('cookie-policy-text','Policy page link text:','render_cookie_policy_text','cookie-options-page','cookie-dialog-section');
-
-  // add_settings_field ('cookie-background','Background colour:','render_cookie_background','cookie-options-page','cookie-dialog-section');
-  // add_settings_field ('cookie-colour','Text colour:','render_cookie_colour','cookie-options-page','cookie-dialog-section');
-  
-  // add_settings_field ('cookie-accept-background','Accept button background colour:','render_cookie_accept_background','cookie-options-page','cookie-dialog-section');
-  // add_settings_field ('cookie-accept-border','Accept button border colour:','render_cookie_accept_border','cookie-options-page','cookie-dialog-section');
-  // add_settings_field ('cookie-accept-colour','Accept button text colour:','render_cookie_accept_colour','cookie-options-page','cookie-dialog-section');
-
-  // add_settings_field ('cookie-reject-background','Reject button background colour:','render_cookie_reject_background','cookie-options-page','cookie-dialog-section');
-  // add_settings_field ('cookie-reject-border','Reject button border colour:','render_cookie_reject_border','cookie-options-page','cookie-dialog-section');
-  // add_settings_field ('cookie-reject-colour','Reject button text colour:','render_cookie_reject_colour','cookie-options-page','cookie-dialog-section');
 
   add_settings_field ('cookie-colour-one','Colour one:','render_cookie_colour_one','cookie-options-page','cookie-dialog-section');
   add_settings_field ('cookie-colour-two','Colour two:','render_cookie_colour_two','cookie-options-page','cookie-dialog-section');
   add_settings_field ('cookie-colour-three','Colour three:','render_cookie_colour_three','cookie-options-page','cookie-dialog-section');
+  add_settings_field ('cookie-colour-overlay','Overlay colour:','render_cookie_colour_overlay','cookie-options-page','cookie-dialog-section');
 
-  add_settings_field ('cookie-reset-text','Reset link text:','render_cookie_reset_text','cookie-options-page','cookie-dialog-section');
+  add_settings_field ('cookie-reset-text','Reset option text:','render_cookie_reset_text','cookie-options-page','cookie-dialog-section');
 
 
   /* --- REGISTER FIELDS --- */
 
-	// register_setting ('cookie-options','cookie-message');
   register_setting ('cookie-options','cookie-policy-link');
   register_setting ('cookie-options','cookie-policy-text');
 
   register_setting ('cookie-options','cookie-colour-one');
   register_setting ('cookie-options','cookie-colour-two');
   register_setting ('cookie-options','cookie-colour-three');
+  register_setting ('cookie-options','cookie-colour-overlay');
 
   register_setting ('cookie-options','cookie-reset-text');
 
@@ -130,36 +119,49 @@ function render_cookie_policy_link() {
 
 	$input = get_option( 'cookie-policy-link' );
 	echo '<input style="width:500px;" type="text" id="cookie-policy-link" name="cookie-policy-link" placeholder="' . site_url() . '/cookie-policy/" value="' . $input . '" />
-  <p class="description" id="cookie-policy-link-description">A default cookie policy has been created here: <a href="' . site_url() . '/cookie-policy/" target="_blank">' . site_url() . '/cookie-policy/</a>.</p>
-  <p class="description" id="cookie-policy-link-description">Please enter your own policy URL to overwrite the default link.</p>';
+  <p class="description" id="cookie-policy-link-description">Please enter your own policy URL to override the default cookie policy, which has been added here: <a href="' . site_url() . '/cookie-policy/" target="_blank">' . site_url() . '/cookie-policy/</a>.</p>';
   
 }
 
 function render_cookie_policy_text() {
 
 	$input = get_option( 'cookie-policy-text' );
-	echo '<input style="width:500px;" type="text" id="cookie-policy-text" name="cookie-policy-text" placeholder="cookie policy" value="' . $input . '" />';
+	echo '<input style="width:500px;" type="text" id="cookie-policy-text" name="cookie-policy-text" placeholder="cookie policy" value="' . $input . '" />
+  <p class="description" id="cookie-policy-link-description">Please enter your own policy link text to override the default link text (cookie policy).</p>';
+
 
 }
 
 function render_cookie_colour_one() {
 
 	$input = get_option( 'cookie-colour-one' );
-	echo '<input style="width:500px;" type="text" id="cookie-colour-one" name="cookie-colour-one" placeholder="#ffffff" value="' . $input . '" />';
+	echo '<input style="width:500px;" type="text" id="cookie-colour-one" name="cookie-colour-one" placeholder="#ffffff" value="' . $input . '" />
+  <p class="description" id="cookie-policy-link-description">Enter a new colour (hash or rgb) to override the default (white).</p>';
+
 
 }
 
 function render_cookie_colour_two() {
 
 	$input = get_option( 'cookie-colour-two' );
-	echo '<input style="width:500px;" type="text" id="cookie-colour-two" name="cookie-colour-two" placeholder="#222222" value="' . $input . '" />';
+	echo '<input style="width:500px;" type="text" id="cookie-colour-two" name="cookie-colour-two" placeholder="#222222" value="' . $input . '" />
+  <p class="description" id="cookie-policy-link-description">Enter a new colour (hash or rgb) to override the default (black).</p>';
 
 }
 
 function render_cookie_colour_three() {
 
 	$input = get_option( 'cookie-colour-three' );
-	echo '<input style="width:500px;" type="text" id="cookie-colour-three" name="cookie-colour-three" placeholder="#4c4c4c" value="' . $input . '" />';
+	echo '<input style="width:500px;" type="text" id="cookie-colour-three" name="cookie-colour-three" placeholder="#4c4c4c" value="' . $input . '" />
+  <p class="description" id="cookie-policy-link-description">Enter a new colour (hash or rgb) to override the default (grey).</p>';
+
+}
+
+function render_cookie_colour_overlay() {
+
+	$input = get_option( 'cookie-colour-overlay' );
+	echo '<input style="width:500px;" type="text" id="cookie-colour-overlay" name="cookie-colour-overlay" placeholder="#222222" value="' . $input . '" />
+  <p class="description" id="cookie-policy-link-description">Enter a new colour (hash or rgb) to override the default (black).</p>';
 
 }
 
@@ -167,7 +169,7 @@ function render_cookie_reset_text() {
 
 	$input = get_option( 'cookie-reset-text' );
 	echo '<input style="width:500px;" type="text" id="cookie-reset-text" name="cookie-reset-text" placeholder="Please click here to reset your cookie preference" value="' . $input . '" />
-  <p class="description" id="cookie-policy-link-description">To enable the reset link, please add this shotcode: [cookie-reset]</p>';
+  <p class="description" id="cookie-policy-link-description">Please use this shotcode to add the reset option: [cookie-reset]</p>';
 
 }
 
@@ -185,14 +187,16 @@ function admin_init_cookie_tracking() {
 
   /* --- ADD FIELDS --- */
 
-  add_settings_field ('cookie-tag','Google Tag Manager ID','render_cookie_tag','cookie-options-page','cookie-tracking-section');
-  add_settings_field ('cookie-pixel','Facebook Pixel code','render_cookie_pixel','cookie-options-page','cookie-tracking-section');
+  add_settings_field ('cookie-tag','Google Tag Manager ID:','render_cookie_tag','cookie-options-page','cookie-tracking-section');
+  add_settings_field ('cookie-pixel','Facebook Pixel code:','render_cookie_pixel','cookie-options-page','cookie-tracking-section');
+  add_settings_field ('cookie-whatconverts','WhatConverts URL:','render_cookie_whatconverts','cookie-options-page','cookie-tracking-section');
 
 
   /* --- REGISTER FIELDS --- */
 
   register_setting ('cookie-options','cookie-tag');
   register_setting ('cookie-options','cookie-pixel');
+  register_setting ('cookie-options','cookie-whatconverts');
 
 }
 
@@ -221,6 +225,14 @@ function render_cookie_pixel() {
 	$input = get_option( 'cookie-pixel' );
 	echo '<input style="width:500px;" type="text" id="cookie-pixel" name="cookie-pixel" value="' . $input . '" /><p class="description" id="cookie-pixel-description">
   Add your Facebook Pixel Code to enable tracking.</p>';
+
+}
+
+function render_cookie_whatconverts() {
+
+	$input = get_option( 'cookie-whatconverts' );
+	echo '<input style="width:500px;" type="text" id="cookie-whatconverts" name="cookie-whatconverts" value="' . $input . '" /><p class="description" id="cookie-pixel-description">
+  Add your WhatConverts URL to enable tracking.</p>';
 
 }
 
@@ -275,13 +287,13 @@ function cookie_plugin_activation() {
 
     <h3>Specific Categorisation of Cookies Used</h3>
 
-    <p><strong>Necessary cookies</strong><br>These are essential for the site to operate correctly and provide the services you require when visiting the site. They allow the basic features of the site, such as navigation and maintaining security and privacy.</p>
+    <p><strong>Strictly Necessary cookies</strong><br>These are essential for the site to operate correctly and provide the services you require when visiting the site. They allow the basic features of the site, such as navigation and maintaining security and privacy.</p>
 
-    <p><strong>Preference cookies</strong><br>These enable a website to remember information that changes how a website looks or behaves for a user, such as preferred language or region.</p>
+    <p><strong>Functionality cookies</strong><br>These enable a website to remember information that changes how a website looks or behaves for a user, such as preferred language or region, timezone and enhanced content.</p>
 
     <p><strong>Performance cookies</strong><br>These collect and report anonymous data to help website operators understand how visitors interact with their site.</p>
 
-    <p><strong>Marketing/Targeting cookies</strong><br>These are used to provide content that best suits an individual user and their interests, making messages and advertisements more relevant and personalised.</p>
+    <p><strong>Targeting cookies</strong><br>These are used to provide content that best suits an individual user and their interests, making messages and advertisements more relevant and personalised.</p>
 
     <h3>What types of cookies do we use?</h3>
     <p><strong>Strictly Necessary</strong></p>
@@ -302,13 +314,6 @@ function cookie_plugin_activation() {
           <td>Proprietary</td>
           <td>6 months</td>
           <td>This cookie stores the user&rsquo;s cookie consent state for the current domain.</td>
-        </tr>
-        <tr>
-          <td>ARRAffinitySameSite</td>
-          <td>azure.microsoft.com</td>
-          <td>Third-party</td>
-          <td>Session</td>
-          <td>When using Microsoft Azure as a hosting platform and enabling load balancing, this cookie ensures that requests from one visitor browsing session are always handled by the same server in the cluster.</td>
         </tr>
       </tbody>
     </table>
@@ -349,7 +354,7 @@ function cookie_plugin_activation() {
       </tbody>
     </table>
 
-    <p><strong>Marketing/Targeting</strong></p>
+    <p><strong>Targeting</strong></p>
     <table class="cookie-dialog__table">
       <thead>
         <tr>
@@ -433,8 +438,15 @@ function cookie_plugin_activation() {
 
 function cookie_scripts() {
 
-  wp_enqueue_style( 'cookie-styles', plugins_url('/assets/css/cookie-styles.css', __FILE__), array(), '', 'all' );
-  wp_enqueue_script( 'cookie-script', plugins_url('/assets/js/cookie-script.js', __FILE__), array(), '', true ); 
+  $cookieTag = get_option('cookie-tag');
+  $cookiePixel = get_option('cookie-pixel');
+
+  if($cookieTag || $cookiePixel) { 
+
+  wp_enqueue_style( 'cookie-styles', 'https://cdn.jsdelivr.net/gh/dental-design/cookie-consent@latest/cookie-styles.css', array(), '', 'all' );
+  wp_enqueue_script( 'cookie-script', 'https://cdn.jsdelivr.net/gh/dental-design/cookie-consent@latest/cookie-script.js', array(), '', true ); 
+
+  } 
 
 }
 
@@ -445,60 +457,41 @@ function add_cookie_control() {
 
   $cookieTag = get_option('cookie-tag');
   $cookiePixel = get_option('cookie-pixel');
+  $cookieWhatconverts = get_option('cookie-whatconverts');
 
-  $cookieBackground = get_option('cookie-background');
-  $cookieColour = get_option('cookie-colour');
+  $cookieColourOne = get_option('cookie-colour-one');
+  $cookieColourTwo = get_option('cookie-colour-two');
+  $cookieColourThree = get_option('cookie-colour-three');
+  $cookieColourOverlay = get_option('cookie-colour-overlay');
 
-  $cookieAcceptBackground = get_option('cookie-accept-background');
-  $cookieAcceptBorder = get_option('cookie-accept-border');
-  $cookieAcceptColour = get_option('cookie-accept-colour');
+  $cookiePrivacyLink = get_option('cookie-policy-link');
+  $cookiePrivacyText = get_option('cookie-policy-text');
 
-  $cookieRejectBackground = get_option('cookie-reject-background');
-  $cookieRejectBorder = get_option('cookie-reject-border');
-  $cookieRejectColour = get_option('cookie-reject-colour');
   
   if($cookieTag || $cookiePixel) { ?>
 
-    <?php if( $cookieBackground || $cookieColour || $cookieAcceptColour || $cookieAcceptBackground || $cookieAcceptBorder || $cookieRejectColour || $cookieRejectBackground || $cookieRejectBorder) { ?>
+    <?php if( $cookieColourOne || $cookieColourTwo || $cookieColourThree || $cookieColourOverlay ) { ?>
     <style>
 
-      <?php if($cookieBackground) { ?>
-      .cookie-dialog__body {
-        background-color: <?php echo $cookieBackground ?> !important;
+      .cookie-dialog {
+        <?php if( $cookieColourOne ) { ?>--cookie-white: <?php echo $cookieColourOne ?>;<?php } ?>
+        <?php if( $cookieColourTwo ) { ?>--cookie-black: <?php echo $cookieColourTwo ?>;<?php } ?>
+        <?php if( $cookieColourThree ) { ?>--cookie-grey: <?php echo $cookieColourThree ?>;<?php } ?>
+        <?php if( $cookieColourOverlay ) { ?>--cookie-overlay: <?php echo $cookieColourOverlay ?>;<?php } ?>
       }
-      <?php } ?>
-
-      <?php if($cookieColour) { ?>
-      .cookie-dialog__header {
-        color: <?php echo $cookieColour ?> !important;
-      }
-      <?php } ?>
-
-      <?php if($cookieAcceptColour || $cookieAcceptBackground || $cookieAcceptBorder) { ?>
-      .cookie-dialog__allow {
-        <?php if($cookieAcceptColour) { ?>color: <?php echo $cookieAcceptColour ?> !important;<?php } ?>
-        <?php if($cookieAcceptBackground) { ?>background: <?php echo $cookieAcceptBackground ?> !important;<?php } ?>
-        <?php if($cookieAcceptBorder) { ?>border-color: <?php echo $cookieAcceptBorder ?> !important;<?php } ?>
-      }
-      <?php } ?>
-
-      <?php if($cookieRejectColour || $cookieRejectBackground || $cookieRejectBorder) { ?>
-      .cookie-dialog__reject {
-        <?php if($cookieRejectColour) { ?>color: <?php echo $cookieRejectColour ?> !important;<?php } ?>
-        <?php if($cookieRejectBackground) { ?>background: <?php echo $cookieRejectBackground ?> !important;<?php } ?>
-        <?php if($cookieRejectBorder) { ?>border-color: <?php echo $cookieRejectBorder ?> !important;<?php } ?>
-      }
-      <?php } ?>
 
     </style>
     <?php } ?>
 
-    <script type="text/javascript" async >
+    <script type="text/javascript" defer >
 
-      document.addEventListener("DOMContentLoaded", function(event) { 
-        setCookies({
-          tag: "<?php echo $cookieTag; ?>",
+      window.addEventListener('load', function () {
+        setCookieConsent({
+          <?php if($cookiePrivacyLink) {?>policy_url: "<?php echo $cookiePrivacyLink; ?>",<?php } ?>
+          <?php if($cookiePrivacyText) {?>policy_link: "<?php echo $cookiePrivacyText; ?>",<?php } ?>
+          <?php if($cookieTag) {?>tag: "<?php echo $cookieTag; ?>",<?php } ?>
           <?php if($cookiePixel) {?>pixel: "<?php echo $cookiePixel; ?>",<?php } ?>
+          <?php if($cookieWhatconverts) {?>whatconverts: "<?php echo $cookieWhatconverts; ?>",<?php } ?>
         });
       });
 
@@ -513,36 +506,6 @@ function add_cookie_control() {
 add_action( 'wp_head', 'add_cookie_control', 999);
 
 
-function add_cookie_iframe() { 
-
-  $cookieTag = get_option('cookie-tag'); ?>
-
-  <?php if($cookieTag) { ?>
-
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo $cookieTag; ?>"height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-  <?php } 
-
-}
-
-add_action( 'wp_footer', 'add_cookie_iframe');
-
-
-function add_pixel_iframe() { 
-
-  $cookiePixel = get_option('cookie-pixel'); ?>
-
-  <?php if($cookiePixel) { ?>
-
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=<?php echo $cookiePixel; ?>&ev=PageView&noscript=1" /></noscript>
-
-  <?php } 
-
-}
-
-add_action( 'wp_footer', 'add_pixel_iframe');
-
-
 /*-----------------------------------------------------------------------------------*/
 /* RESET DIALOG SHORTCODE */
 /*-----------------------------------------------------------------------------------*/
@@ -553,11 +516,11 @@ function cookie_reset_shortcode() {
 
   if( $cookieResetText ) { 
 
-    return '<a id="resetCookies" class="cookie-dialog__reset" tabindex="0" type="button" title="Reset and open cookie preferences">' . $cookieResetText . '</a>';
+    return '<a id="resetCookieConsent" class="cookie-dialog__reset" tabindex="0" role="button" aria-pressed="false" title="Reset and open cookie preferences">' . $cookieResetText . '</a>';
 
   } else {
 
-    return '<a id="resetCookies" class="cookie-dialog__reset" tabindex="0" type="button" title="Reset and open cookie preferences">Please click here to reset your cookie preference.</a>';
+    return '<a id="resetCookieConsent" class="cookie-dialog__reset" tabindex="0" role="button" aria-pressed="false" title="Reset and open cookie preferences">Please click here to reset your cookie preference.</a>';
 
   };
 
