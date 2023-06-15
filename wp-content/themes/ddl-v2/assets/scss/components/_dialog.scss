@@ -4,7 +4,7 @@
 
 html {
 
-  &.js-video-active {
+  &.js-dialog-active {
     overflow: hidden;
   }
 
@@ -19,7 +19,7 @@ html {
 	cursor: pointer;
 }
 
-.video-dialog {
+.dialog {
   position: fixed;
   padding: $gutter;
   height: 100vh;
@@ -115,7 +115,7 @@ html {
     opacity: 1;
     visibility: visible;
 
-    .video-dialog {
+    .dialog {
     
       &__overlay {
         opacity: 0.9;

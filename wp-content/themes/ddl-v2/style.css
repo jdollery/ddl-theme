@@ -16407,13 +16407,13 @@ html.slideout-active {
 .slideout.active .slideout__body {
   right: 0
 }
-html.js-video-active {
+html.js-dialog-active {
   overflow: hidden
 }
 #videoToggle {
   cursor: pointer
 }
-.video-dialog {
+.dialog {
   position: fixed;
   padding: 2rem;
   height: 100vh;
@@ -16428,7 +16428,7 @@ html.js-video-active {
   visibility: hidden;
   transition: all .3s cubic-bezier(.5,0,.5,1)
 }
-.video-dialog__overlay {
+.dialog__overlay {
   position: absolute;
   left: 0;
   top: 0;
@@ -16438,14 +16438,14 @@ html.js-video-active {
   opacity: 0;
   cursor: pointer
 }
-.video-dialog__inner {
+.dialog__inner {
   position: relative;
   width: 100rem;
   max-width: 100%;
   z-index: 5
 }
-.video-dialog iframe,
-.video-dialog video {
+.dialog iframe,
+.dialog video {
   position: relative;
   z-index: 10;
   box-shadow: 0 0 19px rgba(0,0,0,.16);
@@ -16454,13 +16454,13 @@ html.js-video-active {
   max-height: 85vh;
   display: block
 }
-.video-dialog video {
+.dialog video {
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: center;
   object-position: center
 }
-.video-dialog__close {
+.dialog__close {
   background-color: var(--white);
   cursor: pointer;
   display: flex;
@@ -16478,24 +16478,24 @@ html.js-video-active {
   transition: all .3s cubic-bezier(.5,0,.5,1);
   z-index: 150
 }
-.video-dialog__close .icon svg {
+.dialog__close .icon svg {
   display: block;
   fill: var(--black);
   transition: all .3s cubic-bezier(.5,0,.5,1)
 }
-.video-dialog__close:focus,
-.video-dialog__close:hover {
+.dialog__close:focus,
+.dialog__close:hover {
   background-color: var(--black)
 }
-.video-dialog__close:focus .icon svg,
-.video-dialog__close:hover .icon svg {
+.dialog__close:focus .icon svg,
+.dialog__close:hover .icon svg {
   fill: var(--white)
 }
-.video-dialog--active {
+.dialog--active {
   opacity: 1;
   visibility: visible
 }
-.video-dialog--active .video-dialog__overlay {
+.dialog--active .dialog__overlay {
   opacity: .9
 }
 /*# sourceMappingURL=style.css.map */
