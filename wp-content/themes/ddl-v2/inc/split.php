@@ -18,15 +18,7 @@ if( have_rows('split_section') ){
 
   ?>
 
-  <section 
-      class="
-        split 
-        split--<?php echo esc_html($split_location['value']); ?>
-        bg-<?php echo esc_html($split_bg['value']); ?> 
-        <?php if($split_margin && in_array('top', $split_margin)) { ?>block-p-t<?php } ?>
-        <?php if($split_margin && in_array('bottom', $split_margin)) { ?>block-p-b<?php } ?>
-      "
-    >
+  <section class="split split--<?php echo esc_html($split_location['value']); ?> bg-<?php echo esc_html($split_bg['value']); ?><?php if($split_margin && in_array('top', $split_margin)) { ?> block-p-t<?php } ?><?php if($split_margin && in_array('bottom', $split_margin)) { ?> block-p-b<?php } ?>">
 
     <div class="split__row">
 
