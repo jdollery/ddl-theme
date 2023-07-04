@@ -1,12 +1,7 @@
-/* --------------------- VARIABLES --------------------- */
-
-$btn-padding: 1.6rem 3rem 1.2rem;
-
-
 /* --------------------- MIXINS --------------------- */
 
 @mixin btn {
-  display: inline-block;
+  display: block;
   cursor: pointer;
   text-align: center;
   @include user-select(none);
@@ -19,15 +14,23 @@ $btn-padding: 1.6rem 3rem 1.2rem;
   border-style: solid;
   border-color: transparent;
   border-radius: 0;
-  padding: $btn-padding;
-  transition: all 0.3s ease-out;
+  padding: 1.6rem 2.5rem 1.5rem;
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+
+  @include media-up(xs) {
+    width: fit-content;
+  }
+
+  @include media-up(xl) {
+    padding: 1.8rem 3rem 1.7rem;
+  }
 
   &--lg {
     @include fluid-type(1.6rem, 1.8rem, 2rem);
   }
 
   &--edit {
-    display: block;
     color: var(--white);
     background: var(--grey-dark);
     border-color: var(--grey-dark);
@@ -78,8 +81,6 @@ $btn-padding: 1.6rem 3rem 1.2rem;
     @include media-up(md) {
       margin-top: $margin-top-lg;
       margin-bottom: $margin-bottom-lg;
-      display: block;
-      width: fit-content;
     }
 
     &:first-child {
@@ -93,6 +94,7 @@ $btn-padding: 1.6rem 3rem 1.2rem;
   }
 
   &--inline {
+    display: inline-block;
     margin-top: $margin-top-sm;
 
     @include media-up(md) {
@@ -113,7 +115,7 @@ $btn-padding: 1.6rem 3rem 1.2rem;
 }
 
 
-/* --------------------- STYLING --------------------- */
+/* --------------------- CLASSES --------------------- */
 
 .btn {
   @include btn;
