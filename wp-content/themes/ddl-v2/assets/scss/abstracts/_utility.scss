@@ -488,6 +488,15 @@ $tags: top, bottom, right, left;
 
 
 /*-----------------------------------------------------------------------------------*/
+/* TEXT WEIGHT */
+/*-----------------------------------------------------------------------------------*/
+
+.text-regular { font-weight: var(--regular) !important; }
+.text-medium { font-weight: var(--medium) !important; }
+.text-bold { font-weight: var(--bold) !important; }
+
+
+/*-----------------------------------------------------------------------------------*/
 /* TEXT ALIGN */
 /*-----------------------------------------------------------------------------------*/
 
@@ -587,6 +596,15 @@ $tags: top, bottom, right, left;
   }
 }
 
+@each $breakpoint in map-keys($breakpoint-widths) {
+
+  @include media-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
+    .hidden#{$infix} { display: none !important; }
+  }
+
+}
+
 
 @mixin visible($breakpoints: $breakpoint-widths) {
   @each $breakpoint in $breakpoints {
@@ -596,43 +614,25 @@ $tags: top, bottom, right, left;
   }
 }
 
-.hidden {
-  display: none;
+@each $breakpoint in map-keys($breakpoint-widths) {
 
-  &-xs {
-    @include hidden(md);
-  }
-
-  &-sm {
-    @include hidden(md);
-  }
-
-  &-md {
-    @include hidden(md);
-  }
-
-  &-lg {
-    @include hidden(lg);
+  @include media-down($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
+    .visible#{$infix} { display: none !important; }
   }
 
 }
 
-.visible {
 
-  &-xs {
-    @include visible(md);
-  }
+.hidden {
+  display: none;
+}
 
-  &-sm {
-    @include visible(md);
-  }
 
-  &-md {
-    @include visible(md);
-  }
+/*-----------------------------------------------------------------------------------*/
+/* TRANSITIONS */
+/*-----------------------------------------------------------------------------------*/
 
-  &-lg {
-    @include visible(lg);
-  }
-
+@mixin transition($transition) {
+  transition: $transition 0.3s cubic-bezier(0.5, 0, 0.5, 1);
 }
