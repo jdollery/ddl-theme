@@ -2268,10 +2268,10 @@
   --body-size: var(--size-16-19);
   --space-y: clamp(4rem, 8.214vw + -0.731rem, 12rem);
   --space-x: clamp(2rem, 10.267vw + -3.914rem, 12rem);
-  --gutter: 2rem;
-  --negative-gutter: -2rem;
   --gutter-sm: 1rem;
   --negative-gutter-sm: -1rem;
+  --gutter-md: 2rem;
+  --negative-gutter-md: -2rem;
   --gutter-lg: 4rem;
   --negative-gutter-lg: -4rem
 }

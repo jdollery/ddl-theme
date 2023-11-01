@@ -141,11 +141,11 @@ $danger: #b81c23;
   /* 576px (xs) 20px → 1550px (xxl) 120px */
   --space-x: clamp(2rem, 10.267vw + -3.914rem, 12rem);
 
-  --gutter: 2rem;
-  --negative-gutter: -2rem;
-
   --gutter-sm: 1rem;
   --negative-gutter-sm: -1rem;
+
+  --gutter-md: 2rem;
+  --negative-gutter-md: -2rem;
 
   --gutter-lg: 4rem;
   --negative-gutter-lg: -4rem;
