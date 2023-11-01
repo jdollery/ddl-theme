@@ -114,8 +114,8 @@ add_action( 'wp_enqueue_scripts', 'ddl_scripts' );
 
 function remove_jquery() {
 	if (!is_admin()) {
-		wp_deregister_script('jquery');
-		wp_register_script('jquery', false);
+		wp_dequeue_script( 'jquery' );
+		wp_deregister_script( 'jquery' );
 	}
 }
 
