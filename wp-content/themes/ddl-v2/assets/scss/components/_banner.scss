@@ -22,7 +22,7 @@
   }
 
   &__intro {
-    @include h5;
+    font-size: var(--size-h5);
     margin: 0;
   }
 

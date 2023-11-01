@@ -46,25 +46,25 @@ $heading-margin-bottom-sm:   2rem;
 
 /* --------------------- MIXINS --------------------- */
 
-@mixin h1 {
-  @include fluid-type(2.8rem, 3.5rem, 3.8rem);
-}
+// @mixin h1 {
+//   @include fluid-type(2.8rem, 3.5rem, 3.8rem);
+// }
 
-@mixin h2 {
-  @include fluid-type(2.8rem, 3.5rem, 3.8rem);
-}
+// @mixin h2 {
+//   @include fluid-type(2.8rem, 3.5rem, 3.8rem);
+// }
 
-@mixin h3 {
-  @include fluid-type(2.5rem, 2.8rem, 3rem);
-}
+// @mixin h3 {
+//   @include fluid-type(2.5rem, 2.8rem, 3rem);
+// }
 
-@mixin h4 {
-  @include fluid-type(2rem, 2.3rem, 2.5rem);
-}
+// @mixin h4 {
+//   @include fluid-type(2rem, 2.3rem, 2.5rem);
+// }
 
-@mixin h5 {
-  @include fluid-type(1.8rem, 2rem, 2.2rem);
-}
+// @mixin h5 {
+//   @include fluid-type(1.8rem, 2rem, 2.2rem);
+// }
 
 
 /* --------------------- STYLING --------------------- */
@@ -96,23 +96,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  @include h1;
+  // @include h1;
+  font-size: var(--size-h1);
 }
 
 h2 {
-  @include h2;
+  // @include h2;
+  font-size: var(--size-h2);
 }
 
 h3 {
-  @include h3;
+  // @include h3;
+  font-size: var(--size-h3);
 }
 
 h4 {
-  @include h4;
+  // @include h4;
+  font-size: var(--size-h4);
 }
 
 h5 {
-  @include h5;
+  // @include h5;
+  font-size: var(--size-h5);
 }
 
 

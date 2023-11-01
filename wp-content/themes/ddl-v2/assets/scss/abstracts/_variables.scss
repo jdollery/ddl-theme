@@ -38,6 +38,115 @@ $danger: #b81c23;
   --medium: 500;
   --bold: 700;
 
+
+  /* --------- FONT SIZE --------- */
+
+  /* https://geary.co/clamp-calculator/ */
+
+
+  /* 576px (xs) 17px → 1550px (xxl) 22px */
+  --size-17-22: clamp(1.7rem, 20.842vw + -10.305rem, 22rem);
+
+  /* 576px (xs) 16px → 1550px (xxl) 22px */
+  --size-16-22: clamp(1.6rem, 20.945vw + -10.464rem, 22rem);
+
+  /* 576px (xs) 15px → 1550px (xxl) 22px */
+  --size-15-22: clamp(1.5rem, 21.047vw + -10.623rem, 22rem);
+
+  /* 576px (xs) 14px → 1550px (xxl) 22px */
+  --size-14-22: clamp(1.4rem, 21.15vw + -10.782rem, 22rem);
+
+
+  /* 576px (xs) 17px → 1550px (xxl) 21px */
+  --size-17-21: clamp(1.7rem, 19.815vw + -9.714rem, 21rem);
+
+  /* 576px (xs) 16px → 1550px (xxl) 21px */
+  --size-16-21: clamp(1.6rem, 19.918vw + -9.873rem, 21rem);
+
+  /* 576px (xs) 15px → 1550px (xxl) 21px */
+  --size-15-21: clamp(1.5rem, 20.021vw + -10.032rem, 21rem);
+
+  /* 576px (xs) 14px → 1550px (xxl) 21px */
+  --size-14-21: clamp(1.4rem, 20.123vw + -10.191rem, 21rem);
+
+
+  /* 576px (xs) 17px → 1550px (xxl) 20px */
+  --size-17-20: clamp(1.7rem, 0.308vw + 1.523rem, 2rem);
+
+  /* 576px (xs) 16px → 1550px (xxl) 20px */
+  --size-16-20: clamp(1.6rem, 0.411vw + 1.363rem, 2rem);
+
+  /* 576px (xs) 15px → 1550px (xxl) 20px */
+  --size-15-20: clamp(1.5rem, 0.513vw + 1.204rem, 2rem);
+
+  /* 576px (xs) 14px → 1550px (xxl) 20px */
+  --size-14-20: clamp(1.4rem, 0.616vw + 1.045rem, 2rem);
+
+
+  /* 576px (xs) 17px → 1550px (xxl) 19px */
+  --size-17-19: clamp(1.7rem, 0.205vw + 1.582rem, 1.9rem);
+
+  /* 576px (xs) 16px → 1550px (xxl) 19px */
+  --size-16-19: clamp(1.6rem, 0.308vw + 1.423rem, 1.9rem);
+
+  /* 576px (xs) 15px → 1550px (xxl) 19px */
+  --size-15-19: clamp(1.5rem, 0.411vw + 1.263rem, 1.9rem);
+
+  /* 576px (xs) 14px → 1550px (xxl) 19px */
+  --size-14-19: clamp(1.4rem, 0.513vw + 1.104rem, 1.9rem);
+
+
+  /* 576px (xs) 17px → 1550px (xxl) 18px */
+  --size-17-18: clamp(1.7rem, 0.103vw + 1.641rem, 1.8rem);
+
+  /* 576px (xs) 16px → 1550px (xxl) 18px */
+  --size-16-18: clamp(1.6rem, 0.205vw + 1.482rem, 1.8rem);
+
+  /* 576px (xs) 15px → 1550px (xxl) 18px */
+  --size-15-18: clamp(1.5rem, 0.308vw + 1.323rem, 1.8rem);
+
+  /* 576px (xs) 14px → 1550px (xxl) 18px */
+  --size-14-18: clamp(1.4rem, 0.411vw + 1.163rem, 1.8rem);
+
+
+  /* 576px (xs) 35px → 1550px (xxl) 50px */
+  --size-h1: clamp(3.5rem, 1.54vw + 2.613rem, 5rem);
+
+  /* 576px (xs) 32px → 1550px (xxl) 40px */
+  --size-h2: clamp(3.2rem, 0.821vw + 2.727rem, 4rem);
+
+  /* 576px (xs) 30px → 1550px (xxl) 38px */
+  --size-h3: clamp(3rem, 0.821vw + 2.527rem, 3.8rem);
+
+  /* 576px (xs) 28px → 1550px (xxl) 35px */
+  --size-h4: clamp(2.8rem, 0.719vw + 2.386rem, 3.5rem);
+
+  /* 576px (xs) 25px → 1550px (xxl) 32px */
+  --size-h5: clamp(2.5rem, 0.719vw + 2.086rem, 3.2rem);
+
+
+  --body-size: var(--size-16-19);
+
+
+  /* --------- SPACING --------- */
+
+  /* https://geary.co/clamp-calculator/ */
+
+  /* 576px (xs) 40px → 1550px (xxl) 120px */
+  --space-y: clamp(4rem, 8.214vw + -0.731rem, 12rem);
+
+  /* 576px (xs) 20px → 1550px (xxl) 120px */
+  --space-x: clamp(2rem, 10.267vw + -3.914rem, 12rem);
+
+  --gutter: 2rem;
+  --negative-gutter: -2rem;
+
+  --gutter-sm: 1rem;
+  --negative-gutter-sm: -1rem;
+
+  --gutter-lg: 4rem;
+  --negative-gutter-lg: -4rem;
+
 }
 
 
@@ -47,9 +156,6 @@ $danger: #b81c23;
 
 $theme-name: ddl-v2;
 
-@mixin body-size {
-  @include fluid-type(1.4rem, 1.6rem, 1.7rem);
-}
 
 /* --------- GUTTERS --------- */
 

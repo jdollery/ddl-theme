@@ -1,8 +1,10 @@
 .split {
   background: var(--white);
-  @include block-p(x);
-  @include block-m(top);
-  @include block-p(bottom);
+  // @include block-p(x);
+  // @include block-m(top);
+  // @include block-p(bottom);
+
+  padding: var(--space-y) var(--space-x);
 
   &--left {
 
@@ -21,7 +23,8 @@
         order: 1;
 
         @include media-up(xl) {
-          @include block-p(left);
+          // @include block-p(left);
+          padding: 0 0 0 var(--space-x);
           order: 2;
         }
 
@@ -43,7 +46,8 @@
         order: 1;
 
         @include media-up(xl) {
-          @include block-p(right);
+          // @include block-p(right);
+          padding: 0 var(--space-x) 0 0;
         }
 
       }
@@ -79,9 +83,15 @@
   }
 
   &__two {
-    @include block-p(y);
+    // @include block-p(y);
+    padding: 0 0 var(--space-y);
     align-self: center;
     font-weight: var(--medium);
+
+    @include media-up(xl) {
+      padding: var(--space-y) 0;
+    }
+
   }
 
   &__media {

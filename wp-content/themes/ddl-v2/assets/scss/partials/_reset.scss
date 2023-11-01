@@ -41,6 +41,8 @@ span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, cod
 body {
   font-family: sans-serif; /* This is fallback font for old browsers */
   font-family: var(--body-font);
+  font-size: var(--body-size);
+  // @include body-size;
   line-height: 1.5;
   // letter-spacing: 0.1rem;
   font-weight: var(--regular);
@@ -48,7 +50,6 @@ body {
   background: var(--body-bg);
   text-align: left;
   overflow-x: hidden;
-  @include body-size;
 }
 
 *:focus {

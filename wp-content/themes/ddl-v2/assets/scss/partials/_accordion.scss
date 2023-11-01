@@ -46,7 +46,7 @@
     text-align: left;
     margin: 0;
     @include cell(0);
-    @include body-size;
+    font-size: var(--body-size);
     padding: 1.5rem;
   }
 

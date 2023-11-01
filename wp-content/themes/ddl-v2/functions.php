@@ -157,14 +157,16 @@ function allow_svg($mimes) {
   $mimes['svg'] = 'image/svg+xml';
   return $mimes;
 }
+
 add_filter('upload_mimes', 'allow_svg');
 
 
 /* --------------------- Change ellipsis at end of excerpt --------------------- */
 
 function excerpt_more($more) {
-    return '&hellip;';
+  return '&hellip;';
 }
+
 add_filter('excerpt_more', 'excerpt_more');
 
 
@@ -172,7 +174,7 @@ add_filter('excerpt_more', 'excerpt_more');
 
 // echo strip_tags( get_excerpt(165) ); //use this to print excerpt with x characters 
 
-function get_excerpt($limit, $source = null){
+function get_excerpt($limit, $source = null) {
 
   $excerpt = $source == "content" ? get_the_content() : get_the_excerpt();
   $excerpt = preg_replace(" (\[.*?\])",'',$excerpt);
@@ -183,6 +185,7 @@ function get_excerpt($limit, $source = null){
   $excerpt = trim(preg_replace( '/\s+/', ' ', $excerpt));
   $excerpt = $excerpt.'...';
   return $excerpt;
+
 }
 
 
@@ -208,24 +211,24 @@ function get_excerpt($limit, $source = null){
 /* --------------------- Unregister widgets --------------------- */
 
 function unregister_default_widgets() {
-    unregister_widget('WP_Widget_Pages');
-    unregister_widget('WP_Widget_Calendar');
-    unregister_widget('WP_Widget_Archives');
-    unregister_widget('WP_Widget_Links');
-    unregister_widget('WP_Widget_Meta');
-    // unregister_widget('WP_Widget_Search');
-    // unregister_widget('WP_Widget_Text');
-    // unregister_widget('WP_Widget_Categories');
-    unregister_widget('WP_Widget_Recent_Posts');
-    unregister_widget('WP_Widget_Recent_Comments');
-    unregister_widget('WP_Widget_RSS');
-		unregister_widget('WP_Widget_Tag_Cloud');
-		unregister_widget('WP_Widget_Media_Gallery');
-		unregister_widget('WP_Widget_Media_Video');
-		// unregister_widget('WP_Widget_Media_Image');
-		unregister_widget('WP_Widget_Media_Audio');
-		// unregister_widget('WP_Nav_Menu_Widget');
-		// unregister_widget('WP_Widget_Custom_HTML');
+	unregister_widget('WP_Widget_Pages');
+	unregister_widget('WP_Widget_Calendar');
+	unregister_widget('WP_Widget_Archives');
+	unregister_widget('WP_Widget_Links');
+	unregister_widget('WP_Widget_Meta');
+	// unregister_widget('WP_Widget_Search');
+	// unregister_widget('WP_Widget_Text');
+	// unregister_widget('WP_Widget_Categories');
+	unregister_widget('WP_Widget_Recent_Posts');
+	unregister_widget('WP_Widget_Recent_Comments');
+	unregister_widget('WP_Widget_RSS');
+	unregister_widget('WP_Widget_Tag_Cloud');
+	unregister_widget('WP_Widget_Media_Gallery');
+	unregister_widget('WP_Widget_Media_Video');
+	// unregister_widget('WP_Widget_Media_Image');
+	unregister_widget('WP_Widget_Media_Audio');
+	// unregister_widget('WP_Nav_Menu_Widget');
+	// unregister_widget('WP_Widget_Custom_HTML');
 }
 add_action('widgets_init', 'unregister_default_widgets', 11);
 
@@ -277,22 +280,21 @@ function remove_acf_some_ptags( $content ) {
 add_filter( 'acf_the_content', 'remove_acf_some_ptags' );
 
 
-
 /* --------------------- Remove Category:, Tag:, Author: from the_archive_title  --------------------- */
 
 add_filter( 'get_the_archive_title', function ($title) {
 
 	if ( is_category() ) {
-			$title = single_cat_title( '', false );
-		} elseif ( is_tag() ) {
-			$title = single_tag_title( '', false );
-		} elseif ( is_author() ) {
-			$title = '<span class="vcard">' . get_the_author() . '</span>' ;
-		} elseif ( is_tax() ) { //for custom post types
-			$title = sprintf( __( '%1$s' ), single_term_title( '', false ) );
-		} elseif (is_post_type_archive(array('treatments'))) {
-			$title = post_type_archive_title( '', false );
-		}
+		$title = single_cat_title( '', false );
+	} elseif ( is_tag() ) {
+		$title = single_tag_title( '', false );
+	} elseif ( is_author() ) {
+		$title = '<span class="vcard">' . get_the_author() . '</span>' ;
+	} elseif ( is_tax() ) { //for custom post types
+		$title = sprintf( __( '%1$s' ), single_term_title( '', false ) );
+	} elseif (is_post_type_archive(array('treatments'))) {
+		$title = post_type_archive_title( '', false );
+	}
 
 	return $title;
 
@@ -342,13 +344,12 @@ add_filter( 'image_send_to_editor', 'remove_image_size_attributes' );
 
 /* --------------------- Add target _blank to edit button --------------------- */
 
-add_filter( 'edit_post_link', function( $link, $post_id, $text )
-{
-    // Add the target attribute 
-    if( false === strpos( $link, 'target=' ) )
-        $link = str_replace( '<a ', '<a target="_blank" ', $link );
+add_filter( 'edit_post_link', function( $link, $post_id, $text ) {
+	// Add the target attribute 
+	if( false === strpos( $link, 'target=' ) )
+		$link = str_replace( '<a ', '<a target="_blank" ', $link );
 
-    return $link;
+	return $link;
 }, 10, 3 );
 
 
@@ -356,17 +357,17 @@ add_filter( 'edit_post_link', function( $link, $post_id, $text )
 
 function remove_editor() {
 	if (isset($_GET['post'])) {
-			$id = $_GET['post'];
-			$template = get_post_meta($id, '_wp_page_template', true);
-			switch ($template) {
-					case 'page-home.php':
-					case 'page-sections.php':
-					remove_post_type_support('page', 'editor');
-					break;
-					default :
-					// Don't remove any other template.
-					break;
-			}
+		$id = $_GET['post'];
+		$template = get_post_meta($id, '_wp_page_template', true);
+		switch ($template) {
+			case 'page-home.php':
+			case 'page-sections.php':
+			remove_post_type_support('page', 'editor');
+			break;
+			default :
+			// Don't remove any other template.
+			break;
+		}
 	}
 }
 
@@ -399,8 +400,7 @@ function pagination( \WP_Query $wp_query = null, $echo = true ) {
 			'next_text'    => __( 'Next' ),
 			'add_args'     => false,
 			'add_fragment' => ''
-		]
-	);
+	] );
 
 	if ( is_array( $pages ) ) {
 		$pagination = '<nav class="pagination" role="navigation"><ul class="pagination__list">';
@@ -416,4 +416,5 @@ function pagination( \WP_Query $wp_query = null, $echo = true ) {
 	}
 
 	return null;
+
 }
