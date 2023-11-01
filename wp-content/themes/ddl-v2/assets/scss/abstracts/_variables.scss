@@ -109,20 +109,23 @@ $danger: #b81c23;
   --size-14-18: clamp(1.4rem, 0.411vw + 1.163rem, 1.8rem);
 
 
-  /* 576px (xs) 35px → 1550px (xxl) 50px */
-  --size-h1: clamp(3.5rem, 1.54vw + 2.613rem, 5rem);
+  /* 576px (xs) 38px → 1550px (xxl) 55px */
+  --size-h1: clamp(3.8rem, 1.745vw + 2.795rem, 5.5rem);
+
+  /* 576px (xs) 34px → 1550px (xxl) 45px */
+  --size-h2: clamp(3.4rem, 1.129vw + 2.749rem, 4.5rem);
 
   /* 576px (xs) 32px → 1550px (xxl) 40px */
-  --size-h2: clamp(3.2rem, 0.821vw + 2.727rem, 4rem);
-
-  /* 576px (xs) 30px → 1550px (xxl) 38px */
-  --size-h3: clamp(3rem, 0.821vw + 2.527rem, 3.8rem);
+  --size-h3: clamp(3.2rem, 0.821vw + 2.727rem, 4rem);
 
   /* 576px (xs) 28px → 1550px (xxl) 35px */
   --size-h4: clamp(2.8rem, 0.719vw + 2.386rem, 3.5rem);
 
-  /* 576px (xs) 25px → 1550px (xxl) 32px */
-  --size-h5: clamp(2.5rem, 0.719vw + 2.086rem, 3.2rem);
+  /* 576px (xs) 23px → 1550px (xxl) 30px */
+  --size-h5: clamp(2.3rem, 0.719vw + 1.886rem, 3rem);
+
+  /* 576px (xs) 19px → 1550px (xxl) 26px */
+  --size-h6: clamp(1.9rem, 0.719vw + 1.486rem, 2.6rem);
 
 
   --body-size: var(--size-16-19);

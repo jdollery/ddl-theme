@@ -21,6 +21,13 @@ get_header(); ?>
 
   <a href="/" class="btn btn--black btn--block">Test</a>
 
+  <h1>Heading h1</h1>
+  <h2>Heading h2</h2>
+  <h3>Heading h3</h3>
+  <h4>Heading h4</h4>
+  <h5>Heading h5</h5>
+  <h6>Heading h6</h6>
+
   <form class="form" id="validateForm" novalidate="true" method="post" action="https://www.securedent.net/submit.ashx">
 
     <fieldset>

@@ -2259,11 +2259,12 @@
   --size-16-18: clamp(1.6rem, 0.205vw + 1.482rem, 1.8rem);
   --size-15-18: clamp(1.5rem, 0.308vw + 1.323rem, 1.8rem);
   --size-14-18: clamp(1.4rem, 0.411vw + 1.163rem, 1.8rem);
-  --size-h1: clamp(3.5rem, 1.54vw + 2.613rem, 5rem);
-  --size-h2: clamp(3.2rem, 0.821vw + 2.727rem, 4rem);
-  --size-h3: clamp(3rem, 0.821vw + 2.527rem, 3.8rem);
+  --size-h1: clamp(3.8rem, 1.745vw + 2.795rem, 5.5rem);
+  --size-h2: clamp(3.4rem, 1.129vw + 2.749rem, 4.5rem);
+  --size-h3: clamp(3.2rem, 0.821vw + 2.727rem, 4rem);
   --size-h4: clamp(2.8rem, 0.719vw + 2.386rem, 3.5rem);
-  --size-h5: clamp(2.5rem, 0.719vw + 2.086rem, 3.2rem);
+  --size-h5: clamp(2.3rem, 0.719vw + 1.886rem, 3rem);
+  --size-h6: clamp(1.9rem, 0.719vw + 1.486rem, 2.6rem);
   --body-size: var(--size-16-19);
   --space-y: clamp(4rem, 8.214vw + -0.731rem, 12rem);
   --space-x: clamp(2rem, 10.267vw + -3.914rem, 12rem);
@@ -15572,6 +15573,9 @@ h4 {
 }
 h5 {
   font-size: var(--size-h5)
+}
+h6 {
+  font-size: var(--size-h6)
 }
 a {
   color: var(--accent);
