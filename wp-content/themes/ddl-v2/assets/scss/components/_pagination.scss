@@ -2,7 +2,7 @@
   // display: inline-block;
   @include cell(12);
   text-align: center;
-  padding-top: 3.5rem;
+  padding-top: $gutter-lg;
 
   &__list {
     list-style: none;
@@ -21,7 +21,6 @@
         // @include button-black;
         margin: 0;
         display: block;
-        font-family: var(--heading-font);
         font-weight: 400;
         font-size: 1.6rem;
         width: 5.5rem;

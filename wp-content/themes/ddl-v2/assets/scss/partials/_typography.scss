@@ -4,10 +4,10 @@
 
 /* --------------------- VARIABLES --------------------- */
 
-$paragraph-margin-top-lg:     2.5rem;
-$paragraph-margin-bottom-lg:  2.5rem;
-$paragraph-margin-top-sm:     2rem;
-$paragraph-margin-bottom-sm:  2rem;
+$paragraph-margin-top-lg:     var(--gutter-md);
+$paragraph-margin-bottom-lg:  var(--gutter-md);
+$paragraph-margin-top-sm:     var(--gutter-md);
+$paragraph-margin-bottom-sm:  var(--gutter-md);
 
 
 /* --------------------- STYLING --------------------- */
@@ -38,10 +38,10 @@ p {
 
 /* --------------------- VARIABLES --------------------- */
 
-$heading-margin-top-lg:      3.5rem;
-$heading-margin-bottom-lg:   2.5rem;
-$heading-margin-top-sm:      2rem;
-$heading-margin-bottom-sm:   2rem;
+$heading-margin-top-lg:      var(--gutter-lg);
+$heading-margin-bottom-lg:   var(--gutter-md);
+$heading-margin-top-sm:      var(--gutter-lg);
+$heading-margin-bottom-sm:   var(--gutter-sm);
 
 
 /* --------------------- MIXINS --------------------- */
@@ -73,6 +73,8 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: var(--regular);
   line-height: 1.3;
   color: inherit;
+  word-break: break-word;
+  hyphens: auto;
   margin-top: $heading-margin-top-sm;
   margin-bottom: $heading-margin-bottom-sm;
 

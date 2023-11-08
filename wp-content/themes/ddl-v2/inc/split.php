@@ -7,6 +7,7 @@ if( have_rows('split_section') ){
   $split_hide = get_sub_field('split_hide');
   $split_bg = get_sub_field('split_bg');
   $split_location = get_sub_field('split_location');
+  $split_spacing = get_sub_field('split_spacing');
   $split_img = get_sub_field('split_img');
   $split_video = get_sub_field('split_video');
   $split_embed = get_sub_field('split_embed');
@@ -17,7 +18,7 @@ if( have_rows('split_section') ){
 
   ?>
 
-  <section class="split split--<?php echo esc_html($split_location['value']); ?> bg-<?php echo esc_html($split_bg['value']); ?><?php if($split_margin && in_array('top', $split_margin)) { ?> block-p-t<?php } ?><?php if($split_margin && in_array('bottom', $split_margin)) { ?> block-p-b<?php } ?>">
+  <section class="split split--<?php echo esc_html($split_location['value']); ?> bg-<?php echo esc_html($split_bg['value']); ?><?php if($split_spacing && in_array('top', $split_spacing)) { ?> space-p-t<?php } ?><?php if($split_spacing && in_array('bottom', $split_spacing)) { ?> space-p-b<?php } ?>">
 
     <div class="split__row">
 

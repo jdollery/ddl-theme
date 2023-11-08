@@ -11,9 +11,9 @@ function button_shortcode($atts, $content = null) {
 	), $atts));
 
   if($target == 'blank'){
-    return '<a class="button button--' . $colour . ' button--body" href="' . $link . '" target="_blank">' . do_shortcode($content) . '</a>';
+    return '<a class="btn btn--' . $colour . ' btn--space" href="' . $link . '" target="_blank">' . do_shortcode($content) . '</a>';
   } else {
-    return '<a class="button button--' . $colour . ' button--body" href="' . $link . '">' . do_shortcode($content) . '</a>';
+    return '<a class="btn btn--' . $colour . ' btn--space" href="' . $link . '">' . do_shortcode($content) . '</a>';
   }
 
 }

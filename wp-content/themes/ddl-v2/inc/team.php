@@ -1,5 +1,5 @@
 <section class="team">
-  <div class="team__row">
+  <div class="team__inner">
     <ul class="team__list">
 
       <?php
@@ -121,7 +121,7 @@
                     <?php } ?>
                   </div>
                   <div class="slideout__profile"><?php the_content(); ?></div>
-                  <button class="btn btn--accent btn--block w-100" data-close="<?php echo $member_id ; ?>">Close profile</button>
+                  <button class="btn btn--accent btn--space w-100" data-close="<?php echo $member_id ; ?>">Close profile</button>
                 </div>
               </div>
             </div>

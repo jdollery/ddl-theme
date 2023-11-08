@@ -41,94 +41,26 @@ $danger: #b81c23;
 
   /* --------- FONT SIZE --------- */
 
-  /* https://geary.co/clamp-calculator/ */
-
-
-  /* 576px (xs) 17px → 1550px (xxl) 22px */
-  --size-17-22: clamp(1.7rem, 20.842vw + -10.305rem, 22rem);
-
-  /* 576px (xs) 16px → 1550px (xxl) 22px */
-  --size-16-22: clamp(1.6rem, 20.945vw + -10.464rem, 22rem);
-
-  /* 576px (xs) 15px → 1550px (xxl) 22px */
-  --size-15-22: clamp(1.5rem, 21.047vw + -10.623rem, 22rem);
-
-  /* 576px (xs) 14px → 1550px (xxl) 22px */
-  --size-14-22: clamp(1.4rem, 21.15vw + -10.782rem, 22rem);
-
-
-  /* 576px (xs) 17px → 1550px (xxl) 21px */
-  --size-17-21: clamp(1.7rem, 19.815vw + -9.714rem, 21rem);
-
-  /* 576px (xs) 16px → 1550px (xxl) 21px */
-  --size-16-21: clamp(1.6rem, 19.918vw + -9.873rem, 21rem);
-
-  /* 576px (xs) 15px → 1550px (xxl) 21px */
-  --size-15-21: clamp(1.5rem, 20.021vw + -10.032rem, 21rem);
-
-  /* 576px (xs) 14px → 1550px (xxl) 21px */
-  --size-14-21: clamp(1.4rem, 20.123vw + -10.191rem, 21rem);
-
-
-  /* 576px (xs) 17px → 1550px (xxl) 20px */
-  --size-17-20: clamp(1.7rem, 0.308vw + 1.523rem, 2rem);
-
-  /* 576px (xs) 16px → 1550px (xxl) 20px */
-  --size-16-20: clamp(1.6rem, 0.411vw + 1.363rem, 2rem);
-
-  /* 576px (xs) 15px → 1550px (xxl) 20px */
-  --size-15-20: clamp(1.5rem, 0.513vw + 1.204rem, 2rem);
-
-  /* 576px (xs) 14px → 1550px (xxl) 20px */
-  --size-14-20: clamp(1.4rem, 0.616vw + 1.045rem, 2rem);
-
-
-  /* 576px (xs) 17px → 1550px (xxl) 19px */
-  --size-17-19: clamp(1.7rem, 0.205vw + 1.582rem, 1.9rem);
-
-  /* 576px (xs) 16px → 1550px (xxl) 19px */
-  --size-16-19: clamp(1.6rem, 0.308vw + 1.423rem, 1.9rem);
-
-  /* 576px (xs) 15px → 1550px (xxl) 19px */
-  --size-15-19: clamp(1.5rem, 0.411vw + 1.263rem, 1.9rem);
-
-  /* 576px (xs) 14px → 1550px (xxl) 19px */
-  --size-14-19: clamp(1.4rem, 0.513vw + 1.104rem, 1.9rem);
-
-
-  /* 576px (xs) 17px → 1550px (xxl) 18px */
-  --size-17-18: clamp(1.7rem, 0.103vw + 1.641rem, 1.8rem);
-
-  /* 576px (xs) 16px → 1550px (xxl) 18px */
-  --size-16-18: clamp(1.6rem, 0.205vw + 1.482rem, 1.8rem);
-
-  /* 576px (xs) 15px → 1550px (xxl) 18px */
-  --size-15-18: clamp(1.5rem, 0.308vw + 1.323rem, 1.8rem);
-
-  /* 576px (xs) 14px → 1550px (xxl) 18px */
-  --size-14-18: clamp(1.4rem, 0.411vw + 1.163rem, 1.8rem);
-
-
   /* 576px (xs) 38px → 1550px (xxl) 55px */
-  --size-h1: clamp(3.8rem, 1.745vw + 2.795rem, 5.5rem);
+  --size-h1: #{fluid(38px, 55px)};
 
   /* 576px (xs) 34px → 1550px (xxl) 45px */
-  --size-h2: clamp(3.4rem, 1.129vw + 2.749rem, 4.5rem);
+  --size-h2: #{fluid(34px, 45px)};
 
   /* 576px (xs) 32px → 1550px (xxl) 40px */
-  --size-h3: clamp(3.2rem, 0.821vw + 2.727rem, 4rem);
+  --size-h3: #{fluid(32px, 40px)};
 
   /* 576px (xs) 28px → 1550px (xxl) 35px */
-  --size-h4: clamp(2.8rem, 0.719vw + 2.386rem, 3.5rem);
+  --size-h4: #{fluid(28px, 35px)};
 
   /* 576px (xs) 23px → 1550px (xxl) 30px */
-  --size-h5: clamp(2.3rem, 0.719vw + 1.886rem, 3rem);
+  --size-h5: #{fluid(23px, 30px)};
 
   /* 576px (xs) 19px → 1550px (xxl) 26px */
-  --size-h6: clamp(1.9rem, 0.719vw + 1.486rem, 2.6rem);
+  --size-h6: #{fluid(19px, 26px)};
 
-
-  --body-size: var(--size-16-19);
+  /* 576px (xs) 16px → 1550px (xxl) 19px */
+  --body-size: #{fluid(16px, 19px)};
 
 
   /* --------- SPACING --------- */
@@ -136,10 +68,10 @@ $danger: #b81c23;
   /* https://geary.co/clamp-calculator/ */
 
   /* 576px (xs) 40px → 1550px (xxl) 120px */
-  --space-y: clamp(4rem, 8.214vw + -0.731rem, 12rem);
+  --space-y: #{fluid(40px, 120px)};
 
   /* 576px (xs) 20px → 1550px (xxl) 120px */
-  --space-x: clamp(2rem, 10.267vw + -3.914rem, 12rem);
+  --space-x: #{fluid(20px, 120px)};
 
   --gutter-sm: 1rem;
   --negative-gutter-sm: -1rem;
@@ -162,14 +94,18 @@ $theme-name: ddl-v2;
 
 /* --------- GUTTERS --------- */
 
-$gutter: 2rem;
-$gutter-lg: 4rem;
-$gutter-sm: 1rem;
+$gutter-lg: var(--gutter-lg);
+$gutter-md: var(--gutter-md);
+$gutter-sm: var(--gutter-sm);
 
 
 /* --------- MARGINS FOR IMAGES, FORMS, TABLES --------- */
 
-$margin-top-lg:      $gutter-lg;
-$margin-bottom-lg:   $gutter-lg;
-$margin-top-sm:      $gutter;
-$margin-bottom-sm:   $gutter;
+$margin-top-lg:      var(--gutter-lg);
+$margin-bottom-lg:   var(--gutter-lg);
+
+$margin-top-md:      var(--gutter-md);
+$margin-bottom-md:   var(--gutter-md);
+
+$margin-top-sm:      var(--gutter-sm);
+$margin-bottom-sm:   var(--gutter-sm);

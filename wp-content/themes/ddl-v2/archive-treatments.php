@@ -7,7 +7,7 @@ get_header(); ?>
 <?php get_template_part('inc/banner'); ?>
 <?php get_template_part('inc/sections'); ?>
 
-<section class="block-p">
+<section class="space-p">
   <ul class="loop">
 
     <?php

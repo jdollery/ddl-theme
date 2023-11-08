@@ -17,7 +17,7 @@ if ( $loop->have_posts() ) { ?>
 
   <?php if ( !is_single(240) ) { //Hide on Orthodontcs Page ?>
 
-    <section class="block-p">
+    <section class="space-p">
       <ul class="loop">
 
       <?php  while ( $loop->have_posts() ) : $loop->the_post(); ?>

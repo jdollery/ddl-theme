@@ -53,7 +53,7 @@ $post_img = get_field('post_img');
           <div class="post__summary"><?php echo strip_tags( the_excerpt() ); ?></div>
           <?php } ?>
         </div>
-        <span class="btn btn--black btn--block">Learn more</span>
+        <span class="btn btn--black btn--space">Learn more</span>
       </div>
     </div>
   </div>

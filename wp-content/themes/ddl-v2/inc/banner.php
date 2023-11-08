@@ -45,7 +45,7 @@ $banner_position = get_field('banner_position');
     > -->
   <?php } ?>
 
-  <div class="block-p">
+  <div class="space-p">
     <div class="cell-row">
       <div class="cell-6">
 

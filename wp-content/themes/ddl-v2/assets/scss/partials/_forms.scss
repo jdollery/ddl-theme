@@ -4,8 +4,8 @@
 
 $form-margin-top-lg:      $margin-top-lg;
 $form-margin-bottom-lg:   $margin-bottom-lg;
-$form-margin-top-sm:      $margin-top-sm;
-$form-margin-bottom-sm:   $margin-bottom-sm;
+$form-margin-top-sm:      $margin-top-md;
+$form-margin-bottom-sm:   $margin-bottom-md;
 
 // @mixin input-font-size {
 //   // @include fluid-type(1.4rem, 1.6rem, 1.7rem);
@@ -55,7 +55,7 @@ $checkboxradio-height-sm:   2.5rem;
 
   &__input {
     position: relative;
-    margin-bottom: $gutter;
+    margin-bottom: $gutter-md;
 
     &--textarea {
       height: 100%;
@@ -114,7 +114,6 @@ textarea {
 legend {
   font-size: var(--size-h4);
   line-height: 1.4;
-  font-family: var(--heading-font);
   font-weight: var(--regular);
   margin-top: $heading-margin-top-sm;
   margin-bottom: $heading-margin-bottom-sm;
@@ -135,9 +134,9 @@ legend {
 }
 
 fieldset:not(:last-child) {
-  margin-bottom: $gutter + 1rem;
+  margin-bottom: $gutter-md;
   border-bottom: 0.2rem solid var(--grey-dark);
-  padding-bottom: $gutter;
+  padding-bottom: $gutter-lg;
 }
 
 
@@ -364,7 +363,7 @@ input[type=radio] + label {
       left: 0;
       width: 100%;
       text-overflow: ellipsis;
-      white-space: nowrap;
+      // white-space: nowrap;
       cursor: pointer;
       display: block;
       overflow: hidden;

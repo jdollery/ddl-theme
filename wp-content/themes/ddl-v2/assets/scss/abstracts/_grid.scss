@@ -17,18 +17,26 @@ $max-width: 144rem;
 @mixin cell-row {
   display: flex;
   flex-wrap: wrap;
+
+  > * {
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
 }
 
 .cell-row {
   @include cell-row;
 }
 
-.cell-row > * {
-  position: relative;
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 100%;
-}
+// .cell-row > * {
+//   position: relative;
+//   flex-shrink: 0;
+//   width: 100%;
+//   max-width: 100%;
+// }
 
 
 /* --------------------- ROW GUTTERS --------------------- */
@@ -36,8 +44,8 @@ $max-width: 144rem;
 /* --------- HOZ GUTTERS --------- */
 
 @mixin cell-row-gutter-x {
-  margin-right: -$gutter;
-  margin-left: -$gutter;
+  margin-right: var(--negative-gutter-md);
+  margin-left: var(--negative-gutter-md);
 }
 
 .cell-row-gutter-x {
@@ -45,8 +53,8 @@ $max-width: 144rem;
 }
 
 @mixin cell-row-gutter-x-sm {
-  margin-right: -$gutter-sm;
-  margin-left: -$gutter-sm;
+  margin-right: var(--negative-gutter-sm);
+  margin-left: var(--negative-gutter-sm);
 }
 
 .cell-row-gutter-x-sm {
@@ -57,8 +65,8 @@ $max-width: 144rem;
 /* --------- VERT GUTTERS --------- */
 
 @mixin cell-row-gutter-y {
-  margin-top: -$gutter;
-  margin-bottom: -$gutter;
+  margin-top: var(--negative-gutter-md);
+  margin-bottom: var(--negative-gutter-md);
 }
 
 .cell-row-gutter-y {
@@ -66,8 +74,8 @@ $max-width: 144rem;
 }
 
 @mixin cell-row-gutter-y-sm {
-  margin-top: -$gutter-sm;
-  margin-bottom: -$gutter-sm;
+  margin-top: var(--negative-gutter-sm);
+  margin-bottom: var(--negative-gutter-sm);
 }
 
 .cell-row-gutter-y {
@@ -154,8 +162,8 @@ $max-width: 144rem;
 /* --------- HOZ GUTTERS --------- */
 
 @mixin cell-gutter-x {
-  padding-right: $gutter;
-  padding-left: $gutter;
+  padding-right: var(--gutter-md);
+  padding-left: var(--gutter-md);
 }
 
 .cell-gutter-x {
@@ -163,8 +171,8 @@ $max-width: 144rem;
 }
 
 @mixin cell-gutter-x-sm {
-  padding-right: $gutter-sm;
-  padding-left: $gutter-sm;
+  padding-right: var(--gutter-sm);
+  padding-left: var(--gutter-sm);
 }
 
 .cell-gutter-x-sm {
@@ -175,8 +183,8 @@ $max-width: 144rem;
 /* --------- VERT GUTTERS --------- */
 
 @mixin cell-gutter-y {
-  padding-top: $gutter;
-  padding-bottom: $gutter;
+  padding-top: var(--gutter-md);
+  padding-bottom: var(--gutter-md);
 }
 
 .cell-gutter-y {
@@ -184,8 +192,8 @@ $max-width: 144rem;
 }
 
 @mixin cell-gutter-y-sm {
-  padding-top: $gutter-sm;
-  padding-bottom: $gutter-sm;
+  padding-top: var(--gutter-sm);
+  padding-bottom: var(--gutter-sm);
 }
 
 .cell-gutter-y-sm {

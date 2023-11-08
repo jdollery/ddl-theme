@@ -1,8 +1,8 @@
 .split {
   background: var(--white);
-  // @include block-p(x);
+  // @include space-p(x);
   // @include block-m(top);
-  // @include block-p(bottom);
+  // @include space-p(bottom);
 
   padding: var(--space-y) var(--space-x);
 
@@ -23,7 +23,7 @@
         order: 1;
 
         @include media-up(xl) {
-          // @include block-p(left);
+          // @include space-p(left);
           padding: 0 0 0 var(--space-x);
           order: 2;
         }
@@ -46,7 +46,7 @@
         order: 1;
 
         @include media-up(xl) {
-          // @include block-p(right);
+          // @include space-p(right);
           padding: 0 var(--space-x) 0 0;
         }
 
@@ -83,7 +83,7 @@
   }
 
   &__two {
-    // @include block-p(y);
+    // @include space-p(y);
     padding: 0 0 var(--space-y);
     align-self: center;
     font-weight: var(--medium);

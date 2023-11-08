@@ -2,9 +2,9 @@
   position: relative;
   background: var(--body-bg);
   color: var(--white);
-  padding: 2.5rem $gutter 2rem;
+  padding: $gutter-md;
   text-align: center;
-  @include fluid-type(1.4rem, 1.6rem, 1.7rem);
+  font-size: #{fluid(14px, 17px)};
 
   ul {
     list-style: none;

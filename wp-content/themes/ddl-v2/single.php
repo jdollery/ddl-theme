@@ -4,7 +4,7 @@
 
 <?php if ( !empty( get_the_content() ) ) { ?>
 
-  <article class="block-p">
+  <article class="space-p">
     <?php the_content(); ?>
   </article>
 
