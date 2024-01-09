@@ -365,66 +365,209 @@ $spacers: map-merge(
 
 
 /*-----------------------------------------------------------------------------------*/
-/* SPACE */
+/* BLOCK */
 /*-----------------------------------------------------------------------------------*/
 
-@mixin space-p($tag) {
+$block-padding-sm: 2rem;
+$block-padding-md: 4rem;
+$block-padding-lg: 8rem;
+$block-padding-xl: 10rem;
+
+$block-breakpoint-tablet: sm;
+$block-breakpoint-laptop: lg;
+$block-breakpoint-desktop: xxl;
+
+@mixin block-p($tag) {
 
   @if $tag == 'y' {
-    padding-top: var(--space-y);
-    padding-bottom: var(--space-y);
+    padding-top: $block-padding-sm + 1rem;
+    padding-bottom: $block-padding-sm + 1rem;
+
+    @include media-up($block-breakpoint-tablet) {
+      padding-top: $block-padding-md;
+      padding-bottom: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      padding-top: $block-padding-lg;
+      padding-bottom: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      padding-top: $block-padding-xl;
+      padding-bottom: $block-padding-xl;
+    }
+
   }
 
   @if $tag == 'x' {
-    padding-left: var(--space-x);
-    padding-right: var(--space-x);
+    padding-left: $block-padding-sm;
+    padding-right: $block-padding-sm;
+
+    @include media-up($block-breakpoint-tablet) {
+      padding-left: $block-padding-md;
+      padding-right: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      padding-left: $block-padding-lg;
+      padding-right: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      padding-left: $block-padding-xl;
+      padding-right: $block-padding-xl;
+    }
+
   }
 
   @if $tag == 'top' {
-    padding-top: var(--space-y);
+    padding-top: $block-padding-sm + 1rem;
+
+    @include media-up($block-breakpoint-tablet) {
+      padding-top: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      padding-top: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      padding-top: $block-padding-xl;
+    }
+
   }
 
   @if $tag == 'bottom' {
-    padding-bottom: var(--space-y);
+    padding-bottom: $block-padding-sm + 1rem;
+
+    @include media-up($block-breakpoint-tablet) {
+      padding-bottom: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      padding-bottom: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      padding-bottom: $block-padding-xl;
+    }
+
   }
 
   @if $tag == 'left' {
-    padding-left: var(--space-x);
+    padding-left: $block-padding-sm;
+
+    @include media-up($block-breakpoint-tablet) {
+      padding-left: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      padding-left: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      padding-left: $block-padding-xl;
+    }
+
   }
 
   @if $tag == 'right' {
-    padding-right: var(--space-x);
+    padding-right: $block-padding-sm;
+
+    @include media-up($block-breakpoint-tablet) {
+      padding-right: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      padding-right: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      padding-right: $block-padding-xl;
+    }
+
   }
 
 }
 
 
-@mixin space-m($tag) {
+@mixin block-m($tag) {
 
   @if $tag == 'y' {
-    margin-top: var(--space-y);
-    margin-bottom: var(--space-y);
+    margin-top: $block-padding-sm + 1rem;
+    margin-bottom: $block-padding-sm + 1rem;
+
+    @include media-up($block-breakpoint-tablet) {
+      margin-top: $block-padding-md;
+      margin-bottom: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      margin-top: $block-padding-lg;
+      margin-bottom: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      margin-top: $block-padding-xl;
+      margin-bottom: $block-padding-xl;
+    }
+
   }
 
   @if $tag == 'x' {
-    margin-left: var(--space-x);
-    margin-right: var(--space-x);
+    margin-left: $block-padding-sm + 1rem;
+    margin-right: $block-padding-sm + 1rem;
+
+    @include media-up($block-breakpoint-tablet) {
+      margin-left: $block-padding-md;
+      margin-right: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      margin-left: $block-padding-lg;
+      margin-right: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      margin-left: $block-padding-xl;
+      margin-right: $block-padding-xl;
+    }
+
   }
 
   @if $tag == 'top' {
-    margin-top: var(--space-y);
+    margin-top: $block-padding-sm + 1rem;
+
+    @include media-up($block-breakpoint-tablet) {
+      margin-top: $block-padding-md;
+    }
+
+    @include media-up($block-breakpoint-laptop) {
+      margin-top: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      margin-top: $block-padding-xl;
+    }
+
   }
 
   @if $tag == 'bottom' {
-    margin-bottom: var(--space-y);
-  }
+    margin-bottom: $block-padding-sm + 1rem;
 
-  @if $tag == 'left' {
-    margin-left: var(--space-x);
-  }
+    @include media-up($block-breakpoint-tablet) {
+      margin-bottom: $block-padding-md;
+    }
 
-  @if $tag == 'right' {
-    margin-right: var(--space-x);
+    @include media-up($block-breakpoint-laptop) {
+      margin-bottom: $block-padding-lg;
+    }
+
+    @include media-up($block-breakpoint-desktop) {
+      margin-bottom: $block-padding-xl;
+    }
+
   }
 
 }
@@ -435,35 +578,83 @@ $tags: top, bottom, right, left;
 @each $prop, $abbrev in (margin: m, padding: p) {
   @each $tag in $tags {
 
-    .space-#{$abbrev},
-    .space-#{$abbrev}-t,
-    .space-#{$abbrev}-y {
+    .block-#{$abbrev},
+    .block-#{$abbrev}-t,
+    .block-#{$abbrev}-y {
 
-      #{$prop}-top: var(--space-y);
+      #{$prop}-top : $block-padding-sm + 1rem;
 
-    }
+      @include media-up($block-breakpoint-tablet) {
+        #{$prop}-top : $block-padding-md;
+      }
 
-    .space-#{$abbrev},
-    .space-#{$abbrev}-b,
-    .space-#{$abbrev}-y {
+      @include media-up($block-breakpoint-laptop) {
+        #{$prop}-top : $block-padding-lg;
+      }
 
-      #{$prop}-bottom: var(--space-y);
-
-    }
-
-    .space-#{$abbrev},
-    .space-#{$abbrev}-l,
-    .space-#{$abbrev}-x {
-
-      #{$prop}-left: var(--space-x);
+      @include media-up($block-breakpoint-desktop) {
+        #{$prop}-top : $block-padding-xl;
+      }
 
     }
 
-    .space-#{$abbrev},
-    .space-#{$abbrev}-r,
-    .space-#{$abbrev}-x {
+    .block-#{$abbrev},
+    .block-#{$abbrev}-b,
+    .block-#{$abbrev}-y {
 
-      #{$prop}-right: var(--space-x);
+      #{$prop}-bottom : $block-padding-sm + 1rem;
+
+      @include media-up($block-breakpoint-tablet) {
+        #{$prop}-bottom : $block-padding-md;
+      }
+
+      @include media-up($block-breakpoint-laptop) {
+        #{$prop}-bottom : $block-padding-lg;
+      }
+
+      @include media-up($block-breakpoint-desktop) {
+        #{$prop}-bottom : $block-padding-xl;
+      }
+
+    }
+
+    .block-#{$abbrev},
+    .block-#{$abbrev}-l,
+    .block-#{$abbrev}-x {
+
+      #{$prop}-left : $block-padding-sm;
+
+      @include media-up($block-breakpoint-tablet) {
+        #{$prop}-left : $block-padding-md;
+      }
+
+      @include media-up($block-breakpoint-laptop) {
+        #{$prop}-left : $block-padding-lg;
+      }
+
+      @include media-up($block-breakpoint-desktop) {
+        #{$prop}-left : $block-padding-xl;
+      }
+
+    }
+
+    .block-#{$abbrev},
+    .block-#{$abbrev}-r,
+    .block-#{$abbrev}-x {
+
+      #{$prop}-right : $block-padding-sm;
+
+      @include media-up($block-breakpoint-tablet) {
+        #{$prop}-right : $block-padding-md;
+      }
+
+      @include media-up($block-breakpoint-laptop) {
+        #{$prop}-right : $block-padding-lg;
+      }
+
+      @include media-up($block-breakpoint-desktop) {
+        #{$prop}-right : $block-padding-xl;
+      }
 
     }
 

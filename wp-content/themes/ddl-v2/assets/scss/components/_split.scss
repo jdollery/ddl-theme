@@ -1,20 +1,32 @@
-.split {
+.sticky {
   background: var(--white);
-  // @include space-p(x);
-  // @include block-m(top);
-  // @include space-p(bottom);
+  @include block-p(y);
+  @include block-p(x);
 
-  padding: var(--space-y) var(--space-x);
+  &:first-of-type {
+    position: relative;
+    z-index: 1;
+  }
 
   &--left {
 
-    .split {
+    .sticky {
 
       &__one {
         order: 2;
 
-        @include media-up(xl) {
+        @include media-down(lg) {
+          @include block-p(top);
+        }
+
+        @include media-up(lg) {
+          @include block-p(right);
           order: 1;
+        }
+
+        &::after,
+        &::before {
+          right: 0;
         }
 
       }
@@ -22,9 +34,7 @@
       &__two {
         order: 1;
 
-        @include media-up(xl) {
-          // @include space-p(left);
-          padding: 0 0 0 var(--space-x);
+        @include media-up(lg) {
           order: 2;
         }
 
@@ -36,20 +46,28 @@
 
   &--right {
 
-    .split {
+    .sticky {
 
       &__one {
         order: 2;
+
+        @include media-down(lg) {
+          @include block-p(top);
+        }
+
+        @include media-up(lg) {
+          @include block-p(left);
+        }
+
+        &::after,
+        &::before {
+          left: 0;
+        }
+
       }
 
       &__two {
         order: 1;
-
-        @include media-up(xl) {
-          // @include space-p(right);
-          padding: 0 var(--space-x) 0 0;
-        }
-
       }
 
     }
@@ -60,51 +78,99 @@
     @include cell-row;
   }
 
-  &__one,
-  &__two {
-    @include cell(12);
+  &--top {
+    padding-top: 0;
 
-    @include media-up(xl) {
-      @include cell(6);
+    .sticky__row {
+      border-top: 0.2rem solid var(--grey);
+      @include block-p(top);
+    }
+
+  }
+
+  &--bottom {
+    padding-bottom: 0;
+
+    .sticky__row {
+      border-bottom: 0.2rem solid var(--grey);
+      @include block-p(bottom);
     }
 
   }
 
   &__one {
+    position: relative;
+    @include cell(12);
 
-    @include media-down(xl) {
-      max-height: 50vw;
-    }
+    // @include media-down(lg) {
+    //   max-height: 50vw;
+    // }
 
-    @include media-down(md) {
-      max-height: 45vw;
+    // @include media-down(md) {
+    //   max-height: 45vw;
+    // }
+
+    @include media-up(lg) {
+      @include cell(0);
     }
 
   }
 
   &__two {
-    // @include space-p(y);
-    padding: 0 0 var(--space-y);
-    align-self: center;
     font-weight: var(--medium);
+    @include cell(12);
+    align-self: center;
+
+    @include media-up(lg) {
+      @include cell(7);
+    }
 
     @include media-up(xl) {
-      padding: var(--space-y) 0;
+      @include cell(8);
+    }
+
+    ul {
+      @include list-bullet;
+    }
+
+    ol {
+      @include list-number;
     }
 
   }
 
   &__media {
     position: relative;
-    height: 32vw;
+    height: 45vw;
+    z-index: 1;
+
+    @include media-up(lg) {
+      position: sticky;
+      top: 12vw;
+      height: 45rem;
+    }
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: var(--accent);
+      opacity: 0.4;
+      z-index: 1;
+    }
 
     img {
+      position: relative;
       width: 100%;
       height: 100%;
       @include object-fit (cover);
       @include object-position(center);
   
-      @include media-up(xl) {
+      @include media-up(lg) {
         position: absolute;
         top: 0;
         left: 0;

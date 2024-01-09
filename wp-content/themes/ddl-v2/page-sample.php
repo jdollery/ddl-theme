@@ -8,6 +8,8 @@ get_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 
+<?php get_template_part('inc/sections'); ?>
+
 <article class="space-p">
 
   <?php the_content(); ?>

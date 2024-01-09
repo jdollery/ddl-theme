@@ -19,30 +19,47 @@ $blog_title = get_the_title( get_option('page_for_posts', true) );
 
 $banner_alt = get_field('banner_alt');
 $banner_intro = get_field('banner_intro');
-$banner_position = get_field('banner_position');
+$banner_btn = 'banner_btn';
+
+$treatment_archive_alt = get_field('treatment_archive_alt', 'option');
+$treatment_archive_intro = get_field('treatment_archive_intro', 'option');
+$treatment_archive_btn = 'treatment_archive_btn';
 
 ?>
 
-<div class="banner">
+<div class="banner<?php if ( is_front_page() ) { ?> banner--home<?php } ?>">
 
-  <?php  if ( has_post_thumbnail() ) { ?>
+  <?php  if ( is_front_page() ) {  //static home ?>
+
+    <video playsinline autoplay loop muted poster="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-poster.jpg">
+      <source src="<?php echo get_template_directory_uri(); ?>/assets/video/placeholder-video-compressed.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+
+  <?php } elseif ( has_post_thumbnail() ) { ?>
+
     <img 
-      class="banner__img banner__img--<?php echo esc_html($banner_position['value']); ?>"
+      class="banner__img"
       src="<?php echo $thumb_url ?>"
       alt="<?php echo $thumb_alt ?>" 
-      loading="lazy" 
       width="1920" 
       height="1080"
+      loading="lazy"
+      decoding="async"
     >
-  <?php  } else { ?>
+
+  <?php // } else { ?>
+
     <!-- <img 
       class="banner__img"
       src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-banner.jpg"
       alt="<?php echo get_bloginfo( 'name' ) ?>"
-      loading="lazy"
-      width="1920"
+      width="1920" 
       height="1080"
+      loading="lazy"
+      decoding="async"
     > -->
+
   <?php } ?>
 
   <div class="space-p">
@@ -79,10 +96,28 @@ $banner_position = get_field('banner_position');
         <?php } elseif ( is_post_type_archive('treatments') ) { //treatment archive ?>
 
           <h1 class="banner__title"><?php echo get_the_archive_title() ?></h1>
+
           <?php get_template_part('inc/breadcrumb'); ?>
 
-          <?php if ( get_field('treatment_archive_intro', 'option') ) { ?>
+          <?php if ( $treatment_archive_intro ) { ?>
             <h4 class="banner__intro"><?php echo get_field('treatment_archive_intro', 'option'); ?></h4>
+          <?php } ?>
+
+          <?php if( have_rows($treatment_archive_btn, 'option') ) { 
+
+            while( have_rows($treatment_archive_btn, 'option') ): the_row(); 
+
+            $treatment_archive_btn_link = get_sub_field('treatment_archive_btn_link');
+            $treatment_archive_btn_txt = get_sub_field('treatment_archive_btn_txt');
+            $treatment_archive_btn_color = get_sub_field('treatment_archive_btn_color');
+            $treatment_archive_btn_destination = get_sub_field('treatment_archive_btn_destination');
+
+            ?>
+
+            <a class="btn btn--<?php echo esc_html($treatment_archive_btn_color['value']); ?> btn--inline" href="<?php echo $treatment_archive_btn_link; ?>"<?php if( in_array ('external', $treatment_archive_btn_destination) ) { ?>target="_blank" rel="noopener noreferrer"<?php } ?>><?php echo $treatment_archive_btn_txt; ?></a>
+
+            <?php endwhile; wp_reset_query();  ?>
+
           <?php } ?>
 
         <?php } elseif ( is_archive() ) { ?>
@@ -131,6 +166,23 @@ $banner_position = get_field('banner_position');
 
           <?php if($banner_intro) { ?>
             <h4 class="banner__intro"><?php echo $banner_intro ?></h4>
+          <?php } ?>
+
+          <?php if( have_rows($banner_btn) ) { 
+
+            while( have_rows($banner_btn) ): the_row(); 
+
+            $banner_btn_link = get_sub_field('banner_btn_link');
+            $banner_btn_txt = get_sub_field('banner_btn_txt');
+            $banner_btn_color = get_sub_field('banner_btn_color');
+            $banner_btn_destination = get_sub_field('banner_btn_destination');
+
+            ?>
+
+            <a class="btn btn--<?php echo esc_html($banner_btn_color['value']); ?> btn--inline" href="<?php echo $banner_btn_link; ?>"<?php if( in_array ('external', $banner_btn_destination) ) { ?>target="_blank" rel="noopener noreferrer"<?php } ?>><?php echo $banner_btn_txt; ?></a>
+
+            <?php endwhile; wp_reset_query();  ?>
+
           <?php } ?>
 
         <?php } ?>
