@@ -14,4 +14,8 @@ if( $choose_section == 'accordion' ) {
   get_template_part('inc/accordion');
 }
 
+if( $choose_section == 'quicklinks' ) {
+  get_template_part('inc/quicklinks');
+}
+
 endwhile; wp_reset_postdata();

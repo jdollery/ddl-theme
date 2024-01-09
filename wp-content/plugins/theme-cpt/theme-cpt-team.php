@@ -69,18 +69,3 @@ function create_team_taxonomy() {
 }
 
 add_action( 'init', 'create_team_taxonomy' );
-
-
-// function create_team_options() {
-
-//   if(function_exists('acf_add_options_page')) {
-//     acf_add_options_sub_page(array(
-//       'page_title'      => 'Team Settings',
-//       'parent_slug'     => 'edit.php?post_type=team',
-//       'capability' => 'manage_options'
-//     ));
-//   }
-
-// }
-
-// add_action('init', 'create_team_options');

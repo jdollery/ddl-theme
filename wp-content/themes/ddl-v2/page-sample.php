@@ -23,6 +23,8 @@ get_header(); ?>
 
   <a href="/" class="btn btn--black btn--space">Test</a>
 
+  <a class="btn btn--accent btn--space" href="<?php echo site_url() ?>/team/#joe-smith" onclick="window.open(this.href, '_self'); return false;">View Joe’s Profile</a>
+
   <h1>Heading h2</h1>
   <h2>Heading h2</h2>
   <h3>Heading h3</h3>

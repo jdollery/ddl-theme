@@ -19,7 +19,7 @@ if( have_rows('split_section') ){
 
   ?>
 
-  <section class="split split--<?php echo esc_html($split_location['value']); ?> split--<?php echo esc_html($split_bg['value']); ?><?php if($split_spacing && in_array('top', $split_spacing)) { ?> space-p-t<?php } ?><?php if($split_spacing && in_array('bottom', $split_spacing)) { ?> space-p-b<?php } ?>">
+  <section class="split split--<?php echo esc_html($split_location['value']); ?> split--<?php echo esc_html($split_bg['value']); ?><?php if( $split_spacing ) { foreach( $split_spacing as $space ): ?> space-p-<?php echo $space; endforeach; } ?>">
 
     <div class="split__row">
 

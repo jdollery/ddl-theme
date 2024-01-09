@@ -158,7 +158,7 @@ $list-bullet-color:       var(--accent);
 
 /* --------------------- STYLING --------------------- */
 
-ul,
+ul:not(.loop),
 ol {
   margin-top: $paragraph-margin-top-sm;
   margin-bottom: $paragraph-margin-bottom-sm;

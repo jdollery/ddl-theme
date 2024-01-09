@@ -14895,27 +14895,27 @@ a:hover {
   color: var(--accent-light)
 }
 ol,
-ul {
+ul:not(.loop) {
   margin-top: var(--gutter-md);
   margin-bottom: var(--gutter-md)
 }
 @media (min-width:768px) {
   ol,
-  ul {
+  ul:not(.loop) {
     margin-top: var(--gutter-md);
     margin-bottom: var(--gutter-md)
   }
 }
 ol:first-child,
-ul:first-child {
+ul:not(.loop):first-child {
   margin-top: 0
 }
 ol:last-child,
-ul:last-child {
+ul:not(.loop):last-child {
   margin-bottom: 0
 }
 ol li::marker,
-ul li::marker {
+ul:not(.loop) li::marker {
   color: var(--accent)
 }
 .list--bullet {
@@ -16659,7 +16659,7 @@ html.js-nav-active {
   object-position: center
 }
 .banner__intro {
-  font-size: var(--size-h5);
+  font-size: var(--size-h6);
   margin: 0
 }
 .banner__meta {
@@ -17006,6 +17006,10 @@ html.js-nav-active {
   flex: 0 0 auto;
   width: 100%
 }
+.team__heading {
+  color: var(--white);
+  margin-bottom: 6rem
+}
 .team__list {
   list-style: none;
   display: flex;
@@ -17113,6 +17117,11 @@ html.js-nav-active {
   font-weight: var(--bold);
   margin: 0
 }
+.member__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
 .member__edit {
   display: block;
   margin-top: 2rem;
@@ -17202,12 +17211,11 @@ html.slideout-active {
   display: block;
   width: 3rem;
   height: 3rem;
-  background: #0096d6;
+  background: var(--accent);
   background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' focusable='false' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 352 512' style='enable-background:new 0 0 352 512;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23ffffff;%7D%0A%3C/style%3E%3Cpath class='st0' d='M242.7,256l100.1-100.1c12.3-12.3,12.3-32.2,0-44.5l-22.2-22.2c-12.3-12.3-32.2-12.3-44.5,0L176,189.3 L75.9,89.2c-12.3-12.3-32.2-12.3-44.5,0L9.2,111.4c-12.3,12.3-12.3,32.2,0,44.5L109.3,256L9.2,356.1c-12.3,12.3-12.3,32.2,0,44.5 l22.2,22.2c12.3,12.3,32.2,12.3,44.5,0L176,322.7l100.1,100.1c12.3,12.3,32.2,12.3,44.5,0l22.2-22.2c12.3-12.3,12.3-32.2,0-44.5 L242.7,256z'/%3E%3C/svg%3E%0A");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 40%;
-  border-radius: 50%;
   border: 0;
   z-index: 1;
   transition: all .3s cubic-bezier(.5,0,.5,1);
@@ -17333,6 +17341,10 @@ html.js-dialog-active {
 }
 .breadcrumb a:hover {
   color: var(--accent)
+}
+.quicklinks {
+  padding-left: var(--space-x);
+  padding-right: var(--space-x)
 }
 .accordion {
   position: relative;

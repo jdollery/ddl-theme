@@ -1,15 +1,38 @@
 <section class="team">
   <div class="team__inner">
+
+  <?php 
+
+  $custom_terms = get_terms('team_categories');
+
+  foreach($custom_terms as $custom_term) {
+
+    wp_reset_query();
+
+    $args = array(
+      'post_type' => 'team',
+      'order'  => 'ASC',
+      'orderby' => 'menu_order',
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'team_categories',
+          'field' => 'slug',
+          'terms' => $custom_term->slug,
+        ),
+      ),
+    );
+
+    $loop = new WP_Query($args);
+
+    if($loop->have_posts()) {
+
+    ?>
+
+    <h3 class="team__heading"><?php echo $custom_term->name ?></h3>
+
     <ul class="team__list">
 
       <?php
-      
-      $loop = new WP_Query( array(
-        'post_type' => 'team', 
-        'posts_per_page' => '100',
-        'order'  => 'ASC', 
-        'orderby' => 'menu_order',
-      ) );
 
       while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
@@ -35,7 +58,7 @@
           <div class="member__body">
             <div class="member__row">
               <div class="member__one">
-                <picture class="member__media">
+                <figure class="member__media">
                   <?php if ( has_post_thumbnail() ) { ?>
                     <img 
                       class="member__img"
@@ -57,7 +80,7 @@
                       decoding="async"
                     >
                   <?php } ?>
-                </picture>
+                </figure>
               </div>
               <div class="member__two">
                 <h3 class="member__heading"><?php the_title(); ?></h3>
@@ -70,8 +93,8 @@
               </div>
             </div>
             <?php if( get_the_content() ) { ?>
-            <div class="cell-row cell-justify-center">
-              <button class="btn btn--accent w-100" data-open="<?php echo $member_id ; ?>" aria-pressed="false" aria-expanded="false" aria-controls="<?php echo $member_id ; ?>">Read profile</button>
+            <div class="member__footer">
+              <button class="btn btn--accent w-100" data-open="<?php echo $member_id ; ?>" aria-pressed="false" aria-expanded="false" aria-controls="<?php echo $member_id ; ?>">Read Biography</button>
               <?php edit_post_link( __( 'Edit', 'textdomain' ), null, null, null, 'member__edit' ); ?>
             </div>
             <?php } ?>
@@ -81,10 +104,10 @@
             <div class="slideout__backdrop" data-close="<?php echo $member_id ; ?>">&nbsp;</div>
             <div class="slideout__row">
               <div class="slideout__body">
-                <!-- <button class="slideout__close" data-close="<?php echo $member_id ; ?>"><span class="icon icon--close"><svg role="img"><use xlink:href="#close" href="#close"></use></svg></span></button> -->
+                <button class="slideout__close" data-close="<?php echo $member_id ; ?>"><span class="hidden">Close</span></button>
                 <div class="slideout__content">
                   <div class="slideout__media" data-open="<?php echo $member_id ; ?>">
-                    <picture>
+                    <figure>
                       <?php if ( has_post_thumbnail() ) { ?>
                         <img 
                           class="member__img"
@@ -98,7 +121,7 @@
                       <?php } else { ?>
                         <img 
                           class="member__img" 
-                          src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-female.webp" 
+                          src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-female.jpg" 
                           alt="<?php the_title(); ?>"
                           width="900"
                           height="750"
@@ -106,12 +129,12 @@
                           decoding="async"
                         >
                       <?php } ?>
-                    </picture>
+                    </figure>
                   </div>
                   <h3 class="slideout__heading"><?php the_title(); ?></h3>
                   <div class="slideout__meta">
                     <?php if ( $member_job ) { ?>
-                      <h4 class="slideout__job"><?php echo $member_job ?></h4>
+                      <p class="slideout__job"><?php echo $member_job ?></p>
                     <?php } ?>
                     <?php if ( $member_creds ) { ?>
                       <div class="slideout__creds"><?php echo $member_creds ?></div>
@@ -121,7 +144,7 @@
                     <?php } ?>
                   </div>
                   <div class="slideout__profile"><?php the_content(); ?></div>
-                  <button class="btn btn--accent btn--space w-100" data-close="<?php echo $member_id ; ?>">Close profile</button>
+                  <button class="btn btn--accent btn--space w-100 btn--sm" data-close="<?php echo $member_id ; ?>">Close profile</button>
                 </div>
               </div>
             </div>
@@ -135,6 +158,15 @@
       
       ?>
 
-    </ul>   
+    </ul>  
+    
+    <?php 
+      
+      }
+
+    } 
+    
+    ?>
+
   </div>
 </section>
