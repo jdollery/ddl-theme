@@ -4,8 +4,8 @@
 
 .team {
   background: var(--black);
-  @include block-p(x);
-  @include block-p(y);
+  @include space-p(x);
+  @include space-p(y);
 
   &__inner {
     @include cell(12);

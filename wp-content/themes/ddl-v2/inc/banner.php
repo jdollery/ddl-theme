@@ -3,12 +3,6 @@
 $post = get_queried_object();
 setup_postdata( $post );
 
-$thumb_id = get_post_thumbnail_id( $post->ID );
-$thumb_alt = get_post_meta($thumb_id, '_wp_attachment_image_alt', true);
-$thumb_title = get_the_title($thumb_id);
-$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'full', true);
-$thumb_url = $thumb_url_array[0];
-
 $page_id = ( 'page' == get_option( 'show_on_front' ) ? get_option( 'page_for_posts' ) : get_the_ID() );
 $blog_description = esc_attr( get_post_meta( $page_id, 'title_description', true )); 
 
@@ -36,7 +30,15 @@ $treatment_archive_btn = 'treatment_archive_btn';
       Sorry, your browser doesn’t support embedded videos.
     </video>
 
-  <?php } elseif ( has_post_thumbnail() ) { ?>
+  <?php } elseif ( has_post_thumbnail() ) { 
+    
+    $thumb_id = get_post_thumbnail_id( $post->ID );
+    $thumb_alt = get_post_meta($thumb_id, '_wp_attachment_image_alt', true);
+    $thumb_title = get_the_title($thumb_id);
+    $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'full', true);
+    $thumb_url = $thumb_url_array[0];
+    
+  ?>
 
     <img 
       class="banner__img"

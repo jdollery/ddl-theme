@@ -15,23 +15,21 @@ $loop = new WP_Query( array(
 
 if ( $loop->have_posts() ) { ?>
 
-  <?php if ( !is_single(240) ) { //Hide on Orthodontcs Page ?>
+  <section class="space-p">
+    
+    <ul class="loop">
 
-    <section class="space-p">
-      <ul class="loop">
+    <?php  while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
-      <?php  while ( $loop->have_posts() ) : $loop->the_post(); ?>
+    <li class="loop__item">
+      <?php get_template_part('inc/post'); ?>
+    </li>
 
-      <li class="loop__item">
-        <?php get_template_part('inc/post'); ?>
-      </li>
+    <?php endwhile; wp_reset_query(); ?>
 
-      <?php endwhile; wp_reset_query(); ?>
+    </ul>
 
-      </ul>
-    </section>
-
-  <?php } ?>
+  </section>
 
 <?php } ?>
 

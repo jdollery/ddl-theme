@@ -27,16 +27,20 @@ $max-width: 144rem;
 
 }
 
+@mixin cell-row-after {
+  
+  > * {
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+}
+
 .cell-row {
   @include cell-row;
 }
-
-// .cell-row > * {
-//   position: relative;
-//   flex-shrink: 0;
-//   width: 100%;
-//   max-width: 100%;
-// }
 
 
 /* --------------------- ROW GUTTERS --------------------- */

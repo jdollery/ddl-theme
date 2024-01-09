@@ -4,7 +4,7 @@
 
 <?php if ( have_posts() ) { ?>
 
-<section class="space-p bg-purple">
+<section class="space-p">
   <ul class="loop">
 
     <?php while ( have_posts() ) : the_post(); ?>

@@ -1,7 +1,10 @@
-.sticky {
+.split {
   background: var(--white);
-  @include block-p(y);
-  @include block-p(x);
+  @include space-p(x);
+
+  &--grey {
+    background: var(--grey-light);
+  }
 
   &:first-of-type {
     position: relative;
@@ -10,17 +13,17 @@
 
   &--left {
 
-    .sticky {
+    .split {
 
       &__one {
         order: 2;
 
         @include media-down(lg) {
-          @include block-p(top);
+          @include space-p(top);
         }
 
         @include media-up(lg) {
-          @include block-p(right);
+          @include space-p(right);
           order: 1;
         }
 
@@ -46,17 +49,17 @@
 
   &--right {
 
-    .sticky {
+    .split {
 
       &__one {
         order: 2;
 
         @include media-down(lg) {
-          @include block-p(top);
+          @include space-p(top);
         }
 
         @include media-up(lg) {
-          @include block-p(left);
+          @include space-p(left);
         }
 
         &::after,
@@ -78,37 +81,9 @@
     @include cell-row;
   }
 
-  &--top {
-    padding-top: 0;
-
-    .sticky__row {
-      border-top: 0.2rem solid var(--grey);
-      @include block-p(top);
-    }
-
-  }
-
-  &--bottom {
-    padding-bottom: 0;
-
-    .sticky__row {
-      border-bottom: 0.2rem solid var(--grey);
-      @include block-p(bottom);
-    }
-
-  }
-
   &__one {
     position: relative;
     @include cell(12);
-
-    // @include media-down(lg) {
-    //   max-height: 50vw;
-    // }
-
-    // @include media-down(md) {
-    //   max-height: 45vw;
-    // }
 
     @include media-up(lg) {
       @include cell(0);
@@ -117,16 +92,11 @@
   }
 
   &__two {
-    font-weight: var(--medium);
     @include cell(12);
     align-self: center;
 
     @include media-up(lg) {
-      @include cell(7);
-    }
-
-    @include media-up(xl) {
-      @include cell(8);
+      @include cell(6);
     }
 
     ul {

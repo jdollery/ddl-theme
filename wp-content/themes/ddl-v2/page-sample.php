@@ -355,51 +355,6 @@ get_header(); ?>
     </tbody>
   </table>
 
-  <?php
-
-    $questions = array(
-
-      array(
-        "heading"     =>  "Why should I choose implants?",
-        "description" =>  "Lorem ipsum dolor sit amet, consectetur adipiscing aliquam vitae mi eu leo rutrum rhoncus eros."
-      ),
-
-      array(
-        "heading"     =>  "Am I suitable for implant treatment?",
-        "description" =>  "Lorem ipsum dolor sit amet, consectetur adipiscing aliquam vitae mi eu leo rutrum rhoncus eros."
-      ),
-
-      array(
-        "heading"     =>  "How long does the dental implant treatment process take?",
-        "description" =>  "Lorem ipsum dolor sit amet, consectetur adipiscing aliquam vitae mi eu leo rutrum rhoncus eros."
-      ),
-      
-    );
-
-  ?>
-
-  <ul class="accordion">
-
-    <?php // while( have_rows($accordion_list) ): the_row(); ?>
-    <?php foreach($questions as $question) { ?>
-    <li class="accordion__item" id="dropItem">
-      <dt class="accordion__term">
-        <button class="accordion__title">
-          <?php //echo the_sub_field('accordion_title'); ?>
-          <?php echo $question['heading'] ?>
-        </button>
-        <span class="icon icon--arrow"><svg role="img"><use xlink:href="#arrow" href="#arrow"></use></svg></span>
-      </dt>
-      <dd class="accordion__desc" id="dropDesc">
-        <?php //echo the_sub_field('accordion_description'); ?>
-        <?php echo $question['description'] ?>
-      </dd>
-    </li>
-    <?php } ?>
-    <?php //endwhile; ?>
-
-  </ul>
-
 </article>
 
 <?php endwhile; ?>

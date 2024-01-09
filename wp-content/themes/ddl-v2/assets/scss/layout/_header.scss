@@ -27,7 +27,7 @@ $nav-width-sm: 30rem;
   width: 100%;
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
-  @include block-p(x);
+  @include space-p(x);
   background: var(--white);
   box-shadow: 0 0 2rem rgb(0 0 0 / 30%);
 }
@@ -38,6 +38,8 @@ $nav-width-sm: 30rem;
 /*-----------------------------------------------------------------------------------*/
 
 .logo {
+  position: relative;
+  display: block;
   width: 28rem;
 
   img {
