@@ -28,12 +28,28 @@ if( have_rows('split_section') ){
         <div class="split__one">  
           <div class="split__media split__media--<?php echo esc_html($split_fit['value']); ?>" >
 
-            <?php if($split_video) { ?>
-              <img id="videoToggle" src="<?php echo $split_poster ?>" alt="<?php the_sub_field('title'); ?>" data-url="<?php echo $split_video ?>">
-            <?php } elseif($split_embed) { ?>
+            <?php if ( $split_video ) { ?>
+              <img
+                id="videoToggle"
+                src="<?php echo esc_url($split_poster['url']); ?>"
+                alt="<?php echo $split_poster['alt']; ?>" 
+                width="900"
+                height="900"
+                loading="lazy"
+                decoding="async"
+                data-url="<?php echo $split_video ?>"
+              >
+            <?php } elseif ( $split_embed ) { ?>
               <?php echo $split_embed ?>
             <?php } else { ?>
-              <img src="<?php echo esc_url($split_img['url']); ?>" alt="<?php echo $split_img['alt']; ?>" loading="lazy" width="900" height="750">
+              <img
+                src="<?php echo esc_url($split_img['url']); ?>"
+                alt="<?php echo $split_img['alt']; ?>"
+                width="900"
+                height="900"
+                loading="lazy"
+                decoding="async"
+              >
             <?php } ?>
           
           </div>
