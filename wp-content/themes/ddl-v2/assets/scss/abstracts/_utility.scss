@@ -131,10 +131,10 @@ $spacers: map-merge(
 }
 
 
-$tags: top, bottom, right, left;
+// $tags: top, bottom, right, left;
 
 @each $prop, $abbrev in (margin: m, padding: p) {
-  @each $tag in $tags {
+  // @each $tag in $tags {
 
     .space-#{$abbrev},
     .space-#{$abbrev}-t,
@@ -168,7 +168,7 @@ $tags: top, bottom, right, left;
 
     }
 
-  }
+  // }
   
 }
 
