@@ -33,7 +33,7 @@ add_action( 'wp_enqueue_scripts', 'ddl_dialog_enqueue' );
 /* INCLUDES */
 /*-----------------------------------------------------------------------------------*/
 
-include plugin_dir_path( __FILE__ ) . './inc/admin.php';
+// include plugin_dir_path( __FILE__ ) . './inc/admin.php';
 include plugin_dir_path( __FILE__ ) . './inc/post-type.php';
 
 function your_function() {
