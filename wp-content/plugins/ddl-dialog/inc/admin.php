@@ -50,3 +50,37 @@
 // 	echo '</form>';
 
 // }
+
+function clients_custom_metaboxes() {
+
+  //Visibility
+  add_meta_box(
+      'clients_visible',
+      __( 'Show on clients page' ),
+      'infotravel_clients_visible_metabox',
+      'ddl-dialogs'
+  );
+}
+
+add_action( 'add_meta_boxes', 'clients_custom_metaboxes' );
+
+function infotravel_clients_visible_metabox( $post ) {
+  wp_nonce_field( 'clients_show', 'clients_show_nonce' );
+  $value = get_post_meta( $post->ID, '_clients_show', true );
+  $is_checked = ((int)$value == 1) ? 'checked' : '';
+  ?>
+  <input type="checkbox" id="chkClientShow" name="chkClientShow" value="1" <?php echo $is_checked; ?>/>
+  <label for="chkClientShow">Show this client on Clients page</label>
+  <?php
+}
+
+
+function infotravel_save_clients_meta( $post_id ) {
+
+  $visible = isset( $_POST['chkClientShow'] ) && $_POST['chkClientShow'] == 1;
+  $visible = (int)$visible;
+  update_post_meta( $post_id,  '_clients_show', $visible );
+
+}
+
+add_action( 'save_post',  'infotravel_save_clients_meta' );

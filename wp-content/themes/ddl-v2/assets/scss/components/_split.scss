@@ -2,8 +2,9 @@
   background: var(--white);
   @include space-p(x);
 
-  &--grey {
-    background: var(--grey-light);
+  &--dark {
+    background: var(--grey-dark);
+    color: var(--white);
   }
 
   &:first-of-type {
@@ -25,11 +26,6 @@
         @include media-up(lg) {
           @include space-p(right);
           order: 1;
-        }
-
-        &::after,
-        &::before {
-          right: 0;
         }
 
       }
@@ -60,11 +56,6 @@
 
         @include media-up(lg) {
           @include space-p(left);
-        }
-
-        &::after,
-        &::before {
-          left: 0;
         }
 
       }
@@ -99,6 +90,16 @@
       @include cell(6);
     }
 
+  }
+
+  &__body {
+    position: relative;
+    @include cell(12);
+  }
+
+  &__two,
+  &__body {
+
     ul {
       @include list-bullet;
     }
@@ -120,24 +121,10 @@
       height: 45rem;
     }
 
-    &::after {
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: block;
-      content: "";
-      width: 100%;
-      height: 100%;
-      background: var(--accent);
-      opacity: 0.4;
-      z-index: 1;
-    }
-
     img {
       position: relative;
       width: 100%;
       height: 100%;
-      @include object-fit (cover);
       @include object-position(center);
   
       @include media-up(lg) {
@@ -146,6 +133,30 @@
         left: 0;
       }
   
+    }
+
+    &--cover {
+      
+      img {
+        @include object-fit (cover);
+      }
+
+    }
+
+    &--contain {
+      
+      img {
+        @include object-fit (contain);
+      }
+
+    }
+
+    &--video {
+      
+      img {
+        @include object-fit (cover);
+      }
+
     }
 
   }

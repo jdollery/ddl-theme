@@ -55,7 +55,7 @@ $checkboxradio-height-sm:   2.5rem;
 
   &__input {
     position: relative;
-    margin-bottom: $gutter-md;
+    margin-bottom: var(--gutter-md);
 
     &--textarea {
       height: 100%;
@@ -134,9 +134,9 @@ legend {
 }
 
 fieldset:not(:last-child) {
-  margin-bottom: $gutter-md;
+  margin-bottom: var(--gutter-md);
   border-bottom: 0.2rem solid var(--grey-dark);
-  padding-bottom: $gutter-lg;
+  padding-bottom: var(--gutter-lg);
 }
 
 

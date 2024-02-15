@@ -95,9 +95,9 @@
             <?php if( get_the_content() ) { ?>
             <div class="member__footer">
               <button class="btn btn--accent w-100" data-open="<?php echo $member_id ; ?>" aria-pressed="false" aria-expanded="false" aria-controls="<?php echo $member_id ; ?>">Read Biography</button>
-              <?php edit_post_link( __( 'Edit', 'textdomain' ), null, null, null, 'member__edit' ); ?>
             </div>
             <?php } ?>
+            <?php edit_post_link( __( 'Edit', 'textdomain' ), null, null, null, 'member__edit' ); ?>
           </div>
 
           <div class="slideout" id="<?php echo $member_id ; ?>" data-sideout="<?php echo $member_id ; ?>">

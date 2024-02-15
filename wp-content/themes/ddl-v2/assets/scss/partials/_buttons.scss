@@ -102,10 +102,10 @@
     }
 
     &:not(:last-child) {
-      margin-right: $gutter-sm;
+      margin-right: var(--gutter-sm);
 
       @include media-up(sm) {
-        margin-right: $gutter-md;
+        margin-right: var(--gutter-md);
       }
 
     }

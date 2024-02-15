@@ -2,7 +2,7 @@
   // display: inline-block;
   @include cell(12);
   text-align: center;
-  padding-top: $gutter-lg;
+  padding-top: var(--gutter-lg);
 
   &__list {
     list-style: none;
@@ -22,25 +22,26 @@
         margin: 0;
         display: block;
         font-weight: 400;
-        font-size: 1.6rem;
-        width: 5.5rem;
-        height: 5.5rem;
-        line-height: 5.2rem;
+        font-size: 1.4rem;
+        width: 3.5rem;
+        height: 3.5rem;
+        line-height: 3.2rem;
         text-indent: 0.2rem;
         padding: 0;
-        color: var(--white);
-        background: var(--accent-light);
+        color: var(--black);
+        background: var(--white);
         border-width: 0.2rem;
         border-style: solid;
-        border-color: var(--accent-light);
-        // border-radius: 100%;
+        border-color: var(--white);
+        border-radius: 0.8rem;
         // font-weight: $weight-regular;
 
-        // @include media-up(md) {
-        //   margin: 0;
-        //   font-size: 1.7rem;
-        //   min-width: 5.2rem;
-        // }
+        @include media-up(md) {
+          font-size: 1.6rem;
+          width: 5.5rem;
+          height: 5.5rem;
+          line-height: 5.2rem;
+        }
 
         &.prev,
         &.next {

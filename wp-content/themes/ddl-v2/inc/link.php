@@ -6,7 +6,9 @@ $thumb_title = get_the_title($thumb_id);
 $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'full', true);
 $thumb_url = $thumb_url_array[0];
 
-$post_img = get_field('post_img');
+$quicklink_alt_title = get_field('quicklink_alt_title');
+$quicklink_alt_img = get_field('quicklink_alt_img');
+$quicklink_btn_text = get_field('quicklink_btn_text'); 
 
 ?>
 
@@ -16,11 +18,11 @@ $post_img = get_field('post_img');
 
     <div class="post__one">
 
-      <?php if ( $post_img ) { ?>
+      <?php if ( $quicklink_alt_img ) { ?>
 
         <img
-          src="<?php echo esc_url($post_img['url']); ?>"
-          alt="<?php if($post_img['alt']){ echo $post_img['alt']; } else { the_title(); } ?>"
+          src="<?php echo esc_url($quicklink_alt_img['url']); ?>"
+          alt="<?php if($quicklink_alt_img['alt']){ echo $quicklink_alt_img['alt']; } else { the_title(); } ?>"
           width="200"
           height="200"
           loading="lazy"
@@ -56,8 +58,14 @@ $post_img = get_field('post_img');
     <div class="post__two">
       <div class="post__body">
         <div>
-          <h3 class="post__heading"><?php the_title(); ?></h3>
+          <?php if ( $quicklink_alt_title ) { ?>
+            <h3 class="post__heading"><?php echo $quicklink_alt_title ?></h3>
+          <?php } else { ?>
+            <h3 class="post__heading"><?php the_title(); ?></h3>
+          <?php } ?>
+          <?php if(!is_post_type_archive('symptoms')) { ?>
           <div class="post__summary"><?php echo strip_tags( the_excerpt() ); ?></div>
+          <?php } ?>
         </div>
         <span class="btn btn--black btn--space">Learn more</span>
       </div>

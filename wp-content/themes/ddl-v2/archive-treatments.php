@@ -5,9 +5,10 @@
 get_header(); ?>
 
 <?php get_template_part('inc/banner'); ?>
-<?php get_template_part('inc/sections'); ?>
 
-<?php
+<section class="space-p">
+
+  <?php
 
   $parents = new WP_Query( array(
     'post_type' => 'treatments', 
@@ -19,11 +20,17 @@ get_header(); ?>
     'numberposts' => -1,
   ) );
 
-  while ( $parents->have_posts() ) : $parents->the_post(); ?>
+  while ( $parents->have_posts() ) : $parents->the_post();
 
-    <section class="space-p">
+    $isParent =  array(
+      'post_parent' => get_the_ID(), // Current post's ID
+    );
 
-      <div class="space-p-b">
+    $hasChildren = get_children( $isParent );
+
+    if( $hasChildren ) { ?>
+
+      <div class="space-p-b parent">
 
         <h3><?php the_title(); ?></h3>
 
@@ -53,7 +60,7 @@ get_header(); ?>
         'numberposts' => -1,
       ) );
 
-      $total_children = $children->found_posts;
+      $total_children = $children -> found_posts;
 
       if( $children -> have_posts() ) { ?>
 
@@ -64,20 +71,11 @@ get_header(); ?>
             <?php
             
             while ( $children->have_posts() ) : $children->the_post();
-
-            $thumb_id = get_post_thumbnail_id( $post->ID );
-            $thumb_alt = get_post_meta($thumb_id, '_wp_attachment_image_alt', true);
-            $thumb_title = get_the_title($thumb_id);
-            $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'full', true);
-            $thumb_url = $thumb_url_array[0];
-
-            $quicklink_alt_title = get_field('quicklink_alt_title');
-            $quicklink_btn_text = get_field('quicklink_btn_text'); 
             
             ?>
 
               <li class="loop__item">
-                <?php get_template_part('inc/post'); ?>
+                <?php get_template_part('inc/link'); ?>
               </li>
 
             <?php endwhile; wp_reset_query(); ?>
@@ -88,8 +86,32 @@ get_header(); ?>
 
       <?php } ?>
 
-    </section>
+    <?php } else { ?>
+
+      <div class="space-p-b">
+
+        <h3><?php the_title(); ?></h3>
+
+        <?php
+
+        $strip_excerpt = get_the_excerpt();
+        $tags = array("<p>", "</p>");
+        $strip_excerpt = str_replace($tags, "", $strip_excerpt);
+
+        ?>
+
+        <?php if( $strip_excerpt ) { ?>
+          <h6><?php echo $strip_excerpt; ?></h6>
+        <?php } ?>
+
+        <a class="btn btn--black btn--space" href="<?php echo get_permalink(); ?>">Learn more</a>
+
+      </div>
+
+    <?php } ?>
 
   <?php endwhile; wp_reset_query(); ?>
+
+  </section>
 
 <?php get_footer(); ?>

@@ -22,7 +22,7 @@
 
 }  ?>
 
-<?php if ( is_page('team') ) { 
+<?php if ( is_page(72) ) { 
 
   get_template_part('inc/team');
 

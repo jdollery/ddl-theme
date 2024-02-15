@@ -56,21 +56,21 @@
   }
 
   &__body {
-    padding: $gutter-md;
+    padding: var(--gutter-md);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
 
     @include media-up(md) {
-      padding: $gutter-lg;
+      padding: var(--gutter-lg);
     }
 
   }
 
   &__heading {
     line-height: 1.2;
-    margin-bottom: $gutter-md
+    margin-bottom: var(--gutter-md)
   }
 
   @include hover-focus {
@@ -86,7 +86,7 @@
   }
 
   .btn {
-    margin-top: $gutter-lg;
+    margin-top: var(--gutter-lg);
 
     @include hover-focus {
       color: var(--accent);

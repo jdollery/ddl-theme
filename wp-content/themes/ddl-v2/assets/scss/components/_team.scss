@@ -59,7 +59,7 @@
 
   &__body {
     background: var(--white);
-    padding: $gutter-lg;
+    padding: var(--gutter-lg);
     text-align: center;
     height: 100%;
     display: flex;
@@ -116,15 +116,15 @@
 
   &__edit {
     display: block;
-    margin-top: 2rem;
+    margin: 2rem auto 0;
     width: fit-content;
   }
 
   .btn {
-    margin-top: $gutter-md;
+    margin-top: var(--gutter-md);
 
     @include media-up(md) {
-      margin-top: $gutter-lg;
+      margin-top: var(--gutter-lg);
     }
 
   }
@@ -180,13 +180,13 @@ html.slideout-active {
     max-width: 60rem;
     overflow-y: scroll;
     background: var(--white);
-    padding: $gutter-md;
+    padding: var(--gutter-md);
     z-index: 2;
     right: -100%;
     transition: right 0.7s cubic-bezier(0.5, 0, 0.5, 1);
 
     @include media-up(sm) {
-      padding: $gutter-lg;
+      padding: var(--gutter-lg);
     }
 
   }

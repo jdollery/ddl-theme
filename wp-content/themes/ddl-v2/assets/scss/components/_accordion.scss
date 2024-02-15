@@ -88,13 +88,13 @@
     width: 100%;
     // font-size: var(--size-h6);
     letter-spacing: 0.15rem;
-    padding: $gutter-md $gutter-lg;
+    padding: var(--gutter-md) var(--gutter-lg);
   }
 
   &__desc {
     @include cell(auto);
     display: none;
-    padding: $gutter-md $gutter-lg;
+    padding: var(--gutter-md) var(--gutter-lg);
     background: var(--grey-light);
 
     p {

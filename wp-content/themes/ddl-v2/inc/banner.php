@@ -43,7 +43,7 @@ $treatment_archive_btn = 'treatment_archive_btn';
     <img 
       class="banner__img"
       src="<?php echo $thumb_url ?>"
-      alt="<?php echo $thumb_alt ?>" 
+      alt="<?php if($thumb_alt){ echo $thumb_alt; } else { the_title(); } ?>"
       width="1920" 
       height="1080"
       loading="lazy"

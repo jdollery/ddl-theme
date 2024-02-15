@@ -5,9 +5,9 @@ if( have_rows('split_section') ){
   while( have_rows('split_section') ): the_row(); 
 
   $split_hide = get_sub_field('split_hide');
+  $split_spacing = get_sub_field('split_spacing');
   $split_bg = get_sub_field('split_bg');
   $split_location = get_sub_field('split_location');
-  $split_spacing = get_sub_field('split_spacing');
   $split_img = get_sub_field('split_img');
   $split_fit = get_sub_field('split_fit');
   $split_video = get_sub_field('split_video');
@@ -26,33 +26,49 @@ if( have_rows('split_section') ){
       <?php if( $split_img || $split_video || $split_embed ) { ?>
 
         <div class="split__one">  
+
+          <?php if ( $split_video ) { ?>
+
+          <div class="split__media split__media--video" >
+
+            <img
+              id="videoToggle"
+              src="<?php echo esc_url($split_poster['url']); ?>"
+              alt="<?php if($split_poster['alt']){ echo $split_poster['alt']; } else { the_title(); } ?>" 
+              width="900"
+              height="900"
+              loading="lazy"
+              decoding="async"
+              data-url="<?php echo $split_video ?>"
+            >
+
+          </div>
+
+          <?php } elseif ( $split_embed ) { ?>
+
+          <div class="split__media split__media--embed" >
+
+            <?php echo $split_embed ?>
+
+          </div>
+
+          <?php } else { ?>
+
           <div class="split__media split__media--<?php echo esc_html($split_fit['value']); ?>" >
 
-            <?php if ( $split_video ) { ?>
-              <img
-                id="videoToggle"
-                src="<?php echo esc_url($split_poster['url']); ?>"
-                alt="<?php echo $split_poster['alt']; ?>" 
-                width="900"
-                height="900"
-                loading="lazy"
-                decoding="async"
-                data-url="<?php echo $split_video ?>"
-              >
-            <?php } elseif ( $split_embed ) { ?>
-              <?php echo $split_embed ?>
-            <?php } else { ?>
-              <img
-                src="<?php echo esc_url($split_img['url']); ?>"
-                alt="<?php echo $split_img['alt']; ?>"
-                width="900"
-                height="900"
-                loading="lazy"
-                decoding="async"
-              >
-            <?php } ?>
-          
+            <img
+              src="<?php echo esc_url($split_img['url']); ?>"
+              alt="<?php if($split_img['alt']){ echo $split_img['alt']; } else { the_title(); } ?>"
+              width="900"
+              height="900"
+              loading="lazy"
+              decoding="async"
+            >
+
           </div>
+
+          <?php } ?>
+          
         </div>
 
       <?php } ?>

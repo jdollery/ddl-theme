@@ -33,14 +33,40 @@ add_action( 'wp_enqueue_scripts', 'ddl_dialog_enqueue' );
 /* INCLUDES */
 /*-----------------------------------------------------------------------------------*/
 
-// include plugin_dir_path( __FILE__ ) . './inc/admin.php';
+include plugin_dir_path( __FILE__ ) . './inc/admin.php';
 include plugin_dir_path( __FILE__ ) . './inc/post-type.php';
 
-function your_function() {
-  if(is_page( 2 )){ // Enter your page ID
-    // echo '<p>This is inserted at the bottom</p>';
-    include plugin_dir_path( __FILE__ ) . './inc/dialog.php';
+function init_dialog() {
+    
+  $dialogLoop = new WP_Query( array(
+    'post_type' => 'ddl-dialogs',
+    "numberposts" => 1,
+    "posts_per_page" => 1
+    // 'order'  => 'ASC', 
+    // 'orderby' => 'menu_order',
+    // 'post_parent' => get_the_ID(),
+    // 'numberposts' => -1,
+  ) );
+
+  if ( $dialogLoop -> have_posts() ) {
+
+    while ( $dialogLoop->have_posts() ) : $dialogLoop->the_post();
+    
+      if( is_page(2) ) { // Enter your page ID
+
+        $postId = get_the_ID();
+
+        $dialogStatus = get_post_status($postId);
+        if ($dialogStatus == 'publish' && $is_checked ) {
+          include plugin_dir_path( __FILE__ ) . './inc/dialog.php';
+        }
+
+      }
+
+    endwhile; wp_reset_query();
+
   }
+
 }
-add_action( 'wp_footer', 'your_function', 1 );
-// add_action( 'wp_footer', 'your_function', 100 );
+
+add_action( 'wp_footer', 'init_dialog', 1 );

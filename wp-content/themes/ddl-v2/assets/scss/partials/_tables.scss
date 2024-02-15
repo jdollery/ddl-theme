@@ -109,7 +109,7 @@ table {
     vertical-align: top;
     border-width: $table-th-border-width;
     border-style: $table-th-border-style;
-    border-color: $table-th-background $table-th-border-color;
+    border-color: $table-th-background;
     font-weight: $table-th-font-weight;
     background: $table-th-background;
     color: $table-th-font-color;
@@ -124,12 +124,8 @@ table {
       width: 20%;
     }
 
-    &:first-child {
+    &:not(:last-child) {
       border-color: $table-th-background $table-th-border-color $table-th-background $table-th-background;
-    }
-  
-    &:last-child {
-      border-color: $table-th-background $table-th-background $table-th-background $table-th-border-color;
     }
 
   }
@@ -148,6 +144,15 @@ table {
   
   td {
     color: $table-td-font-color;
+
+    ul {
+      @include list-bullet;
+    }
+
+    ol {
+      @include list-number;
+    }
+
   }
 
 }

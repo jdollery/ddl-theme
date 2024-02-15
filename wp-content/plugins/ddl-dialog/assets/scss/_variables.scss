@@ -108,9 +108,9 @@ $theme-name: ppc-templates-2024;
 /* --------- GUTTERS --------- */
 
 $gutter-xl: var(--gutter-xl);
-$gutter-lg: var(--gutter-lg);
-$gutter-md: var(--gutter-md);
-$gutter-sm: var(--gutter-sm);
+var(--gutter-lg): var(--gutter-lg);
+var(--gutter-md): var(--gutter-md);
+var(--gutter-sm): var(--gutter-sm);
 
 
 /* --------- MARGINS FOR IMAGES, FORMS, TABLES --------- */

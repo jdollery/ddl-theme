@@ -285,7 +285,7 @@ ol {
 
 /* --------------------- VARIABLES --------------------- */
 
-$blockquote-indent:          $gutter-lg;
+$blockquote-indent:          var(--gutter-lg);
 $blockquote-border-width:    0.5rem;
 $blockquote-border-color:    var(--accent);
 

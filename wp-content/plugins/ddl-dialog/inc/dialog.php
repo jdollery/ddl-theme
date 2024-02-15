@@ -13,6 +13,8 @@
         <span class="hidden">Close</span>
       </button>
 
+      <?php the_content(); ?>
+
     </div>
 
   </div>
