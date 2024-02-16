@@ -14448,6 +14448,7 @@ caption {
   text-align: inherit
 }
 small {
+  display: inline-block;
   font-size: 80%
 }
 a:active,
