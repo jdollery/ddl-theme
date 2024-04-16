@@ -221,6 +221,37 @@ $spacers: map-merge(
 
 
 /*-----------------------------------------------------------------------------------*/
+/* FLEX ORDER */
+/*-----------------------------------------------------------------------------------*/
+
+$order: 6;
+
+@for $i from 1 through $order {
+
+  .order-#{$i} {
+    order: $i !important;
+  }
+
+}
+
+@each $breakpoint in map-keys($breakpoint-widths) {
+  @include media-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
+
+    @for $i from 1 through $order {
+
+      .order#{$infix}-#{$i} {
+        order: $i !important;
+      }
+
+    }
+
+  }
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
 /* MARGIN AND PADDING */
 /*-----------------------------------------------------------------------------------*/
 

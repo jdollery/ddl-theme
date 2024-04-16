@@ -58,7 +58,7 @@
           <div class="member__body">
             <div class="member__row">
               <div class="member__one">
-                <figure class="member__media">
+                <figure class="member__media" data-open="<?php echo $member_id ; ?>">
                   <?php if ( has_post_thumbnail() ) { ?>
                     <img 
                       class="member__img"
@@ -106,7 +106,7 @@
               <div class="slideout__body">
                 <button class="slideout__close" data-close="<?php echo $member_id ; ?>"><span class="hidden">Close</span></button>
                 <div class="slideout__content">
-                  <div class="slideout__media" data-open="<?php echo $member_id ; ?>">
+                  <div class="slideout__media">
                     <figure>
                       <?php if ( has_post_thumbnail() ) { ?>
                         <img 

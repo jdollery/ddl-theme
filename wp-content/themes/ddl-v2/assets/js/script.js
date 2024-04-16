@@ -18,6 +18,28 @@ window.onpageshow = function(event) {
 };
 
 
+// const header = document.querySelector('.header');
+
+// let actualScroll = 0
+
+// window.addEventListener('scroll',()=>{
+//   const top = Math.min(-(window.scrollY - actualScroll + header.clientHeight), 0)
+
+//   if (window.scrollY  > actualScroll) {
+//     actualScroll = window.scrollY
+//   }
+
+//   if (top === 0) {
+//     actualScroll = window.scrollY + header.clientHeight
+//   }
+  
+//   // header.parentElement.classList.toggle('active',window.scrollY < actualScroll) // For show on scroll up
+//   header.parentElement.classList.toggle('sticky',window.scrollY > header.clientHeight * 0.1)
+
+
+// });
+
+
 jQuery(document).ready(function () { //doc ready start
 
   /*-----------------------------------------------------------------------------------*/
@@ -31,10 +53,10 @@ jQuery(document).ready(function () { //doc ready start
 
   function setSticky() {
     if (jQuery(window).scrollTop() > 1) {
-      jQuery('#mainHeader').addClass("header--sticky");
+      jQuery('body').addClass("sticky");
     }
     else{
-      jQuery('#mainHeader').removeClass("header--sticky");
+      jQuery('body').removeClass("sticky");
     }
   }
 

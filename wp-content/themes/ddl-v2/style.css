@@ -2343,6 +2343,144 @@
 .color-danger {
   color: #b81c23
 }
+.order-1 {
+  order: 1!important
+}
+.order-2 {
+  order: 2!important
+}
+.order-3 {
+  order: 3!important
+}
+.order-4 {
+  order: 4!important
+}
+.order-5 {
+  order: 5!important
+}
+.order-6 {
+  order: 6!important
+}
+@media (min-width:576px) {
+  .order-xs-1 {
+    order: 1!important
+  }
+  .order-xs-2 {
+    order: 2!important
+  }
+  .order-xs-3 {
+    order: 3!important
+  }
+  .order-xs-4 {
+    order: 4!important
+  }
+  .order-xs-5 {
+    order: 5!important
+  }
+  .order-xs-6 {
+    order: 6!important
+  }
+}
+@media (min-width:768px) {
+  .order-sm-1 {
+    order: 1!important
+  }
+  .order-sm-2 {
+    order: 2!important
+  }
+  .order-sm-3 {
+    order: 3!important
+  }
+  .order-sm-4 {
+    order: 4!important
+  }
+  .order-sm-5 {
+    order: 5!important
+  }
+  .order-sm-6 {
+    order: 6!important
+  }
+}
+@media (min-width:992px) {
+  .order-md-1 {
+    order: 1!important
+  }
+  .order-md-2 {
+    order: 2!important
+  }
+  .order-md-3 {
+    order: 3!important
+  }
+  .order-md-4 {
+    order: 4!important
+  }
+  .order-md-5 {
+    order: 5!important
+  }
+  .order-md-6 {
+    order: 6!important
+  }
+}
+@media (min-width:1190px) {
+  .order-lg-1 {
+    order: 1!important
+  }
+  .order-lg-2 {
+    order: 2!important
+  }
+  .order-lg-3 {
+    order: 3!important
+  }
+  .order-lg-4 {
+    order: 4!important
+  }
+  .order-lg-5 {
+    order: 5!important
+  }
+  .order-lg-6 {
+    order: 6!important
+  }
+}
+@media (min-width:1280px) {
+  .order-xl-1 {
+    order: 1!important
+  }
+  .order-xl-2 {
+    order: 2!important
+  }
+  .order-xl-3 {
+    order: 3!important
+  }
+  .order-xl-4 {
+    order: 4!important
+  }
+  .order-xl-5 {
+    order: 5!important
+  }
+  .order-xl-6 {
+    order: 6!important
+  }
+}
+@media (min-width:1550px) {
+  .order-xxl-1 {
+    order: 1!important
+  }
+  .order-xxl-2 {
+    order: 2!important
+  }
+  .order-xxl-3 {
+    order: 3!important
+  }
+  .order-xxl-4 {
+    order: 4!important
+  }
+  .order-xxl-5 {
+    order: 5!important
+  }
+  .order-xxl-6 {
+    order: 6!important
+  }
+}
 .m-0,
 .mt-0,
 .my-0 {
@@ -15927,19 +16065,15 @@ hr {
   }
 }
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: auto;
-  z-index: 9999;
+  position: relative;
   width: 100%;
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
   padding-left: var(--space-x);
   padding-right: var(--space-x);
   background: var(--white);
-  box-shadow: 0 0 2rem rgba(0,0,0,.3)
+  box-shadow: 0 0 2rem rgba(0,0,0,.3);
+  transition: all .3s cubic-bezier(.5,0,.5,1)
 }
 .logo {
   position: relative;
@@ -15949,15 +16083,23 @@ hr {
 .logo img {
   width: 100%
 }
+body.sticky .header {
+  z-index: 4
+}
+@media (min-width:768px) {
+  body.sticky .header {
+    position: fixed;
+    top: 0
+  }
+}
+@media (min-width:1190px) {
+  body.sticky .header {
+    padding: .5rem var(--space-x)
+  }
+}
 .main {
   position: relative;
-  background: var(--main-bg);
-  padding-top: 8.8rem
-}
-@media (min-width:992px) {
-  .main {
-    padding-top: 12.2rem
-  }
+  background: var(--main-bg)
 }
 .main__overlay {
   display: block;
@@ -16450,9 +16592,9 @@ html.js-nav-active {
   }
   .navigation ul li a {
     display: block;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: var(--regular);
-    padding: 1.5rem
+    padding: 2rem
   }
   .navigation ul li ul {
     display: none
@@ -16504,7 +16646,7 @@ html.js-nav-active {
     border-bottom: 1px solid var(--grey-dark)
   }
   .navigation > ul > li > ul > li > ul > li > a {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: var(--white);
     background-color: var(--grey-dark)
   }
@@ -16522,8 +16664,8 @@ html.js-nav-active {
   top: .8rem;
   right: 1.5rem;
   content: "";
-  height: 3rem;
-  width: 3rem;
+  height: 4rem;
+  width: 4rem;
   border: 0;
   color: var(--grey-light);
   background-color: var(--accent);
@@ -17045,14 +17187,16 @@ html.js-nav-active {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between
+  justify-content: space-between;
+  overflow: hidden
 }
 .member [data-open] {
   cursor: pointer
 }
 .member__row {
   display: flex;
-  flex-wrap: wrap
+  flex-wrap: wrap;
+  flex-direction: column
 }
 .member__row > * {
   position: relative;
@@ -17060,12 +17204,11 @@ html.js-nav-active {
   width: 100%;
   max-width: 100%
 }
-.member__one,
-.member__two {
-  flex: 0 0 auto;
-  width: 100%
-}
 .member__one {
+  width: 100%;
+  height: auto;
+  flex: 0 0 auto;
+  aspect-ratio: 1/1;
   padding-bottom: 2.5rem
 }
 @media (min-width:768px) {
@@ -17074,17 +17217,33 @@ html.js-nav-active {
   }
 }
 .member__two {
+  width: 100%;
+  flex: 1 0 0;
+  height: auto;
   display: flex;
   flex-direction: column;
-  align-items: center
+  align-items: center;
+  padding: 2.5rem
+}
+@media (min-width:768px) {
+  .member__two {
+    padding: 4rem
+  }
+}
+.member__media {
+  width: 100%;
+  height: 100%
 }
 .member__img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
-  -o-object-position: center;
-  object-position: center
+  -o-object-position: top;
+  object-position: top
 }
 .member__job {
   display: block;
@@ -17148,7 +17307,7 @@ html.slideout-active {
   max-width: 60rem;
   overflow-y: scroll;
   background: var(--white);
-  padding: var(--gutter-md);
+  padding: var(--gutter-md) var(--gutter-md) 6rem;
   z-index: 2;
   right: -100%;
   transition: right .7s cubic-bezier(.5,0,.5,1)
@@ -17400,6 +17559,10 @@ html.js-dialog-active {
   width: 100%;
   letter-spacing: .15rem;
   padding: var(--gutter-md) var(--gutter-lg)
+}
+.accordion__title span:not(.icon) {
+  flex: 1 0 0;
+  padding: 0 .5rem 0 0
 }
 .accordion__desc {
   flex: 0 0 auto;

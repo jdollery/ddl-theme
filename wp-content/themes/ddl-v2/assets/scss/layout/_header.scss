@@ -18,18 +18,14 @@ $nav-width-sm: 30rem;
 /*-----------------------------------------------------------------------------------*/
 
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: auto;
-  z-index: 9999;
+  position: relative;
   width: 100%;
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
   @include space-p(x);
   background: var(--white);
   box-shadow: 0 0 2rem rgb(0 0 0 / 30%);
+  @include transition(all);
 }
 
 
@@ -44,6 +40,39 @@ $nav-width-sm: 30rem;
 
   img {
     width: 100%;
+  }
+
+}
+
+body.sticky {
+
+  .header {
+      z-index: 4;
+
+      @include media-up(sm) {
+        position: fixed;
+        top: 0;
+      }
+
+      @include media-up(lg) {
+        padding: 0.5rem var(--space-x);
+      }
+
+    // }
+
+    // &__brand {
+
+    //   img {
+
+    //     @include media-up(sm) {
+    //       transform: scale(0.8);
+    //       transform-origin: left;
+    //     }
+
+    //   }
+
+    // }
+
   }
 
 }

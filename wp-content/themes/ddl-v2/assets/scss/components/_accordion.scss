@@ -89,6 +89,12 @@
     // font-size: var(--size-h6);
     letter-spacing: 0.15rem;
     padding: var(--gutter-md) var(--gutter-lg);
+
+    span:not(.icon) {
+      flex: 1 0 0;
+      padding: 0 0.5rem 0 0;
+    }
+    
   }
 
   &__desc {
