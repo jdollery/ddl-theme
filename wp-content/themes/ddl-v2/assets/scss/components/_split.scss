@@ -7,6 +7,14 @@
     color: var(--white);
   }
 
+  &--top {
+    padding-top: var(--space-y);
+  }
+
+  &--bottom {
+    padding-bottom: var(--space-y);
+  }
+
   &:first-of-type {
     position: relative;
     z-index: 1;
@@ -17,24 +25,9 @@
     .split {
 
       &__one {
-        order: 2;
-
-        @include media-down(lg) {
-          @include space-p(top);
-        }
 
         @include media-up(lg) {
           @include space-p(right);
-          order: 1;
-        }
-
-      }
-
-      &__two {
-        order: 1;
-
-        @include media-up(lg) {
-          order: 2;
         }
 
       }
@@ -47,21 +40,20 @@
 
     .split {
 
-      &__one {
-        order: 2;
+      &__row {
 
-        @include media-down(lg) {
-          @include space-p(top);
+        @include media-up(lg) {
+          flex-direction: row-reverse;
         }
+
+      }
+
+      &__one {
 
         @include media-up(lg) {
           @include space-p(left);
         }
 
-      }
-
-      &__two {
-        order: 1;
       }
 
     }
@@ -78,6 +70,10 @@
 
     @include media-up(lg) {
       @include cell(0);
+    }
+
+    @include media-down(lg) {
+      @include space-p(top);
     }
 
   }

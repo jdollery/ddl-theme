@@ -26,6 +26,27 @@ function button_shortcode($atts, $content = null) {
 add_shortcode('button', 'button_shortcode');
 
 
+/* --------------------- TEAM BUTTON --------------------- */
+
+function button_team_shortcode($atts, $content = null) {
+
+  extract( shortcode_atts (array(
+    'colour' => '',
+		'link' => '',
+    'style' => '',
+	), $atts));
+
+  if($style){
+    return '<a class="btn btn--' . $colour . ' btn--' . $style . '" id="memberTrigger" href="' . $link . '" >' . do_shortcode($content) . '</a>';
+  } else {
+    return '<a class="btn btn--' . $colour . ' id="memberTrigger" " href="' . $link . '">' . do_shortcode($content) . '</a>';
+  }
+
+}
+
+add_shortcode('button-team', 'button_team_shortcode');
+
+
 /* --------------------- FEATURE LIST --------------------- */
 
 // function feature_list_shortcode($atts, $content = null ){

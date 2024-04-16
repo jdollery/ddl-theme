@@ -137,6 +137,11 @@ jQuery(document).ready(function () { //doc ready start
   const member_slug = current_url.replace('#','')
 
   if (current_url) {
+
+    jQuery('html, body').animate({
+      scrollTop: jQuery('[data-member="' + member_slug + '"]').offset().top + -150
+    }, 'slow');
+
 		jQuery('[data-sideout="' + member_slug + '"]').addClass('active');
     jQuery('html').addClass('slideout-active');
   }
@@ -155,14 +160,15 @@ jQuery(document).ready(function () { //doc ready start
 
   //Initialize the validation object which will be called on form submit.
   var validobj = jQuery("#validateForm").validate({
+
     onkeyup: false,
     errorClass: "error",
     errorElement: 'strong',
 
-    errorPlacement: function (error, element) {
-      var elem = jQuery(element);
-      error.insertAfter(element);
-    },
+    // errorPlacement: function (error, element) {
+    //   // var elem = jQuery(element);
+    //   error.insertAfter(element);
+    // },
 
     highlight: function (element, errorClass, validClass) {
       var elem = jQuery(element);
@@ -174,13 +180,25 @@ jQuery(document).ready(function () { //doc ready start
     },
 
     unhighlight: function (element, errorClass, validClass) {
-        var elem = jQuery(element);
-        if (elem.hasClass("select2-hidden-accessible")) {
-          jQuery(".select2-container").removeClass(errorClass);
-        } else {
-          elem.removeClass(errorClass);
-        }
+      var elem = jQuery(element);
+      if (elem.hasClass("select2-hidden-accessible")) {
+        jQuery(".select2-container").removeClass(errorClass);
+      } else {
+        elem.removeClass(errorClass);
+      }
     }
+
+    // unhighlight: function (element, errorClass, validClass) {
+    //   var elem = jQuery(element);
+    //   elem.each(function(){
+    //     if (elem.hasClass("select2-hidden-accessible")) {
+    //       jQuery(".select2-container").removeClass(errorClass);
+    //     } else {
+    //       elem.removeClass(errorClass);
+    //     }
+    //   });
+    // }
+
   });
 
   jQuery(document).on("change", ".select2-hidden-accessible", function () {
@@ -189,14 +207,25 @@ jQuery(document).ready(function () { //doc ready start
     }
   });
 
-  jQuery(document).on("select2-opening", function () {
-    if (jQuery(".select2-container").hasClass("error")) {
-      jQuery(".select2-drop ul").addClass("error");
-    } else {
-      jQuery(".select2-drop ul").removeClass("error");
-    }
-  });
+  // jQuery(document).on("select2-opening", function () {
+  //   if (jQuery(".select2-container").hasClass("error")) {
+  //     jQuery(".select2-drop ul").addClass("error");
+  //   } else {
+  //     jQuery(".select2-drop ul").removeClass("error");
+  //   }
+  // });
 
+  // jQuery(".select2-hidden-accessible").on("change", function () {
+  //   if ( jQuery(this).siblings("strong.error").is(':visible') ) {
+  //     jQuery(this).siblings(".select2-container").removeClass('error-select');
+  //   } else {
+  //     jQuery(this).siblings(".select2-container").addClass('error-select');
+  //   }
+  // });
+
+  $.validator.addMethod('filesize', function(value, element, param) {
+    return this.optional(element) || (element.files[0].size <= param)
+  }, 'File size must be less than 5mb');
 
 }); //doc ready end
 

@@ -15119,13 +15119,12 @@ img:last-child {
 }
 .form__input {
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
   margin-bottom: var(--gutter-md)
 }
 .form__input--textarea {
   height: 100%
-}
-.form__input--flex {
-  display: flex
 }
 .form__input--note {
   font-size: 1.3rem
@@ -15248,12 +15247,12 @@ select:placeholder-shown:not(:focus)::placeholder,
 textarea:placeholder-shown:not(:focus)::placeholder {
   opacity: 0
 }
-input[type=email]:placeholder-shown:not(:focus) + label,
-input[type=number]:placeholder-shown:not(:focus) + label,
-input[type=phone]:placeholder-shown:not(:focus) + label,
-input[type=text]:placeholder-shown:not(:focus) + label,
-select:placeholder-shown:not(:focus) + label,
-textarea:placeholder-shown:not(:focus) + label {
+input[type=email]:placeholder-shown:not(:focus) ~ label,
+input[type=number]:placeholder-shown:not(:focus) ~ label,
+input[type=phone]:placeholder-shown:not(:focus) ~ label,
+input[type=text]:placeholder-shown:not(:focus) ~ label,
+select:placeholder-shown:not(:focus) ~ label,
+textarea:placeholder-shown:not(:focus) ~ label {
   left: 2rem;
   color: var(--black);
   opacity: 1;
@@ -15261,27 +15260,27 @@ textarea:placeholder-shown:not(:focus) + label {
   font-size: var(--body-size)
 }
 @media (min-width:1550px) {
-  input[type=email]:placeholder-shown:not(:focus) + label,
-  input[type=number]:placeholder-shown:not(:focus) + label,
-  input[type=phone]:placeholder-shown:not(:focus) + label,
-  input[type=text]:placeholder-shown:not(:focus) + label,
-  select:placeholder-shown:not(:focus) + label,
-  textarea:placeholder-shown:not(:focus) + label {
+  input[type=email]:placeholder-shown:not(:focus) ~ label,
+  input[type=number]:placeholder-shown:not(:focus) ~ label,
+  input[type=phone]:placeholder-shown:not(:focus) ~ label,
+  input[type=text]:placeholder-shown:not(:focus) ~ label,
+  select:placeholder-shown:not(:focus) ~ label,
+  textarea:placeholder-shown:not(:focus) ~ label {
     left: 2rem
   }
 }
-input[type=email]:placeholder-shown:not(:focus) + label,
-input[type=number]:placeholder-shown:not(:focus) + label,
-input[type=phone]:placeholder-shown:not(:focus) + label,
-input[type=text]:placeholder-shown:not(:focus) + label,
-select:placeholder-shown:not(:focus) + label,
-textarea:placeholder-shown:not(:focus) + label {
+input[type=email]:placeholder-shown:not(:focus) ~ label,
+input[type=number]:placeholder-shown:not(:focus) ~ label,
+input[type=phone]:placeholder-shown:not(:focus) ~ label,
+input[type=text]:placeholder-shown:not(:focus) ~ label,
+select:placeholder-shown:not(:focus) ~ label,
+textarea:placeholder-shown:not(:focus) ~ label {
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%)
 }
-textarea:placeholder-shown:not(:focus) + label {
+textarea:placeholder-shown:not(:focus) ~ label {
   top: 2.7rem
 }
 input[type=checkbox],
@@ -15349,8 +15348,8 @@ input[type=checkbox]:checked::before,
 input[type=radio]:checked::before {
   opacity: 1
 }
-input[type=checkbox] + label,
-input[type=radio] + label {
+input[type=checkbox] ~ label,
+input[type=radio] ~ label {
   font-size: var(--body-size);
   position: relative;
   left: 0;
@@ -15359,20 +15358,19 @@ input[type=radio] + label {
   z-index: 0;
   display: inline
 }
-.form__input--flex input[type=checkbox],
-.form__input--flex input[type=radio] {
+.form__input--checkbox input[type=checkbox],
+.form__input--checkbox input[type=radio] {
   flex: 0 0 auto;
   width: auto;
   display: block
 }
-.form__input--flex input[type=checkbox] + label,
-.form__input--flex input[type=radio] + label {
+.form__input--checkbox input[type=checkbox] ~ label,
+.form__input--checkbox input[type=radio] ~ label {
   flex: 1 0 0%;
-  width: auto;
-  font-size: 1.5rem
+  width: auto
 }
-.form__input--flex input[type=checkbox] + label a,
-.form__input--flex input[type=radio] + label a {
+.form__input--checkbox input[type=checkbox] ~ label a,
+.form__input--checkbox input[type=radio] ~ label a {
   text-decoration: underline
 }
 .form__input--upload .upload {
@@ -15383,7 +15381,7 @@ input[type=radio] + label {
   position: absolute;
   z-index: -1
 }
-.form__input--upload .upload + label {
+.form__input--upload .upload ~ label {
   position: relative;
   top: 0;
   left: 0;
@@ -15407,17 +15405,17 @@ input[type=radio] + label {
   flex-wrap: wrap;
   flex-direction: column
 }
-.form__input--upload .upload + label * {
+.form__input--upload .upload ~ label * {
   pointer-events: none
 }
 @media (min-width:768px) {
-  .form__input--upload .upload + label {
+  .form__input--upload .upload ~ label {
     text-overflow: ellipsis;
     white-space: nowrap;
     flex-direction: row
   }
 }
-.form__input--upload .upload + label .upload__file {
+.form__input--upload .upload ~ label .upload__file {
   flex: 1 0 0%;
   min-height: .1rem;
   display: block;
@@ -15427,12 +15425,12 @@ input[type=radio] + label {
   padding: 1.8rem 2rem
 }
 @media (min-width:768px) {
-  .form__input--upload .upload + label .upload__file {
+  .form__input--upload .upload ~ label .upload__file {
     text-overflow: ellipsis;
     white-space: nowrap
   }
 }
-.form__input--upload .upload + label .upload__button {
+.form__input--upload .upload ~ label .upload__button {
   flex: 0 0 auto;
   width: auto;
   text-align: center;
@@ -15446,18 +15444,18 @@ input[type=radio] + label {
   color: var(--white);
   background: var(--black)
 }
-.form__input--upload .upload + label .upload__button:focus,
-.form__input--upload .upload + label .upload__button:hover {
+.form__input--upload .upload ~ label .upload__button:focus,
+.form__input--upload .upload ~ label .upload__button:hover {
   color: var(--white);
   background: var(--black)
 }
 @media (min-width:768px) {
-  .form__input--upload .upload + label .upload__button {
+  .form__input--upload .upload ~ label .upload__button {
     padding: 1.8rem 4rem
   }
 }
-.form__input--upload .upload:focus + label,
-.form__input--upload .upload:focus:active + label {
+.form__input--upload .upload:focus ~ label,
+.form__input--upload .upload:focus:active ~ label {
   border-color: var(--black)
 }
 input::-webkit-inner-spin-button,
@@ -15475,8 +15473,7 @@ input[type=phone].error,
 input[type=text].error,
 select.error,
 textarea.error {
-  border-color: var(--danger);
-  margin-bottom: 3.5rem
+  border-color: var(--danger)
 }
 .select2-container.error .select2-selection--single,
 input[type=email].error .select2-selection--single,
@@ -15493,14 +15490,11 @@ strong.error {
   color: var(--white);
   background: var(--danger);
   font-weight: var(--regular);
-  position: absolute;
-  left: 0;
-  top: 5.8rem;
   z-index: 1;
-  left: 0;
   width: 100%;
   padding: .3rem .8rem;
-  text-align: left
+  text-align: left;
+  order: 3
 }
 strong.error::before {
   display: inline-block;
@@ -15509,6 +15503,64 @@ strong.error::before {
   height: 1.4rem;
   width: 1.4rem;
   vertical-align: middle
+}
+input[type=checkbox].error,
+input[type=radio].error {
+  order: 1
+}
+input[type=checkbox].error::after,
+input[type=radio].error::after {
+  border-color: var(--danger)
+}
+input[type=checkbox].error ~ label,
+input[type=radio].error ~ label {
+  left: 0;
+  position: relative;
+  flex: 1 0 0%;
+  width: auto;
+  font-size: 1.5rem;
+  order: 2
+}
+input[type=checkbox] ~ strong.error,
+input[type=radio] ~ strong.error {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex: 0 0 auto;
+  top: 0;
+  margin: 2rem 0 0 0;
+  order: 3
+}
+.form__input--upload {
+  display: flex;
+  flex-direction: column
+}
+.form__input--upload .upload.error ~ strong.error {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex: 0 0 auto;
+  top: 0;
+  margin: 1rem 0 0 0;
+  order: 2
+}
+.form__input--upload .upload.error ~ label {
+  order: 1;
+  opacity: 1;
+  border-color: var(--danger)
+}
+.form__input--upload .upload.error ~ label .upload__button {
+  background: var(--danger)
+}
+input[type=email].error:placeholder-shown:not(:focus) ~ label,
+input[type=number].error:placeholder-shown:not(:focus) ~ label,
+input[type=phone].error:placeholder-shown:not(:focus) ~ label,
+input[type=text].error:placeholder-shown:not(:focus) ~ label,
+select.error:placeholder-shown:not(:focus) ~ label {
+  top: 38%
+}
+textarea.error:placeholder-shown:not(:focus) ~ label {
+  top: 2.7rem
 }
 table {
   width: 100%;
@@ -16753,47 +16805,30 @@ html.js-nav-active {
   background: var(--grey-dark);
   color: var(--white)
 }
+.split--top {
+  padding-top: var(--space-y)
+}
+.split--bottom {
+  padding-bottom: var(--space-y)
+}
 .split:first-of-type {
   position: relative;
   z-index: 1
 }
-.split--left .split__one {
-  order: 2
-}
-@media (max-width:1189px) {
+@media (min-width:1190px) {
   .split--left .split__one {
-    padding-top: var(--space-y)
+    padding-right: var(--space-x)
   }
 }
 @media (min-width:1190px) {
-  .split--left .split__one {
-    padding-right: var(--space-x);
-    order: 1
-  }
-}
-.split--left .split__two {
-  order: 1
-}
-@media (min-width:1190px) {
-  .split--left .split__two {
-    order: 2
-  }
-}
-.split--right .split__one {
-  order: 2
-}
-@media (max-width:1189px) {
-  .split--right .split__one {
-    padding-top: var(--space-y)
+  .split--right .split__row {
+    flex-direction: row-reverse
   }
 }
 @media (min-width:1190px) {
   .split--right .split__one {
     padding-left: var(--space-x)
   }
-}
-.split--right .split__two {
-  order: 1
 }
 .split__row {
   display: flex;
@@ -16813,6 +16848,11 @@ html.js-nav-active {
 @media (min-width:1190px) {
   .split__one {
     flex: 1 0 0%
+  }
+}
+@media (max-width:1189px) {
+  .split__one {
+    padding-top: var(--space-y)
   }
 }
 .split__two {
