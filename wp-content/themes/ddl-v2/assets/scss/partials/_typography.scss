@@ -97,32 +97,32 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
-h1 {
+h1, .h1 {
   // @include h1;
   font-size: var(--size-h1);
 }
 
-h2 {
+h2, .h2 {
   // @include h2;
   font-size: var(--size-h2);
 }
 
-h3 {
+h3, .h3 {
   // @include h3;
   font-size: var(--size-h3);
 }
 
-h4 {
+h4, .h4 {
   // @include h4;
   font-size: var(--size-h4);
 }
 
-h5 {
+h5, .h5 {
   // @include h5;
   font-size: var(--size-h5);
 }
 
-h6 {
+h6, h6 {
   // @include h5;
   font-size: var(--size-h6);
 }

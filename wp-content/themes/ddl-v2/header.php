@@ -13,6 +13,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Yj0cZfmd380OOF1JZQfSZEAxt_NbAtI" type="text/javascript"></script>
+    <!-- <script>
+      (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+        key: "AIzaSyA2Yj0cZfmd380OOF1JZQfSZEAxt_NbAtI",
+        v: "weekly",
+      });
+    </script> -->
     <?php wp_head(); ?>
 	</head>
 
@@ -24,7 +30,7 @@
 
         <div class="cell-auto cell-gutter-x">
           <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" title="Back to the home page">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" role="img" alt="<?php bloginfo( 'name' ); ?>" width="260" height="82">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" alt="<?php bloginfo( 'name' ); ?>" width="260" height="82">
           </a>
         </div>
 

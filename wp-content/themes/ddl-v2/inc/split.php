@@ -8,73 +8,80 @@ if( have_rows('split_section') ){
   $split_spacing = get_sub_field('split_spacing');
   $split_bg = get_sub_field('split_bg');
   $split_location = get_sub_field('split_location');
+  $split_media = get_sub_field('split_media');
+  $split_option = get_sub_field('split_option');
   $split_img = get_sub_field('split_img');
   $split_fit = get_sub_field('split_fit');
+  $split_position = get_sub_field('split_position');
   $split_video = get_sub_field('split_video');
   $split_poster = get_sub_field('split_poster');
-  $split_embed = get_sub_field('split_embed');
+  $split_shortcode = get_sub_field('split_shortcode');
   $split_body = get_sub_field('split_body');
 
   if ($split_hide == false) {
 
   ?>
 
-  <section class="split split--<?php echo esc_html($split_location['value']); ?> split--<?php echo esc_html($split_bg['value']); ?><?php if( $split_spacing ) { foreach( $split_spacing as $space ): ?> space-p-<?php echo $space; endforeach; } ?>">
+  <section class="split split--<?php echo esc_html($split_bg['value']); ?><?php if( $split_media == true ) { ?> split--<?php echo esc_html($split_location['value']); ?><?php } ?><?php if( $split_spacing ) { foreach( $split_spacing as $space ): ?> split--<?php echo $space; endforeach; } ?>">
 
     <div class="split__row">
 
-      <?php if( $split_img || $split_video || $split_embed ) { ?>
+      <?php if( $split_media == true ) { ?>
 
-        <div class="split__one">  
+      <div class="split__column<?php if( $split_img || $split_video ) { ?> split__column--sticky<?php } ?>">  
 
-          <?php if ( $split_video ) { ?>
+        <?php if (esc_html($split_option['value'] == 'video')) { ?>
 
-          <div class="split__media split__media--video" >
+        <div class="split__media split__media--video" >
 
-            <img
-              id="videoToggle"
-              src="<?php echo esc_url($split_poster['url']); ?>"
-              alt="<?php if($split_poster['alt']){ echo $split_poster['alt']; } else { the_title(); } ?>" 
-              width="900"
-              height="900"
-              loading="lazy"
-              decoding="async"
-              data-url="<?php echo $split_video ?>"
-            >
+          <img
+            id="videoToggle"
+            src="<?php echo esc_url($split_poster['url']); ?>"
+            alt="<?php if($split_poster['alt']){ echo $split_poster['alt']; } else { the_title(); } ?>" 
+            width="900"
+            height="900"
+            loading="lazy"
+            decoding="async"
+            data-url="<?php echo $split_video ?>"
+          >
 
-          </div>
-
-          <?php } elseif ( $split_embed ) { ?>
-
-          <div class="split__media split__media--embed" >
-
-            <?php echo $split_embed ?>
-
-          </div>
-
-          <?php } else { ?>
-
-          <div class="split__media split__media--<?php echo esc_html($split_fit['value']); ?>" >
-
-            <img
-              src="<?php echo esc_url($split_img['url']); ?>"
-              alt="<?php if($split_img['alt']){ echo $split_img['alt']; } else { the_title(); } ?>"
-              width="900"
-              height="900"
-              loading="lazy"
-              decoding="async"
-            >
-
-          </div>
-
-          <?php } ?>
-          
         </div>
+
+        <?php } elseif (esc_html($split_option['value'] == 'shortcode')) { ?>
+
+        <section class="split__media split__media--shortcode" >
+
+          <?php echo $split_shortcode ?>
+
+        </section>
+
+        <?php } else { ?>
+
+        <div class="split__media split__media--img split__media--<?php echo esc_html($split_fit['value']); ?> split__media--<?php echo esc_html($split_position['value']); ?>" >
+
+          <img
+            src="<?php echo esc_url($split_img['url']); ?>"
+            alt="<?php if($split_img['alt']){ echo $split_img['alt']; } else { the_title(); } ?>"
+            width="900"
+            height="900"
+            loading="lazy"
+            decoding="async"
+          >
+
+        </div>
+
+        <?php } ?>
+        
+      </div>
 
       <?php } ?>
 
-      <div class="<?php if( $split_img || $split_video || $split_embed ) { ?>split__two<?php } else { ?>split__body<?php } ?>">
-        <?php echo $split_body ?>
+      <div class="split__column<?php if( !$split_media ) { ?> split__column--full<?php } ?>">
+
+        <article class="split__body">
+          <?php echo $split_body ?>
+        </article>
+
       </div>
 
     </div>

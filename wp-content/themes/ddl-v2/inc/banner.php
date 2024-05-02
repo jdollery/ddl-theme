@@ -13,7 +13,7 @@ $blog_title = get_the_title( get_option('page_for_posts', true) );
 
 $banner_alt = get_field('banner_alt');
 $banner_intro = get_field('banner_intro');
-$banner_btn = 'banner_btn';
+$banner_cta = 'banner_cta';
 
 $treatment_archive_alt = get_field('treatment_archive_alt', 'option');
 $treatment_archive_intro = get_field('treatment_archive_intro', 'option');
@@ -170,18 +170,21 @@ $treatment_archive_btn = 'treatment_archive_btn';
             <h4 class="banner__intro"><?php echo $banner_intro ?></h4>
           <?php } ?>
 
-          <?php if( have_rows($banner_btn) ) { 
+          <?php if( have_rows($banner_cta) ) { 
 
-            while( have_rows($banner_btn) ): the_row(); 
+            while( have_rows($banner_cta) ): the_row(); 
 
-            $banner_btn_link = get_sub_field('banner_btn_link');
-            $banner_btn_txt = get_sub_field('banner_btn_txt');
-            $banner_btn_color = get_sub_field('banner_btn_color');
-            $banner_btn_destination = get_sub_field('banner_btn_destination');
+            $banner_btn = get_sub_field('banner_btn');
+
+            $banner_btn_url = $banner_btn['url'];
+            $banner_btn_text = $banner_btn['title'];
+            $banner_btn_target = $banner_btn['target'] ? $banner_btn['target'] : '_self';
 
             ?>
 
-            <a class="btn btn--<?php echo esc_html($banner_btn_color['value']); ?> btn--inline" href="<?php echo $banner_btn_link; ?>"<?php if( in_array ('external', $banner_btn_destination) ) { ?>target="_blank" rel="noopener noreferrer"<?php } ?>><?php echo $banner_btn_txt; ?></a>
+            <a class="btn btn--black btn--inline" href="<?php echo esc_url( $banner_btn_url ); ?>" target="<?php echo esc_attr( $banner_btn_target ); ?>">
+              <?php echo esc_html( $banner_btn_text ); ?>
+            </a>
 
             <?php endwhile; wp_reset_query();  ?>
 

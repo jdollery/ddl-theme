@@ -58,7 +58,7 @@
           <div class="member__body">
             <div class="member__row">
               <div class="member__one">
-                <figure class="member__media">
+                <figure class="member__media" data-open="<?php echo $member_id ; ?>" >
                   <?php if ( has_post_thumbnail() ) { ?>
                     <img 
                       class="member__img"
@@ -106,31 +106,29 @@
               <div class="slideout__body">
                 <button class="slideout__close" data-close="<?php echo $member_id ; ?>"><span class="hidden">Close</span></button>
                 <div class="slideout__content">
-                  <div class="slideout__media" data-open="<?php echo $member_id ; ?>">
-                    <figure>
-                      <?php if ( has_post_thumbnail() ) { ?>
-                        <img 
-                          class="member__img"
-                          src="<?php echo $thumb_url ?>" 
-                          alt="<?php echo $thumb_alt ?>"
-                          width="900"
-                          height="750"
-                          loading="lazy"
-                          decoding="async"
-                        >
-                      <?php } else { ?>
-                        <img 
-                          class="member__img" 
-                          src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-female.jpg" 
-                          alt="<?php the_title(); ?>"
-                          width="900"
-                          height="750"
-                          loading="lazy"
-                          decoding="async"
-                        >
-                      <?php } ?>
-                    </figure>
-                  </div>
+                  <figure class="slideout__media">
+                    <?php if ( has_post_thumbnail() ) { ?>
+                      <img 
+                        class="member__img"
+                        src="<?php echo $thumb_url ?>" 
+                        alt="<?php echo $thumb_alt ?>"
+                        width="900"
+                        height="750"
+                        loading="lazy"
+                        decoding="async"
+                      >
+                    <?php } else { ?>
+                      <img 
+                        class="member__img" 
+                        src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-female.jpg" 
+                        alt="<?php the_title(); ?>"
+                        width="900"
+                        height="750"
+                        loading="lazy"
+                        decoding="async"
+                      >
+                    <?php } ?>
+                  </figure>
                   <h3 class="slideout__heading"><?php the_title(); ?></h3>
                   <div class="slideout__meta">
                     <?php if ( $member_job ) { ?>

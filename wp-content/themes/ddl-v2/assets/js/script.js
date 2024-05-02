@@ -92,7 +92,10 @@ jQuery(document).ready(function () { //doc ready start
     //   pauseOnHover: false,
     //   pauseOnFocus: false,
     //   focusOnSelect: true,
-    //   arrows: false,
+    //   dots: false,
+    //    arrows: true,
+    //    prevArrow: jQuery('#arrowPrev'),
+    //    nextArrow: jQuery('#arrowNext'),
     //   rows: 0 // Fix to remove extra div v1.8.0-1
     // });
 
@@ -137,8 +140,14 @@ jQuery(document).ready(function () { //doc ready start
   const member_slug = current_url.replace('#','')
 
   if (current_url) {
+
+    jQuery('html, body').animate({
+      scrollTop: jQuery('[data-member="' + member_slug + '"]').offset().top + -150
+    }, 'slow');
+
 		jQuery('[data-sideout="' + member_slug + '"]').addClass('active');
     jQuery('html').addClass('slideout-active');
+
   }
 
 
@@ -155,14 +164,15 @@ jQuery(document).ready(function () { //doc ready start
 
   //Initialize the validation object which will be called on form submit.
   var validobj = jQuery("#validateForm").validate({
+
     onkeyup: false,
     errorClass: "error",
     errorElement: 'strong',
 
-    errorPlacement: function (error, element) {
-      var elem = jQuery(element);
-      error.insertAfter(element);
-    },
+    // errorPlacement: function (error, element) {
+    //   var elem = jQuery(element);
+    //   error.insertAfter(element);
+    // },
 
     highlight: function (element, errorClass, validClass) {
       var elem = jQuery(element);
@@ -181,6 +191,7 @@ jQuery(document).ready(function () { //doc ready start
           elem.removeClass(errorClass);
         }
     }
+
   });
 
   jQuery(document).on("change", ".select2-hidden-accessible", function () {
@@ -196,6 +207,10 @@ jQuery(document).ready(function () { //doc ready start
       jQuery(".select2-drop ul").removeClass("error");
     }
   });
+
+  $.validator.addMethod('filesize', function(value, element, param) {
+    return this.optional(element) || (element.files[0].size <= param)
+  }, 'File size must be less than 5mb');
 
 
 }); //doc ready end

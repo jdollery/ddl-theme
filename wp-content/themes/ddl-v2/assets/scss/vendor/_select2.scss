@@ -60,6 +60,7 @@
     border-width: $input-border-width;
     border-style: solid;
     border-color: $input-border-color;
+    border-radius: $input-border-radius;
     transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
     // @include media-up(xl) {

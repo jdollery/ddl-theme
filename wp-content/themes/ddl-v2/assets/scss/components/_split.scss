@@ -1,14 +1,36 @@
 .split {
-  background: var(--white);
+  position: relative;
   @include space-p(x);
 
-  &--dark {
-    background: var(--grey-dark);
+  &--white {
+    background: var(--white);
+  }
+
+  &--accent {
+    background: var(--accent);
     color: var(--white);
+
+    h2,
+    h3,
+    h4 {
+      color: var(--white);
+    }
+
+  }
+
+  &--grey {
+    background: var(--grey-light);
+  }
+
+  &--t {
+    padding-top: var(--space-y);
+  }
+
+  &--b {
+    padding-bottom: var(--space-y);
   }
 
   &:first-of-type {
-    position: relative;
     z-index: 1;
   }
 
@@ -16,25 +38,14 @@
 
     .split {
 
-      &__one {
-        order: 2;
+      &__body {
 
         @include media-down(lg) {
-          @include space-p(top);
+          @include space-p(bottom);
         }
 
         @include media-up(lg) {
-          @include space-p(right);
-          order: 1;
-        }
-
-      }
-
-      &__two {
-        order: 1;
-
-        @include media-up(lg) {
-          order: 2;
+          @include space-p(left);
         }
 
       }
@@ -47,21 +58,24 @@
 
     .split {
 
-      &__one {
-        order: 2;
-
-        @include media-down(lg) {
-          @include space-p(top);
-        }
+      &__row {
 
         @include media-up(lg) {
-          @include space-p(left);
+          flex-direction: row-reverse;
         }
 
       }
 
-      &__two {
-        order: 1;
+      &__body {
+
+        @include media-down(lg) {
+          @include space-p(bottom);
+        }
+
+        @include media-up(lg) {
+          @include space-p(right);
+        }
+
       }
 
     }
@@ -70,62 +84,53 @@
 
   &__row {
     @include cell-row;
-  }
 
-  &__one {
-    position: relative;
-    @include cell(12);
-
-    @include media-up(lg) {
-      @include cell(0);
+    @include media-down(lg) {
+      flex-direction: column-reverse;
     }
 
   }
 
-  &__two {
+  &__column {
+    position: relative;
     @include cell(12);
-    align-self: center;
+    display: flex;
 
     @include media-up(lg) {
       @include cell(6);
     }
 
-  }
-
-  &__body {
-    position: relative;
-    @include cell(12);
-  }
-
-  &__two,
-  &__body {
-
-    ul {
-      @include list-bullet;
+    &--sticky {
+      position: sticky;
+      top: 15rem;
     }
 
-    ol {
-      @include list-number;
+    &--full {
+
+      @include media-up(lg) {
+        @include cell(12);
+      }
+
     }
 
   }
 
   &__media {
     position: relative;
-    height: 45vw;
+    width: 100%;
+    max-height: 50rem;
+    aspect-ratio: 7 / 5;
     z-index: 1;
 
     @include media-up(lg) {
-      position: sticky;
-      top: 12vw;
-      height: 45rem;
+      max-height: 55rem;
+      aspect-ratio: 7 / 6;
     }
 
     img {
       position: relative;
       width: 100%;
       height: 100%;
-      @include object-position(center);
   
       @include media-up(lg) {
         position: absolute;
@@ -157,6 +162,45 @@
         @include object-fit (cover);
       }
 
+    }
+
+    &--top {
+      
+      img {
+        @include object-position(top);
+      }
+
+    }
+
+    &--center {
+      
+      img {
+        @include object-position(center);
+      }
+
+    }
+
+    &--bottom {
+      
+      img {
+        @include object-position(bottom);
+      }
+
+    }
+
+  }
+
+  &__body {
+    position: relative;
+    @include cell(12);
+    align-self: center;
+
+    ul {
+      @include list-bullet;
+    }
+
+    ol {
+      @include list-number;
     }
 
   }

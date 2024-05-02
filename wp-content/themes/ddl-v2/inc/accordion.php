@@ -13,7 +13,7 @@ if( have_rows('accordion_section') ){
 
     ?>
 
-    <section class="accordion<?php if( $accordion_spacing ) { foreach( $accordion_spacing as $space ): ?> space-p-<?php echo $space; endforeach; } ?>">
+    <section class="accordion<?php if( $accordion_spacing ) { foreach( $accordion_spacing as $space ): ?> accordion--<?php echo $space; endforeach; } ?>">
 
       <div class="accordion__row">
         <?php if ($accordion_heading) { ?>
