@@ -14586,6 +14586,7 @@ caption {
   text-align: inherit
 }
 small {
+  display: inline-block;
   font-size: 80%
 }
 a:active,
@@ -15273,16 +15274,23 @@ img:last-child {
 .form__input {
   position: relative;
   display: flex;
+<<<<<<< HEAD
   flex-direction: column;
+=======
+  flex-wrap: wrap;
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   margin-bottom: var(--gutter-md)
 }
 .form__input--textarea {
   height: 100%
 }
+<<<<<<< HEAD
 .form__input--checkbox {
   flex-direction: row;
   flex-wrap: wrap
 }
+=======
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
 .form__input--note {
   font-size: 1.3rem
 }
@@ -15517,20 +15525,29 @@ input[type=radio] ~ label {
   display: block;
   flex: 1 0 0
 }
-.form__input--flex input[type=checkbox],
-.form__input--flex input[type=radio] {
+.form__input--checkbox input[type=checkbox],
+.form__input--checkbox input[type=radio] {
   flex: 0 0 auto;
   width: auto;
   display: block
 }
+<<<<<<< HEAD
 .form__input--flex input[type=checkbox] ~ label,
 .form__input--flex input[type=radio] ~ label {
+=======
+.form__input--checkbox input[type=checkbox] ~ label,
+.form__input--checkbox input[type=radio] ~ label {
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   flex: 1 0 0%;
-  width: auto;
-  font-size: 1.5rem
+  width: auto
 }
+<<<<<<< HEAD
 .form__input--flex input[type=checkbox] ~ label a,
 .form__input--flex input[type=radio] ~ label a {
+=======
+.form__input--checkbox input[type=checkbox] ~ label a,
+.form__input--checkbox input[type=radio] ~ label a {
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   text-decoration: underline
 }
 .form__input--upload .upload {
@@ -15633,8 +15650,7 @@ input[type=phone].error,
 input[type=text].error,
 select.error,
 textarea.error {
-  border-color: var(--danger);
-  margin-bottom: 3.5rem
+  border-color: var(--danger)
 }
 .select2-container.error .select2-selection--single,
 input[type=email].error .select2-selection--single,
@@ -15708,14 +15724,17 @@ strong.error {
   color: var(--white);
   background: var(--danger);
   font-weight: var(--regular);
+<<<<<<< HEAD
   position: absolute;
   left: 0;
   top: calc(100% - 3.5rem);
+=======
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   z-index: 1;
-  left: 0;
   width: 100%;
   padding: .3rem .8rem;
-  text-align: left
+  text-align: left;
+  order: 3
 }
 strong.error::before {
   display: inline-block;
@@ -15724,6 +15743,64 @@ strong.error::before {
   height: 1.4rem;
   width: 1.4rem;
   vertical-align: middle
+}
+input[type=checkbox].error,
+input[type=radio].error {
+  order: 1
+}
+input[type=checkbox].error::after,
+input[type=radio].error::after {
+  border-color: var(--danger)
+}
+input[type=checkbox].error ~ label,
+input[type=radio].error ~ label {
+  left: 0;
+  position: relative;
+  flex: 1 0 0%;
+  width: auto;
+  font-size: 1.5rem;
+  order: 2
+}
+input[type=checkbox] ~ strong.error,
+input[type=radio] ~ strong.error {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex: 0 0 auto;
+  top: 0;
+  margin: 2rem 0 0 0;
+  order: 3
+}
+.form__input--upload {
+  display: flex;
+  flex-direction: column
+}
+.form__input--upload .upload.error ~ strong.error {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex: 0 0 auto;
+  top: 0;
+  margin: 1rem 0 0 0;
+  order: 2
+}
+.form__input--upload .upload.error ~ label {
+  order: 1;
+  opacity: 1;
+  border-color: var(--danger)
+}
+.form__input--upload .upload.error ~ label .upload__button {
+  background: var(--danger)
+}
+input[type=email].error:placeholder-shown:not(:focus) ~ label,
+input[type=number].error:placeholder-shown:not(:focus) ~ label,
+input[type=phone].error:placeholder-shown:not(:focus) ~ label,
+input[type=text].error:placeholder-shown:not(:focus) ~ label,
+select.error:placeholder-shown:not(:focus) ~ label {
+  top: 38%
+}
+textarea.error:placeholder-shown:not(:focus) ~ label {
+  top: 2.7rem
 }
 table {
   width: 100%;
@@ -16091,19 +16168,15 @@ hr {
   }
 }
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: auto;
-  z-index: 9999;
+  position: relative;
   width: 100%;
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
   padding-left: var(--space-x);
   padding-right: var(--space-x);
   background: var(--white);
-  box-shadow: 0 0 2rem rgba(0,0,0,.3)
+  box-shadow: 0 0 2rem rgba(0,0,0,.3);
+  transition: all .3s cubic-bezier(.5,0,.5,1)
 }
 .logo {
   position: relative;
@@ -16113,15 +16186,23 @@ hr {
 .logo img {
   width: 100%
 }
+body.sticky .header {
+  z-index: 4
+}
+@media (min-width:768px) {
+  body.sticky .header {
+    position: fixed;
+    top: 0
+  }
+}
+@media (min-width:1190px) {
+  body.sticky .header {
+    padding: .5rem var(--space-x)
+  }
+}
 .main {
   position: relative;
-  background: var(--main-bg);
-  padding-top: 8.8rem
-}
-@media (min-width:992px) {
-  .main {
-    padding-top: 12.2rem
-  }
+  background: var(--main-bg)
 }
 .main__overlay {
   display: block;
@@ -16614,7 +16695,7 @@ html.js-nav-active {
   }
   .navigation ul li a {
     display: block;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: var(--regular);
     padding: 2rem
   }
@@ -16668,7 +16749,7 @@ html.js-nav-active {
     border-bottom: 1px solid var(--grey-dark)
   }
   .navigation > ul > li > ul > li > ul > li > a {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: var(--white);
     background-color: var(--grey-dark)
   }
@@ -16977,6 +17058,7 @@ html.js-nav-active {
 .split--accent h4 {
   color: var(--white)
 }
+<<<<<<< HEAD
 .split--grey {
   background: var(--grey-light)
 }
@@ -16984,11 +17066,18 @@ html.js-nav-active {
   padding-top: var(--space-y)
 }
 .split--b {
+=======
+.split--top {
+  padding-top: var(--space-y)
+}
+.split--bottom {
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   padding-bottom: var(--space-y)
 }
 .split:first-of-type {
   z-index: 1
 }
+<<<<<<< HEAD
 @media (max-width:1189px) {
   .split--left .split__body {
     padding-bottom: var(--space-y)
@@ -16997,16 +17086,24 @@ html.js-nav-active {
 @media (min-width:1190px) {
   .split--left .split__body {
     padding-left: var(--space-x)
+=======
+@media (min-width:1190px) {
+  .split--left .split__one {
+    padding-right: var(--space-x)
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   }
 }
 @media (min-width:1190px) {
   .split--right .split__row {
     flex-direction: row-reverse
+<<<<<<< HEAD
   }
 }
 @media (max-width:1189px) {
   .split--right .split__body {
     padding-bottom: var(--space-y)
+=======
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   }
 }
 @media (min-width:1190px) {
@@ -17041,9 +17138,21 @@ html.js-nav-active {
     width: 50%
   }
 }
+<<<<<<< HEAD
 .split__column--sticky {
   position: sticky;
   top: 15rem
+=======
+@media (max-width:1189px) {
+  .split__one {
+    padding-top: var(--space-y)
+  }
+}
+.split__two {
+  flex: 0 0 auto;
+  width: 100%;
+  align-self: center
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
 }
 @media (min-width:1190px) {
   .split__column--full {
@@ -17226,7 +17335,8 @@ html.js-nav-active {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between
+  justify-content: space-between;
+  overflow: hidden
 }
 .member [data-open] {
   cursor: pointer
@@ -17242,18 +17352,25 @@ html.js-nav-active {
   width: 100%;
   max-width: 100%
 }
-.member__one,
-.member__two {
-  flex: 0 0 auto;
-  width: 100%
-}
 .member__one {
+<<<<<<< HEAD
   position: relative;
+=======
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   width: 100%;
   height: auto;
   flex: 0 0 auto;
   aspect-ratio: 1/1;
+<<<<<<< HEAD
   overflow: hidden
+=======
+  padding-bottom: 2.5rem
+}
+@media (min-width:768px) {
+  .member__one {
+    padding-bottom: 4rem
+  }
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
 }
 .member__two {
   width: 100%;
@@ -17270,11 +17387,18 @@ html.js-nav-active {
   }
 }
 .member__media {
+<<<<<<< HEAD
   position: relative;
   width: 100%;
   height: 100%
 }
 .member__media img {
+=======
+  width: 100%;
+  height: 100%
+}
+.member__img {
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   position: absolute;
   top: 0;
   left: 0;
@@ -17283,12 +17407,16 @@ html.js-nav-active {
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: top;
+<<<<<<< HEAD
   object-position: top;
   transition: all .6s cubic-bezier(.5,0,.5,1)
 }
 .member__media img:focus,
 .member__media img:hover {
   transform: scale(1.1)
+=======
+  object-position: top
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
 }
 .member__job {
   display: block;
@@ -17344,7 +17472,7 @@ html.slideout-active {
   max-width: 60rem;
   overflow-y: scroll;
   background: var(--white);
-  padding: var(--gutter-md);
+  padding: var(--gutter-md) var(--gutter-md) 6rem;
   z-index: 2;
   right: -100%;
   transition: right .7s cubic-bezier(.5,0,.5,1)
@@ -17669,7 +17797,11 @@ html.js-dialog-active {
   letter-spacing: .15rem;
   padding: var(--gutter-md) var(--gutter-lg)
 }
+<<<<<<< HEAD
 .accordion__title span:not(.accordion__icon) {
+=======
+.accordion__title span:not(.icon) {
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   flex: 1 0 0;
   padding: 0 .5rem 0 0
 }

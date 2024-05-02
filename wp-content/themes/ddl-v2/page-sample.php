@@ -32,7 +32,7 @@ get_header(); ?>
   <h5>Heading h5</h5>
   <h6>Heading h6</h6>
 
-  <form class="form" id="validateForm" novalidate="true" method="post" action="https://www.securedent.net/submit.ashx">
+  <form class="form" id="validateForm" novalidate="true" method="post" action="https://www.securedent.net/submit.ashx" enctype="multipart/form-data">
 
     <fieldset>
 
@@ -161,6 +161,7 @@ get_header(); ?>
               name="referral_reason"
               rows="3"
               placeholder="Reason for referral" 
+              required
             ></textarea>
             <label for="referral_reason">Reason for referral</label> 
           </div>
@@ -183,6 +184,28 @@ get_header(); ?>
         </div>
 
         <div class="cell-12 cell-gutter-x-sm">
+          <div class="cell-row cell-row-gutter-x-sm px-md-6 cell-align-center h-100">
+            <div class="cell-0 cell-gutter-x-sm">
+              <div class="form__input">
+                <p class="m-0"><span>Is the tooth symptomatic?</span></p>
+              </div>
+            </div>
+            <div class="cell-auto cell-gutter-x-sm">
+              <div class="form__input">
+                <input type="radio" id="endodontic_symptomatic_yes" name="symptomatic" value="Yes">
+                <label for="endodontic_symptomatic_yes">Yes</label>
+              </div>
+            </div>
+            <div class="cell-auto cell-gutter-x-sm">
+              <div class="form__input">
+                <input type="radio" id="endodontic_symptomatic_no" name="symptomatic" value="No">
+                <label for="endodontic_symptomatic_no">No</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell-12 cell-gutter-x-sm">
 
           <div class="form__input form__input--upload">
             <input 
@@ -190,8 +213,12 @@ get_header(); ?>
               name="referral_uploads" 
               id="referral_uploads" 
               class="upload"
+<<<<<<< HEAD
               required
             >
+=======
+              size="40" >
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
             <label for="referral_uploads"><span class="upload__file">Upload any supporting radiographs/images/documents (Max 5MB)</span><span class="upload__button">Upload</span></label>
           </div>
 
@@ -281,7 +308,11 @@ get_header(); ?>
 
         <div class="cell-0 cell-gutter-x-sm">
           <div class="form__input form__input--checkbox">
+<<<<<<< HEAD
             <input type="checkbox" id="marketing_consent" name="marketing_consent" value="Yes, I consent" required >
+=======
+            <input type="checkbox" id="marketing_consent" name="marketing_consent" value="Yes, I consent" required>
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
             <label for="marketing_consent">I confirm I have the patient&rsquo;s consent to share this information, and also consent to <?php bloginfo( 'name' ); ?> replying and storing these personal details (please see our <a href="<?php echo site_url() ?>/privacy-policy/">privacy policy</a> for more information).</label>
           </div>
         </div>

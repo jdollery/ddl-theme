@@ -98,11 +98,19 @@
     letter-spacing: 0.15rem;
     padding: var(--gutter-md) var(--gutter-lg);
 
+<<<<<<< HEAD
     span:not(.accordion__icon) {
       flex: 1 0 0;
       padding: 0 0.5rem 0 0;
     }
 
+=======
+    span:not(.icon) {
+      flex: 1 0 0;
+      padding: 0 0.5rem 0 0;
+    }
+    
+>>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   }
 
   &__desc {
