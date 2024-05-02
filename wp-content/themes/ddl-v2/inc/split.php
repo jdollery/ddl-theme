@@ -22,11 +22,7 @@ if( have_rows('split_section') ){
 
   ?>
 
-<<<<<<< HEAD
   <section class="split split--<?php echo esc_html($split_bg['value']); ?><?php if( $split_media == true ) { ?> split--<?php echo esc_html($split_location['value']); ?><?php } ?><?php if( $split_spacing ) { foreach( $split_spacing as $space ): ?> split--<?php echo $space; endforeach; } ?>">
-=======
-  <section class="split split--<?php echo esc_html($split_location['value']); ?> split--<?php echo esc_html($split_bg['value']); ?><?php if( $split_spacing ) { foreach( $split_spacing as $space ): ?> split--<?php echo $space; endforeach; } ?>">
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
 
     <div class="split__row">
 

@@ -18,14 +18,21 @@ $nav-width-sm: 30rem;
 /*-----------------------------------------------------------------------------------*/
 
 .header {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
   @include space-p(x);
   background: var(--white);
-  box-shadow: 0 0 2rem rgb(0 0 0 / 30%);
   @include transition(all);
+  z-index: 10;
+
+  &--sticky {
+    @include box-shadow (0 0 2rem rgb(0 0 0 / 30%));
+  }
+
 }
 
 

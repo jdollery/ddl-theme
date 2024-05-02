@@ -15274,23 +15274,16 @@ img:last-child {
 .form__input {
   position: relative;
   display: flex;
-<<<<<<< HEAD
   flex-direction: column;
-=======
-  flex-wrap: wrap;
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   margin-bottom: var(--gutter-md)
 }
 .form__input--textarea {
   height: 100%
 }
-<<<<<<< HEAD
 .form__input--checkbox {
   flex-direction: row;
   flex-wrap: wrap
 }
-=======
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
 .form__input--note {
   font-size: 1.3rem
 }
@@ -15531,23 +15524,13 @@ input[type=radio] ~ label {
   width: auto;
   display: block
 }
-<<<<<<< HEAD
-.form__input--flex input[type=checkbox] ~ label,
-.form__input--flex input[type=radio] ~ label {
-=======
 .form__input--checkbox input[type=checkbox] ~ label,
 .form__input--checkbox input[type=radio] ~ label {
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   flex: 1 0 0%;
   width: auto
 }
-<<<<<<< HEAD
-.form__input--flex input[type=checkbox] ~ label a,
-.form__input--flex input[type=radio] ~ label a {
-=======
 .form__input--checkbox input[type=checkbox] ~ label a,
 .form__input--checkbox input[type=radio] ~ label a {
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   text-decoration: underline
 }
 .form__input--upload .upload {
@@ -15650,7 +15633,8 @@ input[type=phone].error,
 input[type=text].error,
 select.error,
 textarea.error {
-  border-color: var(--danger)
+  border-color: var(--danger);
+  margin-bottom: 3.5rem
 }
 .select2-container.error .select2-selection--single,
 input[type=email].error .select2-selection--single,
@@ -15724,12 +15708,9 @@ strong.error {
   color: var(--white);
   background: var(--danger);
   font-weight: var(--regular);
-<<<<<<< HEAD
   position: absolute;
   left: 0;
   top: calc(100% - 3.5rem);
-=======
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   z-index: 1;
   width: 100%;
   padding: .3rem .8rem;
@@ -16168,15 +16149,22 @@ hr {
   }
 }
 .header {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
   padding-left: var(--space-x);
   padding-right: var(--space-x);
   background: var(--white);
-  box-shadow: 0 0 2rem rgba(0,0,0,.3);
-  transition: all .3s cubic-bezier(.5,0,.5,1)
+  transition: all .3s cubic-bezier(.5,0,.5,1);
+  z-index: 10
+}
+.header--sticky {
+  -webkit-box-shadow: 0 0 2rem rgba(0,0,0,.3);
+  -moz-box-shadow: 0 0 2rem rgba(0,0,0,.3);
+  box-shadow: 0 0 2rem rgba(0,0,0,.3)
 }
 .logo {
   position: relative;
@@ -16202,7 +16190,13 @@ body.sticky .header {
 }
 .main {
   position: relative;
-  background: var(--main-bg)
+  background: var(--main-bg);
+  padding-top: 8.8rem
+}
+@media (min-width:992px) {
+  .main {
+    padding-top: 12.2rem
+  }
 }
 .main__overlay {
   display: block;
@@ -17058,7 +17052,6 @@ html.js-nav-active {
 .split--accent h4 {
   color: var(--white)
 }
-<<<<<<< HEAD
 .split--grey {
   background: var(--grey-light)
 }
@@ -17066,18 +17059,11 @@ html.js-nav-active {
   padding-top: var(--space-y)
 }
 .split--b {
-=======
-.split--top {
-  padding-top: var(--space-y)
-}
-.split--bottom {
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   padding-bottom: var(--space-y)
 }
 .split:first-of-type {
   z-index: 1
 }
-<<<<<<< HEAD
 @media (max-width:1189px) {
   .split--left .split__body {
     padding-bottom: var(--space-y)
@@ -17086,24 +17072,16 @@ html.js-nav-active {
 @media (min-width:1190px) {
   .split--left .split__body {
     padding-left: var(--space-x)
-=======
-@media (min-width:1190px) {
-  .split--left .split__one {
-    padding-right: var(--space-x)
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   }
 }
 @media (min-width:1190px) {
   .split--right .split__row {
     flex-direction: row-reverse
-<<<<<<< HEAD
   }
 }
 @media (max-width:1189px) {
   .split--right .split__body {
     padding-bottom: var(--space-y)
-=======
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   }
 }
 @media (min-width:1190px) {
@@ -17138,21 +17116,9 @@ html.js-nav-active {
     width: 50%
   }
 }
-<<<<<<< HEAD
 .split__column--sticky {
   position: sticky;
   top: 15rem
-=======
-@media (max-width:1189px) {
-  .split__one {
-    padding-top: var(--space-y)
-  }
-}
-.split__two {
-  flex: 0 0 auto;
-  width: 100%;
-  align-self: center
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
 }
 @media (min-width:1190px) {
   .split__column--full {
@@ -17162,13 +17128,17 @@ html.js-nav-active {
 }
 .split__media {
   position: relative;
-  width: 100%;
+  width: 100%
+}
+.split__media--img,
+.split__media--video {
   max-height: 50rem;
   aspect-ratio: 7/5;
   z-index: 1
 }
 @media (min-width:1190px) {
-  .split__media {
+  .split__media--img,
+  .split__media--video {
     max-height: 55rem;
     aspect-ratio: 7/6
   }
@@ -17352,25 +17322,18 @@ html.js-nav-active {
   width: 100%;
   max-width: 100%
 }
+.member__one,
+.member__two {
+  flex: 0 0 auto;
+  width: 100%
+}
 .member__one {
-<<<<<<< HEAD
   position: relative;
-=======
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   width: 100%;
   height: auto;
   flex: 0 0 auto;
   aspect-ratio: 1/1;
-<<<<<<< HEAD
   overflow: hidden
-=======
-  padding-bottom: 2.5rem
-}
-@media (min-width:768px) {
-  .member__one {
-    padding-bottom: 4rem
-  }
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
 }
 .member__two {
   width: 100%;
@@ -17387,18 +17350,11 @@ html.js-nav-active {
   }
 }
 .member__media {
-<<<<<<< HEAD
   position: relative;
   width: 100%;
   height: 100%
 }
 .member__media img {
-=======
-  width: 100%;
-  height: 100%
-}
-.member__img {
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   position: absolute;
   top: 0;
   left: 0;
@@ -17407,16 +17363,12 @@ html.js-nav-active {
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: top;
-<<<<<<< HEAD
   object-position: top;
   transition: all .6s cubic-bezier(.5,0,.5,1)
 }
 .member__media img:focus,
 .member__media img:hover {
   transform: scale(1.1)
-=======
-  object-position: top
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
 }
 .member__job {
   display: block;
@@ -17797,11 +17749,7 @@ html.js-dialog-active {
   letter-spacing: .15rem;
   padding: var(--gutter-md) var(--gutter-lg)
 }
-<<<<<<< HEAD
 .accordion__title span:not(.accordion__icon) {
-=======
-.accordion__title span:not(.icon) {
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   flex: 1 0 0;
   padding: 0 .5rem 0 0
 }

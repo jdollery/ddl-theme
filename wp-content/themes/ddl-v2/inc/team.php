@@ -58,11 +58,7 @@
           <div class="member__body">
             <div class="member__row">
               <div class="member__one">
-<<<<<<< HEAD
                 <figure class="member__media" data-open="<?php echo $member_id ; ?>" >
-=======
-                <figure class="member__media" data-open="<?php echo $member_id ; ?>">
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
                   <?php if ( has_post_thumbnail() ) { ?>
                     <img 
                       class="member__img"
@@ -110,7 +106,6 @@
               <div class="slideout__body">
                 <button class="slideout__close" data-close="<?php echo $member_id ; ?>"><span class="hidden">Close</span></button>
                 <div class="slideout__content">
-<<<<<<< HEAD
                   <figure class="slideout__media">
                     <?php if ( has_post_thumbnail() ) { ?>
                       <img 
@@ -134,33 +129,6 @@
                       >
                     <?php } ?>
                   </figure>
-=======
-                  <div class="slideout__media">
-                    <figure>
-                      <?php if ( has_post_thumbnail() ) { ?>
-                        <img 
-                          class="member__img"
-                          src="<?php echo $thumb_url ?>" 
-                          alt="<?php echo $thumb_alt ?>"
-                          width="900"
-                          height="750"
-                          loading="lazy"
-                          decoding="async"
-                        >
-                      <?php } else { ?>
-                        <img 
-                          class="member__img" 
-                          src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-female.jpg" 
-                          alt="<?php the_title(); ?>"
-                          width="900"
-                          height="750"
-                          loading="lazy"
-                          decoding="async"
-                        >
-                      <?php } ?>
-                    </figure>
-                  </div>
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
                   <h3 class="slideout__heading"><?php the_title(); ?></h3>
                   <div class="slideout__meta">
                     <?php if ( $member_job ) { ?>

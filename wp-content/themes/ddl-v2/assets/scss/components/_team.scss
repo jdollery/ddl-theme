@@ -75,7 +75,6 @@
   &__row {
     @include cell-row;
     flex-direction: column;
-<<<<<<< HEAD
   }
 
   &__one,
@@ -85,25 +84,11 @@
 
   &__one {
     position: relative;
-=======
-  }
-
-  &__one {
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
     width: 100%;
     height: auto;
     flex: 0 0 auto;
     aspect-ratio: 1 / 1;
-<<<<<<< HEAD
     overflow: hidden;
-=======
-    padding-bottom: 2.5rem;
-
-    @include media-up(sm) {
-      padding-bottom: 4rem;
-    }
-
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   }
 
   &__two {
@@ -119,7 +104,6 @@
       padding: 4rem;
     }
 
-<<<<<<< HEAD
   }
 
   // &__one {
@@ -158,23 +142,6 @@
   
     }
 
-=======
-  }
-
-  &__media {
-    width: 100%;
-    height: 100%;
-  }
-
-  &__img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    @include object-fit (cover);
-    @include object-position (top);
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   }
 
   

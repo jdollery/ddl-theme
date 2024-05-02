@@ -1,11 +1,11 @@
 .main {
   position: relative;
   background: var(--main-bg);
-  // padding-top: $header-height-sm;
+  padding-top: $header-height-sm;
 
-  // @include media-up(md) {
-  //   padding-top: $header-height-lg;
-  // }
+  @include media-up(md) {
+    padding-top: $header-height-lg;
+  }
 
   &__overlay {
     display: block;

@@ -58,25 +58,18 @@ $checkboxradio-height-sm:   2.5rem;
   &__input {
     position: relative;
     display: flex;
-<<<<<<< HEAD
     flex-direction: column;
-=======
-    flex-wrap: wrap;
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
     margin-bottom: var(--gutter-md);
 
     &--textarea {
       height: 100%;
     }
 
-<<<<<<< HEAD
     &--checkbox {
       flex-direction: row;
       flex-wrap: wrap;
     }
 
-=======
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
     &--note {
       font-size: 1.3rem;
     }
@@ -318,11 +311,7 @@ input[type=radio]:checked::before {
 }
 
 input[type=checkbox] ~ label,
-<<<<<<< HEAD
 input[type=radio] ~ label {
-=======
-input[type=radio] ~ label { 
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   font-size: $input-font-size;
   position: relative;
   left: 0;
@@ -490,11 +479,7 @@ select,
 
   &.error {
     border-color: var(--danger);
-<<<<<<< HEAD
     margin-bottom: $error-margin;
-=======
-    // margin-bottom: 3.5rem;
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
 
     .select2-selection--single {
       border-color: var(--danger);
@@ -614,15 +599,9 @@ strong.error {
   color: var(--white);
   background: var(--danger);
   font-weight: var(--regular);
-<<<<<<< HEAD
   position: absolute;
   left: 0;
   top: calc(100% - $error-margin);
-=======
-  // position: absolute;
-  // left: 0;
-  // top: 5.8rem;
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   z-index: 1;
   width: 100%;
   padding: 0.3rem 0.8rem;

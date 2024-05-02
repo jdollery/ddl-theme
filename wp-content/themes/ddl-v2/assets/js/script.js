@@ -53,10 +53,10 @@ jQuery(document).ready(function () { //doc ready start
 
   function setSticky() {
     if (jQuery(window).scrollTop() > 1) {
-      jQuery('body').addClass("sticky");
+      jQuery('#mainHeader').addClass("header--sticky");
     }
     else{
-      jQuery('body').removeClass("sticky");
+      jQuery('#mainHeader').removeClass("header--sticky");
     }
   }
 
@@ -192,11 +192,7 @@ jQuery(document).ready(function () { //doc ready start
     errorElement: 'strong',
 
     // errorPlacement: function (error, element) {
-<<<<<<< HEAD
     //   var elem = jQuery(element);
-=======
-    //   // var elem = jQuery(element);
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
     //   error.insertAfter(element);
     // },
 
@@ -218,20 +214,6 @@ jQuery(document).ready(function () { //doc ready start
       }
     }
 
-<<<<<<< HEAD
-=======
-    // unhighlight: function (element, errorClass, validClass) {
-    //   var elem = jQuery(element);
-    //   elem.each(function(){
-    //     if (elem.hasClass("select2-hidden-accessible")) {
-    //       jQuery(".select2-container").removeClass(errorClass);
-    //     } else {
-    //       elem.removeClass(errorClass);
-    //     }
-    //   });
-    // }
-
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
   });
 
   jQuery(document).on("change", ".select2-hidden-accessible", function () {
@@ -240,7 +222,6 @@ jQuery(document).ready(function () { //doc ready start
     }
   });
 
-<<<<<<< HEAD
   jQuery(document).on("select2-opening", function () {
     if (jQuery(".select2-container").hasClass("error")) {
       jQuery(".select2-drop ul").addClass("error");
@@ -248,31 +229,10 @@ jQuery(document).ready(function () { //doc ready start
       jQuery(".select2-drop ul").removeClass("error");
     }
   });
-=======
-  // jQuery(document).on("select2-opening", function () {
-  //   if (jQuery(".select2-container").hasClass("error")) {
-  //     jQuery(".select2-drop ul").addClass("error");
-  //   } else {
-  //     jQuery(".select2-drop ul").removeClass("error");
-  //   }
-  // });
-
-  // jQuery(".select2-hidden-accessible").on("change", function () {
-  //   if ( jQuery(this).siblings("strong.error").is(':visible') ) {
-  //     jQuery(this).siblings(".select2-container").removeClass('error-select');
-  //   } else {
-  //     jQuery(this).siblings(".select2-container").addClass('error-select');
-  //   }
-  // });
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
 
   $.validator.addMethod('filesize', function(value, element, param) {
     return this.optional(element) || (element.files[0].size <= param)
   }, 'File size must be less than 5mb');
-<<<<<<< HEAD
-
-=======
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
 
 }); //doc ready end
 
