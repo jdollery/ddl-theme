@@ -13,8 +13,8 @@ const cleanCSS = require('gulp-clean-css');
 const paths = {
 
   styles: {
-    src: './ddl-v2/assets/scss/**/*.scss',
-    dest: './ddl-v2'
+    src: './wp-content/themes/ddl-theme/assets/scss/**/*.scss',
+    dest: './wp-content/themes/ddl-theme'
   }
 
   // scripts: {

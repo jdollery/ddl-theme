@@ -2,6 +2,12 @@
   position: relative;
   background: var(--grey-light);
 
+  @include media-up(md) {
+    // height: calc(100vh - var(--header-height));
+    height: calc(var(--vh, 1vh) * 100 - var(--header-height)); //header height with device view hight fix
+    min-height: 50rem;
+  }
+
   img,
   video {
     position: absolute;

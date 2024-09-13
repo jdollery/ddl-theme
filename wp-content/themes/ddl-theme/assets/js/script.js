@@ -18,26 +18,23 @@ window.onpageshow = function(event) {
 };
 
 
-// const header = document.querySelector('.header');
+/*-----------------------------------------------------------------------------------*/
+/* HEADER RESIZE VARIABLE */
+/*-----------------------------------------------------------------------------------*/
 
-// let actualScroll = 0
+let headerSize = document.querySelector('.header');
 
-// window.addEventListener('scroll',()=>{
-//   const top = Math.min(-(window.scrollY - actualScroll + header.clientHeight), 0)
+let headerLoad = headerSize.offsetHeight;
+document.documentElement.style.setProperty('--header-height', `${headerLoad}px`);
+document.documentElement.style.setProperty('--vh', (window.innerHeight*.01) + 'px');
 
-//   if (window.scrollY  > actualScroll) {
-//     actualScroll = window.scrollY
-//   }
+window.onresize = function(event) {
 
-//   if (top === 0) {
-//     actualScroll = window.scrollY + header.clientHeight
-//   }
-  
-//   // header.parentElement.classList.toggle('active',window.scrollY < actualScroll) // For show on scroll up
-//   header.parentElement.classList.toggle('sticky',window.scrollY > header.clientHeight * 0.1)
+  let headerResize = headerSize.offsetHeight;
+  document.documentElement.style.setProperty('--header-height', `${headerResize}px`);
+  document.documentElement.style.setProperty('--vh', (window.innerHeight*.01) + 'px'); //mob/tablet window height fix
 
-
-// });
+};
 
 
 jQuery(document).ready(function () { //doc ready start

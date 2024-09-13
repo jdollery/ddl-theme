@@ -34,6 +34,10 @@ if ( ! function_exists( 'ddl_setup' ) ) :
 
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
+		/* --------------------- Add excerpt to pages --------------------- */
+
+		add_post_type_support( 'page', 'excerpt' );
+
 	}
 
 endif;
@@ -305,6 +309,21 @@ remove_action( 'wp_print_styles', 'print_emoji_styles' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
 
+/* --------------------- Disable the block editor from managing the editor in the Gutenberg plugin --------------------- */
+
+add_filter('use_block_editor_for_post', '__return_false');
+
+
+/* --------------------- Disable the block editor from managing widgets in the Gutenberg plugin --------------------- */
+
+add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
+
+
+/* --------------------- Disable the block editor from managing widgets --------------------- */
+
+add_filter( 'use_widgets_block_editor', '__return_false' );
+
+
 /* --------------------- Dequeue CSS for Gutenberg & Contact form 7  --------------------- */
 
 function deregister_styles() {
@@ -413,4 +432,19 @@ function pagination( \WP_Query $wp_query = null, $echo = true ) {
 
 	return null;
 
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* CONVERT JPG TO WEBP */
+/*-----------------------------------------------------------------------------------*/
+
+function convert_img($source_file, $destination_file, $compression_quality = 100) {
+  $image = imagecreatefromjpeg($source_file);
+  $result = imagewebp($image, $destination_file, $compression_quality);
+  if (false === $result) {
+    return false;
+  }
+  imagedestroy($image);
+  return $destination_file;
 }
