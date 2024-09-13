@@ -448,3 +448,24 @@ function convert_img($source_file, $destination_file, $compression_quality = 100
   imagedestroy($image);
   return $destination_file;
 }
+
+
+/*-----------------------------------------------------------------------------------*/
+/* ADD CUSTOM IMAGE SIZES */
+/*-----------------------------------------------------------------------------------*/
+
+function custom_add_image_sizes() {
+	add_image_size( 'banner_lg', 1920, 9999 ); // 1920px wide unlimited height
+	add_image_size( 'banner_sm', 480, 9999 ); // 480px wide unlimited height
+}
+
+add_action( 'after_setup_theme', 'custom_add_image_sizes' );
+
+function custom_add_image_size_names( $sizes ) {
+	return array_merge( $sizes, array(
+    'banner_lg' => __( 'Banner Large Device' ),
+    'banner_sm' => __( 'Banner Small Device' ),
+		) );
+	}
+
+add_filter( 'image_size_names_choose', 'custom_add_image_size_names' );

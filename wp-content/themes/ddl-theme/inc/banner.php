@@ -32,15 +32,38 @@ $treatment_archive_btn = 'treatment_archive_btn';
 
   <?php } elseif ( has_post_thumbnail() ) { 
     
+    // $thumb_id = get_post_thumbnail_id( $post->ID );
+    // $thumb_alt = get_post_meta($thumb_id, '_wp_attachment_image_alt', true);
+    // $thumb_title = get_the_title($thumb_id);
+    // $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'full', true);
+    // $thumb_url = $thumb_url_array[0];    
+
     $thumb_id = get_post_thumbnail_id( $post->ID );
     $thumb_alt = get_post_meta($thumb_id, '_wp_attachment_image_alt', true);
     $thumb_title = get_the_title($thumb_id);
-    $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'full', true);
-    $thumb_url = $thumb_url_array[0];
-    
-  ?>
 
-    <img 
+    $thumb_url_array_lg = wp_get_attachment_image_src($thumb_id, 'banner_lg', true);
+    $thumb_url_array_sm = wp_get_attachment_image_src($thumb_id, 'banner_sm', true);
+
+    $thumb_url_lg = $thumb_url_array_lg[0];
+    $thumb_url_sm = $thumb_url_array_sm[0];
+    
+    ?>
+
+    <picture>
+      <source type="image/jpg" media="(min-width: 480px)" srcset="<?php echo $thumb_url_lg ?>">
+      <source type="image/jpg" media="(max-width: 479px)" srcset="<?php echo $thumb_url_sm ?>">
+      <img 
+        class="banner__img"
+        src="<?php echo $thumb_url_lg ?>"
+        alt="<?php if($thumb_alt){ echo $thumb_alt; } else { the_title(); } ?>"
+        width="1920" 
+        height="1080"
+        decoding="async"
+      >
+    </picture>
+
+    <!-- <img 
       class="banner__img"
       src="<?php echo $thumb_url ?>"
       alt="<?php if($thumb_alt){ echo $thumb_alt; } else { the_title(); } ?>"
@@ -48,7 +71,7 @@ $treatment_archive_btn = 'treatment_archive_btn';
       height="1080"
       loading="lazy"
       decoding="async"
-    >
+    > -->
 
   <?php // } else { ?>
 
