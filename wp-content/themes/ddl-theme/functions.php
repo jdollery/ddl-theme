@@ -453,6 +453,21 @@ function convert_img($source_file, $destination_file, $compression_quality = 100
   return $destination_file;
 }
 
+function convert_webp($source_file) {
+
+	$urlPath = wp_get_attachment_url($source_file); //get img URL path using id
+	$serverPath = wp_get_original_image_path($source_file); //get img server path using id
+
+	$serverStrip = substr($serverPath, 0 , (strrpos($serverPath, "."))); //remove file extension
+	$serverConvert = convert_img($serverPath, $serverStrip . '.webp', 100); //convert and generate webp
+
+	$urlStrip = substr($urlPath, 0 , (strrpos($urlPath, "."))); //remove file extension
+	$urlCombine = $urlStrip . '.webp'; //combine url and file extension 
+
+	return $urlCombine;
+
+}
+
 
 /*-----------------------------------------------------------------------------------*/
 /* ADD CUSTOM IMAGE SIZES */

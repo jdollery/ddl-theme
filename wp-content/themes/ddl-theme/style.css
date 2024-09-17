@@ -15045,7 +15045,6 @@ h6 {
   line-height: 1.3;
   color: inherit;
   word-break: break-word;
-  hyphens: auto;
   margin-top: var(--gutter-lg);
   margin-bottom: var(--gutter-sm)
 }
@@ -17058,11 +17057,48 @@ html.js-nav-active {
   position: relative;
   background: var(--grey-light)
 }
+.banner__row {
+  display: flex;
+  flex-wrap: wrap
+}
 @media (min-width:992px) {
-  .banner {
-    height: calc(var(--vh,1vh) * 100 - var(--header-height));
-    min-height: 50rem
+  .banner__row {
+    min-height: calc(var(--vh,1vh) * 100 - var(--header-height))
   }
+}
+.banner__one {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  flex: 1 0 0%;
+  width: 100%;
+  max-width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-y) var(--space-x)
+}
+.banner__two {
+  position: relative;
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%
+}
+@media (max-width:991px) {
+  .banner__two {
+    aspect-ratio: 7/4
+  }
+}
+@media (min-width:992px) {
+  .banner__two {
+    position: relative;
+    flex: 0 0 auto;
+    width: 50%;
+    max-width: 100%
+  }
+}
+.banner__media {
+  position: relative;
+  height: 100%
 }
 .banner img,
 .banner video {
@@ -17084,7 +17120,6 @@ html.js-nav-active {
   object-position: center
 }
 .banner__intro {
-  font-size: var(--size-h6);
   margin: 0
 }
 .banner__meta {
