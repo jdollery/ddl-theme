@@ -12,6 +12,13 @@ get_header(); ?>
 
 <article class="space-p">
 
+  <div class="cell-row">
+    <div class="cell-6">Test</div>
+    <div class="cell-6">Test</div>
+    <div class="cell-6">Test</div>
+    <div class="cell-6">Test</div>
+  </div>
+
   <?php the_content(); ?>
 
   <figure class="quote">

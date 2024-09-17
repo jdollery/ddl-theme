@@ -49,10 +49,6 @@
         foreach( $quicklinks_object as $post ): 
 
         setup_postdata($post); 
-
-        $quicklink_alt_title = get_field('quicklink_alt_title');
-        $quicklink_alt_img = get_field('quicklink_alt_img');
-        $quicklink_btn_text = get_field('quicklink_btn_text');
         
         ?>
 

@@ -360,11 +360,6 @@ input[type=radio] ~ label {
     z-index: -1;
   
     & ~ label {
-  
-      * {
-        pointer-events: none;
-      }
-  
       position: relative;
       top: 0;
       left: 0;
@@ -433,6 +428,10 @@ input[type=radio] ~ label {
           padding: 1.8rem 4rem;
         }
 
+      }
+
+      * {
+        pointer-events: none;
       }
   
     }

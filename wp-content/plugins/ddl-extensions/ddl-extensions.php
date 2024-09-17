@@ -7,5 +7,4 @@ Author URI: https://dental-design.marketing/
 License: GPLv2
 */
 
-include plugin_dir_path( __FILE__ ) . './theme-extensions-shortcodes.php';
-// include plugin_dir_path( __FILE__ ) . './theme-extensions-acf.php';
+include plugin_dir_path( __FILE__ ) . './ddl-extensions-shortcodes.php';

@@ -91,7 +91,12 @@ $danger: #b81c23;
 /* SCSS GLOBAL VARIABLES */
 /*-----------------------------------------------------------------------------------*/
 
-$theme-name: ddl-v2;
+$theme-name: ddl-theme;
+
+/* --------- USED IN NAVIGATION UL UL AND MAIN --------- */
+
+$nav-breakpoint: md;
+$nav-width-sm: 30rem;
 
 
 /* --------- MARGINS FOR IMAGES, FORMS, TABLES --------- */

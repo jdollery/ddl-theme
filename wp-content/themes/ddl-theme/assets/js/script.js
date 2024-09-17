@@ -73,11 +73,12 @@ jQuery(document).ready(function () { //doc ready start
     enableDropdown: true,
     openDropdown: '<span class="hidden">Open sub menu</span>',
     closeDropdown: '<span class="hidden">Close sub menu</span>',
+    
     // open: function () {
-    //     customToggle.innerHTML = '<div class="burger__inner"></div><span class="hidden">Close menu</span>';
+    //   customToggle.innerHTML = '<div class="burger__inner"><div class="burger__trigger"><span class="burger__icon"></span></div><div class="burger__text">Close</div></div>';
     // },
     // close: function () {
-    //     customToggle.innerHTML = '<div class="burger__inner"></div><span class="hidden">Open menu</span>';
+    //   customToggle.innerHTML = '<div class="burger__inner"><div class="burger__trigger"><span class="burger__icon"></span></div><div class="burger__text">Menu</div></div>';
     // },
     
     resizeMobile: function () {
@@ -377,13 +378,6 @@ jQuery('a[href*="#"]')
 
 
 /*-----------------------------------------------------------------------------------*/
-/* STICKY IMAGE */
-/*-----------------------------------------------------------------------------------*/
-
-// var sticky = new Sticky('[data-sticky]');
-
-
-/*-----------------------------------------------------------------------------------*/
 /* VIDEO POP-UP */
 /*-----------------------------------------------------------------------------------*/
 
@@ -432,3 +426,111 @@ const videoDialogClose = () => {
 
 
 function videoDialog(){}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* TREATMENT SELECT */
+/*-----------------------------------------------------------------------------------*/
+
+// document.querySelectorAll("[name=test_redirect]")[0].addEventListener('change', function () {
+//   window.location = "https://www.bbc.co.uk/" + this.value;
+// });
+
+// let selectList = null;
+// let listButton = null;
+
+// let treatmentSelect = document.getElementById("treatmentSelect");
+
+// if (treatmentSelect) {
+
+//   window.addEventListener("DOMContentLoaded", getElements);
+
+//   function getElements(e){
+//     selectList = document.getElementById("treatmentSelect");
+//     listButton = document.getElementById("treatmentButton");
+//     listButton.addEventListener("click", clickHandler);
+//   }
+
+//   function clickHandler(e){
+//     if(selectList.value!="select"){
+//       var win = window.open(selectList.value,"_top");
+//     } else {
+//       alert("Chose between the three options!");
+//     }
+//   }
+
+// }
+
+
+/* ---- Example ---- */
+
+/* <select 
+  id="treatmentSelect" 
+  name="specialist_treatment" 
+  data-placeholder="Choose a specialist treatment" 
+  >
+  <option></option>
+  <option label="Emergency dentistry" value="<?php echo get_the_permalink( 66 ) ?>">Emergency dentistry</option>
+  <option label="Dental implants" value="<?php echo get_the_permalink( 432 ) ?>">Dental implants</option>
+  <option label="Invisalign treatment" value="<?php echo get_the_permalink( 118 ) ?>">Invisalign treatment</option>
+  <option label="Root canal treatment" value="<?php echo get_the_permalink( 119 ) ?>">Root canal treatment</option>
+  <option label="Cosmetic dentistry" value="<?php echo get_the_permalink( 120 ) ?>">Cosmetic dentistry</option>
+</select>
+
+<button class="btn btn--yellow btn--sm" id="treatmentButton">Go!</button> */
+
+
+/*-----------------------------------------------------------------------------------*/
+/* DIALOGS */
+/*-----------------------------------------------------------------------------------*/
+
+// const dialogs = document.querySelectorAll('[data-dialog]');
+
+// dialogs.forEach(function(trigger) {
+
+//   trigger.addEventListener('click', function(event) {
+
+//     event.preventDefault();
+
+//     const dialog = document.getElementById(trigger.dataset.dialog);
+
+//     dialog.classList.add('dialog--active');
+//     html.classList.add("js-dialog-active");
+//     const exits = dialog.querySelectorAll('#dialogClose');
+
+//     exits.forEach(function(exit) {
+
+//       exit.addEventListener('click', function(event) {
+
+//         event.preventDefault();
+//         dialog.classList.remove('dialog--active');
+//         html.classList.remove("js-dialog-active");
+
+//       });
+
+//     });
+
+//   });
+
+// });
+
+
+/*-----------------------------------------------------------------------------------*/
+/* ANCHOR TRIGGER */
+/*-----------------------------------------------------------------------------------*/
+
+const anchorTrigger = document.querySelectorAll('a');
+
+anchorTrigger.forEach(function(trigger) {
+
+  if (trigger.hash) {
+
+    trigger.addEventListener('click', function() {
+
+      window.open(this.href, '_self'); return false;
+
+    });
+
+  }
+
+});

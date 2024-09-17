@@ -1,19 +1,4 @@
 /*-----------------------------------------------------------------------------------*/
-/* VARIABLES */
-/*-----------------------------------------------------------------------------------*/
-
-/* --------- USED IN NAVIGATION UL UL AND MAIN --------- */
-
-$header-height-lg: 12.2rem;
-$header-height-sm: 8.8rem;
-
-$header-height-lg-sticky: 12.3rem;
-
-$nav-breakpoint: md;
-$nav-width-sm: 30rem;
-
-
-/*-----------------------------------------------------------------------------------*/
 /* HEADER */
 /*-----------------------------------------------------------------------------------*/
 
@@ -27,7 +12,7 @@ $nav-width-sm: 30rem;
   @include space-p(x);
   background: var(--white);
   @include transition(all);
-  z-index: 10;
+  z-index: 11;
 
   &--sticky {
     @include box-shadow (0 0 2rem rgb(0 0 0 / 30%));

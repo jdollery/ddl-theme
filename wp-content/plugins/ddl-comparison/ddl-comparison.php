@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Comparison Slider
+Plugin Name: DDL Comparison Slider
 Description: Compare the differences between two images. Add this shortcode and replace the XX with the image id: [comparison before="XX" after="XX"]
 Author: Dental Design
 Author URI: https://dental-design.marketing/

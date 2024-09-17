@@ -17,25 +17,6 @@ $max-width: 144rem;
 @mixin cell-row {
   display: flex;
   flex-wrap: wrap;
-
-  > * {
-    position: relative;
-    flex-shrink: 0;
-    width: 100%;
-    max-width: 100%;
-  }
-
-}
-
-@mixin cell-row-after {
-  
-  > * {
-    position: relative;
-    flex-shrink: 0;
-    width: 100%;
-    max-width: 100%;
-  }
-
 }
 
 .cell-row {
@@ -82,12 +63,19 @@ $max-width: 144rem;
   margin-bottom: var(--negative-gutter-sm);
 }
 
-.cell-row-gutter-y {
+.cell-row-gutter-y-sm {
   @include cell-row-gutter-y-sm;
 }
 
 
 /* --------------------- CELLS --------------------- */
+
+// @mixin cell {
+//   position: relative;
+//   width: 100%;
+//   max-width: 100%;
+// }
+
 
 /* --------- MIXIN --------- */
 
@@ -96,16 +84,23 @@ $max-width: 144rem;
   @for $i from 1 through $columns {
     $width: math.percentage(math.div($i, $columns));
     @if($size == $i)  {
+      position: relative;
       flex: 0 0 auto;
       width: $width;
+      max-width: 100%;
     } 
   }
 
   @if($size == 0) {
+    position: relative;
     flex: 1 0 0%;
+    width: 100%;
+    max-width: 100%;
   } @else if ($size == auto) {
+    position: relative;
     flex: 0 0 auto;
     width: auto;
+    max-width: 100%;
   }
   
 }
@@ -117,19 +112,26 @@ $max-width: 144rem;
   $width: math.percentage(math.div($i, $columns));
 
   .cell-#{$i} {
+    position: relative;
     flex: 0 0 auto;
     width: $width;
+    max-width: 100%;
   }
 
 }
 
 .cell-0 {
+  position: relative;
   flex: 1 0 0%;
+  width: 100%;
+  max-width: 100%;
 }
 
 .cell-auto {
+  position: relative;
   flex: 0 0 auto;
   width: auto;
+  max-width: 100%;
 }
 
 
@@ -141,19 +143,26 @@ $max-width: 144rem;
       $width: math.percentage(math.div($i, $columns));
 
       .cell#{$infix}-#{$i} {
+        position: relative;
         flex: 0 0 auto;
         width: $width;
+        max-width: 100%;
       }
 
     }
 
     .cell#{$infix}-0 {
+      position: relative;
       flex: 1 0 0%;
+      width: 100%;
+      max-width: 100%;
     }
 
     .cell#{$infix}-auto {
+      position: relative;
       flex: 0 0 auto;
       width: auto;
+      max-width: 100%;
     }
 
   }

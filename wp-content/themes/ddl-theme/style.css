@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*!
-  Theme Name: DDL Theme v2
-  Version: 1.0
+  Theme Name: DDL Theme
+  Version: 2.0
   Author: Dental Design
   Author URI: https://dental-design.marketing/
 */
@@ -14003,12 +14003,6 @@
   display: flex;
   flex-wrap: wrap
 }
-.cell-row > * {
-  position: relative;
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 100%
-}
 .cell-row-gutter-x {
   margin-right: var(--negative-gutter-md);
   margin-left: var(--negative-gutter-md)
@@ -14021,405 +14015,608 @@
   margin-top: var(--negative-gutter-md);
   margin-bottom: var(--negative-gutter-md)
 }
-.cell-row-gutter-y {
+.cell-row-gutter-y-sm {
   margin-top: var(--negative-gutter-sm);
   margin-bottom: var(--negative-gutter-sm)
 }
 .cell-1 {
+  position: relative;
   flex: 0 0 auto;
-  width: 8.3333333333%
+  width: 8.3333333333%;
+  max-width: 100%
 }
 .cell-2 {
+  position: relative;
   flex: 0 0 auto;
-  width: 16.6666666667%
+  width: 16.6666666667%;
+  max-width: 100%
 }
 .cell-3 {
+  position: relative;
   flex: 0 0 auto;
-  width: 25%
+  width: 25%;
+  max-width: 100%
 }
 .cell-4 {
+  position: relative;
   flex: 0 0 auto;
-  width: 33.3333333333%
+  width: 33.3333333333%;
+  max-width: 100%
 }
 .cell-5 {
+  position: relative;
   flex: 0 0 auto;
-  width: 41.6666666667%
+  width: 41.6666666667%;
+  max-width: 100%
 }
 .cell-6 {
+  position: relative;
   flex: 0 0 auto;
-  width: 50%
+  width: 50%;
+  max-width: 100%
 }
 .cell-7 {
+  position: relative;
   flex: 0 0 auto;
-  width: 58.3333333333%
+  width: 58.3333333333%;
+  max-width: 100%
 }
 .cell-8 {
+  position: relative;
   flex: 0 0 auto;
-  width: 66.6666666667%
+  width: 66.6666666667%;
+  max-width: 100%
 }
 .cell-9 {
+  position: relative;
   flex: 0 0 auto;
-  width: 75%
+  width: 75%;
+  max-width: 100%
 }
 .cell-10 {
+  position: relative;
   flex: 0 0 auto;
-  width: 83.3333333333%
+  width: 83.3333333333%;
+  max-width: 100%
 }
 .cell-11 {
+  position: relative;
   flex: 0 0 auto;
-  width: 91.6666666667%
+  width: 91.6666666667%;
+  max-width: 100%
 }
 .cell-12 {
+  position: relative;
   flex: 0 0 auto;
-  width: 100%
+  width: 100%;
+  max-width: 100%
 }
 .cell-0 {
-  flex: 1 0 0%
+  position: relative;
+  flex: 1 0 0%;
+  width: 100%;
+  max-width: 100%
 }
 .cell-auto {
+  position: relative;
   flex: 0 0 auto;
-  width: auto
+  width: auto;
+  max-width: 100%
 }
 @media (min-width:576px) {
   .cell-xs-1 {
+    position: relative;
     flex: 0 0 auto;
-    width: 8.3333333333%
+    width: 8.3333333333%;
+    max-width: 100%
   }
   .cell-xs-2 {
+    position: relative;
     flex: 0 0 auto;
-    width: 16.6666666667%
+    width: 16.6666666667%;
+    max-width: 100%
   }
   .cell-xs-3 {
+    position: relative;
     flex: 0 0 auto;
-    width: 25%
+    width: 25%;
+    max-width: 100%
   }
   .cell-xs-4 {
+    position: relative;
     flex: 0 0 auto;
-    width: 33.3333333333%
+    width: 33.3333333333%;
+    max-width: 100%
   }
   .cell-xs-5 {
+    position: relative;
     flex: 0 0 auto;
-    width: 41.6666666667%
+    width: 41.6666666667%;
+    max-width: 100%
   }
   .cell-xs-6 {
+    position: relative;
     flex: 0 0 auto;
-    width: 50%
+    width: 50%;
+    max-width: 100%
   }
   .cell-xs-7 {
+    position: relative;
     flex: 0 0 auto;
-    width: 58.3333333333%
+    width: 58.3333333333%;
+    max-width: 100%
   }
   .cell-xs-8 {
+    position: relative;
     flex: 0 0 auto;
-    width: 66.6666666667%
+    width: 66.6666666667%;
+    max-width: 100%
   }
   .cell-xs-9 {
+    position: relative;
     flex: 0 0 auto;
-    width: 75%
+    width: 75%;
+    max-width: 100%
   }
   .cell-xs-10 {
+    position: relative;
     flex: 0 0 auto;
-    width: 83.3333333333%
+    width: 83.3333333333%;
+    max-width: 100%
   }
   .cell-xs-11 {
+    position: relative;
     flex: 0 0 auto;
-    width: 91.6666666667%
+    width: 91.6666666667%;
+    max-width: 100%
   }
   .cell-xs-12 {
+    position: relative;
     flex: 0 0 auto;
-    width: 100%
+    width: 100%;
+    max-width: 100%
   }
   .cell-xs-0 {
-    flex: 1 0 0%
+    position: relative;
+    flex: 1 0 0%;
+    width: 100%;
+    max-width: 100%
   }
   .cell-xs-auto {
+    position: relative;
     flex: 0 0 auto;
-    width: auto
+    width: auto;
+    max-width: 100%
   }
 }
 @media (min-width:768px) {
   .cell-sm-1 {
+    position: relative;
     flex: 0 0 auto;
-    width: 8.3333333333%
+    width: 8.3333333333%;
+    max-width: 100%
   }
   .cell-sm-2 {
+    position: relative;
     flex: 0 0 auto;
-    width: 16.6666666667%
+    width: 16.6666666667%;
+    max-width: 100%
   }
   .cell-sm-3 {
+    position: relative;
     flex: 0 0 auto;
-    width: 25%
+    width: 25%;
+    max-width: 100%
   }
   .cell-sm-4 {
+    position: relative;
     flex: 0 0 auto;
-    width: 33.3333333333%
+    width: 33.3333333333%;
+    max-width: 100%
   }
   .cell-sm-5 {
+    position: relative;
     flex: 0 0 auto;
-    width: 41.6666666667%
+    width: 41.6666666667%;
+    max-width: 100%
   }
   .cell-sm-6 {
+    position: relative;
     flex: 0 0 auto;
-    width: 50%
+    width: 50%;
+    max-width: 100%
   }
   .cell-sm-7 {
+    position: relative;
     flex: 0 0 auto;
-    width: 58.3333333333%
+    width: 58.3333333333%;
+    max-width: 100%
   }
   .cell-sm-8 {
+    position: relative;
     flex: 0 0 auto;
-    width: 66.6666666667%
+    width: 66.6666666667%;
+    max-width: 100%
   }
   .cell-sm-9 {
+    position: relative;
     flex: 0 0 auto;
-    width: 75%
+    width: 75%;
+    max-width: 100%
   }
   .cell-sm-10 {
+    position: relative;
     flex: 0 0 auto;
-    width: 83.3333333333%
+    width: 83.3333333333%;
+    max-width: 100%
   }
   .cell-sm-11 {
+    position: relative;
     flex: 0 0 auto;
-    width: 91.6666666667%
+    width: 91.6666666667%;
+    max-width: 100%
   }
   .cell-sm-12 {
+    position: relative;
     flex: 0 0 auto;
-    width: 100%
+    width: 100%;
+    max-width: 100%
   }
   .cell-sm-0 {
-    flex: 1 0 0%
+    position: relative;
+    flex: 1 0 0%;
+    width: 100%;
+    max-width: 100%
   }
   .cell-sm-auto {
+    position: relative;
     flex: 0 0 auto;
-    width: auto
+    width: auto;
+    max-width: 100%
   }
 }
 @media (min-width:992px) {
   .cell-md-1 {
+    position: relative;
     flex: 0 0 auto;
-    width: 8.3333333333%
+    width: 8.3333333333%;
+    max-width: 100%
   }
   .cell-md-2 {
+    position: relative;
     flex: 0 0 auto;
-    width: 16.6666666667%
+    width: 16.6666666667%;
+    max-width: 100%
   }
   .cell-md-3 {
+    position: relative;
     flex: 0 0 auto;
-    width: 25%
+    width: 25%;
+    max-width: 100%
   }
   .cell-md-4 {
+    position: relative;
     flex: 0 0 auto;
-    width: 33.3333333333%
+    width: 33.3333333333%;
+    max-width: 100%
   }
   .cell-md-5 {
+    position: relative;
     flex: 0 0 auto;
-    width: 41.6666666667%
+    width: 41.6666666667%;
+    max-width: 100%
   }
   .cell-md-6 {
+    position: relative;
     flex: 0 0 auto;
-    width: 50%
+    width: 50%;
+    max-width: 100%
   }
   .cell-md-7 {
+    position: relative;
     flex: 0 0 auto;
-    width: 58.3333333333%
+    width: 58.3333333333%;
+    max-width: 100%
   }
   .cell-md-8 {
+    position: relative;
     flex: 0 0 auto;
-    width: 66.6666666667%
+    width: 66.6666666667%;
+    max-width: 100%
   }
   .cell-md-9 {
+    position: relative;
     flex: 0 0 auto;
-    width: 75%
+    width: 75%;
+    max-width: 100%
   }
   .cell-md-10 {
+    position: relative;
     flex: 0 0 auto;
-    width: 83.3333333333%
+    width: 83.3333333333%;
+    max-width: 100%
   }
   .cell-md-11 {
+    position: relative;
     flex: 0 0 auto;
-    width: 91.6666666667%
+    width: 91.6666666667%;
+    max-width: 100%
   }
   .cell-md-12 {
+    position: relative;
     flex: 0 0 auto;
-    width: 100%
+    width: 100%;
+    max-width: 100%
   }
   .cell-md-0 {
-    flex: 1 0 0%
+    position: relative;
+    flex: 1 0 0%;
+    width: 100%;
+    max-width: 100%
   }
   .cell-md-auto {
+    position: relative;
     flex: 0 0 auto;
-    width: auto
+    width: auto;
+    max-width: 100%
   }
 }
 @media (min-width:1190px) {
   .cell-lg-1 {
+    position: relative;
     flex: 0 0 auto;
-    width: 8.3333333333%
+    width: 8.3333333333%;
+    max-width: 100%
   }
   .cell-lg-2 {
+    position: relative;
     flex: 0 0 auto;
-    width: 16.6666666667%
+    width: 16.6666666667%;
+    max-width: 100%
   }
   .cell-lg-3 {
+    position: relative;
     flex: 0 0 auto;
-    width: 25%
+    width: 25%;
+    max-width: 100%
   }
   .cell-lg-4 {
+    position: relative;
     flex: 0 0 auto;
-    width: 33.3333333333%
+    width: 33.3333333333%;
+    max-width: 100%
   }
   .cell-lg-5 {
+    position: relative;
     flex: 0 0 auto;
-    width: 41.6666666667%
+    width: 41.6666666667%;
+    max-width: 100%
   }
   .cell-lg-6 {
+    position: relative;
     flex: 0 0 auto;
-    width: 50%
+    width: 50%;
+    max-width: 100%
   }
   .cell-lg-7 {
+    position: relative;
     flex: 0 0 auto;
-    width: 58.3333333333%
+    width: 58.3333333333%;
+    max-width: 100%
   }
   .cell-lg-8 {
+    position: relative;
     flex: 0 0 auto;
-    width: 66.6666666667%
+    width: 66.6666666667%;
+    max-width: 100%
   }
   .cell-lg-9 {
+    position: relative;
     flex: 0 0 auto;
-    width: 75%
+    width: 75%;
+    max-width: 100%
   }
   .cell-lg-10 {
+    position: relative;
     flex: 0 0 auto;
-    width: 83.3333333333%
+    width: 83.3333333333%;
+    max-width: 100%
   }
   .cell-lg-11 {
+    position: relative;
     flex: 0 0 auto;
-    width: 91.6666666667%
+    width: 91.6666666667%;
+    max-width: 100%
   }
   .cell-lg-12 {
+    position: relative;
     flex: 0 0 auto;
-    width: 100%
+    width: 100%;
+    max-width: 100%
   }
   .cell-lg-0 {
-    flex: 1 0 0%
+    position: relative;
+    flex: 1 0 0%;
+    width: 100%;
+    max-width: 100%
   }
   .cell-lg-auto {
+    position: relative;
     flex: 0 0 auto;
-    width: auto
+    width: auto;
+    max-width: 100%
   }
 }
 @media (min-width:1280px) {
   .cell-xl-1 {
+    position: relative;
     flex: 0 0 auto;
-    width: 8.3333333333%
+    width: 8.3333333333%;
+    max-width: 100%
   }
   .cell-xl-2 {
+    position: relative;
     flex: 0 0 auto;
-    width: 16.6666666667%
+    width: 16.6666666667%;
+    max-width: 100%
   }
   .cell-xl-3 {
+    position: relative;
     flex: 0 0 auto;
-    width: 25%
+    width: 25%;
+    max-width: 100%
   }
   .cell-xl-4 {
+    position: relative;
     flex: 0 0 auto;
-    width: 33.3333333333%
+    width: 33.3333333333%;
+    max-width: 100%
   }
   .cell-xl-5 {
+    position: relative;
     flex: 0 0 auto;
-    width: 41.6666666667%
+    width: 41.6666666667%;
+    max-width: 100%
   }
   .cell-xl-6 {
+    position: relative;
     flex: 0 0 auto;
-    width: 50%
+    width: 50%;
+    max-width: 100%
   }
   .cell-xl-7 {
+    position: relative;
     flex: 0 0 auto;
-    width: 58.3333333333%
+    width: 58.3333333333%;
+    max-width: 100%
   }
   .cell-xl-8 {
+    position: relative;
     flex: 0 0 auto;
-    width: 66.6666666667%
+    width: 66.6666666667%;
+    max-width: 100%
   }
   .cell-xl-9 {
+    position: relative;
     flex: 0 0 auto;
-    width: 75%
+    width: 75%;
+    max-width: 100%
   }
   .cell-xl-10 {
+    position: relative;
     flex: 0 0 auto;
-    width: 83.3333333333%
+    width: 83.3333333333%;
+    max-width: 100%
   }
   .cell-xl-11 {
+    position: relative;
     flex: 0 0 auto;
-    width: 91.6666666667%
+    width: 91.6666666667%;
+    max-width: 100%
   }
   .cell-xl-12 {
+    position: relative;
     flex: 0 0 auto;
-    width: 100%
+    width: 100%;
+    max-width: 100%
   }
   .cell-xl-0 {
-    flex: 1 0 0%
+    position: relative;
+    flex: 1 0 0%;
+    width: 100%;
+    max-width: 100%
   }
   .cell-xl-auto {
+    position: relative;
     flex: 0 0 auto;
-    width: auto
+    width: auto;
+    max-width: 100%
   }
 }
 @media (min-width:1550px) {
   .cell-xxl-1 {
+    position: relative;
     flex: 0 0 auto;
-    width: 8.3333333333%
+    width: 8.3333333333%;
+    max-width: 100%
   }
   .cell-xxl-2 {
+    position: relative;
     flex: 0 0 auto;
-    width: 16.6666666667%
+    width: 16.6666666667%;
+    max-width: 100%
   }
   .cell-xxl-3 {
+    position: relative;
     flex: 0 0 auto;
-    width: 25%
+    width: 25%;
+    max-width: 100%
   }
   .cell-xxl-4 {
+    position: relative;
     flex: 0 0 auto;
-    width: 33.3333333333%
+    width: 33.3333333333%;
+    max-width: 100%
   }
   .cell-xxl-5 {
+    position: relative;
     flex: 0 0 auto;
-    width: 41.6666666667%
+    width: 41.6666666667%;
+    max-width: 100%
   }
   .cell-xxl-6 {
+    position: relative;
     flex: 0 0 auto;
-    width: 50%
+    width: 50%;
+    max-width: 100%
   }
   .cell-xxl-7 {
+    position: relative;
     flex: 0 0 auto;
-    width: 58.3333333333%
+    width: 58.3333333333%;
+    max-width: 100%
   }
   .cell-xxl-8 {
+    position: relative;
     flex: 0 0 auto;
-    width: 66.6666666667%
+    width: 66.6666666667%;
+    max-width: 100%
   }
   .cell-xxl-9 {
+    position: relative;
     flex: 0 0 auto;
-    width: 75%
+    width: 75%;
+    max-width: 100%
   }
   .cell-xxl-10 {
+    position: relative;
     flex: 0 0 auto;
-    width: 83.3333333333%
+    width: 83.3333333333%;
+    max-width: 100%
   }
   .cell-xxl-11 {
+    position: relative;
     flex: 0 0 auto;
-    width: 91.6666666667%
+    width: 91.6666666667%;
+    max-width: 100%
   }
   .cell-xxl-12 {
+    position: relative;
     flex: 0 0 auto;
-    width: 100%
+    width: 100%;
+    max-width: 100%
   }
   .cell-xxl-0 {
-    flex: 1 0 0%
+    position: relative;
+    flex: 1 0 0%;
+    width: 100%;
+    max-width: 100%
   }
   .cell-xxl-auto {
+    position: relative;
     flex: 0 0 auto;
-    width: auto
+    width: auto;
+    max-width: 100%
   }
 }
 .cell-gutter-x {
@@ -15371,7 +15568,10 @@ label--sm {
   position: relative;
   top: 0;
   left: 0;
+  position: relative;
   flex: 1 0 0%;
+  width: 100%;
+  max-width: 100%;
   font-size: 1rem
 }
 @media (min-width:992px) {
@@ -15565,9 +15765,6 @@ input[type=radio] ~ label {
   flex-wrap: wrap;
   flex-direction: column
 }
-.form__input--upload .upload ~ label * {
-  pointer-events: none
-}
 @media (min-width:768px) {
   .form__input--upload .upload ~ label {
     text-overflow: ellipsis;
@@ -15576,7 +15773,10 @@ input[type=radio] ~ label {
   }
 }
 .form__input--upload .upload ~ label .upload__file {
+  position: relative;
   flex: 1 0 0%;
+  width: 100%;
+  max-width: 100%;
   min-height: .1rem;
   display: block;
   overflow: hidden;
@@ -15591,8 +15791,10 @@ input[type=radio] ~ label {
   }
 }
 .form__input--upload .upload ~ label .upload__button {
+  position: relative;
   flex: 0 0 auto;
   width: auto;
+  max-width: 100%;
   text-align: center;
   padding: 1rem 2rem;
   letter-spacing: 0;
@@ -15613,6 +15815,9 @@ input[type=radio] ~ label {
   .form__input--upload .upload ~ label .upload__button {
     padding: 1.8rem 4rem
   }
+}
+.form__input--upload .upload ~ label * {
+  pointer-events: none
 }
 .form__input--upload .upload:focus ~ label,
 .form__input--upload .upload:focus:active ~ label {
@@ -16159,7 +16364,7 @@ hr {
   padding-right: var(--space-x);
   background: var(--white);
   transition: all .3s cubic-bezier(.5,0,.5,1);
-  z-index: 10
+  z-index: 11
 }
 .header--sticky {
   -webkit-box-shadow: 0 0 2rem rgba(0,0,0,.3);
@@ -16191,12 +16396,7 @@ body.sticky .header {
 .main {
   position: relative;
   background: var(--main-bg);
-  padding-top: 8.8rem
-}
-@media (min-width:992px) {
-  .main {
-    padding-top: 12.2rem
-  }
+  padding-top: var(--header-height)
 }
 .main__overlay {
   display: block;
@@ -16654,7 +16854,7 @@ html.js-nav-active {
     position: fixed!important;
     left: -30rem;
     width: 30rem;
-    top: 8.8rem;
+    top: var(--header-height);
     bottom: 0;
     z-index: 1000;
     background-color: var(--grey-dark);
@@ -16858,6 +17058,12 @@ html.js-nav-active {
   position: relative;
   background: var(--grey-light)
 }
+@media (min-width:992px) {
+  .banner {
+    height: calc(var(--vh,1vh) * 100 - var(--header-height));
+    min-height: 50rem
+  }
+}
 .banner img,
 .banner video {
   position: absolute;
@@ -16901,12 +17107,6 @@ html.js-nav-active {
   margin-top: var(--negative-gutter-sm);
   margin-bottom: var(--negative-gutter-sm)
 }
-.loop > * {
-  position: relative;
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 100%
-}
 @media (min-width:992px) {
   .loop {
     margin-right: var(--negative-gutter-md);
@@ -16916,8 +17116,10 @@ html.js-nav-active {
   }
 }
 .loop__item {
+  position: relative;
   flex: 0 0 auto;
   width: 100%;
+  max-width: 100%;
   padding-right: var(--gutter-sm);
   padding-left: var(--gutter-sm);
   padding-top: var(--gutter-sm);
@@ -16925,8 +17127,10 @@ html.js-nav-active {
 }
 @media (min-width:992px) {
   .loop__item {
+    position: relative;
     flex: 0 0 auto;
     width: 50%;
+    max-width: 100%;
     padding-right: var(--gutter-md);
     padding-left: var(--gutter-md);
     padding-top: var(--gutter-md);
@@ -16945,20 +17149,16 @@ html.js-nav-active {
   flex-wrap: wrap;
   height: 100%
 }
-.post__row > * {
-  position: relative;
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 100%
-}
 @media (max-width:1279px) {
   .post__row {
     flex-direction: column
   }
 }
 .post__one {
+  position: relative;
   flex: 0 0 auto;
-  width: 100%
+  width: 100%;
+  max-width: 100%
 }
 @media (max-width:1279px) {
   .post__one {
@@ -16977,12 +17177,17 @@ html.js-nav-active {
 }
 @media (min-width:1280px) {
   .post__one {
+    position: relative;
     flex: 0 0 auto;
-    width: 41.6666666667%
+    width: 41.6666666667%;
+    max-width: 100%
   }
 }
 .post__two {
-  flex: 1 0 0%
+  position: relative;
+  flex: 1 0 0%;
+  width: 100%;
+  max-width: 100%
 }
 .post img {
   margin: 0;
@@ -17093,12 +17298,6 @@ html.js-nav-active {
   display: flex;
   flex-wrap: wrap
 }
-.split__row > * {
-  position: relative;
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 100%
-}
 @media (max-width:1189px) {
   .split__row {
     flex-direction: column-reverse
@@ -17106,14 +17305,18 @@ html.js-nav-active {
 }
 .split__column {
   position: relative;
+  position: relative;
   flex: 0 0 auto;
   width: 100%;
+  max-width: 100%;
   display: flex
 }
 @media (min-width:1190px) {
   .split__column {
+    position: relative;
     flex: 0 0 auto;
-    width: 50%
+    width: 50%;
+    max-width: 100%
   }
 }
 .split__column--sticky {
@@ -17122,8 +17325,10 @@ html.js-nav-active {
 }
 @media (min-width:1190px) {
   .split__column--full {
+    position: relative;
     flex: 0 0 auto;
-    width: 100%
+    width: 100%;
+    max-width: 100%
   }
 }
 .split__media {
@@ -17181,8 +17386,10 @@ html.js-nav-active {
 }
 .split__body {
   position: relative;
+  position: relative;
   flex: 0 0 auto;
   width: 100%;
+  max-width: 100%;
   align-self: center
 }
 .split__body ul {
@@ -17243,8 +17450,10 @@ html.js-nav-active {
   padding-bottom: var(--space-y)
 }
 .team__inner {
+  position: relative;
   flex: 0 0 auto;
-  width: 100%
+  width: 100%;
+  max-width: 100%
 }
 .team__heading {
   color: var(--white);
@@ -17259,12 +17468,6 @@ html.js-nav-active {
   margin-top: var(--negative-gutter-sm);
   margin-bottom: var(--negative-gutter-sm)
 }
-.team__list > * {
-  position: relative;
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 100%
-}
 @media (min-width:768px) {
   .team__list {
     margin-right: var(--negative-gutter-md);
@@ -17274,8 +17477,10 @@ html.js-nav-active {
   }
 }
 .member {
+  position: relative;
   flex: 0 0 auto;
   width: 100%;
+  max-width: 100%;
   padding-top: var(--gutter-sm);
   padding-bottom: var(--gutter-sm);
   padding-right: var(--gutter-sm);
@@ -17284,8 +17489,10 @@ html.js-nav-active {
 }
 @media (min-width:768px) {
   .member {
+    position: relative;
     flex: 0 0 auto;
     width: 50%;
+    max-width: 100%;
     padding-top: var(--gutter-md);
     padding-bottom: var(--gutter-md);
     padding-right: var(--gutter-md);
@@ -17294,8 +17501,10 @@ html.js-nav-active {
 }
 @media (min-width:1190px) {
   .member {
+    position: relative;
     flex: 0 0 auto;
-    width: 33.3333333333%
+    width: 33.3333333333%;
+    max-width: 100%
   }
 }
 .member__body {
@@ -17316,16 +17525,12 @@ html.js-nav-active {
   flex-wrap: wrap;
   flex-direction: column
 }
-.member__row > * {
-  position: relative;
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 100%
-}
 .member__one,
 .member__two {
+  position: relative;
   flex: 0 0 auto;
-  width: 100%
+  width: 100%;
+  max-width: 100%
 }
 .member__one {
   position: relative;
@@ -17678,12 +17883,6 @@ html.js-dialog-active {
   display: flex;
   flex-wrap: wrap
 }
-.accordion__row > * {
-  position: relative;
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 100%
-}
 .accordion__heading {
   font-size: var(--size-h2);
   margin-bottom: var(--gutter-lg)
@@ -17754,8 +17953,10 @@ html.js-dialog-active {
   padding: 0 .5rem 0 0
 }
 .accordion__desc {
+  position: relative;
   flex: 0 0 auto;
   width: auto;
+  max-width: 100%;
   display: none;
   padding: var(--gutter-md) var(--gutter-lg);
   background: var(--grey-light)

@@ -15,6 +15,10 @@ $banner_alt_title = get_field('banner_alt_title');
 $banner_alt_excerpt = get_field('banner_alt_excerpt');
 $banner_cta = 'banner_cta';
 
+$treatment_archive_alt = get_field('treatment_archive_alt', 'option');
+$treatment_archive_intro = get_field('treatment_archive_intro', 'option');
+$treatment_archive_btn = 'treatment_archive_btn';
+
 ?>
 
 <div class="banner<?php if ( is_front_page() ) { ?> banner--home<?php } ?>">
@@ -112,13 +116,39 @@ $banner_cta = 'banner_cta';
           <?php $blogTitle = get_the_title( get_option('page_for_posts', true) ); ?>
 
           <h1 class="banner__title"><?php echo $blogTitle ?></h1>
-
           <?php get_template_part('inc/breadcrumb'); ?>
 
           <?php if($banner_alt_excerpt) { ?>
             <div class="banner__intro"><?php echo $banner_alt_excerpt ?></div>
           <?php } elseif( has_excerpt() ) { ?>
             <div class="banner__intro"><?php echo strip_tags( the_excerpt() ); ?></div>
+          <?php } ?>
+
+        <?php } elseif ( is_post_type_archive('treatments') ) { //treatment archive ?>
+
+          <h1 class="banner__title"><?php echo get_the_archive_title() ?></h1>
+
+          <?php get_template_part('inc/breadcrumb'); ?>
+
+          <?php if ( $treatment_archive_intro ) { ?>
+            <div class="banner__intro"><?php echo get_field('treatment_archive_intro', 'option'); ?></div>
+          <?php } ?>
+
+          <?php if( have_rows($treatment_archive_btn, 'option') ) { 
+
+            while( have_rows($treatment_archive_btn, 'option') ): the_row(); 
+
+            $treatment_archive_btn_link = get_sub_field('treatment_archive_btn_link');
+            $treatment_archive_btn_txt = get_sub_field('treatment_archive_btn_txt');
+            $treatment_archive_btn_color = get_sub_field('treatment_archive_btn_color');
+            $treatment_archive_btn_destination = get_sub_field('treatment_archive_btn_destination');
+
+            ?>
+
+            <a class="btn btn--<?php echo esc_html($treatment_archive_btn_color['value']); ?> btn--inline" href="<?php echo $treatment_archive_btn_link; ?>"<?php if( in_array ('external', $treatment_archive_btn_destination) ) { ?>target="_blank" rel="noopener noreferrer"<?php } ?>><?php echo $treatment_archive_btn_txt; ?></a>
+
+            <?php endwhile; wp_reset_query();  ?>
+
           <?php } ?>
 
         <?php } elseif ( is_archive() ) { ?>
@@ -129,17 +159,16 @@ $banner_cta = 'banner_cta';
           ?>
 
           <h1 class="banner__title"><?php echo $archiveTitle; ?></h1>
-
           <?php get_template_part('inc/breadcrumb'); ?>
 
           <?php if($archiveDescription) { ?>
-            <div class="banner__intro"><?php echo $archiveDescription ?></div>
+            <h4 class="banner__intro"><?php echo $archiveDescription ?></h4>
           <?php } ?>
 
         <?php } elseif ( is_search() ) { ?>
 
           <h1 class="banner__title">Search results</h1>
-          <div class="banner__intro"><h4><?php printf( esc_html__( 'You searched for: %s', 'ddl' ), '<span>' . get_search_query() . '</span>' );?></h4></div>
+          <h4 class="banner__intro"><?php printf( esc_html__( 'You searched for: %s', 'ddl' ), '<span>' . get_search_query() . '</span>' );?></h4>
 
         <?php } elseif ( is_404() ) { ?>
 
@@ -150,7 +179,6 @@ $banner_cta = 'banner_cta';
           <?php $categories_list = preg_replace('/<a /', '<li><a ', get_the_category_list( ', ' )); ?>
 
           <h1 class="banner__title"><?php the_title(); ?></h1>
-
           <?php get_template_part('inc/breadcrumb'); ?>
 
           <div class="banner__meta">
@@ -165,13 +193,10 @@ $banner_cta = 'banner_cta';
           <?php } else { ?>
             <h1 class="banner__title"><?php the_title(); ?></h1>
           <?php } ?>
-
           <?php get_template_part('inc/breadcrumb'); ?>
 
           <?php if($banner_alt_excerpt) { ?>
-            <div class="banner__intro"><?php echo $banner_alt_excerpt ?></div>
-          <?php } elseif( has_excerpt() ) { ?>
-            <div class="banner__intro"><?php echo strip_tags( the_excerpt() ); ?></div>
+            <h4 class="banner__intro"><?php echo $banner_alt_excerpt ?></h4>
           <?php } ?>
 
           <?php if( have_rows($banner_cta) ) { 

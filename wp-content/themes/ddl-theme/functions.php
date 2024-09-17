@@ -87,14 +87,14 @@ add_action( 'init', 'register_menus' );
 /*-----------------------------------------------------------------------------------*/
 
 function ddl_scripts() {
-	// wp_enqueue_script( 'ddl-fonts', get_template_directory_uri() . '/assets/js/fonts.js', array(), '', false );
+	// wp_enqueue_script( 'ddl-fonts', get_template_directory_uri() . '/assets/js/fonts.js', array(), '', false ); //remove if Google fonts
   wp_enqueue_style( 'ddl-style', get_stylesheet_uri(), array(), '1.0.0', 'all' );
 	wp_enqueue_script( 'ddl-jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), '3.6.1', true );
 	wp_enqueue_script( 'ddl-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '1.0.39', true );
-	wp_enqueue_script( 'ddl-validate', get_template_directory_uri() . '/assets/js/validate.js', array(), '1.19.3', true );
+	wp_enqueue_script( 'ddl-validate', get_template_directory_uri() . '/assets/js/validate.js', array(), '1.19.3', true ); 
 	wp_enqueue_script( 'ddl-select2', get_template_directory_uri() . '/assets/js/select2.js', array(), '5.0.0', true );
 	// wp_enqueue_script( 'ddl-slick', get_template_directory_uri() . '/assets/js/slick.js', array(), '1.8.0', true );
-	// wp_enqueue_script( 'ddl-map', get_template_directory_uri() . '/assets/js/map.js', array(), '1.0.0', true );
+	// wp_enqueue_script( 'ddl-map', get_template_directory_uri() . '/assets/js/map.js', array(), '1.0.0', true ); //outdated - need to new version (api keys)
 	// wp_enqueue_script( 'ddl-wow', get_template_directory_uri() . '/assets/js/wow.js', array(), '3.0.0', true );
 	wp_enqueue_script( 'ddl-script', get_template_directory_uri() . '/assets/js/script.js', array(), '1.0.0', true );
 
@@ -132,19 +132,19 @@ remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 );
 /* CHECK PLUGIN DEPENDENCIES */
 /*-----------------------------------------------------------------------------------*/
 
-// function theme_dependencies() {
+function theme_dependencies() {
 
-//   if ( is_plugin_inactive( 'theme-extensions/theme-extensions.php' ) ) {
-//     echo '<div class="error"><p>' . __( 'Warning: The theme needs the Extensions Plugin to function.', 'ddl' ) . '</p></div>';
-//   }
+  if ( is_plugin_inactive( 'ddl-extensions/ddl-extensions.php' ) ) {
+    echo '<div class="error"><p>' . __( 'Warning: The theme needs the Extensions Plugin to function.', 'ddl' ) . '</p></div>';
+  }
 
-//   if ( is_plugin_inactive( 'theme-cpt/theme-cpt.php' ) ) {
-//     echo '<div class="error"><p>' . __( 'Warning: The theme needs the Custom Post Types Plugin to function.', 'ddl' ) . '</p></div>';
-//   }
+  if ( is_plugin_inactive( 'ddl-cpt/ddl-cpt.php' ) ) {
+    echo '<div class="error"><p>' . __( 'Warning: The theme needs the Custom Post Types Plugin to function.', 'ddl' ) . '</p></div>';
+  }
 
-// }
+}
 
-// add_action( 'admin_notices', 'theme_dependencies' );
+add_action( 'admin_notices', 'theme_dependencies' );
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -309,41 +309,6 @@ remove_action( 'wp_print_styles', 'print_emoji_styles' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
 
-/* --------------------- Disable the block editor from managing the editor in the Gutenberg plugin --------------------- */
-
-add_filter('use_block_editor_for_post', '__return_false');
-
-
-/* --------------------- Disable the block editor from managing widgets in the Gutenberg plugin --------------------- */
-
-add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
-
-
-/* --------------------- Disable the block editor from managing widgets --------------------- */
-
-add_filter( 'use_widgets_block_editor', '__return_false' );
-
-
-/* --------------------- Dequeue CSS for Gutenberg & Contact form 7  --------------------- */
-
-function deregister_styles() {
-  wp_dequeue_style( 'wp-block-library' );
-  wp_deregister_style( 'wp-block-library' );
-	wp_deregister_style( 'contact-form-7' );
-}
-
-add_action( 'wp_print_styles', 'deregister_styles', 100 );
-
-
-// function custom_dequeue() {
-//   wp_dequeue_style('awsm-jobs-style');
-//   wp_deregister_style('awsm-jobs-style');
-// }
-
-// add_action( 'wp_enqueue_scripts', 'custom_dequeue', 9999 );
-// add_action( 'wp_head', 'custom_dequeue', 9999 );
-
-
 /* --------------------- Remove image size attributes from img --------------------- */
 
 function remove_image_size_attributes( $html ) {
@@ -387,6 +352,45 @@ function remove_editor() {
 }
 
 add_action('init', 'remove_editor');
+
+
+/*-----------------------------------------------------------------------------------*/
+/* REMOVE BLOCK EDITOR FUNCTIONS */
+/*-----------------------------------------------------------------------------------*/
+
+/* --------------------- Disable the block editor from managing the editor in the Gutenberg plugin --------------------- */
+
+add_filter('use_block_editor_for_post', '__return_false');
+
+
+/* --------------------- Disable the block editor from managing widgets in the Gutenberg plugin --------------------- */
+
+add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
+
+
+/* --------------------- Disable the block editor from managing widgets --------------------- */
+
+add_filter( 'use_widgets_block_editor', '__return_false' );
+
+
+/* --------------------- Dequeue CSS for Gutenberg & Contact form 7  --------------------- */
+
+function deregister_styles() {
+  wp_dequeue_style( 'wp-block-library' );
+  wp_deregister_style( 'wp-block-library' );
+	wp_deregister_style( 'contact-form-7' );
+}
+
+add_action( 'wp_print_styles', 'deregister_styles', 100 );
+
+
+// function custom_dequeue() {
+//   wp_dequeue_style('awsm-jobs-style');
+//   wp_deregister_style('awsm-jobs-style');
+// }
+
+// add_action( 'wp_enqueue_scripts', 'custom_dequeue', 9999 );
+// add_action( 'wp_head', 'custom_dequeue', 9999 );
 
 
 /*-----------------------------------------------------------------------------------*/

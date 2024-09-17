@@ -577,7 +577,7 @@ html {
     position: fixed !important;
     left: -$nav-width-sm;
     width: $nav-width-sm;
-    top: $header-height-sm; //variable in header.scss
+    top: var(--header-height);
     bottom: 0;
     z-index: 1000;
     background-color: $nav-background-sm;
@@ -802,7 +802,7 @@ html {
 }
 
 
-/* --------- BURGER TOGGLE --------- */
+/* --------- BURGER TOGGLE - NO LABEL --------- */
 
 .burger {
   position: relative;
@@ -883,3 +883,111 @@ html {
   }
 
 }
+
+
+/* --------- BURGER TOGGLE - WITH LABEL --------- */
+
+// .burger {
+//   position: relative;
+//   display: inline-block;
+//   background: transancestor;
+//   border: 0;
+//   cursor: pointer;
+//   // padding: 0 0.6rem 0.4rem;
+//   vertical-align: middle;
+
+//   @include media-min($nav-breakpoint) {
+//     display: none;
+//   }
+
+//   &__inner {
+//     display: flex;
+//     align-items: center;
+//   }
+
+//   &__trigger {
+//     position: relative;
+//     height: 2.2rem;
+//     // width: 4.1rem;
+//     display: flex;
+//     align-items: center;
+//     margin: 0 0.5rem 0 0px;
+//   }
+
+//   &__icon,
+//   &__icon::after,
+//   &__icon::before {
+//     display: block;
+//     width: 2.3rem;
+//     height: 0.3rem;
+//     transition-timing-function: ease;
+//     transition-duration: .15s;
+//     transition-property: transform;
+//     background-color: var(--accent);
+//   }
+
+//   &__icon {
+//     position: relative;
+//   }
+
+//   &__icon::after,
+//   &__icon::before {
+//     position: absolute;
+//   }
+
+//   &__icon {
+//     transition-timing-function: cubic-bezier(.55,.055,.675,.19);
+//     transition-duration: 75ms; 
+    
+//     &::after,
+//     &::before {
+//       display: block;
+//       content: "";
+//     }
+
+//     &::before {
+//       top: -0.8rem;
+//       transition: top 75ms ease .12s,opacity 75ms ease;
+//     }
+
+//     &::after {
+//       bottom: -0.8rem;
+//       transition: bottom 75ms ease .12s;
+//       @include transform (75ms cubic-bezier(.55,.055,.675,.19));
+//     }
+
+//   }
+
+//   &__text {
+//     line-height: 1;
+//     font-weight: var(--regular);
+//   }
+
+//   &.active {
+
+//     .burger {
+
+//       &__icon {
+//         transition-delay: .12s;
+//         transition-timing-function: cubic-bezier(.215,.61,.355,1);
+//         @include transform (rotate(45deg));
+
+//         &::before {
+//           top: 0;
+//           opacity: 0;
+//           transition: top 75ms ease,opacity 75ms ease .12s;
+//         }
+
+//         &::after {
+//           bottom: 0;
+//           transition: bottom 75ms ease,transform 75ms cubic-bezier(.215,.61,.355,1) .12s;
+//           @include transform (rotate(-90deg));
+//         }
+
+//       }
+
+//     }
+
+//   }
+
+// }

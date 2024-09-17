@@ -2,9 +2,9 @@
 
 <?php if ( is_front_page() ) { 
   
-  get_template_part('inc/carousel');
+//   get_template_part('inc/carousel');
 
-} else { 
+// } else { 
 
   get_template_part('inc/banner');
 
