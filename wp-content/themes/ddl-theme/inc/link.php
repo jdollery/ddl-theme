@@ -12,7 +12,6 @@ $quicklink_btn_text = get_field('quicklink_btn_text');
 
 ?>
 
-
 <a class="post" href="<?php echo get_permalink(); ?>">
   <div class="post__row">
 
@@ -59,12 +58,12 @@ $quicklink_btn_text = get_field('quicklink_btn_text');
       <div class="post__body">
         <div>
           <?php if ( $quicklink_alt_title ) { ?>
-            <h3 class="post__heading"><?php echo $quicklink_alt_title ?></h3>
+            <h4 class="post__heading"><?php echo $quicklink_alt_title ?></h4>
           <?php } else { ?>
-            <h3 class="post__heading"><?php the_title(); ?></h3>
+            <h4 class="post__heading"><?php the_title(); ?></h4>
           <?php } ?>
           <?php if(!is_post_type_archive('symptoms')) { ?>
-          <div class="post__summary"><?php echo strip_tags( the_excerpt() ); ?></div>
+          <div class="post__summary"><?php echo strip_tags( get_excerpt(165) ); ?></div>
           <?php } ?>
         </div>
         <span class="btn btn--black btn--space">Learn more</span>

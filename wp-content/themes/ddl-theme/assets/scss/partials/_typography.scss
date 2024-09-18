@@ -157,7 +157,7 @@ $list-bullet-color:       var(--accent);
 
 /* --------------------- STYLING --------------------- */
 
-ul:not(.loop),
+ul:not(.loop, .quicklinks__list),
 ol {
   margin-top: $paragraph-margin-top-sm;
   margin-bottom: $paragraph-margin-bottom-sm;

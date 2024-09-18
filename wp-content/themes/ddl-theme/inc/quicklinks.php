@@ -8,7 +8,7 @@
   $quicklinks_spacing = get_sub_field('quicklinks_spacing');
   $quicklinks_bg = get_sub_field('quicklinks_bg');
   $quicklinks_heading = get_sub_field('quicklinks_heading');
-  $quicklinks_summary = get_sub_field('quicklinks_summary');
+  $quicklinks_intro = get_sub_field('quicklinks_intro');
   $quicklinks_object = get_sub_field('quicklinks_object');
   $quicklinks_btn = get_sub_field('quicklinks_btn');
 
@@ -20,29 +20,14 @@
 
     <?php if($quicklinks_heading) { ?>
     <div class="quicklinks__top">
-      <h2><?php echo $quicklinks_heading ?></h2>
-      <?php if($quicklinks_heading) { 
-        echo $quicklinks_summary;
-      } ?>
-      <?php if($quicklinks_btn) { ?>
-
-        <?php 
-          $quicklinks_btn_url = $quicklinks_btn['url'];
-          $quicklinks_btn_text = $quicklinks_btn['title'];
-          $quicklinks_btn_target = $quicklinks_btn['target'] ? $quicklinks_btn['target'] : '_self';
-        ?>
-
-        <a class="btn btn--space" href="<?php echo esc_url( $quicklinks_btn_url ); ?>" target="<?php echo esc_attr( $quicklinks_btn_target ); ?>">
-          <?php echo esc_html( $quicklinks_btn_text ); ?>
-        </a>
-
-      <?php } ?>
+      <h3 class="quicklinks__heading"><?php echo $quicklinks_heading ?></h3>
+      <?php if($quicklinks_intro) { echo $quicklinks_intro; } ?>
     </div>
     <?php } ?>
 
-    <div>
+    <div class="quicklinks__middle">
 
-      <ul class="loop">
+      <ul class="quicklinks__list">
 
         <?php 
         
@@ -52,8 +37,8 @@
         
         ?>
 
-          <li class="loop__item">
-            <?php get_template_part('inc/post'); ?>
+          <li class="quicklinks__item">
+            <?php get_template_part('inc/link'); ?>
           </li>
 
         <?php 

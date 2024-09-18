@@ -29,7 +29,7 @@ if( have_rows('content_section') ){
 
       <?php if( $content_media == true ) { ?>
 
-      <div class="content__column<?php if( $content_sticky == true ) { ?> content__column--sticky<?php } ?> wow<?php if( $content_location['value'] == 'right' ) { ?> fadeInRight<?php } if( $content_location['value'] == 'left' ) { ?> fadeInLeft<?php } ?>" data-wow-duration="1s" data-wow-delay="0.5s">  
+      <div class="content__column<?php if( $content_sticky == true ) { ?> content__column--sticky<?php } ?>">  
 
         <?php if (esc_html($content_option['value'] == 'video')) { ?>
 
@@ -153,7 +153,7 @@ if( have_rows('content_section') ){
 
       <?php } ?>
 
-      <div class="content__column<?php if( !$content_media ) { ?> content__column--full<?php } ?>">
+      <div class="content__column">
 
         <article class="content__text">
           <?php echo $content_text ?>

@@ -48,7 +48,7 @@
 
         <div class="cell-auto cell-gutter-x">
 
-          <a class="btn btn--accent" href="<?php echo site_url() ?>/contact/">Book an appointment</a>
+          <a class="btn btn--accent" href="<?php echo get_the_permalink( 147 ) ?>">Book an appointment</a>
           
           <button class="burger" id="navToggle" type="button" title="Main menu">
             <span class="burger__inner"></span>

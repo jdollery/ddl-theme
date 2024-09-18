@@ -1,6 +1,5 @@
 .content {
   position: relative;
-  @include space-p(x);
 
   &--white {
     background: var(--white);
@@ -16,18 +15,43 @@
       color: var(--white);
     }
 
+    a:not(.btn) {
+      color: var(--white);
+
+      @include hover-focus {
+        color: var(--accent-light);
+      }
+
+    }
+
   }
 
   &--grey {
     background: var(--grey-light);
   }
 
-  &--t {
-    padding-top: var(--space-y);
+  &--top {
+
+    .content {
+
+      &__text {
+        padding-top: var(--space-y);
+      }
+
+    }
+
   }
 
-  &--b {
-    padding-bottom: var(--space-y);
+  &--bottom {
+
+    .content {
+
+      &__text {
+        padding-bottom: var(--space-y);
+      }
+
+    }
+
   }
 
   &:first-of-type {
@@ -38,14 +62,10 @@
 
     .content {
 
-      &__content {
+      &__text {
 
         @include media-down(lg) {
           @include space-p(bottom);
-        }
-
-        @include media-up(lg) {
-          @include space-p(left);
         }
 
       }
@@ -66,14 +86,10 @@
 
       }
 
-      &__content {
+      &__text {
 
         @include media-down(lg) {
           @include space-p(bottom);
-        }
-
-        @include media-up(lg) {
-          @include space-p(right);
         }
 
       }
@@ -97,20 +113,26 @@
     display: flex;
 
     @include media-up(lg) {
-      @include cell(6);
+      @include cell(0);
     }
 
     &--sticky {
-      position: sticky;
-      top: 15rem;
-    }
+      position: relative;
 
-    &--full {
+      .content__media {
+        position: sticky;
+        top: 17rem;
+        // max-height: 60rem;
+        // aspect-ratio: 7 / 5;
+        z-index: 1;
 
-      @include media-up(lg) {
-        @include cell(12);
+        // @include media-up(lg) {
+        //   max-height: 40vw;
+        //   // aspect-ratio: 7 / 6;
+        // }
+
       }
-
+      
     }
 
   }
@@ -121,13 +143,13 @@
 
     &--img,
     &--video {
-      max-height: 50rem;
-      aspect-ratio: 7 / 5;
+      // max-height: 50rem;
+      // aspect-ratio: 7 / 5;
       z-index: 1;
 
-      @include media-up(lg) {
+      @include media-down(lg) {
         max-height: 55rem;
-        aspect-ratio: 7 / 6;
+        aspect-ratio: 7 / 5;
       }
       
     }
@@ -136,6 +158,7 @@
       position: relative;
       width: 100%;
       height: 100%;
+      margin: 0;
   
       @include media-up(lg) {
         position: absolute;
@@ -199,6 +222,8 @@
     position: relative;
     @include cell(12);
     align-self: center;
+    padding-left: var(--space-x);
+    padding-right: var(--space-x);
 
     ul {
       @include list-bullet;

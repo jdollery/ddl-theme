@@ -476,8 +476,8 @@ function pagination( \WP_Query $wp_query = null, $echo = true ) {
 function custom_add_image_sizes() {
 	add_image_size( 'banner_lg', 1920, 9999 ); // 1920px wide unlimited height
 	add_image_size( 'banner_sm', 480, 9999 ); // 480px wide unlimited height
-	add_image_size( 'split_lg', 1000, 9999 ); // 1000px wide unlimited height
-	add_image_size( 'split_sm', 480, 9999 ); // 480px wide unlimited height
+	add_image_size( 'content_lg', 1000, 9999 ); // 1000px wide unlimited height
+	add_image_size( 'content_sm', 480, 9999 ); // 480px wide unlimited height
 }
 
 add_action( 'after_setup_theme', 'custom_add_image_sizes' );
@@ -486,8 +486,8 @@ function custom_add_image_size_names( $sizes ) {
 	return array_merge( $sizes, array(
     'banner_lg' => __( 'Banner Large Device' ),
     'banner_sm' => __( 'Banner Small Device' ),
-    'split_lg' => __( 'Split Large Device' ),
-    'split_sm' => __( 'Split Small Device' ),
+    'content_lg' => __( 'Content Large Device' ),
+    'content_sm' => __( 'Content Small Device' ),
 		) );
 	}
 

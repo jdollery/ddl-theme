@@ -2,11 +2,11 @@
   position: relative;
   @include space-p(x);
 
-  &--t {
+  &--top {
     padding-top: var(--space-y);
   }
 
-  &--b {
+  &--bottom {
     padding-bottom: var(--space-y);
   }
 
@@ -15,9 +15,12 @@
     @include cell-row;
   }
 
+  &__top {
+    padding-bottom: var(--gutter-lg);
+  }
+
   &__heading {
     font-size: var(--size-h2);
-    margin-bottom: var(--gutter-lg);
   }
   
   &__list {
@@ -71,7 +74,7 @@
       background: var(--black);
     }
 
-    &.open {
+    &--open {
       background: var(--black);
 
       .icon {
@@ -96,11 +99,16 @@
     width: 100%;
     // font-size: var(--size-h6);
     letter-spacing: 0.15rem;
-    padding: var(--gutter-md) var(--gutter-lg);
+    padding: var(--gutter-sm) var(--gutter-md);
 
-    span:not(.accordion__icon) {
+    @include media-up(md) {
+      padding: var(--gutter-md) var(--gutter-lg);
+    }
+
+
+    span:not(.icon) {
       flex: 1 0 0;
-      padding: 0 0.5rem 0 0;
+      padding: 0 2rem 0 0;
     }
 
   }
