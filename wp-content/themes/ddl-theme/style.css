@@ -17275,70 +17275,70 @@ html.js-nav-active {
   background: var(--white);
   border-color: var(--white)
 }
-.split {
+.content {
   position: relative;
   padding-left: var(--space-x);
   padding-right: var(--space-x)
 }
-.split--white {
+.content--white {
   background: var(--white)
 }
-.split--accent {
+.content--accent {
   background: var(--accent);
   color: var(--white)
 }
-.split--accent h2,
-.split--accent h3,
-.split--accent h4 {
+.content--accent h2,
+.content--accent h3,
+.content--accent h4 {
   color: var(--white)
 }
-.split--grey {
+.content--grey {
   background: var(--grey-light)
 }
-.split--t {
+.content--t {
   padding-top: var(--space-y)
 }
-.split--b {
+.content--b {
   padding-bottom: var(--space-y)
 }
-.split:first-of-type {
+.content:first-of-type {
   z-index: 1
 }
 @media (max-width:1189px) {
-  .split--left .split__body {
+  .content--left .content__content {
     padding-bottom: var(--space-y)
   }
 }
 @media (min-width:1190px) {
-  .split--left .split__body {
+  .content--left .content__content {
     padding-left: var(--space-x)
   }
 }
 @media (min-width:1190px) {
-  .split--right .split__row {
+  .content--right .content__row {
     flex-direction: row-reverse
   }
 }
 @media (max-width:1189px) {
-  .split--right .split__body {
+  .content--right .content__content {
     padding-bottom: var(--space-y)
   }
 }
 @media (min-width:1190px) {
-  .split--right .split__body {
+  .content--right .content__content {
     padding-right: var(--space-x)
   }
 }
-.split__row {
+.content__row {
   display: flex;
   flex-wrap: wrap
 }
 @media (max-width:1189px) {
-  .split__row {
+  .content__row {
     flex-direction: column-reverse
   }
 }
-.split__column {
+.content__column {
   position: relative;
   position: relative;
   flex: 0 0 auto;
@@ -17347,79 +17347,79 @@ html.js-nav-active {
   display: flex
 }
 @media (min-width:1190px) {
-  .split__column {
+  .content__column {
     position: relative;
     flex: 0 0 auto;
     width: 50%;
     max-width: 100%
   }
 }
-.split__column--sticky {
+.content__column--sticky {
   position: sticky;
   top: 15rem
 }
 @media (min-width:1190px) {
-  .split__column--full {
+  .content__column--full {
     position: relative;
     flex: 0 0 auto;
     width: 100%;
     max-width: 100%
   }
 }
-.split__media {
+.content__media {
   position: relative;
   width: 100%
 }
-.split__media--img,
-.split__media--video {
+.content__media--img,
+.content__media--video {
   max-height: 50rem;
   aspect-ratio: 7/5;
   z-index: 1
 }
 @media (min-width:1190px) {
-  .split__media--img,
-  .split__media--video {
+  .content__media--img,
+  .content__media--video {
     max-height: 55rem;
     aspect-ratio: 7/6
   }
 }
-.split__media img {
+.content__media img {
   position: relative;
   width: 100%;
   height: 100%
 }
 @media (min-width:1190px) {
-  .split__media img {
+  .content__media img {
     position: absolute;
     top: 0;
     left: 0
   }
 }
-.split__media--cover img {
+.content__media--cover img {
   -o-object-fit: cover;
   object-fit: cover
 }
-.split__media--contain img {
+.content__media--contain img {
   -o-object-fit: contain;
   object-fit: contain
 }
-.split__media--video img {
+.content__media--video img {
   -o-object-fit: cover;
   object-fit: cover
 }
-.split__media--top img {
+.content__media--top img {
   -o-object-position: top;
   object-position: top
 }
-.split__media--center img {
+.content__media--center img {
   -o-object-position: center;
   object-position: center
 }
-.split__media--bottom img {
+.content__media--bottom img {
   -o-object-position: bottom;
   object-position: bottom
 }
-.split__body {
+.content__text {
   position: relative;
   position: relative;
   flex: 0 0 auto;
@@ -17427,21 +17427,21 @@ html.js-nav-active {
   max-width: 100%;
   align-self: center
 }
-.split__body ul {
+.content__text ul {
   list-style: none;
   padding-left: 2rem
 }
-.split__body ul li {
+.content__text ul li {
   position: relative;
   margin: 0
 }
-.split__body ul li::marker {
+.content__text ul li::marker {
   display: none
 }
-.split__body ul li:not(:last-child) {
+.content__text ul li:not(:last-child) {
   margin-bottom: .5rem
 }
-.split__body ul li::before {
+.content__text ul li::before {
   position: absolute;
   left: -2rem;
   top: .9rem;
@@ -17452,23 +17452,23 @@ html.js-nav-active {
   background: var(--accent);
   border-radius: 50%
 }
-.split__body ol {
+.content__text ol {
   padding-left: 2rem;
   counter-reset: custom-counter;
   list-style: none
 }
-.split__body ol li {
+.content__text ol li {
   position: relative;
   margin: 0;
   counter-increment: custom-counter
 }
-.split__body ol li::marker {
+.content__text ol li::marker {
   display: none
 }
-.split__body ol li:not(:last-child) {
+.content__text ol li:not(:last-child) {
   margin-bottom: .5rem
 }
-.split__body ol li::before {
+.content__text ol li::before {
   position: absolute;
   left: -2rem;
   top: 0;

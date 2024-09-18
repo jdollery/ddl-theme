@@ -443,30 +443,30 @@ function pagination( \WP_Query $wp_query = null, $echo = true ) {
 /* CONVERT JPG TO WEBP */
 /*-----------------------------------------------------------------------------------*/
 
-function convert_img($source_file, $destination_file, $compression_quality = 100) {
-  $image = imagecreatefromjpeg($source_file);
-  $result = imagewebp($image, $destination_file, $compression_quality);
-  if (false === $result) {
-    return false;
-  }
-  imagedestroy($image);
-  return $destination_file;
-}
+// function convert_img($source_file, $destination_file, $compression_quality = 100) {
+//   $image = imagecreatefromjpeg($source_file);
+//   $result = imagewebp($image, $destination_file, $compression_quality);
+//   if (false === $result) {
+//     return false;
+//   }
+//   imagedestroy($image);
+//   return $destination_file;
+// }
 
-function convert_webp($source_file) {
+// function convert_webp($source_file) {
 
-	$urlPath = wp_get_attachment_url($source_file); //get img URL path using id
-	$serverPath = wp_get_original_image_path($source_file); //get img server path using id
+// 	$urlPath = wp_get_attachment_url($source_file); //get img URL path using id
+// 	$serverPath = wp_get_original_image_path($source_file); //get img server path using id
 
-	$serverStrip = substr($serverPath, 0 , (strrpos($serverPath, "."))); //remove file extension
-	$serverConvert = convert_img($serverPath, $serverStrip . '.webp', 100); //convert and generate webp
+// 	$serverStrip = substr($serverPath, 0 , (strrpos($serverPath, "."))); //remove file extension
+// 	$serverConvert = convert_img($serverPath, $serverStrip . '.webp', 100); //convert and generate webp
 
-	$urlStrip = substr($urlPath, 0 , (strrpos($urlPath, "."))); //remove file extension
-	$urlCombine = $urlStrip . '.webp'; //combine url and file extension 
+// 	$urlStrip = substr($urlPath, 0 , (strrpos($urlPath, "."))); //remove file extension
+// 	$urlCombine = $urlStrip . '.webp'; //combine url and file extension 
 
-	return $urlCombine;
+// 	return $urlCombine;
 
-}
+// }
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -476,6 +476,8 @@ function convert_webp($source_file) {
 function custom_add_image_sizes() {
 	add_image_size( 'banner_lg', 1920, 9999 ); // 1920px wide unlimited height
 	add_image_size( 'banner_sm', 480, 9999 ); // 480px wide unlimited height
+	add_image_size( 'split_lg', 1000, 9999 ); // 1000px wide unlimited height
+	add_image_size( 'split_sm', 480, 9999 ); // 480px wide unlimited height
 }
 
 add_action( 'after_setup_theme', 'custom_add_image_sizes' );
@@ -484,6 +486,8 @@ function custom_add_image_size_names( $sizes ) {
 	return array_merge( $sizes, array(
     'banner_lg' => __( 'Banner Large Device' ),
     'banner_sm' => __( 'Banner Small Device' ),
+    'split_lg' => __( 'Split Large Device' ),
+    'split_sm' => __( 'Split Small Device' ),
 		) );
 	}
 

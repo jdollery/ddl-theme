@@ -220,12 +220,7 @@ get_header(); ?>
               name="referral_uploads" 
               id="referral_uploads" 
               class="upload"
-<<<<<<< HEAD
-              required
             >
-=======
-              size="40" >
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
             <label for="referral_uploads"><span class="upload__file">Upload any supporting radiographs/images/documents (Max 5MB)</span><span class="upload__button">Upload</span></label>
           </div>
 
@@ -315,11 +310,7 @@ get_header(); ?>
 
         <div class="cell-0 cell-gutter-x-sm">
           <div class="form__input form__input--checkbox">
-<<<<<<< HEAD
             <input type="checkbox" id="marketing_consent" name="marketing_consent" value="Yes, I consent" required >
-=======
-            <input type="checkbox" id="marketing_consent" name="marketing_consent" value="Yes, I consent" required>
->>>>>>> 88ee99d4dec01a49965469ce8541476a99913c1e
             <label for="marketing_consent">I confirm I have the patient&rsquo;s consent to share this information, and also consent to <?php bloginfo( 'name' ); ?> replying and storing these personal details (please see our <a href="<?php echo site_url() ?>/privacy-policy/">privacy policy</a> for more information).</label>
           </div>
         </div>

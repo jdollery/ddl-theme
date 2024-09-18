@@ -155,7 +155,7 @@
 
       <div class="banner__two">
 
-        <video playsinline autoplay loop muted poster="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-poster.jpg">
+        <video playsinline autoplay loop muted poster="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-poster-lg.jpg">
           <source src="<?php echo get_template_directory_uri(); ?>/assets/video/placeholder-video-compressed.mp4" type="video/mp4">
           Sorry, your browser doesn’t support embedded videos.
         </video>
@@ -176,8 +176,6 @@
 
       $thumb_url_lg = $thumb_url_array_lg[0];
       $thumb_url_sm = $thumb_url_array_sm[0];
-
-      $thumb_url_id = convert_webp($thumb_url_lg);
 
       ?>
 
@@ -210,7 +208,7 @@
               <img 
                 class="banner__img"
                 src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-banner-lg.jpg"
-                alt="<?php echo get_bloginfo( 'name' ) ?>"
+                alt="Placeholder image"
                 width="1920" 
                 height="1080"
                 decoding="async"
