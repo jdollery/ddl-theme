@@ -35,7 +35,7 @@
         </div>
 
         <div class="cell-0 cell-gutter-x text-center">
-          <nav class="navigation" id="headerNav">
+          <nav class="navigation" id="headerNav" aria-labelledby="navToggle">
             <ul>
               <?php wp_nav_menu( array (
                 'theme_location' => 'header-menu',
@@ -50,7 +50,7 @@
 
           <a class="btn btn--accent" href="<?php echo get_the_permalink( 147 ) ?>">Book an appointment</a>
           
-          <button class="burger" id="navToggle" type="button" title="Main menu">
+          <button class="burger" id="navToggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="headerNav">
             <span class="burger__inner"></span>
             <!-- <div class="burger__inner"><div class="burger__trigger"><span class="burger__icon"></span></div><div class="burger__text">Menu</div></div> -->
           </button>

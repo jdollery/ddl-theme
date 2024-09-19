@@ -73,6 +73,14 @@ jQuery(document).ready(function () { //doc ready start
     enableDropdown: true,
     openDropdown: '<span class="hidden">Open sub menu</span>',
     closeDropdown: '<span class="hidden">Close sub menu</span>',
+
+    open: function () {
+      customToggle.setAttribute( 'aria-expanded', 'true' );
+    },
+
+    close: function () {
+      customToggle.setAttribute( 'aria-expanded', 'false' );
+    },
     
     // open: function () {
     //   customToggle.innerHTML = '<div class="burger__inner"><div class="burger__trigger"><span class="burger__icon"></span></div><div class="burger__text">Close</div></div>';
@@ -81,13 +89,13 @@ jQuery(document).ready(function () { //doc ready start
     //   customToggle.innerHTML = '<div class="burger__inner"><div class="burger__trigger"><span class="burger__icon"></span></div><div class="burger__text">Menu</div></div>';
     // },
     
-    resizeMobile: function () {
-      customToggle.setAttribute( 'aria-controls', 'headerNav' );
-    },
+    // resizeMobile: function () {
+    //   customToggle.setAttribute( 'aria-controls', 'headerNav' );
+    // },
     
-    resizeDesktop: function () {
-      customToggle.removeAttribute( 'aria-controls' );
-    },
+    // resizeDesktop: function () {
+    //   customToggle.removeAttribute( 'aria-controls' );
+    // },
     
   });
 
