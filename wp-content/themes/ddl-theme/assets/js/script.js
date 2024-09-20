@@ -75,11 +75,15 @@ jQuery(document).ready(function () { //doc ready start
     closeDropdown: '<span class="hidden">Close sub menu</span>',
 
     open: function () {
-      customToggle.setAttribute( 'aria-expanded', 'true' );
+      if (customToggle.getAttribute('aria-pressed') === 'false') {
+        customToggle.setAttribute( 'aria-expanded', 'true' );
+      }
     },
 
     close: function () {
-      customToggle.setAttribute( 'aria-expanded', 'false' );
+      if (customToggle.getAttribute('aria-pressed') === 'true') {
+        customToggle.setAttribute( 'aria-expanded', 'false' );
+      }
     },
     
     // open: function () {
