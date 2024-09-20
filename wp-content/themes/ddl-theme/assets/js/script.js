@@ -36,36 +36,18 @@ window.onresize = function(event) {
 
 };
 
-
-jQuery(document).ready(function () { //doc ready start
-
-  /*-----------------------------------------------------------------------------------*/
-  /* STICKY NAV */
-  /*-----------------------------------------------------------------------------------*/
-
-  jQuery(function(){
-    setSticky();
-    jQuery(window).scroll(setSticky);
-  });
-
-  function setSticky() {
-    if (jQuery(window).scrollTop() > 1) {
-      jQuery('#mainHeader').addClass("header--sticky");
-    }
-    else{
-      jQuery('#mainHeader').removeClass("header--sticky");
-    }
-  }
-
-
-  /*-----------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------*/
   /* RESPONSIVE NAV */
   /*-----------------------------------------------------------------------------------*/
 
-  jQuery('.navigation li').parent().find("ul").addClass('sub-menu');
-  jQuery('.sub-menu').parent().addClass('menu-item-has-children');
+  let navChild = document.querySelector('.navigation li li');
+  let navParent = navChild.closest('ul');
+  navParent.classList.add("sub-menu");
 
-  var customToggle = document.getElementById('navToggle');
+  // let navSub = navChild.parentElement();
+  // navSub.classList.add("menu-item-has-childrens");
+
+  // var customToggle = document.getElementById('navToggle');
 
   var nav = responsiveNav("#headerNav", {
     customToggle: "#navToggle", // Selector: Specify the ID of a custom toggle
@@ -74,17 +56,17 @@ jQuery(document).ready(function () { //doc ready start
     openDropdown: '<span class="hidden">Open sub menu</span>',
     closeDropdown: '<span class="hidden">Close sub menu</span>',
 
-    open: function () {
-      if (customToggle.getAttribute('aria-pressed') === 'false') {
-        customToggle.setAttribute( 'aria-expanded', 'true' );
-      }
-    },
+    // open: function () {
+    //   // if (customToggle.getAttribute('aria-expanded') === 'false') {
+    //     customToggle.setAttribute( 'aria-expanded', 'true' );
+    //   // }
+    // },
 
-    close: function () {
-      if (customToggle.getAttribute('aria-pressed') === 'true') {
-        customToggle.setAttribute( 'aria-expanded', 'false' );
-      }
-    },
+    // close: function () {
+    //   // if (customToggle.getAttribute('aria-expanded') === 'true') {
+    //     customToggle.setAttribute( 'aria-expanded', 'false' );
+    //   // }
+    // },
     
     // open: function () {
     //   customToggle.innerHTML = '<div class="burger__inner"><div class="burger__trigger"><span class="burger__icon"></span></div><div class="burger__text">Close</div></div>';
@@ -107,6 +89,27 @@ jQuery(document).ready(function () { //doc ready start
   close.addEventListener("click", function () {
     nav.close();
   }, false);
+
+
+jQuery(document).ready(function () { //doc ready start
+
+  /*-----------------------------------------------------------------------------------*/
+  /* STICKY NAV */
+  /*-----------------------------------------------------------------------------------*/
+
+  jQuery(function(){
+    setSticky();
+    jQuery(window).scroll(setSticky);
+  });
+
+  function setSticky() {
+    if (jQuery(window).scrollTop() > 1) {
+      jQuery('#mainHeader').addClass("header--sticky");
+    }
+    else{
+      jQuery('#mainHeader').removeClass("header--sticky");
+    }
+  }
 
 
   /*-----------------------------------------------------------------------------------*/
@@ -176,7 +179,7 @@ jQuery(document).ready(function () { //doc ready start
   if (current_url) {
 
     jQuery('html, body').animate({
-      scrollTop: jQuery('[data-member="' + member_slug + '"]').offset().top + -150
+      scrollTop: jQuery('[data-open="' + member_slug + '"]').offset().top + -150
     }, 'slow');
 
 		jQuery('[data-sideout="' + member_slug + '"]').addClass('active');

@@ -157,7 +157,7 @@ $list-bullet-color:       var(--accent);
 
 /* --------------------- STYLING --------------------- */
 
-ul:not(.loop, .quicklinks__list),
+ul:not(.list--exempt),
 ol {
   margin-top: $paragraph-margin-top-sm;
   margin-bottom: $paragraph-margin-bottom-sm;
@@ -182,33 +182,38 @@ ol {
 }
 
 @mixin list-bullet {
-  list-style: none;
-  padding-left: $list-indent;
 
-  li {
-    position: relative;
-    margin: 0;
+  &:not(.list--exempt) {
 
-    &::marker {
-      display: none;
+    list-style: none;
+    padding-left: $list-indent;
+
+    li {
+      position: relative;
+      margin: 0;
+
+      &::marker {
+        display: none;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: $list-gutter;
+      }
+
+      &::before {
+        position: absolute;
+        left: -$list-indent;
+        top: 0.9rem;
+        display: block;
+        content: '';
+        width: $list-bullet-size;
+        height: $list-bullet-size;
+        background: $list-bullet-color;
+        border-radius: 50%;
+      }
+      
     }
 
-    &:not(:last-child) {
-      margin-bottom: $list-gutter;
-    }
-
-    &::before {
-      position: absolute;
-      left: -$list-indent;
-      top: 0.9rem;
-      display: block;
-      content: '';
-      width: $list-bullet-size;
-      height: $list-bullet-size;
-      background: $list-bullet-color;
-      border-radius: 50%;
-    }
-    
   }
 
 }

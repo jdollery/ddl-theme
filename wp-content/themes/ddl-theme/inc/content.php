@@ -155,7 +155,7 @@ if( have_rows('content_section') ){
 
       <div class="content__column">
 
-        <article class="content__text">
+        <article class="content__body">
           <?php echo $content_text ?>
         </article>
 

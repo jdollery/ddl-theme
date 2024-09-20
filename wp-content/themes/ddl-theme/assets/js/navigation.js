@@ -423,8 +423,8 @@
 
           isMobile = true;
           setAttributes(navToggle, {"aria-hidden": "false"});
-		  setAttributes(nav, {"aria-expanded": "false"});
-		  setAttributes(navToggle, {"aria-expanded": "false"});
+          setAttributes(nav, {"aria-expanded": "false"});
+          setAttributes(navToggle, {"aria-expanded": "false"});
 
           // If the navigation is hidden
           if (nav.className.match(/(^|\s)closed(\s|$)/)) {
@@ -434,24 +434,24 @@
 
           // If the navigation is not hidden
           if (!nav.className.match(/(^|\s)closed(\s|$)/)) {
-		    setAttributes(nav, {"aria-expanded": "true"});
-		    setAttributes(navToggle, {"aria-expanded": "true"});
+            setAttributes(nav, {"aria-expanded": "true"});
+            setAttributes(navToggle, {"aria-expanded": "true"});
           }
 
           this._createStyles();
           // this._calcHeight();
-		  opts.resizeMobile();
+		      opts.resizeMobile();
 
         } else {
 
           isMobile = false;
           setAttributes(navToggle, {"aria-hidden": "true"});
           setAttributes(nav, {"aria-hidden": "false"});
-		  nav.removeAttribute("aria-expanded");
-		  navToggle.removeAttribute("aria-expanded");
+          nav.removeAttribute("aria-expanded");
+          navToggle.removeAttribute("aria-expanded");
           nav.style.position = opts.openPos;
           this._removeStyles();
-		  opts.resizeDesktop();
+		      opts.resizeDesktop();
 
         }
       },
@@ -724,7 +724,7 @@
 
         if (hasClass(targetEl, "dropdown-toggle") && opts.enableDropdown) isDropdownTapped = true;
         if (evt.keyCode === 13) {
-         if (isDropdownTapped) {
+        if (isDropdownTapped) {
             this._toggleDropdown(targetEl);
           } else {
             this.toggle();

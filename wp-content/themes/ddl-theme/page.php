@@ -1,24 +1,12 @@
 <?php get_header(); ?>
 
-<?php if ( is_front_page() ) { 
-  
-//   get_template_part('inc/carousel');
-
-// } else { 
-
-  get_template_part('inc/banner');
-
-} ?>
+<?php get_template_part('inc/banner'); ?>
 
 <?php if ( !empty( get_the_content() ) ) { ?>
 
   <article class="content content--white content--top content--bottom">
-    <div class="content__row">
-      <div class="content__column">
-        <div class="content__text">
-          <?php the_content(); ?>
-        </div>
-      </div>
+    <div class="content__body">
+      <?php the_content(); ?>
     </div>
   </article>
 
@@ -28,7 +16,7 @@
 
 }  ?>
 
-<?php if ( is_page(72) ) { 
+<?php if ( is_page(192) ) { 
 
   get_template_part('inc/team');
 

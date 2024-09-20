@@ -27,7 +27,7 @@
 
     <div class="quicklinks__middle">
 
-      <ul class="quicklinks__list">
+      <ul class="quicklinks__list list--exempt">
 
         <?php 
         
@@ -38,7 +38,7 @@
         ?>
 
           <li class="quicklinks__item">
-            <?php get_template_part('inc/link'); ?>
+            <?php get_template_part('inc/post'); ?>
           </li>
 
         <?php 

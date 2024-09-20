@@ -34,7 +34,7 @@
 
     .content {
 
-      &__text {
+      &__body {
         padding-top: var(--space-y);
       }
 
@@ -46,7 +46,7 @@
 
     .content {
 
-      &__text {
+      &__body {
         padding-bottom: var(--space-y);
       }
 
@@ -62,7 +62,7 @@
 
     .content {
 
-      &__text {
+      &__body {
 
         @include media-down(lg) {
           @include space-p(bottom);
@@ -86,7 +86,7 @@
 
       }
 
-      &__text {
+      &__body {
 
         @include media-down(lg) {
           @include space-p(bottom);
@@ -108,7 +108,6 @@
   }
 
   &__column {
-    position: relative;
     @include cell(12);
     display: flex;
 
@@ -122,15 +121,7 @@
       .content__media {
         position: sticky;
         top: 17rem;
-        // max-height: 60rem;
-        // aspect-ratio: 7 / 5;
         z-index: 1;
-
-        // @include media-up(lg) {
-        //   max-height: 40vw;
-        //   // aspect-ratio: 7 / 6;
-        // }
-
       }
       
     }
@@ -143,13 +134,15 @@
 
     &--img,
     &--video {
-      // max-height: 50rem;
-      // aspect-ratio: 7 / 5;
       z-index: 1;
 
       @include media-down(lg) {
         max-height: 55rem;
         aspect-ratio: 7 / 5;
+      }
+
+      @include media-up(lg) {
+        min-height: 35vw;
       }
       
     }
@@ -218,12 +211,11 @@
 
   }
 
-  &__text {
+  &__body {
     position: relative;
-    @include cell(12);
-    align-self: center;
     padding-left: var(--space-x);
     padding-right: var(--space-x);
+    align-self: center;
 
     ul {
       @include list-bullet;

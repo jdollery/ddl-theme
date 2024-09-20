@@ -478,6 +478,10 @@ function custom_add_image_sizes() {
 	add_image_size( 'banner_sm', 480, 9999 ); // 480px wide unlimited height
 	add_image_size( 'content_lg', 1000, 9999 ); // 1000px wide unlimited height
 	add_image_size( 'content_sm', 480, 9999 ); // 480px wide unlimited height
+	add_image_size( 'post_lg', 1000, 9999 ); // 1000px wide unlimited height
+	add_image_size( 'post_sm', 480, 9999 ); // 480px wide unlimited height
+	add_image_size( 'member_lg', 1000, 9999 ); // 1000px wide unlimited height
+	add_image_size( 'member_sm', 480, 9999 ); // 480px wide unlimited height
 }
 
 add_action( 'after_setup_theme', 'custom_add_image_sizes' );
@@ -488,6 +492,10 @@ function custom_add_image_size_names( $sizes ) {
     'banner_sm' => __( 'Banner Small Device' ),
     'content_lg' => __( 'Content Large Device' ),
     'content_sm' => __( 'Content Small Device' ),
+		'post_lg' => __( 'Post Large Device' ),
+    'post_sm' => __( 'Post Small Device' ),
+		'member_lg' => __( 'Member Large Device' ),
+    'member_sm' => __( 'Member Small Device' ),
 		) );
 	}
 

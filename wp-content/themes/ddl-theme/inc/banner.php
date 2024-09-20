@@ -164,18 +164,18 @@
 
     <?php 
 
-    // } elseif ( has_post_thumbnail() ) { 
-    } else { 
+    // } elseif ( has_post_thumbnail() || !is_404() ) { 
+    } elseif ( !is_404() ) {
 
-      $thumb_id = get_post_thumbnail_id( $post->ID );
-      $thumb_alt = get_post_meta($thumb_id, '_wp_attachment_image_alt', true);
-      $thumb_title = get_the_title($thumb_id);
+      $media_id = get_post_thumbnail_id( $post->ID );
+      $media_alt = get_post_meta($media_id, '_wp_attachment_image_alt', true);
+      $media_title = get_the_title($media_id);
 
-      $thumb_url_array_lg = wp_get_attachment_image_src($thumb_id, 'banner_lg', true);
-      $thumb_url_array_sm = wp_get_attachment_image_src($thumb_id, 'banner_sm', true);
+      $media_url_array_lg = wp_get_attachment_image_src($media_id, 'banner_lg', true);
+      $media_url_array_sm = wp_get_attachment_image_src($media_id, 'banner_sm', true);
 
-      $thumb_url_lg = $thumb_url_array_lg[0];
-      $thumb_url_sm = $thumb_url_array_sm[0];
+      $media_url_lg = $media_url_array_lg[0];
+      $media_url_sm = $media_url_array_sm[0];
 
       ?>
 
@@ -183,17 +183,15 @@
 
         <div class="banner__media">
 
-          <?php var_dump( $thumb_url_id ) ?>
-
           <?php if ( has_post_thumbnail() ) { ?>
 
             <picture>
-              <source type="image/jpg" media="(min-width: 480px)" srcset="<?php echo $thumb_url_lg ?>">
-              <source type="image/jpg" media="(max-width: 479px)" srcset="<?php echo $thumb_url_sm ?>">
+              <source type="image/jpg" media="(min-width: 480px)" srcset="<?php echo $media_url_lg ?>">
+              <source type="image/jpg" media="(max-width: 479px)" srcset="<?php echo $media_url_sm ?>">
               <img 
                 class="banner__img"
-                src="<?php echo $thumb_url_lg ?>"
-                alt="<?php if($thumb_alt){ echo $thumb_alt; } else { the_title(); } ?>"
+                src="<?php echo $media_url_lg ?>"
+                alt="<?php if($media_alt){ echo $media_alt; } else { the_title(); } ?>"
                 width="1920" 
                 height="1080"
                 decoding="async"

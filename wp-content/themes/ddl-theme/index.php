@@ -4,20 +4,20 @@
 
 <?php if ( have_posts() ) { ?>
 
-<section class="space-p">
-  <ul class="loop">
+  <section class="content content--white content--top content--bottom">
+    <div class="content__body">
+      <ul class="loop list--exempt">
 
-    <?php while ( have_posts() ) : the_post(); ?>
+      <?php while ( have_posts() ) : the_post(); ?>
 
-      <li class="loop__item">
-        <?php get_template_part('inc/post'); ?>
-      </li>
+        <li class="loop__item">
+          <?php get_template_part('inc/post'); ?>
+        </li>
 
-    <?php endwhile; wp_reset_query(); ?>
+      <?php endwhile; wp_reset_query(); ?>
 
-    <?php echo pagination(); ?>
-    
-  </ul>
+    </ul>
+  </div>
 </section>
 
 <?php } ?>

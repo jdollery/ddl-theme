@@ -50,7 +50,7 @@
 
           <a class="btn btn--accent" href="<?php echo get_the_permalink( 147 ) ?>">Book an appointment</a>
           
-          <button class="burger" id="navToggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="headerNav">
+          <button class="burger" id="navToggle" type="button" aria-haspopup="true" aria-controls="headerNav">
             <span class="burger__inner"></span>
             <!-- <div class="burger__inner"><div class="burger__trigger"><span class="burger__icon"></span></div><div class="burger__text">Menu</div></div> -->
           </button>

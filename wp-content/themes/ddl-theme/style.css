@@ -15120,44 +15120,44 @@ a:hover {
   color: var(--accent-light)
 }
 ol,
-ul:not(.loop,.quicklinks__list) {
+ul:not(.list--exempt) {
   margin-top: var(--gutter-md);
   margin-bottom: var(--gutter-md)
 }
 @media (min-width:768px) {
   ol,
-  ul:not(.loop,.quicklinks__list) {
+  ul:not(.list--exempt) {
     margin-top: var(--gutter-md);
     margin-bottom: var(--gutter-md)
   }
 }
 ol:first-child,
-ul:not(.loop,.quicklinks__list):first-child {
+ul:not(.list--exempt):first-child {
   margin-top: 0
 }
 ol:last-child,
-ul:not(.loop,.quicklinks__list):last-child {
+ul:not(.list--exempt):last-child {
   margin-bottom: 0
 }
 ol li::marker,
-ul:not(.loop,.quicklinks__list) li::marker {
+ul:not(.list--exempt) li::marker {
   color: var(--accent)
 }
-.list--bullet {
+.list--bullet:not(.list--exempt) {
   list-style: none;
   padding-left: 2rem
 }
-.list--bullet li {
+.list--bullet:not(.list--exempt) li {
   position: relative;
   margin: 0
 }
-.list--bullet li::marker {
+.list--bullet:not(.list--exempt) li::marker {
   display: none
 }
-.list--bullet li:not(:last-child) {
+.list--bullet:not(.list--exempt) li:not(:last-child) {
   margin-bottom: .5rem
 }
-.list--bullet li::before {
+.list--bullet:not(.list--exempt) li::before {
   position: absolute;
   left: -2rem;
   top: .9rem;
@@ -16063,21 +16063,21 @@ table thead th:not(:last-child) {
 table td {
   color: var(--black)
 }
-table td ul {
+table td ul:not(.list--exempt) {
   list-style: none;
   padding-left: 2rem
 }
-table td ul li {
+table td ul:not(.list--exempt) li {
   position: relative;
   margin: 0
 }
-table td ul li::marker {
+table td ul:not(.list--exempt) li::marker {
   display: none
 }
-table td ul li:not(:last-child) {
+table td ul:not(.list--exempt) li:not(:last-child) {
   margin-bottom: .5rem
 }
-table td ul li::before {
+table td ul:not(.list--exempt) li::before {
   position: absolute;
   left: -2rem;
   top: .9rem;
@@ -17305,17 +17305,17 @@ html.js-nav-active {
 .content--grey {
   background: var(--grey-light)
 }
-.content--top .content__text {
+.content--top .content__body {
   padding-top: var(--space-y)
 }
-.content--bottom .content__text {
+.content--bottom .content__body {
   padding-bottom: var(--space-y)
 }
 .content:first-of-type {
   z-index: 1
 }
 @media (max-width:1189px) {
-  .content--left .content__text {
+  .content--left .content__body {
     padding-bottom: var(--space-y)
   }
 }
@@ -17325,7 +17325,7 @@ html.js-nav-active {
   }
 }
 @media (max-width:1189px) {
-  .content--right .content__text {
+  .content--right .content__body {
     padding-bottom: var(--space-y)
   }
 }
@@ -17339,7 +17339,6 @@ html.js-nav-active {
   }
 }
 .content__column {
-  position: relative;
   position: relative;
   flex: 0 0 auto;
   width: 100%;
@@ -17375,6 +17374,12 @@ html.js-nav-active {
   .content__media--video {
     max-height: 55rem;
     aspect-ratio: 7/5
+  }
+}
+@media (min-width:1190px) {
+  .content__media--img,
+  .content__media--video {
+    min-height: 35vw
   }
 }
 .content__media img {
@@ -17414,31 +17419,27 @@ html.js-nav-active {
   -o-object-position: bottom;
   object-position: bottom
 }
-.content__text {
+.content__body {
   position: relative;
-  position: relative;
-  flex: 0 0 auto;
-  width: 100%;
-  max-width: 100%;
-  align-self: center;
   padding-left: var(--space-x);
-  padding-right: var(--space-x)
+  padding-right: var(--space-x);
+  align-self: center
 }
-.content__text ul {
+.content__body ul:not(.list--exempt) {
   list-style: none;
   padding-left: 2rem
 }
-.content__text ul li {
+.content__body ul:not(.list--exempt) li {
   position: relative;
   margin: 0
 }
-.content__text ul li::marker {
+.content__body ul:not(.list--exempt) li::marker {
   display: none
 }
-.content__text ul li:not(:last-child) {
+.content__body ul:not(.list--exempt) li:not(:last-child) {
   margin-bottom: .5rem
 }
-.content__text ul li::before {
+.content__body ul:not(.list--exempt) li::before {
   position: absolute;
   left: -2rem;
   top: .9rem;
@@ -17449,23 +17450,23 @@ html.js-nav-active {
   background: var(--accent);
   border-radius: 50%
 }
-.content__text ol {
+.content__body ol {
   padding-left: 2rem;
   counter-reset: custom-counter;
   list-style: none
 }
-.content__text ol li {
+.content__body ol li {
   position: relative;
   margin: 0;
   counter-increment: custom-counter
 }
-.content__text ol li::marker {
+.content__body ol li::marker {
   display: none
 }
-.content__text ol li:not(:last-child) {
+.content__body ol li:not(:last-child) {
   margin-bottom: .5rem
 }
-.content__text ol li::before {
+.content__body ol li::before {
   position: absolute;
   left: -2rem;
   top: 0;
@@ -17597,6 +17598,7 @@ html.js-nav-active {
   left: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: top;
@@ -17685,6 +17687,7 @@ html.slideout-active {
   left: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: center;
