@@ -74,20 +74,6 @@
       background: var(--black);
     }
 
-    &--open {
-      background: var(--black);
-
-      .icon {
-        @include transform (rotate(180deg));
-
-        svg {
-          fill: var(--white);
-        }
-
-      }
-
-    }
-
   }
 
   &__title {
@@ -115,9 +101,16 @@
 
   &__desc {
     @include cell(auto);
-    display: none;
-    padding: var(--gutter-md) var(--gutter-lg);
+    // display: none;
+    max-height: 0;
+    transition: max-height 0.6s ease-in-out;
+    overflow: hidden;
     background: var(--grey-light);
+
+    span {
+      display: block;
+      padding: var(--gutter-md) var(--gutter-lg);
+    }
 
     p {
       margin-top: 1.5rem;
@@ -131,6 +124,38 @@
         margin-bottom: 0;
       }
 
+    }
+
+  }
+
+  /* --- OPEN --- */
+
+  &__term {
+
+    &--open {
+    
+      .accordion {
+  
+        &__term {
+          background: var(--black);
+  
+          .icon {
+            @include transform (rotate(180deg));
+  
+            svg {
+              fill: var(--white);
+            }
+  
+          }
+  
+        }
+
+        &__desc { 
+          max-height: 90rem;
+        }
+  
+      }
+  
     }
 
   }

@@ -31,7 +31,7 @@ get_header(); ?>
 
       <a href="/" class="btn btn--black btn--space">Test</a>
 
-      <a class="btn btn--accent btn--space" href="<?php echo site_url() ?>/team/#joe-bloggs">View John’s Profile</a>
+      <a class="btn btn--blue btn--space" href="<?php echo site_url() ?>/team/#joe-bloggs">View John’s Profile</a>
 
       <h1>Heading h2</h1>
       <h2>Heading h2</h2>
@@ -88,7 +88,7 @@ get_header(); ?>
               </div>
 
             </div>
-            <div class="cell-6 cell-gutter-x-sm">
+            <div class="cell-12 cell-6 cell-gutter-x-sm">
 
               <div class="form__input">
                 <input
@@ -192,20 +192,20 @@ get_header(); ?>
             </div>
 
             <div class="cell-12 cell-gutter-x-sm">
-              <div class="cell-row cell-row-gutter-x-sm px-md-6 cell-align-center h-100">
-                <div class="cell-0 cell-gutter-x-sm">
+              <div class="cell-row cell-align-center">
+                <div class="cell-0">
                   <div class="form__input">
                     <p class="m-0"><span>Is the tooth symptomatic?</span></p>
                   </div>
                 </div>
-                <div class="cell-auto cell-gutter-x-sm">
-                  <div class="form__input">
+                <div class="cell-auto pr-4">
+                  <div class="form__input form__input--checkbox">
                     <input type="radio" id="endodontic_symptomatic_yes" name="symptomatic" value="Yes">
                     <label for="endodontic_symptomatic_yes">Yes</label>
                   </div>
                 </div>
-                <div class="cell-auto cell-gutter-x-sm">
-                  <div class="form__input">
+                <div class="cell-auto">
+                  <div class="form__input form__input--checkbox">
                     <input type="radio" id="endodontic_symptomatic_no" name="symptomatic" value="No">
                     <label for="endodontic_symptomatic_no">No</label>
                   </div>
@@ -236,7 +236,7 @@ get_header(); ?>
           <legend>Referrer Details</legend>
           <div class="cell-row cell-row-gutter-x-sm">
 
-            <div class="cell-md-6 cell-gutter-x-sm">
+            <div class="cell-12 cell-md-6 cell-gutter-x-sm">
 
               <div class="form__input">
                 <input
@@ -250,7 +250,7 @@ get_header(); ?>
               </div>
 
             </div>
-            <div class="cell-md-6 cell-gutter-x-sm">
+            <div class="cell-12 cell-md-6 cell-gutter-x-sm">
 
               <div class="form__input">
                 <input
@@ -263,7 +263,7 @@ get_header(); ?>
               </div>
 
             </div>
-            <div class="cell-md-6 cell-gutter-x-sm">
+            <div class="cell-12 cell-md-6 cell-gutter-x-sm">
 
               <div class="form__input">
                 <input
@@ -277,7 +277,7 @@ get_header(); ?>
               </div>
 
             </div>
-            <div class="cell-md-6 cell-gutter-x-sm">
+            <div class="cell-12 cell-md-6 cell-gutter-x-sm">
 
               <div class="form__input">
                 <input

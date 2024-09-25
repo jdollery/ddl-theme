@@ -2,22 +2,68 @@
 /* ANIMATION */
 /*-----------------------------------------------------------------------------------*/
 
+// @include keyframes (navFadeIn) {
+      
+//   0% {
+//     opacity: 0;
+//     -webkit-transform: translateY(-2rem);
+//     -ms-transform: translateY(-2rem);
+//     transform: translateY(-2rem);
+//     visibility: hidden;
+//     display: none;
+//   }
+
+//   100% {
+//     opacity: 1;
+//     -webkit-transform: translateY(0);
+//     -ms-transform: translateY(0);
+//     transform: translateY(0);
+//     visibility: visible;
+//     display: block;
+//   }
+
+// }
+
+// @include keyframes (navFadeOut) {
+
+//   0% {
+//     opacity: 1;
+//     -webkit-transform: translateY(0);
+//     -ms-transform: translateY(0);
+//     transform: translateY(0);
+//     visibility: visible;
+//     display: block;
+//   }
+
+//   100% {
+//     opacity: 0;
+//     -webkit-transform: translateY(-2rem);
+//     -ms-transform: translateY(-2rem);
+//     transform: translateY(-2rem);
+//     visibility: hidden;
+//     display: none;
+//   }
+
+// }
+
 @include keyframes (navFadeIn) {
       
   0% {
     opacity: 0;
-    -webkit-transform: translateY(-2rem);
-    -ms-transform: translateY(-2rem);
-    transform: translateY(-2rem);
+    // -webkit-transform: translateY(-2rem);
+    // -ms-transform: translateY(-2rem);
+    // transform: translateY(-2rem);
+    margin-top: -2rem;
     visibility: hidden;
     display: none;
   }
 
   100% {
     opacity: 1;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
+    // -webkit-transform: translateY(0);
+    // -ms-transform: translateY(0);
+    // transform: translateY(0);
+    margin-top: 0;
     visibility: visible;
     display: block;
   }
@@ -28,23 +74,26 @@
 
   0% {
     opacity: 1;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
+    // -webkit-transform: translateY(0);
+    // -ms-transform: translateY(0);
+    // transform: translateY(0);
+    margin-top: 0;
     visibility: visible;
     display: block;
   }
 
   100% {
     opacity: 0;
-    -webkit-transform: translateY(-2rem);
-    -ms-transform: translateY(-2rem);
-    transform: translateY(-2rem);
+    // -webkit-transform: translateY(-2rem);
+    // -ms-transform: translateY(-2rem);
+    // transform: translateY(-2rem);
+    margin-top: -2rem;
     visibility: hidden;
     display: none;
   }
 
 }
+
 
 /*-----------------------------------------------------------------------------------*/
 /* VARIABLES */
@@ -55,8 +104,8 @@
 /* --- LEVEL ONE --- */
 
 $level-one-color-lg:                  var(--black);
-$level-one-color-hover-lg:            var(--accent);
-$level-one-color-current-lg:          var(--accent-light);
+$level-one-color-hover-lg:            var(--blue);
+$level-one-color-current-lg:          var(--blue-light);
 $level-one-color-ancestor-lg:         var(--black);
 $level-one-color-ancestor-hover-lg:   $level-one-color-hover-lg;
 
@@ -66,17 +115,17 @@ $level-one-color-ancestor-hover-lg:   $level-one-color-hover-lg;
 $level-two-color-lg:                  var(--black);
 $level-two-color-hover-lg:            var(--white);
 $level-two-bg-lg:                     var(--grey);
-$level-two-bg-hover-lg:               var(--accent-light);
-$level-two-border-lg:                 var(--accent-light);
+$level-two-bg-hover-lg:               var(--blue-light);
+$level-two-border-lg:                 var(--blue-light);
 $level-two-border-hover-lg:           $level-two-bg-hover-lg;
 
 $level-two-color-current-lg:          var(--white);
-$level-two-bg-current-lg:             var(--accent);
+$level-two-bg-current-lg:             var(--blue);
 $level-two-border-current-lg:         $level-two-bg-current-lg;
 
 $level-two-color-ancestor-lg:         $level-two-color-lg;
 $level-two-color-ancestor-hover-lg:   $level-two-color-hover-lg;
-$level-two-bg-ancestor-lg:            var(--accent-light);
+$level-two-bg-ancestor-lg:            var(--blue-light);
 $level-two-bg-ancestor-hover-lg:      $level-two-bg-hover-lg;
 $level-two-border-ancestor-lg:        $level-two-border-lg;
 $level-two-border-ancestor-hover-lg:  $level-two-border-hover-lg;
@@ -193,6 +242,9 @@ html {
           display: none;
         }
 
+        > ul {
+          @include animation (navFadeOut 0.5s);
+        }
 
         &:hover > ul,
         &:focus-within > ul {
@@ -768,7 +820,7 @@ html {
   width: 4rem;
   border: 0;
   color: var(--grey-light);
-  background-color: var(--accent);
+  background-color: var(--blue);
   padding: 0;
   margin: 0;
   font-style: normal;
@@ -829,7 +881,7 @@ html {
     transition-timing-function: ease;
     transition-duration: .15s;
     transition-property: transform;
-    background-color: var(--accent);
+    background-color: var(--blue);
   }
 
   &__inner {
@@ -923,7 +975,7 @@ html {
 //     transition-timing-function: ease;
 //     transition-duration: .15s;
 //     transition-property: transform;
-//     background-color: var(--accent);
+//     background-color: var(--blue);
 //   }
 
 //   &__icon {

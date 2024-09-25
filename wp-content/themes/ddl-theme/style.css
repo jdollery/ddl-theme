@@ -15086,7 +15086,7 @@ h3 span,
 h4 span,
 h5 span,
 h6 span {
-  color: var(--accent)
+  color: var(--blue)
 }
 .h1,
 h1 {
@@ -15112,12 +15112,12 @@ h6 {
   font-size: var(--size-h6)
 }
 a {
-  color: var(--accent);
+  color: var(--blue);
   font-weight: var(--bold);
   transition: all .2s ease-out
 }
 a:hover {
-  color: var(--accent-light)
+  color: var(--blue-light)
 }
 ol,
 ul:not(.list--exempt) {
@@ -15141,7 +15141,7 @@ ul:not(.list--exempt):last-child {
 }
 ol li::marker,
 ul:not(.list--exempt) li::marker {
-  color: var(--accent)
+  color: var(--blue)
 }
 .list--bullet:not(.list--exempt) {
   list-style: none;
@@ -15165,7 +15165,7 @@ ul:not(.list--exempt) li::marker {
   content: "";
   width: .6rem;
   height: .6rem;
-  background: var(--accent);
+  background: var(--blue);
   border-radius: 50%
 }
 .list--number {
@@ -15191,7 +15191,7 @@ ul:not(.list--exempt) li::marker {
   display: block;
   content: counter(custom-counter) ".";
   font-weight: var(--bold);
-  color: var(--accent)
+  color: var(--blue)
 }
 .list--inline {
   list-style: none;
@@ -15205,7 +15205,7 @@ ul:not(.list--exempt) li::marker {
   margin-left: 2rem
 }
 blockquote {
-  border-left: .5rem solid var(--accent);
+  border-left: .5rem solid var(--blue);
   padding-left: var(--gutter-lg);
   margin-left: 0;
   margin-top: var(--gutter-md);
@@ -15224,7 +15224,7 @@ blockquote:last-child {
   margin-bottom: 0
 }
 figure.quote {
-  border-left: .5rem solid var(--accent);
+  border-left: .5rem solid var(--blue);
   padding-left: var(--gutter-lg);
   margin-left: 0;
   margin-top: var(--gutter-md);
@@ -15256,6 +15256,7 @@ figure.quote figcaption {
   position: relative
 }
 .icon svg {
+  display: block;
   width: 100%;
   height: 100%
 }
@@ -15402,7 +15403,7 @@ img:last-child {
   border-color: var(--black)
 }
 .btn--white {
-  color: var(--accent);
+  color: var(--blue);
   background: var(--white);
   border-color: var(--white)
 }
@@ -15412,16 +15413,16 @@ img:last-child {
   background: 0 0;
   border-color: var(--white)
 }
-.btn--accent {
+.btn--blue {
   color: var(--white);
-  background: var(--accent);
-  border-color: var(--accent)
+  background: var(--blue);
+  border-color: var(--blue)
 }
-.btn--accent:focus,
-.btn--accent:hover {
+.btn--blue:focus,
+.btn--blue:hover {
   color: var(--black);
   background: 0 0;
-  border-color: var(--accent)
+  border-color: var(--blue)
 }
 .btn--space {
   margin-top: var(--gutter-md);
@@ -15682,7 +15683,7 @@ input[type=radio]::after {
 input[type=checkbox]::before,
 input[type=radio]::before {
   position: absolute;
-  top: .5rem;
+  top: .2rem;
   left: .5rem;
   content: url("data:image/svg+xml,%3Csvg version='1.1' focusable='false' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 512 512' style='enable-background:new 0 0 512 512;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23444444;%7D%0A%3C/style%3E%3Cpath class='st0' d='M173.9,439.4L7.5,273c-10-10-10-26.2,0-36.2l36.2-36.2c10-10,26.2-10,36.2,0L192,312.7L432.1,72.6 c10-10,26.2-10,36.2,0l36.2,36.2c10,10,10,26.2,0,36.2L210.1,439.4C200.1,449.4,183.9,449.4,173.9,439.4L173.9,439.4z'/%3E%3C/svg%3E");
   display: block;
@@ -15695,7 +15696,7 @@ input[type=radio]::before {
 @media (min-width:1190px) {
   input[type=checkbox]::before,
   input[type=radio]::before {
-    top: .2rem
+    top: -.1rem
   }
 }
 input[type=checkbox]:focus,
@@ -16085,7 +16086,7 @@ table td ul:not(.list--exempt) li::before {
   content: "";
   width: .6rem;
   height: .6rem;
-  background: var(--accent);
+  background: var(--blue);
   border-radius: 50%
 }
 table td ol {
@@ -16111,7 +16112,7 @@ table td ol li::before {
   display: block;
   content: counter(custom-counter) ".";
   font-weight: var(--bold);
-  color: var(--accent)
+  color: var(--blue)
 }
 .table-responsive {
   margin-top: var(--gutter-lg);
@@ -16172,7 +16173,7 @@ hr {
   display: block;
   border-width: .2rem 0 0;
   border-style: solid;
-  border-color: var(--accent);
+  border-color: var(--blue);
   margin-top: var(--gutter-md);
   margin-bottom: var(--gutter-md)
 }
@@ -16473,22 +16474,18 @@ body.sticky .header {
   opacity: .8
 }
 .footer .icon svg {
-  fill: var(--accent)
+  fill: var(--blue)
 }
 @-webkit-keyframes navFadeIn {
   0% {
     opacity: 0;
-    -webkit-transform: translateY(-2rem);
-    -ms-transform: translateY(-2rem);
-    transform: translateY(-2rem);
+    margin-top: -2rem;
     visibility: hidden;
     display: none
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
+    margin-top: 0;
     visibility: visible;
     display: block
   }
@@ -16496,17 +16493,13 @@ body.sticky .header {
 @-moz-keyframes navFadeIn {
   0% {
     opacity: 0;
-    -webkit-transform: translateY(-2rem);
-    -ms-transform: translateY(-2rem);
-    transform: translateY(-2rem);
+    margin-top: -2rem;
     visibility: hidden;
     display: none
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
+    margin-top: 0;
     visibility: visible;
     display: block
   }
@@ -16514,17 +16507,13 @@ body.sticky .header {
 @-o-keyframes navFadeIn {
   0% {
     opacity: 0;
-    -webkit-transform: translateY(-2rem);
-    -ms-transform: translateY(-2rem);
-    transform: translateY(-2rem);
+    margin-top: -2rem;
     visibility: hidden;
     display: none
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
+    margin-top: 0;
     visibility: visible;
     display: block
   }
@@ -16532,17 +16521,13 @@ body.sticky .header {
 @keyframes navFadeIn {
   0% {
     opacity: 0;
-    -webkit-transform: translateY(-2rem);
-    -ms-transform: translateY(-2rem);
-    transform: translateY(-2rem);
+    margin-top: -2rem;
     visibility: hidden;
     display: none
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
+    margin-top: 0;
     visibility: visible;
     display: block
   }
@@ -16550,17 +16535,13 @@ body.sticky .header {
 @-webkit-keyframes navFadeOut {
   0% {
     opacity: 1;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
+    margin-top: 0;
     visibility: visible;
     display: block
   }
   100% {
     opacity: 0;
-    -webkit-transform: translateY(-2rem);
-    -ms-transform: translateY(-2rem);
-    transform: translateY(-2rem);
+    margin-top: -2rem;
     visibility: hidden;
     display: none
   }
@@ -16568,17 +16549,13 @@ body.sticky .header {
 @-moz-keyframes navFadeOut {
   0% {
     opacity: 1;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
+    margin-top: 0;
     visibility: visible;
     display: block
   }
   100% {
     opacity: 0;
-    -webkit-transform: translateY(-2rem);
-    -ms-transform: translateY(-2rem);
-    transform: translateY(-2rem);
+    margin-top: -2rem;
     visibility: hidden;
     display: none
   }
@@ -16586,17 +16563,13 @@ body.sticky .header {
 @-o-keyframes navFadeOut {
   0% {
     opacity: 1;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
+    margin-top: 0;
     visibility: visible;
     display: block
   }
   100% {
     opacity: 0;
-    -webkit-transform: translateY(-2rem);
-    -ms-transform: translateY(-2rem);
-    transform: translateY(-2rem);
+    margin-top: -2rem;
     visibility: hidden;
     display: none
   }
@@ -16604,17 +16577,13 @@ body.sticky .header {
 @keyframes navFadeOut {
   0% {
     opacity: 1;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
+    margin-top: 0;
     visibility: visible;
     display: block
   }
   100% {
     opacity: 0;
-    -webkit-transform: translateY(-2rem);
-    -ms-transform: translateY(-2rem);
-    transform: translateY(-2rem);
+    margin-top: -2rem;
     visibility: hidden;
     display: none
   }
@@ -16650,6 +16619,12 @@ html.js-nav-active {
   .navigation ul li .dropdown-toggle,
   .navigation ul li:before {
     display: none
+  }
+  .navigation ul li > ul {
+    -webkit-animation: navFadeOut .5s;
+    -moz-animation: navFadeOut .5s;
+    -o-animation: navFadeOut .5s;
+    animation: navFadeOut .5s
   }
   .navigation ul li:focus-within > ul,
   .navigation ul li:hover > ul {
@@ -16737,7 +16712,7 @@ html.js-nav-active {
   }
   .navigation > ul > li > a:focus,
   .navigation > ul > li > a:hover {
-    color: var(--accent)
+    color: var(--blue)
   }
   .navigation > ul > li.menu-item-has-children:focus-within > a::after,
   .navigation > ul > li.menu-item-has-children:hover > a::after {
@@ -16746,29 +16721,29 @@ html.js-nav-active {
     transform: rotate(180deg)
   }
   .navigation > ul > li.current-menu-item > a {
-    color: var(--accent-light)
+    color: var(--blue-light)
   }
   .navigation > ul > li.current-menu-item > a::after {
-    color: var(--accent-light)
+    color: var(--blue-light)
   }
   .navigation > ul > li.current-menu-item:focus-within > a,
   .navigation > ul > li.current-menu-item:hover > a {
-    color: var(--accent-light)
+    color: var(--blue-light)
   }
   .navigation > ul > li.current-menu-item:focus-within > a::after,
   .navigation > ul > li.current-menu-item:hover > a::after {
-    color: var(--accent-light)
+    color: var(--blue-light)
   }
   .navigation > ul > li.current-menu-ancestor > a {
     color: var(--black)
   }
   .navigation > ul > li.current-menu-ancestor:focus-within > a,
   .navigation > ul > li.current-menu-ancestor:hover > a {
-    color: var(--accent)
+    color: var(--blue)
   }
   .navigation > ul > li.current-menu-ancestor:focus-within > a::after,
   .navigation > ul > li.current-menu-ancestor:hover > a::after {
-    color: var(--accent)
+    color: var(--blue)
   }
   .navigation > ul > li > ul {
     top: 100%;
@@ -16782,13 +16757,13 @@ html.js-nav-active {
     background-color: var(--grey)
   }
   .navigation > ul > li > ul > li:not(:last-child) > a {
-    border-bottom: .1rem solid var(--accent-light)
+    border-bottom: .1rem solid var(--blue-light)
   }
   .navigation > ul > li > ul > li:focus-within > a,
   .navigation > ul > li > ul > li:hover > a {
     color: var(--white);
-    background-color: var(--accent-light);
-    border-color: var(--accent-light)
+    background-color: var(--blue-light);
+    border-color: var(--blue-light)
   }
   .navigation > ul > li > ul > li.menu-item-has-children:focus-within > a::after,
   .navigation > ul > li > ul > li.menu-item-has-children:hover > a::after {
@@ -16796,25 +16771,25 @@ html.js-nav-active {
   }
   .navigation > ul > li > ul > li.current-menu-item > a {
     color: var(--white);
-    background-color: var(--accent);
-    border-color: var(--accent)
+    background-color: var(--blue);
+    border-color: var(--blue)
   }
   .navigation > ul > li > ul > li.current-menu-item:focus-within > a,
   .navigation > ul > li > ul > li.current-menu-item:hover > a {
     color: var(--white);
-    background-color: var(--accent);
-    border-color: var(--accent)
+    background-color: var(--blue);
+    border-color: var(--blue)
   }
   .navigation > ul > li > ul > li.current-menu-ancestor > a {
     color: var(--black);
-    background-color: var(--accent-light);
-    border-color: var(--accent-light)
+    background-color: var(--blue-light);
+    border-color: var(--blue-light)
   }
   .navigation > ul > li > ul > li.current-menu-ancestor:focus-within > a,
   .navigation > ul > li > ul > li.current-menu-ancestor:hover > a {
     color: var(--white);
-    background-color: var(--accent-light);
-    border-color: var(--accent-light)
+    background-color: var(--blue-light);
+    border-color: var(--blue-light)
   }
   .navigation > ul > li > ul > li.current-menu-ancestor:focus-within > a::after,
   .navigation > ul > li > ul > li.current-menu-ancestor:hover > a::after {
@@ -16969,7 +16944,7 @@ html.js-nav-active {
   width: 4rem;
   border: 0;
   color: var(--grey-light);
-  background-color: var(--accent);
+  background-color: var(--blue);
   padding: 0;
   margin: 0;
   font-style: normal;
@@ -17017,7 +16992,7 @@ html.js-nav-active {
   transition-timing-function: ease;
   transition-duration: .15s;
   transition-property: transform;
-  background-color: var(--accent)
+  background-color: var(--blue)
 }
 .burger__inner {
   transition-timing-function: cubic-bezier(.55,.055,.675,.19);
@@ -17180,7 +17155,7 @@ html.js-nav-active {
 .post {
   display: block;
   background: var(--grey-light);
-  color: var(--accent);
+  color: var(--blue);
   font-weight: var(--regular);
   height: 100%
 }
@@ -17241,8 +17216,8 @@ html.js-nav-active {
 .post .btn {
   margin-top: 0;
   color: var(--white);
-  background: var(--accent);
-  border-color: var(--accent)
+  background: var(--blue);
+  border-color: var(--blue)
 }
 .post__body {
   padding: var(--gutter-md);
@@ -17263,20 +17238,20 @@ html.js-nav-active {
 .post:focus,
 .post:hover {
   color: var(--white);
-  background: var(--accent)
+  background: var(--blue)
 }
 .post:focus .btn,
 .post:hover .btn {
   color: var(--white);
-  background: var(--accent-light);
-  border-color: var(--accent-light)
+  background: var(--blue-light);
+  border-color: var(--blue-light)
 }
 .post .btn {
   margin-top: var(--gutter-lg)
 }
 .post .btn:focus,
 .post .btn:hover {
-  color: var(--accent);
+  color: var(--blue);
   background: var(--white);
   border-color: var(--white)
 }
@@ -17286,21 +17261,21 @@ html.js-nav-active {
 .content--white {
   background: var(--white)
 }
-.content--accent {
-  background: var(--accent);
+.content--blue {
+  background: var(--blue);
   color: var(--white)
 }
-.content--accent h2,
-.content--accent h3,
-.content--accent h4 {
+.content--blue h2,
+.content--blue h3,
+.content--blue h4 {
   color: var(--white)
 }
-.content--accent a:not(.btn) {
+.content--blue a:not(.btn) {
   color: var(--white)
 }
-.content--accent a:not(.btn):focus,
-.content--accent a:not(.btn):hover {
-  color: var(--accent-light)
+.content--blue a:not(.btn):focus,
+.content--blue a:not(.btn):hover {
+  color: var(--blue-light)
 }
 .content--grey {
   background: var(--grey-light)
@@ -17447,7 +17422,7 @@ html.js-nav-active {
   content: "";
   width: .6rem;
   height: .6rem;
-  background: var(--accent);
+  background: var(--blue);
   border-radius: 50%
 }
 .content__body ol {
@@ -17473,7 +17448,7 @@ html.js-nav-active {
   display: block;
   content: counter(custom-counter) ".";
   font-weight: var(--bold);
-  color: var(--accent)
+  color: var(--blue)
 }
 .team {
   background: var(--black);
@@ -17697,7 +17672,7 @@ html.slideout-active {
   margin-bottom: 3rem
 }
 .slideout__job {
-  color: var(--accent)
+  color: var(--blue)
 }
 .slideout__close {
   position: absolute;
@@ -17706,7 +17681,7 @@ html.slideout-active {
   display: block;
   width: 3rem;
   height: 3rem;
-  background: var(--accent);
+  background: var(--blue);
   background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' focusable='false' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 352 512' style='enable-background:new 0 0 352 512;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23ffffff;%7D%0A%3C/style%3E%3Cpath class='st0' d='M242.7,256l100.1-100.1c12.3-12.3,12.3-32.2,0-44.5l-22.2-22.2c-12.3-12.3-32.2-12.3-44.5,0L176,189.3 L75.9,89.2c-12.3-12.3-32.2-12.3-44.5,0L9.2,111.4c-12.3,12.3-12.3,32.2,0,44.5L109.3,256L9.2,356.1c-12.3,12.3-12.3,32.2,0,44.5 l22.2,22.2c12.3,12.3,32.2,12.3,44.5,0L176,322.7l100.1,100.1c12.3,12.3,32.2,12.3,44.5,0l22.2-22.2c12.3-12.3,12.3-32.2,0-44.5 L242.7,256z'/%3E%3C/svg%3E%0A");
   background-repeat: no-repeat;
   background-position: center;
@@ -17835,7 +17810,7 @@ html.js-dialog-active {
   color: var(--black)
 }
 .breadcrumb a:hover {
-  color: var(--accent)
+  color: var(--blue)
 }
 .quicklinks {
   position: relative;
@@ -17862,22 +17837,22 @@ html.js-dialog-active {
   background: 0 0;
   border-color: var(--black)
 }
-.quicklinks--accent {
-  background: var(--accent);
+.quicklinks--blue {
+  background: var(--blue);
   color: var(--white)
 }
-.quicklinks--accent .quicklinks__top h2,
-.quicklinks--accent .quicklinks__top h3,
-.quicklinks--accent .quicklinks__top h4 {
+.quicklinks--blue .quicklinks__top h2,
+.quicklinks--blue .quicklinks__top h3,
+.quicklinks--blue .quicklinks__top h4 {
   color: var(--white)
 }
-.quicklinks--accent .quicklinks__top .btn {
-  color: var(--accent);
+.quicklinks--blue .quicklinks__top .btn {
+  color: var(--blue);
   background: var(--white);
   border-color: var(--white)
 }
-.quicklinks--accent .quicklinks__top .btn:focus,
-.quicklinks--accent .quicklinks__top .btn:hover {
+.quicklinks--blue .quicklinks__top .btn:focus,
+.quicklinks--blue .quicklinks__top .btn:hover {
   color: var(--white);
   background: 0 0;
   border-color: var(--white)
@@ -18006,17 +17981,6 @@ html.js-dialog-active {
 .accordion__term:hover {
   background: var(--black)
 }
-.accordion__term--open {
-  background: var(--black)
-}
-.accordion__term--open .icon {
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg)
-}
-.accordion__term--open .icon svg {
-  fill: var(--white)
-}
 .accordion__title {
   display: flex;
   justify-content: space-between;
@@ -18041,9 +18005,14 @@ html.js-dialog-active {
   flex: 0 0 auto;
   width: auto;
   max-width: 100%;
-  display: none;
-  padding: var(--gutter-md) var(--gutter-lg);
+  max-height: 0;
+  transition: max-height .6s ease-in-out;
+  overflow: hidden;
   background: var(--grey-light)
+}
+.accordion__desc span {
+  display: block;
+  padding: var(--gutter-md) var(--gutter-lg)
 }
 .accordion__desc p {
   margin-top: 1.5rem;
@@ -18054,5 +18023,19 @@ html.js-dialog-active {
 }
 .accordion__desc p:last-child {
   margin-bottom: 0
+}
+.accordion__term--open .accordion__term {
+  background: var(--black)
+}
+.accordion__term--open .accordion__term .icon {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg)
+}
+.accordion__term--open .accordion__term .icon svg {
+  fill: var(--white)
+}
+.accordion__term--open .accordion__desc {
+  max-height: 90rem
 }
 /*# sourceMappingURL=style.css.map */

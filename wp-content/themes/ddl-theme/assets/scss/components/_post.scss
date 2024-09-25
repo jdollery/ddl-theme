@@ -1,7 +1,7 @@
 .post {
   display: block;
   background: var(--grey-light);
-  color: var(--accent);
+  color: var(--blue);
   font-weight: var(--regular);
   height: 100%;
 
@@ -51,8 +51,8 @@
   .btn {
     margin-top: 0;
     color: var(--white);
-    background: var(--accent);
-    border-color: var(--accent);
+    background: var(--blue);
+    border-color: var(--blue);
   }
 
   &__body {
@@ -75,12 +75,12 @@
 
   @include hover-focus {
     color: var(--white);
-    background: var(--accent);
+    background: var(--blue);
     
     .btn {
       color: var(--white);
-      background: var(--accent-light);
-      border-color: var(--accent-light);
+      background: var(--blue-light);
+      border-color: var(--blue-light);
     }
 
   }
@@ -89,7 +89,7 @@
     margin-top: var(--gutter-lg);
 
     @include hover-focus {
-      color: var(--accent);
+      color: var(--blue);
       background: var(--white);
       border-color: var(--white);
     }

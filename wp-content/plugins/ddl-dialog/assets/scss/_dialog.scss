@@ -86,7 +86,7 @@ html {
     width: 3.8rem;
     height: 3.8rem;
     // line-height: 3.15rem;
-    background: var(--accent);
+    background: var(--blue);
     border-radius: 50%;
     // border: 0.4rem solid var(--white);
     z-index: 1;
@@ -102,7 +102,7 @@ html {
     }
 
     @include hover-focus {
-      background: darken(map-get($colors, "accent"), 20%);
+      background: darken(map-get($colors, "blue"), 20%);
     }
 
   }

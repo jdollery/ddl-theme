@@ -45,7 +45,7 @@
                 </button>
               </dt>
               <dd class="accordion__desc" id="description-<?php echo $i ?>" aria-labelledby="title-<?php echo $i ?>" >
-                <?php echo the_sub_field('accordion_description'); ?>
+                <span><?php echo the_sub_field('accordion_description'); ?></span>
               </dd>
             </span>
 

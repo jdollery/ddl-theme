@@ -5,8 +5,8 @@
     background: var(--white);
   }
 
-  &--accent {
-    background: var(--accent);
+  &--blue {
+    background: var(--blue);
     color: var(--white);
 
     h2,
@@ -19,7 +19,7 @@
       color: var(--white);
 
       @include hover-focus {
-        color: var(--accent-light);
+        color: var(--blue-light);
       }
 
     }
