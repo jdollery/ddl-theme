@@ -5,6 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Dental Design - https://dental-design.marketing">
+    <meta name="description" content="<?php bloginfo( 'name' ); ?> - <?php echo get_option('blogdescription'); ?>">
     <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/assets/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/assets/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/assets/img/favicon-16x16.png">
@@ -35,7 +36,7 @@
         </div>
 
         <div class="cell-0 cell-gutter-x text-center">
-          <nav class="navigation" id="headerNav" aria-labelledby="navToggle">
+          <nav class="navigation" id="headerNav" aria-labelledby="navToggle" aria-label="Main menu">
             <ul>
               <?php wp_nav_menu( array (
                 'theme_location' => 'header-menu',

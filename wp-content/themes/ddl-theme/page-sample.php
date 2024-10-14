@@ -57,7 +57,7 @@ get_header(); ?>
                   placeholder="Full name*"
                   required
                 />
-                <label for="patient_name">Full name*</label>
+                <label for="patient_name">Full name<span aria-label="required">*</span></label>
               </div>
 
             </div>
@@ -84,7 +84,7 @@ get_header(); ?>
                   placeholder="Email address*"
                   required
                 />
-                <label for="patient_email">Email address*</label>
+                <label for="patient_email">Email address<span aria-label="required">*</span></label>
               </div>
 
             </div>
@@ -246,7 +246,7 @@ get_header(); ?>
                   placeholder="Full name*"
                   required
                 />
-                <label for="referrer_name">Full name*</label>
+                <label for="referrer_name">Full name<span aria-label="required">*</span></label>
               </div>
 
             </div>
@@ -273,7 +273,7 @@ get_header(); ?>
                   placeholder="Email address*"
                   required
                 />
-                <label for="referrer_email">Email address*</label>
+                <label for="referrer_email">Email address<span aria-label="required">*</span></label>
               </div>
 
             </div>
@@ -312,7 +312,7 @@ get_header(); ?>
             <div class="cell-0 cell-gutter-x-sm">
               <div class="form__input form__input--checkbox">
                 <input type="checkbox" id="marketing_consent" name="marketing_consent" value="Yes, I consent" required >
-                <label for="marketing_consent">I confirm I have the patient&rsquo;s consent to share this information, and also consent to <?php bloginfo( 'name' ); ?> replying and storing these personal details (please see our <a href="<?php echo site_url() ?>/privacy-policy/">privacy policy</a> for more information).</label>
+                <label for="marketing_consent">I confirm I have the patient&rsquo;s consent to share this information, and also consent to <?php bloginfo( 'name' ); ?> replying and storing these personal details (please see our <a href="<?php echo get_privacy_policy_url() ?>">privacy policy</a> for more information).</label>
               </div>
             </div>
 

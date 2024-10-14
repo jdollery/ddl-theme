@@ -398,7 +398,8 @@ a:not([class]) {
 
 a:focus-visible,
 button:focus-visible,
-input:focus-visible {
+input:focus-visible,
+.select2-container--default.select2-container--focus .select2-selection--single {
 	outline: 0.1rem dotted var(--grey-dark);
   text-decoration: none;
   outline-offset: 0.1rem;

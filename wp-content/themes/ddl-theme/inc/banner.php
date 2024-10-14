@@ -153,7 +153,7 @@
 
     <?php if ( is_front_page() ) {  //static home ?>
 
-      <div class="banner__two">
+      <div class="banner__two" aria-hidden="true">
 
         <video playsinline autoplay loop muted poster="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-poster-lg.jpg">
           <source src="<?php echo get_template_directory_uri(); ?>/assets/video/placeholder-video-compressed.mp4" type="video/mp4">
