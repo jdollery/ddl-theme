@@ -518,7 +518,7 @@ select,
 
   &.error {
     border-color: var(--danger);
-    margin-bottom: $error-margin;
+    // margin-bottom: $error-margin;
 
     .select2-selection--single {
       border-color: var(--danger);
@@ -638,8 +638,8 @@ strong.error {
   color: var(--white);
   background: var(--danger);
   font-weight: var(--regular);
-  position: absolute;
-  left: 0;
+  // position: absolute;
+  // left: 0;
   top: calc(100% - $error-margin);
   z-index: 1;
   width: 100%;

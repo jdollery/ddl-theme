@@ -6,6 +6,8 @@
 
 $columns: 12;
 $max-width: 144rem;
+// $gap: 2rem;
+$gap: #{fluid(10px, 20px)};
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -17,6 +19,7 @@ $max-width: 144rem;
 @mixin cell-row {
   display: flex;
   flex-wrap: wrap;
+  gap: $gap;
 }
 
 .cell-row {
@@ -86,7 +89,8 @@ $max-width: 144rem;
     @if($size == $i)  {
       position: relative;
       flex: 0 0 auto;
-      width: $width;
+      // width: $width;
+      width: calc($width - $gap / 2);
       max-width: 100%;
     } 
   }
@@ -114,7 +118,8 @@ $max-width: 144rem;
   .cell-#{$i} {
     position: relative;
     flex: 0 0 auto;
-    width: $width;
+    // width: $width;
+    width: calc($width - $gap / 2);
     max-width: 100%;
   }
 
@@ -145,7 +150,7 @@ $max-width: 144rem;
       .cell#{$infix}-#{$i} {
         position: relative;
         flex: 0 0 auto;
-        width: $width;
+        width: calc($width - $gap / 2);
         max-width: 100%;
       }
 

@@ -137,25 +137,6 @@ jQuery(document).ready(function () { //doc ready start
     //   rows: 0 // Fix to remove extra div v1.8.0-1
     // });
 
-    
-  /*-----------------------------------------------------------------------------------*/
-  /* ACCORDION */
-  /*-----------------------------------------------------------------------------------*/
-
-  // jQuery("#dropItem > dt").on("click", function() {
-  //   if (jQuery(this).hasClass("accordion__term--open")) {
-  //     jQuery(this).removeClass("accordion__term--open");
-  //     jQuery(this).find("button").attr("aria-expanded","false");
-  //     jQuery(this).siblings("dd").slideUp(200);
-  //   } else {
-  //     jQuery("#dropItem > dt").removeClass("accordion__term--open");
-  //     jQuery(this).addClass("accordion__term--open");
-  //     jQuery(this).find("button").attr("aria-expanded","true");
-  //     jQuery("#dropItem > dd").slideUp(200);
-  //     jQuery(this).siblings("dd").slideDown(200);
-  //   }
-  // });
-
 
   /*-----------------------------------------------------------------------------------*/
   /* TEAM SLIDEOUT */
