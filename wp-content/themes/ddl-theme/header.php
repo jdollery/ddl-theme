@@ -20,6 +20,9 @@
         v: "weekly",
       });
     </script> -->
+
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeeB2wqAAAAAGqMuH8alq31npTGxYNA50-Nuo-9"></script>
+
     <?php wp_head(); ?>
 	</head>
 

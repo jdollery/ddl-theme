@@ -1,4 +1,6 @@
-/* --------------------- MIXINS --------------------- */
+/*-----------------------------------------------------------------------------------*/
+/* MIXINS */
+/*-----------------------------------------------------------------------------------*/
 
 @mixin btn-black {
   color: var(--white);
@@ -133,6 +135,44 @@
         margin-right: var(--gutter-md);
       }
 
+    }
+
+  }
+
+  &__icon {
+    display: inline-block;
+
+    svg {
+      @include transition(all);
+    }
+
+  }
+
+  .btn--submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .btn__icon {
+      display: none;
+
+      .icon {
+        @include animation (loaderSpin 2s linear infinite);
+      }
+
+    }
+
+  }
+
+  &--sending {
+    cursor: not-allowed;
+
+    .btn__icon {
+      display: block;
+    }
+
+    .btn__text {
+      display: none;
     }
 
   }

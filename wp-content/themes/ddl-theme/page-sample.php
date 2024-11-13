@@ -40,7 +40,7 @@ get_header(); ?>
       <h5>Heading h5</h5>
       <h6>Heading h6</h6>
 
-      <form class="form" id="validateForm" novalidate="true" method="post" action="https://www.securedent.net/submit.ashx" enctype="multipart/form-data">
+      <form class="form" id="validateForm" novalidate="true" method="post" action="https://www.securedent.net/submit.ashx" enctype="multipart/form-data" name="referral">
 
         <fieldset>
 
@@ -56,6 +56,8 @@ get_header(); ?>
                   name="patient_name"
                   placeholder="Full name*"
                   required
+                  aria-required="true"
+                  aria-label="Full name"
                 />
                 <label for="patient_name">Full name<span aria-label="required">*</span></label>
               </div>
@@ -69,6 +71,7 @@ get_header(); ?>
                   id="patient_dob"
                   name="patient_dob"
                   placeholder="Date of birth"
+                  aria-label="Date of birth"
                 />
                 <label for="patient_dob">Date of birth</label>
               </div>
@@ -83,6 +86,8 @@ get_header(); ?>
                   name="patient_email"
                   placeholder="Email address*"
                   required
+                  aria-required="true"
+                  aria-label="Email address"
                 />
                 <label for="patient_email">Email address<span aria-label="required">*</span></label>
               </div>
@@ -96,6 +101,7 @@ get_header(); ?>
                   id="patient_phone"
                   name="patient_phone"
                   placeholder="Telephone number"
+                  aria-label="Telephone number"
                 />
                 <label for="patient_phone">Telephone number</label>
               </div>
@@ -110,6 +116,8 @@ get_header(); ?>
                   name="new_patient" 
                   data-placeholder="Are you a new patient?*" 
                   required 
+                  aria-required="true"
+                  aria-label="Are you a new patient?"
                   >
                   <option></option>
                   <option label="Yes, I&rsquo;m a new patient" value="Yes">Yes, I&rsquo;m a new patient</option>
@@ -127,6 +135,7 @@ get_header(); ?>
                   name="patient_address"
                   rows="3"
                   placeholder="Address" 
+                  aria-label="Address"
                 ></textarea>
                 <label for="patient_address">Address</label> 
               </div>
@@ -151,6 +160,8 @@ get_header(); ?>
                   name="referral_type" 
                   data-placeholder="Choose a referral type" 
                   required
+                  aria-required="true"
+                  aria-label="Choose a referral type"
                   >
                   <option></option>
                   <option label="Implant referral" value="Implant referral">Implant referral</option>
@@ -169,7 +180,8 @@ get_header(); ?>
                   name="referral_reason"
                   rows="3"
                   placeholder="Reason for referral" 
-                  required
+                  aria-required="true"
+                  aria-label="Reason for referral"
                 ></textarea>
                 <label for="referral_reason">Reason for referral</label> 
               </div>
@@ -185,6 +197,7 @@ get_header(); ?>
                   name="referral_history"
                   rows="3"
                   placeholder="Medical history and relevant information" 
+                  aria-label="Medical history and relevant information"
                 ></textarea>
                 <label for="referral_history">Medical history and relevant information</label> 
               </div>
@@ -200,13 +213,25 @@ get_header(); ?>
                 </div>
                 <div class="cell-auto pr-4">
                   <div class="form__input form__input--checkbox">
-                    <input type="radio" id="endodontic_symptomatic_yes" name="symptomatic" value="Yes">
+                    <input 
+                      type="radio"
+                      id="endodontic_symptomatic_yes"
+                      name="symptomatic"
+                      value="Yes"
+                      aria-label="Is the tooth symptomatic?"
+                    >
                     <label for="endodontic_symptomatic_yes">Yes</label>
                   </div>
                 </div>
                 <div class="cell-auto">
                   <div class="form__input form__input--checkbox">
-                    <input type="radio" id="endodontic_symptomatic_no" name="symptomatic" value="No">
+                    <input 
+                      type="radio"
+                      id="endodontic_symptomatic_no"
+                      name="symptomatic"
+                      value="No"
+                      aria-label="Is the tooth symptomatic?"
+                    >
                     <label for="endodontic_symptomatic_no">No</label>
                   </div>
                 </div>
@@ -221,6 +246,7 @@ get_header(); ?>
                   name="referral_uploads" 
                   id="referral_uploads" 
                   class="upload"
+                  aria-label="Upload any supporting radiographs/images/documents (Max 5MB)"
                 >
                 <label for="referral_uploads"><span class="upload__file">Upload any supporting radiographs/images/documents (Max 5MB)</span><span class="upload__button">Upload</span></label>
               </div>
@@ -245,6 +271,8 @@ get_header(); ?>
                   name="referrer_name"
                   placeholder="Full name*"
                   required
+                  aria-required="true"
+                  aria-label="Full name"
                 />
                 <label for="referrer_name">Full name<span aria-label="required">*</span></label>
               </div>
@@ -258,6 +286,7 @@ get_header(); ?>
                   id="referrer_position"
                   name="referrer_position"
                   placeholder="Position/Job title"
+                  aria-label="Position/Job title"
                 />
                 <label for="referrer_position">Position/Job title</label>
               </div>
@@ -272,6 +301,8 @@ get_header(); ?>
                   name="submit_by"
                   placeholder="Email address*"
                   required
+                  aria-required="true"
+                  aria-label="Email address"
                 />
                 <label for="referrer_email">Email address<span aria-label="required">*</span></label>
               </div>
@@ -285,6 +316,7 @@ get_header(); ?>
                   id="referrer_phone"
                   name="referrer_phone"
                   placeholder="Telephone number"
+                  aria-label="Telephone number"
                 />
                 <label for="referrer_phone">Telephone number</label>
               </div>
@@ -299,6 +331,8 @@ get_header(); ?>
                   rows="3"
                   placeholder="Address" 
                   required
+                  aria-required="true"
+                  aria-label="Address"
                 ></textarea>
                 <label for="referrer_address">Address</label> 
               </div>
@@ -309,26 +343,60 @@ get_header(); ?>
 
           <div class="cell-row cell-row-gutter-x-sm cell-align-center pt-7">
 
-            <div class="cell-0 cell-gutter-x-sm">
+            <!-- <div class="cell-0 cell-gutter-x-sm">
               <div class="form__input form__input--checkbox">
-                <input type="checkbox" id="marketing_consent" name="marketing_consent" value="Yes, I consent" required >
+                <input 
+                  type="checkbox"
+                  id="marketing_consent"
+                  name="marketing_consent"
+                  value="Yes, I consent"
+                  required
+                  aria-required="true"
+                  aria-label="Yes, I consent"
+                >
                 <label for="marketing_consent">I confirm I have the patient&rsquo;s consent to share this information, and also consent to <?php bloginfo( 'name' ); ?> replying and storing these personal details (please see our <a href="<?php echo get_privacy_policy_url() ?>">privacy policy</a> for more information).</label>
+              </div>
+            </div> -->
+
+            <div class="cell-0 cell-gutter-x-xs">
+              <div class="form__input form__input--checkbox form__input--consent">
+                <input 
+                  type="checkbox" 
+                  id="consent" 
+                  name="consent" 
+                  value="Yes, I consent" 
+                  aria-label="Do you consent to your personal information being used for responses and stored by <?php bloginfo( 'name' ); ?>?"
+                >
+                <label for="consent">Do you consent to your personal information being used for responses and stored by <?php bloginfo( 'name' ); ?>? Please refer to our <a href="<?php echo get_privacy_policy_url() ?>">privacy policy</a> for further details.</label>
               </div>
             </div>
 
             <div class="cell cell-gutter-x-sm cell-12 cell-lg-auto pt-3 pt-lg-0">
-              <button class="btn btn--black" type="submit">Submit referral</button>
+
+              <!-- <button class="btn btn--black" type="submit">Submit referral</button>
+
+              <button class="btn btn--black btn--submit" type="submit">
+                <span class="btn__text">Send message</span>
+                <span class="btn__icon">Sending <span class="icon icon--loader"><svg role="img"><use xlink:href="#loader" href="#loader"></use></svg></span></span></span>
+              </button> -->
+
+              <button class="btn btn--black btn--submit" type="submit">
+                <span class="btn__text">Submit referral</span>
+                <span class="btn__icon">Submitting <span class="icon icon--loader"><svg role="img"><use xlink:href="#loader" href="#loader"></use></svg></span></span></span>
+              </button>
+
             </div>
 
           </div>
 
         </fieldset>
 
+        <!-- <input type="hidden" name="recaptcha_response" id="recaptcha_response"> -->
         <!-- <input type="hidden" name="form_uid" value="5fc07193-b633-4f3a-adff-ff7a32f3e11f">
         <input name="required" type="hidden" value="name,submit_by,new_patient">
         <input type="hidden" name="data_order" value="name,submit_by,phone,new_patient,enquiry,gdpr_consent">
-        <input name="ok_url" type="hidden" id="ok_url" value="<?php echo site_url() ?>/thank-you/">
-        <input name="not_ok_url" type="hidden" id="not_ok_url" value="<?php echo site_url() ?>/sorry/"> -->
+        <input name="ok_url" type="hidden" id="ok_url" value="<?php echo get_the_permalink( 1 ) // thank you page ?>">
+        <input name="not_ok_url" type="hidden" id="not_ok_url" value="<?php echo get_the_permalink( 1 ) // sorry page ?>"> -->
 
       </form>
 

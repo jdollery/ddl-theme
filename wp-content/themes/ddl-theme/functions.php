@@ -89,10 +89,10 @@ add_action( 'init', 'register_menus' );
 function ddl_scripts() {
 	// wp_enqueue_script( 'ddl-fonts', get_template_directory_uri() . '/assets/js/fonts.js', array(), '', false ); //remove if Google fonts
   wp_enqueue_style( 'ddl-style', get_stylesheet_uri(), array(), '1.0.0', 'all' );
-	wp_enqueue_script( 'ddl-jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), '3.6.1', true );
+	wp_enqueue_script( 'ddl-jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), '3.7.1', true );
 	wp_enqueue_script( 'ddl-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '1.0.39', true );
-	wp_enqueue_script( 'ddl-validate', get_template_directory_uri() . '/assets/js/validate.js', array(), '1.19.3', true ); 
-	wp_enqueue_script( 'ddl-select2', get_template_directory_uri() . '/assets/js/select2.js', array(), '5.0.0', true );
+	wp_enqueue_script( 'ddl-validate', get_template_directory_uri() . '/assets/js/validate.js', array(), '1.19.5', true ); 
+	wp_enqueue_script( 'ddl-select2', get_template_directory_uri() . '/assets/js/select2.js', array(), '4.1.0', true );
 	// wp_enqueue_script( 'ddl-slick', get_template_directory_uri() . '/assets/js/slick.js', array(), '1.8.0', true );
 	// wp_enqueue_script( 'ddl-map', get_template_directory_uri() . '/assets/js/map.js', array(), '1.0.0', true ); //outdated - need to new version (api keys)
 	// wp_enqueue_script( 'ddl-wow', get_template_directory_uri() . '/assets/js/wow.js', array(), '3.0.0', true );
@@ -115,17 +115,17 @@ add_action( 'wp_enqueue_scripts', 'ddl_scripts' );
 /* REMOVE WP GLOBAL STYLES */
 /*-----------------------------------------------------------------------------------*/
 
-function remove_jquery() {
-	if (!is_admin()) {
-		wp_dequeue_script( 'jquery' );
-		wp_deregister_script( 'jquery' );
-	}
-}
+// function remove_jquery() {
+// 	if (!is_admin()) {
+// 		wp_dequeue_script( 'jquery' );
+// 		wp_deregister_script( 'jquery' );
+// 	}
+// }
 
-add_action('init', 'remove_jquery');
+// add_action('init', 'remove_jquery');
 
-remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
-remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 );
+// remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
+// remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 );
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -189,7 +189,7 @@ function get_excerpt($limit, $source = null) {
 }
 
 
-/* --------------------- Remove menu options form wp-admin --------------------- */
+/* --------------------- Remove menu options from wp-admin --------------------- */
 
 // function remove_menus() {
 	// remove_menu_page( 'index.php' );                  //Dashboard
@@ -206,6 +206,22 @@ function get_excerpt($limit, $source = null) {
 // }
 
 // add_action( 'admin_menu', 'remove_menus' );
+
+
+/* --------------------- Remove menu options from wp-admin for all users except administrator --------------------- */
+
+function wpse28782_remove_menu_items() {
+	if( !current_user_can( 'administrator' ) ):
+		remove_menu_page( 'edit.php?post_type=treatments' ); 			//Treatment Pages
+		remove_menu_page( 'edit.php?post_type=team' );						//Team Pages
+		remove_menu_page( 'edit.php?post_type=testimonials' ); 		//Testimonial Pages
+		remove_menu_page( 'edit.php?post_type=page' );    				//Pages
+		remove_menu_page( 'tools.php' );                  				//Tools
+		remove_menu_page('wpseo_dashboard');											//Yoast Options
+	endif;
+}
+
+add_action( 'admin_menu', 'wpse28782_remove_menu_items' );
 
 
 /* --------------------- Unregister widgets --------------------- */
@@ -335,23 +351,23 @@ add_filter( 'edit_post_link', function( $link, $post_id, $text ) {
 
 /* --------------------- Hide the content editor on multiple page templates --------------------- */
 
-function remove_editor() {
-	if (isset($_GET['post'])) {
-		$id = $_GET['post'];
-		$template = get_post_meta($id, '_wp_page_template', true);
-		switch ($template) {
-			case 'page-home.php':
-			case 'page-sections.php':
-			remove_post_type_support('page', 'editor');
-			break;
-			default :
-			// Don't remove any other template.
-			break;
-		}
-	}
-}
+// function remove_editor() {
+// 	if (isset($_GET['post'])) {
+// 		$id = $_GET['post'];
+// 		$template = get_post_meta($id, '_wp_page_template', true);
+// 		switch ($template) {
+// 			case 'page-home.php':
+// 			case 'page-sections.php':
+// 			remove_post_type_support('page', 'editor');
+// 			break;
+// 			default :
+// 			// Don't remove any other template.
+// 			break;
+// 		}
+// 	}
+// }
 
-add_action('init', 'remove_editor');
+// add_action('init', 'remove_editor');
 
 
 /*-----------------------------------------------------------------------------------*/

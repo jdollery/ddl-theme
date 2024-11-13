@@ -19,8 +19,8 @@
     padding-bottom: var(--gutter-lg);
   }
 
-  &__heading {
-    font-size: var(--size-h2);
+  &__lead {
+    font-size: var(--size-h6);
   }
   
   &__list {
@@ -44,73 +44,65 @@
   }
 
   &__item {
+    display: block;
 
-    &:not(:last-child) {
-      border-bottom: 0.2rem solid var(--grey);
-    }
-
-  }
-  
-  .icon {
-    @include transition (all);
-
-    svg {
-      fill: var(--white);
-      position: absolute;
-      top: 0;
-      left: 0;
+    &:not(:first-child) {
+      margin: 1rem 0 0;
     }
 
   }
 
-  &__term {
+  &__toggle {
     cursor: pointer;
     position: relative;
     color: var(--white);
-    background: var(--grey-dark);   
-    margin: 0;
-
-    @include hover-focus {
-      background: var(--black);
-    }
-
-  }
-
-  &__title {
+    background: var(--black);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: var(--size-h6);
+    font-weight: var(--medium);
+    line-height: 1.3;
+    letter-spacing: 0.08rem;
+    border-radius: var(--border-radius-sm);
     text-align: left;
-    margin: 0;
     width: 100%;
-    // font-size: var(--size-h6);
-    letter-spacing: 0.15rem;
-    padding: var(--gutter-sm) var(--gutter-md);
+    margin: 0;
+    padding: 2rem 3rem;
+    @include transition(all);
 
-    @include media-up(md) {
-      padding: var(--gutter-md) var(--gutter-lg);
+    &:hover {
+      background: var(--accent-light);
     }
 
-
-    span:not(.icon) {
+    span:not(.icon, .btn) {
       flex: 1 0 0;
       padding: 0 2rem 0 0;
     }
 
+    .icon {
+      @include transition (all);
+  
+      svg {
+        fill: var(--grey-light);
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+  
+    }
+
   }
 
-  &__desc {
-    @include cell(auto);
-    // display: none;
-    max-height: 0;
-    transition: max-height 0.6s ease-in-out;
-    overflow: hidden;
+  &__description {
+    display: none;
+    margin: 0;
+    padding: 0;
     background: var(--grey-light);
+  }
 
-    span {
-      display: block;
-      padding: var(--gutter-md) var(--gutter-lg);
-    }
+  &__content {
+    padding: 3rem;
 
     p {
       margin-top: 1.5rem;
@@ -130,15 +122,15 @@
 
   /* --- OPEN --- */
 
-  &__term {
+  &__item {
 
     &--open {
     
       .accordion {
   
-        &__term {
-          background: var(--black);
-  
+        &__toggle {
+          background: var(--accent);
+          
           .icon {
             @include transform (rotate(180deg));
   
@@ -147,13 +139,9 @@
             }
   
           }
-  
+
         }
 
-        &__desc { 
-          max-height: 90rem;
-        }
-  
       }
   
     }

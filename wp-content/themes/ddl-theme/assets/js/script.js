@@ -248,9 +248,65 @@ jQuery(document).ready(function () { //doc ready start
     }
   });
 
-  $.validator.addMethod('filesize', function(value, element, param) {
+  jQuery.validator.addMethod('filesize', function(value, element, param) {
     return this.optional(element) || (element.files[0].size <= param)
   }, 'File size must be less than 5mb');
+
+  jQuery(".form").on( "submit", function(e) {
+
+    e.preventDefault();
+
+    if (jQuery(this).valid()) {
+
+      jQuery(this).find('.btn--submit').addClass('btn--sending');
+    
+      grecaptcha.ready(function() {
+        grecaptcha.execute('XXXXXXXXXXXX', {action: 'submit'}).then(function(token) {
+    
+          let recaptchaResponse = document.getElementById("recaptcha_response")
+          recaptchaResponse.value = token 
+    
+          const data = new FormData(e.target);
+    
+          fetch( "https://XXXXXXXXX/wp-content/themes/XXXXXXXXX/validate.php", {
+            method: 'post',
+            body: data,
+          })
+    
+          .then((response) => response.text())
+          .then((response) => {
+    
+            const responseText = JSON.parse(response)
+            
+            if (responseText.success) { 
+
+              jQuery(this).find('.btn--submit').removeClass('btn--sending');
+
+              document.querySelector(".form").submit();  
+    
+            } else {
+
+              jQuery(this).find('.btn--submit').removeClass('btn--sending');
+    
+              console.log('reCAPTCHA error', responseText);
+        
+            }
+    
+          })
+    
+          .catch(error => {
+    
+            console.log('server side error');
+    
+          })
+    
+        })
+    
+      })
+
+    }
+
+  });
 
 }); //doc ready end
 
@@ -286,123 +342,91 @@ jQuery(document).ready(function () { //doc ready start
 /* ACCORDION */
 /*-----------------------------------------------------------------------------------*/
 
-// let slideUp = (target, duration=500) => {
-//   target.style.transitionProperty = 'height, margin, padding';
-//   target.style.transitionDuration = duration + 'ms';
-//   target.style.boxSizing = 'border-box';
-//   target.style.height = target.offsetHeight + 'px';
-//   target.offsetHeight;
-//   target.style.overflow = 'hidden';
-//   target.style.height = 0;
-//   target.style.paddingTop = 0;
-//   target.style.paddingBottom = 0;
-//   target.style.marginTop = 0;
-//   target.style.marginBottom = 0;
-//   window.setTimeout( () => {
-//     target.style.display = 'none';
-//     target.style.removeProperty('height');
-//     target.style.removeProperty('padding-top');
-//     target.style.removeProperty('padding-bottom');
-//     target.style.removeProperty('margin-top');
-//     target.style.removeProperty('margin-bottom');
-//     target.style.removeProperty('overflow');
-//     target.style.removeProperty('transition-duration');
-//     target.style.removeProperty('transition-property');
-//     //alert("!");
-//   }, duration);
-// }
-
-// let slideDown = (target, duration=500) => {
-//   target.style.removeProperty('display');
-//   let display = window.getComputedStyle(target).display;
-
-//   if (display === 'none')
-//     display = 'block';
-
-//   target.style.display = display;
-//   let height = target.offsetHeight;
-//   target.style.overflow = 'hidden';
-//   target.style.height = 0;
-//   target.style.paddingTop = 0;
-//   target.style.paddingBottom = 0;
-//   target.style.marginTop = 0;
-//   target.style.marginBottom = 0;
-//   target.offsetHeight;
-//   target.style.boxSizing = 'border-box';
-//   target.style.transitionProperty = "height, margin, padding";
-//   target.style.transitionDuration = duration + 'ms';
-//   target.style.height = height + 'px';
-//   target.style.removeProperty('padding-top');
-//   target.style.removeProperty('padding-bottom');
-//   target.style.removeProperty('margin-top');
-//   target.style.removeProperty('margin-bottom');
-//   window.setTimeout( () => {
-//     target.style.removeProperty('height');
-//     target.style.removeProperty('overflow');
-//     target.style.removeProperty('transition-duration');
-//     target.style.removeProperty('transition-property');
-//   }, duration);
-// }
-
-// let slideToggle = (target, duration = 500) => {
-//   if (window.getComputedStyle(target).display === 'none') {
-//     return slideDown(target, duration);
-//   } else {
-//     return slideUp(target, duration);
-//   }
-// }
-
-const headers = document.querySelectorAll('#dropItem > dt');
-
-for(var i = 0; i < headers.length; i++) {
-	headers[i].addEventListener('click', openAccordion);
+let slideUp = (target, duration = 500) => {
+  target.style.transitionProperty = 'height, margin, padding';
+  target.style.transitionDuration = duration + 'ms';
+  target.style.height = target.scrollHeight + 'px';
+  target.offsetHeight;
+  target.style.overflow = 'hidden';
+  target.style.height = 0;
+  target.style.paddingTop = 0;
+  target.style.paddingBottom = 0;
+  target.style.marginTop = 0;
+  target.style.marginBottom = 0;
+  window.setTimeout( () => {
+    target.style.display = 'none';
+    target.style.removeProperty('height');
+    target.style.removeProperty('padding-top');
+    target.style.removeProperty('padding-bottom');
+    target.style.removeProperty('margin-top');
+    target.style.removeProperty('margin-bottom');
+    target.style.removeProperty('overflow');
+    target.style.removeProperty('transition-duration');
+    target.style.removeProperty('transition-property');
+  }, duration);
 }
 
-function openAccordion(e) {
+let slideDown = (target, duration = 500) => {
+  target.style.removeProperty('display');
+  let display = window.getComputedStyle(target).display;
 
-	var parent = this.parentElement;
-	var toggle = this.querySelector('button');
-  var sibling = this.nextElementSibling;
-	
-	if (!parent.classList.contains('accordion__term--open')) {
-		parent.classList.add('accordion__term--open');
-    toggle.setAttribute( 'aria-expanded', 'true' );
-    sibling.classList.add('accordion__desc--open');
-    // slideDown(sibling);
-	}
-	else {
-		parent.classList.remove('accordion__term--open');
-    toggle.setAttribute( 'aria-expanded', 'false' );
-    sibling.classList.remove('accordion__desc--open');
-    // slideUp(sibling);
-	}
+  if (display === 'none')
+    display = 'block';
 
+  target.style.display = display;
+  let height = target.scrollHeight;
+  target.style.overflow = 'hidden';
+  target.style.height = 0;
+  target.style.paddingTop = 0;
+  target.style.paddingBottom = 0;
+  target.style.marginTop = 0;
+  target.style.marginBottom = 0;
+  target.offsetHeight;
+  target.style.transitionProperty = "height, margin, padding";
+  target.style.transitionDuration = duration + 'ms';
+  target.style.height = height + 'px';
+  target.style.removeProperty('padding-top');
+  target.style.removeProperty('padding-bottom');
+  target.style.removeProperty('margin-top');
+  target.style.removeProperty('margin-bottom');
+  window.setTimeout( () => {
+    target.style.removeProperty('height');
+    target.style.removeProperty('overflow');
+    target.style.removeProperty('transition-duration');
+    target.style.removeProperty('transition-property');
+  }, duration);
 }
 
-function openCurrAccordion(e) {
+var slideToggle = (target, duration = 500) => {
+  if (window.getComputedStyle(target).display === 'none') {
+    return slideDown(target, duration);
+  } else {
+    return slideUp(target, duration);
+  }
+}
 
-	for(var i = 0; i < headers.length; i++) {
+var dropDowns = document.querySelectorAll("#accordionItem")
 
-		var parent = headers[i].parentElement;
-    var toggle = headers[i].querySelector('button');
-    var sibling = headers[i].nextElementSibling;
+dropDowns.forEach((dropDown) => {
+  
+  dropDown.addEventListener('click', function() {
 
-		if (this === headers[i] && !parent.classList.contains('accordion__term--open')) {
-			parent.classList.add('accordion__term--open');
-      toggle.setAttribute( 'aria-expanded', 'true' );
-      sibling.classList.add('accordion__desc--open');
-      // slideDown(sibling);
-		}
-		else {
-			parent.classList.remove('accordion__term--open');
+    slideToggle(dropDown.nextElementSibling, 500);
+
+    var toggle = dropDown.querySelector('button');
+    
+    if (dropDown.classList.contains('accordion__item--open')) {
+      dropDown.classList.remove('accordion__item--open');
       toggle.setAttribute( 'aria-expanded', 'false' );
-      sibling.classList.remove('accordion__desc--open');
-      // slideUp(sibling);
-		}
+    }
+    else {
+      dropDown.classList.add('accordion__item--open');
+      toggle.setAttribute( 'aria-expanded', 'true' );
+    }
 
-	}
-
-}
+  });
+  
+});
 
 
 /*-----------------------------------------------------------------------------------*/
