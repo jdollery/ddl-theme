@@ -95,25 +95,68 @@
 /* ANIMATIONS - TAKEN FROM https://animate.style/ */
 /*-----------------------------------------------------------------------------------*/
 
+@include keyframes (navFadeIn) {
+      
+  0% {
+    opacity: 0;
+    margin-top: -2rem;
+    visibility: hidden;
+    display: none;
+  }
+
+  100% {
+    opacity: 1;
+    margin-top: 0;
+    visibility: visible;
+    display: block;
+  }
+
+}
+
+@include keyframes (navFadeOut) {
+
+  0% {
+    opacity: 1;
+    margin-top: 0;
+    visibility: visible;
+    display: block;
+  }
+
+  100% {
+    opacity: 0;
+    margin-top: -2rem;
+    visibility: hidden;
+    display: none;
+  }
+
+}
+
 @include keyframes (heartbeat){
+
   0% {
     transform: scale( .80 );
   }
+
   20% {
     transform: scale( 1 );
   }
+
   40% {
     transform: scale( .80 );
   }
+
   60% {
     transform: scale( 1 );
   }
+
   80% {
     transform: scale( .80 );
   }
+
   100% {
     transform: scale( .80 );
   }
+
 }
 
 @include keyframes (loaderSpin){

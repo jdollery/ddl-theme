@@ -189,7 +189,7 @@
 
 }
 
-// <a class="btn btn--blue btn--space" href="<?php echo site_url() ?>/team/#joe-smith" onclick="window.open(this.href, '_self'); return false;">View Joe’s Profile</a>
+// <a class="btn btn--accent btn--space" href="<?php echo site_url() ?>/team/#joe-smith" onclick="window.open(this.href, '_self'); return false;">View Joe’s Profile</a>
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -275,7 +275,7 @@ html.slideout-active {
   }
 
   &__job {
-    color: var(--blue);
+    color: var(--accent);
   }
 
   &__close {
@@ -285,11 +285,11 @@ html.slideout-active {
     display: block;
     width: 3rem;
     height: 3rem;
-    background: var(--blue);
-    background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' focusable='false' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 352 512' style='enable-background:new 0 0 352 512;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23ffffff;%7D%0A%3C/style%3E%3Cpath class='st0' d='M242.7,256l100.1-100.1c12.3-12.3,12.3-32.2,0-44.5l-22.2-22.2c-12.3-12.3-32.2-12.3-44.5,0L176,189.3 L75.9,89.2c-12.3-12.3-32.2-12.3-44.5,0L9.2,111.4c-12.3,12.3-12.3,32.2,0,44.5L109.3,256L9.2,356.1c-12.3,12.3-12.3,32.2,0,44.5 l22.2,22.2c12.3,12.3,32.2,12.3,44.5,0L176,322.7l100.1,100.1c12.3,12.3,32.2,12.3,44.5,0l22.2-22.2c12.3-12.3,12.3-32.2,0-44.5 L242.7,256z'/%3E%3C/svg%3E%0A");
+    background: var(--accent);
+    background-image: $icon-cross-white;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 40%;
+    background-size: 70%;
     // border-radius: 50%;
     border: 0;
     z-index: 1;

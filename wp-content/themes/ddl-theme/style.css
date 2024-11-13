@@ -5,6 +5,118 @@
   Author: Dental Design
   Author URI: https://dental-design.marketing/
 */
+@-webkit-keyframes navFadeIn {
+  0% {
+    opacity: 0;
+    margin-top: -2rem;
+    visibility: hidden;
+    display: none
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+    visibility: visible;
+    display: block
+  }
+}
+@-moz-keyframes navFadeIn {
+  0% {
+    opacity: 0;
+    margin-top: -2rem;
+    visibility: hidden;
+    display: none
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+    visibility: visible;
+    display: block
+  }
+}
+@-o-keyframes navFadeIn {
+  0% {
+    opacity: 0;
+    margin-top: -2rem;
+    visibility: hidden;
+    display: none
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+    visibility: visible;
+    display: block
+  }
+}
+@keyframes navFadeIn {
+  0% {
+    opacity: 0;
+    margin-top: -2rem;
+    visibility: hidden;
+    display: none
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+    visibility: visible;
+    display: block
+  }
+}
+@-webkit-keyframes navFadeOut {
+  0% {
+    opacity: 1;
+    margin-top: 0;
+    visibility: visible;
+    display: block
+  }
+  100% {
+    opacity: 0;
+    margin-top: -2rem;
+    visibility: hidden;
+    display: none
+  }
+}
+@-moz-keyframes navFadeOut {
+  0% {
+    opacity: 1;
+    margin-top: 0;
+    visibility: visible;
+    display: block
+  }
+  100% {
+    opacity: 0;
+    margin-top: -2rem;
+    visibility: hidden;
+    display: none
+  }
+}
+@-o-keyframes navFadeOut {
+  0% {
+    opacity: 1;
+    margin-top: 0;
+    visibility: visible;
+    display: block
+  }
+  100% {
+    opacity: 0;
+    margin-top: -2rem;
+    visibility: hidden;
+    display: none
+  }
+}
+@keyframes navFadeOut {
+  0% {
+    opacity: 1;
+    margin-top: 0;
+    visibility: visible;
+    display: block
+  }
+  100% {
+    opacity: 0;
+    margin-top: -2rem;
+    visibility: hidden;
+    display: none
+  }
+}
 @-webkit-keyframes heartbeat {
   0% {
     transform: scale(.8)
@@ -13142,10 +13254,9 @@ figure.quote figcaption {
   width: 100%;
   height: 100%
 }
-.icon--close {
-  width: 1.1rem;
-  height: 1.1rem;
-  vertical-align: baseline
+.icon--cross {
+  width: 3rem;
+  aspect-ratio: 1/1
 }
 .icon--arrow {
   width: 3rem;
@@ -13194,6 +13305,10 @@ figure.quote figcaption {
 .icon--clock {
   width: 1.7rem;
   height: 1.7rem
+}
+.icon--loader {
+  width: 2rem;
+  aspect-ratio: 1/1
 }
 img {
   display: block;
@@ -13343,24 +13458,36 @@ img:last-child {
   display: inline-block
 }
 .btn__icon svg {
+  fill: var(--white);
   transition: all .3s cubic-bezier(.5,0,.5,1)
 }
-.btn .btn--submit {
+.btn--submit {
   display: flex;
   justify-content: center;
   align-items: center
 }
-.btn .btn--submit .btn__icon {
+.btn--submit .btn__icon {
   display: none
 }
-.btn .btn--submit .btn__icon .icon {
+.btn--submit .btn__icon .icon {
+  margin: 0 0 0 .5rem;
   -webkit-animation: loaderSpin 2s linear infinite;
   -moz-animation: loaderSpin 2s linear infinite;
   -o-animation: loaderSpin 2s linear infinite;
   animation: loaderSpin 2s linear infinite
 }
 .btn--sending {
-  cursor: not-allowed
+  cursor: not-allowed;
+  color: var(--white);
+  background: var(--grey-dark);
+  border-color: var(--grey-dark);
+  opacity: .5
+}
+.btn--sending:focus,
+.btn--sending:hover {
+  color: var(--white);
+  background: var(--grey-dark);
+  border-color: var(--grey-dark)
 }
 .btn--sending .btn__icon {
   display: block
@@ -13384,11 +13511,31 @@ img:last-child {
 .form:last-child {
   margin-bottom: 0
 }
+.form__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem
+}
+.form__cell {
+  position: relative;
+  max-width: 100%
+}
+.form__cell--full {
+  flex: 0 0 auto;
+  width: 100%
+}
+.form__cell--half {
+  flex: 0 0 auto;
+  width: calc(50% - 1rem)
+}
+.form__cell--flex {
+  flex: 1 0 0;
+  width: auto
+}
 .form__input {
   position: relative;
   display: flex;
-  flex-direction: column;
-  margin-bottom: var(--gutter-md)
+  flex-direction: column
 }
 .form__input--textarea {
   height: 100%
@@ -13588,27 +13735,21 @@ input[type=radio]::after {
   border-color: var(--grey);
   border-radius: 0;
   transition: border .3s ease-in-out,background-color .3s ease-in-out;
-  height: 2.3rem;
-  width: 2.3rem
+  width: 2.3rem;
+  aspect-ratio: 1/1
 }
 input[type=checkbox]::before,
 input[type=radio]::before {
   position: absolute;
   top: .2rem;
-  left: .5rem;
-  content: url("data:image/svg+xml,%3Csvg version='1.1' focusable='false' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 512 512' style='enable-background:new 0 0 512 512;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23444444;%7D%0A%3C/style%3E%3Cpath class='st0' d='M173.9,439.4L7.5,273c-10-10-10-26.2,0-36.2l36.2-36.2c10-10,26.2-10,36.2,0L192,312.7L432.1,72.6 c10-10,26.2-10,36.2,0l36.2,36.2c10,10,10,26.2,0,36.2L210.1,439.4C200.1,449.4,183.9,449.4,173.9,439.4L173.9,439.4z'/%3E%3C/svg%3E");
+  left: .2rem;
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M9.9997 15.1709L19.1921 5.97852L20.6063 7.39273L9.9997 17.9993L3.63574 11.6354L5.04996 10.2212L9.9997 15.1709Z'/%3E%3C/svg%3E");
   display: block;
-  height: 1.4rem;
-  width: 1.4rem;
+  width: 2rem;
+  aspect-ratio: 1/1;
   color: transparent;
   z-index: 1;
   opacity: 0
-}
-@media (min-width:1180px) {
-  input[type=checkbox]::before,
-  input[type=radio]::before {
-    top: -.1rem
-  }
 }
 input[type=checkbox]:focus,
 input[type=radio]:focus {
@@ -14151,27 +14292,26 @@ hr {
   position: absolute;
   top: 0;
   right: 0;
-  width: 5.4rem;
-  height: 100%
+  width: 6rem;
+  height: 100%;
+  display: flex;
+  justify-content: center
 }
 .select2-container--default .select2-selection--single .select2-selection__arrow b {
-  height: 100%;
-  display: block;
-  position: relative
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0
 }
 .select2-container--default .select2-selection--single .select2-selection__arrow b::after {
-  position: absolute;
-  left: 50%;
-  top: 48%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  width: 1.7rem;
-  height: 1.7rem;
-  content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 36.1 20.8' style='enable-background:new 0 0 36.1 20.8;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%233A4145;%7D%0A%3C/style%3E%3Cpath class='st0' d='M16.2,20c1,1,2.6,1,3.7,0L35.4,4.5c1-1,1-2.6,0-3.7c-1-1-2.6-1-3.7,0L18.1,14.5L4.4,0.9c-1-1-2.6-1-3.7,0 s-1,2.6,0,3.7L16.2,20L16.2,20z'/%3E%3C/svg%3E%0A")
+  display: block;
+  width: 2.5rem;
+  aspect-ratio: 1/1;
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M18.4,7.4l1.4,1.4-7.8,7.8-7.8-7.8,1.4-1.4,6.4,6.4,6.4-6.4Z'/%3E%3C/svg%3E")
 }
 .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b::after {
-  content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 36.1 20.8' style='enable-background:new 0 0 36.1 20.8;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%233A4145;%7D%0A%3C/style%3E%3Cpath class='st0' d='M19.9,0.8c-1-1-2.6-1-3.7,0L0.8,16.3c-1,1-1,2.6,0,3.7c1,1,2.6,1,3.7,0L18.1,6.3L31.7,20c1,1,2.6,1,3.7,0 c1-1,1-2.6,0-3.7L19.9,0.8L19.9,0.8z'/%3E%3C/svg%3E")
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M5.6,16.6l-1.4-1.4,7.8-7.8,7.8,7.8-1.4,1.4-6.4-6.4-6.4,6.4Z'/%3E%3C/svg%3E")
 }
 .select2-container--default.select2-container--focus .select2-selection--single {
   background: var(--grey)
@@ -14391,118 +14531,6 @@ body.sticky .header {
 .footer .icon svg {
   fill: var(--blue)
 }
-@-webkit-keyframes navFadeIn {
-  0% {
-    opacity: 0;
-    margin-top: -2rem;
-    visibility: hidden;
-    display: none
-  }
-  100% {
-    opacity: 1;
-    margin-top: 0;
-    visibility: visible;
-    display: block
-  }
-}
-@-moz-keyframes navFadeIn {
-  0% {
-    opacity: 0;
-    margin-top: -2rem;
-    visibility: hidden;
-    display: none
-  }
-  100% {
-    opacity: 1;
-    margin-top: 0;
-    visibility: visible;
-    display: block
-  }
-}
-@-o-keyframes navFadeIn {
-  0% {
-    opacity: 0;
-    margin-top: -2rem;
-    visibility: hidden;
-    display: none
-  }
-  100% {
-    opacity: 1;
-    margin-top: 0;
-    visibility: visible;
-    display: block
-  }
-}
-@keyframes navFadeIn {
-  0% {
-    opacity: 0;
-    margin-top: -2rem;
-    visibility: hidden;
-    display: none
-  }
-  100% {
-    opacity: 1;
-    margin-top: 0;
-    visibility: visible;
-    display: block
-  }
-}
-@-webkit-keyframes navFadeOut {
-  0% {
-    opacity: 1;
-    margin-top: 0;
-    visibility: visible;
-    display: block
-  }
-  100% {
-    opacity: 0;
-    margin-top: -2rem;
-    visibility: hidden;
-    display: none
-  }
-}
-@-moz-keyframes navFadeOut {
-  0% {
-    opacity: 1;
-    margin-top: 0;
-    visibility: visible;
-    display: block
-  }
-  100% {
-    opacity: 0;
-    margin-top: -2rem;
-    visibility: hidden;
-    display: none
-  }
-}
-@-o-keyframes navFadeOut {
-  0% {
-    opacity: 1;
-    margin-top: 0;
-    visibility: visible;
-    display: block
-  }
-  100% {
-    opacity: 0;
-    margin-top: -2rem;
-    visibility: hidden;
-    display: none
-  }
-}
-@keyframes navFadeOut {
-  0% {
-    opacity: 1;
-    margin-top: 0;
-    visibility: visible;
-    display: block
-  }
-  100% {
-    opacity: 0;
-    margin-top: -2rem;
-    visibility: hidden;
-    display: none
-  }
-}
 html.js-nav-active {
   overflow: hidden
 }
@@ -14536,19 +14564,19 @@ html.js-nav-active {
     display: none
   }
   .navigation ul li > ul {
-    -webkit-animation: navFadeOut .5s;
-    -moz-animation: navFadeOut .5s;
-    -o-animation: navFadeOut .5s;
-    animation: navFadeOut .5s
+    -webkit-animation: navFadeOut .3s;
+    -moz-animation: navFadeOut .3s;
+    -o-animation: navFadeOut .3s;
+    animation: navFadeOut .3s
   }
   .navigation ul li:focus-within > ul,
   .navigation ul li:hover > ul {
     visibility: visible;
     display: block;
-    -webkit-animation: navFadeIn .5s;
-    -moz-animation: navFadeIn .5s;
-    -o-animation: navFadeIn .5s;
-    animation: navFadeIn .5s
+    -webkit-animation: navFadeIn .3s;
+    -moz-animation: navFadeIn .3s;
+    -o-animation: navFadeIn .3s;
+    animation: navFadeIn .3s
   }
   .navigation ul li a {
     display: flex;
@@ -14561,9 +14589,9 @@ html.js-nav-active {
   .navigation ul li.menu-item-has-children > a::after {
     display: block;
     content: "";
-    width: 1.4rem;
-    height: 1rem;
-    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 36.1 20.8' style='enable-background:new 0 0 36.1 20.8;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%233A4145;%7D%0A%3C/style%3E%3Cpath class='st0' d='M16.2,20c1,1,2.6,1,3.7,0L35.4,4.5c1-1,1-2.6,0-3.7c-1-1-2.6-1-3.7,0L18.1,14.5L4.4,0.9c-1-1-2.6-1-3.7,0 s-1,2.6,0,3.7L16.2,20L16.2,20z'/%3E%3C/svg%3E%0A");
+    width: 2.2rem;
+    aspect-ratio: 1/1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M18.4,7.4l1.4,1.4-7.8,7.8-7.8-7.8,1.4-1.4,6.4,6.4,6.4-6.4Z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     transition: all .3s cubic-bezier(.5,0,.5,1);
     margin: 0 0 0 1rem
@@ -14627,7 +14655,7 @@ html.js-nav-active {
   }
   .navigation > ul > li > a:focus,
   .navigation > ul > li > a:hover {
-    color: var(--blue)
+    color: var(--accent)
   }
   .navigation > ul > li.menu-item-has-children:focus-within > a::after,
   .navigation > ul > li.menu-item-has-children:hover > a::after {
@@ -14654,11 +14682,11 @@ html.js-nav-active {
   }
   .navigation > ul > li.current-menu-ancestor:focus-within > a,
   .navigation > ul > li.current-menu-ancestor:hover > a {
-    color: var(--blue)
+    color: var(--accent)
   }
   .navigation > ul > li.current-menu-ancestor:focus-within > a::after,
   .navigation > ul > li.current-menu-ancestor:hover > a::after {
-    color: var(--blue)
+    color: var(--accent)
   }
   .navigation > ul > li > ul {
     top: 100%;
@@ -14686,14 +14714,14 @@ html.js-nav-active {
   }
   .navigation > ul > li > ul > li.current-menu-item > a {
     color: var(--white);
-    background-color: var(--blue);
-    border-color: var(--blue)
+    background-color: var(--accent);
+    border-color: var(--accent)
   }
   .navigation > ul > li > ul > li.current-menu-item:focus-within > a,
   .navigation > ul > li > ul > li.current-menu-item:hover > a {
     color: var(--white);
-    background-color: var(--blue);
-    border-color: var(--blue)
+    background-color: var(--accent);
+    border-color: var(--accent)
   }
   .navigation > ul > li > ul > li.current-menu-ancestor > a {
     color: var(--black);
@@ -15587,7 +15615,7 @@ html.slideout-active {
   margin-bottom: 3rem
 }
 .slideout__job {
-  color: var(--blue)
+  color: var(--accent)
 }
 .slideout__close {
   position: absolute;
@@ -15596,11 +15624,11 @@ html.slideout-active {
   display: block;
   width: 3rem;
   height: 3rem;
-  background: var(--blue);
-  background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' focusable='false' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 352 512' style='enable-background:new 0 0 352 512;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23ffffff;%7D%0A%3C/style%3E%3Cpath class='st0' d='M242.7,256l100.1-100.1c12.3-12.3,12.3-32.2,0-44.5l-22.2-22.2c-12.3-12.3-32.2-12.3-44.5,0L176,189.3 L75.9,89.2c-12.3-12.3-32.2-12.3-44.5,0L9.2,111.4c-12.3,12.3-12.3,32.2,0,44.5L109.3,256L9.2,356.1c-12.3,12.3-12.3,32.2,0,44.5 l22.2,22.2c12.3,12.3,32.2,12.3,44.5,0L176,322.7l100.1,100.1c12.3,12.3,32.2,12.3,44.5,0l22.2-22.2c12.3-12.3,12.3-32.2,0-44.5 L242.7,256z'/%3E%3C/svg%3E%0A");
+  background: var(--accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 40%;
+  background-size: 70%;
   border: 0;
   z-index: 1;
   transition: all .3s cubic-bezier(.5,0,.5,1);
@@ -15713,19 +15741,18 @@ html.js-dialog-active {
   padding: 0 0 2rem
 }
 .breadcrumb .icon--chevron {
-  background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 320 512' style='enable-background:new 0 0 320 512;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23131313;%7D%0A%3C/style%3E%3Cpath class='st0' d='M278.6,233.4c12.5,12.5,12.5,32.8,0,45.3l-160,160c-12.5,12.5-32.8,12.5-45.3,0s-12.5-32.8,0-45.3L210.7,256 L73.4,118.6c-12.5-12.5-12.5-32.8,0-45.3s32.8-12.5,45.3,0l160,160L278.6,233.4z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  height: 1.5rem;
-  width: 1rem;
   display: inline-block;
-  margin: 0 .5rem
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M7.4,5.6l1.4-1.4,7.8,7.8-7.8,7.8-1.4-1.4,6.4-6.4-6.4-6.4Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  width: 2.2rem;
+  aspect-ratio: 1/1
 }
 .breadcrumb a {
   font-weight: var(--regular);
   color: var(--black)
 }
 .breadcrumb a:hover {
-  color: var(--blue)
+  color: var(--accent)
 }
 .quicklinks {
   position: relative;

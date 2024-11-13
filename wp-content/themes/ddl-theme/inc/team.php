@@ -120,7 +120,7 @@
             </div>
             <?php if( get_the_content() ) { ?>
             <div class="member__footer">
-              <button class="btn btn--blue w-100" data-open="<?php echo $member_id ; ?>" aria-pressed="false" aria-expanded="false" aria-controls="<?php echo $member_id ; ?>">Read Biography</button>
+              <button class="btn btn--accent w-100" data-open="<?php echo $member_id ; ?>" aria-pressed="false" aria-expanded="false" aria-controls="<?php echo $member_id ; ?>">Read Biography</button>
             </div>
             <?php } ?>
             <?php edit_post_link( __( 'Edit', 'textdomain' ), null, null, null, 'member__edit' ); ?>
@@ -182,7 +182,7 @@
                     <?php } ?>
                   </div>
                   <div class="slideout__profile"><?php the_content(); ?></div>
-                  <button class="btn btn--blue btn--space w-100 btn--sm" data-close="<?php echo $member_id ; ?>">Close profile</button>
+                  <button class="btn btn--accent btn--space w-100 btn--sm" data-close="<?php echo $member_id ; ?>">Close profile</button>
                 </div>
               </div>
             </div>

@@ -52,7 +52,7 @@
 
         <div class="cell-auto cell-gutter-x">
 
-          <a class="btn btn--blue" href="<?php echo get_the_permalink( 147 ) ?>">Book an appointment</a>
+          <a class="btn btn--accent" href="<?php echo get_the_permalink( 147 ) ?>">Book an appointment</a>
           
           <button class="burger" id="navToggle" type="button" aria-haspopup="true" aria-controls="headerNav">
             <span class="burger__inner"></span>

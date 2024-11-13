@@ -31,7 +31,7 @@ get_header(); ?>
 
       <a href="/" class="btn btn--black btn--space">Test</a>
 
-      <a class="btn btn--blue btn--space" href="<?php echo site_url() ?>/team/#joe-bloggs">View John’s Profile</a>
+      <a class="btn btn--accent btn--space" href="<?php echo site_url() ?>/team/#joe-bloggs">View John’s Profile</a>
 
       <h1>Heading h2</h1>
       <h2>Heading h2</h2>
@@ -45,9 +45,9 @@ get_header(); ?>
         <fieldset>
 
           <legend>Patient Details</legend>
-          <div class="cell-row cell-row-gutter-x-sm">
+          <div class="form__row">
 
-            <div class="cell-6 cell-gutter-x-sm">
+            <div class="form__cell form__cell--half">
 
               <div class="form__input">
                 <input
@@ -63,7 +63,7 @@ get_header(); ?>
               </div>
 
             </div>
-            <div class="cell-6 cell-gutter-x-sm">
+            <div class="form__cell form__cell--half">
 
               <div class="form__input">
                 <input
@@ -77,7 +77,7 @@ get_header(); ?>
               </div>
 
             </div>
-            <div class="cell-6 cell-gutter-x-sm">
+            <div class="form__cell form__cell--half">
 
               <div class="form__input">
                 <input
@@ -93,7 +93,7 @@ get_header(); ?>
               </div>
 
             </div>
-            <div class="cell-12 cell-6 cell-gutter-x-sm">
+            <div class="form__cell form__cell--half">
 
               <div class="form__input">
                 <input
@@ -108,7 +108,7 @@ get_header(); ?>
 
             </div>
 
-            <div class="cell-12 cell-gutter-x-sm">
+            <div class="form__cell form__cell--full">
 
               <div class="form__input">
               <select 
@@ -127,9 +127,9 @@ get_header(); ?>
 
             </div>
 
-            <div class="cell-12 cell-gutter-x-sm">
+            <div class="form__cell form__cell--full">
 
-              <div class="form__input form__input">
+              <div class="form__input">
                 <textarea 
                   id="patient_address"
                   name="patient_address"
@@ -150,9 +150,9 @@ get_header(); ?>
 
           <legend>Referral Details</legend>
 
-          <div class="cell-row cell-row-gutter-x-sm">
+          <div class="form__row">
 
-            <div class="cell-12 cell-gutter-x-sm">
+            <div class="form__cell form__cell--full">
 
               <div class="form__input">
                 <select 
@@ -172,9 +172,9 @@ get_header(); ?>
               </div>
 
             </div>
-            <div class="cell-12 cell-gutter-x-sm">
+            <div class="form__cell form__cell--full">
 
-              <div class="form__input form__input">
+              <div class="form__input">
                 <textarea 
                   id="referral_reason"
                   name="referral_reason"
@@ -188,10 +188,10 @@ get_header(); ?>
 
             </div>
 
-            <div class="cell-12 cell-gutter-x-sm">
+            <div class="form__cell form__cell--full">
 
               <!-- <div class="form__input form__input--textarea"> -->
-              <div class="form__input form__input">
+              <div class="form__input">
                 <textarea 
                   id="referral_history"
                   name="referral_history"
@@ -204,14 +204,20 @@ get_header(); ?>
 
             </div>
 
-            <div class="cell-12 cell-gutter-x-sm">
-              <div class="cell-row cell-align-center">
-                <div class="cell-0">
+            <div class="form__cell form__cell--full">
+
+              <div class="form__row cell-align-center">
+
+                <div class="form__cell form__cell--flex">
+
                   <div class="form__input">
                     <p class="m-0"><span>Is the tooth symptomatic?</span></p>
                   </div>
+
                 </div>
-                <div class="cell-auto pr-4">
+
+                <div class="form__cell pr-4">
+
                   <div class="form__input form__input--checkbox">
                     <input 
                       type="radio"
@@ -222,8 +228,11 @@ get_header(); ?>
                     >
                     <label for="endodontic_symptomatic_yes">Yes</label>
                   </div>
+
                 </div>
-                <div class="cell-auto">
+
+                <div class="form__cell">
+
                   <div class="form__input form__input--checkbox">
                     <input 
                       type="radio"
@@ -234,11 +243,13 @@ get_header(); ?>
                     >
                     <label for="endodontic_symptomatic_no">No</label>
                   </div>
+
                 </div>
+
               </div>
             </div>
 
-            <div class="cell-12 cell-gutter-x-sm">
+            <div class="form__cell form__cell--full">
 
               <div class="form__input form__input--upload">
                 <input 
@@ -260,9 +271,9 @@ get_header(); ?>
         <fieldset>
 
           <legend>Referrer Details</legend>
-          <div class="cell-row cell-row-gutter-x-sm">
+          <div class="form__row">
 
-            <div class="cell-12 cell-md-6 cell-gutter-x-sm">
+            <div class="form__cell form__cell--half">
 
               <div class="form__input">
                 <input
@@ -278,7 +289,7 @@ get_header(); ?>
               </div>
 
             </div>
-            <div class="cell-12 cell-md-6 cell-gutter-x-sm">
+            <div class="form__cell form__cell--half">
 
               <div class="form__input">
                 <input
@@ -292,7 +303,7 @@ get_header(); ?>
               </div>
 
             </div>
-            <div class="cell-12 cell-md-6 cell-gutter-x-sm">
+            <div class="form__cell form__cell--half">
 
               <div class="form__input">
                 <input
@@ -308,7 +319,7 @@ get_header(); ?>
               </div>
 
             </div>
-            <div class="cell-12 cell-md-6 cell-gutter-x-sm">
+            <div class="form__cell form__cell--half">
 
               <div class="form__input">
                 <input
@@ -322,7 +333,7 @@ get_header(); ?>
               </div>
 
             </div>
-            <div class="cell-12 cell-gutter-x-sm">
+            <div class="form__cell form__cell--full">
 
               <div class="form__input form__input--textarea">
                 <textarea 
@@ -341,9 +352,9 @@ get_header(); ?>
 
           </div>
 
-          <div class="cell-row cell-row-gutter-x-sm cell-align-center pt-7">
+          <div class="form__row cell-align-center pt-7">
 
-            <!-- <div class="cell-0 cell-gutter-x-sm">
+            <!-- <div class="form__cell form__cell--full">
               <div class="form__input form__input--checkbox">
                 <input 
                   type="checkbox"
@@ -358,8 +369,9 @@ get_header(); ?>
               </div>
             </div> -->
 
-            <div class="cell-0 cell-gutter-x-xs">
-              <div class="form__input form__input--checkbox form__input--consent">
+            <div class="form__cell form__cell--flex">
+
+              <div class="form__input form__input--checkbox">
                 <input 
                   type="checkbox" 
                   id="consent" 
@@ -369,9 +381,10 @@ get_header(); ?>
                 >
                 <label for="consent">Do you consent to your personal information being used for responses and stored by <?php bloginfo( 'name' ); ?>? Please refer to our <a href="<?php echo get_privacy_policy_url() ?>">privacy policy</a> for further details.</label>
               </div>
+
             </div>
 
-            <div class="cell cell-gutter-x-sm cell-12 cell-lg-auto pt-3 pt-lg-0">
+            <div class="form__cell pt-3 pt-lg-0">
 
               <!-- <button class="btn btn--black" type="submit">Submit referral</button>
 

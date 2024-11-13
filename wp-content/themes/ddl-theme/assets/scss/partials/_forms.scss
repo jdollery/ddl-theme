@@ -58,11 +58,38 @@ $checkboxradio-height-sm:   2.5rem;
     margin-bottom: 0;
   }
 
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  &__cell {
+    position: relative;
+    max-width: 100%;
+
+    &--full {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+  
+    &--half {
+      flex: 0 0 auto;
+      width: calc(50% - 1rem);
+    }
+
+    &--flex {
+      flex: 1 0 0;
+      width: auto;
+    }
+
+  }
+
   &__input {
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-bottom: var(--gutter-md);
+    // margin-bottom: var(--gutter-md);
 
     &--textarea {
       height: 100%;
@@ -289,27 +316,22 @@ input[type=radio]::after {
   border-color: $input-border-color;
   border-radius: $input-border-radius;
   transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  height: 2.3rem;
   width: 2.3rem;
+  aspect-ratio: 1 / 1;
 }
 
 input[type=checkbox]::before,
 input[type=radio]::before {
   position: absolute;
   top: 0.2rem;
-  left: 0.5rem;
-  content: url("data:image/svg+xml,%3Csvg version='1.1' focusable='false' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 512 512' style='enable-background:new 0 0 512 512;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23444444;%7D%0A%3C/style%3E%3Cpath class='st0' d='M173.9,439.4L7.5,273c-10-10-10-26.2,0-36.2l36.2-36.2c10-10,26.2-10,36.2,0L192,312.7L432.1,72.6 c10-10,26.2-10,36.2,0l36.2,36.2c10,10,10,26.2,0,36.2L210.1,439.4C200.1,449.4,183.9,449.4,173.9,439.4L173.9,439.4z'/%3E%3C/svg%3E");
+  left: 0.2rem;
+  content: $icon-tick-black;
   display: block;
-  height: 1.4rem;
-  width: 1.4rem;
+  width: 2rem;
+  aspect-ratio: 1 / 1;
   color: transparent;
   z-index: 1;
   opacity: 0;
-
-  @include media-up(lg) {
-    top: -0.1rem;
-  }
-
 }
 
 input[type=checkbox]:focus, 

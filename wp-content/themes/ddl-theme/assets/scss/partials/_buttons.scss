@@ -28,7 +28,7 @@
 
 }
 
-@mixin btn-blue {
+@mixin btn-accent {
   color: var(--white);
   background: var(--blue);
   border-color: var(--blue);
@@ -98,7 +98,7 @@
   }
 
   &--blue {
-    @include btn-blue;
+    @include btn-accent;
   }
 
   &--space {
@@ -143,12 +143,13 @@
     display: inline-block;
 
     svg {
+      fill: var(--white);
       @include transition(all);
     }
 
   }
 
-  .btn--submit {
+  &--submit {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -157,6 +158,7 @@
       display: none;
 
       .icon {
+        margin: 0 0 0 0.5rem;
         @include animation (loaderSpin 2s linear infinite);
       }
 
@@ -166,6 +168,16 @@
 
   &--sending {
     cursor: not-allowed;
+    color: var(--white);
+    background: var(--grey-dark);
+    border-color: var(--grey-dark);
+    opacity: 0.5;
+
+    @include hover-focus {
+      color: var(--white);
+      background: var(--grey-dark);
+      border-color: var(--grey-dark);
+    }
 
     .btn__icon {
       display: block;

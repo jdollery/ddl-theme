@@ -1,101 +1,4 @@
 /*-----------------------------------------------------------------------------------*/
-/* ANIMATION */
-/*-----------------------------------------------------------------------------------*/
-
-// @include keyframes (navFadeIn) {
-      
-//   0% {
-//     opacity: 0;
-//     -webkit-transform: translateY(-2rem);
-//     -ms-transform: translateY(-2rem);
-//     transform: translateY(-2rem);
-//     visibility: hidden;
-//     display: none;
-//   }
-
-//   100% {
-//     opacity: 1;
-//     -webkit-transform: translateY(0);
-//     -ms-transform: translateY(0);
-//     transform: translateY(0);
-//     visibility: visible;
-//     display: block;
-//   }
-
-// }
-
-// @include keyframes (navFadeOut) {
-
-//   0% {
-//     opacity: 1;
-//     -webkit-transform: translateY(0);
-//     -ms-transform: translateY(0);
-//     transform: translateY(0);
-//     visibility: visible;
-//     display: block;
-//   }
-
-//   100% {
-//     opacity: 0;
-//     -webkit-transform: translateY(-2rem);
-//     -ms-transform: translateY(-2rem);
-//     transform: translateY(-2rem);
-//     visibility: hidden;
-//     display: none;
-//   }
-
-// }
-
-@include keyframes (navFadeIn) {
-      
-  0% {
-    opacity: 0;
-    // -webkit-transform: translateY(-2rem);
-    // -ms-transform: translateY(-2rem);
-    // transform: translateY(-2rem);
-    margin-top: -2rem;
-    visibility: hidden;
-    display: none;
-  }
-
-  100% {
-    opacity: 1;
-    // -webkit-transform: translateY(0);
-    // -ms-transform: translateY(0);
-    // transform: translateY(0);
-    margin-top: 0;
-    visibility: visible;
-    display: block;
-  }
-
-}
-
-@include keyframes (navFadeOut) {
-
-  0% {
-    opacity: 1;
-    // -webkit-transform: translateY(0);
-    // -ms-transform: translateY(0);
-    // transform: translateY(0);
-    margin-top: 0;
-    visibility: visible;
-    display: block;
-  }
-
-  100% {
-    opacity: 0;
-    // -webkit-transform: translateY(-2rem);
-    // -ms-transform: translateY(-2rem);
-    // transform: translateY(-2rem);
-    margin-top: -2rem;
-    visibility: hidden;
-    display: none;
-  }
-
-}
-
-
-/*-----------------------------------------------------------------------------------*/
 /* VARIABLES */
 /*-----------------------------------------------------------------------------------*/
 
@@ -104,7 +7,7 @@
 /* --- LEVEL ONE --- */
 
 $level-one-color-lg:                  var(--black);
-$level-one-color-hover-lg:            var(--blue);
+$level-one-color-hover-lg:            var(--accent);
 $level-one-color-current-lg:          var(--blue-light);
 $level-one-color-ancestor-lg:         var(--black);
 $level-one-color-ancestor-hover-lg:   $level-one-color-hover-lg;
@@ -120,7 +23,7 @@ $level-two-border-lg:                 var(--blue-light);
 $level-two-border-hover-lg:           $level-two-bg-hover-lg;
 
 $level-two-color-current-lg:          var(--white);
-$level-two-bg-current-lg:             var(--blue);
+$level-two-bg-current-lg:             var(--accent);
 $level-two-border-current-lg:         $level-two-bg-current-lg;
 
 $level-two-color-ancestor-lg:         $level-two-color-lg;
@@ -243,14 +146,14 @@ html {
         }
 
         > ul {
-          @include animation (navFadeOut 0.5s);
+          @include animation (navFadeOut 0.3s);
         }
 
         &:hover > ul,
         &:focus-within > ul {
           visibility: visible;
           display: block;
-          @include animation (navFadeIn 0.5s);
+          @include animation (navFadeIn 0.3s);
         }
 
 
@@ -270,9 +173,9 @@ html {
           > a::after {
             display: block;
             content: '';
-            width: 1.4rem;
-            height: 1rem;
-            background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 36.1 20.8' style='enable-background:new 0 0 36.1 20.8;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%233A4145;%7D%0A%3C/style%3E%3Cpath class='st0' d='M16.2,20c1,1,2.6,1,3.7,0L35.4,4.5c1-1,1-2.6,0-3.7c-1-1-2.6-1-3.7,0L18.1,14.5L4.4,0.9c-1-1-2.6-1-3.7,0 s-1,2.6,0,3.7L16.2,20L16.2,20z'/%3E%3C/svg%3E%0A");
+            width: 2.2rem;
+            aspect-ratio: 1 / 1;
+            background-image: $icon-chevron-down-black;           
             background-repeat: no-repeat;
             @include transition(all);
             margin: 0 0 0 1rem;

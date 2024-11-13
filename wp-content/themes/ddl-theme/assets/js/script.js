@@ -37,61 +37,61 @@ window.onresize = function(event) {
 };
 
 /*-----------------------------------------------------------------------------------*/
-  /* RESPONSIVE NAV */
-  /*-----------------------------------------------------------------------------------*/
+/* RESPONSIVE NAV */
+/*-----------------------------------------------------------------------------------*/
 
-  let navChild = document.querySelector('.navigation li li');
+let navChild = document.querySelector('.navigation li li');
+
+if (navChild) {
+  let navParent = navChild.closest('ul');
+  navParent.classList.add("sub-menu");
+}
+
+// let navSub = navChild.parentElement();
+// navSub.classList.add("menu-item-has-childrens");
+
+// var customToggle = document.getElementById('navToggle');
+
+var nav = responsiveNav("#headerNav", {
+  customToggle: "#navToggle", // Selector: Specify the ID of a custom toggle
+  enableFocus: true,
+  enableDropdown: true,
+  openDropdown: '<span class="hidden">Open sub menu</span>',
+  closeDropdown: '<span class="hidden">Close sub menu</span>',
+
+  // open: function () {
+  //   // if (customToggle.getAttribute('aria-expanded') === 'false') {
+  //     customToggle.setAttribute( 'aria-expanded', 'true' );
+  //   // }
+  // },
+
+  // close: function () {
+  //   // if (customToggle.getAttribute('aria-expanded') === 'true') {
+  //     customToggle.setAttribute( 'aria-expanded', 'false' );
+  //   // }
+  // },
   
-  if (navChild) {
-    let navParent = navChild.closest('ul');
-    navParent.classList.add("sub-menu");
-  }
+  // open: function () {
+  //   customToggle.innerHTML = '<div class="burger__inner"><div class="burger__trigger"><span class="burger__icon"></span></div><div class="burger__text">Close</div></div>';
+  // },
+  // close: function () {
+  //   customToggle.innerHTML = '<div class="burger__inner"><div class="burger__trigger"><span class="burger__icon"></span></div><div class="burger__text">Menu</div></div>';
+  // },
+  
+  // resizeMobile: function () {
+  //   customToggle.setAttribute( 'aria-controls', 'headerNav' );
+  // },
+  
+  // resizeDesktop: function () {
+  //   customToggle.removeAttribute( 'aria-controls' );
+  // },
+  
+});
 
-  // let navSub = navChild.parentElement();
-  // navSub.classList.add("menu-item-has-childrens");
-
-  // var customToggle = document.getElementById('navToggle');
-
-  var nav = responsiveNav("#headerNav", {
-    customToggle: "#navToggle", // Selector: Specify the ID of a custom toggle
-    enableFocus: true,
-    enableDropdown: true,
-    openDropdown: '<span class="hidden">Open sub menu</span>',
-    closeDropdown: '<span class="hidden">Close sub menu</span>',
-
-    // open: function () {
-    //   // if (customToggle.getAttribute('aria-expanded') === 'false') {
-    //     customToggle.setAttribute( 'aria-expanded', 'true' );
-    //   // }
-    // },
-
-    // close: function () {
-    //   // if (customToggle.getAttribute('aria-expanded') === 'true') {
-    //     customToggle.setAttribute( 'aria-expanded', 'false' );
-    //   // }
-    // },
-    
-    // open: function () {
-    //   customToggle.innerHTML = '<div class="burger__inner"><div class="burger__trigger"><span class="burger__icon"></span></div><div class="burger__text">Close</div></div>';
-    // },
-    // close: function () {
-    //   customToggle.innerHTML = '<div class="burger__inner"><div class="burger__trigger"><span class="burger__icon"></span></div><div class="burger__text">Menu</div></div>';
-    // },
-    
-    // resizeMobile: function () {
-    //   customToggle.setAttribute( 'aria-controls', 'headerNav' );
-    // },
-    
-    // resizeDesktop: function () {
-    //   customToggle.removeAttribute( 'aria-controls' );
-    // },
-    
-  });
-
-  var close = document.getElementById("viewOverlay");
-  close.addEventListener("click", function () {
-    nav.close();
-  }, false);
+var close = document.getElementById("viewOverlay");
+close.addEventListener("click", function () {
+  nav.close();
+}, false);
 
 
 jQuery(document).ready(function () { //doc ready start
