@@ -374,12 +374,12 @@ get_header(); ?>
               <div class="form__input form__input--checkbox">
                 <input 
                   type="checkbox" 
-                  id="consent" 
-                  name="consent" 
-                  value="Yes, I consent" 
-                  aria-label="Do you consent to your personal information being used for responses and stored by <?php bloginfo( 'name' ); ?>?"
+                  id="patient_consent" 
+                  name="patient_consent" 
+                  value="Yes" 
+                  aria-label="Yes, I confirm I have the patient&rsaquo;s consent to share this information."
                 >
-                <label for="consent">Do you consent to your personal information being used for responses and stored by <?php bloginfo( 'name' ); ?>? Please refer to our <a href="<?php echo get_privacy_policy_url() ?>">privacy policy</a> for further details.</label>
+                <label for="patient_consent">Yes, I confirm I have the patient&rsaquo;s consent to share this information.</label>
               </div>
 
             </div>
@@ -399,6 +399,8 @@ get_header(); ?>
               </button>
 
             </div>
+
+            <small>By clicking submit, you agree to <?php bloginfo( 'name' ); ?> collecting your personal data. To learn more about how <?php bloginfo( 'name' ); ?> collects, uses, shares and protects your personal data, please read our <a href="<?php echo get_privacy_policy_url() ?>">privacy policy</a>.</small>
 
           </div>
 
