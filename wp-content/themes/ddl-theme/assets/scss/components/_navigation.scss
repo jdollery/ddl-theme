@@ -1,4 +1,11 @@
 /*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+@use 'sass:color';
+
+
+/*-----------------------------------------------------------------------------------*/
 /* VARIABLES */
 /*-----------------------------------------------------------------------------------*/
 
@@ -8,7 +15,7 @@
 
 $level-one-color-lg:                  var(--black);
 $level-one-color-hover-lg:            var(--accent);
-$level-one-color-current-lg:          var(--blue-light);
+$level-one-color-current-lg:          var(--accent-light);
 $level-one-color-ancestor-lg:         var(--black);
 $level-one-color-ancestor-hover-lg:   $level-one-color-hover-lg;
 
@@ -18,17 +25,17 @@ $level-one-color-ancestor-hover-lg:   $level-one-color-hover-lg;
 $level-two-color-lg:                  var(--black);
 $level-two-color-hover-lg:            var(--white);
 $level-two-bg-lg:                     var(--grey);
-$level-two-bg-hover-lg:               var(--blue-light);
-$level-two-border-lg:                 var(--blue-light);
+$level-two-bg-hover-lg:               var(--accent);
+$level-two-border-lg:                 var(--accent);
 $level-two-border-hover-lg:           $level-two-bg-hover-lg;
 
 $level-two-color-current-lg:          var(--white);
-$level-two-bg-current-lg:             var(--accent);
+$level-two-bg-current-lg:             var(--black);
 $level-two-border-current-lg:         $level-two-bg-current-lg;
 
 $level-two-color-ancestor-lg:         $level-two-color-lg;
 $level-two-color-ancestor-hover-lg:   $level-two-color-hover-lg;
-$level-two-bg-ancestor-lg:            var(--blue-light);
+$level-two-bg-ancestor-lg:            $level-two-color-lg;
 $level-two-bg-ancestor-hover-lg:      $level-two-bg-hover-lg;
 $level-two-border-ancestor-lg:        $level-two-border-lg;
 $level-two-border-ancestor-hover-lg:  $level-two-border-hover-lg;
@@ -36,7 +43,7 @@ $level-two-border-ancestor-hover-lg:  $level-two-border-hover-lg;
 
 /* --- LEVEL THREE --- */
 
-$level-three-color-lg:                var(--white);
+$level-three-color-lg:                var(--black);
 $level-three-color-hover-lg:          var(--white);
 $level-three-bg-lg:                   var(--grey);
 $level-three-bg-hover-lg:             var(--grey-dark);
@@ -57,7 +64,7 @@ $nav-background-sm:                   var(--grey-dark);
 
 $level-one-color-sm:                  var(--white);
 $level-one-bg-sm:                     var(--grey-dark);
-$level-one-border-sm:                 var(--grey-dark);
+$level-one-border-sm:                 color.adjust(map-get($colors, "grey-dark"), $lightness: -10%);
 
 $level-one-color-current-sm:          var(--white);
 $level-one-bg-current-sm:             var(--black);
@@ -68,9 +75,9 @@ $level-one-bg-ancestor-sm:            var(--black);
 
 /* --- LEVEL TWO --- */
 
-$level-two-color-sm:                  var(--white);
-$level-two-bg-sm:                     var(--grey-dark);
-$level-two-border-sm:                 var(--grey-dark);
+$level-two-color-sm:                  var(--black);
+$level-two-bg-sm:                     color.adjust(map-get($colors, "grey"), $lightness: -5%);
+$level-two-border-sm:                 color.adjust(map-get($colors, "grey"), $lightness: -10%);
 
 $level-two-color-current-sm:          var(--white);
 $level-two-bg-current-sm:             var(--black);
@@ -81,9 +88,9 @@ $level-two-bg-current-sm:             var(--black);
 
 /* --- LEVEL THREE --- */
 
-$level-three-color-sm:                var(--white);
-$level-three-bg-sm:                   var(--grey-dark);
-$level-three-border-sm:               var(--grey-dark);
+$level-three-color-sm:                var(--black);
+$level-three-bg-sm:                   var(--white);;
+$level-three-border-sm:               var(--grey);
 
 $level-three-color-current-sm:        var(--white);
 $level-three-bg-current-sm:           var(--black);
@@ -156,7 +163,6 @@ html {
           @include animation (navFadeIn 0.3s);
         }
 
-
         /* --- ALL LEVELS --- */
 
         a {
@@ -164,23 +170,26 @@ html {
           align-items: center;
           white-space: nowrap;
           font-weight: var(--regular);
-          padding: 0.2rem 0.4rem;
+          padding: 0.4rem;
           @include transition(all);
-        }
+        } 
 
         &.menu-item-has-children {
+          padding: 0;
 
-          > a::after {
-            display: block;
-            content: '';
-            width: 2.2rem;
-            aspect-ratio: 1 / 1;
-            background-image: $icon-chevron-down-black;           
-            background-repeat: no-repeat;
-            @include transition(all);
-            margin: 0 0 0 1rem;
+          > a {
+            gap: 0.5rem;
+
+            &::after {
+              display: block;
+              content: '';
+              aspect-ratio: 1 / 1;
+              background-repeat: no-repeat;
+              @include transition(all);
+            }
+
           }
-        
+  
         }
 
         /* --- LEVEL TWO & THREE --- */
@@ -194,7 +203,7 @@ html {
           width: fit-content;
           z-index: 99999;
           text-align: left;
-          border-radius: 0.8rem;
+          // border-radius: 0.8rem;
           // overflow: hidden;
           // @include box-shadow (0 0 1.5rem 0.1rem rgba(map-get($colors, "black"), 0.5));
 
@@ -209,8 +218,9 @@ html {
             a {
               width: 100%;
               min-width: 25rem;
+              min-height: 6rem;
               font-weight: 400;
-              font-size: 1.5rem;
+              font-size: 1.6rem;
               border-top: 0;
               padding: 1.8rem 2rem;
               justify-content: space-between;
@@ -226,19 +236,16 @@ html {
             }
 
             &.menu-item-has-children {
-              padding: 0;
-
+              padding: 0;   
+              
               > a {
 
                 &::after {
-                  width: 0.7rem;
-                  height: 1.2rem;
-                  margin: 0 0 0 1.5rem;
-                  background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 224.1 384.1' style='enable-background:new 0 0 224.1 384.1;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%233A4145;%7D%0A%3C/style%3E%3Cpath class='st0' d='M214.7,169.5c12.5,12.5,12.5,32.8,0,45.3l-160,160c-12.5,12.5-32.8,12.5-45.3,0s-12.5-32.8,0-45.3l137.4-137.4 L9.5,54.7C-3,42.2-3,21.9,9.5,9.4s32.8-12.5,45.3,0l160,160L214.7,169.5z'/%3E%3C/svg%3E%0A");
+                  width: 2rem;
                 }
-
+    
               }
-      
+
             }
 
           }
@@ -258,7 +265,12 @@ html {
         display: inline-block;
 
         &:not(:last-child) {
-          margin-right: 3.5rem;
+          margin-right: 2rem;
+
+          @include media-up(xl) {
+            margin-right: 3.5rem;
+          }
+
         }
 
         > a {
@@ -272,6 +284,15 @@ html {
         }
 
         &.menu-item-has-children {
+
+          > a {
+
+            &::after {
+              width: 2.2rem;
+              background-image: $icon-chevron-down-black;
+            }
+
+          }
 
           &:hover,
           &:focus-within {
@@ -292,11 +313,6 @@ html {
 
           > a {
             color: $level-one-color-current-lg;
-
-            &::after {
-              color: $level-one-color-current-lg;
-            }
-
           }
 
           &:hover,
@@ -304,38 +320,33 @@ html {
 
             > a {
               color: $level-one-color-current-lg;
-
-              &::after {
-                color: $level-one-color-current-lg;
-              }
-
             }
 
           }
 
         }
 
-        &.current-menu-ancestor {
+        // &.current-menu-ancestor {
 
-          > a {
-            color: $level-one-color-ancestor-lg;
-          }
+        //   > a {
+        //     color: $level-one-color-ancestor-lg;
+        //   }
 
-          &:hover,
-          &:focus-within {
+        //   &:hover,
+        //   &:focus-within {
 
-            > a {
-              color: $level-one-color-ancestor-hover-lg;
+        //     > a {
+        //       color: $level-one-color-ancestor-hover-lg;
 
-              &::after {
-                color: $level-one-color-ancestor-hover-lg;
-              }
+        //       &::after {
+        //         color: $level-one-color-ancestor-hover-lg;
+        //       }
 
-            }
+        //     }
 
-          }
+        //   }
 
-        }
+        // }
 
 
         /* --- LEVEL TWO ONLY --- */
@@ -343,6 +354,7 @@ html {
         > ul {
           top: 100%;
           left: 0;
+          padding: 2rem 0 0;
 
           > li {
             padding: 0;
@@ -373,13 +385,21 @@ html {
 
             &.menu-item-has-children {
 
+              > a {
+
+                &::after {
+                  background-image: $icon-chevron-right-black;
+                }
+
+              }
+
               &:hover,
               &:focus-within {
     
                 > a {
     
                   &::after {
-                    background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 224.1 384.1' style='enable-background:new 0 0 224.1 384.1;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23ffffff;%7D%0A%3C/style%3E%3Cpath class='st0' d='M214.7,169.5c12.5,12.5,12.5,32.8,0,45.3l-160,160c-12.5,12.5-32.8,12.5-45.3,0s-12.5-32.8,0-45.3l137.4-137.4 L9.5,54.7C-3,42.2-3,21.9,9.5,9.4s32.8-12.5,45.3,0l160,160L214.7,169.5z'/%3E%3C/svg%3E%0A");
+                    background-image: $icon-chevron-right-white;
                   }
     
                 }
@@ -394,6 +414,11 @@ html {
                 color: $level-two-color-current-lg;
                 background-color: $level-two-bg-current-lg;
                 border-color: $level-two-border-current-lg;
+
+                &::after {
+                  background-image: $icon-chevron-right-white;
+                }
+
               }
 
               &:hover,
@@ -403,37 +428,42 @@ html {
                   color: $level-two-color-current-lg;
                   background-color: $level-two-bg-current-lg;
                   border-color: $level-two-border-current-lg;
-                }
 
-              }
-
-            }
-
-            &.current-menu-ancestor {
-
-              > a {
-                color: $level-two-color-ancestor-lg;
-                background-color: $level-two-bg-ancestor-lg;
-                border-color: $level-two-border-ancestor-lg;
-              }
-    
-              &:hover,
-              &:focus-within {
-    
-                > a {
-                  color: $level-two-color-ancestor-hover-lg;
-                  background-color: $level-two-bg-ancestor-hover-lg;
-                  border-color: $level-two-border-ancestor-hover-lg;
-    
                   &::after {
-                    color: $level-two-color-ancestor-hover-lg;
+                    background-image: $icon-chevron-right-white;
                   }
-    
+
                 }
-    
+
               }
-    
+
             }
+
+            // &.current-menu-ancestor {
+
+            //   > a {
+            //     color: $level-two-color-ancestor-lg;
+            //     background-color: $level-two-bg-ancestor-lg;
+            //     border-color: $level-two-border-ancestor-lg;
+            //   }
+    
+            //   &:hover,
+            //   &:focus-within {
+    
+            //     > a {
+            //       color: $level-two-color-ancestor-hover-lg;
+            //       background-color: $level-two-bg-ancestor-hover-lg;
+            //       border-color: $level-two-border-ancestor-hover-lg;
+    
+            //       &::after {
+            //         color: $level-two-color-ancestor-hover-lg;
+            //       }
+    
+            //     }
+    
+            //   }
+    
+            // }
 
 
             /* --- LEVEL THREE ONLY --- */
@@ -457,14 +487,6 @@ html {
                   }
       
                 }
-
-                // &:first-child {
-
-                //   > a {
-                //     border-top: 0.1rem solid $level-three-border-lg;
-                //   }
-
-                // }
       
                 &:hover,
                 &:focus-within {
@@ -540,7 +562,6 @@ html {
     overflow-x: hidden;
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
-    // transition: left 0.3s ease-out;
     transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
 
     &.opened {
@@ -565,10 +586,6 @@ html {
           display: none;
         }
 
-        .dropdown-toggle {
-          display: inline-block;
-        }
-
         a {
           display: block;
           font-size: 1.8rem;
@@ -581,6 +598,14 @@ html {
 
           &.toggled {
             display: block;
+          }
+
+          li {
+    
+            a {
+              font-size: 1.6rem;
+            }
+
           }
 
         }
@@ -608,30 +633,18 @@ html {
           > a {
             color: $level-one-color-current-sm;
             background-color: $level-one-bg-current-sm;
-
-            &::after {
-              color: $level-one-color-current-sm;
-              background-color: $level-one-bg-current-sm;
-            }
-
           }
 
         }
 
-        &.current-menu-ancestor {
+        // &.current-menu-ancestor {
 
-          > a {
-            color: $level-one-color-ancestor-sm;
-            background-color: $level-one-bg-ancestor-sm;
-
-            &::after {
-              color: $level-one-color-ancestor-sm;
-              background-color: $level-one-bg-ancestor-sm;
-            }
-
-          }
+        //   > a {
+        //     color: $level-one-color-ancestor-sm;
+        //     background-color: $level-one-bg-ancestor-sm;
+        //   }
         
-        }
+        // }
 
 
         /* --- LEVEL TWO UNIQUE --- */
@@ -654,11 +667,6 @@ html {
               > a {
                 color: $level-two-color-current-sm;
                 background-color: $level-two-bg-current-sm;
-    
-                &::after {
-                  background-color: $level-two-bg-current-sm;
-                }
-    
               }
     
             }
@@ -671,30 +679,23 @@ html {
               > li {
 
                 &:not(:last-child) {
-                  border-bottom: 1px solid $level-three-border-sm;
+                  border-bottom: 0.1rem solid $level-three-border-sm;
                 }
 
                 > a {
-                  font-size: 1.6rem;
                   color: $level-three-color-sm;
                   background-color: $level-three-bg-sm;
                 }
 
-              }
+                &.current-menu-item {
 
-              &.current-menu-item {
-
-                > a {
-                  color: $level-three-color-sm;
-                  background-color: $level-three-bg-current-sm;
-      
-                  &::after {
+                  > a {
                     color: $level-three-color-current-sm;
-                    background-color: $level-three-bg-current-sm;
+                    background-color: $level-three-bg-current-sm;      
                   }
-      
+        
                 }
-      
+
               }
     
             }
@@ -721,35 +722,33 @@ html {
   content: "";
   height: 4rem;
   width: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 0;
   color: var(--grey-light);
-  background-color: var(--blue);
+  background-color: var(--accent);
   padding: 0;
   margin: 0;
-  font-style: normal;
   line-height: 1;
-  // transition: all 0.3s ease-out;
   transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
   border-radius: 0.5rem;
   cursor: pointer;
   outline: none;
 
   &::after {
+    position: relative;
     display: block;
-    width: 1.5rem;
-    height: 1.5rem;
-    margin: 0 auto;
-    content: url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 448 512' style='enable-background:new 0 0 448 512;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FFFFFF;%7D%0A%3C/style%3E%3Cpath class='st0' d='M240,32c0-17.7-14.3-32-32-32s-32,14.3-32,32v144H32c-17.7,0-32,14.3-32,32s14.3,32,32,32h144v144 c0,17.7,14.3,32,32,32s32-14.3,32-32V240h144c17.7,0,32-14.3,32-32s-14.3-32-32-32H240V32z'/%3E%3C/svg%3E");
-    // content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z'/%3E%3C/svg%3E");
+    top: 0.2rem;
+    width: 2.8rem;
+    aspect-ratio: 1 / 1;
+    content: $icon-plus-white;
   }
 
   &.toggled {
 
     &::after {
-      width: 1.4rem;
-      height: 1.4rem;
-      content: url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 448 512' style='enable-background:new 0 0 448 512;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FFFFFF;%7D%0A%3C/style%3E%3Cpath class='st0' d='M432,256c0,17.7-14.3,32-32,32H48c-17.7,0-32-14.3-32-32s14.3-32,32-32h352C417.7,224,432,238.3,432,256z'/%3E%3C/svg%3E%0A");
-      // content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z'/%3E%3C/svg%3E");
+      content: $icon-minus-white;
     }
 
   }
@@ -768,6 +767,7 @@ html {
   height: 3.6rem;
   width: 4.1rem;
   padding: 0 0.6rem 0.4rem;
+  margin: 0 0 0 2rem;
   vertical-align: middle;
 
   @include media-up($nav-breakpoint) {
@@ -784,7 +784,7 @@ html {
     transition-timing-function: ease;
     transition-duration: .15s;
     transition-property: transform;
-    background-color: var(--blue);
+    background-color: var(--accent);
   }
 
   &__inner {
@@ -849,6 +849,7 @@ html {
 //   border: 0;
 //   cursor: pointer;
 //   // padding: 0 0.6rem 0.4rem;
+//   margin: 0 0 0 2rem;
 //   vertical-align: middle;
 
 //   @include media-min($nav-breakpoint) {
@@ -878,7 +879,7 @@ html {
 //     transition-timing-function: ease;
 //     transition-duration: .15s;
 //     transition-property: transform;
-//     background-color: var(--blue);
+//     background-color: var(--accent);
 //   }
 
 //   &__icon {

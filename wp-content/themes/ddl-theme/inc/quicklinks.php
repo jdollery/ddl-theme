@@ -19,13 +19,15 @@
   <section class="quicklinks quicklinks--<?php echo esc_html($quicklinks_bg['value']); ?><?php if( $quicklinks_spacing ) { foreach( $quicklinks_spacing as $space ): ?> quicklinks--<?php echo $space; endforeach; } ?>">
 
     <?php if($quicklinks_heading) { ?>
-    <div class="quicklinks__top">
-      <h3 class="quicklinks__heading"><?php echo $quicklinks_heading ?></h3>
-      <?php if($quicklinks_intro) { echo $quicklinks_intro; } ?>
+    <div class="section__top">
+      <h3 class="section__heading"><?php echo $quicklinks_heading ?></h3>
+      <?php if($quicklinks_intro) { ?>
+        <div class="section__lead"><?php echo $quicklinks_intro; ?>
+      </div><?php } ?>
     </div>
     <?php } ?>
 
-    <div class="quicklinks__middle">
+    <div class="section__middle">
 
       <ul class="quicklinks__list list--exempt">
 

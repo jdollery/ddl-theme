@@ -91,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   span {
-    color: var(--blue);
+    color: var(--accent);
   }
 
 }
@@ -132,12 +132,12 @@ h6, h6 {
 /*-----------------------------------------------------------------------------------*/
 
 a {
-  color: var(--blue);
+  color: var(--accent);
   font-weight: var(--bold);
   transition: all 0.2s ease-out;
 
   @include hover {
-    color: var(--blue-light);
+    color: var(--accent-light);
   }
 
 }
@@ -152,7 +152,7 @@ a {
 $list-indent:             2rem;
 $list-gutter:             0.5rem;
 $list-bullet-size:        0.6rem;
-$list-bullet-color:       var(--blue);
+$list-bullet-color:       var(--accent);
 
 
 /* --------------------- STYLING --------------------- */
@@ -291,7 +291,7 @@ ol {
 
 $blockquote-indent:          var(--gutter-lg);
 $blockquote-border-width:    0.5rem;
-$blockquote-border-color:    var(--blue);
+$blockquote-border-color:    var(--accent);
 
 
 /* --------------------- STYLING --------------------- */

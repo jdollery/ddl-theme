@@ -1,4 +1,11 @@
 /*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+@use 'sass:color';
+
+
+/*-----------------------------------------------------------------------------------*/
 /* HEADER */
 /*-----------------------------------------------------------------------------------*/
 
@@ -11,11 +18,28 @@
   padding-bottom: 2.5rem;
   @include space-p(x);
   background: var(--white);
-  @include transition(all);
+  transition: box-shadow 0.5s cubic-bezier(0.5, 0, 0.5, 1), transform 0.5s cubic-bezier(0.5, 0, 0.5, 1);
   z-index: 11;
 
-  &--sticky {
-    @include box-shadow (0 0 2rem rgb(0 0 0 / 30%));
+  &__row {
+    @include cell-row;
+    align-items: center;
+    justify-content: between;
+  }
+
+  &__one {
+    @include cell(auto);
+  }
+
+  &__two {
+    @include cell(0);
+    text-align: center;
+  }
+
+  &__three {
+    display: flex;
+    align-items: center;
+    @include cell(auto);
   }
 
 }
@@ -26,7 +50,8 @@
 
 .scroll-up .header {
   transform: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  // @include box-shadow (0 0 4rem rgba(color.adjust(map-get($colors, "grey-dark"), $lightness: -10%), 0.5));
+  @include box-shadow (0 0 2rem rgba(map-get($colors, "black"), 0.5));
 }
 
 
@@ -37,7 +62,12 @@
 .logo {
   position: relative;
   display: block;
-  width: 28rem;
+  width: 21rem;
+  transition: width 0.5s cubic-bezier(0.5, 0, 0.5, 1);
+
+  @include media-up($nav-breakpoint) {
+    width: 28rem;
+  }
 
   img {
     width: 100%;
@@ -45,35 +75,19 @@
 
 }
 
-body.sticky {
+// .scroll-down .logo {
 
-  .header {
-      z-index: 4;
+//   @include media-up($nav-breakpoint) {
+//     width: 28rem;
+//   }
 
-      @include media-up(sm) {
-        position: fixed;
-        top: 0;
-      }
+// }
 
-      @include media-up(lg) {
-        padding: 0.5rem var(--space-x);
-      }
+// .scroll-up .logo {
 
-    // }
 
-    // &__brand {
-
-    //   img {
-
-    //     @include media-up(sm) {
-    //       transform: scale(0.8);
-    //       transform-origin: left;
-    //     }
-
-    //   }
-
-    // }
-
-  }
-
-}
+//   @include media-up($nav-breakpoint) {
+//     width: 21rem;
+//   }
+  
+// }

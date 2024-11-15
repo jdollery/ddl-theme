@@ -6,7 +6,6 @@
 
 $columns: 12;
 $max-width: 144rem;
-// $gap: 2rem;
 $gap: #{fluid(10px, 20px)};
 
 
@@ -27,58 +26,7 @@ $gap: #{fluid(10px, 20px)};
 }
 
 
-/* --------------------- ROW GUTTERS --------------------- */
-
-/* --------- HOZ GUTTERS --------- */
-
-@mixin cell-row-gutter-x {
-  margin-right: var(--negative-gutter-md);
-  margin-left: var(--negative-gutter-md);
-}
-
-.cell-row-gutter-x {
-  @include cell-row-gutter-x;
-}
-
-@mixin cell-row-gutter-x-sm {
-  margin-right: var(--negative-gutter-sm);
-  margin-left: var(--negative-gutter-sm);
-}
-
-.cell-row-gutter-x-sm {
-  @include cell-row-gutter-x-sm;
-}
-
-
-/* --------- VERT GUTTERS --------- */
-
-@mixin cell-row-gutter-y {
-  margin-top: var(--negative-gutter-md);
-  margin-bottom: var(--negative-gutter-md);
-}
-
-.cell-row-gutter-y {
-  @include cell-row-gutter-y;
-}
-
-@mixin cell-row-gutter-y-sm {
-  margin-top: var(--negative-gutter-sm);
-  margin-bottom: var(--negative-gutter-sm);
-}
-
-.cell-row-gutter-y-sm {
-  @include cell-row-gutter-y-sm;
-}
-
-
 /* --------------------- CELLS --------------------- */
-
-// @mixin cell {
-//   position: relative;
-//   width: 100%;
-//   max-width: 100%;
-// }
-
 
 /* --------- MIXIN --------- */
 
@@ -89,7 +37,6 @@ $gap: #{fluid(10px, 20px)};
     @if($size == $i)  {
       position: relative;
       flex: 0 0 auto;
-      // width: $width;
       width: calc($width - $gap / 2);
       max-width: 100%;
     } 
@@ -112,111 +59,66 @@ $gap: #{fluid(10px, 20px)};
 
 /* --------- CLASS --------- */
 
-@for $i from 1 through $columns {
-  $width: math.percentage(math.div($i, $columns));
+// @for $i from 1 through $columns {
+//   $width: math.percentage(math.div($i, $columns));
 
-  .cell-#{$i} {
-    position: relative;
-    flex: 0 0 auto;
-    // width: $width;
-    width: calc($width - $gap / 2);
-    max-width: 100%;
-  }
+//   .cell-#{$i} {
+//     position: relative;
+//     flex: 0 0 auto;
+//     width: calc($width - $gap / 2);
+//     max-width: 100%;
+//   }
 
-}
+// }
 
-.cell-0 {
-  position: relative;
-  flex: 1 0 0%;
-  width: 100%;
-  max-width: 100%;
-}
+// .cell-0 {
+//   position: relative;
+//   flex: 1 0 0%;
+//   width: 100%;
+//   max-width: 100%;
+// }
 
-.cell-auto {
-  position: relative;
-  flex: 0 0 auto;
-  width: auto;
-  max-width: 100%;
-}
-
-
-@each $breakpoint in map-keys($breakpoint-widths) {
-  @include media-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
-
-    @for $i from 1 through $columns {
-      $width: math.percentage(math.div($i, $columns));
-
-      .cell#{$infix}-#{$i} {
-        position: relative;
-        flex: 0 0 auto;
-        width: calc($width - $gap / 2);
-        max-width: 100%;
-      }
-
-    }
-
-    .cell#{$infix}-0 {
-      position: relative;
-      flex: 1 0 0%;
-      width: 100%;
-      max-width: 100%;
-    }
-
-    .cell#{$infix}-auto {
-      position: relative;
-      flex: 0 0 auto;
-      width: auto;
-      max-width: 100%;
-    }
-
-  }
-
-}
+// .cell-auto {
+//   position: relative;
+//   flex: 0 0 auto;
+//   width: auto;
+//   max-width: 100%;
+// }
 
 
-/* --------------------- CELL GUTTERS --------------------- */
+// @each $breakpoint in map-keys($breakpoint-widths) {
+//   @include media-up($breakpoint) {
+//     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
 
-/* --------- HOZ GUTTERS --------- */
+//     @for $i from 1 through $columns {
+//       $width: math.percentage(math.div($i, $columns));
 
-@mixin cell-gutter-x {
-  padding-right: var(--gutter-md);
-  padding-left: var(--gutter-md);
-}
+//       .cell#{$infix}-#{$i} {
+//         position: relative;
+//         flex: 0 0 auto;
+//         width: calc($width - $gap / 2);
+//         max-width: 100%;
+//       }
 
-.cell-gutter-x {
-  @include cell-gutter-x;
-}
+//     }
 
-@mixin cell-gutter-x-sm {
-  padding-right: var(--gutter-sm);
-  padding-left: var(--gutter-sm);
-}
+//     .cell#{$infix}-0 {
+//       position: relative;
+//       flex: 1 0 0%;
+//       width: 100%;
+//       max-width: 100%;
+//     }
 
-.cell-gutter-x-sm {
-  @include cell-gutter-x-sm;
-}
+//     .cell#{$infix}-auto {
+//       position: relative;
+//       flex: 0 0 auto;
+//       width: auto;
+//       max-width: 100%;
+//     }
 
+//   }
 
-/* --------- VERT GUTTERS --------- */
-
-@mixin cell-gutter-y {
-  padding-top: var(--gutter-md);
-  padding-bottom: var(--gutter-md);
-}
-
-.cell-gutter-y {
-  @include cell-gutter-y;
-}
-
-@mixin cell-gutter-y-sm {
-  padding-top: var(--gutter-sm);
-  padding-bottom: var(--gutter-sm);
-}
-
-.cell-gutter-y-sm {
-  @include cell-gutter-y-sm;
-}
+// }
 
 
 /* --------------------- CELL FIXED --------------------- */
@@ -226,7 +128,6 @@ $gap: #{fluid(10px, 20px)};
   flex-shrink: 0;
   width: 100%;
   max-width: 100%;
-  @include cell-gutter-x;
   max-width: $max-width;
   margin-right: auto;
   margin-left: auto;

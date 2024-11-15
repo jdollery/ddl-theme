@@ -1,0 +1,15 @@
+.section {
+
+  &__top {
+    padding-bottom: 6rem;
+  }
+
+  &__heading {
+    font-size: var(--size-h2);
+  }
+
+  &__lead {
+    font-size: var(--size-h6);
+  }
+
+}

@@ -156,7 +156,7 @@
       <div class="banner__two" aria-hidden="true">
 
         <video playsinline autoplay loop muted poster="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-poster-lg.jpg">
-          <source src="<?php echo get_template_directory_uri(); ?>/assets/video/placeholder-video-compressed.mp4" type="video/mp4">
+          <source src="<?php echo get_template_directory_uri(); ?>/assets/video/placeholder-video.mp4" type="video/mp4">
           Sorry, your browser doesn’t support embedded videos.
         </video>
 

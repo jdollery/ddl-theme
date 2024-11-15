@@ -1,23 +1,12 @@
 .loop {
   list-style: none;
   @include cell-row; 
-  @include cell-row-gutter-x-sm;
-  @include cell-row-gutter-y-sm;
-
-  @include media-up(md) {
-    @include cell-row-gutter-x;
-    @include cell-row-gutter-y;
-  }
 
   &__item {
     @include cell(12);
-    @include cell-gutter-x-sm;
-    @include cell-gutter-y-sm;
 
     @include media-up(md) {
       @include cell(6);
-      @include cell-gutter-x;
-      @include cell-gutter-y;
     }
 
   }

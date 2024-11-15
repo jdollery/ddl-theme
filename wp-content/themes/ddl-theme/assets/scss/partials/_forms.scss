@@ -75,7 +75,12 @@ $checkboxradio-height-sm:   2.5rem;
   
     &--half {
       flex: 0 0 auto;
-      width: calc(50% - 1rem);
+      width: 100%;
+
+      @include media-up(md) {
+        width: calc(50% - 1rem);
+      }
+
     }
 
     &--flex {
@@ -89,7 +94,6 @@ $checkboxradio-height-sm:   2.5rem;
     position: relative;
     display: flex;
     flex-direction: column;
-    // margin-bottom: var(--gutter-md);
 
     &--textarea {
       height: 100%;
@@ -98,10 +102,6 @@ $checkboxradio-height-sm:   2.5rem;
     &--checkbox {
       flex-direction: row;
       flex-wrap: wrap;
-    }
-
-    &--note {
-      font-size: 1.3rem;
     }
 
   }
@@ -638,9 +638,6 @@ strong.error {
   color: var(--white);
   background: var(--danger);
   font-weight: var(--regular);
-  // position: absolute;
-  // left: 0;
-  top: calc(100% - $error-margin);
   z-index: 1;
   width: 100%;
   padding: 0.3rem 0.8rem;

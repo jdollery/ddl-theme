@@ -349,7 +349,7 @@ img {
 }
 
 ::selection {
-  background-color: var(--blue);
+  background-color: var(--accent);
   color: var(--white);
 }
 
@@ -359,7 +359,7 @@ a {
 
   @include hover-focus {
     text-decoration: none;
-    color: var(--blue);
+    color: var(--accent);
   }
 
 }

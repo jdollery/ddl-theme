@@ -6,7 +6,6 @@
     @include cell-row;
     
     @include media-up(md) {
-      // height: calc(100vh - var(--header-height));
       min-height: calc(var(--vh, 1vh) * 100 - var(--header-height)); //header height with device view hight fix
       // min-height: 50rem;
     }
@@ -14,22 +13,29 @@
   }
 
   &__one {
-    @include cell-row;
-    @include cell(0);
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 0 0%;
+    width: 100%;
+    max-width: 100%;
     flex-direction: column;
     justify-content: center;
     padding: var(--space-y) var(--space-x);
   }
 
   &__two {
-    @include cell(12);
+    position: relative;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
 
     @include media-down(md) {
       aspect-ratio: 7 / 4;
     }
 
     @include media-up(md) {
-      @include cell(6);
+      width: 50%;
     }
 
   }

@@ -17,17 +17,17 @@ if( have_rows('accordion_section') ){
     <section class="accordion<?php if( $accordion_spacing ) { foreach( $accordion_spacing as $space ): ?> accordion--<?php echo $space; endforeach; } ?>">
 
       <?php if ($accordion_heading) { ?>
-      <div class="accordion__top">
-        <h3 class="accordion__heading"><?php echo $accordion_heading ?></h3>
+      <div class="section__top">
+        <h3 class="section__heading"><?php echo $accordion_heading ?></h3>
         <?php if ($accordion_intro) { ?> 
-          <div class="accordion__lead">
+          <div class="section__lead">
             <?php echo $accordion_intro; ?>
           </div>
         <?php } ?>
       </div>
       <?php } ?>
 
-      <div class="accordion__body">
+      <div class="section__middle">
 
         <dl class="accordion__list">
 

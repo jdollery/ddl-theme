@@ -65,21 +65,21 @@ add_action( 'init', 'register_menus' );
 /* REGISTER WIDGETS */
 /*-----------------------------------------------------------------------------------*/
 
-// function ddl_widgets_init() {
+function ddl_widgets_init() {
 
-//   register_sidebar( array(
-// 		'name'          => esc_html__( 'News Sidebar', 'ddl' ),
-// 		'id'            => 'news-sidebar',
-// 		'description'   => esc_html__( 'Add widgets here.', 'ddl' ),
-// 		'before_widget' => '',
-// 		'after_widget'  => '',
-// 		'before_title'  => '',
-// 		'after_title'   => '',
-//   ) );
+  register_sidebar( array(
+		'name'          => esc_html__( 'Pop-up Banner -  900px x 500px', 'ddl' ),
+		'id'            => 'dialog-slot',
+		'description'   => esc_html__( 'Add widgets here.', 'ddl' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+  ) );
 
-// }
+}
 
-// add_action( 'widgets_init', 'ddl_widgets_init' );
+add_action( 'widgets_init', 'ddl_widgets_init' );
 
 
 /*-----------------------------------------------------------------------------------*/

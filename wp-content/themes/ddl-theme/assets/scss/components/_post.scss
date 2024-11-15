@@ -1,7 +1,7 @@
 .post {
   display: block;
   background: var(--grey-light);
-  color: var(--blue);
+  color: var(--accent);
   font-weight: var(--regular);
   height: 100%;
 
@@ -16,7 +16,9 @@
   }
 
   &__one {
-    @include cell(12); 
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
 
     @include media-down(xl) {
       max-height: 24vw;
@@ -31,13 +33,15 @@
     }
 
     @include media-up(xl) {
-      @include cell(5);
+      width: 41.66666667%;
     }
 
   }
 
   &__two {
-    @include cell(0);
+    flex: 1 0 0%;
+    width: 100%;
+    max-width: 100%;
   }
 
   img {
@@ -51,8 +55,8 @@
   .btn {
     margin-top: 0;
     color: var(--white);
-    background: var(--blue);
-    border-color: var(--blue);
+    background: var(--accent);
+    border-color: var(--accent);
   }
 
   &__body {
@@ -75,12 +79,12 @@
 
   @include hover-focus {
     color: var(--white);
-    background: var(--blue);
+    background: var(--accent);
     
     .btn {
       color: var(--white);
-      background: var(--blue-light);
-      border-color: var(--blue-light);
+      background: var(--accent-light);
+      border-color: var(--accent-light);
     }
 
   }
@@ -89,7 +93,7 @@
     margin-top: var(--gutter-lg);
 
     @include hover-focus {
-      color: var(--blue);
+      color: var(--accent);
       background: var(--white);
       border-color: var(--white);
     }

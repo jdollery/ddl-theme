@@ -13,7 +13,7 @@
   &--white {
     background: var(--white);
 
-    .quicklinks__top {
+    .section {
 
       .btn {
         @include btn-black;
@@ -23,11 +23,11 @@
 
   }
 
-  &--blue {
-    background: var(--blue);
+  &--accent {
+    background: var(--accent);
     color: var(--white);
 
-    .quicklinks__top {
+    .section {
 
       h2,
       h3,
@@ -46,7 +46,7 @@
   &--grey {
     background: var(--grey-light);
 
-    .quicklinks__top {
+    .section {
 
       .btn {
         @include btn-black;
@@ -58,14 +58,6 @@
 
   &:first-of-type {
     z-index: 1;
-  }
-
-  &__top {
-    padding-bottom: var(--gutter-lg);
-  }
-
-  &__heading {
-    font-size: var(--size-h2);
   }
 
   &__list {

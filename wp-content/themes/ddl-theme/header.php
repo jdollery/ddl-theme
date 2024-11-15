@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" <?php language_attributes(); ?>>
+  
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
@@ -28,17 +29,22 @@
 
   <body <?php body_class(); ?> >
 
+    <?php if(is_active_sidebar('dialog-slot')) { ?>
+      <?php get_template_part('inc/dialog'); ?>
+    <?php } ?>
+
     <header class="header" id="mainHeader">
       
-      <div class="cell-row cell-row-gutter-x cell-align-center cell-justify-between">
+      <div class="header__row">
 
-        <div class="cell-auto cell-gutter-x">
+        <div class="header__one">
           <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" title="Back to the home page">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" alt="<?php bloginfo( 'name' ); ?>" width="260" height="82">
+            <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" alt="<?php bloginfo( 'name' ); ?>" width="260" height="82"> -->
+            <img src="https://placehold.co/260x82" alt="<?php bloginfo( 'name' ); ?>" width="260" height="82">
           </a>
         </div>
 
-        <div class="cell-0 cell-gutter-x text-center">
+        <div class="header__two">
           <nav class="navigation" id="headerNav" aria-labelledby="navToggle" aria-label="Main menu">
             <ul>
               <?php wp_nav_menu( array (
@@ -50,7 +56,7 @@
           </nav> 
         </div>
 
-        <div class="cell-auto cell-gutter-x">
+        <div class="header__three">
 
           <a class="btn btn--accent" href="<?php echo get_the_permalink( 147 ) ?>">Book an appointment</a>
           

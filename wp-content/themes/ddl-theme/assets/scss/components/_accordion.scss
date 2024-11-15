@@ -14,14 +14,6 @@
     position: relative;
     @include cell-row;
   }
-
-  &__top {
-    padding-bottom: var(--gutter-lg);
-  }
-
-  &__lead {
-    font-size: var(--size-h6);
-  }
   
   &__list {
     list-style: none;

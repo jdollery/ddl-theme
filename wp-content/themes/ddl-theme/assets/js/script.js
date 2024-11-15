@@ -51,7 +51,7 @@ window.addEventListener("scroll", () => {
   // const currentScroll = window.pageYOffset;
   const currentScroll = window.scrollY;
   
-  if (currentScroll <= headerLoad + 200) {
+  if (currentScroll <= headerLoad - 100) {
     body.classList.remove(scrollUp);
     return;
   }
@@ -128,25 +128,6 @@ close.addEventListener("click", function () {
 
 
 jQuery(document).ready(function () { //doc ready start
-
-  /*-----------------------------------------------------------------------------------*/
-  /* STICKY NAV */
-  /*-----------------------------------------------------------------------------------*/
-
-  // jQuery(function(){
-  //   setSticky();
-  //   jQuery(window).scroll(setSticky);
-  // });
-
-  // function setSticky() {
-  //   if (jQuery(window).scrollTop() > 1) {
-  //     jQuery('#mainHeader').addClass("header--sticky");
-  //   }
-  //   else{
-  //     jQuery('#mainHeader').removeClass("header--sticky");
-  //   }
-  // }
-
 
   /*-----------------------------------------------------------------------------------*/
   /* SLICK SLIDER */
@@ -559,7 +540,7 @@ jQuery('a[href*="#"]')
 
 
 /*-----------------------------------------------------------------------------------*/
-/* VIDEO POP-UP */
+/* VIDEO DIALOG */
 /*-----------------------------------------------------------------------------------*/
 
 document.querySelectorAll("#videoToggle").forEach((d) => d.addEventListener("click", playVideos));
@@ -575,16 +556,20 @@ function playVideos(e) {
   var videoWrap = document.createElement("DIV");
   videoWrap.setAttribute("id", "videoWrap");
   videoWrap.setAttribute("class", "dialog");
+  videoWrap.setAttribute("aria-modal", "false");
   document.body.appendChild(videoWrap);
 
   const wrapper = document.getElementById("videoWrap");
 
-  window.setTimeout(function(){wrapper.classList.add("dialog--active");}, 10);
+  window.setTimeout(function(){
+    wrapper.classList.add("dialog--active");
+    wrapper.setAttribute("aria-modal", "true");
+  }, 10);
 
   const url = this.dataset.url;
 
-  const startModal = '<span onclick="videoDialogClose();" class="dialog__overlay"></span> <div class="dialog__inner">';
-  const finishModal = '<button onclick="videoDialogClose();" class="dialog__close"><span class="icon icon--close"><svg role="img"><use xlink:href="#close" href="#close"></use></svg></span></button></div>';
+  const startModal = '<span onclick="videoDialogClose();" class="dialog__overlay" aria-label="Close dialog"></span> <div class="dialog__inner">';
+  const finishModal = '<button onclick="videoDialogClose();" class="dialog__close"><span class="hidden">Close</span></button></div>';
   
   if (url.indexOf("mp4") !== -1 || url.indexOf("m4v") !== -1) {
     
@@ -694,6 +679,60 @@ function videoDialog(){}
 //   });
 
 // });
+
+
+/* ---- SHOW ONLY PER SESSION ---- */
+
+var dialogVisable = document.getElementById("dialog");
+
+if (dialogVisable) {
+
+  // window.onload = function () {
+  window.addEventListener("load", function() {
+
+    var dialog = document.getElementById("dialog");
+    var root = document.getElementsByTagName( 'html' )[0];
+
+    var show_dialog = sessionStorage.getItem('dialogShown');
+
+    if (show_dialog != 'true') {
+
+      sessionStorage.setItem('dialogShown', 'true');
+
+      root.classList.add('js-dialog-active');
+      dialog.classList.add('dialog--active');
+
+      // console.log(show_dialog);
+
+    } else {
+
+      sessionStorage.setItem('shown-dialog', 'false');
+
+      root.classList.remove("js-dialog-active");
+      dialog.classList.remove('dialog--active');
+
+      // console.log(show_dialog);
+
+    }
+
+    const exits = dialog.querySelectorAll('#dialogClose');
+
+    exits.forEach(function(exit) {
+
+      exit.addEventListener('click', function(event) {
+
+        sessionStorage.setItem("modal", "none");
+        dialog.classList.remove('dialog--active');
+        root.classList.remove("js-dialog-active");
+
+      });
+
+    });
+
+    
+  }, 500);
+
+};
 
 
 /*-----------------------------------------------------------------------------------*/

@@ -11,14 +11,8 @@ get_header(); ?>
 <?php get_template_part('inc/sections'); ?>
 
   <section class="content content--white content--top content--bottom">
+
     <div class="content__body">
-    
-      <div class="cell-row">
-        <div class="cell-6">Test</div>
-        <div class="cell-6">Test</div>
-        <div class="cell-6">Test</div>
-        <div class="cell-6">Test</div>
-      </div>
 
       <?php the_content(); ?>
 
@@ -377,9 +371,9 @@ get_header(); ?>
                   id="patient_consent" 
                   name="patient_consent" 
                   value="Yes" 
-                  aria-label="Yes, I confirm I have the patient&rsaquo;s consent to share this information."
+                  aria-label="Yes, I confirm I have the patient&rsquo;s consent to share this information."
                 >
-                <label for="patient_consent">Yes, I confirm I have the patient&rsaquo;s consent to share this information.</label>
+                <label for="patient_consent">Yes, I confirm I have the patient&rsquo;s consent to share this information.</label>
               </div>
 
             </div>
@@ -400,7 +394,7 @@ get_header(); ?>
 
             </div>
 
-            <small>By clicking submit, you agree to <?php bloginfo( 'name' ); ?> collecting your personal data. To learn more about how <?php bloginfo( 'name' ); ?> collects, uses, shares and protects your personal data, please read our <a href="<?php echo get_privacy_policy_url() ?>">privacy policy</a>.</small>
+            <small>By clicking &lsquo;submit referral&rsquo;, you agree to <?php bloginfo( 'name' ); ?> collecting your personal data. To learn more about how <?php bloginfo( 'name' ); ?> collects, uses, shares and protects your personal data, please read our <a href="<?php echo get_privacy_policy_url() ?>">privacy policy</a>.</small>
 
           </div>
 

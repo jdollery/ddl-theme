@@ -5,8 +5,8 @@
     background: var(--white);
   }
 
-  &--blue {
-    background: var(--blue);
+  &--accent {
+    background: var(--accent);
     color: var(--white);
 
     h2,
@@ -19,7 +19,7 @@
       color: var(--white);
 
       @include hover-focus {
-        color: var(--blue-light);
+        color: var(--accent-light);
       }
 
     }
@@ -99,7 +99,8 @@
   }
 
   &__row {
-    @include cell-row;
+    display: flex;
+    flex-wrap: wrap;
 
     @include media-down(lg) {
       flex-direction: column-reverse;
@@ -108,11 +109,15 @@
   }
 
   &__column {
-    @include cell(12);
     display: flex;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
 
     @include media-up(lg) {
-      @include cell(0);
+      position: relative;
+      flex: 1 0 0%;
+      width: 100%;
     }
 
     &--sticky {

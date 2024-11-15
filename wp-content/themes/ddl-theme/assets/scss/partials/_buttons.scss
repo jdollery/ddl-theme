@@ -16,7 +16,7 @@
 }
 
 @mixin btn-white {
-  color: var(--blue);
+  color: var(--accent);
   background: var(--white);
   border-color: var(--white);
 
@@ -30,13 +30,13 @@
 
 @mixin btn-accent {
   color: var(--white);
-  background: var(--blue);
-  border-color: var(--blue);
+  background: var(--accent);
+  border-color: var(--accent);
 
   @include hover-focus {
     color: var(--black);
     background: transparent;
-    border-color: var(--blue);
+    border-color: var(--accent);
   }
 
 }
@@ -97,7 +97,7 @@
     @include btn-white;
   }
 
-  &--blue {
+  &--accent {
     @include btn-accent;
   }
 
