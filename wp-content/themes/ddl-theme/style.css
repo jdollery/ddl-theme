@@ -1212,6 +1212,19 @@ img:last-child {
   flex-wrap: wrap;
   gap: 2rem
 }
+.form__row--footer {
+  padding: 2rem 0 0
+}
+@media (min-width:768px) {
+  .form__row--footer {
+    align-items: center
+  }
+}
+@media (max-width:767px) {
+  .form__row--footer {
+    flex-direction: column
+  }
+}
 .form__cell {
   position: relative;
   max-width: 100%
@@ -2763,7 +2776,7 @@ html.js-nav-active {
   width: calc(100% - clamp(1rem,.93vw + .55rem,2rem)/ 2);
   max-width: 100%
 }
-@media (min-width:992px) {
+@media (min-width:480px) {
   .loop__item {
     position: relative;
     flex: 0 0 auto;
@@ -2784,7 +2797,7 @@ html.js-nav-active {
   gap: clamp(1rem,.93vw + .55rem,2rem);
   height: 100%
 }
-@media (max-width:1279px) {
+@media (max-width:1549px) {
   .post__row {
     flex-direction: column
   }
@@ -2794,7 +2807,7 @@ html.js-nav-active {
   width: 100%;
   max-width: 100%
 }
-@media (max-width:1279px) {
+@media (max-width:1549px) {
   .post__one {
     max-height: 24vw
   }
@@ -2809,7 +2822,7 @@ html.js-nav-active {
     max-height: 55vw
   }
 }
-@media (min-width:1280px) {
+@media (min-width:1550px) {
   .post__one {
     width: 41.66666667%
   }
@@ -2871,7 +2884,7 @@ html.js-nav-active {
   border-color: var(--white)
 }
 .section__top {
-  padding-bottom: 6rem
+  padding-bottom: clamp(4rem,1.87vw + 3.1rem,6rem)
 }
 .section__heading {
   font-size: var(--size-h2)
@@ -3509,7 +3522,7 @@ html.js-dialog-active {
   width: calc(100% - clamp(1rem,.93vw + .55rem,2rem)/ 2);
   max-width: 100%
 }
-@media (min-width:992px) {
+@media (min-width:480px) {
   .quicklinks__item {
     position: relative;
     flex: 0 0 auto;

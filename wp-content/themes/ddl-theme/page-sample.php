@@ -346,7 +346,7 @@ get_header(); ?>
 
           </div>
 
-          <div class="form__row cell-align-center pt-7">
+          <div class="form__row form__row--footer">
 
             <!-- <div class="form__cell form__cell--full">
               <div class="form__input form__input--checkbox">
@@ -378,7 +378,7 @@ get_header(); ?>
 
             </div>
 
-            <div class="form__cell pt-3 pt-lg-0">
+            <div class="form__cell">
 
               <!-- <button class="btn btn--black" type="submit">Submit referral</button>
 

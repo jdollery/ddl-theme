@@ -1,7 +1,7 @@
 .section {
 
   &__top {
-    padding-bottom: 6rem;
+    padding-bottom: #{fluid(40px, 60px)};
   }
 
   &__heading {

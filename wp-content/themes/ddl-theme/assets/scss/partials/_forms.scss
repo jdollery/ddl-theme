@@ -62,6 +62,20 @@ $checkboxradio-height-sm:   2.5rem;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
+
+    &--footer {
+      padding: 2rem 0 0;
+
+      @include media-up(sm) {
+        align-items: center;
+      }
+
+      @include media-down(sm) {
+        flex-direction: column;
+      }
+
+    }
+
   }
 
   &__cell {

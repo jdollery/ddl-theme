@@ -5,7 +5,7 @@
   &__item {
     @include cell(12);
 
-    @include media-up(md) {
+    @include media-up(xs) {
       @include cell(6);
     }
 
