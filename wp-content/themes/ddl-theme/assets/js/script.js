@@ -406,16 +406,38 @@ dropDowns.forEach((dropDown) => {
   
   dropDown.addEventListener('click', function() {
 
-    slideToggle(dropDown.nextElementSibling, 500);
+    /*----------- Open/Close each -----------*/
 
+    // slideToggle(dropDown.nextElementSibling, 500);
+
+    // var toggle = dropDown.querySelector('button');
+    
+    // if (dropDown.classList.contains('accordion__item--open')) {
+    //   dropDown.classList.remove('accordion__item--open');
+    //   toggle.setAttribute( 'aria-expanded', 'false' );
+    // }
+    // else {
+    //   dropDown.classList.add('accordion__item--open');
+    //   toggle.setAttribute( 'aria-expanded', 'true' );
+    // }
+
+    /*----------- Open/Close one at a time -----------*/
+
+    var openDropDowns = document.querySelectorAll(".accordion__item--open");
     var toggle = dropDown.querySelector('button');
     
     if (dropDown.classList.contains('accordion__item--open')) {
       dropDown.classList.remove('accordion__item--open');
       toggle.setAttribute( 'aria-expanded', 'false' );
+      slideUp(dropDown.nextElementSibling, 500);
     }
     else {
+      openDropDowns.forEach((open) => {
+        open.classList.remove('accordion__item--open');
+        slideUp(open.nextElementSibling, 500);
+      });
       dropDown.classList.add('accordion__item--open');
+      slideDown(dropDown.nextElementSibling, 500);
       toggle.setAttribute( 'aria-expanded', 'true' );
     }
 
