@@ -97,6 +97,7 @@ function ddl_scripts() {
 	// wp_enqueue_script( 'ddl-map', get_template_directory_uri() . '/assets/js/map.js', array(), '1.0.0', true ); //outdated - need to new version (api keys)
 	// wp_enqueue_script( 'ddl-wow', get_template_directory_uri() . '/assets/js/wow.js', array(), '3.0.0', true );
 	wp_enqueue_script( 'ddl-script', get_template_directory_uri() . '/assets/js/script.js', array(), '1.0.0', true );
+	wp_enqueue_script( 'ddl-elfsight', 'https://static.elfsight.com/platform/platform.js', array(), '', false );
 
   // if ( (is_page('19')) ) {
   //   wp_enqueue_script( 'ddl-map', get_template_directory_uri() . '/assets/js/map.js', array(), '1.0.0', true );

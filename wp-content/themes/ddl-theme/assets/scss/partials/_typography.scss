@@ -254,14 +254,13 @@ ol {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $gap;
 
   li {
-    display: inline-block;
-
-    &:not(:first-child) {
-      margin-left: $list-indent;
-    }
-
+    display: block;
   }
 
 }
