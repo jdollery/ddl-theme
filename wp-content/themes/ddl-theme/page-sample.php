@@ -34,7 +34,119 @@ get_header(); ?>
       <h5>Heading h5</h5>
       <h6>Heading h6</h6>
 
-      <form class="form" id="validateForm" novalidate="true" method="post" action="https://www.securedent.net/submit.ashx" enctype="multipart/form-data" name="referral">
+      <form class="form" id="contactForm" name="contact" novalidate="true" method="post" action="https://www.securedent.net/submit.ashx">
+
+        <div class="form__row">
+
+          <div class="form__cell form__cell--half">
+
+            <div class="form__input form__input--focus">
+              <input
+                type="text"
+                id="patient_name"
+                name="patient_name"
+                placeholder="Full name*"
+                required
+                aria-required="true"
+                aria-label="Full name"
+              />
+              <label for="patient_name">Full name<span aria-label="required">*</span></label>
+            </div>
+
+          </div>
+          <div class="form__cell form__cell--half">
+
+            <div class="form__input form__input--focus">
+              <input
+                type="email"
+                id="patient_email"
+                name="patient_email"
+                placeholder="Email address*"
+                required
+                aria-required="true"
+                aria-label="Email address"
+              />
+              <label for="patient_email">Email address<span aria-label="required">*</span></label>
+            </div>
+
+          </div>
+          <div class="form__cell form__cell--half">
+
+            <div class="form__input form__input--focus">
+              <input
+                type="number"
+                id="patient_phone"
+                name="patient_phone"
+                placeholder="Telephone number"
+                aria-label="Telephone number"
+              />
+              <label for="patient_phone">Telephone number</label>
+            </div>
+
+          </div>
+
+          <div class="form__cell form__cell--half">
+
+            <div class="form__input">
+              <select 
+                id="new_patient" 
+                name="new_patient" 
+                data-placeholder="Are you a new patient?*" 
+                required
+                aria-required="true"
+                aria-label="Are you a new patient?"
+                >
+                <option></option>
+                <option label="Yes, I&rsquo;m a new patient" value="Yes">Yes, I&rsquo;m a new patient</option>
+                <option label="No, I&rsquo;m an existing patient" value="No">No, I&rsquo;m an existing patient</option>
+              </select> 
+            </div>
+
+          </div>
+
+          <div class="form__cell form__cell--full">
+
+            <div class="form__input form__input--focus">
+              <textarea 
+                id="enquiry"
+                name="enquiry"
+                rows="3"
+                placeholder="Your enquiry" 
+                aria-label="Your enquiry"
+              ></textarea>
+              <label for="enquiry">Your enquiry</label> 
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="form__row form__row--footer">
+
+          <div class="form__cell form__cell--flex">
+            By clicking &lsquo;send&rsquo;, you agree to <?php bloginfo( 'name' ); ?> collecting your personal data. To learn more about how <?php bloginfo( 'name' ); ?> collects, uses, shares and protects your personal data, please read our <a href="<?php echo get_privacy_policy_url() ?>">privacy policy</a>.
+          </div>
+
+          <div class="form__cell">
+            <button class="btn btn--black btn--submit" type="submit">
+              <span class="btn__text">Send</span>
+              <span class="btn__icon">Sending <span class="icon icon--loader"><svg role="img"><use xlink:href="#loader" href="#loader"></use></svg></span></span></span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- <input type="hidden" name="recaptcha_response" id="recaptcha_response"> -->
+
+        <!-- <input type="hidden" name="form_uid" value="b395082e-6e12-4fcd-92e4-cfa8ffed4066">
+        <input name="required" type="hidden" value="first_name,last_name,submit_by,new_patient">
+        <input type="hidden" name="data_order" value="first_name,last_name,phone_number,submit_by,new_patient,enquiry,subscribe">
+        <input name="ok_url" type="hidden" id="ok_url" value="<?php echo get_the_permalink( 1 ) // thank you page ?>">
+        <input name="not_ok_url" type="hidden" id="not_ok_url" value="<?php echo get_the_permalink( 1 ) // sorry page ?>"> -->
+
+      </form>
+
+      <form class="form" id="referralForm" name="referral" novalidate="true" method="post" action="https://www.securedent.net/submit.ashx" enctype="multipart/form-data">
 
         <fieldset>
 
@@ -44,60 +156,52 @@ get_header(); ?>
             <div class="form__cell form__cell--half">
 
               <div class="form__input">
+                <label for="patient_name">Full name<span aria-label="required">*</span></label>
                 <input
                   type="text"
                   id="patient_name"
                   name="patient_name"
-                  placeholder="Full name*"
                   required
                   aria-required="true"
-                  aria-label="Full name"
                 />
-                <label for="patient_name">Full name<span aria-label="required">*</span></label>
               </div>
 
             </div>
             <div class="form__cell form__cell--half">
 
               <div class="form__input">
+                <label for="patient_dob">Date of birth</label>
                 <input
-                  type="date"
+                  type="text"
                   id="patient_dob"
                   name="patient_dob"
-                  placeholder="Date of birth"
-                  aria-label="Date of birth"
                 />
-                <label for="patient_dob">Date of birth</label>
               </div>
 
             </div>
             <div class="form__cell form__cell--half">
 
               <div class="form__input">
+                <label for="patient_email">Email address<span aria-label="required">*</span></label>
                 <input
                   type="email"
                   id="patient_email"
                   name="patient_email"
-                  placeholder="Email address*"
                   required
                   aria-required="true"
-                  aria-label="Email address"
                 />
-                <label for="patient_email">Email address<span aria-label="required">*</span></label>
               </div>
 
             </div>
             <div class="form__cell form__cell--half">
 
               <div class="form__input">
+                <label for="patient_phone">Telephone number</label>
                 <input
                   type="number"
                   id="patient_phone"
                   name="patient_phone"
-                  placeholder="Telephone number"
-                  aria-label="Telephone number"
                 />
-                <label for="patient_phone">Telephone number</label>
               </div>
 
             </div>
@@ -105,33 +209,12 @@ get_header(); ?>
             <div class="form__cell form__cell--full">
 
               <div class="form__input">
-              <select 
-                  id="new_patient" 
-                  name="new_patient" 
-                  data-placeholder="Are you a new patient?*" 
-                  required 
-                  aria-required="true"
-                  aria-label="Are you a new patient?"
-                  >
-                  <option></option>
-                  <option label="Yes, I&rsquo;m a new patient" value="Yes">Yes, I&rsquo;m a new patient</option>
-                  <option label="No, I&rsquo;m an existing patient" value="No">No, I&rsquo;m an existing patient</option>
-                </select> 
-              </div>
-
-            </div>
-
-            <div class="form__cell form__cell--full">
-
-              <div class="form__input">
+                <label for="patient_address">Address</label> 
                 <textarea 
                   id="patient_address"
                   name="patient_address"
                   rows="3"
-                  placeholder="Address" 
-                  aria-label="Address"
                 ></textarea>
-                <label for="patient_address">Address</label> 
               </div>
 
             </div>
@@ -149,13 +232,13 @@ get_header(); ?>
             <div class="form__cell form__cell--full">
 
               <div class="form__input">
+                <label for="referral_type">Please select a type of treatment to be referred<span aria-label="required">*</span></label> 
                 <select 
                   id="referral_type" 
                   name="referral_type" 
-                  data-placeholder="Choose a referral type" 
+                  data-placeholder="Please select an option" 
                   required
                   aria-required="true"
-                  aria-label="Choose a referral type"
                   >
                   <option></option>
                   <option label="Implant referral" value="Implant referral">Implant referral</option>
@@ -169,15 +252,14 @@ get_header(); ?>
             <div class="form__cell form__cell--full">
 
               <div class="form__input">
+                <label for="referral_reason">Reason for referral<span aria-label="required">*</span></label> 
                 <textarea 
                   id="referral_reason"
                   name="referral_reason"
                   rows="3"
-                  placeholder="Reason for referral" 
+                  required
                   aria-required="true"
-                  aria-label="Reason for referral"
                 ></textarea>
-                <label for="referral_reason">Reason for referral</label> 
               </div>
 
             </div>
@@ -186,31 +268,29 @@ get_header(); ?>
 
               <!-- <div class="form__input form__input--textarea"> -->
               <div class="form__input">
+                <label for="referral_history">Medical history and relevant information</label> 
                 <textarea 
                   id="referral_history"
                   name="referral_history"
                   rows="3"
-                  placeholder="Medical history and relevant information" 
-                  aria-label="Medical history and relevant information"
                 ></textarea>
-                <label for="referral_history">Medical history and relevant information</label> 
               </div>
 
             </div>
 
-            <div class="form__cell form__cell--full">
+            <div class="form__cell form__cell--frame">
 
-              <div class="form__row cell-align-center">
+              <div class="form__row">
 
                 <div class="form__cell form__cell--flex">
 
                   <div class="form__input">
-                    <p class="m-0"><span>Is the tooth symptomatic?</span></p>
+                    <span>Is the tooth symptomatic?</span>
                   </div>
 
                 </div>
 
-                <div class="form__cell pr-4">
+                <div class="form__cell">
 
                   <div class="form__input form__input--checkbox">
                     <input 
@@ -241,6 +321,7 @@ get_header(); ?>
                 </div>
 
               </div>
+
             </div>
 
             <div class="form__cell form__cell--full">
@@ -270,135 +351,118 @@ get_header(); ?>
             <div class="form__cell form__cell--half">
 
               <div class="form__input">
+                <label for="referrer_name">Full name<span aria-label="required">*</span></label>
                 <input
                   type="text"
                   id="referrer_name"
                   name="referrer_name"
-                  placeholder="Full name*"
                   required
                   aria-required="true"
-                  aria-label="Full name"
                 />
-                <label for="referrer_name">Full name<span aria-label="required">*</span></label>
               </div>
 
             </div>
             <div class="form__cell form__cell--half">
 
               <div class="form__input">
+                <label for="referrer_position">Position/Job title</label>
                 <input
                   type="text"
                   id="referrer_position"
                   name="referrer_position"
-                  placeholder="Position/Job title"
-                  aria-label="Position/Job title"
                 />
-                <label for="referrer_position">Position/Job title</label>
               </div>
 
             </div>
             <div class="form__cell form__cell--half">
 
               <div class="form__input">
+                <label for="referrer_email">Email address<span aria-label="required">*</span></label>
                 <input
                   type="email"
                   id="referrer_email"
                   name="submit_by"
-                  placeholder="Email address*"
                   required
                   aria-required="true"
-                  aria-label="Email address"
                 />
-                <label for="referrer_email">Email address<span aria-label="required">*</span></label>
               </div>
 
             </div>
             <div class="form__cell form__cell--half">
 
               <div class="form__input">
+                <label for="referrer_phone">Telephone number</label>
                 <input
                   type="number"
                   id="referrer_phone"
                   name="referrer_phone"
-                  placeholder="Telephone number"
-                  aria-label="Telephone number"
                 />
-                <label for="referrer_phone">Telephone number</label>
               </div>
 
             </div>
             <div class="form__cell form__cell--full">
 
               <div class="form__input form__input--textarea">
+                <label for="referrer_address">Address</label> 
                 <textarea 
                   id="referrer_address"
                   name="referrer_address"
                   rows="3"
-                  placeholder="Address" 
                   required
                   aria-required="true"
-                  aria-label="Address"
                 ></textarea>
-                <label for="referrer_address">Address</label> 
               </div>
 
             </div>
-
-          </div>
-
-          <div class="form__row form__row--footer">
-
-            <!-- <div class="form__cell form__cell--full">
-              <div class="form__input form__input--checkbox">
-                <input 
-                  type="checkbox"
-                  id="marketing_consent"
-                  name="marketing_consent"
-                  value="Yes, I consent"
-                  required
-                  aria-required="true"
-                  aria-label="Yes, I consent"
-                >
-                <label for="marketing_consent">I confirm I have the patient&rsquo;s consent to share this information, and also consent to <?php bloginfo( 'name' ); ?> replying and storing these personal details (please see our <a href="<?php echo get_privacy_policy_url() ?>">privacy policy</a> for more information).</label>
-              </div>
-            </div> -->
-
-            <div class="form__cell form__cell--flex">
-
-              <div class="form__input form__input--checkbox">
-                <input 
-                  type="checkbox" 
-                  id="patient_consent" 
-                  name="patient_consent" 
-                  value="Yes" 
-                  aria-label="Yes, I confirm I have the patient&rsquo;s consent to share this information."
-                >
-                <label for="patient_consent">Yes, I confirm I have the patient&rsquo;s consent to share this information.</label>
-              </div>
-
-            </div>
-
-            <div class="form__cell">
-
-              <!-- <button class="btn btn--black" type="submit">Submit referral</button>
-
-              <button class="btn btn--black btn--submit" type="submit">
-                <span class="btn__text">Send message</span>
-                <span class="btn__icon">Sending <span class="icon icon--loader"><svg role="img"><use xlink:href="#loader" href="#loader"></use></svg></span></span></span>
-              </button> -->
-
-              <button class="btn btn--black btn--submit" type="submit">
-                <span class="btn__text">Submit referral</span>
-                <span class="btn__icon">Submitting <span class="icon icon--loader"><svg role="img"><use xlink:href="#loader" href="#loader"></use></svg></span></span></span>
-              </button>
-
-            </div>
-
-            <small>By clicking &lsquo;submit referral&rsquo;, you agree to <?php bloginfo( 'name' ); ?> collecting your personal data. To learn more about how <?php bloginfo( 'name' ); ?> collects, uses, shares and protects your personal data, please read our <a href="<?php echo get_privacy_policy_url() ?>">privacy policy</a>.</small>
 
           </div>
 
         </fieldset>
+
+        <div class="form__row form__row--footer">
+
+          <div class="form__cell form__cell--frame">
+
+            <div class="form__row">
+
+              <div class="form__cell form__cell--flex">
+
+                <div class="form__input">
+                  <span>I confirm I have the patient&rsquo;s consent to share this information.</span>
+                </div>
+
+              </div>
+
+              <div class="form__cell">
+
+                <div class="form__input form__input--checkbox">
+                  <input 
+                    type="checkbox"
+                    id="patient_consent"
+                    name="patient_consent"
+                    value="Yes"
+                  >
+                  <label for="patient_consent">Yes</label>
+                </div>
+
+              </div>
+
+            </div>
+            
+          </div>
+
+          <div class="form__cell form__cell--flex">
+            <span>By clicking &lsquo;submit referral&rsquo;, you agree to <?php bloginfo( 'name' ); ?> collecting your personal data. To learn more about how <?php bloginfo( 'name' ); ?> collects, uses, shares and protects your personal data, please read our <a href="<?php echo get_privacy_policy_url() ?>">privacy policy</a>.</span>
+          </div>
+
+          <div class="form__cell">
+            <button class="btn btn--black btn--submit" type="submit">
+              <span class="btn__text">Submit referral</span>
+              <span class="btn__icon">Sending <span class="icon icon--loader"><svg role="img"><use xlink:href="#loader" href="#loader"></use></svg></span></span></span>
+            </button>
+          </div>
+
+        </div>
 
         <!-- <input type="hidden" name="recaptcha_response" id="recaptcha_response"> -->
         <!-- <input type="hidden" name="form_uid" value="5fc07193-b633-4f3a-adff-ff7a32f3e11f">

@@ -1,0 +1,53 @@
+.grecaptcha-badge {
+  display: none !important;
+}
+
+@-moz-keyframes loaderSpin { 
+  100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes loaderSpin { 
+  100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes loaderSpin { 
+  100% { 
+      -webkit-transform: rotate(360deg); 
+      transform:rotate(360deg); 
+  } 
+}
+
+.button--submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button--submit .button__icon:after {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  display: block;
+  content: '';
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M12 4C14.5905 4 16.8939 5.23053 18.3573 7.14274L16 9.5H22V3.5L19.7814 5.71863C17.9494 3.452 15.1444 2 12 2 6.47715 2 2 6.47715 2 12H4C4 7.58172 7.58172 4 12 4ZM20 12C20 16.4183 16.4183 20 12 20 9.40951 20 7.10605 18.7695 5.64274 16.8573L8 14.5 2 14.5V20.5L4.21863 18.2814C6.05062 20.548 8.85557 22 12 22 17.5228 22 22 17.5228 22 12H20Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 90%;
+  margin: 0 0 0 1rem;
+  -webkit-animation: loaderSpin 2s linear infinite;
+  -moz-animation: loaderSpin 2s linear infinite;
+  -o-animation: loaderSpin 2s linear infinite;
+  animation: loaderSpin 2s linear infinite
+}
+.button--submit .button__icon {
+  display: none;
+}
+.button--submit.button--sending {
+  cursor: not-allowed;
+  color: #fefefe;
+  background: #2968ba;
+  border-color: #2968ba;
+}
+.button--submit.button--sending .button__icon {
+  display: flex;
+}
+.button--submit.button--sending .button__text {
+  display: none;
+}

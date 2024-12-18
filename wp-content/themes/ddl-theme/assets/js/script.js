@@ -51,7 +51,7 @@ window.addEventListener("scroll", () => {
   // const currentScroll = window.pageYOffset;
   const currentScroll = window.scrollY;
   
-  if (currentScroll <= headerLoad - 100) {
+  if (currentScroll <= headerLoad + 80) {
     body.classList.remove(scrollUp);
     return;
   }
@@ -153,40 +153,6 @@ jQuery(document).ready(function () { //doc ready start
 
 
   /*-----------------------------------------------------------------------------------*/
-  /* TEAM SLIDEOUT */
-  /*-----------------------------------------------------------------------------------*/
-
-  // Open Team Member Slideout
-	jQuery('[data-open]').on('click', function () {
-		var member_id = jQuery(this).attr('data-open');
-		jQuery('[data-sideout="' + member_id + '"]').addClass('active');
-		jQuery('html').addClass('slideout-active');
-	});
-
-	// Close Team Member Slideout
-	jQuery('[data-close]').on('click', function () {
-		var member_id = jQuery(this).attr('data-close');
-		jQuery('[data-sideout="' + member_id + '"]').removeClass('active');
-		jQuery('html').removeClass('slideout-active');
-	});
-
-  // Open Team Member With Hash
-  const current_url = location.hash
-  const member_slug = current_url.replace('#','')
-
-  if (current_url) {
-
-    jQuery('html, body').animate({
-      scrollTop: jQuery('[data-open="' + member_slug + '"]').offset().top + -150
-    }, 'slow');
-
-		jQuery('[data-sideout="' + member_slug + '"]').addClass('active');
-    jQuery('html').addClass('slideout-active');
-
-  }
-
-
-  /*-----------------------------------------------------------------------------------*/
   /* CONTACT FORM */
   /*-----------------------------------------------------------------------------------*/
 
@@ -197,109 +163,112 @@ jQuery(document).ready(function () { //doc ready start
     }
   });
 
-  //Initialize the validation object which will be called on form submit.
-  var validobj = jQuery("#validateForm").validate({
+  jQuery('form').each(function() {
 
-    onkeyup: false,
-    errorClass: "error",
-    errorElement: 'strong',
+    var validobj = jQuery(this).validate({
 
-    // errorPlacement: function (error, element) {
-    //   var elem = jQuery(element);
-    //   error.insertAfter(element);
-    // },
+      onkeyup: false,
+      errorClass: "error",
+      errorElement: 'strong',
 
-    highlight: function (element, errorClass, validClass) {
-      var elem = jQuery(element);
-      if (elem.hasClass("select2-hidden-accessible")) {
-        jQuery(".select2-container").addClass(errorClass);
-      } else {
-        elem.addClass(errorClass);
+      // errorPlacement: function (error, element) {
+      //   var elem = jQuery(element);
+      //   error.insertAfter(element);
+      // },
+
+      highlight: function (element, errorClass, validClass) {
+        var elem = jQuery(element);
+        if (elem.hasClass("select2-hidden-accessible")) {
+          jQuery(".select2-container").addClass(errorClass);
+        } else {
+          elem.addClass(errorClass);
+        }
+      },
+
+      unhighlight: function (element, errorClass, validClass) {
+        var elem = jQuery(element);
+        if (elem.hasClass("select2-hidden-accessible")) {
+          jQuery(".select2-container").removeClass(errorClass);
+        } else {
+          elem.removeClass(errorClass);
+        }
       }
-    },
 
-    unhighlight: function (element, errorClass, validClass) {
-      var elem = jQuery(element);
-      if (elem.hasClass("select2-hidden-accessible")) {
-        jQuery(".select2-container").removeClass(errorClass);
-      } else {
-        elem.removeClass(errorClass);
+    });
+
+    jQuery(document).on("change", ".select2-hidden-accessible", function () {
+      if (!jQuery.isEmptyObject(validobj.submitted)) {
+        validobj.form();
       }
-    }
+    });
 
-  });
+    jQuery(document).on("select2-opening", function () {
+      if (jQuery(".select2-container").hasClass("error")) {
+        jQuery(".select2-drop ul").addClass("error");
+      } else {
+        jQuery(".select2-drop ul").removeClass("error");
+      }
+    });
 
-  jQuery(document).on("change", ".select2-hidden-accessible", function () {
-    if (!jQuery.isEmptyObject(validobj.submitted)) {
-      validobj.form();
-    }
-  });
+    jQuery.validator.addMethod('filesize', function(value, element, param) {
+      return this.optional(element) || (element.files[0].size <= param)
+    }, 'File size must be less than 5mb');
 
-  jQuery(document).on("select2-opening", function () {
-    if (jQuery(".select2-container").hasClass("error")) {
-      jQuery(".select2-drop ul").addClass("error");
-    } else {
-      jQuery(".select2-drop ul").removeClass("error");
-    }
-  });
+    jQuery(this).on( "submit", function(e) {
 
-  jQuery.validator.addMethod('filesize', function(value, element, param) {
-    return this.optional(element) || (element.files[0].size <= param)
-  }, 'File size must be less than 5mb');
+      e.preventDefault();
 
-  jQuery(".form").on( "submit", function(e) {
+      if (jQuery(this).valid()) {
 
-    e.preventDefault();
+        jQuery(this).find('.btn--submit').addClass('btn--sending');
+      
+        grecaptcha.ready(function() {
+          grecaptcha.execute('XXXXXXXXXXXX', {action: 'submit'}).then(function(token) {
+      
+            let recaptchaResponse = document.getElementById("recaptcha_response")
+            recaptchaResponse.value = token 
+      
+            const data = new FormData(e.target);
+      
+            fetch( "https://XXXXXXXXX/wp-content/themes/XXXXXXXXX/validate.php", {
+              method: 'post',
+              body: data,
+            })
+      
+            .then((response) => response.text())
+            .then((response) => {
+      
+              const responseText = JSON.parse(response)
+              
+              if (responseText.success) { 
 
-    if (jQuery(this).valid()) {
+                jQuery(this).find('.btn--submit').removeClass('btn--sending');
 
-      jQuery(this).find('.btn--submit').addClass('btn--sending');
-    
-      grecaptcha.ready(function() {
-        grecaptcha.execute('XXXXXXXXXXXX', {action: 'submit'}).then(function(token) {
-    
-          let recaptchaResponse = document.getElementById("recaptcha_response")
-          recaptchaResponse.value = token 
-    
-          const data = new FormData(e.target);
-    
-          fetch( "https://XXXXXXXXX/wp-content/themes/XXXXXXXXX/validate.php", {
-            method: 'post',
-            body: data,
+                document.querySelector(".form").submit();  
+      
+              } else {
+
+                jQuery(this).find('.btn--submit').removeClass('btn--sending');
+      
+                console.log('reCAPTCHA error', responseText);
+          
+              }
+      
+            })
+      
+            .catch(error => {
+      
+              console.log('server side error');
+      
+            })
+      
           })
-    
-          .then((response) => response.text())
-          .then((response) => {
-    
-            const responseText = JSON.parse(response)
-            
-            if (responseText.success) { 
-
-              jQuery(this).find('.btn--submit').removeClass('btn--sending');
-
-              document.querySelector(".form").submit();  
-    
-            } else {
-
-              jQuery(this).find('.btn--submit').removeClass('btn--sending');
-    
-              console.log('reCAPTCHA error', responseText);
-        
-            }
-    
-          })
-    
-          .catch(error => {
-    
-            console.log('server side error');
-    
-          })
-    
+      
         })
-    
-      })
 
-    }
+      }
+
+    });
 
   });
 
@@ -307,27 +276,149 @@ jQuery(document).ready(function () { //doc ready start
 
 
 /*-----------------------------------------------------------------------------------*/
-/* ACCESSIBILITY CONTROLS */
+/* TEAM */
 /*-----------------------------------------------------------------------------------*/
 
-// const pressed = document.querySelectorAll('[aria-pressed]');
+/*----------- Control slideout on team page -----------*/
 
-// pressed.forEach(function(press) {
+const members = document.querySelectorAll('.member');
 
-//   press.addEventListener('click', (e) => {  
-//     let pressed = e.target.getAttribute('aria-pressed') === 'true';
-//     e.target.setAttribute('aria-pressed', String(!pressed));
-//   });
+if (members) {
 
-// });
+  let html = document.querySelector("html");
+  let open = document.querySelectorAll('[data-open]');
 
-// const expanded = document.querySelectorAll('[aria-expanded]');
+  open.forEach((e) => {
+    
+    e.addEventListener('click', function() {
+      
+      let id = this.dataset.open;
+      let sideout = document.querySelector('[data-sideout="' + id + '"]');
 
-// expanded.forEach(function(expand) {
+      if (!sideout.classList.contains('slideout--open')) {
+        sideout.classList.add('slideout--open');
+        html.classList.add("js-slideout-active");
 
-//   expand.addEventListener('click', (e) => {  
-//     let expanded = e.target.getAttribute('aria-expanded') === 'true';
-//     e.target.setAttribute('aria-expanded', String(!expanded));
+        open.forEach((i) => {
+          if (i.dataset.open == id) {
+            i.setAttribute( 'aria-expanded', 'true' );
+          }
+        });
+
+      }
+
+    });
+
+  });
+
+  var close = document.querySelectorAll('[data-close]');
+
+  close.forEach((e) => {
+    
+    e.addEventListener('click', function() {
+      
+      let id = this.dataset.close;
+      let sideout = document.querySelector('[data-sideout="' + id + '"]');
+      
+      if (sideout.classList.contains('slideout--open')) {
+        sideout.classList.remove('slideout--open');
+        html.classList.remove("js-slideout-active");
+
+        open.forEach((i) => {
+          if (i.dataset.open == id) {
+            i.setAttribute( 'aria-expanded', 'false' );
+          }
+        });
+
+      }
+
+    });
+
+  });
+
+}
+
+
+/*----------- Open slideout with hash -----------*/
+
+if(window.location.href.indexOf('team') != -1) {
+
+  let name = location.hash;
+  let slug = name.replace('#','');
+  let sideout = document.querySelector('[data-sideout="' + slug + '"]');
+  let html = document.querySelector("html");
+
+  if (sideout && !sideout.classList.contains('slideout--open')) {   
+    
+    let member = document.getElementById(slug);
+
+    member.scrollIntoView({
+      behavior: 'smooth'
+    });
+
+    setTimeout(function(){
+      sideout.classList.add('slideout--open');
+      html.classList.add("js-slideout-active");
+
+      let open = document.querySelectorAll('[data-open="' + slug + '"]');
+
+      open.forEach((i) => {
+        i.setAttribute('aria-expanded', 'true');      
+      });
+
+    }, 1000);
+
+
+  }
+
+}
+
+const links = document.querySelectorAll('a');
+
+links.forEach((e) => {
+  if (e.href && e.href.includes("/team/")) {
+    e.addEventListener('click', function(event) {
+      event.preventDefault();
+      window.open(this.href, '_self');
+    });
+  }
+});
+
+
+/*----------- Scroll to data anchor -----------*/
+
+// const anchors = document.querySelectorAll('[data-anchor]');
+
+// anchors.forEach(function(anchor) {
+
+//   anchor.addEventListener('click', function() {  
+
+//     let target = anchor.dataset.anchor;
+//     let id = document.getElementById(target);
+
+//     if(window.location.href.indexOf('team') != -1) {
+
+//       let controls = document.querySelector('.team__navigation');
+//       let height = controls.offsetHeight;
+
+//       window.scrollTo({
+//         top: id.offsetTop - height, 
+//         behavior: "smooth"
+//       });
+
+//     } else {
+
+//       id.scrollIntoView({
+//         behavior: 'smooth'
+//       });
+
+//       // window.scrollTo({
+//       //   top: id, 
+//       //   behavior: "smooth"
+//       // });
+
+//     }
+
 //   });
 
 // });
@@ -515,6 +606,7 @@ jQuery('a[href*="#"]')
     if (target.length) {
       // Only prevent default if animation is actually gonna happen
       event.preventDefault();
+
       jQuery('html, body').animate({
         scrollTop: target.offset().top-165
       }, 1000, function() {
@@ -529,6 +621,7 @@ jQuery('a[href*="#"]')
           $target.focus(); // Set focus again
         };
       });
+
     }
   }
   return false;
@@ -550,12 +643,12 @@ jQuery('a[href*="#"]')
 
 // wow = new WOW(
 //   {
-//     boxClass: 'wow',      // default
-//     animateClass: 'animated', // default
-//     offset: 0,          // default
-//     mobile: true,       // default
-//     live: true,        // default
-//     callback: afterReveal
+//     boxClass: 'wow',
+//     animateClass: 'animated',
+//     offset: 0,
+//     mobile: true,
+//     live: true,
+//     // callback: afterReveal
 //   }
 // )
 // wow.init();
@@ -705,74 +798,52 @@ function videoDialog(){}
 
 /* ---- SHOW ONLY PER SESSION ---- */
 
-var dialogVisable = document.getElementById("dialog");
+// var dialogVisable = document.getElementById("dialog");
 
-if (dialogVisable) {
+// if (dialogVisable) {
 
-  // window.onload = function () {
-  window.addEventListener("load", function() {
+//   // window.onload = function () {
+//   window.addEventListener("load", function() {
 
-    var dialog = document.getElementById("dialog");
-    var root = document.getElementsByTagName( 'html' )[0];
+//     var dialog = document.getElementById("dialog");
+//     var root = document.getElementsByTagName( 'html' )[0];
 
-    var show_dialog = sessionStorage.getItem('dialogShown');
+//     var show_dialog = sessionStorage.getItem('dialogShown');
 
-    if (show_dialog != 'true') {
+//     if (show_dialog != 'true') {
 
-      sessionStorage.setItem('dialogShown', 'true');
+//       sessionStorage.setItem('dialogShown', 'true');
 
-      root.classList.add('js-dialog-active');
-      dialog.classList.add('dialog--active');
+//       root.classList.add('js-dialog-active');
+//       dialog.classList.add('dialog--active');
 
-      // console.log(show_dialog);
+//       // console.log(show_dialog);
 
-    } else {
+//     } else {
 
-      sessionStorage.setItem('shown-dialog', 'false');
+//       sessionStorage.setItem('shown-dialog', 'false');
 
-      root.classList.remove("js-dialog-active");
-      dialog.classList.remove('dialog--active');
+//       root.classList.remove("js-dialog-active");
+//       dialog.classList.remove('dialog--active');
 
-      // console.log(show_dialog);
+//       // console.log(show_dialog);
 
-    }
+//     }
 
-    const exits = dialog.querySelectorAll('#dialogClose');
+//     const exits = dialog.querySelectorAll('#dialogClose');
 
-    exits.forEach(function(exit) {
+//     exits.forEach(function(exit) {
 
-      exit.addEventListener('click', function(event) {
+//       exit.addEventListener('click', function(event) {
 
-        sessionStorage.setItem("modal", "none");
-        dialog.classList.remove('dialog--active');
-        root.classList.remove("js-dialog-active");
+//         sessionStorage.setItem("modal", "none");
+//         dialog.classList.remove('dialog--active');
+//         root.classList.remove("js-dialog-active");
 
-      });
+//       });
 
-    });
+//     });
 
-    
-  }, 500);
+//   }, 500);
 
-};
-
-
-/*-----------------------------------------------------------------------------------*/
-/* ANCHOR TRIGGER */
-/*-----------------------------------------------------------------------------------*/
-
-const anchorTrigger = document.querySelectorAll('a');
-
-anchorTrigger.forEach(function(trigger) {
-
-  if (trigger.hash) {
-
-    trigger.addEventListener('click', function() {
-
-      window.open(this.href, '_self'); return false;
-
-    });
-
-  }
-
-});
+// };

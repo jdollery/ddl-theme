@@ -821,6 +821,16 @@ ol li::marker,
 ul:not(.list--exempt) li::marker {
   color: var(--accent)
 }
+.list--unstyled:not(.list--exempt) {
+  list-style: none;
+  padding-left: 0
+}
+.list--unstyled:not(.list--exempt) li {
+  margin: 0
+}
+.list--unstyled:not(.list--exempt) li::marker {
+  display: none
+}
 .list--bullet:not(.list--exempt) {
   list-style: none;
   padding-left: 2rem
@@ -874,13 +884,14 @@ ul:not(.list--exempt) li::marker {
 .list--inline {
   list-style: none;
   padding: 0;
-  margin: 0
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1rem,.93vw + .55rem,2rem)
 }
 .list--inline li {
-  display: inline-block
-}
-.list--inline li:not(:first-child) {
-  margin-left: 2rem
+  display: block
 }
 blockquote {
   border-left: .5rem solid var(--accent);
@@ -995,7 +1006,7 @@ figure.quote figcaption {
   aspect-ratio: 1/1
 }
 .icon--calendar {
-  width: 3rem;
+  width: 2.5rem;
   aspect-ratio: 1/1
 }
 .icon--clock {
@@ -1212,8 +1223,10 @@ img:last-child {
   flex-wrap: wrap;
   gap: 2rem
 }
-.form__row--footer {
-  padding: 2rem 0 0
+.form__row--footer,
+.form__row--margin {
+  margin: 3rem 0 0;
+  gap: 3rem
 }
 @media (min-width:768px) {
   .form__row--footer {
@@ -1224,6 +1237,15 @@ img:last-child {
   .form__row--footer {
     flex-direction: column
   }
+}
+.form__row--footer a:not(.btn) {
+  color: var(--black);
+  text-decoration: underline
+}
+.form__row--footer a:not(.btn):focus,
+.form__row--footer a:not(.btn):hover {
+  color: var(--accent);
+  text-decoration: none
 }
 .form__cell {
   position: relative;
@@ -1246,6 +1268,18 @@ img:last-child {
   flex: 1 0 0;
   width: auto
 }
+.form__cell--frame {
+  flex: 0 0 auto;
+  width: 100%;
+  padding: 1.8rem 2rem;
+  border-width: .1rem;
+  border-style: solid;
+  border-color: var(--grey);
+  border-radius: 0
+}
+.form__cell--frame label {
+  margin: 0!important
+}
 .form__input {
   position: relative;
   display: flex;
@@ -1256,10 +1290,11 @@ img:last-child {
 }
 .form__input--checkbox {
   flex-direction: row;
-  flex-wrap: wrap
+  flex-wrap: wrap;
+  align-items: center
 }
-input:not([type=submit]),
-textarea:not([type=submit]) {
+input:not([type=submit],[type=radio],[type=checkbox]),
+textarea {
   display: block;
   width: 100%;
   padding: 2.5rem 2rem 1rem;
@@ -1276,16 +1311,36 @@ textarea:not([type=submit]) {
   transition: border .3s ease-in-out,background-color .3s ease-in-out
 }
 @media (min-width:1280px) {
-  input:not([type=submit]),
-  textarea:not([type=submit]) {
+  input:not([type=submit],[type=radio],[type=checkbox]),
+  textarea {
     padding: 2.5rem 2rem 1rem
   }
 }
-input:not([type=submit]):focus,
-input:not([type=submit]):focus:active,
-textarea:not([type=submit]):focus,
-textarea:not([type=submit]):focus:active {
+input:not([type=submit],[type=radio],[type=checkbox]):focus,
+input:not([type=submit],[type=radio],[type=checkbox]):focus:active,
+textarea:focus,
+textarea:focus:active {
   border-color: var(--grey-dark)
+}
+.form__input:not(.form__input--focus) input:not([type=submit],[type=radio],[type=checkbox]),
+.form__input:not(.form__input--focus) textarea {
+  padding: 1.8rem 2rem
+}
+@media (min-width:1280px) {
+  .form__input:not(.form__input--focus) input:not([type=submit],[type=radio],[type=checkbox]),
+  .form__input:not(.form__input--focus) textarea {
+    padding: 1.8rem 2rem
+  }
+}
+.form__input--focus input:not([type=submit],[type=radio],[type=checkbox]),
+.form__input--focus textarea {
+  padding: 2.5rem 2rem 1rem
+}
+@media (min-width:1280px) {
+  .form__input--focus input:not([type=submit],[type=radio],[type=checkbox]),
+  .form__input--focus textarea {
+    padding: 2.5rem 2rem 1rem
+  }
 }
 textarea {
   min-height: 18rem;
@@ -1294,6 +1349,8 @@ textarea {
   resize: vertical
 }
 legend {
+  display: block;
+  width: 100%;
   font-size: var(--size-h4);
   line-height: 1.4;
   font-weight: var(--regular);
@@ -1317,8 +1374,17 @@ fieldset:not(:last-child) {
   border-bottom: .2rem solid var(--grey-dark);
   padding-bottom: var(--gutter-lg)
 }
-.label,
-label {
+.form__input:not(.form__input--focus) .label,
+.form__input:not(.form__input--focus) label {
+  display: block;
+  font-size: clamp(1.5rem,.19vw + 1.41rem,1.7rem);
+  font-weight: var(--light);
+  margin: .5rem 0 1rem;
+  z-index: 2;
+  transition: all .3s ease-in-out
+}
+.form__input--focus .label,
+.form__input--focus label {
   display: block;
   font-size: 1.1rem;
   font-weight: var(--regular);
@@ -1331,14 +1397,14 @@ label {
   transition: all .3s ease-in-out
 }
 @media (min-width:1550px) {
-  .label,
-  label {
+  .form__input--focus .label,
+  .form__input--focus label {
     top: .5rem;
     font-size: 1.2rem
   }
 }
-.label--sm,
-label--sm {
+.form__input--focus .label--sm,
+.form__input--focus label--sm {
   position: relative;
   top: 0;
   left: 0;
@@ -1349,43 +1415,43 @@ label--sm {
   font-size: 1rem
 }
 @media (min-width:992px) {
-  .label--sm,
-  label--sm {
+  .form__input--focus .label--sm,
+  .form__input--focus label--sm {
     font-size: 1.2rem
   }
 }
-input[type=email]::placeholder,
-input[type=number]::placeholder,
-input[type=phone]::placeholder,
-input[type=text]::placeholder,
-select::placeholder,
-textarea::placeholder {
+.form__input--focus input[type=email]::placeholder,
+.form__input--focus input[type=number]::placeholder,
+.form__input--focus input[type=phone]::placeholder,
+.form__input--focus input[type=text]::placeholder,
+.form__input--focus select::placeholder,
+.form__input--focus textarea::placeholder {
   opacity: 1;
   transition: all .2s;
   color: var(--grey)
 }
-input[type=email]:placeholder-shown:not(:focus),
-input[type=number]:placeholder-shown:not(:focus),
-input[type=phone]:placeholder-shown:not(:focus),
-input[type=text]:placeholder-shown:not(:focus),
-select:placeholder-shown:not(:focus),
-textarea:placeholder-shown:not(:focus) {
+.form__input--focus input[type=email]:placeholder-shown:not(:focus),
+.form__input--focus input[type=number]:placeholder-shown:not(:focus),
+.form__input--focus input[type=phone]:placeholder-shown:not(:focus),
+.form__input--focus input[type=text]:placeholder-shown:not(:focus),
+.form__input--focus select:placeholder-shown:not(:focus),
+.form__input--focus textarea:placeholder-shown:not(:focus) {
   background-color: var(--grey-light)
 }
-input[type=email]:placeholder-shown:not(:focus)::placeholder,
-input[type=number]:placeholder-shown:not(:focus)::placeholder,
-input[type=phone]:placeholder-shown:not(:focus)::placeholder,
-input[type=text]:placeholder-shown:not(:focus)::placeholder,
-select:placeholder-shown:not(:focus)::placeholder,
-textarea:placeholder-shown:not(:focus)::placeholder {
+.form__input--focus input[type=email]:placeholder-shown:not(:focus)::placeholder,
+.form__input--focus input[type=number]:placeholder-shown:not(:focus)::placeholder,
+.form__input--focus input[type=phone]:placeholder-shown:not(:focus)::placeholder,
+.form__input--focus input[type=text]:placeholder-shown:not(:focus)::placeholder,
+.form__input--focus select:placeholder-shown:not(:focus)::placeholder,
+.form__input--focus textarea:placeholder-shown:not(:focus)::placeholder {
   opacity: 0
 }
-input[type=email]:placeholder-shown:not(:focus) ~ label,
-input[type=number]:placeholder-shown:not(:focus) ~ label,
-input[type=phone]:placeholder-shown:not(:focus) ~ label,
-input[type=text]:placeholder-shown:not(:focus) ~ label,
-select:placeholder-shown:not(:focus) ~ label,
-textarea:placeholder-shown:not(:focus) ~ label {
+.form__input--focus input[type=email]:placeholder-shown:not(:focus) ~ label,
+.form__input--focus input[type=number]:placeholder-shown:not(:focus) ~ label,
+.form__input--focus input[type=phone]:placeholder-shown:not(:focus) ~ label,
+.form__input--focus input[type=text]:placeholder-shown:not(:focus) ~ label,
+.form__input--focus select:placeholder-shown:not(:focus) ~ label,
+.form__input--focus textarea:placeholder-shown:not(:focus) ~ label {
   left: 2rem;
   color: var(--black);
   opacity: 1;
@@ -1393,27 +1459,27 @@ textarea:placeholder-shown:not(:focus) ~ label {
   font-size: var(--body-size)
 }
 @media (min-width:1550px) {
-  input[type=email]:placeholder-shown:not(:focus) ~ label,
-  input[type=number]:placeholder-shown:not(:focus) ~ label,
-  input[type=phone]:placeholder-shown:not(:focus) ~ label,
-  input[type=text]:placeholder-shown:not(:focus) ~ label,
-  select:placeholder-shown:not(:focus) ~ label,
-  textarea:placeholder-shown:not(:focus) ~ label {
+  .form__input--focus input[type=email]:placeholder-shown:not(:focus) ~ label,
+  .form__input--focus input[type=number]:placeholder-shown:not(:focus) ~ label,
+  .form__input--focus input[type=phone]:placeholder-shown:not(:focus) ~ label,
+  .form__input--focus input[type=text]:placeholder-shown:not(:focus) ~ label,
+  .form__input--focus select:placeholder-shown:not(:focus) ~ label,
+  .form__input--focus textarea:placeholder-shown:not(:focus) ~ label {
     left: 2rem
   }
 }
-input[type=email]:placeholder-shown:not(:focus) ~ label,
-input[type=number]:placeholder-shown:not(:focus) ~ label,
-input[type=phone]:placeholder-shown:not(:focus) ~ label,
-input[type=text]:placeholder-shown:not(:focus) ~ label,
-select:placeholder-shown:not(:focus) ~ label,
-textarea:placeholder-shown:not(:focus) ~ label {
+.form__input--focus input[type=email]:placeholder-shown:not(:focus) ~ label,
+.form__input--focus input[type=number]:placeholder-shown:not(:focus) ~ label,
+.form__input--focus input[type=phone]:placeholder-shown:not(:focus) ~ label,
+.form__input--focus input[type=text]:placeholder-shown:not(:focus) ~ label,
+.form__input--focus select:placeholder-shown:not(:focus) ~ label,
+.form__input--focus textarea:placeholder-shown:not(:focus) ~ label {
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%)
 }
-textarea:placeholder-shown:not(:focus) ~ label {
+.form__input--focus textarea:placeholder-shown:not(:focus) ~ label {
   top: 2.7rem
 }
 input[type=checkbox],
@@ -2021,7 +2087,7 @@ hr {
   content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M5.6,16.6l-1.4-1.4,7.8-7.8,7.8,7.8-1.4,1.4-6.4-6.4-6.4,6.4Z'/%3E%3C/svg%3E")
 }
 .select2-container--default.select2-container--focus .select2-selection--single {
-  background: var(--grey)
+  background: var(--grey-light)
 }
 .select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple,
 .select2-container--default.select2-container--open.select2-container--below .select2-selection--single {
@@ -2079,7 +2145,7 @@ hr {
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: clamp(1.6rem,.28vw + 1.47rem,1.9rem)
+  font-size: var(--body-size)
 }
 .select2-container--default .select2-results > .select2-results__options {
   max-height: 20rem;
@@ -2395,8 +2461,6 @@ html.js-nav-active {
   .navigation > ul > li > a:hover {
     color: var(--accent)
   }
-}
-@media (min-width:1180px) {
   .navigation > ul > li.menu-item-has-children > a::after {
     width: 2.2rem;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M18.4,7.4l1.4,1.4-7.8,7.8-7.8-7.8,1.4-1.4,6.4,6.4,6.4-6.4Z'/%3E%3C/svg%3E")
@@ -2407,8 +2471,6 @@ html.js-nav-active {
     -ms-transform: rotate(180deg);
     transform: rotate(180deg)
   }
-}
-@media (min-width:1180px) {
   .navigation > ul > li.current-menu-item > a {
     color: var(--accent-light)
   }
@@ -2416,8 +2478,6 @@ html.js-nav-active {
   .navigation > ul > li.current-menu-item:hover > a {
     color: var(--accent-light)
   }
-}
-@media (min-width:1180px) {
   .navigation > ul > li > ul {
     top: 100%;
     left: 0;
@@ -2492,8 +2552,6 @@ html.js-nav-active {
     background-color: var(--black);
     border-color: var(--black)
   }
-}
-@media (min-width:1180px) {
   .navigation > ul > li.menu-item-has-children:last-child > ul {
     left: auto;
     right: 0
@@ -2762,7 +2820,11 @@ html.js-nav-active {
   margin: 0
 }
 .banner__date {
-  font-size: 85%
+  font-size: 85%;
+  vertical-align: middle
+}
+.banner__date .icon {
+  margin: 0 1rem 0 0
 }
 .loop {
   list-style: none;
@@ -2989,7 +3051,7 @@ html.js-nav-active {
 @media (min-width:1180px) {
   .content__media--img,
   .content__media--video {
-    min-height: 35vw
+    height: 35vw
   }
 }
 .content__media img {
@@ -3093,6 +3155,12 @@ html.js-nav-active {
   padding-top: var(--space-y);
   padding-bottom: var(--space-y)
 }
+.team__heading {
+  padding: 0 0 4.5rem;
+  margin: 0 0 6rem;
+  border-bottom: .2rem solid var(--white);
+  text-align: center
+}
 .team__list {
   list-style: none;
   display: flex;
@@ -3131,6 +3199,11 @@ html.js-nav-active {
     max-width: 100%
   }
 }
+.member__anchor {
+  position: absolute;
+  top: -20rem;
+  left: 0
+}
 .member__body {
   background: var(--white);
   padding: var(--gutter-lg);
@@ -3143,10 +3216,6 @@ html.js-nav-active {
 }
 .member [data-open] {
   cursor: pointer
-}
-.member__row {
-  display: flex;
-  flex-wrap: wrap
 }
 .member__one {
   position: relative;
@@ -3166,11 +3235,22 @@ html.js-nav-active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2.5rem
+  padding: var(--gutter-sm) 0 0
 }
 @media (min-width:768px) {
   .member__two {
-    padding: 4rem
+    padding: var(--gutter-lg) 0 0
+  }
+}
+.member__three {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--gutter-sm) 0 0
+}
+@media (min-width:768px) {
+  .member__three {
+    padding: var(--gutter-lg) 0 0
   }
 }
 .member__media {
@@ -3200,24 +3280,28 @@ html.js-nav-active {
   line-height: 1.2;
   margin: 0
 }
+.member__meta {
+  list-style: none;
+  padding-left: 0
+}
+.member__meta li {
+  margin: 0
+}
+.member__meta li::marker {
+  display: none
+}
+.member__meta li:not(:first-child) {
+  margin-top: 1rem
+}
 .member__job {
   font-weight: var(--bold)
-}
-.member__gdc,
-.member__job {
-  margin: var(--gutter-sm) 0 0
-}
-.member__footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center
 }
 .member__edit {
   display: block;
   margin: 2rem auto 0;
   width: fit-content
 }
-html.slideout-active {
+html.js-slideout-active {
   overflow: hidden
 }
 .slideout {
@@ -3286,7 +3370,13 @@ html.slideout-active {
   -o-object-position: center;
   object-position: center
 }
+.slideout__heading {
+  color: var(--accent);
+  margin-top: var(--gutter-sm)
+}
 .slideout__meta {
+  list-style: none;
+  padding-left: 0;
   margin-bottom: var(--gutter-sm)
 }
 @media (min-width:992px) {
@@ -3294,13 +3384,17 @@ html.slideout-active {
     margin-bottom: var(--gutter-md)
   }
 }
+.slideout__meta li {
+  margin: 0
+}
+.slideout__meta li::marker {
+  display: none
+}
+.slideout__meta li:not(:first-child) {
+  margin-top: 1rem
+}
 .slideout__job {
   font-weight: var(--bold)
-}
-.slideout__creds,
-.slideout__gdc,
-.slideout__job {
-  margin: var(--gutter-xs) 0 0
 }
 .slideout__close {
   position: absolute;
@@ -3319,15 +3413,15 @@ html.slideout-active {
   transition: all .3s cubic-bezier(.5,0,.5,1);
   cursor: pointer
 }
-.slideout.active {
+.slideout--open {
   visibility: visible;
   opacity: 1
 }
-.slideout.active .slideout__backdrop {
+.slideout--open .slideout__backdrop {
   visibility: visible;
   opacity: .8
 }
-.slideout.active .slideout__body {
+.slideout--open .slideout__body {
   right: 0
 }
 html.js-dialog-active {
@@ -3432,7 +3526,7 @@ html.js-dialog-active {
 }
 .breadcrumb {
   font-weight: var(--regular);
-  padding: 0 0 2rem
+  margin: 0 0 2rem
 }
 .breadcrumb .icon--chevron {
   display: inline-block;

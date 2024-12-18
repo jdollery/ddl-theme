@@ -50,6 +50,22 @@
 
           <?php } ?>
 
+          <?php if( have_rows($banner_cta) ) { 
+
+            while( have_rows($banner_cta) ): the_row(); 
+
+            $banner_url = get_sub_field('banner_url');
+            $banner_text = get_sub_field('banner_text');
+            $banner_target = get_sub_field('banner_target');
+
+            ?>
+
+            <a class="btn btn--black btn--inline" href="<?php echo esc_url( $banner_url ); ?>"<?php if ($banner_target == 'external') { ?> target="_blank" rel="noopener noreferrer"<?php } ?>><?php echo esc_html( $banner_text ); ?></a>
+
+            <?php endwhile; wp_reset_query();  ?>
+
+          <?php } ?>
+
         <?php } elseif ( is_home() ) { //static blog ?>
 
           <?php $blog_title = get_the_title( get_option('page_for_posts', true) ); ?>
@@ -63,7 +79,7 @@
             <?php if($banner_alt_excerpt) { ?>
               <div class="banner__intro"><?php echo $banner_alt_excerpt ?></div>
             <?php } elseif( has_excerpt() ) { ?>
-              <div class="banner__intro"><?php echo strip_tags( the_excerpt() ); ?></div>
+              <div class="banner__intro"><?php echo the_excerpt(); ?></div>
             <?php } ?>
 
           <?php } ?>
@@ -102,7 +118,7 @@
 
           <div class="banner__meta">
             <ul class="banner__categories"><?php echo $categories_list ?></ul>
-            <time class="banner__date"><i class="far fa-calendar"></i> <?php echo get_the_date(); ?></time>
+            <time class="banner__date"><span class="icon icon--calendar"><svg role="img"><use xlink:href="#calendar" href="#calendar"></use></svg></span><?php echo get_the_date(); ?></time>
           </div>
 
         <?php } else { ?>
@@ -120,7 +136,7 @@
             <?php if($banner_alt_excerpt) { ?>
               <div class="banner__intro"><?php echo $banner_alt_excerpt ?></div>
             <?php } elseif( has_excerpt() ) { ?>
-              <div class="banner__intro"><?php echo strip_tags( the_excerpt() ); ?></div>
+              <div class="banner__intro"><?php echo the_excerpt(); ?></div>
             <?php } ?>
 
           <?php } ?>
@@ -129,17 +145,13 @@
 
             while( have_rows($banner_cta) ): the_row(); 
 
-            $banner_btn = get_sub_field('banner_btn');
-
-            $banner_btn_url = $banner_btn['url'];
-            $banner_btn_text = $banner_btn['title'];
-            $banner_btn_target = $banner_btn['target'] ? $banner_btn['target'] : '_self';
+            $banner_url = get_sub_field('banner_url');
+            $banner_text = get_sub_field('banner_text');
+            $banner_target = get_sub_field('banner_target');
 
             ?>
 
-            <a class="btn btn--black btn--inline" href="<?php echo esc_url( $banner_btn_url ); ?>" target="<?php echo esc_attr( $banner_btn_target ); ?>">
-              <?php echo esc_html( $banner_btn_text ); ?>
-            </a>
+            <a class="btn btn--black btn--inline" href="<?php echo esc_url( $banner_url ); ?>"<?php if ($banner_target == 'external') { ?> target="_blank" rel="noopener noreferrer"<?php } ?>><?php echo esc_html( $banner_text ); ?></a>
 
             <?php endwhile; wp_reset_query();  ?>
 

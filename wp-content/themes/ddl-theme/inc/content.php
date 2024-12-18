@@ -87,15 +87,15 @@ if( have_rows('content_section') ){
 
         </div>
 
-        <?php } elseif (esc_html($content_option['value'] == 'shortcode')) { ?>
+        <?php } elseif (esc_html($content_option['value'] == 'embed')) { ?>
 
-        <section class="content__media content__media--shortcode" >
+        <section class="content__media content__media--embed" >
 
           <?php echo $content_shortcode ?>
 
         </section>
 
-        <?php } else { ?>
+        <?php } elseif (esc_html($content_option['value'] == 'image')) { ?>
 
         <div class="content__media content__media--img content__media--<?php echo esc_html($content_fit['value']); ?> content__media--<?php echo esc_html($content_position['value']); ?>" >
 

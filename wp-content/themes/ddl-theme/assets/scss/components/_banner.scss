@@ -80,6 +80,12 @@
 
   &__date {
     font-size: 85%;
+    vertical-align: middle;
+
+    .icon {
+      margin: 0 1rem 0 0;
+    }
+
   }
 
 }

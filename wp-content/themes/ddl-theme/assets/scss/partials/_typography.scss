@@ -181,6 +181,25 @@ ol {
   
 }
 
+@mixin list-unstyled {
+
+  &:not(.list--exempt) {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      margin: 0;
+
+      &::marker {
+        display: none;
+      }
+
+    }
+
+  }
+
+}
+
 @mixin list-bullet {
 
   &:not(.list--exempt) {
@@ -266,6 +285,10 @@ ol {
 }
 
 .list {
+
+  &--unstyled { 
+    @include list-unstyled;
+  }
 
   &--bullet { 
     @include list-bullet;

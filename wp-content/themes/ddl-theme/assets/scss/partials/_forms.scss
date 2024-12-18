@@ -63,8 +63,13 @@ $checkboxradio-height-sm:   2.5rem;
     flex-wrap: wrap;
     gap: 2rem;
 
+    &--margin,
     &--footer {
-      padding: 2rem 0 0;
+      margin: 3rem 0 0;
+      gap: 3rem;
+    }
+
+    &--footer {
 
       @include media-up(sm) {
         align-items: center;
@@ -72,6 +77,17 @@ $checkboxradio-height-sm:   2.5rem;
 
       @include media-down(sm) {
         flex-direction: column;
+      }
+
+      a:not(.btn) {
+        color: var(--black);
+        text-decoration: underline;
+
+        @include hover-focus {
+          color: var(--accent);
+          text-decoration: none;
+        }
+
       }
 
     }
@@ -102,6 +118,21 @@ $checkboxradio-height-sm:   2.5rem;
       width: auto;
     }
 
+    &--frame {
+      flex: 0 0 auto;
+      width: 100%;
+      padding: 1.8rem 2rem;
+      border-width: $input-border-width;
+      border-style: solid;
+      border-color: $input-border-color;
+      border-radius: $input-border-radius;
+
+      label {
+        margin: 0 !important;
+      }
+
+    }
+
   }
 
   &__input {
@@ -116,42 +147,67 @@ $checkboxradio-height-sm:   2.5rem;
     &--checkbox {
       flex-direction: row;
       flex-wrap: wrap;
+      align-items: center;
     }
 
   }
 
 }
 
-input,
+input:not([type=submit], [type=radio], [type=checkbox]),
 textarea {
+  display: block;
+  width: 100%;
+  padding: $input-padding-sm;
+  font-size: $input-font-size;
+  font-weight: $input-font-weight;
+  line-height: $input-line-height;
+  color: $input-color;
+  background-color: $input-background;
+  background-clip: padding-box;
+  border-width: $input-border-width;
+  border-style: solid;
+  border-color: $input-border-color;
+  border-radius: $input-border-radius;
+  transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
-  &:not([type=submit]) {
-    display: block;
-    width: 100%;
+  @include media-up(xl) {
+    padding: $input-padding-lg;
+  }
+
+  @include focus {
+    border-color: $input-border-focus;
+  }
+
+  // &::placeholder {
+  //   color: $input-placeholder;
+  // }
+
+}
+
+.form__input:not(.form__input--focus) {
+
+  input:not([type=submit], [type=radio], [type=checkbox]),
+  textarea {
+    padding: 1.8rem 2rem;
+
+    @include media-up(xl) {
+      padding: 1.8rem 2rem;
+    }
+
+  }
+
+}
+
+.form__input--focus {
+
+  input:not([type=submit], [type=radio], [type=checkbox]),
+  textarea {
     padding: $input-padding-sm;
-    font-size: $input-font-size;
-    font-weight: $input-font-weight;
-    line-height: $input-line-height;
-    color: $input-color;
-    background-color: $input-background;
-    background-clip: padding-box;
-    border-width: $input-border-width;
-    border-style: solid;
-    border-color: $input-border-color;
-    border-radius: $input-border-radius;
-    transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
     @include media-up(xl) {
       padding: $input-padding-lg;
     }
-
-    @include focus {
-      border-color: $input-border-focus;
-    }
-
-    // &::placeholder {
-    //   color: $input-placeholder;
-    // }
 
   }
 
@@ -165,6 +221,8 @@ textarea {
 }
 
 legend {
+  display: block;
+  width: 100%;
   font-size: var(--size-h4);
   line-height: 1.4;
   font-weight: var(--regular);
@@ -194,108 +252,115 @@ fieldset:not(:last-child) {
 
 /* --------------------- NORMAL LABLES --------------------- */
 
-// label, .label {
-//   display: block;
-//   font-size: #{fluid(14px, 16px)};
-//   font-weight: $label-font-weight;
-//   margin-bottom: 0.5rem;
-//   z-index: 2;
-//   transition: all 0.3s ease-in-out;
-// }
+.form__input:not(.form__input--focus) {
+
+  label, .label {
+    display: block;
+    font-size: #{fluid(15px, 17px)};
+    font-weight: $label-font-weight;
+    margin: 0.5rem 0 1rem;;
+    z-index: 2;
+    transition: all 0.3s ease-in-out;
+  }
+
+}
 
 
 /* --------------------- FOCUS FLOATING LABLES --------------------- */
 
-label, .label {
-  display: block;
-  font-size: 1.1rem;
-  font-weight: var(--regular);
-  color: $label-color;
-  position: absolute;
-  top: 0.4rem;
-  left: 0.8rem;
-  opacity: 0.6;
-  z-index: 2;
-  transition: all 0.3s ease-in-out;
+.form__input--focus {
 
-  @include media-up(xxl) {
-    top: 0.5rem;
-    font-size: 1.2rem;
-  }
+  label, .label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: var(--regular);
+    color: $label-color;
+    position: absolute;
+    top: 0.4rem;
+    left: 0.8rem;
+    opacity: 0.6;
+    z-index: 2;
+    transition: all 0.3s ease-in-out;
 
-  &--sm {
-    position: relative;
-    top: 0;
-    left: 0;
-    @include cell(0);
-    font-size: 1rem;
-
-    @include media-up(md) {
+    @include media-up(xxl) {
+      top: 0.5rem;
       font-size: 1.2rem;
     }
 
+    &--sm {
+      position: relative;
+      top: 0;
+      left: 0;
+      @include cell(0);
+      font-size: 1rem;
+
+      @include media-up(md) {
+        font-size: 1.2rem;
+      }
+
+    }
+
   }
 
-}
+  input[type=text],
+  input[type=number],
+  input[type=email],
+  input[type=phone],
+  textarea,
+  select {
 
-input[type=text],
-input[type=number],
-input[type=email],
-input[type=phone],
-textarea,
-select {
+    &::placeholder {
+      opacity: 1;
+      transition: all .2s;
+      color: $input-placeholder;
+    }
 
-  &::placeholder {
-    opacity: 1;
-    transition: all .2s;
-    color: $input-placeholder;
-  }
+    &:placeholder-shown:not(:focus) {
+      background-color: $input-background;
+    }
 
-  &:placeholder-shown:not(:focus) {
-    background-color: $input-background;
-  }
+    &:placeholder-shown:not(:focus)::placeholder {
+      opacity: 0;
+    }
 
-  &:placeholder-shown:not(:focus)::placeholder {
-    opacity: 0;
-  }
-
-  &:placeholder-shown:not(:focus) ~ label {
-    left: 2rem;
-    color: $input-color;
-    opacity: 1;
-    font-weight: var(--regular);
-    font-size: $input-font-size;
-
-    @include media-up(xxl) {
+    &:placeholder-shown:not(:focus) ~ label {
       left: 2rem;
+      color: $input-color;
+      opacity: 1;
+      font-weight: var(--regular);
+      font-size: $input-font-size;
+
+      @include media-up(xxl) {
+        left: 2rem;
+      }
+
+    }
+
+  }
+
+  input[type=text],
+  input[type=number],
+  input[type=email],
+  input[type=phone],
+  textarea,
+  select {
+
+    &:placeholder-shown:not(:focus) ~ label {
+      top: 50%;
+      @include transform (translateY(-50%));
+    }
+
+  }
+
+  textarea {
+
+    &:placeholder-shown:not(:focus) ~ label {
+      top: 2.7rem;
     }
 
   }
 
 }
-
-input[type=text],
-input[type=number],
-input[type=email],
-input[type=phone],
-textarea,
-select {
-
-  &:placeholder-shown:not(:focus) ~ label {
-    top: 50%;
-    @include transform (translateY(-50%));
-  }
-
-}
-
-textarea {
-
-  &:placeholder-shown:not(:focus) ~ label {
-    top: 2.7rem;
-  }
-
-}
-
 
 /* --------------------- CHECKBOX & RADIO --------------------- */
 
