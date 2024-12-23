@@ -232,12 +232,12 @@
   --regular: 300;
   --medium: 500;
   --bold: 700;
-  --size-h1: clamp(3.8rem, 1.59vw + 3.04rem, 5.5rem);
-  --size-h2: clamp(3.4rem, 1.03vw + 2.91rem, 4.5rem);
-  --size-h3: clamp(3.2rem, 0.75vw + 2.84rem, 4rem);
-  --size-h4: clamp(2.8rem, 0.65vw + 2.49rem, 3.5rem);
-  --size-h5: clamp(2.3rem, 0.65vw + 1.99rem, 3rem);
-  --size-h6: clamp(1.9rem, 0.37vw + 1.72rem, 2.3rem);
+  --h1: clamp(3.8rem, 1.59vw + 3.04rem, 5.5rem);
+  --h2: clamp(3.4rem, 1.03vw + 2.91rem, 4.5rem);
+  --h3: clamp(3.2rem, 0.75vw + 2.84rem, 4rem);
+  --h4: clamp(2.8rem, 0.65vw + 2.49rem, 3.5rem);
+  --h5: clamp(2.3rem, 0.65vw + 1.99rem, 3rem);
+  --h6: clamp(1.9rem, 0.37vw + 1.72rem, 2.3rem);
   --body-size: clamp(1.6rem, 0.28vw + 1.47rem, 1.9rem);
   --space-y: clamp(4rem, 7.48vw + 0.41rem, 12rem);
   --space-x: clamp(2rem, 9.35vw + -2.49rem, 12rem);
@@ -768,26 +768,26 @@ h6 span {
 }
 .h1,
 h1 {
-  font-size: var(--size-h1)
+  font-size: var(--h1)
 }
 .h2,
 h2 {
-  font-size: var(--size-h2)
+  font-size: var(--h2)
 }
 .h3,
 h3 {
-  font-size: var(--size-h3)
+  font-size: var(--h3)
 }
 .h4,
 h4 {
-  font-size: var(--size-h4)
+  font-size: var(--h4)
 }
 .h5,
 h5 {
-  font-size: var(--size-h5)
+  font-size: var(--h5)
 }
 h6 {
-  font-size: var(--size-h6)
+  font-size: var(--h6)
 }
 a {
   color: var(--accent);
@@ -1351,7 +1351,7 @@ textarea {
 legend {
   display: block;
   width: 100%;
-  font-size: var(--size-h4);
+  font-size: var(--h4);
   line-height: 1.4;
   font-weight: var(--regular);
   margin-top: var(--gutter-lg);
@@ -2949,10 +2949,10 @@ html.js-nav-active {
   padding-bottom: clamp(4rem,1.87vw + 3.1rem,6rem)
 }
 .section__heading {
-  font-size: var(--size-h2)
+  font-size: var(--h2)
 }
 .section__lead {
-  font-size: var(--size-h6)
+  font-size: var(--h6)
 }
 .content {
   position: relative
@@ -3276,7 +3276,7 @@ html.js-nav-active {
   transform: scale(1.1)
 }
 .member__heading {
-  font-size: var(--size-h4);
+  font-size: var(--h4);
   line-height: 1.2;
   margin: 0
 }
@@ -3672,7 +3672,7 @@ html.js-dialog-active {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: var(--size-h6);
+  font-size: var(--h6);
   font-weight: var(--medium);
   line-height: 1.3;
   letter-spacing: .08rem;

@@ -55,17 +55,17 @@ $danger: #dc3545;
 
   /* --------- FONT SIZE --------- */
 
-  --size-h1: #{fluid(36px, 60px)};
+  --h1: #{fluid(36px, 60px)};
 
-  --size-h2: #{fluid(18px, 28px)};
+  --h2: #{fluid(18px, 28px)};
 
-  --size-h3: #{fluid(22px, 35px)};
+  --h3: #{fluid(22px, 35px)};
 
-  --size-h4: #{fluid(17px, 28px)};
+  --h4: #{fluid(17px, 28px)};
 
-  --size-h5: #{fluid(15px, 23px)};
+  --h5: #{fluid(15px, 23px)};
 
-  --size-h6: #{fluid(13px, 23px)};
+  --h6: #{fluid(13px, 23px)};
 
   --body-size: #{fluid(13px, 19px)};
 
