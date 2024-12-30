@@ -13,21 +13,16 @@ if (openChat) {
   let chatBot = chatDialog.querySelector('iframe');
   let chatData = chatBot.getAttribute('data-src');
 
-  function chatToggle() {
+  let showChat = sessionStorage.getItem('chatActive');
 
-    if (chatDialog.classList.contains('chatbot__dialog--open')) {
+  function chatOnload() {
 
-      chatDialog.classList.remove('chatbot__dialog--open');
-      chatDialog.classList.add('chatbot__dialog--closed');
-      chatDialog.setAttribute('aria-hidden', true);
+    setTimeout(() => {
       
-      openChat.classList.remove('chatbot__btn--open');
-      openChat.classList.add('chatbot__btn--closed');
-      openChat.setAttribute('aria-expanded', false);
-
-      chatTxt.innerHTML="Open chat";
-
-    } else {
+      if (!showChat || showChat == 'true') {
+        
+      chatBot.setAttribute("src", chatData);
+      sessionStorage.setItem('chatActive', 'true');
 
       chatDialog.classList.remove('chatbot__dialog--closed');
       chatDialog.classList.add('chatbot__dialog--open');
@@ -39,10 +34,11 @@ if (openChat) {
 
       chatTxt.innerHTML="Close chat";
 
-    }
+      }
+
+    }, 1000);
 
   }
-
 
   if (chatParent.classList.contains('chatbot--onload')) {
 
@@ -50,56 +46,55 @@ if (openChat) {
     /* SHOW ONLOAD */
     /*-----------------------------------------------------------------------------------*/
 
-    window.addEventListener("load", function() {
+    // window.addEventListener("load", chatOnload, {once : true});
     
-      setTimeout(() => {
+    window.addEventListener("load", chatOnload);
+
+    // openChat.removeEventListener('click', chatOnload);
+
+    openChat.addEventListener("click", function() {
+
+      if (chatDialog.classList.contains('chatbot__dialog--open')) {
+
+        sessionStorage.setItem('chatActive', 'false');
+
+        chatDialog.classList.remove('chatbot__dialog--open');
+        chatDialog.classList.add('chatbot__dialog--closed');
+        chatDialog.setAttribute('aria-hidden', true);
         
-        sessionStorage.setItem('chatActive', 'true');
-        chatBot.setAttribute("src", chatData);
-        
-      }, 3000);
+        openChat.classList.remove('chatbot__btn--open');
+        openChat.classList.add('chatbot__btn--closed');
+        openChat.setAttribute('aria-expanded', false);
+
+        chatTxt.innerHTML="Open chat";
   
-    }, {once : true});
+      } else {
 
-    window.addEventListener("load", function() {
-    
-      setTimeout(() => {
+        chatBot.setAttribute("src", chatData);
+  
+        sessionStorage.setItem('chatActive', 'true');
 
-        let showChat = sessionStorage.getItem('chatActive');
+        chatDialog.classList.remove('chatbot__dialog--closed');
+        chatDialog.classList.add('chatbot__dialog--open');
+        chatDialog.setAttribute('aria-hidden', false);
 
-        if (showChat == 'true') {
-          
-          chatDialog.classList.remove('chatbot__dialog--closed');
-          chatDialog.classList.add('chatbot__dialog--open');
-          chatDialog.setAttribute('aria-hidden', false);
+        openChat.classList.remove('chatbot__btn--closed');
+        openChat.classList.add('chatbot__btn--open');
+        openChat.setAttribute('aria-expanded', true);
 
-          openChat.classList.remove('chatbot__btn--closed');
-          openChat.classList.add('chatbot__btn--open');
-          openChat.setAttribute('aria-expanded', true);
-
-          chatTxt.innerHTML="Close chat";
-
-        }
-
-        if (showChat == 'false') {
-          
-          chatDialog.classList.remove('chatbot__dialog--open');
-          chatDialog.classList.add('chatbot__dialog--closed');
-          chatDialog.setAttribute('aria-hidden', true);
-          
-          openChat.classList.remove('chatbot__btn--open');
-          openChat.classList.add('chatbot__btn--closed');
-          openChat.setAttribute('aria-expanded', false);
-
-          chatTxt.innerHTML="Open chat";
-
-        }
-        
-      }, 3000);
+        chatTxt.innerHTML="Close chat";
+  
+      }
   
     });
 
-    openChat.addEventListener("click", chatToggle);
+    window.addEventListener("load", function() {
+
+      if (showChat == 'false') {
+        chatTxt.innerHTML="Open chat";
+      }
+  
+    });
 
   } else {
 
@@ -107,19 +102,74 @@ if (openChat) {
     /* DON'T SHOW ONLOAD */
     /*-----------------------------------------------------------------------------------*/
 
-    openChat.addEventListener("click", () => {
+    // openChat.addEventListener("click", () => {
   
-      sessionStorage.setItem('chatActive', 'true');
-      chatBot.setAttribute("src", chatData);
+    //   sessionStorage.setItem('chatActive', 'true');
+    //   chatBot.setAttribute("src", chatData);
       
-    }, {once : true});
+    // }, {once : true});
 
-    openChat.addEventListener("click", chatToggle);
+    openChat.addEventListener("click", function() {
+
+      if (chatDialog.classList.contains('chatbot__dialog--open')) {
+
+        sessionStorage.setItem('chatActive', 'false');
+
+        chatDialog.classList.remove('chatbot__dialog--open');
+        chatDialog.classList.add('chatbot__dialog--closed');
+        chatDialog.setAttribute('aria-hidden', true);
+        
+        openChat.classList.remove('chatbot__btn--open');
+        openChat.classList.add('chatbot__btn--closed');
+        openChat.setAttribute('aria-expanded', false);
+
+        chatTxt.innerHTML="Open chat";
+  
+      } else {
+  
+        sessionStorage.setItem('chatActive', 'true');
+
+        chatBot.setAttribute("src", chatData);
+
+        chatDialog.classList.remove('chatbot__dialog--closed');
+        chatDialog.classList.add('chatbot__dialog--open');
+        chatDialog.setAttribute('aria-hidden', false);
+
+        openChat.classList.remove('chatbot__btn--closed');
+        openChat.classList.add('chatbot__btn--open');
+        openChat.setAttribute('aria-expanded', true);
+
+        chatTxt.innerHTML="Close chat";
+  
+      }
+  
+    });
 
     window.addEventListener("load", function() {
 
-      let showChat = sessionStorage.getItem('chatActive');
       if (showChat == 'true') {
+
+        setTimeout(() => {
+  
+          chatBot.setAttribute("src", chatData);
+
+          sessionStorage.setItem('chatActive', 'true');
+    
+          chatDialog.classList.remove('chatbot__dialog--closed');
+          chatDialog.classList.add('chatbot__dialog--open');
+          chatDialog.setAttribute('aria-hidden', false);
+    
+          openChat.classList.remove('chatbot__btn--closed');
+          openChat.classList.add('chatbot__btn--open');
+          openChat.setAttribute('aria-expanded', true);
+    
+          chatTxt.innerHTML="Close chat";
+    
+        }, 1000);
+
+      }
+
+      if (showChat == 'false') {
         chatTxt.innerHTML="Open chat";
       }
   

@@ -3,26 +3,26 @@
   --chat-two: #888888;
 }
 
-.ddl-chatbot *,
-.ddl-chatbot::after,
-.ddl-chatbot::before {
+.chatbot *,
+.chatbot::after,
+.chatbot::before {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-.ddl-chatbot a,
-.ddl-chatbot area,
-.ddl-chatbot button,
-.ddl-chatbot [role=button],
-.ddl-chatbot input:not([type=range]),
-.ddl-chatbot label,
-.ddl-chatbot select,
-.ddl-chatbot summary,
-.ddl-chatbot textarea {
+.chatbot a,
+.chatbot area,
+.chatbot button,
+.chatbot [role=button],
+.chatbot input:not([type=range]),
+.chatbot label,
+.chatbot select,
+.chatbot summary,
+.chatbot textarea {
   -ms-touch-action: manipulation;
   touch-action: manipulation;
 }
-.ddl-chatbot *:focus {
+.chatbot *:focus {
   outline: none;
   outline: 0;
   outline: -webkit-focus-ring-color 0;
@@ -30,15 +30,15 @@
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.ddl-chatbot button:focus-visible,
-.ddl-chatbot a:focus-visible,
-.ddl-chatbot input:focus-visible {
+.chatbot button:focus-visible,
+.chatbot a:focus-visible,
+.chatbot input:focus-visible {
   outline: 1px solid var(--chat-one) !important;
   text-decoration: none !important;
   outline-offset: 1px !important;
 }
 @media (prefers-reduced-motion: reduce) {
-  .ddl-chatbot {
+  .chatbot {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

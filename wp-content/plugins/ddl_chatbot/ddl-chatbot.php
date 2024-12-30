@@ -147,6 +147,59 @@ function render_chatbot_onload_checkbox($args){
 }
 
 
+/* --------------------- POP-UP SETTINGS SECTION --------------------- */
+
+function admin_init_chatbot_btn() {
+
+	add_settings_section (
+		'chatbot-btn-section',
+		'Button Options',
+		'chatbot_btn_section_message',
+		'chatbot-options-page'
+	);
+
+  /* --- ADD FIELDS --- */
+
+  add_settings_field ('chatbot-colour-one','Colour one:','render_chatbot_colour_one','chatbot-options-page','chatbot-btn-section');
+  add_settings_field ('chatbot-colour-two','Colour two:','render_chatbot_colour_two','chatbot-options-page','chatbot-btn-section');
+
+
+  /* --- REGISTER FIELDS --- */
+
+  register_setting ('chatbot-options','chatbot-colour-one');
+  register_setting ('chatbot-options','chatbot-colour-two');
+
+}
+
+add_action( 'admin_init', 'admin_init_chatbot_btn' );
+
+
+/* --- SECTION MESSAGE --- */
+
+function chatbot_btn_section_message() {
+	echo "Use these options to alter the text and styling of the pop-up.";
+}
+
+
+/* --- RENDER FIELDS --- */
+
+function render_chatbot_colour_one() {
+
+	$input = get_option( 'chatbot-colour-one' );
+	echo '<input style="width:500px;" type="text" id="chatbot-colour-one" name="chatbot-colour-one" placeholder="#ffffff" value="' . $input . '" />
+  <p class="description" id="chatbot-policy-link-description">Enter a new colour (hash or rgb) to override the default (white).</p>';
+
+}
+
+function render_chatbot_colour_two() {
+
+	$input = get_option( 'chatbot-colour-two' );
+	echo '<input style="width:500px;" type="text" id="chatbot-colour-two" name="chatbot-colour-two" placeholder="#222222" value="' . $input . '" />
+  <p class="description" id="chatbot-policy-link-description">Enter a new colour (hash or rgb) to override the default (black).</p>';
+
+}
+
+
 /*-----------------------------------------------------------------------------------*/
 /* ENQUEUE STYLES & SCRIPTS */
 /*-----------------------------------------------------------------------------------*/
@@ -168,6 +221,39 @@ add_action( 'wp_enqueue_scripts', 'chatbot_scripts' );
 
 
 /*-----------------------------------------------------------------------------------*/
+/* ADD COLOUR OVERRIDES */
+/*-----------------------------------------------------------------------------------*/
+
+function add_chat_overrides() { 
+
+  $chatbotScript = get_option('chatbot-iframe-script-textarea');
+
+  $chatbotColourOne = get_option('chatbot-colour-one');
+  $chatbotColourTwo = get_option('chatbot-colour-two');
+  
+  if($chatbotScript) { ?>
+
+    <?php if( $chatbotColourOne || $chatbotColourTwo ) { ?>
+
+    <style>
+
+      .chatbot {
+        <?php if( $chatbotColourOne ) { ?>--chatbot-white: <?php echo $chatbotColourOne ?>;<?php } ?>
+        <?php if( $chatbotColourTwo ) { ?>--chatbot-black: <?php echo $chatbotColourTwo ?>;<?php } ?>
+      }
+
+    </style>
+
+    <?php } 
+
+  }
+
+}
+
+add_action( 'wp_head', 'add_chat_overrides', 999);
+
+
+/*-----------------------------------------------------------------------------------*/
 /* ADD BUTTON AND DIALOG TO FOOTER */
 /*-----------------------------------------------------------------------------------*/
 
@@ -184,5 +270,3 @@ function add_chatbot_dialog() {
 }
 
 add_action( 'wp_footer', 'add_chatbot_dialog' );
-
-?>
