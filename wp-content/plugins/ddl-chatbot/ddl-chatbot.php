@@ -129,7 +129,7 @@ function render_chatbot_iframe_script_textarea() {
 
 	$input = get_option( 'chatbot-iframe-script-textarea' );
   echo '<textarea style="width:700px;" name="chatbot-iframe-script-textarea" rows="10" cols="50" id="chatbot-iframe-script-textarea" class="large-text code">' . $input . '</textarea>
-  <p class="description" id="tagline-description">Do not include iframe, just the script (e.g. https://interfaces.zapier.com/embed/chatbot/XXXXXXXXXXXXXXXXXXXXXXXXX)</p>';
+  <p class="description" id="chatbot-iframe-script-description">Do not include iframe, just the script (e.g. https://interfaces.zapier.com/embed/chatbot/XXXXXXXXXXXXXXXXXXXXXXXXX)</p>';
 
 }
 
@@ -158,27 +158,31 @@ function admin_init_chatbot_btn() {
 		'chatbot-options-page'
 	);
 
+
+  /* --- SECTION MESSAGE --- */
+
+  function chatbot_btn_section_message() {
+    echo "Use these options to alter the colour of the button.";
+  }
+
   /* --- ADD FIELDS --- */
 
   add_settings_field ('chatbot-colour-one','Colour one:','render_chatbot_colour_one','chatbot-options-page','chatbot-btn-section');
   add_settings_field ('chatbot-colour-two','Colour two:','render_chatbot_colour_two','chatbot-options-page','chatbot-btn-section');
+  add_settings_field ('chatbot-colour-txt','Text colour:','render_chatbot_colour_txt','chatbot-options-page','chatbot-btn-section');
+  add_settings_field ('chatbot-styling','Custom styling:','render_chatbot_styling','chatbot-options-page','chatbot-btn-section');
 
 
   /* --- REGISTER FIELDS --- */
 
   register_setting ('chatbot-options','chatbot-colour-one');
   register_setting ('chatbot-options','chatbot-colour-two');
+  register_setting ('chatbot-options','chatbot-colour-txt');
+  register_setting ('chatbot-options','chatbot-styling');
 
 }
 
 add_action( 'admin_init', 'admin_init_chatbot_btn' );
-
-
-/* --- SECTION MESSAGE --- */
-
-function chatbot_btn_section_message() {
-	echo "Use these options to alter the text and styling of the pop-up.";
-}
 
 
 /* --- RENDER FIELDS --- */
@@ -186,16 +190,32 @@ function chatbot_btn_section_message() {
 function render_chatbot_colour_one() {
 
 	$input = get_option( 'chatbot-colour-one' );
-	echo '<input style="width:500px;" type="text" id="chatbot-colour-one" name="chatbot-colour-one" placeholder="#ffffff" value="' . $input . '" />
-  <p class="description" id="chatbot-policy-link-description">Enter a new colour (hash or rgb) to override the default (white).</p>';
+	echo '<input style="width:500px;" type="text" id="chatbot-colour-one" name="chatbot-colour-one" placeholder="#222222" value="' . $input . '" />
+  <p class="description" id="chatbot-colour-one-description">Enter a new colour (hash or rgb) to override the default (black).</p>';
 
 }
 
 function render_chatbot_colour_two() {
 
 	$input = get_option( 'chatbot-colour-two' );
-	echo '<input style="width:500px;" type="text" id="chatbot-colour-two" name="chatbot-colour-two" placeholder="#222222" value="' . $input . '" />
-  <p class="description" id="chatbot-policy-link-description">Enter a new colour (hash or rgb) to override the default (black).</p>';
+	echo '<input style="width:500px;" type="text" id="chatbot-colour-two" name="chatbot-colour-two" placeholder="#888888" value="' . $input . '" />
+  <p class="description" id="chatbot-colour-two-description">Enter a new colour (hash or rgb) to override the default (grey).</p>';
+
+}
+
+function render_chatbot_colour_txt() {
+
+	$input = get_option( 'chatbot-colour-txt' );
+	echo '<input style="width:500px;" type="text" id="chatbot-colour-txt" name="chatbot-colour-txt" placeholder="#ffffff" value="' . $input . '" />
+  <p class="description" id="chatbot-colour-txt-description">Enter a new colour (hash or rgb) to override the default (white).</p>';
+
+}
+
+function render_chatbot_styling() {
+
+	$input = get_option( 'chatbot-styling' );
+  echo '<textarea style="width:700px;" name="chatbot-styling" rows="10" cols="50" id="chatbot-styling" class="large-text code">' . $input . '</textarea>
+  <p class="description" id="chatbot-styling-description">Add css to override the default styling.';
 
 }
 
@@ -230,17 +250,26 @@ function add_chat_overrides() {
 
   $chatbotColourOne = get_option('chatbot-colour-one');
   $chatbotColourTwo = get_option('chatbot-colour-two');
+  $chatbotColourTxt = get_option('chatbot-colour-txt');
+  $chatbotStyling = get_option('chatbot-styling');
   
   if($chatbotScript) { ?>
 
-    <?php if( $chatbotColourOne || $chatbotColourTwo ) { ?>
+    <?php if( $chatbotColourOne || $chatbotColourTwo || $chatbotColourTxt || $chatbotStyling ) { ?>
 
     <style>
 
+      <?php if( $chatbotColourOne || $chatbotColourTwo || $chatbotColourTxt ) { ?>
+
       .chatbot {
-        <?php if( $chatbotColourOne ) { ?>--chatbot-white: <?php echo $chatbotColourOne ?>;<?php } ?>
-        <?php if( $chatbotColourTwo ) { ?>--chatbot-black: <?php echo $chatbotColourTwo ?>;<?php } ?>
+        <?php if( $chatbotColourOne ) { ?>--chat-one: <?php echo $chatbotColourOne ?>;<?php } ?>
+        <?php if( $chatbotColourTwo ) { ?>--chat-two: <?php echo $chatbotColourTwo ?>;<?php } ?>
+        <?php if( $chatbotColourTxt ) { ?>--chat-txt: <?php echo $chatbotColourTxt ?>;<?php } ?>
       }
+
+      <?php } ?>
+
+      <?php if( $chatbotStyling ) {  echo $chatbotStyling; } ?>
 
     </style>
 
