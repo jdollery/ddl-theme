@@ -14,65 +14,65 @@
 ?>
 
 <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "Dentist",
-      "@id":"LocalBusiness",
-      "name": "<?= $site_name; ?>",
-      "description": "<?= $site_description; ?>",
-      "legalName": "<?= $site_name; ?>",
-      "url": "<?= $site_url; ?>",
-      "logo": "<?= get_template_directory_uri(); ?>/assets/img/schema-logo.jpg",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "<?= $street_address; ?>",
-        "addressLocality": "<?= $address_locality; ?>",
-        "addressRegion": "<?= $address_region; ?>",
-        "postalCode": "<?= $postal_code; ?>",
-        "addressCountry": "<?= $address_country; ?>",
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer support",
-        "email": "<?= $email_address; ?>",
-        "telephone": "<?= $phone_number; ?>"
-      },
+  {
+    "@context": "http://schema.org",
+    "@type": "Dentist",
+    "@id":"LocalBusiness",
+    "name": "<?= $site_name; ?>",
+    "description": "<?= $site_description; ?>",
+    "legalName": "<?= $site_name; ?>",
+    "url": "<?= $site_url; ?>",
+    "logo": "<?= get_template_directory_uri(); ?>/assets/img/schema-logo.jpg",
+    "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "<?= $street_address; ?>",
+    "addressLocality": "<?= $address_locality; ?>",
+    "addressRegion": "<?= $address_region; ?>",
+    "postalCode": "<?= $postal_code; ?>",
+    "addressCountry": "<?= $address_country; ?>",
+    },
+    "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "email": "<?= $email_address; ?>",
+    "telephone": "<?= $phone_number; ?>"
+    },
 
-      <!-- <?php if (!empty($socials)) : ?>
-          <?php foreach ($socials as $index => $block) : ?>
+    <!-- <?php if (!empty($socials)) : ?>
+        <?php foreach ($socials as $index => $block) : ?>
 
-              "sameAs": [
-                  "<?= $block['social_url'] ?>"<?= $index < count($socials) - 1 ? ',' : '' ?>
-              ],
+            "sameAs": [
+                "<?= $block['social_url'] ?>"<?= $index < count($socials) - 1 ? ',' : '' ?>
+            ],
 
-          <?php endforeach; ?>
-      <?php endif; ?> -->
+        <?php endforeach; ?>
+    <?php endif; ?> -->
 
-      <!-- "openingHoursSpecification": [
-          <?php if (!empty($openingHours)) : ?>
-              <?php foreach ($openingHours as $index => $hours) : ?>
+    <!-- "openingHoursSpecification": [
+        <?php if (!empty($openingHours)) : ?>
+            <?php foreach ($openingHours as $index => $hours) : ?>
 
-                  {
-                      "@type": "OpeningHoursSpecification",
-                      "dayOfWeek": "<?= $hours['day_of_week']; ?>",
-                      "opens": "<?= $hours['opens']; ?>",
-                      "closes": "<?= $hours['closes']; ?>"
-                  }<?= $index < count($openingHours) - 1 ? ',' : '' ?>
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": "<?= $hours['day_of_week']; ?>",
+                    "opens": "<?= $hours['opens']; ?>",
+                    "closes": "<?= $hours['closes']; ?>"
+                }<?= $index < count($openingHours) - 1 ? ',' : '' ?>
 
-              <?php endforeach; ?>
-          <?php endif; ?>
-      ], -->
+            <?php endforeach; ?>
+        <?php endif; ?>
+    ], -->
 
-      <!-- <?php if (!empty($aggregateRating)) : ?>
+    <!-- <?php if (!empty($aggregateRating)) : ?>
 
-          "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "<?= $aggregateRating['rating_value']; ?>",
-              "reviewCount": "<?= $aggregateRating['review_count']; ?>"
-          },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "<?= $aggregateRating['rating_value']; ?>",
+            "reviewCount": "<?= $aggregateRating['review_count']; ?>"
+        },
 
-      <?php endif; ?> -->
+    <?php endif; ?> -->
 
-      "inLanguage":"en-GB"
-    }
+    "inLanguage":"en-GB"
+  }
 </script>
