@@ -124,6 +124,13 @@ if (openChat) {
         openChat.setAttribute('aria-expanded', false);
 
         chatTxt.innerHTML="Open chat";
+
+        /* --------------------- GOOGLE TAG MANAGER CUSTOM EVENT TRIGGER --------------------- */
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          'event': 'chatbotClosed'
+        });
   
       } else {
   
@@ -140,6 +147,14 @@ if (openChat) {
         openChat.setAttribute('aria-expanded', true);
 
         chatTxt.innerHTML="Close chat";
+
+
+        /* --------------------- GOOGLE TAG MANAGER CUSTOM EVENT TRIGGER --------------------- */
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          'event': 'chatbotOpened'
+        });
   
       }
   
