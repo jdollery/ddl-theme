@@ -244,7 +244,7 @@ jQuery(document).ready(function () { //doc ready start
 
                 jQuery(this).find('.btn--submit').removeClass('btn--sending');
 
-                document.querySelector(".form").submit();  
+                jQuery(this).submit()
       
               } else {
 

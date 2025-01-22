@@ -61,6 +61,27 @@ if( have_rows('accordion_section') ){
 
       </div>
 
+      <?php $faqs = get_sub_field('accordion_list'); ?>
+
+      <script type="application/ld+json" class="dd-schema-faq">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+        <?php foreach ($faqs as $index => $faq) : $title = $faq['accordion_title']; $description = $faq['accordion_description']; ?>
+          {
+            "@type": "Question",
+            "name": "<?= strip_tags($title); ?>",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "<?= strip_tags($description); ?>"
+            }
+          }<?php if ($index < count($faqs) - 1) echo ','; ?>
+        <?php endforeach; ?>
+        ]
+      }
+      </script>
+
     </section>
 
     <?php
@@ -71,4 +92,4 @@ if( have_rows('accordion_section') ){
 
   } 
 
-?>
+  ?>

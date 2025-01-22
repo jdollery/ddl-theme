@@ -1,0 +1,44 @@
+.opening,
+.social {
+  border: 1px solid #9c9c9c;
+  width: 570px;
+  padding: 17px 15px;
+  border-radius: 4px;
+}
+
+.opening__list,
+.social__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.opening__row,
+.social__row {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+}
+
+.opening__row input,
+.social__row input {
+  flex: 1 0 0;
+  width: 100%;
+}
+
+.opening__remove,
+.social__remove {
+  flex: 0 0 auto;
+  width: auto;
+  color: #ffffff !important;
+  border-color: #d63638 !important;
+  background: #d63638 !important;
+}
+
+.opening__add,
+.social__add {
+  color: #ffffff !important;
+  border-color: #198754 !important;
+  background: #198754 !important;
+}
