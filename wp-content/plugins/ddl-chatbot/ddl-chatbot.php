@@ -112,11 +112,29 @@ function admin_init_chatbot_dialog() {
     )
   ); 
 
+  add_settings_field(
+    'chatbot-location-radio',
+    esc_attr__('Show chatbot on left or right?', 'chatbot-location-radio-label'),
+    'render_chatbot_location_radio',
+    'chatbot-options-page',
+    'chatbot-dialog-section',
+    array( 
+      'type'         => 'radio',
+      'option_group' => 'chatbot-location-radio', 
+      'name'         => 'chatbot-location-radio',
+      'label_for'    => 'chatbot-location-radio',
+      'value'        => (empty(get_option('chatbot-options-page')['chatbot-location-radio'])) ? 0 : get_option('unitizr_options')['chatbot-location-radio'],
+      'description'  => __( 'Tick to show pop-up on left or right', 'chatbot-location-radio-label' ),
+      'checked'      => (!isset(get_option('chatbot-options-page')['chatbot-location-radio'])) ? 0 : get_option('chatbot-options-page')['chatbot-location-radio'],
+    )
+  );
+
 
   /* --- REGISTER FIELDS --- */
 
   register_setting ('chatbot-options','chatbot-iframe-script-textarea');
   register_setting ('chatbot-options','chatbot-onload-checkbox');
+  register_setting ('chatbot-options','chatbot-location-radio');
 
 }
 
@@ -143,6 +161,30 @@ function render_chatbot_onload_checkbox($args){
   $html .= '<input id="' . esc_attr( $args['name'] ) . '" name="' . esc_attr( $args['option_group'] . '['.$args['name'].']') .'" type="checkbox" ' . $checked . '/>';
   $html .= '<span class="wndspan">' . esc_html( $args['description'] ) .'</span>';
   echo $html;
+
+}
+
+function render_chatbot_location_radio($args){ 
+
+  $options = get_option('chatbot-location-radio');
+  
+  $items = array("left", "right");
+  $default = 'right'; 
+  
+  foreach ($items as $item) {
+      $option = isset($options) ? $options : null;
+      $value = 'chatbot-location-radio[' . $item . ']';
+  
+      if ($option === $value || ($option === null && $item === $default)) {
+          $checked = ' checked="checked" ';
+      } else {
+          $checked = '';
+      }
+  
+      echo '<label><input id="' . esc_attr($args['option_group'] . '[' . $item . ']') . '" value="' . esc_attr($args['option_group'] . '[' . $item . ']') . '" name="' . esc_attr($args['option_group']) . '" type="radio"' . $checked . '/>' . ucfirst($item) . '</label><br />';
+  }
+
+  echo '<p class="description" id="chatbot-location-radio-description">The default option is set to show on the &ldquo;right&rdquo; if not checked.</p>';
 
 }
 
@@ -290,9 +332,11 @@ function add_chatbot_dialog() {
 
   $chatbotScript = get_option('chatbot-iframe-script-textarea');
   $chatbotOnload = get_option('chatbot-onload-checkbox');
-  $chatbotOnloadValue = ( !isset($chatbotOnload['chatbot-onload-checkbox'] ) ) ? '' : $chatbotOnload['chatbot-onload-checkbox'];
+  $chatbotLocation = get_option('chatbot-location-radio');
+  $chatbotOnloadValue = (!isset($chatbotOnload['chatbot-onload-checkbox'])) ? '' : $chatbotOnload['chatbot-onload-checkbox'];
+  $chatbotLocationValue = (strpos($chatbotLocation, 'left') !== false) ? $chatbotLocation : '';
 
-  echo '<div class="chatbot' . ($chatbotOnloadValue == true ? ' chatbot--onload' : '') . '">
+  echo '<div class="chatbot' . ($chatbotOnloadValue == true ? ' chatbot--onload' : '') . ($chatbotLocationValue == true ? ' chatbot--left' : ' chatbot--right') . '">
   <button class="chatbot__btn chatbot__btn--closed" id="chatToggle" type="button" aria-label="Open chat dialog" aria-haspopup="true" aria-controls="chatDialog" aria-expanded="false"><span class="chatbot__txt">Chat now</span><span class="chatbot__icon"></span></button>
   <div class="chatbot__dialog chatbot__dialog--closed" id="chatDialog" role="dialog" aria-modal="true" aria-hidden="true"><iframe data-src="' . $chatbotScript . '" height="100%" width="100%" allow="clipboard-write *" style="border: none;"></iframe></div>
   </div>';

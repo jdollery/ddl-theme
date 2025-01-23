@@ -439,3 +439,104 @@ function site_options_admin_scripts() {
   wp_enqueue_script( 'options-script', plugin_dir_url( __FILE__ ) . '/assets/js/options-script.js', array( 'jquery' ), '1.0.0', true );
 }
 add_action( 'admin_enqueue_scripts', 'site_options_admin_scripts' );
+
+
+/*-----------------------------------------------------------------------------------*/
+/* ADD SCHEMA TO HEAD */
+/*-----------------------------------------------------------------------------------*/
+
+function add_schema_options() { 
+
+  $schema_url = get_site_url();
+  $schema_name = get_bloginfo('name');
+  $schema_description = get_option('schema-description');
+  $phone_number = get_option('schema-phone-number');
+  $email_address = get_option('schema-email-address');
+  $street_address = get_option('schema-street-address');
+  $address_locality = get_option('schema-address-locality');
+  $address_region = get_option('schema-address-region');
+  $postal_code = get_option('schema-postal-code');
+  $address_country = get_option('schema-address-country');
+  $opening_times = get_option('schema-times');
+  $social_links = get_option('schema-social');
+  $aggregate_value = get_option('schema-aggregate-value');
+  $aggregate_count = get_option('schema-aggregate-count');
+
+  ?>
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Dentist",
+    "@id":"LocalBusiness",
+    "name": "<?= $schema_name; ?>",
+    <?php if (!empty($schema_description)) : ?>
+    "description": "<?= $schema_description; ?>",
+    <?php endif; ?>
+    "legalName": "<?= $schema_name; ?>",
+    "url": "<?= $schema_url; ?>",
+    <?php if (!empty($street_address || $address_locality || $address_region || $postal_code || $address_country)) : ?>
+    "address": {
+    "@type": "PostalAddress",
+    <?php if (!empty($street_address)) : ?>
+    "streetAddress": "<?= $street_address; ?>",
+    <?php endif; ?>
+    <?php if (!empty($address_locality)) : ?>
+    "addressLocality": "<?= $address_locality; ?>",
+    <?php endif; ?>
+    <?php if (!empty($address_region)) : ?>
+    "addressRegion": "<?= $address_region; ?>",
+    <?php endif; ?>
+    <?php if (!empty($postal_code)) : ?>
+    "postalCode": "<?= $postal_code; ?>",
+    <?php endif; ?>
+    <?php if (!empty($address_country)) : ?>
+    "addressCountry": "<?= $address_country; ?>"
+    <?php endif; ?>
+    },
+    <?php endif; ?>
+    <?php if (!empty($phone_number || $email_address)) : ?>
+    "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    <?php if (!empty($email_address)) : ?>
+    "email": "<?= $email_address; ?>",
+    <?php endif; ?>
+    <?php if (!empty($phone_number)) : ?>
+    "telephone": "<?= $phone_number; ?>"
+    <?php endif; ?>
+    },
+    <?php endif; ?>
+    <?php if (!empty($social_links)) : ?>
+    <?php foreach ($social_links as $index => $block) : ?>
+    "sameAs": ["<?= $block['0'] ?>"],
+    <?php endforeach; ?>
+    <?php endif; ?>
+    <?php if (!empty($opening_times)) : ?>
+    "openingHoursSpecification": [
+    <?php foreach ($opening_times as $index => $times) : ?>
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "<?= $times['0']; ?>",
+        "opens": "<?= $times['1']; ?>",
+        "closes": "<?= $times['2']; ?>"
+      }
+    <?php endforeach; ?>
+    ],
+    <?php endif; ?>
+    <?php if (!empty($aggregate_value || $aggregate_count)) : ?>
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        <?php if (!empty($aggregate_value)) : ?>"ratingValue": "<?= $aggregate_value; ?>",<?php endif; ?>
+        <?php if (!empty($aggregate_count)) : ?>"reviewCount": "<?= $aggregate_count; ?>",<?php endif; ?>
+      },
+    <?php endif; ?>
+    "inLanguage":"en-GB"
+  }
+  </script>
+
+<?php
+
+}
+
+add_action( 'wp_head', 'add_schema_options', 999);

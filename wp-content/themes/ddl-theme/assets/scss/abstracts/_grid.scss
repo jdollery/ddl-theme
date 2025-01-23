@@ -37,14 +37,14 @@ $gap: #{fluid(10px, 20px)};
 
 @mixin cell($size) {
   
-  @for $i from 1 through $columns {
+  @for $i from 1 through $columns - 1 {
     $width: math.percentage(math.div($i, $columns));
-    @if($size == $i)  {
+    @if($size == $i) {
       position: relative;
       flex: 0 0 auto;
-      width: calc($width - $gap / 2);
+      width: calc(#{$width} - $gap / 2);
       max-width: 100%;
-    } 
+    }
   }
 
   @if($size == 0) {
@@ -56,6 +56,11 @@ $gap: #{fluid(10px, 20px)};
     position: relative;
     flex: 0 0 auto;
     width: auto;
+    max-width: 100%;
+  } @else if ($size == 12) {
+    position: relative;
+    flex: 0 0 auto;
+    width: 100%;
     max-width: 100%;
   }
   

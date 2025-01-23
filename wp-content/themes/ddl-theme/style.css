@@ -792,7 +792,7 @@ h6 {
 a {
   color: var(--accent);
   font-weight: var(--bold);
-  transition: all .2s ease-out
+  transition: all .3s cubic-bezier(.5,0,.5,1)
 }
 a:hover {
   color: var(--accent-light)
@@ -2835,7 +2835,7 @@ html.js-nav-active {
 .loop__item {
   position: relative;
   flex: 0 0 auto;
-  width: calc(100% - clamp(1rem,.93vw + .55rem,2rem)/ 2);
+  width: 100%;
   max-width: 100%
 }
 @media (min-width:480px) {
@@ -2856,7 +2856,6 @@ html.js-nav-active {
 .post__row {
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(1rem,.93vw + .55rem,2rem);
   height: 100%
 }
 @media (max-width:1549px) {
@@ -2865,31 +2864,23 @@ html.js-nav-active {
   }
 }
 .post__one {
+  position: relative;
   flex: 0 0 auto;
   width: 100%;
   max-width: 100%
 }
 @media (max-width:1549px) {
   .post__one {
-    max-height: 24vw
-  }
-}
-@media (max-width:991px) {
-  .post__one {
-    max-height: 40vw
-  }
-}
-@media (max-width:767px) {
-  .post__one {
-    max-height: 55vw
+    aspect-ratio: 16/10
   }
 }
 @media (min-width:1550px) {
   .post__one {
-    width: 41.66666667%
+    width: 40%
   }
 }
 .post__two {
+  position: relative;
   flex: 1 0 0%;
   width: 100%;
   max-width: 100%
@@ -3170,7 +3161,7 @@ html.js-nav-active {
 .member {
   position: relative;
   flex: 0 0 auto;
-  width: calc(100% - clamp(1rem,.93vw + .55rem,2rem)/ 2);
+  width: 100%;
   max-width: 100%;
   color: var(--black);
   transition: all .3s cubic-bezier(.5,0,.5,1)
@@ -3613,7 +3604,7 @@ html.js-dialog-active {
 .quicklinks__item {
   position: relative;
   flex: 0 0 auto;
-  width: calc(100% - clamp(1rem,.93vw + .55rem,2rem)/ 2);
+  width: 100%;
   max-width: 100%
 }
 @media (min-width:480px) {

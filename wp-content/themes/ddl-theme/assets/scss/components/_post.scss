@@ -6,7 +6,8 @@
   height: 100%;
 
   &__row {
-    @include cell-row;
+    display: flex;
+    flex-wrap: wrap;
     height: 100%;
 
     @include media-down(xxl) {
@@ -16,29 +17,23 @@
   }
 
   &__one {
+    position: relative;
     flex: 0 0 auto;
     width: 100%;
     max-width: 100%;
 
     @include media-down(xxl) {
-      max-height: 24vw;
-    }
-
-    @include media-down(md) {
-      max-height: 40vw;
-    }
-
-    @include media-down(sm) {
-      max-height: 55vw;
+      aspect-ratio: 16 / 10;
     }
 
     @include media-up(xxl) {
-      width: 41.66666667%;
+      width: 40%;
     }
 
   }
 
   &__two {
+    position: relative;
     flex: 1 0 0%;
     width: 100%;
     max-width: 100%;
