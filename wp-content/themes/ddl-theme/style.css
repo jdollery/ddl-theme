@@ -1159,7 +1159,7 @@ img:last-child {
 }
 .btn--inline {
   display: inline-block;
-  margin-top: var(--gutter-sm)
+  margin-top: var(--gutter-md)
 }
 @media (min-width:992px) {
   .btn--inline {

@@ -109,12 +109,12 @@
   }
 
   &--space {
-    margin-top: $margin-top-md;
-    margin-bottom: $margin-bottom-md;
+    margin-top: var(--gutter-md);
+    margin-bottom: var(--gutter-md);
 
     @include media-up(md) {
-      margin-top: $margin-top-lg;
-      margin-bottom: $margin-bottom-lg;
+      margin-top: var(--gutter-lg);
+      margin-bottom: var(--gutter-lg);
     }
 
     &:first-child {
@@ -129,10 +129,10 @@
 
   &--inline {
     display: inline-block;
-    margin-top: $margin-top-sm;
+    margin-top: var(--gutter-md);
 
     @include media-up(md) {
-      margin-top: $margin-top-lg;
+      margin-top: var(--gutter-lg);
     }
 
     &:not(:last-child) {

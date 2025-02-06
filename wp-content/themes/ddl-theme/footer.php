@@ -20,7 +20,5 @@
 
     <?php wp_footer(); ?>
 
-    <?php // get_template_part('inc/schema'); ?>
-
   </body>
 </html>

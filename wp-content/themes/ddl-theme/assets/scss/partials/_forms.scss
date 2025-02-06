@@ -2,10 +2,10 @@
 /* VARIABLES */
 /*-----------------------------------------------------------------------------------*/
 
-$form-margin-top-lg:      $margin-top-lg;
-$form-margin-bottom-lg:   $margin-bottom-lg;
-$form-margin-top-sm:      $margin-top-md;
-$form-margin-bottom-sm:   $margin-bottom-md;
+$form-margin-top-lg:      var(--gutter-lg);
+$form-margin-bottom-lg:   var(--gutter-lg);
+$form-margin-top-sm:      var(--gutter-md);
+$form-margin-bottom-sm:   var(--gutter-md);
 
 // @mixin input-font-size {
 //   // @include fluid-type(1.4rem, 1.6rem, 1.7rem);

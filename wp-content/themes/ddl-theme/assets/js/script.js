@@ -1,10 +1,11 @@
 const styles = [
-  'color: white',
-  'background: #1171ae',
+  'color: #006875',
+  'border: 1px solid #006875',
   'padding: 10px 15px',
+  'border-radius: 5px;'
 ].join(';');
 
-console.info('%cSite designed and developed by Dental Design - dental-design.marketing', styles);
+console.info('%cSite designed and developed by Dental Design - https://dental-design.marketing/', styles);
 
 
 /*-----------------------------------------------------------------------------------*/
