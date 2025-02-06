@@ -52,7 +52,7 @@
   display: block;
   cursor: pointer;
   text-align: center;
-  @include user-select(none);
+  user-select: none;
   vertical-align: middle;
   font-size: #{fluid(16px, 18px)};
   font-weight: var(--medium);

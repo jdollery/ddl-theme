@@ -1,4 +1,12 @@
 /*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+@use "sass:math";
+@use "sass:map";
+
+
+/*-----------------------------------------------------------------------------------*/
 /* MAPS */
 /*-----------------------------------------------------------------------------------*/
 
@@ -7,169 +15,10 @@ $colors: (
   "black": $black,
   "grey": $grey,
   "grey-dark": $grey-dark,
-  "grey-light": $grey-light,
   "accent": $accent,
   "accent-light": $accent-light,
   "danger": $danger,
 );
-
-
-// $spacer: 1rem !default;
-// $spacers: () !default;
-// $spacers: map-merge(
-//   (
-//     0:  0,
-//     1:  ($spacer * .25),
-//     2:  ($spacer * .5),
-//     3:  $spacer,
-//     4:  ($spacer * 1.5),
-//     5:  ($spacer * 2),
-//     6:  ($spacer * 2.5),
-//     7:  ($spacer * 3),
-//     8:  ($spacer * 3.5),
-//     9:  ($spacer * 4),
-//     10: ($spacer * 4.5),
-//     11: ($spacer * 5),
-//     12: ($spacer * 5.5),
-//     13: ($spacer * 6),
-//     14: ($spacer * 6.5),
-//     15: ($spacer * 7),
-//     16: ($spacer * 7.5),
-//     17: ($spacer * 8),
-//     18: ($spacer * 8.5),
-//     19: ($spacer * 9),
-//     20: ($spacer * 9.5),
-//     21: ($spacer * 10),
-//     22: ($spacer * 10.5),
-//     23: ($spacer * 11),
-//     24: ($spacer * 11.5),
-//     25: ($spacer * 12),
-//     26: ($spacer * 12.5),
-//     27: ($spacer * 13),
-//     28: ($spacer * 13.5),
-//     29: ($spacer * 14),
-//     30: ($spacer * 14.5),
-//     31: ($spacer * 15),
-//     32: ($spacer * 15.5),
-//     33: ($spacer * 16),
-//     34: ($spacer * 16.5),
-//     35: ($spacer * 17),
-//     36: ($spacer * 17.5),
-//     37: ($spacer * 18),
-//     38: ($spacer * 18.5),
-//     39: ($spacer * 19),
-//     40: ($spacer * 19.5),
-//     41: ($spacer * 20)
-//   ),
-//   $spacers
-// );
-
-
-/*-----------------------------------------------------------------------------------*/
-/* SPACE */
-/*-----------------------------------------------------------------------------------*/
-
-/* --------- MIXIN --------- */
-
-@mixin space-p($tag) {
-
-  @if $tag == 'y' {
-    padding-top: var(--space-y);
-    padding-bottom: var(--space-y);
-  }
-
-  @if $tag == 'x' {
-    padding-left: var(--space-x);
-    padding-right: var(--space-x);
-  }
-
-  @if $tag == 'top' {
-    padding-top: var(--space-y);
-  }
-
-  @if $tag == 'bottom' {
-    padding-bottom: var(--space-y);
-  }
-
-  @if $tag == 'left' {
-    padding-left: var(--space-x);
-  }
-
-  @if $tag == 'right' {
-    padding-right: var(--space-x);
-  }
-
-}
-
-
-@mixin space-m($tag) {
-
-  @if $tag == 'y' {
-    margin-top: var(--space-y);
-    margin-bottom: var(--space-y);
-  }
-
-  @if $tag == 'x' {
-    margin-left: var(--space-x);
-    margin-right: var(--space-x);
-  }
-
-  @if $tag == 'top' {
-    margin-top: var(--space-y);
-  }
-
-  @if $tag == 'bottom' {
-    margin-bottom: var(--space-y);
-  }
-
-  @if $tag == 'left' {
-    margin-left: var(--space-x);
-  }
-
-  @if $tag == 'right' {
-    margin-right: var(--space-x);
-  }
-
-}
-
-
-/* --------- CLASS --------- */
-
-// @each $prop, $abbrev in (margin: m, padding: p) {
-
-//   .space-#{$abbrev},
-//   .space-#{$abbrev}-t,
-//   .space-#{$abbrev}-y {
-
-//     #{$prop}-top: var(--space-y);
-
-//   }
-
-//   .space-#{$abbrev},
-//   .space-#{$abbrev}-b,
-//   .space-#{$abbrev}-y {
-
-//     #{$prop}-bottom: var(--space-y);
-
-//   }
-
-//   .space-#{$abbrev},
-//   .space-#{$abbrev}-l,
-//   .space-#{$abbrev}-x {
-
-//     #{$prop}-left: var(--space-x);
-
-//   }
-
-//   .space-#{$abbrev},
-//   .space-#{$abbrev}-r,
-//   .space-#{$abbrev}-x {
-
-//     #{$prop}-right: var(--space-x);
-
-//   }
-  
-// }
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -180,8 +29,8 @@ $colors: (
   $sm-font-size: $body-size-sm,
   $md-font-size: $body-size-lg,
   $lg-font-size: $body-size-lg,
-  $md-breakpoint: map-get($breakpoint-widths, "md"),
-  $lg-breakpoint: map-get($breakpoint-widths, "xxl")
+  $md-breakpoint: map.get($breakpoint-widths, "md"),
+  $lg-breakpoint: map.get($breakpoint-widths, "xxl")
 ) {
 
   font-size: $sm-font-size;
@@ -198,229 +47,14 @@ $colors: (
 
 
 /*-----------------------------------------------------------------------------------*/
-/* BACKGROUND COLOUR */
-/*-----------------------------------------------------------------------------------*/
-
-// @each $name, $color in $colors {
-//   .bg-#{$name} {
-//     background: $color;
-//   }
-// }
-
-
-/*-----------------------------------------------------------------------------------*/
 /* TEXT COLOUR */
 /*-----------------------------------------------------------------------------------*/
 
-// @each $name, $color in $colors {
-//   .color-#{$name} {
-//     color: $color;
-//   }
-// }
-
-
-/*-----------------------------------------------------------------------------------*/
-/* FLEX ORDER */
-/*-----------------------------------------------------------------------------------*/
-
-// $order: 6;
-
-// @for $i from 1 through $order {
-
-//   .order-#{$i} {
-//     order: $i !important;
-//   }
-
-// }
-
-// @each $breakpoint in map-keys($breakpoint-widths) {
-//   @include media-up($breakpoint) {
-//     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
-
-//     @for $i from 1 through $order {
-
-//       .order#{$infix}-#{$i} {
-//         order: $i !important;
-//       }
-
-//     }
-
-//   }
-
-// }
-
-
-/*-----------------------------------------------------------------------------------*/
-/* MARGIN AND PADDING */
-/*-----------------------------------------------------------------------------------*/
-
-// @each $prop, $abbrev in (margin: m, padding: p) {
-//   @each $size, $length in $spacers {
-
-//     .#{$abbrev}-#{$size},
-//     .#{$abbrev}t-#{$size},
-//     .#{$abbrev}y-#{$size} {
-//       #{$prop}-top: $length !important;
-//     }
-
-//     .#{$abbrev}-#{$size},
-//     .#{$abbrev}r-#{$size},
-//     .#{$abbrev}x-#{$size} {
-//       #{$prop}-right: $length !important;
-//     }
-
-//     .#{$abbrev}-#{$size},
-//     .#{$abbrev}b-#{$size},
-//     .#{$abbrev}y-#{$size} {
-//       #{$prop}-bottom: $length !important;
-//     }
-
-//     .#{$abbrev}-#{$size},
-//     .#{$abbrev}l-#{$size},
-//     .#{$abbrev}x-#{$size}  {
-//       #{$prop}-left: $length !important;
-//     }
-//   }
-  
-// }
-
-// @each $breakpoint in map-keys($breakpoint-widths) {
-//   @include media-up($breakpoint) {
-//     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
-
-//     @each $prop, $abbrev in (margin: m, padding: p) {
-//       @each $size, $length in $spacers {
-
-//         .#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
-//         .#{$abbrev}t#{$infix}-#{$size},
-//         .#{$abbrev}y#{$infix}-#{$size} {
-//           #{$prop}-top: $length !important;
-//         }
-
-//         .#{$abbrev}r#{$infix}-#{$size},
-//         .#{$abbrev}x#{$infix}-#{$size} {
-//           #{$prop}-right: $length !important;
-//         }
-
-//         .#{$abbrev}b#{$infix}-#{$size},
-//         .#{$abbrev}y#{$infix}-#{$size} {
-//           #{$prop}-bottom: $length !important;
-//         }
-
-//         .#{$abbrev}l#{$infix}-#{$size},
-//         .#{$abbrev}x#{$infix}-#{$size}  {
-//           #{$prop}-left: $length !important;
-//         }
-        
-//       }
-      
-//     }
-
-//   }
-
-// }
-
-// .mx-auto {
-//   margin-right: auto!important;
-//   margin-left: auto!important;
-// }
-
-
-/*-----------------------------------------------------------------------------------*/
-/* TEXT WEIGHT */
-/*-----------------------------------------------------------------------------------*/
-
-// .text-regular { font-weight: var(--regular) !important; }
-// .text-medium { font-weight: var(--medium) !important; }
-// .text-bold { font-weight: var(--bold) !important; }
-
-
-/*-----------------------------------------------------------------------------------*/
-/* TEXT ALIGN */
-/*-----------------------------------------------------------------------------------*/
-
-// .text-center { text-align: center !important; }
-// .text-right  { text-align: right !important; }
-// .text-left   { text-align: left !important; }
-
-// @each $breakpoint in map-keys($breakpoint-widths) {
-
-//   @include media-up($breakpoint) {
-//     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
-
-//     .text#{$infix}-left   { text-align: left !important; }
-//     .text#{$infix}-right  { text-align: right !important; }
-//     .text#{$infix}-center { text-align: center !important; }
-//   }
-
-// }
-
-
-/*-----------------------------------------------------------------------------------*/
-/* HEIGHT & WIDTH */
-/*-----------------------------------------------------------------------------------*/
-
-// .h-100 { height: 100% !important; }
-
-// @each $breakpoint in map-keys($breakpoint-widths) {
-
-//   @include media-up($breakpoint) {
-//     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
-
-//     .h#{$infix}-100   { height: 100% !important; }
-//   }
-
-// }
-
-
-// .w-100 { width: 100% !important; }
-
-// @each $breakpoint in map-keys($breakpoint-widths) {
-
-//   @include media-up($breakpoint) {
-//     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
-
-//     .w#{$infix}-100   { width: 100% !important; }
-//   }
-
-// }
-
-
-/*-----------------------------------------------------------------------------------*/
-/* FLEX ALIGN */
-/*-----------------------------------------------------------------------------------*/
-
-// .cell { 
-
-//   $justify-positions: (
-//     start: flex-start,
-//     end: flex-end,
-//     center: center,
-//     around: space-around,
-//     between: space-between,
-//     evenly: space-evenly
-//   );
-
-//   $align-positions: (
-//     start: flex-start,
-//     end: flex-end,
-//     center: center,
-//     stretch: stretch,
-//     baseline: baseline
-//   );
-
-//   @mixin just-align($name,$prop,$arr) {
-//     @each $mod, $dir in $arr {
-//       &-#{$name}-#{$mod} {
-//           #{$prop}: #{$dir};
-//       }
-//     }
-//   }
-
-//   @include just-align('align','align-items', $align-positions);
-//   @include just-align('justify','justify-content', $justify-positions);
-
-// }
+@each $name, $color in $colors {
+  .color--#{$name} {
+    color: $color;
+  }
+}
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -435,7 +69,7 @@ $colors: (
   }
 }
 
-@each $breakpoint in map-keys($breakpoint-widths) {
+@each $breakpoint in map.keys($breakpoint-widths) {
 
   @include media-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
@@ -453,7 +87,7 @@ $colors: (
   }
 }
 
-@each $breakpoint in map-keys($breakpoint-widths) {
+@each $breakpoint in map.keys($breakpoint-widths) {
 
   @include media-down($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
@@ -474,4 +108,23 @@ $colors: (
 
 @mixin transition($transition) {
   transition: $transition 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* FIXED WIDTH */
+/*-----------------------------------------------------------------------------------*/
+
+@mixin fixed {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  max-width: $max-width;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 var(--space-x);
+}
+
+.fixed {
+  @include fixed;
 }

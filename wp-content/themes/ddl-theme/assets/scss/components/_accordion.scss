@@ -1,6 +1,7 @@
 .accordion {
   position: relative;
-  @include space-p(x);
+  padding-left: var(--space-x);
+  padding-right: var(--space-x);
 
   &--top {
     padding-top: var(--space-y);
@@ -10,19 +11,16 @@
     padding-bottom: var(--space-y);
   }
 
-  &__row {
-    position: relative;
-    @include cell-row;
-  }
-  
   &__list {
     list-style: none;
-    margin-top: $margin-top-md;
-    margin-bottom: $margin-bottom-md;
+    display: grid;
+    grid-template-columns: auto;
+    margin-top: var(--gutter-md);
+    margin-bottom: var(--gutter-md);
 
     @include media-up(md) {
-      margin-top: $margin-top-lg;
-      margin-bottom: $margin-bottom-lg;
+      margin-top: var(--gutter-lg);
+      margin-bottom: var(--gutter-lg);
     }
 
     &:first-child {
@@ -39,7 +37,7 @@
     display: block;
 
     &:not(:first-child) {
-      margin: 1rem 0 0;
+      margin-top: 1.5rem;
     }
 
   }
@@ -124,7 +122,7 @@
           background: var(--accent);
           
           .icon {
-            @include transform (rotate(180deg));
+            transform: rotate(180deg);
   
             svg {
               fill: var(--white);

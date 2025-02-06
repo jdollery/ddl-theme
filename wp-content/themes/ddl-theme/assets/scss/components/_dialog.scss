@@ -3,6 +3,7 @@
 /*-----------------------------------------------------------------------------------*/
 
 @use 'sass:color';
+@use "sass:map";
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -64,7 +65,7 @@ html {
     max-width: 100%;
     z-index: 5;
     margin: 0 auto var(--space-x);
-    @include box-shadow (0 0 5rem 0.2rem rgba(color.adjust(map-get($colors, "black"), $lightness: -10%), 0.2));
+    @include box-shadow (0 0 5rem 0.2rem rgba(color.adjust(map.get($colors, "black"), $lightness: -10%), 0.2));
 
     @include media-up(xl) { 
       margin: var(--space-x) auto;

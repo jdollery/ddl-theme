@@ -5,8 +5,7 @@
 .team {
   background: var(--black);
   color: var(--white);
-  @include space-p(x);
-  @include space-p(y);
+  padding: var(--space-y) var(--space-x);
 
   &__heading {
     padding: 0 0 4.5rem;
@@ -17,7 +16,9 @@
 
   &__list {
     list-style: none;
-    @include cell-row;
+    display: grid;
+    grid-template-columns: auto;
+    gap: $gap;
   }
 
 }
@@ -28,21 +29,8 @@
 /*-----------------------------------------------------------------------------------*/
 
 .member {
-  @include cell(12);
   color: var(--black);
   @include transition(all);
-
-  @include media-up(sm) {
-    @include cell(6);
-  }
-
-  @include media-up(lg) {
-    @include cell(4);
-  }
-
-  @include media-up(xxl) {
-    @include cell(3);
-  }
 
   &__anchor {
     position: absolute;

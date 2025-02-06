@@ -25,14 +25,14 @@ window.onpageshow = function(event) {
 let headerSize = document.querySelector('.header');
 
 let headerLoad = headerSize.offsetHeight;
-document.documentElement.style.setProperty('--header-height', `${headerLoad}px`);
-document.documentElement.style.setProperty('--vh', (window.innerHeight*.01) + 'px');
+document.body.style.setProperty('--header-height', `${headerLoad}px`);
+document.body.style.setProperty('--vh', (window.innerHeight*.01) + 'px');
 
 window.onresize = function(event) {
 
   let headerResize = headerSize.offsetHeight;
-  document.documentElement.style.setProperty('--header-height', `${headerResize}px`);
-  document.documentElement.style.setProperty('--vh', (window.innerHeight*.01) + 'px'); //mob/tablet window height fix
+  document.body.style.setProperty('--header-height', `${headerResize}px`);
+  document.body.style.setProperty('--vh', (window.innerHeight*.01) + 'px'); //mob/tablet window height fix
 
 };
 

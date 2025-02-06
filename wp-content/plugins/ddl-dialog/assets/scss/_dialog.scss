@@ -102,7 +102,7 @@ html {
     }
 
     @include hover-focus {
-      background: darken(map-get($colors, "blue"), 20%);
+      background: darken(map.get($colors, "blue"), 20%);
     }
 
   }

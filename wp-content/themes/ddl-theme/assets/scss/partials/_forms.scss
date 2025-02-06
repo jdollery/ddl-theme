@@ -250,6 +250,7 @@ fieldset:not(:last-child) {
   padding-bottom: var(--gutter-lg);
 }
 
+
 /* --------------------- NORMAL LABLES --------------------- */
 
 .form__input:not(.form__input--focus) {
@@ -291,7 +292,10 @@ fieldset:not(:last-child) {
       position: relative;
       top: 0;
       left: 0;
-      @include cell(0);
+      position: relative;
+      flex: 1 0 0%;
+      width: 100%;
+      max-width: 100%;
       font-size: 1rem;
 
       @include media-up(md) {
@@ -347,7 +351,7 @@ fieldset:not(:last-child) {
 
     &:placeholder-shown:not(:focus) ~ label {
       top: 50%;
-      @include transform (translateY(-50%));
+      transform: translateY(-50%);
     }
 
   }
@@ -510,7 +514,10 @@ input[type=radio] ~ label {
       }
   
       .upload__file {
-        @include cell(0);
+        position: relative;
+        flex: 1 0 0%;
+        width: 100%;
+        max-width: 100%;
         min-height: 0.1rem;
         display: block;
         overflow: hidden;
@@ -526,7 +533,10 @@ input[type=radio] ~ label {
       }
   
       .upload__button {
-        @include cell(auto);
+        position: relative;
+        flex: 0 0 auto;
+        width: auto;
+        max-width: 100%;
         text-align: center;
         padding: 1rem 2rem;
         letter-spacing: 0;
@@ -829,4 +839,8 @@ textarea {
 
   }
 
+}
+
+.grecaptcha-badge {
+  display: none !important;
 }

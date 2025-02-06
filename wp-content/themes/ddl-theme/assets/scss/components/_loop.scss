@@ -1,14 +1,11 @@
 .loop {
   list-style: none;
-  @include cell-row; 
+  display: grid;
+  grid-template-columns: auto;
+  gap: $gap;
 
-  &__item {
-    @include cell(12);
-
-    @include media-up(xs) {
-      @include cell(6);
-    }
-
+  @include media-up(sm) {
+    grid-template-columns: repeat(3, 1fr);
   }
 
 }

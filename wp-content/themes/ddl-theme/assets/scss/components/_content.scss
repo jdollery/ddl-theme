@@ -65,7 +65,7 @@
       &__body {
 
         @include media-down(lg) {
-          @include space-p(bottom);
+          padding-bottom: var(--space-y);
         }
 
       }
@@ -89,7 +89,7 @@
       &__body {
 
         @include media-down(lg) {
-          @include space-p(bottom);
+          padding-bottom: var(--space-y);
         }
 
       }

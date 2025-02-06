@@ -11,7 +11,7 @@ $accent: #1171ae;
 $accent-light: #73aed3;
 $danger: #b81c23;
 
-// lighten(map-get($colors, "blue"), 10%)
+// lighten(map.get($colors, "blue"), 10%)
 
 :root {
 
@@ -34,7 +34,7 @@ $danger: #b81c23;
   --body-bg: var(--black);
   --main-bg: var(--white);
   
-  --regular: 300;
+  --regular: 400;
   --medium: 500;
   --bold: 700;
 
@@ -93,6 +93,12 @@ $theme-name: ddl-theme;
 
 $nav-breakpoint: lg;
 $nav-width-sm: 30rem;
+
+
+/* --------- USED FOR GRID & FIXED --------- */
+
+$max-width: 150rem;
+$gap: #{fluid(10px, 30px)};
 
 
 /* --------- MARGINS FOR IMAGES, FORMS, TABLES --------- */

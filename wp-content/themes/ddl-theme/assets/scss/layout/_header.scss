@@ -3,6 +3,7 @@
 /*-----------------------------------------------------------------------------------*/
 
 @use 'sass:color';
+@use "sass:map";
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -14,44 +15,34 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
-  @include space-p(x);
+  padding: 2.5rem var(--space-x);
   background: var(--white);
   transition: box-shadow 0.5s cubic-bezier(0.5, 0, 0.5, 1), transform 0.5s cubic-bezier(0.5, 0, 0.5, 1);
   z-index: 11;
 
   &__row {
-    @include cell-row;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-content: between;
-  }
-
-  &__one {
-    @include cell(auto);
   }
 
   &__two {
-    @include cell(0);
-    text-align: center;
-  }
-
-  &__three {
     display: flex;
-    align-items: center;
-    @include cell(auto);
+    justify-content: center;
+    text-align: center;
   }
 
 }
 
 .scroll-down .header {
-  transform: translate3d(0, -100%, 0);
+  // transform: translate3d(0, -100%, 0);
+  @include box-shadow (0 0 2rem rgba(map.get($colors, "black"), 0.5));
 }
 
 .scroll-up .header {
-  transform: none;
-  // @include box-shadow (0 0 4rem rgba(color.adjust(map-get($colors, "grey-dark"), $lightness: -10%), 0.5));
-  @include box-shadow (0 0 2rem rgba(map-get($colors, "black"), 0.5));
+  // transform: none;
+  // @include box-shadow (0 0 4rem rgba(color.adjust(map.get($colors, "grey-dark"), $lightness: -10%), 0.5));
+  @include box-shadow (0 0 2rem rgba(map.get($colors, "black"), 0.5));
 }
 
 
@@ -89,5 +80,5 @@
 //   @include media-up($nav-breakpoint) {
 //     width: 21rem;
 //   }
-  
+
 // }

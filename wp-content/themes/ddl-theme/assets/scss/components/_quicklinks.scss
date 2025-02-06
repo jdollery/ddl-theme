@@ -1,6 +1,7 @@
 .quicklinks {
   position: relative;
-  @include space-p(x);
+  padding-left: var(--space-x);
+  padding-right: var(--space-x);
 
   &--top {
     padding-top: var(--space-y);
@@ -62,14 +63,12 @@
 
   &__list {
     list-style: none;
-    @include cell-row; 
-  }
+    display: grid;
+    grid-template-columns: auto;
+    gap: $gap;
 
-  &__item {
-    @include cell(12);
-
-    @include media-up(xs) {
-      @include cell(6);
+    @include media-up(sm) {
+      grid-template-columns: repeat(2, 1fr);
     }
 
   }

@@ -3,6 +3,7 @@
 /*-----------------------------------------------------------------------------------*/
 
 @use 'sass:color';
+@use "sass:map";
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -64,7 +65,7 @@ $nav-background-sm:                   var(--grey-dark);
 
 $level-one-color-sm:                  var(--white);
 $level-one-bg-sm:                     var(--grey-dark);
-$level-one-border-sm:                 color.adjust(map-get($colors, "grey-dark"), $lightness: -10%);
+$level-one-border-sm:                 color.adjust(map.get($colors, "grey-dark"), $lightness: -10%);
 
 $level-one-color-current-sm:          var(--white);
 $level-one-bg-current-sm:             var(--black);
@@ -76,8 +77,8 @@ $level-one-bg-ancestor-sm:            var(--black);
 /* --- LEVEL TWO --- */
 
 $level-two-color-sm:                  var(--black);
-$level-two-bg-sm:                     color.adjust(map-get($colors, "grey"), $lightness: -5%);
-$level-two-border-sm:                 color.adjust(map-get($colors, "grey"), $lightness: -10%);
+$level-two-bg-sm:                     color.adjust(map.get($colors, "grey"), $lightness: -5%);
+$level-two-border-sm:                 color.adjust(map.get($colors, "grey"), $lightness: -10%);
 
 $level-two-color-current-sm:          var(--white);
 $level-two-bg-current-sm:             var(--black);
@@ -205,7 +206,7 @@ html {
           text-align: left;
           // border-radius: 0.8rem;
           // overflow: hidden;
-          // @include box-shadow (0 0 1.5rem 0.1rem rgba(map-get($colors, "black"), 0.5));
+          // @include box-shadow (0 0 1.5rem 0.1rem rgba(map.get($colors, "black"), 0.5));
 
           li {
             display: block;
@@ -219,7 +220,7 @@ html {
               width: 100%;
               min-width: 25rem;
               min-height: 6rem;
-              font-weight: 400;
+              font-weight: var(--regular);
               font-size: 1.6rem;
               border-top: 0;
               padding: 1.8rem 2rem;
@@ -260,18 +261,12 @@ html {
     /* --- LEVEL ONE ONLY --- */
 
     > ul {
+      display: flex;
+      align-items: baseline;
+      gap: $gap;
 
       > li {
-        display: inline-block;
-
-        &:not(:last-child) {
-          margin-right: 2rem;
-
-          @include media-up(xl) {
-            margin-right: 3.5rem;
-          }
-
-        }
+        display: block;
 
         > a {
           font-size: #{fluid(14px, 20px)};
@@ -300,7 +295,7 @@ html {
             > a {
 
               &::after {
-                @include transform (rotate(180deg));
+                transform: rotate(180deg);
               }
 
             }
@@ -805,7 +800,7 @@ html {
     &::after {
       bottom: -10px;
       transition: bottom 75ms ease .12s;
-      @include transform (75ms cubic-bezier(.55,.055,.675,.19));
+      transform: 75ms cubic-bezier(.55,.055,.675,.19);
     }
 
   }
@@ -817,7 +812,7 @@ html {
       &__inner {
         transition-delay: .12s;
         transition-timing-function: cubic-bezier(.215,.61,.355,1);
-        @include transform (rotate(45deg));
+        transform: rotate(45deg);
 
         &::before {
           top: 0;
@@ -828,7 +823,7 @@ html {
         &::after {
           bottom: 0;
           transition: bottom 75ms ease,transform 75ms cubic-bezier(.215,.61,.355,1) .12s;
-          @include transform (rotate(-90deg));
+          transform: rotate(-90deg);
         }
 
       }
@@ -894,7 +889,7 @@ html {
 //   &__icon {
 //     transition-timing-function: cubic-bezier(.55,.055,.675,.19);
 //     transition-duration: 75ms; 
-    
+
 //     &::after,
 //     &::before {
 //       display: block;
@@ -909,7 +904,7 @@ html {
 //     &::after {
 //       bottom: -0.8rem;
 //       transition: bottom 75ms ease .12s;
-//       @include transform (75ms cubic-bezier(.55,.055,.675,.19));
+//       transform: 75ms cubic-bezier(.55,.055,.675,.19);
 //     }
 
 //   }
@@ -926,18 +921,18 @@ html {
 //       &__icon {
 //         transition-delay: .12s;
 //         transition-timing-function: cubic-bezier(.215,.61,.355,1);
-//         @include transform (rotate(45deg));
+//         transform: rotate(45deg);
 
 //         &::before {
 //           top: 0;
 //           opacity: 0;
-//           transition: top 75ms ease,opacity 75ms ease .12s;
+//           transition: top 75ms ease, opacity 75ms ease .12s;
 //         }
 
 //         &::after {
 //           bottom: 0;
-//           transition: bottom 75ms ease,transform 75ms cubic-bezier(.215,.61,.355,1) .12s;
-//           @include transform (rotate(-90deg));
+//           transition: bottom 75ms ease, transform 75ms cubic-bezier(.215,.61,.355,1) .12s;
+//           transform: rotate(-90deg);
 //         }
 
 //       }

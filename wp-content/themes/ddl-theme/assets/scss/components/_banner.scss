@@ -3,11 +3,12 @@
   background: var(--grey-light);
 
   &__row {
-    @include cell-row;
+    display: grid;
+    grid-template-columns: auto;
     
     @include media-up(md) {
+      grid-template-columns: repeat(2, 1fr);
       min-height: calc(var(--vh, 1vh) * 100 - var(--header-height)); //header height with device view hight fix
-      // min-height: 50rem;
     }
 
   }
@@ -15,29 +16,34 @@
   &__one {
     position: relative;
     display: flex;
-    flex-wrap: wrap;
-    flex: 1 0 0%;
-    width: 100%;
-    max-width: 100%;
-    flex-direction: column;
-    justify-content: center;
+    // flex-wrap: wrap;
+    // flex: 1 0 0%;
+    // width: 100%;
+    // max-width: 100%;
+    // flex-direction: column;
+    // justify-content: center;
     padding: var(--space-y) var(--space-x);
   }
 
   &__two {
     position: relative;
-    flex: 0 0 auto;
+    // flex: 0 0 auto;
+    // width: 100%;
+    // max-width: 100%;
+
+    // @include media-down(md) {
+    //   aspect-ratio: 7 / 4;
+    // }
+
+    // @include media-up(md) {
+    //   width: 50%;
+    // }
+
+  }
+
+  &__inner {
+    align-self: center;
     width: 100%;
-    max-width: 100%;
-
-    @include media-down(md) {
-      aspect-ratio: 7 / 4;
-    }
-
-    @include media-up(md) {
-      width: 50%;
-    }
-
   }
 
   &__media {
