@@ -86,16 +86,45 @@ add_action( 'init', 'create_treatments' );
 /* REGISTER ACF OPTIONS */
 /*-----------------------------------------------------------------------------------*/
 
-function create_treatment_options() {
+// function create_treatment_options() {
 
-  if(function_exists('acf_add_options_page')) {
-    acf_add_options_sub_page(array(
-      'page_title'   =>   'Treatments Page',
-      'parent_slug'  =>   'edit.php?post_type=treatments',
-      'capability'   =>   'manage_options'
-    ));
+//   if(function_exists('acf_add_options_page')) {
+//     acf_add_options_sub_page(array(
+//       'page_title'   =>   'Treatments Page',
+//       'parent_slug'  =>   'edit.php?post_type=treatments',
+//       'capability'   =>   'manage_options'
+//     ));
+//   }
+
+// }
+
+// add_action('init', 'create_treatment_options');
+
+
+/*-----------------------------------------------------------------------------------*/
+/* ADD CPT TO YOAST BREADCRUMB */
+/*-----------------------------------------------------------------------------------*/
+
+function treatments_breadcrumbs($links) {
+  
+  if(is_singular('treatments')) {
+
+    global $post;
+		$treatments_link = get_the_permalink(8); //get the Treatments page link
+		$parent_title = get_the_title( $post->post_parent );
+		$parent_link = get_permalink( $post->post_parent );
+		$title = get_the_title();
+
+    // The first item in $links ($links[0]) is Home
+    $links[1] = array('text' => 'Treatments', 'url' => $treatments_link, 'allow_html' => 1 ); // if cpt is Treatments
+    if ( $post->post_parent ) {
+      $links[2] = array('text' => $parent_title, 'url' => $parent_link, 'allow_html' => 1 ); // parent page
+      $links[3] = array('text' => $title); // current page
+    } else {
+      $links[2] = array('text' => $title); // current page
+    }
   }
-
+  return $links;
 }
 
-add_action('init', 'create_treatment_options');
+add_filter('wpseo_breadcrumb_links', 'treatments_breadcrumbs');

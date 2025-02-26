@@ -73,7 +73,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: var(--regular);
   line-height: 1.3;
   color: inherit;
-  word-break: break-word;
+  text-wrap: pretty;
   margin-top: $heading-margin-top-sm;
   margin-bottom: $heading-margin-bottom-sm;
 
