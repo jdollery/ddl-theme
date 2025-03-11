@@ -41,13 +41,13 @@ if( have_rows('accordion_section') ){
 
           <dt class="accordion__item<?php if ($i == 1) { ?> accordion__item--open<?php } ?>" id="accordionItem" >
             <button class="accordion__toggle" id="accordion-title-<?php echo $i ?>" aria-expanded="<?php if ($i == 1) { ?>true<?php } else { ?>false<?php } ?>" aria-controls="accordion-description-<?php echo $i ?>">
-              <span><?php echo the_sub_field('accordion_title'); ?></span>
+              <span><?php echo get_sub_field('accordion_title'); ?></span>
               <span class="icon icon--chevron"><svg role="img"><use xlink:href="#chevron" href="#chevron"></use></svg></span>
             </button>
           </dt>  
           <dd class="accordion__description" id="accordion-description-<?php echo $i ?>" aria-labelledby="accordion-title-<?php echo $i ?>" style="<?php if ($i == 1) { ?>display: block;<?php } else { ?>display: none;<?php } ?>">        
             <div class="accordion__content">
-              <?php echo the_sub_field('accordion_description'); ?>
+              <?php echo get_sub_field('accordion_description'); ?>
             </div>
           </dd>
 
