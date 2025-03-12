@@ -411,7 +411,7 @@ function add_schema_options() {
 
   ?>
 
-  <script type="application/ld+json" class="dd-schema">
+  <script type="application/ld+json" class="ddl-schema">
   {
     "@context": "http://schema.org",
     "@type": "Dentist",
