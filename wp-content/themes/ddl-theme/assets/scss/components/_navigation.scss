@@ -22,8 +22,6 @@
 $level-one-color-lg:                  var(--black);
 $level-one-color-hover-lg:            var(--accent);
 $level-one-color-current-lg:          var(--accent);
-$level-one-color-ancestor-lg:         var(--black);
-$level-one-color-ancestor-hover-lg:   $level-one-color-hover-lg;
 
 
 /* --- LEVEL TWO --- */
@@ -31,20 +29,13 @@ $level-one-color-ancestor-hover-lg:   $level-one-color-hover-lg;
 $level-two-color-lg:                  var(--black);
 $level-two-color-hover-lg:            var(--white);
 $level-two-bg-lg:                     var(--grey);
-$level-two-bg-hover-lg:               var(--accent);
-$level-two-border-lg:                 var(--accent);
-$level-two-border-hover-lg:           $level-two-bg-hover-lg;
+$level-two-bg-hover-lg:               var(--black);
+$level-two-border-lg:                 var(--black);
+$level-two-border-hover-lg:           var(--black);
 
 $level-two-color-current-lg:          var(--white);
-$level-two-bg-current-lg:             var(--black);
-$level-two-border-current-lg:         $level-two-bg-current-lg;
-
-$level-two-color-ancestor-lg:         $level-two-color-lg;
-$level-two-color-ancestor-hover-lg:   $level-two-color-hover-lg;
-$level-two-bg-ancestor-lg:            $level-two-color-lg;
-$level-two-bg-ancestor-hover-lg:      $level-two-bg-hover-lg;
-$level-two-border-ancestor-lg:        $level-two-border-lg;
-$level-two-border-ancestor-hover-lg:  $level-two-border-hover-lg;
+$level-two-bg-current-lg:             color.adjust(map.get($colors, "accent"), $lightness: -5%);
+$level-two-border-current-lg:         color.adjust(map.get($colors, "accent"), $lightness: -5%);
 
 
 /* --- LEVEL THREE --- */
@@ -52,57 +43,48 @@ $level-two-border-ancestor-hover-lg:  $level-two-border-hover-lg;
 $level-three-color-lg:                var(--black);
 $level-three-color-hover-lg:          var(--white);
 $level-three-bg-lg:                   var(--grey);
-$level-three-bg-hover-lg:             var(--grey-dark);
-$level-three-border-lg:               var(--grey-dark);
-$level-three-border-hover-lg:         var(--grey-dark);
+$level-three-bg-hover-lg:             var(--black);
+$level-three-border-lg:               var(--black);
+$level-three-border-hover-lg:         var(--black);
 
 $level-three-color-current-lg:        var(--white);
-$level-three-bg-current-lg:           var(--black);
-$level-three-border-current-lg:       var(--black);
+$level-three-bg-current-lg:           color.adjust(map.get($colors, "accent"), $lightness: -5%);
+$level-three-border-current-lg:       color.adjust(map.get($colors, "accent"), $lightness: -5%);
 
 
 /* --------- SMALL DEVICE --------- */
 
-$nav-background-sm:                   var(--grey-dark);
+$nav-background-sm:                   var(--black);
 
 
 /* --- LEVEL ONE --- */
 
 $level-one-color-sm:                  var(--white);
-$level-one-bg-sm:                     var(--grey-dark);
-$level-one-border-sm:                 color.adjust(map.get($colors, "grey-dark"), $lightness: -10%);
+$level-one-bg-sm:                     var(--black);
+$level-one-border-sm:                 color.adjust(map.get($colors, "black"), $lightness: -10%);
 
 $level-one-color-current-sm:          var(--white);
-$level-one-bg-current-sm:             var(--black);
-
-$level-one-color-ancestor-sm:         var(--white);
-$level-one-bg-ancestor-sm:            var(--black);
+$level-one-bg-current-sm:             color.adjust(map.get($colors, "accent"), $lightness: -5%);
 
 
 /* --- LEVEL TWO --- */
 
-$level-two-color-sm:                  var(--black);
-$level-two-bg-sm:                     color.adjust(map.get($colors, "grey"), $lightness: -5%);
-$level-two-border-sm:                 color.adjust(map.get($colors, "grey"), $lightness: -10%);
+$level-two-color-sm:                  var(--white);
+$level-two-bg-sm:                     color.adjust(map.get($colors, "black"), $lightness: -5%);
+$level-two-border-sm:                 color.adjust(map.get($colors, "black"), $lightness: -10%);
 
 $level-two-color-current-sm:          var(--white);
-$level-two-bg-current-sm:             var(--black);
-
-// $level-two-color-ancestor-sm:         $color-white;
-// $level-two-bg-ancestor-sm:            $color-black;
+$level-two-bg-current-sm:             color.adjust(map.get($colors, "accent"), $lightness: -5%);
 
 
 /* --- LEVEL THREE --- */
 
-$level-three-color-sm:                var(--black);
-$level-three-bg-sm:                   var(--white);;
-$level-three-border-sm:               var(--grey);
+$level-three-color-sm:                var(--white);
+$level-three-bg-sm:                     color.adjust(map.get($colors, "black"), $lightness: -10%);
+$level-three-border-sm:                 color.adjust(map.get($colors, "black"), $lightness: -15%);
 
 $level-three-color-current-sm:        var(--white);
-$level-three-bg-current-sm:           var(--black);
-
-// $level-two-color-ancestor-sm:         $color-white;
-// $level-two-bg-ancestor-sm:            $color-black;
+$level-three-bg-current-sm:           color.adjust(map.get($colors, "accent"), $lightness: -5%);
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -151,7 +133,7 @@ html {
         white-space: nowrap;
         padding: 1.5rem 0;
         line-height: 1;
-        transition: all 0.3s ease-out;
+        transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
 
         &:before,
         .dropdown-toggle {
@@ -181,7 +163,6 @@ html {
         } 
 
         &.menu-item-has-children {
-          padding: 0;
 
           > a {
             gap: 0.5rem;
@@ -209,7 +190,6 @@ html {
           width: fit-content;
           z-index: 99999;
           text-align: left;
-          // border-radius: 0.8rem;
           // overflow: hidden;
           // @include box-shadow (0 0 1.5rem 0.1rem rgba(map.get($colors, "black"), 0.5));
 
@@ -326,35 +306,12 @@ html {
 
         }
 
-        // &.current-menu-ancestor {
-
-        //   > a {
-        //     color: $level-one-color-ancestor-lg;
-        //   }
-
-        //   &:hover,
-        //   &:focus-within {
-
-        //     > a {
-        //       color: $level-one-color-ancestor-hover-lg;
-
-        //       &::after {
-        //         color: $level-one-color-ancestor-hover-lg;
-        //       }
-
-        //     }
-
-        //   }
-
-        // }
-
 
         /* --- LEVEL TWO ONLY --- */
 
         > ul {
           top: 100%;
           left: 0;
-          padding: 2rem 0 0;
 
           > li {
             padding: 0;
@@ -438,32 +395,6 @@ html {
               }
 
             }
-
-            // &.current-menu-ancestor {
-
-            //   > a {
-            //     color: $level-two-color-ancestor-lg;
-            //     background-color: $level-two-bg-ancestor-lg;
-            //     border-color: $level-two-border-ancestor-lg;
-            //   }
-    
-            //   &:hover,
-            //   &:focus-within {
-    
-            //     > a {
-            //       color: $level-two-color-ancestor-hover-lg;
-            //       background-color: $level-two-bg-ancestor-hover-lg;
-            //       border-color: $level-two-border-ancestor-hover-lg;
-    
-            //       &::after {
-            //         color: $level-two-color-ancestor-hover-lg;
-            //       }
-    
-            //     }
-    
-            //   }
-    
-            // }
 
 
             /* --- LEVEL THREE ONLY --- */
@@ -636,15 +567,6 @@ html {
           }
 
         }
-
-        // &.current-menu-ancestor {
-
-        //   > a {
-        //     color: $level-one-color-ancestor-sm;
-        //     background-color: $level-one-bg-ancestor-sm;
-        //   }
-        
-        // }
 
 
         /* --- LEVEL TWO UNIQUE --- */

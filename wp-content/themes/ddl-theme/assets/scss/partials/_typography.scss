@@ -95,17 +95,21 @@ h6 {
 /* LINKS */
 /*-----------------------------------------------------------------------------------*/
 
-a,
-a[href^=tel],
-button {
+.main {
 
-  &:not(.btn, .logo) {
-    color: var(--link-color);
-    font-weight: var(--link-weight);
-    @include transition(all);
-  
-    @include hover {
-      color: var(--link-color-hover);
+  a,
+  a[href^=tel],
+  button {
+
+    &:not(.btn) {
+      color: var(--link-color);
+      font-weight: var(--link-weight);
+      @include transition(all);
+    
+      @include hover {
+        color: var(--link-color-hover);
+      }
+
     }
 
   }

@@ -29,11 +29,49 @@
     @include animation (slideIn 0.3s);
   }
 
-  &__row {
+  &__top {
     display: grid;
     grid-template-columns: auto 1fr 1fr;
     justify-content: center;
     padding: 2rem var(--space-x);
+
+    @include media-up($nav-breakpoint) {
+      grid-template-columns: auto 1fr auto;
+      padding: 3rem var(--space-x);
+    }
+
+    > * {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include media-down($nav-breakpoint) {
+        
+        &:last-child {
+          justify-content: end;
+        }
+
+      }
+
+    }
+
+  }
+
+  &__bottom {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    justify-content: center;
+    padding: 2rem;
+    color: var(--white);
+    background: var(--black);
+
+    a {
+      color: inherit;
+    }
+
+    @include media-down($nav-breakpoint) {
+      display: none;
+    }
 
     @include media-up($nav-breakpoint) {
       grid-template-columns: auto 1fr auto;
