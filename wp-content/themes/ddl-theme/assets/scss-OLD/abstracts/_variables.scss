@@ -1,0 +1,128 @@
+/*-----------------------------------------------------------------------------------*/
+/* CSS GLOBAL VARIABLES */
+/*-----------------------------------------------------------------------------------*/
+
+$white: #ffffff;
+$black: #3A4145;
+$grey: #ededed;
+$grey-dark: #505050;
+$grey-light: #f6f6f6;
+$accent: #1171ae;
+$accent-light: #73aed3;
+$danger: #b81c23;
+
+// lighten(map.get($colors, "blue"), 10%)
+
+:root {
+
+  /* --------- COLOURS --------- */
+
+  --white: #ffffff;
+  --black: #3A4145;
+  --grey: #ededed;
+  --grey-dark: #505050;
+  --grey-light: #f6f6f6;
+  --accent: #1171ae;
+  --accent-light: #73aed3;
+  --danger: #b81c23;
+
+
+  /* --------- GLOBAL --------- */
+
+  --body-font:  'Urbanist';
+
+  --body-bg: var(--black);
+  --main-bg: var(--white);
+  
+  --regular: 400;
+  --medium: 500;
+  --bold: 700;
+
+  // --border-radius: 4rem;
+
+
+  /* --------- FONT SIZE --------- */
+
+  /* 576px (xs) 38px → 1550px (xxl) 55px */
+  --h1: #{fluid(38px, 55px)};
+
+  /* 576px (xs) 34px → 1550px (xxl) 45px */
+  --h2: #{fluid(34px, 45px)};
+
+  /* 576px (xs) 32px → 1550px (xxl) 40px */
+  --h3: #{fluid(32px, 40px)};
+
+  /* 576px (xs) 28px → 1550px (xxl) 35px */
+  --h4: #{fluid(28px, 35px)};
+
+  /* 576px (xs) 23px → 1550px (xxl) 30px */
+  --h5: #{fluid(23px, 30px)};
+
+  /* 576px (xs) 19px → 1550px (xxl) 23px */
+  --h6: #{fluid(19px, 23px)};
+
+  /* 576px (xs) 16px → 1550px (xxl) 19px */
+  --body-size: #{fluid(16px, 19px)};
+
+
+  /* --------- SPACING --------- */
+
+  /* https://geary.co/clamp-calculator/ */
+
+  /* 576px (xs) 40px → 1550px (xxl) 120px */
+  --space-y: #{fluid(40px, 120px)};
+
+  /* 576px (xs) 20px → 1550px (xxl) 120px */
+  --space-x: #{fluid(20px, 120px)};
+
+  --gutter-xs: 1rem;
+  --gutter-sm: 2rem;
+  --gutter-md: 3rem;
+  --gutter-lg: 4rem;
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* SCSS GLOBAL VARIABLES */
+/*-----------------------------------------------------------------------------------*/
+
+$theme-name: ddl-theme;
+
+/* --------- USED IN NAVIGATION UL UL AND MAIN --------- */
+
+$nav-breakpoint: lg;
+$nav-width-sm: 30rem;
+
+
+/* --------- USED FOR GRID & FIXED --------- */
+
+$max-width: 150rem;
+$gap: #{fluid(10px, 30px)};
+
+
+/* --------- ICON DataURL --------- */
+
+$icon-close-black:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z'/%3E%3C/svg%3E");
+$icon-close-white:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z'/%3E%3C/svg%3E");
+
+$icon-plus-black:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z'/%3E%3C/svg%3E");
+$icon-plus-white:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z'/%3E%3C/svg%3E");
+
+$icon-minus-black:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M5 11V13H19V11H5Z'/%3E%3C/svg%3E");
+$icon-minus-white:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M5 11V13H19V11H5Z'/%3E%3C/svg%3E");
+
+$icon-chevron-up-black:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M5.6,16.6l-1.4-1.4,7.8-7.8,7.8,7.8-1.4,1.4-6.4-6.4-6.4,6.4Z'/%3E%3C/svg%3E");
+$icon-chevron-up-white:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M5.6,16.6l-1.4-1.4,7.8-7.8,7.8,7.8-1.4,1.4-6.4-6.4-6.4,6.4Z'/%3E%3C/svg%3E");
+
+$icon-chevron-down-black:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M18.4,7.4l1.4,1.4-7.8,7.8-7.8-7.8,1.4-1.4,6.4,6.4,6.4-6.4Z'/%3E%3C/svg%3E");
+$icon-chevron-down-white:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M18.4,7.4l1.4,1.4-7.8,7.8-7.8-7.8,1.4-1.4,6.4,6.4,6.4-6.4Z'/%3E%3C/svg%3E");
+
+$icon-chevron-right-black:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M7.4,5.6l1.4-1.4,7.8,7.8-7.8,7.8-1.4-1.4,6.4-6.4-6.4-6.4Z'/%3E%3C/svg%3E");
+$icon-chevron-right-white:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M7.4,5.6l1.4-1.4,7.8,7.8-7.8,7.8-1.4-1.4,6.4-6.4-6.4-6.4Z'/%3E%3C/svg%3E");
+
+$icon-tick-black:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M9.9997 15.1709L19.1921 5.97852L20.6063 7.39273L9.9997 17.9993L3.63574 11.6354L5.04996 10.2212L9.9997 15.1709Z'/%3E%3C/svg%3E");
+$icon-tick-white:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M9.9997 15.1709L19.1921 5.97852L20.6063 7.39273L9.9997 17.9993L3.63574 11.6354L5.04996 10.2212L9.9997 15.1709Z'/%3E%3C/svg%3E");
+
+$icon-arrow-black:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M21.9,11.1l-6-6c-.5-.5-1.3-.5-1.8,0-.5.5-.5,1.3,0,1.8l3.9,3.9H2.9c-.3,0-.6.2-.9.4-.2.3-.3.6-.3.9,0,.6.5,1.1,1.2,1.2h15l-3.9,3.9c-.5.5-.5,1.3,0,1.8.2.2.5.4.9.4.3,0,.7-.1.9-.4l6-6c.5-.5.5-1.3,0-1.7Z'/%3E%3C/svg%3E");
+$icon-arrow-white:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M21.9,11.1l-6-6c-.5-.5-1.3-.5-1.8,0-.5.5-.5,1.3,0,1.8l3.9,3.9H2.9c-.3,0-.6.2-.9.4-.2.3-.3.6-.3.9,0,.6.5,1.1,1.2,1.2h15l-3.9,3.9c-.5.5-.5,1.3,0,1.8.2.2.5.4.9.4.3,0,.7-.1.9-.4l6-6c.5-.5.5-1.3,0-1.7Z'/%3E%3C/svg%3E");

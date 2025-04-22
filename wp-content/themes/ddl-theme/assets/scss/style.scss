@@ -1,47 +1,25 @@
-/*!
-  Theme Name: DDL Theme
-  Version: 2.0
-  Author: Dental Design
-  Author URI: https://dental-design.marketing/
-*/
+@use 'partials/reset';
+@use 'partials/animation';
+@use 'partials/typography';
+@use 'partials/button';
+@use 'partials/icons';
+@use 'partials/more';
+@use 'partials/comparison';
 
-@charset "UTF-8";
+@use 'layout/header';
+@use 'layout/main';
+@use 'layout/footer';
 
-@import "abstracts/properties";
-@import "abstracts/states";
-@import "abstracts/animation";
-@import "abstracts/media";
-@import "abstracts/functions";
-@import "abstracts/variables";
-@import "abstracts/utility";
-// @import "abstracts/grid";
-
-@import "partials/reset";
-@import "partials/typography";
-@import "partials/icons";
-@import "partials/image";
-@import "partials/buttons";
-@import "partials/forms";
-@import "partials/tables";
-@import "partials/divider";
-
-@import "vendor/select2";
-// @import "vendor/slick";
-// @import "vendor/wow";
-// @import "vendor/google"; //remember to turn on
-
-@import "layout/header";
-@import "layout/main";
-@import "layout/footer";
-
-@import "components/navigation";
-@import "components/banner";
-@import "components/loop";
-@import "components/post";
-@import "components/section";
-@import "components/content";
-@import "components/team";
-@import "components/dialog";
-@import "components/breadcrumb";
-@import "components/quicklinks";
-@import "components/accordion";
+@use 'components/locations';
+@use 'components/hero';
+@use 'components/form';
+@use 'components/dialog';
+@use 'components/contact';
+@use 'components/cards';
+@use 'components/feature';
+@use 'components/questions';
+@use 'components/reviews';
+@use 'components/benefits';
+@use 'components/results';
+@use 'components/profile';
+@use 'components/map';

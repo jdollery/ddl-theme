@@ -2,12 +2,15 @@
 /* MODULES */
 /*-----------------------------------------------------------------------------------*/
 
-@use 'sass:color';
-@use "sass:map";
+@use 'abstracts/functions' as *;
+@use 'abstracts/utility' as *;
+@use 'abstracts/variables' as *;
+@use 'abstracts/media' as *;
+@use 'partials/button' as *;
 
 
 /*-----------------------------------------------------------------------------------*/
-/* LOCK BODY SCROLL WHEN DIALOG OPEN */
+/* STYLES */
 /*-----------------------------------------------------------------------------------*/
 
 html {
@@ -18,122 +21,226 @@ html {
 
 }
 
-
-/*-----------------------------------------------------------------------------------*/
-/* VIDEO DIALOG */
-/*-----------------------------------------------------------------------------------*/
-
 #videoToggle {
 	cursor: pointer;
 }
 
 .dialog {
   position: fixed;
+  top: 0;
+  right: 0;
+  display: block;
   height: 100%;
   width: 100%;
-  display: block;
-  left: 0;
-  top: 0;
-  z-index: 999999;
-  // align-items: center;
-  // justify-content: center;
-  padding: 2.5rem;
-  overflow-x: hidden;
-  overflow-y: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--primary);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+  appearance: none;
+  z-index: 99999;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 
-  @include media-up(xl) { 
-    padding: 0 var(--space-x);
-  }
-
-  &__overlay {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background: var(--black);
+  &__backdrop {
     opacity: 0;
-    cursor: pointer;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
   }
 
   &__inner {
     position: relative;
-    width: 90rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transition-delay: 0.3s;
+    transform: translateY(-5rem);
+    z-index: 999999;
+    width: 75rem;
     max-width: 100%;
-    z-index: 5;
-    margin: 0 auto var(--space-x);
-    @include box-shadow (0 0 5rem 0.2rem rgba(color.adjust(map.get($colors, "black"), $lightness: -10%), 0.2));
+    height: 100%;
+    padding: 3rem 2rem;
+    margin: 0 auto;
+    overflow-y: auto;
 
-    @include media-up(xl) { 
-      margin: var(--space-x) auto;
+    @include media-up(sm) {
+      padding: 5rem 2rem;
+    }
+
+    &--video {
+      width: 90rem;
     }
 
   }
 
-  &__slot {
-    
-    a {
-      display: block;
-    }
-
-  }
-  
-  video,
-  iframe {
+  &__body {
     position: relative;
-    z-index: 10;
-    box-shadow: 0 0 19px rgba(0, 0, 0, 0.16);
     width: 100%;
-    height: auto;
-    max-height: 85vh;
-    display: block;
+    padding: var(--space-x);
+    background: var(--white);
+    @include box-shadow (rgba(0,0,0,0.2) 0 0.2rem 1.5rem);
+    border-radius: var(--dialog-radius-sm);
+
+    @include media-up(sm) {
+      border-radius: var(--dialog-radius-lg);
+    }
+
+    input[type=text],
+    input[type=number],
+    input[type=email],
+    input[type=phone],
+    textarea,
+    .nice-select {
+      color: var(--primary);
+      border-color: var(--primary);
+
+      &:focus {
+        border-color: var(--secondary);
+      }
+
+    }
+
+    &::placeholder {
+      color: var(--primary);
+    }
+  
+    &:placeholder-shown:not(:focus) ~ label {
+      color: var(--primary);
+    } 
+
+    .form__input--checkbox,
+    .form__input--radio .radio {
+      border-color: var(--primary);
+    }
+
+    input[type=checkbox]::after,
+    input[type=radio]::after {
+      border-color: var(--primary);
+    }
+
+    .icon--asterisk {
+
+      svg {
+        fill: var(--secondary);
+      }
+    
+    }
+
+    .btn:not(.btn--radio) {
+      @include btn-primary;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 16 / 10;
+      @include object-fit (cover);
+      @include object-position (center);
+      overflow: hidden;
+      border-radius: var(--dialog-radius-sm);
+
+      @include media-up(sm) {
+        border-radius: var(--dialog-radius-lg);
+      }
+
+    }
+
+    &--video {
+      padding: 0;
+    }
+
   }
 
-  video {
-    @include object-fit (cover);
-    @include object-position (center);
+  &__heading {
+    font-size: var(--h4);
+    font-weight: var(--dialog-heading-weight);
+    margin-top: 0;
   }
 
   &__close {
+    display: flex;
     position: absolute;
-    right: -1.5rem;
-    top: -1.5rem;
-    display: block;
-    width: 4rem;
-    height: 4rem;
-    background-color: var(--accent);
-    background-image: $icon-close-white;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 60%;
-    border-radius: .5rem;
-    border: 0;
+    top: -1rem;
+    right: -1rem;
+    width: 3.8rem;
+    height: 3.8rem;
+    background: var(--secondary);
+    border-radius: 50%;
     z-index: 1;
-    transition: all .3s cubic-bezier(.5,0,.5,1);
-    cursor: pointer;
-    z-index: 150;
-  
-    @include hover-focus {
-      background-color: var(--black);
+    padding: 1rem;
+    aspect-ratio: 1;
+    @include transition(background);
+
+    @include media-up(sm) {
+      width: 4.5rem;
+      height: 4.5rem;
     }
-  
-  }
 
-  &--active {
-    opacity: 1;
-    visibility: visible;
+    @include hover-focus {
+      background: var(--primary);
+    }
 
-    .dialog {
-    
-      &__overlay {
-        opacity: 0.8;
+    .icon {
+      width: 100%;
+      height: 100%;
+      vertical-align: initial;
+      aspect-ratio: 1 / 1;
+
+      svg {
+        fill: var(--white);
       }
 
     }
 
   }
 
+  &--active {
+    opacity: 1;
+    visibility: visible;
+    appearance: auto;
+    transform: translateY(0);
+
+    .dialog {
+      
+      &__inner {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 1ms;
+      }
+
+      &__backdrop {
+        opacity: 0.9;
+        visibility: visible;
+      }
+
+    }
+
+  }
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* HIDE SCROLLBARS */
+/*-----------------------------------------------------------------------------------*/
+
+.dialog__inner::-webkit-scrollbar {
+  display: none;
+}
+
+.dialog__inner {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

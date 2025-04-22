@@ -6,16 +6,8 @@ while( have_rows($sections) ): the_row();
 
 $choose_section = get_sub_field('choose_section');
 
-if( $choose_section == 'content' ) {
-  get_template_part('inc/content');
-}
-
-if( $choose_section == 'accordion' ) {
-  get_template_part('inc/accordion');
-}
-
-if( $choose_section == 'quicklinks' ) {
-  get_template_part('inc/quicklinks');
+foreach( $choose_section as $section ) {
+  get_template_part('inc/'. $section ); //set ACF to array[both]
 }
 
 endwhile; wp_reset_postdata();

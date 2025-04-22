@@ -5,6 +5,10 @@
 @use "sass:math";
 @use "sass:map";
 
+@use 'abstracts/functions' as *;
+@use 'abstracts/media' as *;
+@use 'abstracts/variables' as *;
+
 
 /*-----------------------------------------------------------------------------------*/
 /* MAPS */
@@ -15,34 +19,155 @@ $colors: (
   "black": $black,
   "grey": $grey,
   "grey-dark": $grey-dark,
-  "accent": $accent,
-  "accent-light": $accent-light,
+  "primary": $primary,
+  "secondary": $secondary,
   "danger": $danger,
 );
 
 
 /*-----------------------------------------------------------------------------------*/
-/* FONT SIZE - WITH MEDIA BREAKPOINTS */
+/* ANIMATIONS */
 /*-----------------------------------------------------------------------------------*/
 
-@mixin fluid-type(
-  $sm-font-size: $body-size-sm,
-  $md-font-size: $body-size-lg,
-  $lg-font-size: $body-size-lg,
-  $md-breakpoint: map.get($breakpoint-widths, "md"),
-  $lg-breakpoint: map.get($breakpoint-widths, "xxl")
-) {
+@mixin animation($animation) {
+  -webkit-animation: #{$animation}; 
+  -moz-animation: #{$animation};
+  -o-animation: #{$animation}; 
+  animation: #{$animation};
+}
 
-  font-size: $sm-font-size;
-
-  @media (min-width: $md-breakpoint) {
-    font-size: $md-font-size;
+@mixin keyframes($keyframes) {
+  
+  @-webkit-keyframes #{$keyframes} {
+    @content;
   }
 
-  @media (min-width: $lg-breakpoint) {
-    font-size: $lg-font-size;
+  @-moz-keyframes #{$keyframes} {
+    @content;
   }
 
+  @-o-keyframes #{$keyframes} {
+    @content;
+  }
+
+  @keyframes #{$keyframes} {
+    @content;
+  }
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* PROPERTIES */
+/*-----------------------------------------------------------------------------------*/
+
+@mixin object-fit ($object-fit) {
+  -o-object-fit: $object-fit;
+  object-fit: $object-fit;
+}
+
+@mixin object-position ($object-position) {
+  -o-object-position: $object-position;
+  object-position: $object-position;
+}
+
+@mixin box-shadow ($box-shadow) {
+  -webkit-box-shadow: $box-shadow;
+  -moz-box-shadow: $box-shadow;
+  box-shadow: $box-shadow;
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STATES */
+/*-----------------------------------------------------------------------------------*/
+
+@mixin hover {
+  &:hover { @content; }
+}
+
+@mixin hover-focus {
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+
+@mixin plain-hover-focus {
+  &,
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+
+@mixin hover-focus-active {
+  &:hover,
+  &:focus,
+  &:active {
+    @content;
+  }
+}
+
+
+@mixin focus {
+  &:focus, &:focus:active {
+    @content;
+  }
+}
+
+@mixin active {
+  &:active {
+    @content;
+  }
+}
+
+@mixin visited {
+  &:visited {
+    @content;
+  }
+}
+
+@mixin placeholder {
+
+  ::-webkit-input-placeholder {
+    @content;
+  }
+
+  ::-moz-placeholder {
+    @content;
+  }
+
+  :-ms-input-placeholder {
+    @content;
+  }
+
+  :-moz-placeholder {
+    @content;
+  }
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* TRANSITIONS */
+/*-----------------------------------------------------------------------------------*/
+
+@mixin transition($transition) {
+  transition: $transition 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* FIXED WIDTH */
+/*-----------------------------------------------------------------------------------*/
+
+@mixin fixed {
+  position: relative;
+  width: 100%;
+  max-width: $max-width;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 
@@ -73,7 +198,7 @@ $colors: (
 
   @include media-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
-    .hidden#{$infix} { display: none !important; }
+    .hidden-#{$infix} { display: none !important; }
   }
 
 }
@@ -91,7 +216,7 @@ $colors: (
 
   @include media-down($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
-    .visible#{$infix} { display: none !important; }
+    .visible-#{$infix} { display: none !important; }
   }
 
 }
@@ -103,28 +228,108 @@ $colors: (
 
 
 /*-----------------------------------------------------------------------------------*/
-/* TRANSITIONS */
+/* LISTS */
 /*-----------------------------------------------------------------------------------*/
 
-@mixin transition($transition) {
-  transition: $transition 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+@mixin list-unstyled {
+
+  &:not(.list--exempt) {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      margin: 0;
+
+      &::marker {
+        display: none;
+      }
+
+    }
+
+  }
+
 }
 
+@mixin list-bullet {
 
-/*-----------------------------------------------------------------------------------*/
-/* FIXED WIDTH */
-/*-----------------------------------------------------------------------------------*/
+  &:not(.list--exempt) {
 
-@mixin fixed {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  max-width: $max-width;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 0 var(--space-x);
+    list-style: none;
+    padding-left: $list-indent;
+
+    li {
+      position: relative;
+      margin: 0;
+
+      &::marker {
+        display: none;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: $list-gutter;
+      }
+
+      &::before {
+        position: absolute;
+        left: -$list-indent;
+        top: 0.9rem;
+        display: block;
+        content: '';
+        width: $list-bullet-size;
+        height: $list-bullet-size;
+        background: $list-bullet-color;
+        border-radius: 50%;
+      }
+      
+    }
+
+  }
+
 }
 
-.fixed {
-  @include fixed;
+@mixin list-number {
+  padding-left: $list-indent;
+  counter-reset: custom-counter;
+  list-style: none;
+
+  li {
+    position: relative;
+    margin: 0;
+    counter-increment: custom-counter;
+
+    &::marker {
+      display: none;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: $list-gutter;
+    }
+
+    &::before {
+      position: absolute;
+      left: -$list-indent;
+      top: 0;
+      display: block;
+      content: counter(custom-counter) ".";
+      font-weight: $list-number-weight;
+      color: $list-bullet-color;
+    }
+
+  }
+
+}
+
+@mixin list-inline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $list-inline-gap;
+
+  li {
+    display: block;
+  }
+
 }

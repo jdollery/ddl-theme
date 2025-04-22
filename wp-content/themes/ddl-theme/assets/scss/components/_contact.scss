@@ -1,0 +1,140 @@
+/*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+@use 'abstracts/utility' as *;
+@use 'abstracts/variables' as *;
+@use 'abstracts/media' as *;
+@use 'partials/button' as *;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLES */
+/*-----------------------------------------------------------------------------------*/
+
+.contact {
+  position: relative;
+  padding: 0 var(--space-x);
+
+  &--top {
+    padding-top: var(--space-y);
+  }
+
+  &--bottom {
+    padding-bottom: var(--space-y);
+  }
+
+  &__fixed {
+    position: relative;
+    width: 100%;
+    max-width: 110rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &__heading {
+    font-size: var(--h2);
+    font-weight: var(--bold);
+    margin-bottom: var(--space-gutter);
+  }
+
+  // .form {
+
+  //   &__row {
+  
+  //     @include media-up(lg) {
+  //       grid-template-columns: repeat(3, 1fr);
+  //     }
+  
+  //   }
+
+  //   &__input {
+  
+  //     &--span {
+  
+  //       @include media-up(xs) {
+  //         grid-column: span 3;
+  //       }
+  
+  //     }
+
+  //   }
+
+  // }
+
+  &--primary {
+    background: var(--primary);
+    color: var(--white);
+
+    .form__note .icon--asterisk svg {
+      fill: var(--secondary);
+    }
+
+    .btn:not(.btn--radio) {
+      @include btn-secondary-wo;
+    }
+
+  }
+
+  &--secondary {
+    background: var(--secondary);
+    color: var(--white);
+
+    .form__note .icon--asterisk svg {
+      fill: var(--primary);
+    }
+
+    .btn:not(.btn--radio) {
+      @include btn-primary-wo;
+    }
+
+  }
+
+  &--white {
+    background: var(--white);
+    color: var(--primary);
+
+    input[type=text],
+    input[type=number],
+    input[type=email],
+    input[type=phone],
+    textarea,
+    .nice-select {
+      color: var(--primary);
+      border-color: var(--primary);
+
+      &:focus {
+        border-color: var(--secondary);
+      }
+
+    }
+
+    &::placeholder {
+      color: var(--primary);
+    }
+  
+    &:placeholder-shown:not(:focus) ~ label {
+      color: var(--primary);
+    } 
+
+    .form__input--checkbox,
+    .form__input--radio .radio {
+      border-color: var(--primary);
+    }
+
+    input[type=checkbox]::after,
+    input[type=radio]::after {
+      border-color: var(--primary);
+    }
+
+    .form__note .icon--asterisk svg {
+      fill: var(--secondary);
+    }
+
+    .btn:not(.btn--radio) {
+      @include btn-primary;
+    }
+
+  }
+
+}

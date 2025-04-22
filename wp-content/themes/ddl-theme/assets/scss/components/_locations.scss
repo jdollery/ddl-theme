@@ -1,0 +1,149 @@
+/*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+// @use 'abstracts/functions' as *;
+@use 'abstracts/utility' as *;
+@use 'abstracts/variables' as *;
+@use 'abstracts/media' as *;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLES */
+/*-----------------------------------------------------------------------------------*/
+
+.locations {
+  width: 100%;
+
+  &--header {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    @include box-shadow (rgba(0,0,0,0.1) 0 0.2rem 1.5rem);
+    z-index: 3;
+
+    @include media-up(lg) {
+      display: none !important;
+    }
+
+  }
+
+  &--footer {
+    position: fixed;
+    bottom: 0;
+    z-index: 2;
+
+    @include media-up(lg) {
+      visibility: hidden;
+      z-index: -1;
+    }
+
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0;
+
+    li {
+      display: block;
+      height: 100%;
+    
+      &:not(:first-of-type) {
+        border-width: 0.1rem 0 0;
+        border-style: solid;
+        border-color: var(--grey);
+      }
+
+      @include media-min(650px) {
+        &:not(:first-of-type) {
+          border-width: 0 0 0 0.1rem;
+        }
+      }
+
+      a {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        padding: 1rem var(--space-x);
+        background: var(--grey-light);
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        height: 100%;
+        @include transition(all);
+  
+        .icon {
+          @include transition(all);
+          
+          svg {
+            @include transition(fill);
+          }
+      
+          &--pin,
+          &--tel {
+      
+            svg {
+              fill: var(--primary);
+            }
+      
+          }
+      
+          &--arrow {
+            position: relative;
+            vertical-align: text-bottom;
+            right: 0;
+  
+            svg {
+              fill: var(--primary);
+            }
+      
+          }
+      
+        }
+  
+        @include hover-focus {
+          color: var(--white);
+          background: var(--grey-dark);
+
+          .icon {
+        
+            &--tel,
+            &--pin,
+            &--arrow {
+        
+              svg {
+                fill: var(--white);
+              }
+        
+            }
+  
+            &--arrow {
+              right: -0.5rem;
+            }
+        
+          }
+  
+        }
+  
+      }
+      
+    }
+
+  }
+
+  &--multi {
+
+    ul {
+  
+      @include media-min(650px) {
+        align-items: start;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+  }
+
+}

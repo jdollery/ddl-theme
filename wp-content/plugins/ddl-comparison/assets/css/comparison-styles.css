@@ -1,5 +1,6 @@
 .comparison {
   position: relative;
+  height: 100%;
 }
 
 .comparison .comparison__slider {
@@ -7,6 +8,12 @@
   display: block;
   user-select: none;
   overflow: hidden;
+  height: 100%;
+}
+
+.comparison .comparison__slider .comparison__photo {
+  width: 100%;
+  height: 100%;
 }
 
 .comparison .comparison__slider .comparison__photo img {
@@ -23,7 +30,8 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  transform: translate(-50%)
+  transform: translate(-50%);
+  z-index: 3;
 }
 
 .comparison .comparison__slider .comparison__photo--before img,
@@ -49,6 +57,7 @@
   -webkit-box-shadow: 0px 0px 12px rgba(51, 51, 51, 0.5);
   -moz-box-shadow: 0px 0px 12px rgba(51, 51, 51, 0.5);
   box-shadow: 0px 0px 12px rgba(51, 51, 51, 0.5);
+  z-index: 4;
 }
 
 .comparison .comparison__slider .comparison__divider::before,

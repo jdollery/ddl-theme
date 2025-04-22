@@ -1,0 +1,45 @@
+.main {
+  position: relative;
+  background: var(--main-bg);
+  padding-top: var(--header-height);
+
+  &__overlay {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    background: var(--black);
+    z-index: 10;
+    transition: all .5s ease-out;
+  }
+
+}
+
+
+@include media-down($nav-breakpoint) { 
+
+  html {
+
+    &.js-nav-active {
+      
+      .main {
+
+        &__overlay {
+          opacity: .8;
+          visibility: visible;
+        }
+
+      }
+
+    }
+
+  }
+
+}

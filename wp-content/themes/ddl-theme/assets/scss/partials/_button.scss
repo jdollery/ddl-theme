@@ -1,0 +1,335 @@
+/*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+@use 'abstracts/utility' as *;
+@use 'abstracts/variables' as *;
+@use 'abstracts/media' as *;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLES */
+/*-----------------------------------------------------------------------------------*/
+
+@mixin btn-black {
+  color: var(--white);
+  background: var(--black);
+  border-color: var(--black);
+
+  @include hover {
+    color: var(--black);
+    background: transparent;
+    border-color: var(--black);
+  }
+
+}
+
+@mixin btn-white {
+  color: var(--black);
+  background: var(--white);
+  border-color: var(--white);
+
+  @include hover {
+    color: var(--white);
+    background: transparent;
+    border-color: var(--white);
+  }
+
+}
+
+@mixin btn-primary {
+  color: var(--white);
+  background: var(--primary);
+  border-color: var(--primary);
+
+  @include hover {
+    color: var(--white);
+    background: var(--secondary);
+    border-color: var(--secondary);
+  }
+
+}
+
+@mixin btn-primary-wo {
+  color: var(--white);
+  background: var(--primary);
+  border-color: var(--primary);
+
+  @include hover {
+    color: var(--primary);
+    background: var(--white);
+    border-color: var(--white);
+
+    &.btn--arrow {
+  
+      &::after {
+        background-image: $icon-arrow-primary;
+      }
+
+    }
+
+  }
+
+}
+
+@mixin btn-secondary {
+  color: var(--white);
+  background: var(--secondary);
+  border-color: var(--secondary);
+
+  @include hover {
+    color: var(--white);
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+
+}
+
+@mixin btn-secondary-wo {
+  color: var(--white);
+  background: var(--secondary);
+  border-color: var(--secondary);
+
+  @include hover {
+    color: var(--primary);
+    background: var(--white);
+    border-color: var(--white);
+
+    &.btn--arrow {
+  
+      &::after {
+        background-image: $icon-arrow-primary;
+      }
+
+    }
+
+  }
+
+}
+
+@mixin btn {
+  display: block;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+  vertical-align: middle;
+  font-size: var(--btn-size);
+  font-weight: var(--btn-weight);
+  line-height: 1.3;
+  background-color: transparent;
+  border-width: 0.3rem;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: var(--btn-radius);
+  padding: 1.05rem 2.3rem 1rem;
+  width: 100%;
+  @include transition(all);
+
+  @include media-up(xs) {
+    width: fit-content;
+  }
+
+  @include media-up(xl) {
+    padding: 1.45rem 3.2rem 1.4rem;
+  }
+
+  &--black {
+    @include btn-black;
+  }
+
+  &--white {
+    @include btn-white;
+  }
+
+  &--primary {
+    @include btn-primary;
+  }
+
+  &--primary-wo {
+    @include btn-primary-wo;
+  }
+
+  &--secondary {
+    @include btn-secondary;
+  }
+
+  &--submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include media-down(md) {
+      margin-top: 1rem;
+    }
+
+    .btn__sending {
+      display: none;
+
+      .icon {
+        margin: 0 0 0 0.5rem;
+        @include animation (loaderSpin 2s linear infinite);
+
+        svg {
+          fill: var(--white);
+        }
+
+      }
+
+    }
+
+  }
+
+  &--sending {
+    cursor: not-allowed;
+    color: var(--white) !important;
+    background: var(--black) !important;
+    border-color: var(--black) !important;
+    opacity: 0.5;
+
+    @include hover {
+      color: var(--white) !important;
+      background: var(--black) !important;
+      border-color: var(--black) !important;
+    }
+
+    .btn__sending {
+      display: block;
+    }
+
+    .btn__text {
+      display: none;
+    }
+
+  }
+
+  &--more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 90%;
+    font-weight: var(--bold);
+    color: inherit !important;
+    border-width: 0.2rem;
+
+    .icon {
+      display: inline-block;
+      width: 2.2rem;
+      height: 2.2rem;
+      margin: 0 0 0 0.5rem;
+      transform: rotate(90deg);
+    }
+
+    &.btn--open {
+
+      .icon {
+        transform: rotate(-90deg);
+      }
+
+    }
+
+  }
+
+  &--radio {
+    display: block !important;
+    padding: 0 !important;
+    border: 0 !important;
+
+    input[type="radio"] {
+      display: none;
+
+      + label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 1.3rem;
+        font-weight: var(--btn-weight) !important;
+        padding: 1.05rem 2.5rem 1rem;
+        margin: 0 !important;
+        color: var(--primary);
+        background: transparent;
+        border-color: var(--primary);
+        border-width: 0.1rem;
+        border-style: solid;
+        border-radius: var(--btn-radius);
+        cursor: pointer;
+        white-space: nowrap;
+  
+        .icon {
+          aspect-ratio: 1 / 1;
+          width: 1.6rem;
+          display: none;
+          @include transition(all);
+  
+          svg {
+            fill: var(--white);
+          }
+  
+        }
+  
+      }
+
+      &:checked + label {
+        color: var(--white);
+        background: var(--primary);
+        border-color: var(--primary);
+
+        .icon {
+          display: inline-block;
+        }
+
+      }
+
+    }
+
+  }
+
+  &--arrow {
+    display: flex;
+    align-items: center;
+
+    &::after {
+      position: relative;
+      right: 0;
+      display: block;
+      content: '';
+      background-image: $icon-arrow-white;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100%;
+      aspect-ratio: 1 / 1;
+      width: 1.3rem;
+      margin: 0 0 0 1.3rem;
+      transition: right .3s cubic-bezier(.5,0,.5,1), background-image .3s cubic-bezier(.5,0,.5,1);
+
+      @include media-up(sm) {
+        width: 1.8rem;
+        margin: 0 0 0 1.5rem;
+      }
+
+    }
+
+    @include hover {
+
+      &::after {
+        right: -0.4rem;
+
+        @include media-up(sm) {
+          right: -0.8rem;
+        }
+
+      }
+
+    }
+
+  }
+
+  &--space {
+    margin-top: var(--space-gutter);
+  }
+
+}
+
+.btn {
+  @include btn;
+}

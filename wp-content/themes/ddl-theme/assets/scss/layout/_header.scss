@@ -2,83 +2,163 @@
 /* MODULES */
 /*-----------------------------------------------------------------------------------*/
 
-@use 'sass:color';
-@use "sass:map";
+@use 'abstracts/functions' as *;
+@use 'abstracts/utility' as *;
+@use 'abstracts/variables' as *;
+@use 'abstracts/media' as *;
 
 
 /*-----------------------------------------------------------------------------------*/
-/* HEADER */
+/* STYLES */
 /*-----------------------------------------------------------------------------------*/
 
 .header {
-  position: fixed;
+  position: relative;
   top: 0;
-  left: 0;
-  width: 100%;
-  padding: 2.5rem var(--space-x);
   background: var(--white);
-  transition: box-shadow 0.5s cubic-bezier(0.5, 0, 0.5, 1), transform 0.5s cubic-bezier(0.5, 0, 0.5, 1);
-  z-index: 11;
+  width: 100%;
+  font-size: var(--btn-size);
+  @include box-shadow (rgba(0,0,0,0.2) 0 0.2rem 1.5rem);
+  z-index: 4;
+
+  &--sticky {
+    position: fixed;
+    opacity: 1;
+    visibility: visible;
+    z-index: 4;
+    @include animation (slideIn 0.3s);
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 100%;
+
+    @include media-up(lg) {
+      grid-template-columns: auto 1fr;
+      padding: 3rem var(--space-x);
+    }
+
+  }
 
   &__row {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 100%;
+    justify-content: center;
+
+    @include media-up(sm) {
+      align-items: center;
+    }
+
+    @include media-up(lg) {
+      grid-template-columns: 1fr auto;
+
+      &:first-child {
+        justify-content: space-between;
+      }
+
+    }
+
+  }
+
+  &__brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include media-down(lg) {
+      padding: 1rem var(--space-x);
+    }
+
+    picture {
+      display: flex;
+    }
+
+    img {
+      width: var(--logo-width-xs);
+  
+      @include media-up(sm) {
+        width: var(--logo-width-sm);
+      }
+  
+      @include media-up(md) {
+        width: var(--logo-width-md);
+      }
+  
+      @include media-up(lg) {
+        width: var(--logo-width-lg);
+      }
+  
+      @include media-up(xl) {
+        width: var(--logo-width-xl);
+      }
+  
+      @include media-up(xxl) {
+        width: var(--logo-width-xxl);
+      }
+  
+    }
+
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
     align-items: center;
   }
 
-  &__two {
+  &__action {
     display: flex;
-    justify-content: center;
-    text-align: center;
+
+    * {
+      flex: 1;
+      border-radius: 0;
+      padding: 1rem;
+    }
+
+    .btn {
+
+      &:nth-child(1) {
+        background: var(--primary);
+        color: var(--white);
+      }
+
+      &:nth-child(2) {
+        background: var(--secondary);
+        color: var(--white);
+      }
+
+    }
+
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    @include media-up(lg) {
+      flex-wrap: wrap;
+    }
+
+    @include media-up(xxl) {
+      gap: 3rem;
+    }
+
+    @include media-down(lg) {
+      flex-direction: column;
+    }
+
+    @include media-down(sm) {
+      height: 100%;
+    }
+
+    li {
+      display: block;
+    }
+
   }
 
 }
-
-.scroll-down .header {
-  // transform: translate3d(0, -100%, 0);
-  @include box-shadow (0 0 2rem rgba(map.get($colors, "black"), 0.5));
-}
-
-.scroll-up .header {
-  // transform: none;
-  // @include box-shadow (0 0 4rem rgba(color.adjust(map.get($colors, "grey-dark"), $lightness: -10%), 0.5));
-  @include box-shadow (0 0 2rem rgba(map.get($colors, "black"), 0.5));
-}
-
-
-/*-----------------------------------------------------------------------------------*/
-/* LOGO */
-/*-----------------------------------------------------------------------------------*/
-
-.logo {
-  position: relative;
-  display: block;
-  width: 21rem;
-  transition: width 0.5s cubic-bezier(0.5, 0, 0.5, 1);
-
-  @include media-up($nav-breakpoint) {
-    width: 28rem;
-  }
-
-  img {
-    width: 100%;
-  }
-
-}
-
-// .scroll-down .logo {
-
-//   @include media-up($nav-breakpoint) {
-//     width: 28rem;
-//   }
-
-// }
-
-// .scroll-up .logo {
-
-
-//   @include media-up($nav-breakpoint) {
-//     width: 21rem;
-//   }
-
-// }

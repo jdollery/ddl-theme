@@ -1,0 +1,35 @@
+/*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+@use 'abstracts/utility' as *;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLING */
+/*-----------------------------------------------------------------------------------*/
+
+@include keyframes (loaderSpin){
+  100% { 
+    transform:rotate(360deg); 
+  }
+}
+
+
+@include keyframes (slideIn) {
+
+  0% {
+    position: fixed;
+    transform: translateY(-20rem);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  100% {
+    position: fixed;
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+}

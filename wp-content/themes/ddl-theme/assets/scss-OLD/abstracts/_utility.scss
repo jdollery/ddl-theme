@@ -1,0 +1,130 @@
+/*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+@use "sass:math";
+@use "sass:map";
+
+
+/*-----------------------------------------------------------------------------------*/
+/* MAPS */
+/*-----------------------------------------------------------------------------------*/
+
+$colors: (
+  "white": $white,
+  "black": $black,
+  "grey": $grey,
+  "grey-dark": $grey-dark,
+  "accent": $accent,
+  "accent-light": $accent-light,
+  "danger": $danger,
+);
+
+
+/*-----------------------------------------------------------------------------------*/
+/* FONT SIZE - WITH MEDIA BREAKPOINTS */
+/*-----------------------------------------------------------------------------------*/
+
+@mixin fluid-type(
+  $sm-font-size: $body-size-sm,
+  $md-font-size: $body-size-lg,
+  $lg-font-size: $body-size-lg,
+  $md-breakpoint: map.get($breakpoint-widths, "md"),
+  $lg-breakpoint: map.get($breakpoint-widths, "xxl")
+) {
+
+  font-size: $sm-font-size;
+
+  @media (min-width: $md-breakpoint) {
+    font-size: $md-font-size;
+  }
+
+  @media (min-width: $lg-breakpoint) {
+    font-size: $lg-font-size;
+  }
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* TEXT COLOUR */
+/*-----------------------------------------------------------------------------------*/
+
+@each $name, $color in $colors {
+  .color--#{$name} {
+    color: $color;
+  }
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* HIDDEN */
+/*-----------------------------------------------------------------------------------*/
+
+@mixin hidden($breakpoints: $breakpoint-widths) {
+  @each $breakpoint in $breakpoints {
+    @include media-up ($breakpoint) {
+      display: none !important;
+    }
+  }
+}
+
+@each $breakpoint in map.keys($breakpoint-widths) {
+
+  @include media-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
+    .hidden#{$infix} { display: none !important; }
+  }
+
+}
+
+
+@mixin visible($breakpoints: $breakpoint-widths) {
+  @each $breakpoint in $breakpoints {
+    @include media-down ($breakpoint) {
+      display: none !important;
+    }
+  }
+}
+
+@each $breakpoint in map.keys($breakpoint-widths) {
+
+  @include media-down($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoint-widths);
+    .visible#{$infix} { display: none !important; }
+  }
+
+}
+
+
+.hidden {
+  display: none;
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* TRANSITIONS */
+/*-----------------------------------------------------------------------------------*/
+
+@mixin transition($transition) {
+  transition: $transition 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* FIXED WIDTH */
+/*-----------------------------------------------------------------------------------*/
+
+@mixin fixed {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  max-width: $max-width;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 var(--space-x);
+}
+
+.fixed {
+  @include fixed;
+}

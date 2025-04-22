@@ -3,12 +3,25 @@
 /*-----------------------------------------------------------------------------------*/
 
 @use 'abstracts/variables' as *;
+@use 'abstracts/utility' as *;
+@use 'abstracts/media' as *;
 
 
 /*-----------------------------------------------------------------------------------*/
 /* STYLES */
 /*-----------------------------------------------------------------------------------*/
 
-.main {
-  background: var(--main-bg);
+.more {
+  display: none;
+
+  &__text {
+    display: block;
+    padding-top: var(--heading-bottom-sm);
+
+    @include media-up(md) {
+      padding-top: var(--heading-bottom-lg);
+    }
+
+  }
+
 }

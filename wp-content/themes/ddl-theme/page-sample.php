@@ -465,7 +465,7 @@ get_header(); ?>
         </div>
 
         <!-- <input type="hidden" name="recaptcha_response" id="recaptcha_response"> -->
-        <!-- <input type="hidden" name="form_uid" value="5fc07193-b633-4f3a-adff-ff7a32f3e11f">
+        <!-- <input type="hidden" name="form_uid" value="XXXXXXXXXXXX">
         <input name="required" type="hidden" value="name,submit_by,new_patient">
         <input type="hidden" name="data_order" value="name,submit_by,phone,new_patient,enquiry,gdpr_consent">
         <input name="ok_url" type="hidden" id="ok_url" value="<?php echo get_the_permalink( 1 ) // thank you page ?>">
