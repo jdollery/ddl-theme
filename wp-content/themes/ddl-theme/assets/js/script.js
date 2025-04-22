@@ -5,7 +5,7 @@ const styles = [
   'border-radius: 5px;'
 ].join(';');
 
-console.info('%cSite designed and developed by Dental Design - https://dental-design.marketing/', styles);
+console.info('%cDesigned and developed by Dental Design - https://dental-design.marketing/', styles);
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -42,31 +42,21 @@ window.onresize = function(event) {
 /* STICKY NAV */
 /*-----------------------------------------------------------------------------------*/
 
-const body = document.body;
-const scrollUp = "scroll-up";
-const scrollDown = "scroll-down";
-let lastScroll = 0;
+let header = document.querySelector('.header');
 
-window.addEventListener("scroll", () => {
-  
-  // const currentScroll = window.pageYOffset;
-  const currentScroll = window.scrollY;
-  
-  if (currentScroll <= headerLoad + 80) {
-    body.classList.remove(scrollUp);
-    return;
+function headerSticky(){
+
+  if (window.scrollY > 250) {
+    header.classList.add('header--sticky');
+  } else {
+    header.classList.remove('header--sticky');
   }
 
-  if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) { // down
-    body.classList.remove(scrollUp);
-    body.classList.add(scrollDown);
-  } else if ( currentScroll < lastScroll && body.classList.contains(scrollDown)) { // up
-    body.classList.remove(scrollDown);
-    body.classList.add(scrollUp);
-  }
+}
 
-  lastScroll = currentScroll;
-
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.addEventListener('scroll', headerSticky); 
+  headerSticky();
 });
 
 

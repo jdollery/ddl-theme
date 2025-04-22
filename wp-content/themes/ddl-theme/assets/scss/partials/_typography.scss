@@ -99,7 +99,7 @@ a,
 a[href^=tel],
 button {
 
-  &:not(.btn) {
+  &:not(.btn, .logo) {
     color: var(--link-color);
     font-weight: var(--link-weight);
     @include transition(all);

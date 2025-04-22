@@ -72,7 +72,7 @@
 
         <div class="header__three">
 
-          <a class="btn btn--accent" href="<?php echo get_the_permalink( 147 ) ?>">Book an appointment</a>
+          <a class="btn btn--accent visible--lg" href="<?php echo get_the_permalink( 147 ) ?>">Book an appointment</a>
           
           <button class="burger" id="navToggle" type="button" aria-haspopup="true" aria-controls="headerNav" aria-label="Open menu">
             <span class="burger__inner"></span>

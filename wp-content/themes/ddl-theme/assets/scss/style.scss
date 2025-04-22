@@ -1,25 +1,32 @@
+/*!
+  Theme Name: DDL Theme
+  Version: 2.0
+  Author: Dental Design
+  Author URI: https://dental-design.marketing/
+*/
+
 @use 'partials/reset';
 @use 'partials/animation';
 @use 'partials/typography';
 @use 'partials/button';
 @use 'partials/icons';
-@use 'partials/more';
-@use 'partials/comparison';
+// @use 'partials/more';
+// @use 'partials/comparison';
 
 @use 'layout/header';
-@use 'layout/main';
-@use 'layout/footer';
+// @use 'layout/main';
+// @use 'layout/footer';
 
-@use 'components/locations';
-@use 'components/hero';
-@use 'components/form';
-@use 'components/dialog';
-@use 'components/contact';
-@use 'components/cards';
-@use 'components/feature';
-@use 'components/questions';
-@use 'components/reviews';
-@use 'components/benefits';
-@use 'components/results';
-@use 'components/profile';
-@use 'components/map';
+@use 'components/navigation';
+// @use 'components/hero';
+// @use 'components/form';
+// @use 'components/dialog';
+// @use 'components/contact';
+// @use 'components/cards';
+// @use 'components/feature';
+// @use 'components/questions';
+// @use 'components/reviews';
+// @use 'components/benefits';
+// @use 'components/results';
+// @use 'components/profile';
+// @use 'components/map';

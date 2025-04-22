@@ -37,68 +37,33 @@
 
 }
 
-@mixin btn-primary {
+@mixin btn-accent {
   color: var(--white);
-  background: var(--primary);
-  border-color: var(--primary);
+  background: var(--accent);
+  border-color: var(--accent);
 
   @include hover {
     color: var(--white);
-    background: var(--secondary);
-    border-color: var(--secondary);
+    background: var(--black);
+    border-color: var(--black);
   }
 
 }
 
-@mixin btn-primary-wo {
+@mixin btn-accent-wo {
   color: var(--white);
-  background: var(--primary);
-  border-color: var(--primary);
+  background: var(--accent);
+  border-color: var(--accent);
 
   @include hover {
-    color: var(--primary);
+    color: var(--accent);
     background: var(--white);
     border-color: var(--white);
 
     &.btn--arrow {
   
       &::after {
-        background-image: $icon-arrow-primary;
-      }
-
-    }
-
-  }
-
-}
-
-@mixin btn-secondary {
-  color: var(--white);
-  background: var(--secondary);
-  border-color: var(--secondary);
-
-  @include hover {
-    color: var(--white);
-    background: var(--primary);
-    border-color: var(--primary);
-  }
-
-}
-
-@mixin btn-secondary-wo {
-  color: var(--white);
-  background: var(--secondary);
-  border-color: var(--secondary);
-
-  @include hover {
-    color: var(--primary);
-    background: var(--white);
-    border-color: var(--white);
-
-    &.btn--arrow {
-  
-      &::after {
-        background-image: $icon-arrow-primary;
+        background-image: $icon-arrow-accent;
       }
 
     }
@@ -141,16 +106,12 @@
     @include btn-white;
   }
 
-  &--primary {
-    @include btn-primary;
+  &--accent {
+    @include btn-accent;
   }
 
-  &--primary-wo {
-    @include btn-primary-wo;
-  }
-
-  &--secondary {
-    @include btn-secondary;
+  &--accent-wo {
+    @include btn-accent-wo;
   }
 
   &--submit {
@@ -246,9 +207,9 @@
         font-weight: var(--btn-weight) !important;
         padding: 1.05rem 2.5rem 1rem;
         margin: 0 !important;
-        color: var(--primary);
+        color: var(--accent);
         background: transparent;
-        border-color: var(--primary);
+        border-color: var(--accent);
         border-width: 0.1rem;
         border-style: solid;
         border-radius: var(--btn-radius);
@@ -271,8 +232,8 @@
 
       &:checked + label {
         color: var(--white);
-        background: var(--primary);
-        border-color: var(--primary);
+        background: var(--accent);
+        border-color: var(--accent);
 
         .icon {
           display: inline-block;

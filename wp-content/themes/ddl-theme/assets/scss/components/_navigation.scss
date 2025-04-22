@@ -1,0 +1,949 @@
+/*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+@use 'sass:color';
+@use "sass:map";
+
+@use 'abstracts/functions' as *;
+@use 'abstracts/utility' as *;
+@use 'abstracts/variables' as *;
+@use 'abstracts/media' as *;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* VARIABLES */
+/*-----------------------------------------------------------------------------------*/
+
+/* --------- LARGE DEVICE --------- */
+
+/* --- LEVEL ONE --- */
+
+$level-one-color-lg:                  var(--black);
+$level-one-color-hover-lg:            var(--accent);
+$level-one-color-current-lg:          var(--accent);
+$level-one-color-ancestor-lg:         var(--black);
+$level-one-color-ancestor-hover-lg:   $level-one-color-hover-lg;
+
+
+/* --- LEVEL TWO --- */
+
+$level-two-color-lg:                  var(--black);
+$level-two-color-hover-lg:            var(--white);
+$level-two-bg-lg:                     var(--grey);
+$level-two-bg-hover-lg:               var(--accent);
+$level-two-border-lg:                 var(--accent);
+$level-two-border-hover-lg:           $level-two-bg-hover-lg;
+
+$level-two-color-current-lg:          var(--white);
+$level-two-bg-current-lg:             var(--black);
+$level-two-border-current-lg:         $level-two-bg-current-lg;
+
+$level-two-color-ancestor-lg:         $level-two-color-lg;
+$level-two-color-ancestor-hover-lg:   $level-two-color-hover-lg;
+$level-two-bg-ancestor-lg:            $level-two-color-lg;
+$level-two-bg-ancestor-hover-lg:      $level-two-bg-hover-lg;
+$level-two-border-ancestor-lg:        $level-two-border-lg;
+$level-two-border-ancestor-hover-lg:  $level-two-border-hover-lg;
+
+
+/* --- LEVEL THREE --- */
+
+$level-three-color-lg:                var(--black);
+$level-three-color-hover-lg:          var(--white);
+$level-three-bg-lg:                   var(--grey);
+$level-three-bg-hover-lg:             var(--grey-dark);
+$level-three-border-lg:               var(--grey-dark);
+$level-three-border-hover-lg:         var(--grey-dark);
+
+$level-three-color-current-lg:        var(--white);
+$level-three-bg-current-lg:           var(--black);
+$level-three-border-current-lg:       var(--black);
+
+
+/* --------- SMALL DEVICE --------- */
+
+$nav-background-sm:                   var(--grey-dark);
+
+
+/* --- LEVEL ONE --- */
+
+$level-one-color-sm:                  var(--white);
+$level-one-bg-sm:                     var(--grey-dark);
+$level-one-border-sm:                 color.adjust(map.get($colors, "grey-dark"), $lightness: -10%);
+
+$level-one-color-current-sm:          var(--white);
+$level-one-bg-current-sm:             var(--black);
+
+$level-one-color-ancestor-sm:         var(--white);
+$level-one-bg-ancestor-sm:            var(--black);
+
+
+/* --- LEVEL TWO --- */
+
+$level-two-color-sm:                  var(--black);
+$level-two-bg-sm:                     color.adjust(map.get($colors, "grey"), $lightness: -5%);
+$level-two-border-sm:                 color.adjust(map.get($colors, "grey"), $lightness: -10%);
+
+$level-two-color-current-sm:          var(--white);
+$level-two-bg-current-sm:             var(--black);
+
+// $level-two-color-ancestor-sm:         $color-white;
+// $level-two-bg-ancestor-sm:            $color-black;
+
+
+/* --- LEVEL THREE --- */
+
+$level-three-color-sm:                var(--black);
+$level-three-bg-sm:                   var(--white);;
+$level-three-border-sm:               var(--grey);
+
+$level-three-color-current-sm:        var(--white);
+$level-three-bg-current-sm:           var(--black);
+
+// $level-two-color-ancestor-sm:         $color-white;
+// $level-two-bg-ancestor-sm:            $color-black;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLING */
+/*-----------------------------------------------------------------------------------*/
+
+/* --------- LOCK BODY SCROLL WHEN NAV OPEN --------- */
+
+html {
+
+  &.js-nav-active {
+    overflow: hidden;
+  }
+
+  /* --- TURN OFF SCROLL BARS FOR SMALL SCREEN (FOR DEV ON DESKTOP) --- */
+
+  @include media-down($nav-breakpoint) { 
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+
+    &::-webkit-scrollbar {
+        width: 0px; /* For Chrome, Safari, and Opera */
+    }
+
+  }
+
+}
+
+
+/* --------- LARGE DEVICE --------- */
+
+@include media-up($nav-breakpoint) {
+
+  .navigation {
+    position: relative !important;
+
+    /* --- LEVEL ONE --- */
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        position: relative;
+        white-space: nowrap;
+        padding: 1.5rem 0;
+        line-height: 1;
+        transition: all 0.3s ease-out;
+
+        &:before,
+        .dropdown-toggle {
+          display: none;
+        }
+
+        > ul {
+          @include animation (navFadeOut 0.3s);
+        }
+
+        &:hover > ul,
+        &:focus-within > ul {
+          visibility: visible;
+          display: block;
+          @include animation (navFadeIn 0.3s);
+        }
+
+        /* --- ALL LEVELS --- */
+
+        a {
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          font-weight: var(--bold);
+          padding: 0.4rem;
+          @include transition(all);
+        } 
+
+        &.menu-item-has-children {
+          padding: 0;
+
+          > a {
+            gap: 0.5rem;
+
+            &::after {
+              display: block;
+              content: '';
+              aspect-ratio: 1 / 1;
+              background-repeat: no-repeat;
+              @include transition(all);
+            }
+
+          }
+  
+        }
+
+        /* --- LEVEL TWO & THREE --- */
+
+        ul,
+        ul ul {
+          position: absolute;
+          display: none;
+          visibility: hidden;
+          width: 100%;
+          width: fit-content;
+          z-index: 99999;
+          text-align: left;
+          // border-radius: 0.8rem;
+          // overflow: hidden;
+          // @include box-shadow (0 0 1.5rem 0.1rem rgba(map.get($colors, "black"), 0.5));
+
+          li {
+            display: block;
+            height: auto;
+            width: 100%;
+            border: 0;
+            padding: 0;
+            line-height: 1;
+
+            a {
+              width: 100%;
+              min-width: 25rem;
+              min-height: 6rem;
+              font-weight: var(--bold);
+              font-size: 1.6rem;
+              border-top: 0;
+              padding: 1.8rem 2rem;
+              justify-content: space-between;
+            }
+
+            &:hover,
+            &:focus-within {
+
+              > a {
+                text-decoration: none;
+              }
+
+            }
+
+            &.menu-item-has-children {
+              padding: 0;   
+              
+              > a {
+
+                &::after {
+                  width: 2rem;
+                }
+    
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+
+    /* --- LEVEL ONE ONLY --- */
+
+    > ul {
+      display: flex;
+      align-items: baseline;
+      gap: $gap;
+
+      > li {
+        display: block;
+
+        > a {
+          font-size: #{fluid(14px, 20px)};
+          color: $level-one-color-lg;
+
+          @include hover-focus {
+            color: $level-one-color-hover-lg;
+          }
+
+        }
+
+        &.menu-item-has-children {
+
+          > a {
+
+            &::after {
+              width: 1.5rem;
+              background-image: $icon-chevron-down-black;
+            }
+
+          }
+
+          &:hover,
+          &:focus-within {
+
+            > a {
+
+              &::after {
+                transform: rotate(180deg);
+              }
+
+            }
+
+          }
+
+        }
+
+        &.current-menu-item {
+
+          > a {
+            color: $level-one-color-current-lg;
+          }
+
+          &:hover,
+          &:focus-within {
+
+            > a {
+              color: $level-one-color-current-lg;
+            }
+
+          }
+
+        }
+
+        // &.current-menu-ancestor {
+
+        //   > a {
+        //     color: $level-one-color-ancestor-lg;
+        //   }
+
+        //   &:hover,
+        //   &:focus-within {
+
+        //     > a {
+        //       color: $level-one-color-ancestor-hover-lg;
+
+        //       &::after {
+        //         color: $level-one-color-ancestor-hover-lg;
+        //       }
+
+        //     }
+
+        //   }
+
+        // }
+
+
+        /* --- LEVEL TWO ONLY --- */
+
+        > ul {
+          top: 100%;
+          left: 0;
+          padding: 2rem 0 0;
+
+          > li {
+            padding: 0;
+
+            > a {
+              color: $level-two-color-lg;
+              background-color: $level-two-bg-lg;
+            }
+
+            &:not(:last-child) {
+              
+              > a {
+                border-bottom: 0.1rem solid $level-two-border-lg;
+              }
+
+            }
+
+            &:hover,
+            &:focus-within {
+
+              > a {
+                color: $level-two-color-hover-lg;
+                background-color: $level-two-bg-hover-lg;
+                border-color: $level-two-border-hover-lg;
+              }
+
+            }
+
+            &.menu-item-has-children {
+
+              > a {
+
+                &::after {
+                  background-image: $icon-chevron-right-black;
+                }
+
+              }
+
+              &:hover,
+              &:focus-within {
+    
+                > a {
+    
+                  &::after {
+                    background-image: $icon-chevron-right-white;
+                  }
+    
+                }
+    
+              }
+    
+            }
+
+            &.current-menu-item {
+
+              > a {
+                color: $level-two-color-current-lg;
+                background-color: $level-two-bg-current-lg;
+                border-color: $level-two-border-current-lg;
+
+                &::after {
+                  background-image: $icon-chevron-right-white;
+                }
+
+              }
+
+              &:hover,
+              &:focus-within {
+
+                > a {
+                  color: $level-two-color-current-lg;
+                  background-color: $level-two-bg-current-lg;
+                  border-color: $level-two-border-current-lg;
+
+                  &::after {
+                    background-image: $icon-chevron-right-white;
+                  }
+
+                }
+
+              }
+
+            }
+
+            // &.current-menu-ancestor {
+
+            //   > a {
+            //     color: $level-two-color-ancestor-lg;
+            //     background-color: $level-two-bg-ancestor-lg;
+            //     border-color: $level-two-border-ancestor-lg;
+            //   }
+    
+            //   &:hover,
+            //   &:focus-within {
+    
+            //     > a {
+            //       color: $level-two-color-ancestor-hover-lg;
+            //       background-color: $level-two-bg-ancestor-hover-lg;
+            //       border-color: $level-two-border-ancestor-hover-lg;
+    
+            //       &::after {
+            //         color: $level-two-color-ancestor-hover-lg;
+            //       }
+    
+            //     }
+    
+            //   }
+    
+            // }
+
+
+            /* --- LEVEL THREE ONLY --- */
+
+            > ul {
+              top: 0;
+              left: 100%;
+              // margin: -0.1rem 0 0 0;
+
+              > li {
+
+                > a {
+                  color: $level-three-color-lg;
+                  background-color: $level-three-bg-lg;
+                }
+      
+                &:not(:last-child) {
+                  
+                  > a {
+                    border-bottom: 0.1rem solid $level-three-border-lg;
+                  }
+      
+                }
+      
+                &:hover,
+                &:focus-within {
+      
+                  > a {
+                    color: $level-three-color-hover-lg;
+                    background-color: $level-three-bg-hover-lg;
+                    border-color: $level-three-border-hover-lg;
+                  }
+      
+                }
+      
+                &.current-menu-item {
+      
+                  > a {
+                    color: $level-three-color-current-lg;
+                    background-color: $level-three-bg-current-lg;
+                    border-color: $level-three-border-current-lg;
+                  }
+      
+                  &:hover,
+                  &:focus-within {
+      
+                    > a {
+                      color: $level-three-color-current-lg;
+                      background-color: $level-three-bg-current-lg;
+                      border-color: $level-three-border-current-lg;
+                    }
+      
+                  }
+      
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+        &.menu-item-has-children:last-child {
+
+          > ul {
+            left: auto;
+            right: 0;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+
+/* --------- SMALL DEVICE --------- */
+
+@include media-down($nav-breakpoint) {
+
+  .navigation {
+    position: fixed !important;
+    left: -$nav-width-sm;
+    width: $nav-width-sm;
+    top: var(--header-height);
+    bottom: 0;
+    z-index: 1000;
+    background-color: $nav-background-sm;
+    height: 100vh;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+    transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+
+    &.opened {
+      left: 0;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        position: relative;
+        display: block;
+        white-space: nowrap;
+        padding: 0;
+        margin: 0;
+        line-height: 1;
+        text-align: left;
+
+        &:before {
+          display: none;
+        }
+
+        a {
+          display: block;
+          font-size: 1.8rem;
+          font-weight: var(--regular);
+          padding: 2rem;
+        }
+
+        ul {
+          display: none;
+
+          &.toggled {
+            display: block;
+          }
+
+          li {
+    
+            a {
+              font-size: 1.6rem;
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+
+    /* --- LEVEL ONE UNIQUE --- */
+
+    > ul {
+      padding-bottom: 20rem;
+      
+      > li {
+        border-bottom: 0.1rem solid $level-one-border-sm;
+
+        > a {
+          color: $level-one-color-sm;
+          background-color: $level-one-bg-sm;
+        }
+
+        &.current-menu-item {
+
+          > a {
+            color: $level-one-color-current-sm;
+            background-color: $level-one-bg-current-sm;
+          }
+
+        }
+
+        // &.current-menu-ancestor {
+
+        //   > a {
+        //     color: $level-one-color-ancestor-sm;
+        //     background-color: $level-one-bg-ancestor-sm;
+        //   }
+        
+        // }
+
+
+        /* --- LEVEL TWO UNIQUE --- */
+
+        > ul {
+
+          > li {
+
+            &:not(:last-child) {
+              border-bottom: 0.1rem solid $level-two-border-sm;
+            }
+
+            > a {
+              color: $level-two-color-sm;
+              background-color: $level-two-bg-sm;
+            }
+
+            &.current-menu-item {
+
+              > a {
+                color: $level-two-color-current-sm;
+                background-color: $level-two-bg-current-sm;
+              }
+    
+            }
+
+
+            /* --- LEVEL THREE UNIQUE --- */
+
+            > ul {
+    
+              > li {
+
+                &:not(:last-child) {
+                  border-bottom: 0.1rem solid $level-three-border-sm;
+                }
+
+                > a {
+                  color: $level-three-color-sm;
+                  background-color: $level-three-bg-sm;
+                }
+
+                &.current-menu-item {
+
+                  > a {
+                    color: $level-three-color-current-sm;
+                    background-color: $level-three-bg-current-sm;      
+                  }
+        
+                }
+
+              }
+    
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+
+/* --------- SUBMENU DROPDOWN TOGGLE --------- */
+
+.dropdown-toggle {
+  position: absolute;
+  top: 0.8rem;
+  right: 1.5rem;
+  content: "";
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  color: var(--grey-light);
+  background-color: var(--accent);
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  outline: none;
+
+  &::after {
+    position: relative;
+    display: block;
+    top: 0.2rem;
+    width: 2.8rem;
+    aspect-ratio: 1 / 1;
+    content: $icon-plus-white;
+  }
+
+  &.toggled {
+
+    &::after {
+      content: $icon-minus-white;
+    }
+
+  }
+
+}
+
+
+/* --------- BURGER TOGGLE - NO LABEL --------- */
+
+.burger {
+  position: relative;
+  display: inline-block;
+  background: transancestor;
+  border: 0;
+  cursor: pointer;
+  height: 3.6rem;
+  width: 4.1rem;
+  padding: 0 0.6rem 0.4rem;
+  margin: 0 0 0 2rem;
+  vertical-align: middle;
+
+  @include media-up($nav-breakpoint) {
+    display: none;
+  }
+
+  &__inner,
+  &__inner::after,
+  &__inner::before {
+    position: absolute;
+    display: block;
+    width: 3rem;
+    height: 0.4rem;
+    transition-timing-function: ease;
+    transition-duration: .15s;
+    transition-property: transform;
+    background-color: var(--accent);
+  }
+
+  &__inner {
+    transition-timing-function: cubic-bezier(.55,.055,.675,.19);
+    transition-duration: 75ms; 
+    
+    &::after,
+    &::before {
+      display: block;
+      content: "";
+    }
+
+    &::before {
+      top: -10px;
+      transition: top 75ms ease .12s,opacity 75ms ease;
+    }
+
+    &::after {
+      bottom: -10px;
+      transition: bottom 75ms ease .12s;
+      transform: 75ms cubic-bezier(.55,.055,.675,.19);
+    }
+
+  }
+
+  &.active {
+
+    .burger {
+
+      &__inner {
+        transition-delay: .12s;
+        transition-timing-function: cubic-bezier(.215,.61,.355,1);
+        transform: rotate(45deg);
+
+        &::before {
+          top: 0;
+          opacity: 0;
+          transition: top 75ms ease,opacity 75ms ease .12s;
+        }
+
+        &::after {
+          bottom: 0;
+          transition: bottom 75ms ease,transform 75ms cubic-bezier(.215,.61,.355,1) .12s;
+          transform: rotate(-90deg);
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+
+/* --------- BURGER TOGGLE - WITH LABEL --------- */
+
+// .burger {
+//   position: relative;
+//   display: inline-block;
+//   background: transancestor;
+//   border: 0;
+//   cursor: pointer;
+//   // padding: 0 0.6rem 0.4rem;
+//   margin: 0 0 0 2rem;
+//   vertical-align: middle;
+
+//   @include media-min($nav-breakpoint) {
+//     display: none;
+//   }
+
+//   &__inner {
+//     display: flex;
+//     align-items: center;
+//   }
+
+//   &__trigger {
+//     position: relative;
+//     height: 2.2rem;
+//     // width: 4.1rem;
+//     display: flex;
+//     align-items: center;
+//     margin: 0 0.5rem 0 0px;
+//   }
+
+//   &__icon,
+//   &__icon::after,
+//   &__icon::before {
+//     display: block;
+//     width: 2.3rem;
+//     height: 0.3rem;
+//     transition-timing-function: ease;
+//     transition-duration: .15s;
+//     transition-property: transform;
+//     background-color: var(--accent);
+//   }
+
+//   &__icon {
+//     position: relative;
+//   }
+
+//   &__icon::after,
+//   &__icon::before {
+//     position: absolute;
+//   }
+
+//   &__icon {
+//     transition-timing-function: cubic-bezier(.55,.055,.675,.19);
+//     transition-duration: 75ms; 
+
+//     &::after,
+//     &::before {
+//       display: block;
+//       content: "";
+//     }
+
+//     &::before {
+//       top: -0.8rem;
+//       transition: top 75ms ease .12s,opacity 75ms ease;
+//     }
+
+//     &::after {
+//       bottom: -0.8rem;
+//       transition: bottom 75ms ease .12s;
+//       transform: 75ms cubic-bezier(.55,.055,.675,.19);
+//     }
+
+//   }
+
+//   &__text {
+//     line-height: 1;
+//     font-weight: var(--regular);
+//   }
+
+//   &.active {
+
+//     .burger {
+
+//       &__icon {
+//         transition-delay: .12s;
+//         transition-timing-function: cubic-bezier(.215,.61,.355,1);
+//         transform: rotate(45deg);
+
+//         &::before {
+//           top: 0;
+//           opacity: 0;
+//           transition: top 75ms ease, opacity 75ms ease .12s;
+//         }
+
+//         &::after {
+//           bottom: 0;
+//           transition: bottom 75ms ease, transform 75ms cubic-bezier(.215,.61,.355,1) .12s;
+//           transform: rotate(-90deg);
+//         }
+
+//       }
+
+//     }
+
+//   }
+
+// }

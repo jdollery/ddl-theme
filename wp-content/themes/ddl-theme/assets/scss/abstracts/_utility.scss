@@ -19,10 +19,12 @@ $colors: (
   "black": $black,
   "grey": $grey,
   "grey-dark": $grey-dark,
-  "primary": $primary,
-  "secondary": $secondary,
+  "grey-light": $grey-light,
+  "accent": $accent,
   "danger": $danger,
 );
+
+// lighten(map.get($colors, "blue"), 10%)
 
 
 /*-----------------------------------------------------------------------------------*/

@@ -21,10 +21,8 @@
   --grey:           #cccccc;
   --grey-dark:      #606060;
   --grey-light:     #f6f6f6;
-  --primary:        #016775;
-  --secondary:      #02B0AE;
+  --accent:         #016775;
   --danger:         #b81c23;
-  --star:           #edb406;
 
 
   /* --------- FONT STYLES --------- */
@@ -32,7 +30,7 @@
   --body-font:        'Montserrat';
   --header-font:      'Montserrat';
 
-  --body-bg:          var(--primary);
+  --body-bg:          var(--accent);
   --main-bg:          var(--white);
 
   --body-color:       var(--black);
@@ -74,7 +72,7 @@
 
   /* --------- LINK STYLES --------- */
 
-  --link-color:       var(--primary);
+  --link-color:       var(--accent);
   --link-color-hover: var(--secondary);
   --link-weight:      var(--bold);
 
@@ -97,16 +95,6 @@
   --space-gutter:     #{fluid(25px, 50px)};
 
 
-  /* --------- BRANDING --------- */
-
-  --logo-width-xs:    28rem;
-  --logo-width-sm:    30rem;
-  --logo-width-md:    35rem;
-  --logo-width-lg:    27rem;
-  --logo-width-xl:    33rem;
-  --logo-width-xxl:   40rem;
-
-
   /* --------- BUTTONS --------- */
 
   --btn-size:         #{fluid(13px, 17px)};
@@ -120,51 +108,14 @@
   --input-weight:     var(--regular);
   --input-radius:     0.3rem;
 
-
-  /* --------- DIALOG --------- */
-
-  --dialog-radius-sm:         0.3rem;
-  --dialog-radius-lg:         1rem;
-  --dialog-heading-weight:    var(--bold);
-
-
-  /* --------- FEATURE --------- */
-
-  --feature-radius-sm:  2rem;
-  --feature-radius-lg:  3rem;
-
-
-  /* --------- QUESTIONS --------- */
-
-  --question-radius-sm: 0.3rem;
-  --question-radius-lg: 1rem;
-
-
-  /* --------- REVIEWS --------- */
-
-  --reviews-radius-sm: 0.3rem;
-  --reviews-radius-lg: 1rem;
-
-
-  /* --------- RESULTS --------- */
-
-  --results-radius-sm: 0.3rem;
-  --results-radius-lg: 1rem;
-
-
-  /* --------- COOKIE OVERRIDES --------- */
-
-  --cookie-white: var(--white);
-  --cookie-black: var(--primary);
-  --cookie-grey: var(--secondary);
-  --cookie-overlay: #032d33;
-
 }
 
 
 /*-----------------------------------------------------------------------------------*/
 /* SCSS GLOBAL VARIABLES */
 /*-----------------------------------------------------------------------------------*/
+
+$theme-name: ddl-theme;
 
 /* --------- COLOURS --------- */
 
@@ -173,8 +124,7 @@ $black:             #3A4145;
 $grey:              #ededed;
 $grey-dark:         #505050;
 $grey-light:        #f6f6f6;
-$primary:           #016775;
-$secondary:         #02B0AE;
+$accent:            #016775;
 $danger:            #b81c23;
 $star:              #edb406;
 
@@ -188,7 +138,7 @@ $nav-width-sm:        30rem;
 /* --------- USED FOR GRID & FIXED --------- */
 
 $max-width:           140rem;
-$max-part-width:      70rem;
+$max-segment-width:   70rem;
 $gap:                 #{fluid(10px, 30px)};
 
 
@@ -202,5 +152,29 @@ $list-number-weight:  var(--bold);
 $list-inline-gap:     $gap;
 
 
+/* --------- ICON DataURL --------- */
+
+$icon-close-black:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z'/%3E%3C/svg%3E");
+$icon-close-white:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z'/%3E%3C/svg%3E");
+
+$icon-plus-black:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z'/%3E%3C/svg%3E");
+$icon-plus-white:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z'/%3E%3C/svg%3E");
+
+$icon-minus-black:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M5 11V13H19V11H5Z'/%3E%3C/svg%3E");
+$icon-minus-white:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M5 11V13H19V11H5Z'/%3E%3C/svg%3E");
+
+$icon-chevron-up-black:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M12,10L2.7,19.3,0,16.7,12,4.7l12,12-2.7,2.7-9.3-9.3Z'/%3E%3C/svg%3E");
+$icon-chevron-up-white:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M12,10L2.7,19.3,0,16.7,12,4.7l12,12-2.7,2.7-9.3-9.3Z'/%3E%3C/svg%3E");
+
+$icon-chevron-down-black:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M12,14l9.3-9.3,2.7,2.7-12,12L0,7.3l2.7-2.7,9.3,9.3Z'/%3E%3C/svg%3E");
+$icon-chevron-down-white:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M12,14l9.3-9.3,2.7,2.7-12,12L0,7.3l2.7-2.7,9.3,9.3Z'/%3E%3C/svg%3E");
+
+$icon-chevron-right-black:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M14,12L4.7,2.7,7.3,0l12,12-12,12-2.7-2.7,9.3-9.3Z'/%3E%3C/svg%3E");
+$icon-chevron-right-white:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M14,12L4.7,2.7,7.3,0l12,12-12,12-2.7-2.7,9.3-9.3Z'/%3E%3C/svg%3E");
+
 $icon-arrow-white:      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M18.3,10.5L10.2,2.5,12.3.3l11.7,11.7-11.7,11.7-2.1-2.1,8-8H0v-3h18.3Z'/%3E%3C/svg%3E");
-$icon-arrow-primary:    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23016775' %3E%3Cpath d='M18.3,10.5L10.2,2.5,12.3.3l11.7,11.7-11.7,11.7-2.1-2.1,8-8H0v-3h18.3Z'/%3E%3C/svg%3E");
+$icon-arrow-black:      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M18.3,10.5L10.2,2.5,12.3.3l11.7,11.7-11.7,11.7-2.1-2.1,8-8H0v-3h18.3Z'/%3E%3C/svg%3E");
+$icon-arrow-accent:     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23016775' %3E%3Cpath d='M18.3,10.5L10.2,2.5,12.3.3l11.7,11.7-11.7,11.7-2.1-2.1,8-8H0v-3h18.3Z'/%3E%3C/svg%3E");
+
+$icon-tick-black:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M9.9997 15.1709L19.1921 5.97852L20.6063 7.39273L9.9997 17.9993L3.63574 11.6354L5.04996 10.2212L9.9997 15.1709Z'/%3E%3C/svg%3E");
+$icon-tick-white:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M9.9997 15.1709L19.1921 5.97852L20.6063 7.39273L9.9997 17.9993L3.63574 11.6354L5.04996 10.2212L9.9997 15.1709Z'/%3E%3C/svg%3E");
