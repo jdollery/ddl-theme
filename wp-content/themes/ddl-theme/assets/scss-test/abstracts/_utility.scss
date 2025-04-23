@@ -313,7 +313,7 @@ $colors: (
       top: 0;
       display: block;
       content: counter(custom-counter) ".";
-      font-variation-settings: "wght" $list-number-weight;
+      font-weight: $list-number-weight;
       color: $list-bullet-color;
     }
 

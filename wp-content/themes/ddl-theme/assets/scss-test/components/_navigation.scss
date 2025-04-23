@@ -157,8 +157,9 @@ html {
           display: flex;
           align-items: center;
           white-space: nowrap;
-          font-variation-settings: "wght" var(--bold);
+          font-weight: var(--bold);
           padding: 0.4rem;
+          @include transition(all);
         } 
 
         &.menu-item-has-children {
@@ -171,6 +172,7 @@ html {
               content: '';
               aspect-ratio: 1 / 1;
               background-repeat: no-repeat;
+              @include transition(all);
             }
 
           }
@@ -203,7 +205,7 @@ html {
               width: 100%;
               min-width: 25rem;
               min-height: 6rem;
-              font-variation-settings: "wght" var(--bold);
+              font-weight: var(--bold);
               font-size: 1.6rem;
               border-top: 0;
               padding: 1.8rem 2rem;
@@ -246,13 +248,13 @@ html {
     > ul {
       display: flex;
       align-items: baseline;
-      gap: $nav-gap;
+      gap: $gap;
 
       > li {
         display: block;
 
         > a {
-          font-size: #{fluid(14px, 24px)};
+          font-size: #{fluid(14px, 20px)};
           color: $level-one-color-lg;
 
           @include hover-focus {
@@ -518,7 +520,7 @@ html {
         a {
           display: block;
           font-size: 1.8rem;
-          font-variation-settings: "wght" var(--regular);
+          font-weight: var(--regular);
           padding: 2rem;
         }
 
@@ -836,7 +838,7 @@ html {
 
 //   &__text {
 //     line-height: 1;
-//     font-variation-settings: "wght" var(--regular);
+//     font-weight: var(--regular);
 //   }
 
 //   &.active {

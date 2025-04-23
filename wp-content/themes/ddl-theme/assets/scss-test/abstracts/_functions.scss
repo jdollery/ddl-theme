@@ -1,0 +1,71 @@
+/*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+@use "sass:math";
+@use "sass:map";
+
+@use 'abstracts/media' as *;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* BREAKPOINT */
+/*-----------------------------------------------------------------------------------*/
+
+@function breakpoint-next($name, $breakpoint: $breakpoint-widths, $breakpoint-names: map-keys($breakpoint)) {
+  $n: index($breakpoint-names, $name);
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+@function breakpoint-min($name, $breakpoint: $breakpoint-widths) {
+  $min: map.get($breakpoint, $name);
+  @return if($min != 0, $min, null);
+}
+
+@function breakpoint-max($name, $breakpoint: $breakpoint-widths) {
+  $next: breakpoint-next($name, $breakpoint);
+  @return if($next, breakpoint-min($next, $breakpoint) - .02px, null);
+}
+
+// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash in front.
+// Useful for making responsive utilities.
+
+@function breakpoint-infix($name, $breakpoint: $breakpoint-widths) {
+  @return if(breakpoint-min($name, $breakpoint) == null, "", "-#{$name}");
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* CLAMP CALCULATOR */
+/*-----------------------------------------------------------------------------------*/
+
+//https://www.smashingmagazine.com/2022/10/fluid-typography-clamp-sass-functions/
+
+// $default-min-bp: 576px;
+// $default-max-bp: 1550px;
+$default-min-bp: map.get($breakpoint-widths, "xs");
+$default-max-bp: map.get($breakpoint-widths, "xxl");
+
+@function round($number, $decimals: 0) {
+  $n: 1;
+  @if $decimals > 0 {
+    @for $i from 1 through $decimals {
+      $n: $n * 10;
+    }
+  }
+  @return math.div(math.round($number * $n), $n);
+}
+
+@function px-to-rem($px) {
+  $rems: math.div($px, 10px) * 1rem;
+  @return $rems;
+}
+
+@function fluid($min-size, $max-size, $min-breakpoint: $default-min-bp, $max-breakpoint: $default-max-bp, $unit: vw) {
+  $slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
+  $slope-to-unit: round($slope * 100, 2);
+  $intercept-rem: round(px-to-rem($min-size - $slope * $min-breakpoint), 2);
+  $min-size-rem: round(px-to-rem($min-size), 2);
+  $max-size-rem: round(px-to-rem($max-size), 2);
+  @return clamp(#{$min-size-rem}, #{$slope-to-unit}#{$unit} + #{$intercept-rem}, #{$max-size-rem});
+}

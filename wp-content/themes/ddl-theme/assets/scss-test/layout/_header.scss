@@ -33,21 +33,18 @@
     display: grid;
     grid-template-columns: auto 0 1fr;
     justify-content: center;
-    gap: $nav-gap;
     padding: 2rem var(--space-x);
 
     @include media-up($nav-breakpoint) {
       grid-template-columns: auto 1fr auto;
+      padding: 3rem var(--space-x);
     }
 
     > * {
       display: flex;
       justify-content: center;
       align-items: center;
-
-      &:nth-child(2) {
-        justify-content: right;
-      }
+      gap: 2rem;
 
       @include media-down($nav-breakpoint) {
         
@@ -63,41 +60,21 @@
 
   &__bottom {
     display: grid;
-    grid-template-columns: repeat(2, auto);
-    justify-content: space-between;
-    padding: 1.5rem var(--space-x);
-    font-size: #{fluid(14px, 18px)};
+    grid-template-columns: auto 1fr 1fr;
+    justify-content: center;
+    padding: 1rem var(--space-x);
     color: var(--white);
-    background: var(--accent);
-
-    ul {
-      list-style: none;
-      display: flex;
-
-      li {
-
-        &:not(:last-child) {
-          
-          &::after {
-            display: inline-flex;
-            content: "|";
-            margin: 0 1.5rem;
-          }
-
-        }
-
-      }
-
-    }
+    background: var(--black);
 
     a {
       display: inline-flex;
       align-items: center;
       color: inherit;
       gap: 1rem;
+      @include transition(all);
 
       @include hover {
-        color: var(--black);
+        color: var(--accent);
       }
 
       svg {
@@ -108,6 +85,11 @@
 
     @include media-down($nav-breakpoint) {
       display: none;
+    }
+
+    @include media-up($nav-breakpoint) {
+      grid-template-columns: auto 1fr auto;
+      padding: 3rem var(--space-x);
     }
 
     > * {

@@ -1,5 +1,5 @@
 /*!
-  Theme Name: Winslow Dental Theme
+  Theme Name: DDL Theme
   Version: 2.0
   Author: Dental Design
   Author URI: https://dental-design.marketing/
@@ -14,13 +14,11 @@
 // @use 'partials/comparison';
 
 @use 'layout/header';
-@use 'layout/main';
-@use 'layout/footer';
+// @use 'layout/main';
+// @use 'layout/footer';
 
 @use 'components/navigation';
-@use 'components/banner';
-@use 'components/breadcrumb';
-@use 'components/content';
+// @use 'components/hero';
 // @use 'components/form';
 // @use 'components/dialog';
 // @use 'components/contact';

@@ -1302,7 +1302,7 @@ ul:not(.list--exempt):last-child {
   aspect-ratio: 1/1
 }
 .icon--email {
-  width: 3rem;
+  width: 2.5rem;
   aspect-ratio: 1/1
 }
 .icon--calendar {
@@ -1348,7 +1348,7 @@ ul:not(.list--exempt):last-child {
 }
 .header__top {
   display: grid;
-  grid-template-columns: auto 1fr 1fr;
+  grid-template-columns: auto 0 1fr;
   justify-content: center;
   padding: 2rem var(--space-x)
 }
@@ -1361,7 +1361,8 @@ ul:not(.list--exempt):last-child {
 .header__top > * {
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
+  gap: 2rem
 }
 @media (max-width:1179px) {
   .header__top > :last-child {
@@ -1372,12 +1373,22 @@ ul:not(.list--exempt):last-child {
   display: grid;
   grid-template-columns: auto 1fr 1fr;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem var(--space-x);
   color: var(--white);
   background: var(--black)
 }
 .header__bottom a {
-  color: inherit
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  gap: 1rem;
+  transition: all .3s cubic-bezier(.5,0,.5,1)
+}
+.header__bottom a:hover {
+  color: var(--accent)
+}
+.header__bottom a svg {
+  fill: var(--white)
 }
 @media (max-width:1179px) {
   .header__bottom {
@@ -1757,7 +1768,6 @@ html.js-nav-active {
   height: 3.6rem;
   width: 4.1rem;
   padding: 0 .6rem .4rem;
-  margin: 0 0 0 2rem;
   vertical-align: middle
 }
 @media (min-width:1180px) {

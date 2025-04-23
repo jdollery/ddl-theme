@@ -1,0 +1,44 @@
+/*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+@use 'abstracts/functions' as *;
+@use 'abstracts/utility' as *;
+@use 'abstracts/variables' as *;
+// @use 'abstracts/media' as *;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLES */
+/*-----------------------------------------------------------------------------------*/
+
+.breadcrumb {
+  font-weight: var(--regular);
+  margin: 0 0 2rem;
+
+  > span {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .icon--chevron {
+    position: relative;
+    top: 0.2rem;
+    display: block;
+    background-image: $icon-chevron-right-white;           
+    background-repeat: no-repeat;
+    width: 1.8rem;
+    aspect-ratio: 1 / 1;
+  }
+
+  a {
+    color: var(--accent);
+
+    @include hover {
+      color: var(--white);
+    }
+
+  }
+
+}

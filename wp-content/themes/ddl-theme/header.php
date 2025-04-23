@@ -68,6 +68,7 @@
         </div>
 
         <div class="header__col">
+
           <nav class="navigation" id="headerNav" aria-labelledby="navToggle" aria-label="Main menu">
             <ul>
               <?php wp_nav_menu( array (
@@ -77,11 +78,14 @@
               ) ); ?>
             </ul>
           </nav> 
+
         </div>
 
         <div class="header__col">
 
-          <a class="btn btn--accent visible--lg" href="<?php echo get_the_permalink( 147 ) ?>">Book an appointment</a>
+          <a class="hidden--lg" href="tel:<?php echo $phone_link ?>"><span class="icon icon--tel"><svg role="img"><use xlink:href="#tel" href="#tel"></use></svg></span><span hidden><?php echo $phone_number ?></span></a>
+
+          <a class="btn btn--accent visible--sm" href="<?php echo get_the_permalink( 147 ) ?>">Book an appointment</a>
           
           <button class="burger" id="navToggle" type="button" aria-haspopup="true" aria-controls="headerNav" aria-label="Open menu">
             <span class="burger__inner"></span>
@@ -101,7 +105,7 @@
         <div class="header__col">
           <a href="<?php echo $site_directions ?>" target="_blank" rel="noopener noreferrer">
             <span class="icon icon--pin"><svg role="img"><use xlink:href="#pin" href="#pin"></use></svg></span>
-            <address><div class="org" hidden><strong><?php echo $site_name ?></strong></div><div class="adr"><span class="street-address"><?php echo $street_address ?>, </span><br><span class="locality"><?php echo $address_locality ?>, </span><span class="region"><?php echo $address_region ?>, </span><span class="postal-code"><?php echo $postal_code ?></span></div></address>
+            <address><div class="org" hidden><strong><?php echo $site_name ?></strong></div><div class="adr"><span class="street-address"><?php echo $street_address ?>, </span><span class="locality"><?php echo $address_locality ?>, </span><span class="region"><?php echo $address_region ?>, </span><span class="postal-code"><?php echo $postal_code ?></span></div></address>
           </a>
         </div>
 

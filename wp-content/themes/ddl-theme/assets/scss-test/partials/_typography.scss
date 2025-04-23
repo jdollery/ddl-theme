@@ -40,7 +40,7 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading-font);
-  font-variation-settings: "wght" var(--heading-weight);
+  font-weight: var(--heading-weight);
   line-height: var(--heading-line-height);
   letter-spacing: var(--heading-letter-spacing);
   color: inherit;
@@ -65,17 +65,17 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: var(--h1);
-  font-variation-settings: "wght" var(--h1-weight);
+  font-weight: var(--h1-weight);
 }
 
 h2 {
   font-size: var(--h2);
-  font-variation-settings: "wght" var(--h2-weight);
+  font-weight: var(--h2-weight);
 }
 
 h3 {
   font-size: var(--h3);
-  font-variation-settings: "wght" var(--h3-weight);
+  font-weight: var(--h3-weight);
 }
 
 h4 {
@@ -95,13 +95,7 @@ h6 {
 /* LINKS */
 /*-----------------------------------------------------------------------------------*/
 
-
-a,
-button {
-  @include transition(all);
-}
-
-p {
+.main {
 
   a,
   a[href^=tel],
@@ -109,7 +103,7 @@ p {
 
     &:not(.btn) {
       color: var(--link-color);
-      font-variation-settings: "wght" var(--link-weight);
+      font-weight: var(--link-weight);
       @include transition(all);
     
       @include hover {
@@ -166,7 +160,7 @@ ol:not(.list--exempt) {
 
     li {
       position: relative;
-      font-variation-settings: "wght" var(--regular);
+      font-weight: var(--regular);
       margin: 0;
 
       &::marker {
@@ -236,5 +230,21 @@ ol:not(.list--exempt) {
     }
 
   }
+
+  // &--unstyled { 
+  //   @include list-unstyled;
+  // }
+
+  // &--bullet { 
+  //   @include list-bullet;
+  // }
+
+  // &--number { 
+  //   @include list-number;
+  // }
+
+  // &--inline {
+  //   @include list-inline;
+  // }
 
 }

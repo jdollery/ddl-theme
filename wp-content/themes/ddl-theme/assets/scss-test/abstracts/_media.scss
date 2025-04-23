@@ -42,7 +42,7 @@ $breakpoint-widths: (
 
 // @include media-up(sm) {
 //   .element {
-//     font-variation-settings: "wght" bold;
+//     font-weight: bold;
 //   }
 // }
 
@@ -65,7 +65,7 @@ $breakpoint-widths: (
 
 // @include media-down(sm) {
 //   .element {
-//     font-variation-settings: "wght" bold;
+//     font-weight: bold;
 //   }
 // }
 
@@ -97,7 +97,7 @@ $breakpoint-widths: (
 
 // @include media-between(sm, md) {
 //   .element {
-//     font-variation-settings: "wght" bold;
+//     font-weight: bold;
 //   }
 // }
 

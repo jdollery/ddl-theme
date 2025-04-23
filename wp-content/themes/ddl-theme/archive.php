@@ -1,25 +1,29 @@
 <?php get_header(); ?>
 
-<?php get_template_part('inc/banner'); ?>
+<article class="article article--archive">
 
-<?php if ( have_posts() ) { ?>
+  <?php get_template_part('inc/banner'); ?>
 
-<section class="content content--white content--top content--bottom">
-  <div class="content__body">
-    <ul class="loop list--exempt">
+  <?php if ( have_posts() ) { ?>
 
-      <?php while ( have_posts() ) : the_post(); ?>
+  <div class="content content--white content--top content--bottom">
+    <div class="content__body">
+      <ul class="loop list--exempt">
 
-        <li class="loop__item">
-          <?php get_template_part('inc/post'); ?>
-        </li>
+        <?php while ( have_posts() ) : the_post(); ?>
 
-      <?php endwhile; wp_reset_query(); ?>
+          <li class="loop__item">
+            <?php get_template_part('inc/post'); ?>
+          </li>
 
-    </ul>
+        <?php endwhile; wp_reset_query(); ?>
+
+      </ul>
+    </div>
   </div>
-</section>
 
-<?php } ?>
+  <?php } ?>
+
+</article>
 
 <?php get_footer();?>

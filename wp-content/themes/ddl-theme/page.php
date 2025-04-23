@@ -1,25 +1,29 @@
 <?php get_header(); ?>
 
-<?php get_template_part('inc/banner'); ?>
+<article class="article article--page">
 
-<?php if ( !empty( get_the_content() ) ) { ?>
+  <?php get_template_part('inc/banner'); ?>
 
-  <article class="content content--white content--top content--bottom">
-    <div class="content__body">
-      <?php the_content(); ?>
+  <?php if ( !empty( get_the_content() ) ) { ?>
+
+    <div class="content content--white content--top content--bottom">
+      <div class="content__body">
+        <?php the_content(); ?>
+      </div>
     </div>
-  </article>
 
-<?php } else {  
+  <?php } else {  
 
-  get_template_part('inc/sections'); 
+    get_template_part('inc/sections'); 
 
-}  ?>
+  }  ?>
 
-<?php if ( is_page(192) ) { 
+  <?php if ( is_page(192) ) { 
 
-  get_template_part('inc/team');
+    get_template_part('inc/team');
 
-} ?>
+  } ?>
+
+</article>
 
 <?php get_footer();?>

@@ -1,0 +1,165 @@
+/*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+@use 'abstracts/functions' as *;
+@use 'abstracts/utility' as *;
+@use 'abstracts/variables' as *;
+@use 'abstracts/media' as *;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLES */
+/*-----------------------------------------------------------------------------------*/
+
+.comparison {
+
+  &--row {
+    display: grid;
+    gap: 1rem;
+
+    @include media-up(xs) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    // @include media-up(md) {
+    //   gap: 3rem;
+    // }
+
+    img {
+      position: relative;
+      @include object-fit (cover);
+      @include object-position (center);
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 16 / 8;
+
+      @include media-up(xs) {
+        aspect-ratio: 16 / 10;
+      }
+
+    }
+
+  }
+
+  &--slider {
+    position: relative;
+    display: block;
+    user-select: none;
+    overflow: hidden;
+    height: 100%;
+
+    .comparison {
+
+      &__slider {
+        height: 100%;
+      }
+
+      &__photo {
+        height: 100%;
+
+        &--before {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          transform: translate(-50%);
+          z-index: 1;
+        }
+
+      }
+
+      &__photo--before img,
+      &__layer {
+        transform: translate(50%)
+      }
+
+    }
+
+    img {
+      position: relative;
+      @include object-fit (cover);
+      @include object-position (center);
+      width: 100%;
+      height: 100%;
+    }
+
+  }
+
+  &__divider {
+    height: 5rem;
+    width: 5rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 0.3rem solid #fefefe;
+    background: #cccccc;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    z-index: 0;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 12px rgba(51, 51, 51, 0.5);
+    -moz-box-shadow: 0px 0px 12px rgba(51, 51, 51, 0.5);
+    box-shadow: 0px 0px 12px rgba(51, 51, 51, 0.5);
+    z-index: 2;
+
+    &::before,
+    &::after {
+      content: " ";
+      display: block;
+      background: #fefefe;
+      position: absolute;
+      z-index: 0;
+      width: 0.3rem;
+      height: 999.9rem;
+      left: 50%;
+      margin-left: -0.15rem;
+    }
+    
+    &::before {
+      bottom: 50%;
+      margin-bottom: 2.3rem
+    }
+    
+    &::after {
+      top: 50%;
+      margin-top: 2.3rem
+    }
+
+  }
+  
+  &__handle {
+    position: absolute;
+    width: 4.4rem;
+    height: 4.4rem;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border-top: 0.7rem solid transparent;
+      border-bottom: 0.7rem solid transparent;
+    }
+    
+    &::before {
+      left: 0.8rem;
+      border-right: 0.7rem solid #fefefe
+    }
+    
+    &::after {
+      right: 0.8rem;
+      border-left: 0.7rem solid #fefefe
+    }
+
+  }
+
+}

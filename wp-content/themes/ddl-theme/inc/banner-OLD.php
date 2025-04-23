@@ -18,11 +18,11 @@
 
 ?>
 
-<div class="banner<?php if ( is_front_page() ) { ?> banner--home<?php } ?>">
+<section class="banner<?php if ( is_front_page() ) { ?> banner--home<?php } ?>">
 
   <div class="banner__row">
 
-    <div class="banner__col banner__col--body">
+    <div class="banner__one">
 
       <div class="banner__inner">
 
@@ -165,7 +165,7 @@
 
     <?php if ( is_front_page() ) {  //static home ?>
 
-      <div class="banner__col banner__col--media" aria-hidden="true">
+      <div class="banner__two" aria-hidden="true">
 
         <video playsinline autoplay loop muted poster="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-poster-lg.jpg">
           <source src="<?php echo get_template_directory_uri(); ?>/assets/video/placeholder-video.mp4" type="video/mp4">
@@ -191,39 +191,43 @@
 
       ?>
 
-      <div class="banner__col banner__col--media">
+      <div class="banner__two">
 
-        <?php if ( has_post_thumbnail() ) { ?>
+        <div class="banner__media">
 
-          <picture>
-            <source type="image/jpg" media="(min-width: 480px)" srcset="<?php echo $media_url_lg ?>">
-            <source type="image/jpg" media="(max-width: 479px)" srcset="<?php echo $media_url_sm ?>">
-            <img 
-              class="banner__img"
-              src="<?php echo $media_url_lg ?>"
-              alt="<?php if($media_alt){ echo $media_alt; } else { the_title(); } ?>"
-              width="1920" 
-              height="1080"
-              decoding="async"
-            >
-          </picture>
+          <?php if ( has_post_thumbnail() ) { ?>
 
-        <?php  } else { ?>
+            <picture>
+              <source type="image/jpg" media="(min-width: 480px)" srcset="<?php echo $media_url_lg ?>">
+              <source type="image/jpg" media="(max-width: 479px)" srcset="<?php echo $media_url_sm ?>">
+              <img 
+                class="banner__img"
+                src="<?php echo $media_url_lg ?>"
+                alt="<?php if($media_alt){ echo $media_alt; } else { the_title(); } ?>"
+                width="1920" 
+                height="1080"
+                decoding="async"
+              >
+            </picture>
 
-          <picture>
-            <source type="image/jpg" media="(min-width: 480px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-banner-lg.jpg">
-            <source type="image/jpg" media="(max-width: 479px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-banner-sm.jpg">
-            <img 
-              class="banner__img"
-              src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-banner-lg.jpg"
-              alt="Placeholder image"
-              width="1920" 
-              height="1080"
-              decoding="async"
-            >
-          </picture>
+          <?php  } else { ?>
 
-        <?php } ?>
+            <picture>
+              <source type="image/jpg" media="(min-width: 480px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-banner-lg.jpg">
+              <source type="image/jpg" media="(max-width: 479px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-banner-sm.jpg">
+              <img 
+                class="banner__img"
+                src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-banner-lg.jpg"
+                alt="Placeholder image"
+                width="1920" 
+                height="1080"
+                decoding="async"
+              >
+            </picture>
+
+          <?php } ?>
+
+        </div>
 
       </div>
     
@@ -231,4 +235,4 @@
 
   </div>
 
-</div>
+</section>

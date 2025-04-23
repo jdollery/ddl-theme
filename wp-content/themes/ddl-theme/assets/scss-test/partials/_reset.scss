@@ -60,7 +60,7 @@ body {
   font-size: var(--body-size);
   line-height: var(--line-height);
   letter-spacing: var(--letter-spacing);
-  font-variation-settings: "wght" var(--body-weight);
+  font-weight: var(--body-weight);
   color: var(--body-color);
   background: var(--body-bg);
   text-align: left;
@@ -274,11 +274,11 @@ template {
 }
 
 strong {
-  font-variation-settings: "wght" var(--bold);
+  font-weight: var(--bold);
 }
 
 strong > a {
-  font-variation-settings: "wght" var(--bold);
+  font-weight: var(--bold);
 }
 
 address {
@@ -306,7 +306,7 @@ li {
 }
 
 dt {
-  font-variation-settings: "wght" var(--bold);
+  font-weight: var(--bold);
 }
 
 dl,
@@ -398,7 +398,7 @@ a[x-apple-data-detectors] {
   text-decoration: none !important;
   font-size: inherit !important;
   font-family: inherit !important;
-  font-variation-settings: "wght" inherit !important;
+  font-weight: inherit !important;
   line-height: inherit !important;
 }
 
