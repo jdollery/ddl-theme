@@ -681,7 +681,6 @@ html {
 .burger {
   position: relative;
   display: inline-block;
-  background: transancestor;
   border: 0;
   cursor: pointer;
   height: 3.6rem;
@@ -709,7 +708,7 @@ html {
 
   &__inner {
     transition-timing-function: cubic-bezier(.55,.055,.675,.19);
-    transition-duration: 75ms; 
+    transition-duration: 0.1s; 
     
     &::after,
     &::before {
@@ -718,14 +717,13 @@ html {
     }
 
     &::before {
-      top: -10px;
-      transition: top 75ms ease .12s,opacity 75ms ease;
+      top: -1rem;
+      transition: top 0.1s ease .12s, opacity 0.1s ease;
     }
 
     &::after {
-      bottom: -10px;
-      transition: bottom 75ms ease .12s;
-      transform: 75ms cubic-bezier(.55,.055,.675,.19);
+      bottom: -1rem;
+      transition: bottom 0.1s ease .12s, transform 0.1s cubic-bezier(.55, .055, .675, .19);
     }
 
   }
@@ -742,12 +740,12 @@ html {
         &::before {
           top: 0;
           opacity: 0;
-          transition: top 75ms ease,opacity 75ms ease .12s;
+          transition: top 0.1s ease, opacity 0.1s ease .12s;
         }
 
         &::after {
           bottom: 0;
-          transition: bottom 75ms ease,transform 75ms cubic-bezier(.215,.61,.355,1) .12s;
+          transition: bottom 0.1s ease, transform 0.1s cubic-bezier(.215,.61,.355,1) .12s;
           transform: rotate(-90deg);
         }
 
@@ -822,14 +820,13 @@ html {
 //     }
 
 //     &::before {
-//       top: -0.8rem;
-//       transition: top 75ms ease .12s,opacity 75ms ease;
+//      top: -1rem;
+//      transition: top 0.1s ease .12s, opacity 0.1s ease;
 //     }
 
 //     &::after {
-//       bottom: -0.8rem;
-//       transition: bottom 75ms ease .12s;
-//       transform: 75ms cubic-bezier(.55,.055,.675,.19);
+//      bottom: -1rem;
+//      transition: bottom 0.1s ease .12s, transform 0.1s cubic-bezier(.55, .055, .675, .19);
 //     }
 
 //   }

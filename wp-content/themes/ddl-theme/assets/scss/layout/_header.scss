@@ -13,7 +13,7 @@
 /*-----------------------------------------------------------------------------------*/
 
 .header {
-  position: relative;
+  position: fixed;
   top: 0;
   background: var(--white);
   width: 100%;
@@ -21,13 +21,13 @@
   @include box-shadow (rgba(0,0,0,0.2) 0 0.2rem 1.5rem);
   z-index: 4;
 
-  &--sticky {
-    position: fixed;
-    opacity: 1;
-    visibility: visible;
-    z-index: 4;
-    @include animation (slideIn 0.3s);
-  }
+  // &--sticky {
+  //   position: fixed;
+  //   opacity: 1;
+  //   visibility: visible;
+  //   z-index: 4;
+  //   @include animation (slideIn 0.3s);
+  // }
 
   &__top {
     display: grid;

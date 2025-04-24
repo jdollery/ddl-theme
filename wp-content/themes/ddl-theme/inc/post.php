@@ -87,9 +87,9 @@ $quicklink_alt_btn = get_field('quicklink_alt_btn');
       <div class="post__body">
         <div class="post__top">
           <?php if ( $quicklink_alt_title ) { ?>
-            <h4 class="post__heading"><?php echo $quicklink_alt_title ?></h4>
+            <h3 class="post__heading"><?php echo $quicklink_alt_title ?></h3>
           <?php } else { ?>
-            <h4 class="post__heading"><?php the_title(); ?></h4>
+            <h3 class="post__heading"><?php the_title(); ?></h3>
           <?php } ?>
           <?php if(!is_post_type_archive('symptoms')) { ?>
           <div class="post__summary"><?php echo strip_tags( get_excerpt(165) ); ?></div>
@@ -97,9 +97,9 @@ $quicklink_alt_btn = get_field('quicklink_alt_btn');
         </div>
         <div class="post__bottom">
           <?php if ( $quicklink_alt_btn ) { ?>
-            <span class="btn btn--black btn--space"><?php echo $quicklink_alt_btn ?></span>
+            <span class="btn btn--space"><?php echo $quicklink_alt_btn ?></span>
           <?php } else { ?>
-            <span class="btn btn--black btn--space">Learn more</span>
+            <span class="btn btn--space">Learn more</span>
           <?php } ?>
         </div>
       </div>

@@ -64,6 +64,7 @@ body {
   color: var(--body-color);
   background: var(--body-bg);
   text-align: left;
+  text-wrap: pretty;
   
   @include media-down(md) { 
     overflow-x: hidden;
@@ -83,7 +84,7 @@ body {
   outline: none !important;
 }
 
-:focus:not(:focus-visable) {
+:focus:not(:focus-visible) {
   outline: none;
 }
 
@@ -398,7 +399,7 @@ a[x-apple-data-detectors] {
   text-decoration: none !important;
   font-size: inherit !important;
   font-family: inherit !important;
-  font-variation-settings: "wght" inherit !important;
+  font-weight: inherit !important;
   line-height: inherit !important;
 }
 
@@ -412,8 +413,7 @@ a:not([class]) {
 
 a:focus-visible,
 button:focus-visible,
-input:focus-visible,
-.nice-select:focus-visible {
+input:focus-visible {
 	outline: 0.1rem dotted var(--grey-dark);
   text-decoration: none;
   outline-offset: 0.1rem;

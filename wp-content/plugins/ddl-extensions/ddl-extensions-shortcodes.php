@@ -11,14 +11,22 @@ function button_shortcode($atts, $content = null) {
     'target' => ''
 	), $atts));
 
-  if($target == 'blank' && $style){
+  if($target == 'blank' && $style && $colour){
     return '<a class="btn btn--' . $colour . ' btn--' . $style . '" href="' . $link . '" target="_blank" rel="noopener noreferrer">' . do_shortcode($content) . '</a>';
-  } elseif ($target == 'blank' && !$style){
+  } elseif ($target == 'blank' && $style){
+    return '<a class="btn btn--' . $style . '" href="' . $link . '" target="_blank" rel="noopener noreferrer">' . do_shortcode($content) . '</a>';
+  } elseif ($target == 'blank' && $colour){
     return '<a class="btn btn--' . $colour . '" href="' . $link . '" target="_blank" rel="noopener noreferrer">' . do_shortcode($content) . '</a>';
+  } elseif ($target == 'blank'){
+    return '<a class="btn" href="' . $link . '" target="_blank" rel="noopener noreferrer">' . do_shortcode($content) . '</a>';
+  } elseif ($style && $colour){
+    return '<a class="btn btn--' . $colour . ' btn--' . $style . '" href="' . $link . '">' . do_shortcode($content) . '</a>';
   } elseif ($style){
-    return '<a class="btn btn--' . $colour . ' btn--' . $style . '" href="' . $link . '" >' . do_shortcode($content) . '</a>';
-  } else {
+    return '<a class="btn btn--' . $style . '" href="' . $link . '">' . do_shortcode($content) . '</a>';
+  } elseif ($colour){
     return '<a class="btn btn--' . $colour . '" href="' . $link . '">' . do_shortcode($content) . '</a>';
+  } else {
+    return '<a class="btn" href="' . $link . '">' . do_shortcode($content) . '</a>';
   }
 
 }

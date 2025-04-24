@@ -12,57 +12,45 @@
   $blog_title = get_the_title( get_option('page_for_posts', true) );
 
   $banner_alt_title = get_field('banner_alt_title');
-  $banner_hide_excerpt = get_field('banner_hide_excerpt');
-  $banner_alt_excerpt = get_field('banner_alt_excerpt');
+  $banner_hide_summary = get_field('banner_hide_summary');
+  $banner_summary = get_field('banner_summary');
   $banner_cta = 'banner_cta';
 
 ?>
 
 <div class="banner<?php if ( is_front_page() ) { ?> banner--home<?php } ?>">
 
-  <div class="banner__row">
+  <div class="banner__row<?php if ( is_front_page() ) { ?> banner__row--vh<?php } ?><?php if ( is_404() || is_search() ) { ?> banner__row--vw<?php } ?>">
 
     <div class="banner__col banner__col--body">
 
-      <div class="banner__inner">
+      <header class="banner__header">
 
         <?php if ( is_front_page() && is_home() ) { //home/blog ?>
 
           <h1 class="banner__title"><?php bloginfo( 'name' ); ?></h1>
 
           <?php if( bloginfo('description') ) { ?>
-            <div class="banner__intro"><h4><?php bloginfo( 'description' ); ?></h4></div>
+            <div class="banner__summary"><h4><?php bloginfo( 'description' ); ?></h4></div>
           <?php } ?>
 
         <?php } elseif ( is_front_page() ) { //static home ?>
 
-          <h1 class="banner__title"><?php bloginfo( 'name' ); ?></h1>
-
-          <?php if( $banner_hide_excerpt == false ) { ?>
-
-            <?php if($banner_alt_excerpt) { ?>
-              <div class="banner__intro"><?php echo $banner_alt_excerpt ?></div>
-            <?php } elseif( has_excerpt() ) { ?>
-              <div class="banner__intro"><?php echo strip_tags( the_excerpt() ); ?></div>
-            <?php } elseif( bloginfo('description') ) { ?>
-              <div class="banner__intro"><?php bloginfo( 'description' ); ?></div>
-            <?php } ?>
-
+          <?php if($banner_alt_title) { ?>
+            <h1 class="banner__title"><?php echo $banner_alt_title ?></h1>
+          <?php } else { ?>
+            <h1 class="banner__title"><?php bloginfo( 'name' ); ?></h1>
           <?php } ?>
 
-          <?php if( have_rows($banner_cta) ) { 
+          <?php if( $banner_hide_summary == false ) { ?>
 
-            while( have_rows($banner_cta) ): the_row(); 
-
-            $banner_url = get_sub_field('banner_url');
-            $banner_text = get_sub_field('banner_text');
-            $banner_target = get_sub_field('banner_target');
-
-            ?>
-
-            <a class="btn btn--black btn--inline" href="<?php echo esc_url( $banner_url ); ?>"<?php if ($banner_target == 'external') { ?> target="_blank" rel="noopener noreferrer"<?php } ?>><?php echo esc_html( $banner_text ); ?></a>
-
-            <?php endwhile; wp_reset_query();  ?>
+            <?php if($banner_summary) { ?>
+              <div class="banner__summary"><?php echo $banner_summary ?></div>
+            <?php } elseif( has_excerpt() ) { ?>
+              <div class="banner__summary"><?php echo the_excerpt(); ?></div>
+            <?php } elseif( bloginfo('description') ) { ?>
+              <div class="banner__summary"><?php bloginfo( 'description' ); ?></div>
+            <?php } ?>
 
           <?php } ?>
 
@@ -74,12 +62,12 @@
 
           <?php get_template_part('inc/breadcrumb'); ?>
 
-          <?php if( $banner_hide_excerpt == false ) { ?>
+          <?php if( $banner_hide_summary == false ) { ?>
 
-            <?php if($banner_alt_excerpt) { ?>
-              <div class="banner__intro"><?php echo $banner_alt_excerpt ?></div>
+            <?php if($banner_summary) { ?>
+              <div class="banner__summary"><?php echo $banner_summary ?></div>
             <?php } elseif( has_excerpt() ) { ?>
-              <div class="banner__intro"><?php echo the_excerpt(); ?></div>
+              <div class="banner__summary"><?php echo the_excerpt(); ?></div>
             <?php } ?>
 
           <?php } ?>
@@ -96,13 +84,13 @@
           <?php get_template_part('inc/breadcrumb'); ?>
 
           <?php if($archive_description) { ?>
-            <div class="banner__intro"><?php echo $archive_description ?></div>
+            <div class="banner__summary"><?php echo $archive_description ?></div>
           <?php } ?>
 
         <?php } elseif ( is_search() ) { ?>
 
           <h1 class="banner__title">Search results</h1>
-          <div class="banner__intro"><h4><?php printf( esc_html__( 'You searched for: %s', 'ddl' ), '<span>' . get_search_query() . '</span>' );?></h4></div>
+          <h4><?php printf( esc_html__( 'You searched for: %s', 'ddl' ), '<span>' . get_search_query() . '</span>' );?></h4>
 
         <?php } elseif ( is_404() ) { ?>
 
@@ -131,35 +119,19 @@
 
           <?php get_template_part('inc/breadcrumb'); ?>
 
-          <?php if( $banner_hide_excerpt == false ) { ?>
+          <?php if( $banner_hide_summary == false ) { ?>
 
-            <?php if($banner_alt_excerpt) { ?>
-              <div class="banner__intro"><?php echo $banner_alt_excerpt ?></div>
+            <?php if($banner_summary) { ?>
+              <div class="banner__summary"><?php echo $banner_summary ?></div>
             <?php } elseif( has_excerpt() ) { ?>
-              <div class="banner__intro"><?php echo the_excerpt(); ?></div>
+              <div class="banner__summary"><?php echo the_excerpt(); ?></div>
             <?php } ?>
-
-          <?php } ?>
-
-          <?php if( have_rows($banner_cta) ) { 
-
-            while( have_rows($banner_cta) ): the_row(); 
-
-            $banner_url = get_sub_field('banner_url');
-            $banner_text = get_sub_field('banner_text');
-            $banner_target = get_sub_field('banner_target');
-
-            ?>
-
-            <a class="btn btn--black btn--inline" href="<?php echo esc_url( $banner_url ); ?>"<?php if ($banner_target == 'external') { ?> target="_blank" rel="noopener noreferrer"<?php } ?>><?php echo esc_html( $banner_text ); ?></a>
-
-            <?php endwhile; wp_reset_query();  ?>
 
           <?php } ?>
 
         <?php } ?>
 
-      </div>
+      </header>
 
     </div>
 
@@ -176,24 +148,23 @@
 
     <?php 
 
-    // } elseif ( has_post_thumbnail() || !is_404() ) { 
-    } elseif ( !is_404() ) {
-
-      $media_id = get_post_thumbnail_id( $post->ID );
-      $media_alt = get_post_meta($media_id, '_wp_attachment_image_alt', true);
-      $media_title = get_the_title($media_id);
-
-      $media_url_array_lg = wp_get_attachment_image_src($media_id, 'banner_lg', true);
-      $media_url_array_sm = wp_get_attachment_image_src($media_id, 'banner_sm', true);
-
-      $media_url_lg = $media_url_array_lg[0];
-      $media_url_sm = $media_url_array_sm[0];
-
-      ?>
+    } elseif ( !is_404() && !is_search() ) { ?>
 
       <div class="banner__col banner__col--media">
 
-        <?php if ( has_post_thumbnail() ) { ?>
+        <?php if ( has_post_thumbnail() ) { 
+          
+          $media_id = get_post_thumbnail_id( $post->ID );
+          $media_alt = get_post_meta($media_id, '_wp_attachment_image_alt', true);
+          $media_title = get_the_title($media_id);
+
+          $media_url_array_lg = wp_get_attachment_image_src($media_id, 'banner_lg', true);
+          $media_url_array_sm = wp_get_attachment_image_src($media_id, 'banner_sm', true);
+
+          $media_url_lg = $media_url_array_lg[0];
+          $media_url_sm = $media_url_array_sm[0];
+          
+        ?>
 
           <picture>
             <source type="image/jpg" media="(min-width: 480px)" srcset="<?php echo $media_url_lg ?>">

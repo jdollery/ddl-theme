@@ -15,6 +15,10 @@
 .content {
   position: relative;
 
+  &--white {
+    background: var(--grey-light);
+  }
+
   &--accent {
     background: var(--accent);
     color: var(--white);
