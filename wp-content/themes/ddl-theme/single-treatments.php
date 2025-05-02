@@ -16,7 +16,7 @@ $loop = new WP_Query( array(
 if ( $loop->have_posts() ) { ?>
 
   <section class="content content--white content--top content--bottom">
-    <div class="content__body">
+    <div class="content__fixed">
     
       <ul class="loop list--exempt">
 

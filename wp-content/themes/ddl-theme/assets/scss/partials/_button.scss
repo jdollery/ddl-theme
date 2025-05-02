@@ -38,6 +38,25 @@
 
 }
 
+@mixin btn-grey {
+  color: var(--black);
+  background: transparent;
+  border-color: var(--grey);
+
+  @include hover {
+    color: var(--white);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  &:focus-visible {
+    color: var(--white);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+}
+
 @mixin btn-accent {
   color: var(--black);
   background: transparent;
@@ -49,17 +68,23 @@
     border-color: var(--accent);
   }
 
+  &:focus-visible {
+    color: var(--white);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
 }
 
 @mixin btn-accent-wo {
   color: var(--white);
-  background: var(--accent);
+  background: transparent;
   border-color: var(--accent);
 
   @include hover {
-    color: var(--accent);
-    background: var(--white);
-    border-color: var(--white);
+    color: var(--white);
+    background: var(--accent);
+    border-color: var(--accent);
 
     &.btn--arrow {
   
@@ -71,6 +96,10 @@
 
   }
 
+  &:focus-visible {
+    border-color: var(--grey);
+  }
+
 }
 
 @mixin btn {
@@ -79,7 +108,6 @@
   text-align: center;
   user-select: none;
   vertical-align: middle;
-  font-size: var(--h6);
   font-variation-settings: "wght" var(--bold);
   line-height: 1.2;
   background-color: transparent;
@@ -87,15 +115,15 @@
   border-style: solid;
   border-color: transparent;
   border-radius: 50rem;
-  padding: 1.2rem 4rem 1.3rem;
+  padding: 1.2rem 3rem 1.4rem;
   width: 100%;
 
   @include media-up(xs) {
     width: fit-content;
   }
 
-  @include media-up(xl) {
-    padding: 1.2rem 4rem 1.35rem;
+  @include media-up(xxl) {
+    padding: 1.2rem 4rem 1.4rem;
   }
 
   &--black {
@@ -104,6 +132,10 @@
 
   &--white {
     @include btn-white;
+  }
+
+  &--grey {
+    @include btn-grey;
   }
 
   &--accent {
@@ -143,14 +175,14 @@
   &--sending {
     cursor: not-allowed;
     color: var(--white) !important;
-    background: var(--black) !important;
-    border-color: var(--black) !important;
+    background: var(--accent) !important;
+    border-color: var(--accent) !important;
     opacity: 0.5;
 
     @include hover {
       color: var(--white) !important;
-      background: var(--black) !important;
-      border-color: var(--black) !important;
+      background: var(--accent) !important;
+      border-color: var(--accent) !important;
     }
 
     .btn__sending {
@@ -203,10 +235,70 @@
 
   }
 
+  &--radio {
+    display: block !important;
+    padding: 0 !important;
+    border: 0 !important;
+
+    input[type="radio"] {
+      display: none;
+
+      + label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 1.3rem;
+        font-weight: var(--btn-weight) !important;
+        padding: 1rem 2.5rem 1.05rem;
+        margin: 0 !important;
+        color: var(--white);
+        background: transparent;
+        border-color: var(--accent);
+        border-width: 0.3rem;
+        border-style: solid;
+        border-radius: 5rem;
+        cursor: pointer;
+        white-space: nowrap;
+  
+        .icon {
+          aspect-ratio: 1 / 1;
+          width: 1.6rem;
+          display: none;
+          margin: 0 0.2rem 0 0;
+          @include transition(all);
+  
+          svg {
+            fill: var(--white);
+          }
+  
+        }
+
+        &:focus-visible {
+          border-color: var(--grey);
+        }
+  
+      }
+
+      &:checked + label {
+        color: var(--white);
+        background: var(--accent);
+        border-color: var(--accent);
+
+        .icon {
+          display: inline-block;
+        }
+
+      }
+
+    }
+
+  }
+
   &--edit {
-    color: var(--white);
-    background: var(--grey-dark);
-    border-color: var(--grey-dark);
+    color: var(--black);
+    background: var(--grey);
+    border-color: var(--grey);
     position: fixed;
     bottom: 0;
     left: 0;
@@ -215,15 +307,20 @@
     padding: 1.6rem 2.5rem 1.5rem;
 
     @include hover-focus {
-      color: var(--grey-dark);
+      color: var(--black);
       background: var(--white);
-      border-color: var(--grey-dark);
+      border-color: var(--grey);
     }
 
   }
 
   &--space {
-    margin-top: var(--space-gutter);
+    margin-top: 3rem;
+
+    @include media-up(md) {
+      margin-top: 4rem;
+    }
+
   }
 
 }

@@ -71,7 +71,7 @@ $level-one-bg-current-sm:             color.adjust(map.get($colors, "accent"), $
 
 $level-two-color-sm:                  var(--white);
 $level-two-bg-sm:                     color.adjust(map.get($colors, "black"), $lightness: -5%);
-$level-two-border-sm:                 color.adjust(map.get($colors, "black"), $lightness: -10%);
+$level-two-border-sm:                 color.adjust(map.get($colors, "black"), $lightness: -15%);
 
 $level-two-color-current-sm:          var(--white);
 $level-two-bg-current-sm:             color.adjust(map.get($colors, "accent"), $lightness: -5%);
@@ -81,7 +81,7 @@ $level-two-bg-current-sm:             color.adjust(map.get($colors, "accent"), $
 
 $level-three-color-sm:                var(--white);
 $level-three-bg-sm:                     color.adjust(map.get($colors, "black"), $lightness: -10%);
-$level-three-border-sm:                 color.adjust(map.get($colors, "black"), $lightness: -15%);
+$level-three-border-sm:                 color.adjust(map.get($colors, "black"), $lightness: -20%);
 
 $level-three-color-current-sm:        var(--white);
 $level-three-bg-current-sm:           color.adjust(map.get($colors, "accent"), $lightness: -5%);
@@ -158,19 +158,22 @@ html {
           align-items: center;
           white-space: nowrap;
           font-variation-settings: "wght" var(--bold);
-          padding: 0.4rem;
+          padding: 1.5rem 0.5rem;
         } 
 
         &.menu-item-has-children {
 
           > a {
-            gap: 0.5rem;
+            gap: 1rem;
 
             &::after {
+              position: relative;
+              top: 0;
               display: block;
               content: '';
               aspect-ratio: 1 / 1;
               background-repeat: no-repeat;
+              @include transition(transform)
             }
 
           }
@@ -188,8 +191,7 @@ html {
           width: fit-content;
           z-index: 99999;
           text-align: left;
-          // overflow: hidden;
-          // @include box-shadow (0 0 1.5rem 0.1rem rgba(map.get($colors, "black"), 0.5));
+          @include box-shadow (0 0 1.5rem 0.1rem rgba(map.get($colors, "black"), 0.2));
 
           li {
             display: block;
@@ -202,12 +204,18 @@ html {
             a {
               width: 100%;
               min-width: 25rem;
-              min-height: 6rem;
+              min-height: 5.5rem;
               font-variation-settings: "wght" var(--bold);
-              font-size: 1.6rem;
+              font-size: #{fluid(14px, 18px)};
               border-top: 0;
-              padding: 1.8rem 2rem;
+              padding: 1.7rem 2rem;
               justify-content: space-between;
+
+              @include media-up(lg) {
+                min-height: 5.5rem;
+                padding: 1.7rem 2rem;
+              }
+
             }
 
             &:hover,
@@ -225,7 +233,8 @@ html {
               > a {
 
                 &::after {
-                  width: 2rem;
+                  width: 1.3rem;
+                  top: 0.1rem;
                 }
     
               }
@@ -252,7 +261,7 @@ html {
         display: block;
 
         > a {
-          font-size: #{fluid(14px, 24px)};
+          font-size: var(--h6);
           color: $level-one-color-lg;
 
           @include hover-focus {
@@ -267,7 +276,12 @@ html {
 
             &::after {
               width: 1.5rem;
-              background-image: $icon-chevron-down-black;
+              background-image: $icon-chevron-down-grey;
+
+              @include media-up(xxxl) {
+                width: 2rem
+              }
+
             }
 
           }

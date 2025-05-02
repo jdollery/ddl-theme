@@ -22,9 +22,10 @@ $colors: (
   "grey-light": $grey-light,
   "accent": $accent,
   "danger": $danger,
+  "success": $success,
 );
 
-// lighten(map.get($colors, "blue"), 10%)
+// color.adjust(map.get($colors, "accent"), $lightness: 10%);
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -170,6 +171,11 @@ $colors: (
   max-width: $max-width;
   margin-right: auto;
   margin-left: auto;
+
+  @include media-min($max-width) {
+    max-width: 205rem;
+  }
+
 }
 
 

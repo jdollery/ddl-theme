@@ -15,6 +15,7 @@
 .footer {
   position: relative;
   background: var(--body-bg);
+  color: var(--white);
   font-size: #{fluid(14px, 18px)};
   line-height: 1.7;
   text-align: center;
@@ -22,11 +23,11 @@
   z-index: 3;
 
   a {
-    color: var(--black);
+    color: inherit;
     @include transition(all);
   
     @include hover {
-      color: var(--accent);
+      color: var(--grey-light);
     }
 
   }
@@ -36,6 +37,13 @@
     display: inline-flex;
     padding: 0;
     margin: 0;
+
+    @include media-up(lg) {
+      flex-wrap: wrap;
+      text-align: center;
+      justify-content: center;
+      row-gap: 1rem;
+    }
 
     @include media-down(lg) {
       flex-direction: column;
@@ -55,7 +63,7 @@
             display: inline-flex;
             content: "|";
             margin: 0 1.5rem;
-            color: var(--accent);
+            color: var(--white);
           }
 
         }
@@ -65,7 +73,7 @@
       .icon {
         position: relative;
         top: -0.2rem;
-        fill: var(--accent);
+        fill: var(--white);
       }
 
     }

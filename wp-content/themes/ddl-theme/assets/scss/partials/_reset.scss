@@ -61,6 +61,7 @@ body {
   line-height: var(--line-height);
   letter-spacing: var(--letter-spacing);
   font-variation-settings: "wght" var(--body-weight);
+  font-optical-sizing: auto;
   color: var(--body-color);
   background: var(--body-bg);
   text-align: left;
@@ -368,8 +369,8 @@ img {
 }
 
 ::selection {
-  background-color: var(--grey-dark);
-  color: var(--white);
+  background-color: var(--grey);
+  color: var(--black);
 }
 
 a,
@@ -411,10 +412,15 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
-a:focus-visible,
-button:focus-visible,
-input:focus-visible {
-	outline: 0.1rem dotted var(--grey-dark);
-  text-decoration: none;
-  outline-offset: 0.1rem;
+a,
+button,
+input,
+.btn--radio input[type=radio] + label {
+
+  &:focus-visible {
+    outline: 0.1rem dotted var(--grey);
+    text-decoration: none;
+    outline-offset: 0.1rem;
+  }
+
 }

@@ -34,13 +34,7 @@
     aspect-ratio: 1 / 1;
   }
 
-
   &--tick {
-    width: 2.5rem;
-    aspect-ratio: 1 / 1;
-  }
-
-  &--check {
     width: 2.5rem;
     aspect-ratio: 1 / 1;
   }
@@ -106,12 +100,12 @@
   }
 
   &--asterisk {
-    width: 1.8rem;
+    width: 1rem;
     aspect-ratio: 1 / 1;
   }
 
-  &--star {
-    width: 2.5rem;
+  &--quote {
+    width: 2rem;
     aspect-ratio: 1 / 1;
   }
 

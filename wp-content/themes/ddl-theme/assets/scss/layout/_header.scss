@@ -17,9 +17,8 @@
   top: 0;
   background: var(--white);
   width: 100%;
-  font-size: var(--btn-size);
   @include box-shadow (rgba(0,0,0,0.2) 0 0.2rem 1.5rem);
-  z-index: 4;
+  z-index: 11;
 
   // &--sticky {
   //   position: fixed;
@@ -34,6 +33,7 @@
     grid-template-columns: auto 0 1fr;
     justify-content: center;
     gap: $nav-gap;
+    font-size: var(--btn-size);
     padding: 2rem var(--space-x);
 
     @include media-up($nav-breakpoint) {
@@ -45,9 +45,9 @@
       justify-content: center;
       align-items: center;
 
-      &:nth-child(2) {
-        justify-content: right;
-      }
+      // &:nth-child(2) {
+      //   justify-content: right;
+      // }
 
       @include media-down($nav-breakpoint) {
         
@@ -63,10 +63,9 @@
 
   &__bottom {
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(3, auto);
     justify-content: space-between;
     padding: 1.5rem var(--space-x);
-    font-size: #{fluid(14px, 18px)};
     color: var(--white);
     background: var(--accent);
 

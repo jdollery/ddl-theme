@@ -12,15 +12,15 @@
   $blog_title = get_the_title( get_option('page_for_posts', true) );
 
   $banner_alt_title = get_field('banner_alt_title');
+  $banner_hide_img = get_field('banner_hide_img');
   $banner_hide_summary = get_field('banner_hide_summary');
   $banner_summary = get_field('banner_summary');
-  $banner_cta = 'banner_cta';
 
 ?>
 
 <div class="banner<?php if ( is_front_page() ) { ?> banner--home<?php } ?>">
 
-  <div class="banner__row<?php if ( is_front_page() ) { ?> banner__row--vh<?php } ?><?php if ( is_404() || is_search() ) { ?> banner__row--vw<?php } ?>">
+  <div class="banner__row<?php if ( is_front_page() ) { ?> banner__row--vh<?php } ?><?php if ( is_404() || is_search() || is_archive() || $banner_hide_img == true ) { ?> banner__row--single<?php } ?>">
 
     <div class="banner__col banner__col--body">
 
@@ -105,9 +105,21 @@
           <?php get_template_part('inc/breadcrumb'); ?>
 
           <div class="banner__meta">
-            <ul class="banner__categories"><?php echo $categories_list ?></ul>
+            <ul class="banner__categories list--exempt"><?php echo $categories_list ?></ul>
             <time class="banner__date"><span class="icon icon--calendar"><svg role="img"><use xlink:href="#calendar" href="#calendar"></use></svg></span><?php echo get_the_date(); ?></time>
           </div>
+
+          <?php if( $banner_hide_summary == false ) { ?>
+
+            <?php if($banner_summary) { ?>
+              <div class="banner__summary"><?php echo $banner_summary ?></div>
+            <?php } elseif( has_excerpt() ) { ?>
+              <div class="banner__summary"><?php echo the_excerpt(); ?></div>
+            <?php } elseif( bloginfo('description') ) { ?>
+              <div class="banner__summary"><?php bloginfo( 'description' ); ?></div>
+            <?php } ?>
+
+          <?php } ?>
 
         <?php } else { ?>
 
@@ -148,7 +160,7 @@
 
     <?php 
 
-    } elseif ( !is_404() && !is_search() ) { ?>
+    } elseif ( !is_404() && !is_search() && !is_archive() && $banner_hide_img == false ) { ?>
 
       <div class="banner__col banner__col--media">
 

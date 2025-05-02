@@ -14,7 +14,6 @@
 
 .breadcrumb {
   font-weight: var(--regular);
-  margin: 0 0 2rem;
 
   > span {
     display: flex;
@@ -28,12 +27,12 @@
     display: block;
     background-image: $icon-chevron-right-white;           
     background-repeat: no-repeat;
-    width: 1.8rem;
+    width: 1.6rem;
     aspect-ratio: 1 / 1;
   }
 
   a {
-    color: var(--accent);
+    color: var(--grey);
 
     @include hover {
       color: var(--white);

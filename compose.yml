@@ -1,0 +1,53 @@
+services:
+
+  # wordpress:
+  #   image: wordpress
+  #   container_name: ddl-theme-wordpress
+  #   volumes:
+  #     - ./wp-content:/var/www/html/wp-content
+  #     - ./wp-config.php:/var/www/html/wp-config.php
+  #   restart: always
+  #   ports:
+  #     - "8000:80"
+
+
+  wordpress:
+    image: wordpress
+    container_name: ddl-theme-wordpress
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: admin
+      WORDPRESS_DB_PASSWORD: canford1
+      WORDPRESS_DB_NAME: ddl-theme
+    volumes:
+      - ./wp-content:/var/www/html/wp-content
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: ddl-theme
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: canford1
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - "8180:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: password
+    depends_on:
+      - db
+  
+volumes:
+  wordpress:
+  db:

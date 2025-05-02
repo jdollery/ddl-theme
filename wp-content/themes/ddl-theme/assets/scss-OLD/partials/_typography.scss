@@ -1,25 +1,22 @@
 /*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+@use 'sass:color';
+@use "sass:map";
+
+@use 'abstracts/variables' as *;
+@use 'abstracts/utility' as *;
+@use 'abstracts/media' as *;
+
+
+/*-----------------------------------------------------------------------------------*/
 /* PARAGRAPH */
 /*-----------------------------------------------------------------------------------*/
 
-/* --------------------- VARIABLES --------------------- */
-
-$paragraph-margin-top-lg:     var(--gutter-md);
-$paragraph-margin-bottom-lg:  var(--gutter-md);
-$paragraph-margin-top-sm:     var(--gutter-md);
-$paragraph-margin-bottom-sm:  var(--gutter-md);
-
-
-/* --------------------- STYLING --------------------- */
-
 p {
-  margin-top: $paragraph-margin-top-sm;
-  margin-bottom: $paragraph-margin-bottom-sm;
-
-  @include media-up(md) {
-    margin-top: $paragraph-margin-top-lg;
-    margin-bottom: $paragraph-margin-bottom-lg;
-  }
+  margin-block: var(--paragraph-margin-block-fb);
+  margin-block: var(--paragraph-margin-block);
 
   &:first-child {
     margin-top: 0;
@@ -36,51 +33,16 @@ p {
 /* HEADINGS */
 /*-----------------------------------------------------------------------------------*/
 
-/* --------------------- VARIABLES --------------------- */
-
-$heading-margin-top-lg:      var(--gutter-lg);
-$heading-margin-bottom-lg:   var(--gutter-md);
-$heading-margin-top-sm:      var(--gutter-lg);
-$heading-margin-bottom-sm:   var(--gutter-sm);
-
-
-/* --------------------- MIXINS --------------------- */
-
-// @mixin h1 {
-//   @include fluid-type(2.8rem, 3.5rem, 3.8rem);
-// }
-
-// @mixin h2 {
-//   @include fluid-type(2.8rem, 3.5rem, 3.8rem);
-// }
-
-// @mixin h3 {
-//   @include fluid-type(2.5rem, 2.8rem, 3rem);
-// }
-
-// @mixin h4 {
-//   @include fluid-type(2rem, 2.3rem, 2.5rem);
-// }
-
-// @mixin h5 {
-//   @include fluid-type(1.8rem, 2rem, 2.2rem);
-// }
-
-
-/* --------------------- STYLING --------------------- */
-
 h1, h2, h3, h4, h5, h6 {
-  font-weight: var(--regular);
-  line-height: 1.3;
+  font-family: var(--heading-font);
+  font-variation-settings: "wght" var(--heading-weight);
+  line-height: var(--heading-line-height);
+  letter-spacing: var(--heading-letter-spacing);
   color: inherit;
-  text-wrap: pretty;
-  margin-top: $heading-margin-top-sm;
-  margin-bottom: $heading-margin-bottom-sm;
-
-  @include media-up(md) {
-    margin-top: $heading-margin-top-lg;
-    margin-bottom: $heading-margin-bottom-lg;
-  }
+  margin-block-start: var(--heading-margin-block-start-fb);
+  margin-block-end: var(--heading-margin-block-end-fb);
+  margin-block-start: var(--heading-margin-block-start);
+  margin-block-end: var(--heading-margin-block-end);
 
   &:first-child {
     margin-top: 0;
@@ -90,39 +52,34 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0;
   }
 
-  span {
+  strong {
     color: var(--accent);
+    font-variation-settings: "wght" var(--heading-weight);
   }
 
 }
 
-h1, .h1 {
-  // @include h1;
+h1 {
   font-size: var(--h1);
 }
 
-h2, .h2 {
-  // @include h2;
+h2 {
   font-size: var(--h2);
 }
 
-h3, .h3 {
-  // @include h3;
+h3 {
   font-size: var(--h3);
 }
 
-h4, .h4 {
-  // @include h4;
+h4 {
   font-size: var(--h4);
 }
 
-h5, .h5 {
-  // @include h5;
+h5 {
   font-size: var(--h5);
 }
 
-h6, h6 {
-  // @include h5;
+h6 {
   font-size: var(--h6);
 }
 
@@ -131,13 +88,30 @@ h6, h6 {
 /* LINKS */
 /*-----------------------------------------------------------------------------------*/
 
-a {
-  color: var(--accent);
-  font-weight: var(--bold);
-  @include transition(all);
 
-  @include hover {
-    color: var(--accent-light);
+a,
+button,
+span.btn {
+  @include transition(all);
+}
+
+p {
+
+  a,
+  a[href^=tel],
+  button {
+
+    &:not(.btn) {
+      color: var(--link-color);
+      font-variation-settings: "wght" var(--link-weight);
+      @include transition(all);
+    
+      @include hover {
+        color: var(--link-color-hover);
+      }
+
+    }
+
   }
 
 }
@@ -147,25 +121,10 @@ a {
 /* LISTS */
 /*-----------------------------------------------------------------------------------*/
 
-/* --------------------- VARIABLES --------------------- */
-
-$list-indent:             2rem;
-$list-gutter:             0.5rem;
-$list-bullet-size:        0.6rem;
-$list-bullet-color:       var(--accent);
-
-
-/* --------------------- STYLING --------------------- */
-
 ul:not(.list--exempt),
-ol {
-  margin-top: $paragraph-margin-top-sm;
-  margin-bottom: $paragraph-margin-bottom-sm;
-
-  @include media-up(sm) {
-    margin-top: $paragraph-margin-top-lg;
-    margin-bottom: $paragraph-margin-bottom-lg;
-  }
+ol:not(.list--exempt) {
+  margin-block: var(--paragraph-margin-block-fb);
+  margin-block: var(--paragraph-margin-block);
 
   &:first-child {
     margin-top: 0;
@@ -173,201 +132,6 @@ ol {
 
   &:last-child {
     margin-bottom: 0;
-  }
-
-  li::marker {
-    color: $list-bullet-color;
   }
   
-}
-
-@mixin list-unstyled {
-
-  &:not(.list--exempt) {
-    list-style: none;
-    padding-left: 0;
-
-    li {
-      margin: 0;
-
-      &::marker {
-        display: none;
-      }
-
-    }
-
-  }
-
-}
-
-@mixin list-bullet {
-
-  &:not(.list--exempt) {
-
-    list-style: none;
-    padding-left: $list-indent;
-
-    li {
-      position: relative;
-      margin: 0;
-
-      &::marker {
-        display: none;
-      }
-
-      &:not(:last-child) {
-        margin-bottom: $list-gutter;
-      }
-
-      &::before {
-        position: absolute;
-        left: -$list-indent;
-        top: 0.9rem;
-        display: block;
-        content: '';
-        width: $list-bullet-size;
-        height: $list-bullet-size;
-        background: $list-bullet-color;
-        border-radius: 50%;
-      }
-      
-    }
-
-  }
-
-}
-
-@mixin list-number {
-  padding-left: $list-indent;
-  counter-reset: custom-counter;
-  list-style: none;
-
-  li {
-    position: relative;
-    margin: 0;
-    counter-increment: custom-counter;
-
-    &::marker {
-      display: none;
-    }
-
-    &:not(:last-child) {
-      margin-bottom: $list-gutter;
-    }
-
-    &::before {
-      position: absolute;
-      left: -$list-indent;
-      top: 0;
-      display: block;
-      content: counter(custom-counter) ".";
-      font-weight: var(--bold);
-      color: $list-bullet-color;
-    }
-
-  }
-
-}
-
-@mixin list-inline {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: $gap;
-
-  li {
-    display: block;
-  }
-
-}
-
-.list {
-
-  &--unstyled { 
-    @include list-unstyled;
-  }
-
-  &--bullet { 
-    @include list-bullet;
-  }
-
-  &--number { 
-    @include list-number;
-  }
-
-  &--inline {
-    @include list-inline;
-  }
-
-}
-
-
-/*-----------------------------------------------------------------------------------*/
-/* BLOCKQUOTE */
-/*-----------------------------------------------------------------------------------*/
-
-/* --------------------- VARIABLES --------------------- */
-
-$blockquote-indent:          var(--gutter-lg);
-$blockquote-border-width:    0.5rem;
-$blockquote-border-color:    var(--accent);
-
-
-/* --------------------- STYLING --------------------- */
-
-blockquote {
-  border-left: $blockquote-border-width solid $blockquote-border-color;
-  padding-left: $blockquote-indent;
-  margin-left: 0;
-  margin-top: $paragraph-margin-top-sm;
-  margin-bottom: $paragraph-margin-bottom-sm;
-
-  @include media-up(sm) {
-    margin-top: $paragraph-margin-top-lg;
-    margin-bottom: $paragraph-margin-bottom-lg;
-  }
-
-  &:first-child {
-    margin-top: 0;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-}
-
-figure.quote {
-  border-left: $blockquote-border-width solid $blockquote-border-color;
-  padding-left: $blockquote-indent;
-  margin-left: 0;
-  margin-top: $paragraph-margin-top-sm;
-  margin-bottom: $paragraph-margin-bottom-sm;
-
-  @include media-up(sm) {
-    margin-top: $paragraph-margin-top-lg;
-    margin-bottom: $paragraph-margin-bottom-lg;
-  }
-
-  &:first-child {
-    margin-top: 0;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-  blockquote {
-    border: 0;
-    padding: 0;
-    margin: 0;
-  }
-
-  figcaption {
-    margin-top: 1rem;
-  }
-
 }

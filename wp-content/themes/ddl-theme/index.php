@@ -6,8 +6,8 @@
 
   <?php if ( have_posts() ) { ?>
 
-    <div class="content content--white content--top content--bottom">
-      <div class="content__body">
+    <div class="content content--grey content--top content--bottom">
+      <div class="content__fixed">
         <ul class="loop list--exempt">
 
         <?php while ( have_posts() ) : the_post(); ?>

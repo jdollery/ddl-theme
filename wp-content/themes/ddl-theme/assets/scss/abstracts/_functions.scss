@@ -44,7 +44,7 @@
 // $default-min-bp: 576px;
 // $default-max-bp: 1550px;
 $default-min-bp: map.get($breakpoint-widths, "xs");
-$default-max-bp: map.get($breakpoint-widths, "xxl");
+$default-max-bp: map.get($breakpoint-widths, "xxxl");
 
 @function round($number, $decimals: 0) {
   $n: 1;
