@@ -9,7 +9,6 @@ if( have_rows('content_section') ){
   $content_bg = get_sub_field('content_bg');
   $content_location = get_sub_field('content_location');
   $content_media = get_sub_field('content_media');
-  $content_sticky = get_sub_field('content_sticky');
   $content_option = get_sub_field('content_option');
   $content_img = get_sub_field('content_img');
   $content_fit = get_sub_field('content_fit');
@@ -25,11 +24,11 @@ if( have_rows('content_section') ){
 
   <section class="content content--<?php echo esc_html($content_bg['value']); ?><?php if( $content_media == true ) { ?> content--<?php echo esc_html($content_location['value']); ?><?php } ?><?php if( $content_spacing ) { foreach( $content_spacing as $space ): ?> content--<?php echo $space; endforeach; } ?>">
 
-    <div class="content__row">
+    <div class="content__row<?php if( $content_media == false ) { ?> content__row--single<?php } ?>">
 
       <?php if( $content_media == true ) { ?>
 
-      <div class="content__column<?php if( $content_sticky == true ) { ?> content__column--sticky<?php } ?>">  
+      <div class="content__column content__column--media">  
 
         <?php if (esc_html($content_option['value'] == 'video')) { ?>
 
@@ -153,7 +152,7 @@ if( have_rows('content_section') ){
 
       <?php } ?>
 
-      <div class="content__column">
+      <div class="content__column content__column--body">
 
         <article class="content__body">
           <?php echo $content_text ?>

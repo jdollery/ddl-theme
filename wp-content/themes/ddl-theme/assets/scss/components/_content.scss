@@ -99,27 +99,21 @@
   }
 
   &__column {
-    // display: flex;
-    // flex: 0 0 auto;
-    // width: 100%;
-    // max-width: 100%;
 
-    // @include media-up(lg) {
-    //   position: relative;
-    //   flex: 1 0 0%;
-    //   width: 100%;
-    // }
+    &--body {
+      display: flex;
+    }
 
-    // &--sticky {
-    //   position: relative;
+    &--media {
+      position: relative;
 
-    //   .content__media {
-    //     position: sticky;
-    //     top: 17rem;
-    //     z-index: 1;
-    //   }
+      .content__media {
+        position: sticky;
+        top: 17rem;
+        z-index: 1;
+      }
       
-    // }
+    }
 
   }
 

@@ -1973,6 +1973,7 @@ html.js-nav-active {
 }
 .breadcrumb > span {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 1rem
 }
@@ -2047,6 +2048,17 @@ html.js-nav-active {
   .content__row--single .content__column--body {
     display: block
   }
+}
+.content__column--body {
+  display: flex
+}
+.content__column--media {
+  position: relative
+}
+.content__column--media .content__media {
+  position: sticky;
+  top: 17rem;
+  z-index: 1
 }
 .content__media {
   position: relative;
