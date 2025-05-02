@@ -26,33 +26,14 @@
 }
 
 @mixin btn-white {
-  color: var(--black);
+  color: var(--white);
   background: transparent;
   border-color: var(--white);
 
   @include hover {
     color: var(--black);
-    background: var(--black);
+    background: var(--white);
     border-color: var(--white);
-  }
-
-}
-
-@mixin btn-grey {
-  color: var(--black);
-  background: transparent;
-  border-color: var(--grey);
-
-  @include hover {
-    color: var(--white);
-    background: var(--accent);
-    border-color: var(--accent);
-  }
-
-  &:focus-visible {
-    color: var(--white);
-    background: var(--accent);
-    border-color: var(--accent);
   }
 
 }
@@ -132,10 +113,6 @@
 
   &--white {
     @include btn-white;
-  }
-
-  &--grey {
-    @include btn-grey;
   }
 
   &--accent {

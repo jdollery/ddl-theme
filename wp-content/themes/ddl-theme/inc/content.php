@@ -15,7 +15,7 @@ if( have_rows('content_section') ){
   $content_position = get_sub_field('content_position');
   $content_video = get_sub_field('content_video');
   $content_poster = get_sub_field('content_poster');
-  $content_shortcode = get_sub_field('content_shortcode');
+  $content_embed = get_sub_field('content_embed');
   $content_text = get_sub_field('content_text');
 
   if ($content_hide == false) {
@@ -90,7 +90,7 @@ if( have_rows('content_section') ){
 
         <section class="content__media content__media--embed" >
 
-          <?php echo $content_shortcode ?>
+          <?php echo $content_embed ?>
 
         </section>
 
@@ -154,9 +154,9 @@ if( have_rows('content_section') ){
 
       <div class="content__column content__column--body">
 
-        <article class="content__body">
+        <div class="content__body">
           <?php echo $content_text ?>
-        </article>
+        </div>
 
       </div>
 

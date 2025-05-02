@@ -6,6 +6,7 @@
 @use 'abstracts/utility' as *;
 @use 'abstracts/variables' as *;
 @use 'abstracts/media' as *;
+@use 'partials/button' as *;
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -40,11 +41,21 @@
       &__column {
 
         &:nth-child(1) {
-          order: 1;
+          order: 2;
+
+          @include media-up(lg) {
+            order: 1;
+          }
+
         }
   
         &:nth-child(2) {
-          order: 2;
+          order: 1;
+
+          @include media-up(lg) {
+            order: 2;
+          }
+
         }
 
       }
@@ -80,7 +91,7 @@
   &__row {
     display: grid;
     grid-template-columns: auto;
-    gap: $gap;
+    gap: var(--space-x);
 
     @include media-up(lg) {
       grid-template-columns: repeat(2, 1fr);
@@ -202,8 +213,6 @@
 
   &__body {
     position: relative;
-    padding-left: var(--space-x);
-    padding-right: var(--space-x);
     align-self: center;
 
     ul {
@@ -218,10 +227,20 @@
 
   &--white {
     background: var(--white);
+
+    .btn {
+      @include btn-accent;
+    }
+
   }
 
   &--grey {
     background: var(--grey);
+
+    .btn {
+      @include btn-accent;
+    }
+
   }
 
   &--accent {
@@ -241,6 +260,10 @@
         color: var(--accent-light);
       }
 
+    }
+
+    .btn {
+      @include btn-white;
     }
 
   }
