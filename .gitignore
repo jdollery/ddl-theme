@@ -14,7 +14,7 @@ node_modules
 wp-content/*
 !wp-content/plugins/
 !wp-content/themes/
-!wp-content/uploads/
+wp-content/uploads/
 wp-content/plugins/index.php
 wp-content/plugins/classic-editor
 wp-content/plugins/classic-widgets
@@ -26,3 +26,4 @@ wp-content/plugins/wordpress-seo
 wp-content/plugins/popup-builder
 # wp-config.php
 wp-config.php
+!uploads.ini

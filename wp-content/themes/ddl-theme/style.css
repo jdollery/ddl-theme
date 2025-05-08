@@ -2243,4 +2243,104 @@ html.js-nav-active {
   background: var(--white);
   border-color: var(--white)
 }
+html.js-dialog-active {
+  overflow: hidden
+}
+#videoToggle {
+  cursor: pointer
+}
+.dialog {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: block;
+  left: 0;
+  top: 0;
+  z-index: 999999;
+  padding: 2.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s cubic-bezier(.5,0,.5,1)
+}
+@media (min-width:1280px) {
+  .dialog {
+    padding: 0 var(--space-x)
+  }
+}
+.dialog__overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--black);
+  opacity: 0;
+  cursor: pointer
+}
+.dialog__inner {
+  position: relative;
+  width: 90rem;
+  max-width: 100%;
+  z-index: 5;
+  margin: 0 auto var(--space-x);
+  -webkit-box-shadow: 0 0 5rem .2rem rgba(34.7086614173,38.8976377953,41.2913385827,.2);
+  -moz-box-shadow: 0 0 5rem .2rem rgba(34.7086614173,38.8976377953,41.2913385827,.2);
+  box-shadow: 0 0 5rem .2rem rgba(34.7086614173,38.8976377953,41.2913385827,.2)
+}
+@media (min-width:1280px) {
+  .dialog__inner {
+    margin: var(--space-x) auto
+  }
+}
+.dialog__slot a {
+  display: block
+}
+.dialog iframe,
+.dialog video {
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 0 19px rgba(0,0,0,.16);
+  width: 100%;
+  height: auto;
+  max-height: 85vh;
+  display: block
+}
+.dialog video {
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center
+}
+.dialog__close {
+  position: absolute;
+  right: -1.5rem;
+  top: -1.5rem;
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+  border-radius: .5rem;
+  border: 0;
+  z-index: 1;
+  transition: all .3s cubic-bezier(.5,0,.5,1);
+  cursor: pointer;
+  z-index: 150
+}
+.dialog__close:focus,
+.dialog__close:hover {
+  background-color: var(--black)
+}
+.dialog--active {
+  opacity: 1;
+  visibility: visible
+}
+.dialog--active .dialog__overlay {
+  opacity: .8
+}
 /*# sourceMappingURL=style.css.map */

@@ -22,7 +22,9 @@ services:
       WORDPRESS_DB_USER: admin
       WORDPRESS_DB_PASSWORD: canford1
       WORDPRESS_DB_NAME: ddl-theme
+      WORDPRESS_DEBUG: 1
     volumes:
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
       - ./wp-content:/var/www/html/wp-content
 
   db:

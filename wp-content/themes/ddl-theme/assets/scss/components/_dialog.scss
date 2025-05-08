@@ -1,0 +1,145 @@
+/*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+@use 'sass:color';
+@use "sass:map";
+
+// @use 'abstracts/functions' as *;
+@use 'abstracts/utility' as *;
+@use 'abstracts/variables' as *;
+@use 'abstracts/media' as *;
+// @use 'partials/button' as *;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* LOCK BODY SCROLL WHEN DIALOG OPEN */
+/*-----------------------------------------------------------------------------------*/
+
+html {
+
+  &.js-dialog-active {
+    overflow: hidden;
+  }
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* VIDEO DIALOG */
+/*-----------------------------------------------------------------------------------*/
+
+#videoToggle {
+	cursor: pointer;
+}
+
+.dialog {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: block;
+  left: 0;
+  top: 0;
+  z-index: 999999;
+  // align-items: center;
+  // justify-content: center;
+  padding: 2.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+
+  @include media-up(xl) { 
+    padding: 0 var(--space-x);
+  }
+
+  &__overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--black);
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &__inner {
+    position: relative;
+    width: 90rem;
+    max-width: 100%;
+    z-index: 5;
+    margin: 0 auto var(--space-x);
+    @include box-shadow (0 0 5rem 0.2rem rgba(color.adjust(map.get($colors, "black"), $lightness: -10%), 0.2));
+
+    @include media-up(xl) { 
+      margin: var(--space-x) auto;
+    }
+
+  }
+
+  &__slot {
+    
+    a {
+      display: block;
+    }
+
+  }
+  
+  video,
+  iframe {
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 0 19px rgba(0, 0, 0, 0.16);
+    width: 100%;
+    height: auto;
+    max-height: 85vh;
+    display: block;
+  }
+
+  video {
+    @include object-fit (cover);
+    @include object-position (center);
+  }
+
+  &__close {
+    position: absolute;
+    right: -1.5rem;
+    top: -1.5rem;
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--accent);
+    background-image: $icon-close-white;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    border-radius: .5rem;
+    border: 0;
+    z-index: 1;
+    transition: all .3s cubic-bezier(.5,0,.5,1);
+    cursor: pointer;
+    z-index: 150;
+  
+    @include hover-focus {
+      background-color: var(--black);
+    }
+  
+  }
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+
+    .dialog {
+    
+      &__overlay {
+        opacity: 0.8;
+      }
+
+    }
+
+  }
+
+}
