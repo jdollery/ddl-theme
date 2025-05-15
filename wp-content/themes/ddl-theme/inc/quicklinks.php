@@ -8,7 +8,7 @@
   $quicklinks_spacing = get_sub_field('quicklinks_spacing');
   $quicklinks_bg = get_sub_field('quicklinks_bg');
   $quicklinks_heading = get_sub_field('quicklinks_heading');
-  $quicklinks_intro = get_sub_field('quicklinks_intro');
+  $quicklinks_summary = get_sub_field('quicklinks_summary');
   $quicklinks_object = get_sub_field('quicklinks_object');
   $quicklinks_btn = get_sub_field('quicklinks_btn');
 
@@ -23,11 +23,10 @@
       <?php if($quicklinks_heading) { ?>
           
         <div class="content__heading">
-          <?php if($quicklinks_intro) { ?><div><?php } ?>
+          <?php if($quicklinks_summary) { ?><div><?php } ?>
           <h2><?php echo $quicklinks_heading ?></h2>
-          <?php if($quicklinks_intro) { echo $quicklinks_intro; } ?>
-          <?php if($quicklinks_intro) { ?></div><?php } ?>
-          <p>dscds</p>
+          <?php if($quicklinks_summary) { echo $quicklinks_summary; } ?>
+          <?php if($quicklinks_summary) { ?></div><?php } ?>
           <a class="btn" href="http://">Test</a>
         </div>
 

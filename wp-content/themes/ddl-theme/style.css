@@ -1900,12 +1900,7 @@ html.js-nav-active {
   aspect-ratio: 16/10
 }
 .banner__summary {
-  padding-top: 2.5rem
-}
-@media (min-width:992px) {
-  .banner__summary {
-    padding-top: 3.5rem
-  }
+  padding-top: clamp(2rem,.72vw + 1.65rem,3.5rem)
 }
 .banner__summary h2,
 .banner__summary h4 {
@@ -2050,7 +2045,8 @@ html.js-nav-active {
 .content__heading:has(.btn) {
   display: grid;
   grid-template-columns: 1fr auto;
-  align-items: start
+  align-items: start;
+  gap: var(--space-heading)
 }
 .content__heading:has(.btn) h2 {
   margin-bottom: 0

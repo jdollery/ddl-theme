@@ -115,6 +115,7 @@
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: start;
+      gap: var(--space-heading);
 
       h2 {
         margin-bottom: 0;
