@@ -1850,18 +1850,32 @@ html.js-nav-active {
   background: var(--black);
   color: var(--white)
 }
-.banner__row {
-  display: grid;
-  grid-template-columns: auto
+.banner__row:has(.banner__column--media) {
+  display: grid
 }
 @media (min-width:992px) {
-  .banner__row {
+  .banner__row:has(.banner__column--media) {
     grid-template-columns: repeat(2,1fr)
   }
 }
-@media (min-width:992px) {
-  .banner__row--single {
-    grid-template-columns: auto
+.banner__row:has(.banner__column--media) .banner__column {
+  position: relative
+}
+.banner__row:has(.banner__column--media) .banner__column--body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+}
+.banner__row:not(:has(.banner__column--media)) .banner__header {
+  position: relative;
+  width: 100%;
+  max-width: 160rem;
+  margin-right: auto;
+  margin-left: auto
+}
+@media (min-width:160rem) {
+  .banner__row:not(:has(.banner__column--media)) .banner__header {
+    max-width: 205rem
   }
 }
 @media (min-width:992px) {
@@ -1872,10 +1886,7 @@ html.js-nav-active {
 .banner__column {
   position: relative
 }
-.banner__column:not(.banner__column--media) {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.banner__column--body {
   padding: var(--space-y) var(--space-x)
 }
 .banner__column--media img,
@@ -1953,9 +1964,6 @@ html.js-nav-active {
 }
 .banner .btn:focus-visible {
   border-color: var(--grey)
-}
-.breadcrumb {
-  font-weight: var(--regular)
 }
 .breadcrumb > span {
   display: flex;

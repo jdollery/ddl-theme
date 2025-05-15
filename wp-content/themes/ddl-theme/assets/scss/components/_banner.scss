@@ -19,17 +19,31 @@
   color: var(--white);
 
   &__row {
-    display: grid;
-    grid-template-columns: auto;
+
+    &:has(.banner__column--media) {
+      display: grid;
     
-    @include media-up(md) {
-      grid-template-columns: repeat(2, 1fr);
+      @include media-up(md) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .banner__column {
+        position: relative;
+
+        &--body {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+      }
+
     }
 
-    &--single {
-
-      @include media-up(md) {
-        grid-template-columns: auto;
+    &:not(:has(.banner__column--media)) {
+      
+      .banner__header {
+        @include fixed;
       }
 
     }
@@ -47,10 +61,7 @@
   &__column {
     position: relative;
 
-    &:not(&--media) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    &--body {
       padding: var(--space-y) var(--space-x);
     }
 

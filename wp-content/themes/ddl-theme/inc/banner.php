@@ -20,7 +20,7 @@
 
 <div class="banner<?php if ( is_front_page() ) { ?> banner--home<?php } ?>">
 
-  <div class="banner__row<?php if ( is_front_page() ) { ?> banner__row--vh<?php } ?><?php if ( is_404() || is_search() || is_archive() || $banner_hide_img == true ) { ?> banner__row--single<?php } ?>">
+  <div class="banner__row<?php if ( is_front_page() ) { ?> banner__row--vh<?php } ?>">
 
     <div class="banner__column banner__column--body">
 
