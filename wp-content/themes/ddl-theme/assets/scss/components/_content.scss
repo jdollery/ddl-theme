@@ -109,12 +109,15 @@
       align-items: start;
 
       h2 {
+        margin-bottom: 0;
+      }
 
-        &:not(:has(p)) {
-          margin-bottom: 0;
+      &:not(:has(p)) {
+
+        h2 {
           align-self: center;
         }
-
+        
       }
 
     }

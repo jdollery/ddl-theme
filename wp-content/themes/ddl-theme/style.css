@@ -2044,8 +2044,10 @@ html.js-nav-active {
   grid-template-columns: 1fr auto;
   align-items: start
 }
-.content__heading:has(.btn) h2:not(:has(p)) {
-  margin-bottom: 0;
+.content__heading:has(.btn) h2 {
+  margin-bottom: 0
+}
+.content__heading:has(.btn):not(:has(p)) h2 {
   align-self: center
 }
 .content__footer {

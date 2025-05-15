@@ -23,10 +23,11 @@
       <?php if($quicklinks_heading) { ?>
           
         <div class="content__heading">
+          <?php if($quicklinks_intro) { ?><div><?php } ?>
           <h2><?php echo $quicklinks_heading ?></h2>
-          <?php if($quicklinks_intro) { 
-            echo $quicklinks_intro; 
-          } ?>
+          <?php if($quicklinks_intro) { echo $quicklinks_intro; } ?>
+          <?php if($quicklinks_intro) { ?></div><?php } ?>
+          <p>dscds</p>
           <a class="btn" href="http://">Test</a>
         </div>
 
