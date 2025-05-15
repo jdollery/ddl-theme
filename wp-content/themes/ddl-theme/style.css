@@ -1992,35 +1992,35 @@ html.js-nav-active {
 .content:first-of-type {
   z-index: 1
 }
-.content--left .content__column:nth-child(1) {
+.content--left .content__row:has(.content__column--media) .content__column:nth-child(1) {
   order: 2
 }
 @media (min-width:1180px) {
-  .content--left .content__column:nth-child(1) {
+  .content--left .content__row:has(.content__column--media) .content__column:nth-child(1) {
     order: 1
   }
 }
-.content--left .content__column:nth-child(2) {
+.content--left .content__row:has(.content__column--media) .content__column:nth-child(2) {
   order: 1
 }
 @media (min-width:1180px) {
-  .content--left .content__column:nth-child(2) {
+  .content--left .content__row:has(.content__column--media) .content__column:nth-child(2) {
     order: 2
   }
 }
 @media (min-width:1180px) {
-  .content--left .content__column--body {
+  .content--left .content__row:has(.content__column--media) .content__column--body {
     padding-left: var(--space-x)
   }
 }
-.content--right .content__column:nth-child(1) {
+.content--right .content__row:has(.content__column--media) .content__column:nth-child(1) {
   order: 2
 }
-.content--right .content__column:nth-child(2) {
+.content--right .content__row:has(.content__column--media) .content__column:nth-child(2) {
   order: 1
 }
 @media (min-width:1180px) {
-  .content--right .content__column--body {
+  .content--right .content__row:has(.content__column--media) .content__column--body {
     padding-right: var(--space-x)
   }
 }
@@ -2053,23 +2053,20 @@ html.js-nav-active {
 .content__footer {
   margin-block-start: var(--space-footer)
 }
-.content__row {
-  display: grid;
-  grid-template-columns: auto
+.content__row:has(.content__column--media) {
+  display: grid
 }
 @media (min-width:1180px) {
-  .content__row {
+  .content__row:has(.content__column--media) {
     grid-template-columns: repeat(2,1fr)
   }
-  .content__row--single {
-    grid-template-columns: 1fr
-  }
-  .content__row--single .content__column--body {
-    display: block
+  .content__row:has(.content__column--media) .content__column--body {
+    display: flex
   }
 }
-.content__column--body {
-  display: flex
+.content__row:has(.content__column--media) .content__body {
+  position: relative;
+  align-self: center
 }
 @media (max-width:1179px) {
   .content__column--body {
@@ -2136,25 +2133,21 @@ html.js-nav-active {
   -o-object-position: bottom;
   object-position: bottom
 }
-.content__body {
-  position: relative;
-  align-self: center
-}
-.content__body ul:not(.list--exempt) {
+.content ul:not(.list--exempt) {
   list-style: none;
   padding-left: 2rem
 }
-.content__body ul:not(.list--exempt) li {
+.content ul:not(.list--exempt) li {
   position: relative;
   margin: 0
 }
-.content__body ul:not(.list--exempt) li::marker {
+.content ul:not(.list--exempt) li::marker {
   display: none
 }
-.content__body ul:not(.list--exempt) li:not(:last-child) {
+.content ul:not(.list--exempt) li:not(:last-child) {
   margin-bottom: .5rem
 }
-.content__body ul:not(.list--exempt) li::before {
+.content ul:not(.list--exempt) li::before {
   position: absolute;
   left: -2rem;
   top: .9rem;
@@ -2165,23 +2158,23 @@ html.js-nav-active {
   background: var(--accent);
   border-radius: 50%
 }
-.content__body ol {
+.content ol {
   padding-left: 2rem;
   counter-reset: custom-counter;
   list-style: none
 }
-.content__body ol li {
+.content ol li {
   position: relative;
   margin: 0;
   counter-increment: custom-counter
 }
-.content__body ol li::marker {
+.content ol li::marker {
   display: none
 }
-.content__body ol li:not(:last-child) {
+.content ol li:not(:last-child) {
   margin-bottom: .5rem
 }
-.content__body ol li::before {
+.content ol li::before {
   position: absolute;
   left: -2rem;
   top: 0;
@@ -2241,12 +2234,17 @@ html.js-nav-active {
 .content--accent h4 {
   color: var(--white)
 }
+.content--accent h2 strong,
+.content--accent h3 strong,
+.content--accent h4 strong {
+  color: var(--grey-light)
+}
 .content--accent a:not(.btn) {
   color: var(--white)
 }
 .content--accent a:not(.btn):focus,
 .content--accent a:not(.btn):hover {
-  color: var(--accent-light)
+  color: var(--grey-light)
 }
 .content--accent:not(:has(.loop)) .btn {
   color: var(--white);
@@ -2257,6 +2255,9 @@ html.js-nav-active {
   color: var(--black);
   background: var(--white);
   border-color: var(--white)
+}
+.content--accent ul:not(.list--exempt) li::before {
+  background: var(--white)
 }
 .loop {
   position: relative;

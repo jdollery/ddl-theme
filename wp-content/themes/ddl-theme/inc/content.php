@@ -26,7 +26,7 @@ if( have_rows('content_section') ){
 
     <div class="content__fixed">
 
-      <div class="content__row<?php if( $content_media == false ) { ?> content__row--single<?php } ?>">
+      <div class="content__row">
 
         <?php if( $content_media == true ) { ?>
 

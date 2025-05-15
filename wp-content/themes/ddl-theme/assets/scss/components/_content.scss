@@ -32,32 +32,36 @@
 
   &--left {
 
-    .content {
+    .content__row {
 
-      &__column {
+      &:has(.content__column--media) {
+        
+        .content__column {
 
-        &:nth-child(1) {
-          order: 2;
-
-          @include media-up(lg) {
-            order: 1;
-          }
-
-        }
-  
-        &:nth-child(2) {
-          order: 1;
-
-          @include media-up(lg) {
+          &:nth-child(1) {
             order: 2;
+
+            @include media-up(lg) {
+              order: 1;
+            }
+
+          }
+    
+          &:nth-child(2) {
+            order: 1;
+
+            @include media-up(lg) {
+              order: 2;
+            }
+
           }
 
-        }
+          &--body {
 
-        &--body {
+            @include media-up(lg) {
+              padding-left: var(--space-x);
+            }
 
-          @include media-up(lg) {
-            padding-left: var(--space-x);
           }
 
         }
@@ -70,22 +74,26 @@
 
   &--right {
 
-    .content {
+    .content__row {
 
-      &__column {
+      &:has(.content__column--media) {
+        
+        .content__column {
 
-        &:nth-child(1) {
-          order: 2;
-        }
-  
-        &:nth-child(2) {
-          order: 1;
-        }
+          &:nth-child(1) {
+            order: 2;
+          }
+    
+          &:nth-child(2) {
+            order: 1;
+          }
 
-        &--body {
+          &--body {
 
-          @include media-up(lg) {
-            padding-right: var(--space-x);
+            @include media-up(lg) {
+              padding-right: var(--space-x);
+            }
+
           }
 
         }
@@ -129,19 +137,23 @@
   }
 
   &__row {
-    display: grid;
-    grid-template-columns: auto;
 
-    @include media-up(lg) {
-      grid-template-columns: repeat(2, 1fr);
+    &:has(.content__column--media) {
+      display: grid;
 
-      &--single {
-        grid-template-columns: 1fr;
+      @include media-up(lg) {
+      
+        grid-template-columns: repeat(2, 1fr);
 
         .content__column--body {
-          display: block;
+          display: flex;
         }
 
+      }
+
+      .content__body {
+        position: relative;
+        align-self: center;
       }
 
     }
@@ -151,7 +163,6 @@
   &__column {
 
     &--body {
-      display: flex;
 
       @include media-down(lg) {
         padding-bottom: var(--space-y);
@@ -249,18 +260,12 @@
 
   }
 
-  &__body {
-    position: relative;
-    align-self: center;
+  ul {
+    @include list-bullet;
+  }
 
-    ul {
-      @include list-bullet;
-    }
-
-    ol {
-      @include list-number;
-    }
-
+  ol {
+    @include list-number;
   }
 
   &--white {
@@ -299,19 +304,28 @@
     h3,
     h4 {
       color: var(--white);
+
+      strong {
+        color: var(--grey-light);
+      }
+
     }
 
     a:not(.btn) {
       color: var(--white);
 
       @include hover-focus {
-        color: var(--accent-light);
+        color: var(--grey-light);
       }
 
     }
 
     &:not(:has(.loop)) .btn {
       @include btn-white;
+    }
+
+    ul:not(.list--exempt) li::before {
+      background: var(--white);
     }
 
   }
