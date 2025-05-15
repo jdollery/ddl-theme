@@ -1,0 +1,45 @@
+/*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+@use 'abstracts/functions' as *;
+@use 'abstracts/utility' as *;
+@use 'abstracts/variables' as *;
+@use 'abstracts/media' as *;
+// @use 'partials/button' as *;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLES */
+/*-----------------------------------------------------------------------------------*/
+
+.loop {
+  position: relative;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 #{fluid(-10px, -20px)};
+  row-gap: #{fluid(20px, 40px)};
+
+  > * {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 #{fluid(10px, 20px)};
+
+    @include media-up(xs) {
+      width: 50%;
+    }
+
+    @include media-up(md) {
+      width: 33.33333333%;
+    }
+
+    @include media-up(xl) {
+      width: 25%;
+    }
+
+  }
+
+}

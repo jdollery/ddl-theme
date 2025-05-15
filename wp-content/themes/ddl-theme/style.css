@@ -44,7 +44,8 @@
   --body-size: clamp(1.4rem, 0.38vw + 1.22rem, 2.2rem);
   --space-y: clamp(3rem, 4.57vw + 0.81rem, 12.5rem);
   --space-x: clamp(2.5rem, 4.57vw + 0.31rem, 12rem);
-  --space-gutter: clamp(2.5rem, 2.64vw + 1.23rem, 8rem)
+  --space-heading: clamp(2.5rem, 2.64vw + 1.23rem, 8rem);
+  --space-footer: clamp(2.5rem, 2.64vw + 1.23rem, 8rem)
 }
 html {
   font-size: 62.5%;
@@ -1868,17 +1869,17 @@ html.js-nav-active {
     min-height: calc(var(--vh,1vh) * 100 - var(--header-height))
   }
 }
-.banner__col {
+.banner__column {
   position: relative
 }
-.banner__col:not(.banner__col--media) {
+.banner__column:not(.banner__column--media) {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: var(--space-y) var(--space-x)
 }
-.banner__col--media img,
-.banner__col--media video {
+.banner__column--media img,
+.banner__column--media video {
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: center;
@@ -1991,9 +1992,6 @@ html.js-nav-active {
 .content:first-of-type {
   z-index: 1
 }
-.content:first-of-type {
-  z-index: 1
-}
 .content--left .content__column:nth-child(1) {
   order: 2
 }
@@ -2037,6 +2035,21 @@ html.js-nav-active {
   .content__fixed {
     max-width: 205rem
   }
+}
+.content__heading {
+  margin-block-end: var(--space-heading)
+}
+.content__heading:has(.btn) {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start
+}
+.content__heading:has(.btn) h2:not(:has(p)) {
+  margin-bottom: 0;
+  align-self: center
+}
+.content__footer {
+  margin-block-start: var(--space-footer)
 }
 .content__row {
   display: grid;
@@ -2087,7 +2100,8 @@ html.js-nav-active {
 @media (min-width:1180px) {
   .content__media--img,
   .content__media--video {
-    height: 35vw
+    height: 35vw;
+    max-height: 80rem
   }
 }
 .content__media img {
@@ -2095,13 +2109,6 @@ html.js-nav-active {
   width: 100%;
   height: 100%;
   margin: 0
-}
-@media (min-width:1180px) {
-  .content__media img {
-    position: absolute;
-    top: 0;
-    left: 0
-  }
 }
 .content__media--cover img {
   -o-object-fit: cover;
@@ -2184,35 +2191,41 @@ html.js-nav-active {
 .content--white {
   background: var(--white)
 }
-.content--white .btn {
+.content--white .content__heading .btn,
+.content--white:not(:has(.loop)) .btn {
   color: var(--black);
   background: 0 0;
   border-color: var(--accent)
 }
-.content--white .btn:hover {
+.content--white .content__heading .btn:hover,
+.content--white:not(:has(.loop)) .btn:hover {
   color: var(--white);
   background: var(--accent);
   border-color: var(--accent)
 }
-.content--white .btn:focus-visible {
+.content--white .content__heading .btn:focus-visible,
+.content--white:not(:has(.loop)) .btn:focus-visible {
   color: var(--white);
   background: var(--accent);
   border-color: var(--accent)
 }
 .content--grey {
-  background: var(--grey)
+  background: var(--grey-light)
 }
-.content--grey .btn {
+.content--grey .content__heading .btn,
+.content--grey:not(:has(.loop)) .btn {
   color: var(--black);
   background: 0 0;
   border-color: var(--accent)
 }
-.content--grey .btn:hover {
+.content--grey .content__heading .btn:hover,
+.content--grey:not(:has(.loop)) .btn:hover {
   color: var(--white);
   background: var(--accent);
   border-color: var(--accent)
 }
-.content--grey .btn:focus-visible {
+.content--grey .content__heading .btn:focus-visible,
+.content--grey:not(:has(.loop)) .btn:focus-visible {
   color: var(--white);
   background: var(--accent);
   border-color: var(--accent)
@@ -2233,15 +2246,105 @@ html.js-nav-active {
 .content--accent a:not(.btn):hover {
   color: var(--accent-light)
 }
-.content--accent .btn {
+.content--accent:not(:has(.loop)) .btn {
   color: var(--white);
   background: 0 0;
   border-color: var(--white)
 }
-.content--accent .btn:hover {
+.content--accent:not(:has(.loop)) .btn:hover {
   color: var(--black);
   background: var(--white);
   border-color: var(--white)
+}
+.loop {
+  position: relative;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 clamp(-1rem,-.48vw + -.77rem,-2rem);
+  row-gap: clamp(2rem,.96vw + 1.54rem,4rem)
+}
+.loop > * {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 clamp(1rem,.48vw + .77rem,2rem)
+}
+@media (min-width:480px) {
+  .loop > * {
+    width: 50%
+  }
+}
+@media (min-width:992px) {
+  .loop > * {
+    width: 33.33333333%
+  }
+}
+@media (min-width:1280px) {
+  .loop > * {
+    width: 25%
+  }
+}
+.post {
+  display: block;
+  background: var(--white);
+  color: var(--black);
+  height: 100%
+}
+.post .btn {
+  color: var(--black);
+  background: 0 0;
+  border-color: var(--accent)
+}
+.post .btn:hover {
+  color: var(--white);
+  background: var(--accent);
+  border-color: var(--accent)
+}
+.post .btn:focus-visible {
+  color: var(--white);
+  background: var(--accent);
+  border-color: var(--accent)
+}
+.post:focus,
+.post:hover {
+  background: var(--accent);
+  color: var(--white)
+}
+.post:focus .btn,
+.post:hover .btn {
+  color: var(--white);
+  background: 0 0;
+  border-color: var(--white)
+}
+.post:focus .btn:hover,
+.post:hover .btn:hover {
+  color: var(--black);
+  background: var(--white);
+  border-color: var(--white)
+}
+.post__row {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%
+}
+.post__media {
+  position: relative
+}
+.post__media img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3/2
+}
+.post__body {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: clamp(2rem,.48vw + 1.77rem,3rem)
 }
 html.js-dialog-active {
   overflow: hidden

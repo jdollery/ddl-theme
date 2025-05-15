@@ -22,7 +22,7 @@
 
   <div class="banner__row<?php if ( is_front_page() ) { ?> banner__row--vh<?php } ?><?php if ( is_404() || is_search() || is_archive() || $banner_hide_img == true ) { ?> banner__row--single<?php } ?>">
 
-    <div class="banner__col banner__col--body">
+    <div class="banner__column banner__column--body">
 
       <header class="banner__header">
 
@@ -149,7 +149,7 @@
 
     <?php if ( is_front_page() ) {  //static home ?>
 
-      <div class="banner__col banner__col--media" aria-hidden="true">
+      <div class="banner__column banner__column--media" aria-hidden="true">
 
         <video playsinline autoplay loop muted poster="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-poster-lg.jpg">
           <source src="<?php echo get_template_directory_uri(); ?>/assets/video/placeholder-video.mp4" type="video/mp4">
@@ -162,7 +162,7 @@
 
     } elseif ( !is_404() && !is_search() && !is_archive() && $banner_hide_img == false ) { ?>
 
-      <div class="banner__col banner__col--media">
+      <div class="banner__column banner__column--media">
 
         <?php if ( has_post_thumbnail() ) { 
           

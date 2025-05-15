@@ -16,42 +16,56 @@
 
   ?>
 
-  <section class="quicklinks quicklinks--<?php echo esc_html($quicklinks_bg['value']); ?><?php if( $quicklinks_spacing ) { foreach( $quicklinks_spacing as $space ): ?> quicklinks--<?php echo $space; endforeach; } ?>">
+  <section class="content content--quicklinks content--<?php echo esc_html($quicklinks_bg['value']); ?><?php if( $quicklinks_spacing ) { foreach( $quicklinks_spacing as $space ): ?> content--<?php echo $space; endforeach; } ?>">
 
-    <?php if($quicklinks_heading) { ?>
-    <div class="section__top">
-      <h3 class="section__heading"><?php echo $quicklinks_heading ?></h3>
-      <?php if($quicklinks_intro) { ?>
-        <div class="section__lead"><?php echo $quicklinks_intro; ?>
-      </div><?php } ?>
-    </div>
-    <?php } ?>
+    <div class="content__fixed">
 
-    <div class="section__middle">
+      <?php if($quicklinks_heading) { ?>
+          
+        <div class="content__heading">
+          <h2><?php echo $quicklinks_heading ?></h2>
+          <?php if($quicklinks_intro) { 
+            echo $quicklinks_intro; 
+          } ?>
+          <a class="btn" href="http://">Test</a>
+        </div>
 
-      <ul class="quicklinks__list list--exempt">
+      <?php } ?>
 
-        <?php 
+      <?php if ($quicklinks_object) { ?>
+
+        <ul class="loop list--exempt">
+
+          <?php 
+          
+          foreach( $quicklinks_object as $post ): 
+
+          setup_postdata($post); 
+          
+          ?>
+
+            <li class="loop__item">
+              <?php get_template_part('inc/post'); ?>
+            </li>
+
+          <?php 
         
-        foreach( $quicklinks_object as $post ): 
+          endforeach; 
+          
+          ?>
 
-        setup_postdata($post); 
-        
-        ?>
+        </ul>
 
-          <li class="quicklinks__item">
-            <?php get_template_part('inc/post'); ?>
-          </li>
+        <?php wp_reset_postdata(); ?>
 
-        <?php 
-      
-        endforeach; 
-        
-        ?>
+      <?php } ?>
 
-      </ul>
-
-      <?php wp_reset_postdata(); ?>
+      <div class="content__footer">
+        <h3><?php echo $quicklinks_heading ?></h3>
+        <?php if($quicklinks_intro) { 
+          echo $quicklinks_intro; 
+        } ?>
+      </div>
 
     </div>
 

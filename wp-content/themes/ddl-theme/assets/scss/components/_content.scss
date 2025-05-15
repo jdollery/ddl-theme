@@ -30,10 +30,6 @@
     z-index: 1;
   }
 
-  &:first-of-type {
-    z-index: 1;
-  }
-
   &--left {
 
     .content {
@@ -104,6 +100,31 @@
     @include fixed;
   }
 
+  &__heading {
+    margin-block-end: var(--space-heading);
+
+    &:has(.btn) {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+
+      h2 {
+
+        &:not(:has(p)) {
+          margin-bottom: 0;
+          align-self: center;
+        }
+
+      }
+
+    }
+
+  }
+
+  &__footer {
+    margin-block-start: var(--space-footer);
+  }
+
   &__row {
     display: grid;
     grid-template-columns: auto;
@@ -163,6 +184,7 @@
 
       @include media-up(lg) {
         height: 35vw;
+        max-height: 80rem;
       }
       
     }
@@ -171,14 +193,7 @@
       position: relative;
       width: 100%;
       height: 100%;
-      margin: 0;
-  
-      @include media-up(lg) {
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-  
+      margin: 0;  
     }
 
     &--cover {
@@ -248,17 +263,27 @@
   &--white {
     background: var(--white);
 
-    .btn {
-      @include btn-accent;
+    &:not(:has(.loop)),
+    .content__heading {
+
+      .btn {
+        @include btn-accent;
+      }
+
     }
 
   }
 
   &--grey {
-    background: var(--grey);
+    background: var(--grey-light);
 
-    .btn {
-      @include btn-accent;
+    &:not(:has(.loop)),
+    .content__heading {
+      
+      .btn {
+        @include btn-accent;
+      }
+
     }
 
   }
@@ -282,7 +307,7 @@
 
     }
 
-    .btn {
+    &:not(:has(.loop)) .btn {
       @include btn-white;
     }
 

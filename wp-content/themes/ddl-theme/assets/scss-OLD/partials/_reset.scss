@@ -49,6 +49,7 @@ body {
   color: var(--black);
   background: var(--body-bg);
   text-align: left;
+  text-wrap: pretty;
   
   @include media-down(md) { 
     overflow-x: hidden;

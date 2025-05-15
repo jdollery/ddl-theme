@@ -5,7 +5,7 @@ const styles = [
   'border-radius: 5px;'
 ].join(';');
 
-console.info('%cDesigned and developed by Dental Design - https://dental-design.marketing/', styles);
+console.info('%cCreated by Dental Design - https://dental-design.marketing/', styles);
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -838,3 +838,42 @@ function videoDialog(){}
 //   }, 500);
 
 // };
+
+
+/*-----------------------------------------------------------------------------------*/
+/* OPENING TIMES */
+/*-----------------------------------------------------------------------------------*/
+
+/* <span id="openingTimes"></span> */
+
+// let opening = document.getElementById("openingTimes");
+// let d = new Date();
+// let n = d.getDay();
+// let now = d.getHours() * 60 + d.getMinutes(); // Convert current time to minutes since midnight
+// let weekdays = [
+//   ["Sunday"],
+//   ["Monday", 9 * 60, 17 * 60], // Convert opening and closing times to minutes since midnight
+//   ["Tuesday", 9 * 60, 17 * 60],
+//   ["Wednesday"],
+//   ["Thursday", 9 * 60, 17 * 60],
+//   ["Friday", 9 * 60, 17 * 60],
+//   ["Saturday"]
+// ];
+// let day = weekdays[n];
+
+// if (now >= day[1] && now < day[2]) { // Use >= instead of >
+//   opening.innerHTML = 'Open today: ' + formatTime(day[1]) + ' - ' + formatTime(day[2]); // Utilize formatTime function to format time
+// }
+// else {
+//   opening.innerHTML = "Sorry we&rsquo;re closed: <span>opening hours</span>";
+// }
+
+// function formatTime(minutes) {
+//   let hours = Math.floor(minutes / 60);
+//   let mins = minutes % 60;
+//   return pad(hours) + ':' + pad(mins);
+// }
+
+// function pad(value) {
+//   return value.toString().padStart(2, '0');
+// }

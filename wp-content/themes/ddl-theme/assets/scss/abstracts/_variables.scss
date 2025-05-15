@@ -96,7 +96,8 @@ $success:             #78c468;
 
   --space-y:            #{fluid(30px, 125px)};
   --space-x:            #{fluid(25px, 120px)};
-  --space-gutter:       #{fluid(25px, 80px)};
+  --space-heading:      #{fluid(25px, 80px)};
+  --space-footer:       #{fluid(25px, 80px)};
 
 }
 
@@ -118,8 +119,7 @@ $nav-gap:             #{fluid(10px, 40px)};
 /* --------- USED FOR GRID & FIXED --------- */
 
 $max-width:           160rem;
-$max-segment-width:   70rem;
-$gap:                 #{fluid(10px, 30px)};
+// $max-segment-width:   70rem;
 
 
 /* --------- LISTS --------- */
@@ -129,7 +129,7 @@ $list-gutter:         0.5rem;
 $list-bullet-size:    0.6rem;
 $list-bullet-color:   var(--accent);
 $list-number-weight:  var(--bold);
-$list-inline-gap:     $gap;
+$list-inline-gap:     #{fluid(10px, 30px)};
 
 
 /* --------- FORM --------- */

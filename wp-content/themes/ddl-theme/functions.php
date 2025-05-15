@@ -493,7 +493,7 @@ function pagination( \WP_Query $wp_query = null, $echo = true ) {
 function custom_add_image_sizes() {
 	add_image_size( 'banner_lg', 1920, 9999 ); // 1920px wide unlimited height
 	add_image_size( 'banner_sm', 480, 9999 ); // 480px wide unlimited height
-	add_image_size( 'content_lg', 1000, 9999 ); // 1000px wide unlimited height
+	add_image_size( 'content_lg', 1600, 9999 ); // 1600px wide unlimited height
 	add_image_size( 'content_sm', 480, 9999 ); // 480px wide unlimited height
 	add_image_size( 'post_lg', 1000, 9999 ); // 1000px wide unlimited height
 	add_image_size( 'post_sm', 480, 9999 ); // 480px wide unlimited height

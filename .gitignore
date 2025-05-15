@@ -2,12 +2,13 @@ package-lock.json
 package.json
 node_modules
 
-# Ignore everything in the root except the "wp-content" directory.
+# Ignore everything in the root except:
 /*
 !.gitignore
 !wp-content/
 !gulpfile.js
 !compose.yml
+!uploads.ini
 
 # Ignore everything in the "wp-content" directory, except the "plugins"
 # and "themes" directories.
@@ -24,6 +25,5 @@ wp-content/plugins/wp-migrate-db
 wp-content/uploads/wp-migrate-db    
 wp-content/plugins/wordpress-seo
 wp-content/plugins/popup-builder
-# wp-config.php
 wp-config.php
-!uploads.ini
+

@@ -9,7 +9,7 @@ $quicklink_alt_btn = get_field('quicklink_alt_btn');
 <a class="post" href="<?php echo get_permalink(); ?>">
   <div class="post__row">
 
-    <div class="post__one">
+    <div class="post__media">
 
       <?php if ( $quicklink_alt_img ) { ?>
 
@@ -75,6 +75,7 @@ $quicklink_alt_btn = get_field('quicklink_alt_btn');
             alt="Placeholder image"
             width="200"
             height="200"
+            loading="lazy"
             decoding="async"
           >
         </picture>
@@ -83,25 +84,23 @@ $quicklink_alt_btn = get_field('quicklink_alt_btn');
 
     </div>
 
-    <div class="post__two">
-      <div class="post__body">
-        <div class="post__top">
-          <?php if ( $quicklink_alt_title ) { ?>
-            <h3 class="post__heading"><?php echo $quicklink_alt_title ?></h3>
-          <?php } else { ?>
-            <h3 class="post__heading"><?php the_title(); ?></h3>
-          <?php } ?>
-          <?php if(!is_post_type_archive('symptoms')) { ?>
-          <div class="post__summary"><?php echo strip_tags( get_excerpt(165) ); ?></div>
-          <?php } ?>
-        </div>
-        <div class="post__bottom">
-          <?php if ( $quicklink_alt_btn ) { ?>
-            <span class="btn btn--space"><?php echo $quicklink_alt_btn ?></span>
-          <?php } else { ?>
-            <span class="btn btn--space">Learn more</span>
-          <?php } ?>
-        </div>
+    <div class="post__body">
+      <div class="post__top">
+        <?php if ( $quicklink_alt_title ) { ?>
+          <h3 class="post__heading"><?php echo $quicklink_alt_title ?></h3>
+        <?php } else { ?>
+          <h3 class="post__heading"><?php the_title(); ?></h3>
+        <?php } ?>
+        <?php if(!is_post_type_archive('symptoms')) { ?>
+        <div class="post__summary"><?php echo strip_tags( get_excerpt(165) ); ?></div>
+        <?php } ?>
+      </div>
+      <div class="post__bottom">
+        <?php if ( $quicklink_alt_btn ) { ?>
+          <span class="btn btn--space"><?php echo $quicklink_alt_btn ?></span>
+        <?php } else { ?>
+          <span class="btn btn--space">Learn more</span>
+        <?php } ?>
       </div>
     </div>
   </div>
