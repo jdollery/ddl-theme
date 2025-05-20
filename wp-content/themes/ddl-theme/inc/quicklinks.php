@@ -23,11 +23,8 @@
       <?php if($quicklinks_heading) { ?>
           
         <div class="content__heading">
-          <?php if($quicklinks_summary) { ?><div><?php } ?>
           <h2><?php echo $quicklinks_heading ?></h2>
           <?php if($quicklinks_summary) { echo $quicklinks_summary; } ?>
-          <?php if($quicklinks_summary) { ?></div><?php } ?>
-          <a class="btn" href="http://">Test</a>
         </div>
 
       <?php } ?>
@@ -59,13 +56,6 @@
         <?php wp_reset_postdata(); ?>
 
       <?php } ?>
-
-      <div class="content__footer">
-        <h3><?php echo $quicklinks_heading ?></h3>
-        <?php if($quicklinks_intro) { 
-          echo $quicklinks_intro; 
-        } ?>
-      </div>
 
     </div>
 

@@ -111,7 +111,7 @@
   &__heading {
     margin-block-end: var(--space-heading);
 
-    &:has(.btn) {
+    &:has(.btn) { // see notes for php template
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: start;
@@ -129,6 +129,14 @@
         
       }
 
+    }
+
+    &:not(:has(.btn)) { 
+      width: 100%;
+      max-width: 90rem;
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
     }
 
   }
@@ -269,12 +277,21 @@
     @include list-number;
   }
 
+  &__footer { // see notes for php template
+    
+    .btn {
+      margin: 0 auto;
+    }
+    
+  }
+
   &--white {
     background: var(--white);
 
     &:not(:has(.loop)),
-    .content__heading {
-
+    .content__heading,
+    .content__footer {
+      
       .btn {
         @include btn-accent;
       }
@@ -287,10 +304,55 @@
     background: var(--grey-light);
 
     &:not(:has(.loop)),
-    .content__heading {
+    .content__heading,
+    .content__footer {
       
       .btn {
         @include btn-accent;
+      }
+
+    }
+
+  }
+
+  &--black {
+    background: var(--black);
+    color: var(--white);
+
+    &:not(:has(.loop)) {
+
+      h2,
+      h3,
+      h4 {
+        color: var(--white);
+
+        strong {
+          color: var(--grey-light);
+        }
+
+      }
+
+      a:not(.btn) {
+        color: var(--white);
+
+        @include hover-focus {
+          color: var(--grey-light);
+        }
+
+      }
+
+      ul:not(.list--exempt) li::before {
+        background: var(--white);
+      }
+
+    }
+
+    &:not(:has(.loop)),
+    .content__heading,
+    .content__footer {
+      
+      .btn {
+        @include btn-white;
       }
 
     }
@@ -301,32 +363,42 @@
     background: var(--accent);
     color: var(--white);
 
-    h2,
-    h3,
-    h4 {
-      color: var(--white);
+    &:not(:has(.loop)) {
 
-      strong {
-        color: var(--grey-light);
+      h2,
+      h3,
+      h4 {
+        color: var(--white);
+
+        strong {
+          color: var(--grey-light);
+        }
+
+      }
+
+      a:not(.btn) {
+        color: var(--white);
+
+        @include hover-focus {
+          color: var(--grey-light);
+        }
+
+      }
+
+      ul:not(.list--exempt) li::before {
+        background: var(--white);
       }
 
     }
 
-    a:not(.btn) {
-      color: var(--white);
-
-      @include hover-focus {
-        color: var(--grey-light);
+    &:not(:has(.loop)),
+    .content__heading,
+    .content__footer {
+      
+      .btn {
+        @include btn-white;
       }
 
-    }
-
-    &:not(:has(.loop)) .btn {
-      @include btn-white;
-    }
-
-    ul:not(.list--exempt) li::before {
-      background: var(--white);
     }
 
   }

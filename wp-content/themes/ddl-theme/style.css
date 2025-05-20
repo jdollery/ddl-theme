@@ -1947,18 +1947,12 @@ html.js-nav-active {
 .banner .btn {
   color: var(--white);
   background: 0 0;
-  border-color: var(--accent)
+  border-color: var(--white)
 }
 .banner .btn:hover {
-  color: var(--white);
-  background: var(--accent);
-  border-color: var(--accent)
-}
-.banner .btn:hover.btn--arrow::after {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23016775' %3E%3Cpath d='M18.3,10.5L10.2,2.5,12.3.3l11.7,11.7-11.7,11.7-2.1-2.1,8-8H0v-3h18.3Z'/%3E%3C/svg%3E")
-}
-.banner .btn:focus-visible {
-  border-color: var(--grey)
+  color: var(--black);
+  background: var(--white);
+  border-color: var(--white)
 }
 .breadcrumb > span {
   display: flex;
@@ -2053,6 +2047,13 @@ html.js-nav-active {
 }
 .content__heading:has(.btn):not(:has(p)) h2 {
   align-self: center
+}
+.content__heading:not(:has(.btn)) {
+  width: 100%;
+  max-width: 90rem;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center
 }
 .content__footer {
   margin-block-start: var(--space-footer)
@@ -2187,21 +2188,27 @@ html.js-nav-active {
   font-variation-settings: "wght" var(--bold);
   color: var(--accent)
 }
+.content__footer .btn {
+  margin: 0 auto
+}
 .content--white {
   background: var(--white)
 }
+.content--white .content__footer .btn,
 .content--white .content__heading .btn,
 .content--white:not(:has(.loop)) .btn {
   color: var(--black);
   background: 0 0;
   border-color: var(--accent)
 }
+.content--white .content__footer .btn:hover,
 .content--white .content__heading .btn:hover,
 .content--white:not(:has(.loop)) .btn:hover {
   color: var(--white);
   background: var(--accent);
   border-color: var(--accent)
 }
+.content--white .content__footer .btn:focus-visible,
 .content--white .content__heading .btn:focus-visible,
 .content--white:not(:has(.loop)) .btn:focus-visible {
   color: var(--white);
@@ -2211,57 +2218,102 @@ html.js-nav-active {
 .content--grey {
   background: var(--grey-light)
 }
+.content--grey .content__footer .btn,
 .content--grey .content__heading .btn,
 .content--grey:not(:has(.loop)) .btn {
   color: var(--black);
   background: 0 0;
   border-color: var(--accent)
 }
+.content--grey .content__footer .btn:hover,
 .content--grey .content__heading .btn:hover,
 .content--grey:not(:has(.loop)) .btn:hover {
   color: var(--white);
   background: var(--accent);
   border-color: var(--accent)
 }
+.content--grey .content__footer .btn:focus-visible,
 .content--grey .content__heading .btn:focus-visible,
 .content--grey:not(:has(.loop)) .btn:focus-visible {
   color: var(--white);
   background: var(--accent);
   border-color: var(--accent)
 }
+.content--black {
+  background: var(--black);
+  color: var(--white)
+}
+.content--black:not(:has(.loop)) h2,
+.content--black:not(:has(.loop)) h3,
+.content--black:not(:has(.loop)) h4 {
+  color: var(--white)
+}
+.content--black:not(:has(.loop)) h2 strong,
+.content--black:not(:has(.loop)) h3 strong,
+.content--black:not(:has(.loop)) h4 strong {
+  color: var(--grey-light)
+}
+.content--black:not(:has(.loop)) a:not(.btn) {
+  color: var(--white)
+}
+.content--black:not(:has(.loop)) a:not(.btn):focus,
+.content--black:not(:has(.loop)) a:not(.btn):hover {
+  color: var(--grey-light)
+}
+.content--black:not(:has(.loop)) ul:not(.list--exempt) li::before {
+  background: var(--white)
+}
+.content--black .content__footer .btn,
+.content--black .content__heading .btn,
+.content--black:not(:has(.loop)) .btn {
+  color: var(--white);
+  background: 0 0;
+  border-color: var(--white)
+}
+.content--black .content__footer .btn:hover,
+.content--black .content__heading .btn:hover,
+.content--black:not(:has(.loop)) .btn:hover {
+  color: var(--black);
+  background: var(--white);
+  border-color: var(--white)
+}
 .content--accent {
   background: var(--accent);
   color: var(--white)
 }
-.content--accent h2,
-.content--accent h3,
-.content--accent h4 {
+.content--accent:not(:has(.loop)) h2,
+.content--accent:not(:has(.loop)) h3,
+.content--accent:not(:has(.loop)) h4 {
   color: var(--white)
 }
-.content--accent h2 strong,
-.content--accent h3 strong,
-.content--accent h4 strong {
+.content--accent:not(:has(.loop)) h2 strong,
+.content--accent:not(:has(.loop)) h3 strong,
+.content--accent:not(:has(.loop)) h4 strong {
   color: var(--grey-light)
 }
-.content--accent a:not(.btn) {
+.content--accent:not(:has(.loop)) a:not(.btn) {
   color: var(--white)
 }
-.content--accent a:not(.btn):focus,
-.content--accent a:not(.btn):hover {
+.content--accent:not(:has(.loop)) a:not(.btn):focus,
+.content--accent:not(:has(.loop)) a:not(.btn):hover {
   color: var(--grey-light)
 }
+.content--accent:not(:has(.loop)) ul:not(.list--exempt) li::before {
+  background: var(--white)
+}
+.content--accent .content__footer .btn,
+.content--accent .content__heading .btn,
 .content--accent:not(:has(.loop)) .btn {
   color: var(--white);
   background: 0 0;
   border-color: var(--white)
 }
+.content--accent .content__footer .btn:hover,
+.content--accent .content__heading .btn:hover,
 .content--accent:not(:has(.loop)) .btn:hover {
   color: var(--black);
   background: var(--white);
   border-color: var(--white)
-}
-.content--accent ul:not(.list--exempt) li::before {
-  background: var(--white)
 }
 .loop {
   position: relative;
@@ -2352,6 +2404,72 @@ html.js-nav-active {
   display: grid;
   grid-template-rows: 1fr auto;
   padding: clamp(2rem,.48vw + 1.77rem,3rem)
+}
+.pagination {
+  text-align: center;
+  padding-top: var(--space-heading)
+}
+.pagination__list {
+  list-style: none;
+  margin: 0;
+  padding: 0
+}
+.pagination__item {
+  display: inline-block;
+  padding: 0 .5rem
+}
+.pagination__item::before {
+  display: none
+}
+.pagination__item a,
+.pagination__item span {
+  margin: 0;
+  display: block;
+  font-weight: 400;
+  font-size: 1.4rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  line-height: 3.2rem;
+  text-indent: .2rem;
+  padding: 0;
+  color: var(--black);
+  background: var(--white);
+  border-width: .2rem;
+  border-style: solid;
+  border-color: var(--white);
+  border-radius: .8rem
+}
+.pagination__item a:focus,
+.pagination__item a:hover,
+.pagination__item span:focus,
+.pagination__item span:hover {
+  color: var(--white);
+  background: var(--grey-dark);
+  border-color: var(--grey-dark)
+}
+@media (min-width:992px) {
+  .pagination__item a,
+  .pagination__item span {
+    font-size: 1.6rem;
+    width: 5.5rem;
+    height: 5.5rem;
+    line-height: 5.2rem
+  }
+}
+.pagination__item a.next,
+.pagination__item a.prev,
+.pagination__item span.next,
+.pagination__item span.prev {
+  padding: 0 3rem;
+  width: auto;
+  text-transform: uppercase
+}
+.pagination__item--active a,
+.pagination__item--active span {
+  cursor: not-allowed;
+  color: var(--white);
+  background: var(--accent);
+  border-color: var(--accent)
 }
 html.js-dialog-active {
   overflow: hidden

@@ -439,9 +439,9 @@ function pagination( \WP_Query $wp_query = null, $echo = true ) {
 	] );
 
 	if ( is_array( $pages ) ) {
-		$pagination = '<nav class="pagination" role="navigation"><ul class="pagination__list">';
+		$pagination = '<nav class="pagination" role="navigation"><ul class="pagination__list list--exempt">';
 		foreach ( $pages as $page ) {
-			$pagination .= '<li class="pagination__list__item '.(strpos($page, 'current') !== false ? 'active' : '').'"> ' . str_replace( 'page-numbers', 'page-link', $page ) . '</li>';
+			$pagination .= '<li class="pagination__item '.(strpos($page, 'current') !== false ? 'pagination__item--active' : '').'"> ' . str_replace( 'page-numbers', 'page-link', $page ) . '</li>';
 		}
 		$pagination .= '</ul></nav>';
 		if ( $echo ) {

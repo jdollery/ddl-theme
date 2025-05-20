@@ -19,6 +19,9 @@
         <?php endwhile; wp_reset_query(); ?>
 
       </ul>
+
+      <?php echo pagination(); ?>
+
     </div>
   </div>
 
