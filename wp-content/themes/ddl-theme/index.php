@@ -18,12 +18,12 @@
 
         <?php endwhile; wp_reset_query(); ?>
 
-      </ul>
+        </ul>
 
-      <?php echo pagination(); ?>
+        <?php echo pagination(); ?>
 
+      </div>
     </div>
-  </div>
 
   <?php } ?>
 

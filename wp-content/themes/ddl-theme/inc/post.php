@@ -1,8 +1,11 @@
 <?php
 
 $quicklink_alt_title = get_field('quicklink_alt_title');
+$quicklink_alt_excerpt = get_field('quicklink_alt_excerpt');
 $quicklink_alt_img = get_field('quicklink_alt_img');
 $quicklink_alt_btn = get_field('quicklink_alt_btn'); 
+
+$banner_alt_title = get_field('banner_alt_title');
 
 ?>
 
@@ -86,13 +89,17 @@ $quicklink_alt_btn = get_field('quicklink_alt_btn');
 
     <div class="post__body">
       <div class="post__top">
-        <?php if ( $quicklink_alt_title ) { ?>
+        <?php if ( $quicklink_alt_title && is_front_page() ) { ?>
           <h3 class="post__heading"><?php echo $quicklink_alt_title ?></h3>
+        <?php } elseif ( $banner_alt_title ) { ?>
+          <h3 class="post__heading"><?php echo $banner_alt_title ?></h3>
         <?php } else { ?>
           <h3 class="post__heading"><?php the_title(); ?></h3>
         <?php } ?>
-        <?php if(!is_post_type_archive('symptoms')) { ?>
-        <div class="post__summary"><?php echo strip_tags( get_excerpt(165) ); ?></div>
+        <?php if ( $quicklink_alt_excerpt && is_front_page() ) { ?>
+          <div class="post__summary"><?php echo $quicklink_alt_excerpt ?></div>
+        <?php } elseif ( the_excerpt() ) { ?>
+          <div class="post__summary"><?php echo strip_tags( get_excerpt(165) ); ?></div>
         <?php } ?>
       </div>
       <div class="post__bottom">
