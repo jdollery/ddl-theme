@@ -2571,4 +2571,96 @@ html.js-dialog-active {
 .dialog--active .dialog__overlay {
   opacity: .8
 }
+.accordion {
+  list-style: none;
+  display: grid;
+  grid-template-columns: auto;
+  width: 100%;
+  max-width: 140rem;
+  margin: 0 auto
+}
+.accordion__item {
+  display: block
+}
+.accordion__item:not(:first-child) {
+  margin-top: 1.5rem
+}
+.accordion__toggle {
+  cursor: pointer;
+  position: relative;
+  color: var(--white);
+  background: var(--grey-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--h6);
+  font-variation-settings: "wght" var(--bold);
+  line-height: 1.2;
+  letter-spacing: .08rem;
+  text-align: left;
+  width: 100%;
+  margin: 0;
+  padding: 1.6rem 2.5rem 1.65rem;
+  transition: all .3s cubic-bezier(.5,0,.5,1)
+}
+@media (min-width:992px) {
+  .accordion__toggle {
+    padding: 1.7rem 3rem 1.75rem
+  }
+}
+.accordion__toggle:hover {
+  color: var(--white);
+  background: var(--black)
+}
+.accordion__toggle span:nth-child(1) {
+  position: relative;
+  top: .2rem;
+  flex: 1 0 0;
+  padding: 0 2rem 0 0
+}
+.accordion__icon {
+  display: block;
+  width: 3.5rem;
+  aspect-ratio: 1/1;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z'/%3E%3C/svg%3E");
+  background-size: 65%;
+  border-radius: 100%;
+  background-position: center;
+  background-color: var(--white);
+  transition: all .3s cubic-bezier(.5,0,.5,1)
+}
+@media (min-width:480px) {
+  .accordion__icon {
+    width: 4rem
+  }
+}
+.accordion__description {
+  display: none;
+  margin: 0;
+  padding: 0;
+  background: var(--white)
+}
+.accordion__content {
+  padding: 3rem
+}
+.accordion__content p {
+  margin-block: .7lh
+}
+.accordion__content p:first-child {
+  margin-top: 0
+}
+.accordion__content p:last-child {
+  margin-bottom: 0
+}
+.accordion__item--open .accordion__toggle {
+  background: var(--accent)
+}
+.accordion__item--open .accordion__toggle:hover {
+  color: var(--white);
+  background: var(--accent)
+}
+.accordion__item--open .accordion__icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M5 11V13H19V11H5Z'/%3E%3C/svg%3E")
+}
 /*# sourceMappingURL=style.css.map */

@@ -517,6 +517,7 @@ dropDowns.forEach((dropDown) => {
       openDropDowns.forEach((open) => {
         open.classList.remove('accordion__item--open');
         slideUp(open.nextElementSibling, 500);
+        open.querySelector('button').setAttribute( 'aria-expanded', 'false' );
       });
       dropDown.classList.add('accordion__item--open');
       slideDown(dropDown.nextElementSibling, 500);
