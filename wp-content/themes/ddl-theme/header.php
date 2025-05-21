@@ -83,7 +83,7 @@
 
         <div class="header__col">
 
-          <a class="hidden--lg" href="tel:<?php echo $phone_link ?>"><span class="icon icon--tel"><svg role="img"><use xlink:href="#tel" href="#tel"></use></svg></span><span hidden><?php echo $phone_number ?></span></a>
+          <a class="hidden--lg" href="tel:<?php echo $phone_link ?>" aria-label="Call us on <?php echo $phone_number ?>"><span class="icon icon--tel"><svg role="img"><use xlink:href="#tel" href="#tel"></use></svg></span><span hidden><?php echo $phone_number ?></span></a>
 
           <a class="btn btn--accent visible--sm" href="<?php echo get_the_permalink( 147 ) ?>">Book an appointment</a>
           
