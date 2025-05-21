@@ -10,6 +10,7 @@
 @use 'partials/typography';
 @use 'partials/button';
 @use 'partials/icons';
+@use 'partials/form';
 
 @use 'layout/header';
 @use 'layout/main';
@@ -24,7 +25,6 @@
 @use 'components/pagination';
 @use 'components/dialog';
 @use 'components/accordion';
-// @use 'components/form';
 // @use 'components/contact';
 // @use 'components/cards';
 // @use 'components/feature';
