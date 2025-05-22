@@ -414,19 +414,33 @@ add_action( 'wp_print_styles', 'deregister_styles', 100 );
 /* ADD CUSTOM PAGINATION TO ANY POST TYPE */
 /*-----------------------------------------------------------------------------------*/
 
-// echo pagination(); // use this inside the loop
+// echo pagination(); // use this outside the loop under ul
+
+/* --------------------- Use this in custom post types  --------------------- */
+
+//$custom_query = new WP_Query(array(
+// 		'post_type'      => 'your_custom_post_type',
+// 		'posts_per_page' => 5, 
+// 		'paged'          => get_query_var('paged') ? get_query_var('paged') : 1 
+// ));
+
+// pagination($custom_query);
+
 
 function pagination( \WP_Query $wp_query = null, $echo = true ) {
 
 	if ( null === $wp_query ) {
 		global $wp_query;
-  }
+		$wp_query_obj = $wp_query; // Store global $wp_query in a different variable to avoid conflicts
+	} else {
+		$wp_query_obj = $wp_query; // Use the passed WP_Query object
+	}
   
 	$pages = paginate_links( [
-			'root'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+			'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
 			'format'       => '?paged=%#%',
-			'current'      => max( 1, get_query_var( 'paged' ) ),
-			'total'        => $wp_query->max_num_pages,
+			'current'      => max( 1, $wp_query_obj->get( 'paged' ) ), // Use get() method to retrieve paged value
+			'total'        => $wp_query_obj->max_num_pages,
 			'type'         => 'array',
 			'show_all'     => false,
 			'end_size'     => 3,
