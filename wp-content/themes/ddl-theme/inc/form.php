@@ -81,9 +81,15 @@
         
         <fieldset class="radio">
 
-          <legend class="radio__label">
-            Are you a new patient?<sup><span class="icon icon--asterisk"><svg role="img"><use xlink:href="#asterisk" href="#asterisk"></use></svg></span></sup>
-          </legend>
+          <?php 
+          
+            $patient_legend = 'Are you a new patient?<sup><span class="icon icon--asterisk"><svg role="img"><use xlink:href="#asterisk" href="#asterisk"></use></svg></span></sup>';
+
+          ?>
+
+          <legend hidden><?php echo $patient_legend ?></legend>
+
+          <span class="radio__label"><?php echo $patient_legend ?></span>
 
           <span class="radio__options">
 

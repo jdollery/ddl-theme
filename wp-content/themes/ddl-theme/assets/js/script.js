@@ -147,121 +147,121 @@ jQuery(document).ready(function () { //doc ready start
   /* CONTACT FORM */
   /*-----------------------------------------------------------------------------------*/
 
-  jQuery('select').select2({
-    minimumResultsForSearch: Infinity,
-    placeholder: function(){
-      jQuery(this).data('placeholder');
-    }
-  });
+  // jQuery('select').select2({
+  //   minimumResultsForSearch: Infinity,
+  //   placeholder: function(){
+  //     jQuery(this).data('placeholder');
+  //   }
+  // });
 
-  jQuery('form').each(function() {
+  // jQuery('form').each(function() {
 
-    var validobj = jQuery(this).validate({
+  //   var validobj = jQuery(this).validate({
 
-      onkeyup: false,
-      errorClass: "error",
-      errorElement: 'strong',
+  //     onkeyup: false,
+  //     errorClass: "error",
+  //     errorElement: 'strong',
 
-      // errorPlacement: function (error, element) {
-      //   var elem = jQuery(element);
-      //   error.insertAfter(element);
-      // },
+  //     // errorPlacement: function (error, element) {
+  //     //   var elem = jQuery(element);
+  //     //   error.insertAfter(element);
+  //     // },
 
-      highlight: function (element, errorClass, validClass) {
-        var elem = jQuery(element);
-        if (elem.hasClass("select2-hidden-accessible")) {
-          jQuery(".select2-container").addClass(errorClass);
-        } else {
-          elem.addClass(errorClass);
-        }
-      },
+  //     highlight: function (element, errorClass, validClass) {
+  //       var elem = jQuery(element);
+  //       if (elem.hasClass("select2-hidden-accessible")) {
+  //         jQuery(".select2-container").addClass(errorClass);
+  //       } else {
+  //         elem.addClass(errorClass);
+  //       }
+  //     },
 
-      unhighlight: function (element, errorClass, validClass) {
-        var elem = jQuery(element);
-        if (elem.hasClass("select2-hidden-accessible")) {
-          jQuery(".select2-container").removeClass(errorClass);
-        } else {
-          elem.removeClass(errorClass);
-        }
-      }
+  //     unhighlight: function (element, errorClass, validClass) {
+  //       var elem = jQuery(element);
+  //       if (elem.hasClass("select2-hidden-accessible")) {
+  //         jQuery(".select2-container").removeClass(errorClass);
+  //       } else {
+  //         elem.removeClass(errorClass);
+  //       }
+  //     }
 
-    });
+  //   });
 
-    jQuery(document).on("change", ".select2-hidden-accessible", function () {
-      if (!jQuery.isEmptyObject(validobj.submitted)) {
-        validobj.form();
-      }
-    });
+  //   jQuery(document).on("change", ".select2-hidden-accessible", function () {
+  //     if (!jQuery.isEmptyObject(validobj.submitted)) {
+  //       validobj.form();
+  //     }
+  //   });
 
-    jQuery(document).on("select2-opening", function () {
-      if (jQuery(".select2-container").hasClass("error")) {
-        jQuery(".select2-drop ul").addClass("error");
-      } else {
-        jQuery(".select2-drop ul").removeClass("error");
-      }
-    });
+  //   jQuery(document).on("select2-opening", function () {
+  //     if (jQuery(".select2-container").hasClass("error")) {
+  //       jQuery(".select2-drop ul").addClass("error");
+  //     } else {
+  //       jQuery(".select2-drop ul").removeClass("error");
+  //     }
+  //   });
 
-    jQuery.validator.addMethod('filesize', function(value, element, param) {
-      return this.optional(element) || (element.files[0].size <= param)
-    }, 'File size must be less than 5mb');
+  //   jQuery.validator.addMethod('filesize', function(value, element, param) {
+  //     return this.optional(element) || (element.files[0].size <= param)
+  //   }, 'File size must be less than 5mb');
 
-    jQuery(this).on( "submit", function(e) {
+  //   jQuery(this).on( "submit", function(e) {
 
-      e.preventDefault();
+  //     e.preventDefault();
 
-      if (jQuery(this).valid()) {
+  //     if (jQuery(this).valid()) {
 
-        jQuery(this).find('.btn--submit').addClass('btn--sending');
+  //       jQuery(this).find('.btn--submit').addClass('btn--sending');
       
-        grecaptcha.ready(function() {
-          grecaptcha.execute('XXXXXXXXXXXX', {action: 'submit'}).then(function(token) {
+  //       grecaptcha.ready(function() {
+  //         grecaptcha.execute('XXXXXXXXXXXX', {action: 'submit'}).then(function(token) {
       
-            let recaptchaResponse = document.getElementById("recaptcha_response")
-            recaptchaResponse.value = token 
+  //           let recaptchaResponse = document.getElementById("recaptcha_response")
+  //           recaptchaResponse.value = token 
       
-            const data = new FormData(e.target);
+  //           const data = new FormData(e.target);
       
-            fetch( "https://XXXXXXXXX/wp-content/themes/XXXXXXXXX/validate.php", {
-              method: 'post',
-              body: data,
-            })
+  //           fetch( "https://XXXXXXXXX/wp-content/themes/XXXXXXXXX/validate.php", {
+  //             method: 'post',
+  //             body: data,
+  //           })
       
-            .then((response) => response.text())
-            .then((response) => {
+  //           .then((response) => response.text())
+  //           .then((response) => {
       
-              const responseText = JSON.parse(response)
+  //             const responseText = JSON.parse(response)
               
-              if (responseText.success) { 
+  //             if (responseText.success) { 
 
-                jQuery(this).find('.btn--submit').removeClass('btn--sending');
+  //               jQuery(this).find('.btn--submit').removeClass('btn--sending');
 
-                jQuery(this).submit()
+  //               jQuery(this).submit()
       
-              } else {
+  //             } else {
 
-                jQuery(this).find('.btn--submit').removeClass('btn--sending');
+  //               jQuery(this).find('.btn--submit').removeClass('btn--sending');
       
-                console.log('reCAPTCHA error', responseText);
+  //               console.log('reCAPTCHA error', responseText);
           
-              }
+  //             }
       
-            })
+  //           })
       
-            .catch(error => {
+  //           .catch(error => {
       
-              console.log('server side error');
+  //             console.log('server side error');
       
-            })
+  //           })
       
-          })
+  //         })
       
-        })
+  //       })
 
-      }
+  //     }
 
-    });
+  //   });
 
-  });
+  // });
 
 }); //doc ready end
 
