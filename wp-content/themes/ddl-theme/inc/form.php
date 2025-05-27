@@ -34,7 +34,7 @@
         aria-label="First name"
         data-input="first"
       />
-      <label for="name">Your name<sup><span class="icon icon--asterisk"><svg role="img"><use xlink:href="#asterisk" href="#asterisk"></use></svg></span></sup></label>
+      <label for="name">Your name<sup>*</sup></label>
     </div>
 
     <div class="form__input form__input--focus ">
@@ -47,7 +47,7 @@
         placeholder="Enter your telephone number"
         aria-label="Telephone number"
       >
-      <label for="telephone">Tel number<sup><span class="icon icon--asterisk"><svg role="img"><use xlink:href="#asterisk" href="#asterisk"></use></svg></span></sup></label>
+      <label for="telephone">Tel number<sup>*</sup></label>
     </div>
 
     <div class="form__input form__input--focus form__input--span">
@@ -55,13 +55,13 @@
         type="email"
         id="email_address"
         name="submit_by"
-        required
         placeholder="Enter your email address"
+        required
         aria-required="true"
         aria-label="Email address"
         <?php if($mailchimp_signup) { ?>data-input="email"<?php } ?>
       >
-      <label for="email">Email address<sup><span class="icon icon--asterisk"><svg role="img"><use xlink:href="#asterisk" href="#asterisk"></use></svg></span></sup></label>
+      <label for="email">Email address<sup>*</sup></label>
     </div>
 
     <div class="form__input form__input--focus form__input--span">
@@ -73,6 +73,26 @@
         aria-label="Please give us a brief description about your enquiry"
       ></textarea>
       <label for="message">Your message</label>
+    </div>
+    
+    <div class="form__input form__input--span">
+      
+      <label for="teatment">Please select a treatment</label>
+      <div class="form__input--select">
+        <select 
+          id="teatment" 
+          name="teatment" 
+          required
+          aria-required="true"
+          >
+          <option></option>
+          <option label="Invisalign" value="Invisalign">Invisalign</option>
+          <option label="Implant" value="Implant">Implant</option>
+          <option label="Endodontic" value="Endodontic">Endodontic</option>
+          <option label="Oral surgery" value="Oral surgery">Oral surgery</option>
+        </select>
+      </div>
+
     </div>
 
     <?php if($form_patient) { ?>
@@ -204,9 +224,9 @@
 
   <?php if($securedent_form == true) { ?>
 
-    <input type="hidden" name="form_uid" value="XXXXXXXXXXXX">
-    <input name="required" type="hidden" value="first_name,last_name,submit_by">
-    <input name="data_order" type="hidden" value="section,first_name,last_name,telephone,submit_by,<?php if($form_patient) { ?>new_patient,<?php } ?><?php if($mailchimp_signup) { ?>subscribe<?php } else { ?>marketing<?php } ?>">
+    <input type="hidden" name="form_uid" value="d92ea4ec-097e-4711-8886-b55dbd8330a7">
+    <input name="required" type="hidden" value="name,submit_by,treatment,new_patient">
+    <input name="data_order" type="hidden" value="name,submit_by,treatment,<?php if($form_patient) { ?>new_patient,<?php } ?><?php if($mailchimp_signup) { ?>subscribe<?php } else { ?>marketing<?php } ?>">
     <input name="ok_url" type="hidden" id="ok_url" value="<?php echo get_the_permalink( 1 ) // thank you page ?>">
     <input name="not_ok_url" type="hidden" id="not_ok_url" value="<?php echo get_the_permalink( 1 ) // sorry page ?>">
 
@@ -221,8 +241,8 @@
   <?php } elseif($mailer_form == true) { ?>
 
     <input name="practice_name" type="hidden" id="practice_name" value="<?php bloginfo( 'name' ); ?>">
-    <input name="form_name" type="hidden" id="form_name" value="">
-    <input type="hidden" name="data_order" value="first_name,last_name,telephone,submit_by,<?php if($form_patient) { ?>new_patient,<?php } ?><?php if($mailchimp_signup) { ?>subscribe<?php } else { ?>marketing<?php } ?>">
+    <input name="form_name" type="hidden" id="form_name" value="Contact">
+    <input type="hidden" name="data_order" value="name,submit_by,treatment,<?php if($form_patient) { ?>new_patient,<?php } ?><?php if($mailchimp_signup) { ?>subscribe<?php } else { ?>marketing<?php } ?>">
 
   <?php } ?>
 

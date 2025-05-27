@@ -878,3 +878,57 @@ function videoDialog(){}
 // function pad(value) {
 //   return value.toString().padStart(2, '0');
 // }
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const customSelects = document.getElementsByClassName("form__input--select");
+
+  Array.from(customSelects).forEach(selectWrapper => {
+    const selectElement = selectWrapper.querySelector("select");
+    const options = Array.from(selectElement.options).slice(1); // Exclude the first empty option
+
+    const selectedDiv = document.createElement("div");
+    selectedDiv.classList.add("select-selected");
+    selectedDiv.innerHTML = selectElement.options[selectElement.selectedIndex].innerHTML;
+    selectWrapper.appendChild(selectedDiv);
+
+    const selectItemsDiv = document.createElement("div");
+    selectItemsDiv.classList.add("select-items", "select-hide");
+
+    options.forEach(option => {
+      const optionDiv = document.createElement("div");
+      optionDiv.innerHTML = option.innerHTML;
+      optionDiv.addEventListener("click", function(e) {
+        selectElement.value = option.value;
+        selectedDiv.innerHTML = option.innerHTML;
+        this.parentNode.querySelector(".same-as-selected")?.classList.remove("same-as-selected");
+        this.classList.add("same-as-selected");
+        selectedDiv.click();
+      });
+
+      selectItemsDiv.appendChild(optionDiv);
+    });
+
+    selectWrapper.appendChild(selectItemsDiv);
+
+    selectedDiv.addEventListener("click", function(e) {
+      e.stopPropagation();
+      closeAllSelect(this);
+      selectItemsDiv.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+  });
+
+  function closeAllSelect(currentElement) {
+    Array.from(document.getElementsByClassName("select-selected")).forEach(element => {
+      if (element !== currentElement) {
+        element.classList.remove("select-arrow-active");
+        element.nextSibling.classList.add("select-hide");
+      }
+    });
+  }
+
+  document.addEventListener("click", function() {
+    closeAllSelect(null);
+  });
+});

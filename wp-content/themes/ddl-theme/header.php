@@ -45,7 +45,7 @@
       });
     </script> -->
 
-    <script src="https://www.google.com/recaptcha/api.js?render=6LeeB2wqAAAAAGqMuH8alq31npTGxYNA50-Nuo-9"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeoAgorAAAAAMkKqQMoxuLoBZ_IA_Mf3J1to1s6"></script>
 
     <?php wp_head(); ?>
 	</head>

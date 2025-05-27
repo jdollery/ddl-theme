@@ -348,15 +348,15 @@ i {
 sub,
 sup {
   position: relative;
-  font-size: 75%;
+  font-size: 80%;
   line-height: 0;
   vertical-align: baseline
 }
 sub {
-  bottom: -.25em
+  bottom: -.25rem
 }
 sup {
-  top: -.5em
+  top: -.5rem
 }
 img {
   max-width: 100%;
@@ -1273,16 +1273,15 @@ ul:not(.list--exempt):last-child {
   }
 }
 .form__input {
-  position: relative;
-  display: grid
+  position: relative
 }
 @media (min-width:480px) {
   .form__input--span {
     grid-column: span 2
   }
 }
-.form__input .icon--asterisk svg {
-  fill: var(--danger)
+.form__input sup {
+  color: var(--danger)
 }
 .form__input--checkbox {
   grid-template-columns: auto 1fr;
@@ -1444,7 +1443,7 @@ ul:not(.list--exempt):last-child {
   .form .form__input--focus .label,
   .form .form__input--focus label {
     top: .5rem;
-    left: 2rem
+    left: .8rem
   }
 }
 .form .form__input--focus input:not([type=submit],[type=radio],[type=checkbox])::placeholder,

@@ -32,7 +32,6 @@
 
   &__input {
     position: relative;
-    display: grid;
 
     &--span {
 
@@ -42,12 +41,8 @@
 
     }
 
-    .icon--asterisk {
-
-      svg {
-        fill: var(--danger);
-      }
-
+    sup {
+      color: var(--danger);
     }
 
     &--checkbox {
@@ -232,7 +227,7 @@
     
       @include media-up(xxl) {
         top: 0.5rem;
-        left: 2rem;
+        left: 0.8rem;
       }
     
     }
@@ -402,6 +397,19 @@ input[type=checkbox] ~ label {
 
 
 /* --------- SELECT BOX --------- */
+
+// .form__input--select select {
+//   border: 0 !important;
+//   clip: rect(0 0 0 0) !important;
+//   -webkit-clip-path: inset(50%) !important;
+//   clip-path: inset(50%) !important;
+//   height: .1rem !important;
+//   overflow: hidden !important;
+//   padding: 0 !important;
+//   position: absolute !important;
+//   width: .1rem !important;
+//   white-space: nowrap !important;
+// }
 
 // .nice-select {
 //   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
