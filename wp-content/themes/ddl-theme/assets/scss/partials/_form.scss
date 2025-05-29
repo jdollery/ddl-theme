@@ -308,7 +308,7 @@ input[type=radio]::after {
   background-clip: padding-box;
   border-width: 0.1rem;
   border-style: solid;
-  border-color: var(--white);
+  border-color: var(--black);
   transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
   height: 2.3rem;
   width: 2.3rem;
@@ -320,7 +320,7 @@ input[type=radio]::before {
   top: 0.3rem;
   left: 0.5rem;
   // content:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23444444' %3E%3Cpath d='M8.2,20.5L.5,12.8c-.5-.5-.5-1.2,0-1.7l1.7-1.7c.5-.5,1.2-.5,1.7,0l5.2,5.2L20.1,3.5c.5-.5,1.2-.5,1.7,0l1.7,1.7c.5.5.5,1.2,0,1.7l-13.6,13.6c-.5.5-1.2.5-1.7,0h0Z'/%3E%3C/svg%3E");
-  content:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M8.2,20.5L.5,12.8c-.5-.5-.5-1.2,0-1.7l1.7-1.7c.5-.5,1.2-.5,1.7,0l5.2,5.2L20.1,3.5c.5-.5,1.2-.5,1.7,0l1.7,1.7c.5.5.5,1.2,0,1.7l-13.6,13.6c-.5.5-1.2.5-1.7,0h0Z'/%3E%3C/svg%3E");
+  content:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23000000' %3E%3Cpath d='M8.2,20.5L.5,12.8c-.5-.5-.5-1.2,0-1.7l1.7-1.7c.5-.5,1.2-.5,1.7,0l5.2,5.2L20.1,3.5c.5-.5,1.2-.5,1.7,0l1.7,1.7c.5.5.5,1.2,0,1.7l-13.6,13.6c-.5.5-1.2.5-1.7,0h0Z'/%3E%3C/svg%3E");
   display: block;
   height: 1.4rem;
   width: 1.4rem;
@@ -396,264 +396,6 @@ input[type=checkbox] ~ label {
 }
 
 
-/* --------- SELECT BOX --------- */
-
-// .form__input--select select {
-//   border: 0 !important;
-//   clip: rect(0 0 0 0) !important;
-//   -webkit-clip-path: inset(50%) !important;
-//   clip-path: inset(50%) !important;
-//   height: .1rem !important;
-//   overflow: hidden !important;
-//   padding: 0 !important;
-//   position: absolute !important;
-//   width: .1rem !important;
-//   white-space: nowrap !important;
-// }
-
-// .nice-select {
-//   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-//   color: var(--accent);
-//   background-color: var(--white);
-//   border: 0.1rem solid var(--white);
-//   cursor: pointer;
-//   padding: 1.3rem 1.5rem;
-//   font-weight: var(--input-weight);
-//   font-size: var(--input-font-size);
-//   line-height: 1.3;
-//   border-radius: var(--input-radius);
-//   transition: all 0.3s ease-in-out;
-//   user-select: none;
-//   white-space: nowrap;
-//   width: auto;
-
-//   @include media-up(lg) {
-//     padding: 1.6rem 2rem;
-//   }
-
-//   &:active,
-//   &.open,
-//   &:focus {
-//     border-color: var(--accent);
-//   }
-
-//   &:after {
-//     position: absolute;
-//     top: 50%;
-//     transform: translateY(-50%);
-//     right: 1.5rem;
-//     width: 2.3rem;
-//     aspect-ratio: 1 / 1;
-//     content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M18.4,7.4l1.4,1.4-7.8,7.8-7.8-7.8,1.4-1.4,6.4,6.4,6.4-6.4Z'/%3E%3C/svg%3E");
-//   }
-
-//   &.open:after {
-//     content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M5.6,16.6l-1.4-1.4,7.8-7.8,7.8,7.8-1.4,1.4-6.4-6.4-6.4,6.4Z'/%3E%3C/svg%3E");
-//   }
-
-//   &.open .nice-select-dropdown {
-//     opacity: 1;
-//     pointer-events: auto;
-//     transform: scale(1) translateY(0);
-//   }
-
-//   .list {
-//     // border-radius: 5px;
-//     box-sizing: border-box;
-//     overflow: hidden;
-//     padding: 0;
-//     // max-height: 210px;
-//     overflow-y: auto;
-//   }
-
-//   .nice-select-dropdown {
-//     position: absolute;
-//     top: 100%;
-//     left: 0;
-//     width: 100%;
-//     color: var(--white);
-//     background-color: var(--grey-dark);
-//     @include box-shadow (rgba(0,0,0,0.1) 0 0.2rem 1.5rem);
-//     pointer-events: none;
-//     // transform-origin: 50% 0;
-//     // transform: scale(0.75) translateY(19px);
-//     transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
-//     z-index: 9;
-//     opacity: 0;
-//   }
-
-//   .list:hover .option:not(:hover) {
-//     background-color: rgba(0, 0, 0, 0) !important;
-//   }
-
-//   .option {
-//     cursor: pointer;
-//     font-weight: 400;
-//     line-height: 40px;
-//     list-style: none;
-//     outline: none;
-//     padding-left: 18px;
-//     padding-right: 29px;
-//     text-align: left;
-//     transition: all 0.2s;
-
-//     &:hover,
-//     &.focus,
-//     &.selected.focus {
-//       background-color: var(--black);
-//     }
-
-//     // &.selected {
-//     //   background-color: var(--black);
-//     // }
-
-//   }
-
-// }
-
-
-// .nice-select .option.disabled {
-//   background-color: rgba(0, 0, 0, 0);
-//   color: #999;
-//   cursor: default;
-// }
-// .nice-select .extra {
-//   float: right;
-// }
-// .nice-select .optgroup {
-//   font-weight: bold;
-// }
-// .no-csspointerevents .nice-select .nice-select-dropdown {
-//   display: none;
-// }
-// .no-csspointerevents .nice-select.open .nice-select-dropdown {
-//   display: block;
-// }
-// .nice-select .list::-webkit-scrollbar {
-//   width: 0;
-// }
-// .nice-select .has-multiple {
-//   white-space: inherit;
-//   height: auto;
-//   padding: 7px 12px;
-//   min-height: 36px;
-//   line-height: 22px;
-// }
-// .nice-select .has-multiple span.current {
-//   border: 1px solid #ccc;
-//   background: #eee;
-//   padding: 0 10px;
-//   border-radius: 3px;
-//   display: inline-block;
-//   line-height: 24px;
-//   font-size: 14px;
-//   margin-bottom: 3px;
-//   margin-right: 3px;
-// }
-// .nice-select .has-multiple .multiple-options {
-//   display: block;
-//   line-height: 24px;
-//   padding: 0;
-// }
-// .nice-select .nice-select-search-box {
-//   box-sizing: border-box;
-//   width: 100%;
-//   padding: 5px;
-//   pointer-events: none;
-//   border-radius: 5px 5px 0 0;
-// }
-// .nice-select .nice-select-search {
-//   box-sizing: border-box;
-//   background-color: #fff;
-//   border: 1px solid #e8e8e8;
-//   border-radius: 3px;
-//   color: #444;
-//   display: inline-block;
-//   vertical-align: middle;
-//   padding: 7px 12px;
-//   margin: 0 10px 0 0;
-//   width: 100%;
-//   min-height: 36px;
-//   line-height: 22px;
-//   height: auto;
-//   outline: 0 !important;
-//   font-size: 14px;
-// }
-
-
-// .selectbox {
-//   position: relative;
-
-//   select {
-//     display: none;
-//   }
-
-//   &__selected {
-//     position: relative;
-//     background-color: var(--white);
-//     color: var(--accent);
-
-//     &:after {
-//       position: absolute;
-//       top: 50%;
-//       transform: translateY(-50%);
-//       right: 1.5rem;
-//       width: 2.3rem;
-//       aspect-ratio: 1 / 1;
-//       content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M18.4,7.4l1.4,1.4-7.8,7.8-7.8-7.8,1.4-1.4,6.4,6.4,6.4-6.4Z'/%3E%3C/svg%3E");
-//     }
-    
-//     &--active:after {
-//       content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%233A4145' %3E%3Cpath d='M5.6,16.6l-1.4-1.4,7.8-7.8,7.8,7.8-1.4,1.4-6.4-6.4-6.4,6.4Z'/%3E%3C/svg%3E");
-//     }
-
-//   }
-
-//   &__options *,
-//   &__selected {
-//     cursor: pointer;
-//     padding: 1.3rem 1.5rem;
-//     font-weight: var(--input-weight);
-//     font-size: var(--input-font-size);
-//     line-height: 1.3;
-//     border-radius: var(--input-radius);
-//     transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
-
-//     &:not(:last-child) {
-//       border: 0.1rem solid transparent;
-//       border-color: transparent transparent var(--white) transparent;
-//     }
-
-//     @include media-up(lg) {
-//       padding: 1.5rem 2rem;
-//     }
-
-//   }
-
-//   &__options {
-//     position: absolute;
-//     color: var(--white);
-//     background-color: var(--accent);
-//     top: 100%;
-//     left: 0;
-//     right: 0;
-//     z-index: 99;
-//     @include box-shadow (rgba(0,0,0,0.1) 0 0.2rem 1.5rem);
-
-//     &--hidden {
-//       display: none;
-//     }
-
-//   }
-
-//   &__options *:hover,
-//   &__options--selected {
-//     background-color: rgba(0, 0, 0, 0.2);
-//   }
-
-// }
-
-
 /* --------- REMOVE BROWSER INPUT STYLING --------- */
 
 input::-webkit-outer-spin-button,
@@ -669,13 +411,14 @@ input[type=number] {
 
 /* --------- VALIDATION --------- */
 
-.form__input--danger {
+.form__input--error {
 
   input:not([type=submit],[type=radio],[type=checkbox]),
   input:not([type=submit],[type=radio],[type=checkbox]):focus,
   textarea,
   textarea:focus,
-  .radio {
+  .radio,
+  .select2-container--default .select2-selection--single {
     border-color: var(--danger);
   }
 
@@ -692,7 +435,7 @@ input[type=number] {
 
 // }
 
-.error-message {
+.form__error {
   display: block;
   font-size: 1.1rem;
   color: var(--danger);

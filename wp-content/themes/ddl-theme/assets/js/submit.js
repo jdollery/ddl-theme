@@ -23,35 +23,6 @@ window.onload = function () {
     });
 
     var pristine = new Pristine(form);
-    
-    // const select = document.querySelectorAll('select');
-      
-    // select.forEach((item) => {
-    //   let initialValue = item.value;
-    
-    //   item.addEventListener('change', (event) => {
-
-    //     pristine.addValidator(item, function() {
-
-    //       if (this.value === initialValue) {
-    //         return false; // Return false for invalid value
-    //       }
-    //       return true; // Return true for valid value
-    //     });
-
-
-    //     // if (item.value === item.options[0].value) {
-    //     //   item.setCustomValidity("Please select a valid option.");
-    //     //   item.reportValidity();
-    //     // } else if (item.value !== initialValue) {
-    //     //   item.setCustomValidity("");
-    //     //   pristine.validate(item);
-    //     // }
-
-    //   });
-
-
-    // });
 
     form.addEventListener('submit', function (event) {
 

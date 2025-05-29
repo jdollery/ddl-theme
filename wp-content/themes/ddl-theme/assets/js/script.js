@@ -147,121 +147,119 @@ jQuery(document).ready(function () { //doc ready start
   /* CONTACT FORM */
   /*-----------------------------------------------------------------------------------*/
 
-  // jQuery('select').select2({
-  //   minimumResultsForSearch: Infinity,
-  //   placeholder: function(){
-  //     jQuery(this).data('placeholder');
-  //   }
-  // });
+  jQuery('select').select2({
+    minimumResultsForSearch: Infinity,
+    placeholder: function(){
+      jQuery(this).data('placeholder');
+    }
+  });
 
-  // jQuery('form').each(function() {
+  jQuery('form').each(function() {
 
-  //   var validobj = jQuery(this).validate({
+    var validobj = jQuery(this).validate({
 
-  //     onkeyup: false,
-  //     errorClass: "error",
-  //     errorElement: 'strong',
+      onkeyup: false,
+      errorClass: "form__error",
+      errorElement: 'strong',
 
-  //     // errorPlacement: function (error, element) {
-  //     //   var elem = jQuery(element);
-  //     //   error.insertAfter(element);
-  //     // },
+      errorPlacement: function (error, e) {
+        e.parents('.form__input').append(error);
+      },
 
-  //     highlight: function (element, errorClass, validClass) {
-  //       var elem = jQuery(element);
-  //       if (elem.hasClass("select2-hidden-accessible")) {
-  //         jQuery(".select2-container").addClass(errorClass);
-  //       } else {
-  //         elem.addClass(errorClass);
-  //       }
-  //     },
+      highlight: function (element) {
+        var e = jQuery(element);
 
-  //     unhighlight: function (element, errorClass, validClass) {
-  //       var elem = jQuery(element);
-  //       if (elem.hasClass("select2-hidden-accessible")) {
-  //         jQuery(".select2-container").removeClass(errorClass);
-  //       } else {
-  //         elem.removeClass(errorClass);
-  //       }
-  //     }
+        e.closest('.form__input').removeClass('form__input--success form__input--error').addClass('form__input--error');
+        e.closest('.form__error').remove();
 
-  //   });
+      },
 
-  //   jQuery(document).on("change", ".select2-hidden-accessible", function () {
-  //     if (!jQuery.isEmptyObject(validobj.submitted)) {
-  //       validobj.form();
-  //     }
-  //   });
+      success: function (e) {
+        e.closest('.form__input').removeClass('form__input--success form__input--error');
+        e.closest('.form__error').remove();
+      }, rules:  {
+        select: {required: true}
+      }, messages: {
+        select: {required: 'error'}
+      },
 
-  //   jQuery(document).on("select2-opening", function () {
-  //     if (jQuery(".select2-container").hasClass("error")) {
-  //       jQuery(".select2-drop ul").addClass("error");
-  //     } else {
-  //       jQuery(".select2-drop ul").removeClass("error");
-  //     }
-  //   });
+    });
 
-  //   jQuery.validator.addMethod('filesize', function(value, element, param) {
-  //     return this.optional(element) || (element.files[0].size <= param)
-  //   }, 'File size must be less than 5mb');
+    jQuery(document).on("change", ".select2-hidden-accessible", function () {
+      if (!jQuery.isEmptyObject(validobj.submitted)) {
+        validobj.form();
+      }
+    });
 
-  //   jQuery(this).on( "submit", function(e) {
+    jQuery(document).on("select2-opening", function () {
+      if (jQuery(".select2-container").hasClass("error")) {
+        jQuery(".select2-drop ul").addClass("error");
+      } else {
+        jQuery(".select2-drop ul").removeClass("error");
+      }
+    });
 
-  //     e.preventDefault();
+    jQuery.validator.addMethod('filesize', function(value, element, param) {
+      return this.optional(element) || (element.files[0].size <= param)
+    }, 'File size must be less than 5mb');
 
-  //     if (jQuery(this).valid()) {
+    jQuery(this).on( "submit", function(e) {
 
-  //       jQuery(this).find('.btn--submit').addClass('btn--sending');
+      e.preventDefault();
+
+      if (jQuery(this).valid()) {
+
+        jQuery(this).find('.btn--submit').addClass('btn--sending');
       
-  //       grecaptcha.ready(function() {
-  //         grecaptcha.execute('XXXXXXXXXXXX', {action: 'submit'}).then(function(token) {
+        grecaptcha.ready(function() {
+          grecaptcha.execute('XXXXXXXXXXXX', {action: 'submit'}).then(function(token) {
       
-  //           let recaptchaResponse = document.getElementById("recaptcha_response")
-  //           recaptchaResponse.value = token 
+            let recaptchaResponse = document.getElementById("recaptcha_response")
+            recaptchaResponse.value = token 
       
-  //           const data = new FormData(e.target);
+            const data = new FormData(e.target);
       
-  //           fetch( "https://XXXXXXXXX/wp-content/themes/XXXXXXXXX/validate.php", {
-  //             method: 'post',
-  //             body: data,
-  //           })
+            fetch( "https://XXXXXXXXX/wp-content/themes/XXXXXXXXX/actions/validate.php", {
+              method: 'post',
+              body: data,
+            })
       
-  //           .then((response) => response.text())
-  //           .then((response) => {
+            .then((response) => response.text())
+            .then((response) => {
       
-  //             const responseText = JSON.parse(response)
+              const responseText = JSON.parse(response)
               
-  //             if (responseText.success) { 
+              if (responseText.success) { 
 
-  //               jQuery(this).find('.btn--submit').removeClass('btn--sending');
+                jQuery(this).find('.btn--submit').removeClass('btn--sending');
 
-  //               jQuery(this).submit()
+                jQuery(this).submit()
       
-  //             } else {
+              } else {
 
-  //               jQuery(this).find('.btn--submit').removeClass('btn--sending');
+                jQuery(this).find('.btn--submit').removeClass('btn--sending');
       
-  //               console.log('reCAPTCHA error', responseText);
+                console.log('reCAPTCHA error', responseText);
           
-  //             }
+              }
       
-  //           })
+            })
       
-  //           .catch(error => {
+            .catch(error => {
       
-  //             console.log('server side error');
+              console.log('server side error');
       
-  //           })
+            })
       
-  //         })
+          })
       
-  //       })
+        })
 
-  //     }
+      }
 
-  //   });
+    });
 
-  // });
+  });
 
 }); //doc ready end
 
@@ -880,55 +878,77 @@ function videoDialog(){}
 // }
 
 
-document.addEventListener("DOMContentLoaded", function() {
-  const customSelects = document.getElementsByClassName("form__input--select");
+// document.addEventListener("DOMContentLoaded", function() {
+//   const customSelects = document.getElementsByClassName("form__input--select");
 
-  Array.from(customSelects).forEach(selectWrapper => {
-    const selectElement = selectWrapper.querySelector("select");
-    const options = Array.from(selectElement.options).slice(1); // Exclude the first empty option
+//   Array.from(customSelects).forEach(selectWrapper => {
 
-    const selectedDiv = document.createElement("div");
-    selectedDiv.classList.add("select-selected");
-    selectedDiv.innerHTML = selectElement.options[selectElement.selectedIndex].innerHTML;
-    selectWrapper.appendChild(selectedDiv);
+//     const selectElement = selectWrapper.querySelector("select");
+//     const options = Array.from(selectElement.options).slice(1); // Exclude the first empty option
 
-    const selectItemsDiv = document.createElement("div");
-    selectItemsDiv.classList.add("select-items", "select-hide");
+//     const selectedDiv = document.createElement("div");
+//     selectedDiv.classList.add("select__box");
+//     selectedDiv.innerHTML = selectElement.options[selectElement.selectedIndex].innerHTML;
+//     selectWrapper.appendChild(selectedDiv);
 
-    options.forEach(option => {
-      const optionDiv = document.createElement("div");
-      optionDiv.innerHTML = option.innerHTML;
-      optionDiv.addEventListener("click", function(e) {
-        selectElement.value = option.value;
-        selectedDiv.innerHTML = option.innerHTML;
-        this.parentNode.querySelector(".same-as-selected")?.classList.remove("same-as-selected");
-        this.classList.add("same-as-selected");
-        selectedDiv.click();
-      });
+//     const selectItemsDiv = document.createElement("div");
+//     selectItemsDiv.classList.add("select__items", "select__items--hide");
 
-      selectItemsDiv.appendChild(optionDiv);
-    });
+//     options.forEach(option => {
+//       const optionDiv = document.createElement("div");
+//       optionDiv.innerHTML = option.innerHTML;
+//       optionDiv.addEventListener("click", function(e) {
+//         selectElement.value = option.value;
+//         selectedDiv.innerHTML = option.innerHTML;
+//         this.parentNode.querySelector(".select__option--selected")?.classList.remove("select__option--selected");
+//         this.classList.add("select__option--selected");
+//         selectedDiv.click();
+//       });
 
-    selectWrapper.appendChild(selectItemsDiv);
+//       // Add keyboard support for selecting options
+//       optionDiv.addEventListener("keydown", function(e) {
+//         if (e.key === 'Enter' || e.key === ' ') {
+//           selectElement.value = option.value;
+//           selectedDiv.innerHTML = option.innerHTML;
+//           this.parentNode.querySelector(".select__option--selected")?.classList.remove("select__option--selected");
+//           this.classList.add("select__option--selected");
+//           e.preventDefault(); // Prevent default action
+//         }
+//       });
 
-    selectedDiv.addEventListener("click", function(e) {
-      e.stopPropagation();
-      closeAllSelect(this);
-      selectItemsDiv.classList.toggle("select-hide");
-      this.classList.toggle("select-arrow-active");
-    });
-  });
+//       selectItemsDiv.appendChild(optionDiv);
+//     });
 
-  function closeAllSelect(currentElement) {
-    Array.from(document.getElementsByClassName("select-selected")).forEach(element => {
-      if (element !== currentElement) {
-        element.classList.remove("select-arrow-active");
-        element.nextSibling.classList.add("select-hide");
-      }
-    });
-  }
+//     selectWrapper.appendChild(selectItemsDiv);
 
-  document.addEventListener("click", function() {
-    closeAllSelect(null);
-  });
-});
+//     selectedDiv.addEventListener("click", function(e) {
+//       e.stopPropagation();
+//       closeAllSelect(this);
+//       selectItemsDiv.classList.toggle("select__items--hide");
+//       this.classList.toggle("select__box--active");
+//     });
+
+//     // Add keyboard support for opening the dropdown
+//     selectedDiv.addEventListener("keydown", function(e) {
+//       if (e.key === 'Enter' || e.key === ' ') {
+//         selectItemsDiv.classList.toggle("select__items--hide");
+//         this.classList.toggle("select__box--active");
+//       }
+//     });
+
+//   });
+
+//   function closeAllSelect(currentElement) {
+//     Array.from(document.getElementsByClassName("select__box")).forEach(element => {
+//       if (element !== currentElement) {
+//         element.classList.remove("select__box--active");
+//         element.nextSibling.classList.add("select__items--hide");
+//       }
+//     });
+//   }
+
+//   document.addEventListener("click", function() {
+//     closeAllSelect(null);
+//   });
+
+// });

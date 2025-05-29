@@ -415,6 +415,7 @@ a:not([class]) {
 a,
 button,
 input,
+textarea,
 .btn--radio input[type=radio] + label {
 
   &:focus-visible {

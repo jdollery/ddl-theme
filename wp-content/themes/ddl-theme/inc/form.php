@@ -77,21 +77,20 @@
     
     <div class="form__input form__input--span">
       
-      <label for="teatment">Please select a treatment</label>
-      <div class="form__input--select">
-        <select 
-          id="teatment" 
-          name="teatment" 
-          required
-          aria-required="true"
-          >
-          <option></option>
-          <option label="Invisalign" value="Invisalign">Invisalign</option>
-          <option label="Implant" value="Implant">Implant</option>
-          <option label="Endodontic" value="Endodontic">Endodontic</option>
-          <option label="Oral surgery" value="Oral surgery">Oral surgery</option>
-        </select>
-      </div>
+      <label for="treatment">Please select a treatment</label>
+      <select 
+        id="treatment" 
+        name="treatment" 
+        required
+        aria-required="true"
+        data-placeholder="Please select an option" 
+        >
+        <option></option>
+        <option label="Invisalign" value="Invisalign">Invisalign</option>
+        <option label="Implant" value="Implant">Implant</option>
+        <option label="Endodontic" value="Endodontic">Endodontic</option>
+        <option label="Oral surgery" value="Oral surgery">Oral surgery</option>
+      </select>
 
     </div>
 
