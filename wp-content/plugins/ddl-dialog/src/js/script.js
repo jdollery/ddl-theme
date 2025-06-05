@@ -50,23 +50,35 @@ const initDDLDialog = function () {
 
     window.addEventListener("load", function() {
 
-      const dialogShow = sessionStorage.getItem('ddlDialogVisible');
+      if (dialog.classList.contains("ddl-dialog--session")) {
+        
+        const dialogShow = sessionStorage.getItem('ddlDialogSession');
 
-      if (!dialogShow) {
+        if (!dialogShow) {
 
-        sessionStorage.setItem('ddlDialogVisible', 'true');
+          sessionStorage.setItem('ddlDialogSession', 'true');
+
+          root.classList.add('ddl-dialog-visible');
+          dialog.classList.add('ddl-dialog--visible');
+          dialog.setAttribute('aria-modal', 'true');
+
+        } else {
+
+          sessionStorage.setItem('ddlDialogSession', 'false');
+
+          root.classList.remove("ddl-dialog-visible");
+          dialog.classList.remove('ddl-dialog--visible');
+          dialog.setAttribute('aria-modal', 'false');
+
+        }
+
+      } else {
+          
+        sessionStorage.removeItem('ddlDialogSession');
 
         root.classList.add('ddl-dialog-visible');
         dialog.classList.add('ddl-dialog--visible');
         dialog.setAttribute('aria-modal', 'true');
-
-      } else {
-
-        sessionStorage.setItem('ddlDialogVisible', 'false');
-
-        root.classList.remove("ddl-dialog-visible");
-        dialog.classList.remove('ddl-dialog--visible');
-        dialog.setAttribute('aria-modal', 'false');
 
       }
       
@@ -80,7 +92,11 @@ const initDDLDialog = function () {
 
         event.preventDefault();
 
-        sessionStorage.setItem('ddlDialogVisible', 'false');
+        if (dialog.classList.contains("ddl-dialog--session")) {
+
+          sessionStorage.setItem('ddlDialogSession', 'false');
+
+        }
 
         root.classList.remove("ddl-dialog-visible");
         dialog.classList.remove('ddl-dialog--visible');

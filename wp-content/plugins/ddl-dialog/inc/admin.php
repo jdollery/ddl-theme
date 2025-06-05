@@ -73,22 +73,25 @@ add_action( 'add_meta_boxes', 'add_ddl_dialog_meta_boxes' );
 
 /* --------------------- CREATE OPTIONS --------------------- */
 
-
-function set_ddl_dialog_meta_boxes( $post ) {
-
-    wp_nonce_field( 'ddl_dialog_show', 'ddl_dialog_show_nonce' );
-
-    $ddl_dialog_value = get_post_meta( $post->ID, '_ddl_dialog_show', true );
-    $ddl_dialog_is_checked = ((int)$ddl_dialog_value == 1) ? 'checked' : '';
-
-    ?>
+function set_ddl_dialog_meta_boxes( $post ) { ?>
 
     <table class="form-table" role="presentation">
       <tr>
         
         <td>
-          <input type="checkbox" id="ddlDialogShow" name="ddlDialogShow" value="1" <?php echo $ddl_dialog_is_checked; ?> />
+
+          <?php 
+
+            wp_nonce_field( 'ddl_dialog_show', 'ddl_dialog_show_nonce' );
+
+            $ddl_dialog_show = get_post_meta( $post->ID, '_ddl_dialog_show', true );
+            $ddl_dialog_is_visible = ((int)$ddl_dialog_show == 1) ? 'checked' : '';
+
+          ?>
+
+          <input type="checkbox" id="ddlDialogShow" name="ddlDialogShow" value="1" <?php echo $ddl_dialog_is_visible; ?> />
           <label for="ddlDialogShow">Show dialog?</label>
+
         </td>
 
       </tr>
@@ -116,9 +119,32 @@ function set_ddl_dialog_meta_boxes( $post ) {
           <fieldset>
             <legend class="screen-reader-text"><span>Enter a &ldquo;Post ID&rdquo; to select a post/page</span></legend>
             <input type="number" name="ddlDialogPageID" id="ddlDialogPageID" value="<?php echo $ddl_dialog_selected_page; ?>"/>
-            <p class="description">Dialog is currently <strong><?php if ( $ddl_dialog_is_checked ) { ?>visible<?php } else { ?>hidden<?php } ?></strong> on the &ldquo;<?php echo $ddl_dialog_page_title ?>&rdquo; <?php if ( get_post_type($ddl_dialog_selected_page) == 'post' ) { ?>post<?php } else { ?>page<?php } ?>.</p>
+            <p class="description">Dialog is currently <?php if ( $ddl_dialog_is_visible ) { ?><strong style="color: #198754">visible</strong><?php } else { ?><strong style="color: #d63638">hidden</strong><?php } ?> on the &ldquo;<?php echo $ddl_dialog_page_title ?>&rdquo; <?php if ( get_post_type($ddl_dialog_selected_page) == 'post' ) { ?>post<?php } else { ?>page<?php } ?>.</p>
           </fieldset>
 
+        </td>
+
+      </tr>
+      <tr>
+
+        <td>
+
+          <?php 
+
+            wp_nonce_field( 'ddl_dialog_session', 'ddl_dialog_session_nonce' );
+
+            $ddl_dialog_session = get_post_meta( $post->ID, '_ddl_dialog_session', true );
+            $ddl_dialog_is_session = ((int)$ddl_dialog_session == 1) ? 'checked' : '';
+
+          ?>
+
+          <fieldset>
+            <legend class="screen-reader-text"><span>Show dialog only once per session?</span></legend>
+            <input type="checkbox" id="ddlDialogSession" name="ddlDialogSession" value="1" <?php echo $ddl_dialog_is_session; ?> />
+            <label for="ddlDialogSession">Show dialog only once per session?</label>
+            <p class="description">Recommended for a better user experience.</p>
+          </fieldset>
+          
         </td>
 
       </tr>
@@ -132,14 +158,16 @@ function set_ddl_dialog_meta_boxes( $post ) {
 
 function save_ddl_dialog_meta_boxes( $post_id ) {
 
-  $visible = isset( $_POST['ddlDialogShow'] ) && $_POST['ddlDialogShow'] == 1;
-  $visible = $visible ? 1 : 0;
-  update_post_meta( $post_id,  '_ddl_dialog_show', $visible );
+  $ddlDialogVisible = isset( $_POST['ddlDialogShow'] ) && $_POST['ddlDialogShow'] == 1 ? 1 : 0;
+  update_post_meta( $post_id, '_ddl_dialog_show', $ddlDialogVisible );
 
   if (isset($_POST['ddlDialogPageID'])) {
     update_post_meta($post_id, '_ddl_dialog_page', sanitize_text_field($_POST['ddlDialogPageID']));
   }
 
+  $ddlDialogSession = isset( $_POST['ddlDialogSession'] ) && $_POST['ddlDialogSession'] == 1 ? 1 : 0;
+  update_post_meta( $post_id, '_ddl_dialog_session', $ddlDialogSession );
+
 }
 
-add_action( 'save_post',  'save_ddl_dialog_meta_boxes' );
+add_action('save_post', 'save_ddl_dialog_meta_boxes');

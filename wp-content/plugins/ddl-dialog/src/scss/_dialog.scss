@@ -61,15 +61,15 @@ html {
     opacity: 0;
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     transition-delay: 0.3s;
-    transform: translateY(-5rem);
+    transform: translateY(-50px);
     z-index: 999999;
     // overflow-x: hidden;
     // overflow-y: auto;
     // height: 100%;
-    width: 70rem;
+    width: 700px;
     max-width: 100%;
     height: 100%;
-    padding: 5rem 2rem;
+    padding: 50px 20px;
     margin: 0 auto;
     overflow-y: auto;
   }
@@ -79,50 +79,55 @@ html {
     // overflow: hidden;
     // border-radius: 1rem;
     width: 100%;
+    padding: 30px 40px;
     // max-width: 100%;
-    padding: var(--space-x);
+    // padding: var(--space-x);
     background: var(--ddl-dialog-white);
     // @include box-shadow (0 0 1.5rem 0 rgba(0, 0, 0, 0.3));
+
+    p {
+      margin-block: 0.8em;
+      margin-block: 0.8lh;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+    }
 
   }
 
   &__close {
-    display: flex;
     position: absolute;
-    top: -1rem;
-    right: -1rem;
-    width: 3.8rem;
-    height: 3.8rem;
-    // line-height: 3.15rem;
-    background: var(--ddl-dialog-grey);
-    border-radius: 50%;
-    // border: 0.4rem solid var(--white);
+    right: 0;
+    top: 30px;
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: var(--ddl-dialog-grey);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    border-radius: 5px;
+    border: 0;
     z-index: 1;
-    padding: 1.3rem;
-    aspect-ratio: 1;
-    // @include box-shadow (0 0 1.5rem 0 rgba(0, 0, 0, 0.3));
-    transition: background .3s cubic-bezier(.5,0,.5,1);
+    transition: all .3s cubic-bezier(.5,0,.5,1);
+    cursor: pointer;
+    z-index: 150;
 
-    @media (min-width: 480px) {
-      width: 4.5rem;
-      height: 4.5rem;
-      padding: 1.5rem;
-    }
+    // @media (min-width: 480px) {
+    //   width: 4.5rem;
+    //   height: 4.5rem;
+    //   padding: 1.5rem;
+    // }
 
     @include hover-focus {
-      background: var(--ddl-dialog-black);
-    }
-
-  }
-
-  &__icon {
-    width: 100%;
-    height: 100%;
-    vertical-align: initial;
-    aspect-ratio: 1 / 1;
-
-    svg {
-      fill: var(--ddl-dialog-white);
+      background-color: var(--ddl-dialog-black);
     }
 
   }

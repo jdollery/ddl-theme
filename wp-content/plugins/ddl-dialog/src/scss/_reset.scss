@@ -1,3 +1,15 @@
+/*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+@use 'mixins' as *;
+@use 'variables' as *;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLES */
+/*-----------------------------------------------------------------------------------*/
+
 .ddl-dialog *,
 .ddl-dialog::after,
 .ddl-dialog::before {
@@ -32,9 +44,9 @@
   button:focus-visible,
   a:focus-visible,
   input:focus-visible {
-    outline: 1px solid var(--cookie-white) !important;
+    outline: 2px solid var(--ddl-dialog-grey-light) !important;
     text-decoration: none !important;
-    outline-offset: 1px !important;
+    outline-offset: 0 !important;
   }
 
   @media (prefers-reduced-motion: reduce) {

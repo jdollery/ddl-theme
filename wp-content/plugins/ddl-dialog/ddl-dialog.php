@@ -50,18 +50,10 @@ function init_ddl_dialog() {
 
       $ddl_dialog_post_Id = get_the_ID();
       $ddl_dialog_status = get_post_status($ddl_dialog_post_Id);
-      $ddl_dialog_is_checked = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_show', true);
+      $ddl_dialog_is_visible = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_show', true);
+      $ddl_dialog_session = get_post_meta( $ddl_dialog_post_Id, '_ddl_dialog_session', true );
       
       $ddl_dialog_selected_page = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_page', true);
-
-      // if ( is_page($ddl_dialog_selected_page) ) {
-
-      //   if ($ddl_dialog_status == 'publish' && $ddl_dialog_is_checked == 1) {
-      //     include plugin_dir_path( __FILE__ ) . './inc/dialog.php';
-      //   }
-
-      // }
-
 
       $ddl_dialog_query = null;
       
@@ -76,11 +68,31 @@ function init_ddl_dialog() {
       
       if ( isset($ddl_dialog_query) ) {
       
-          // Additional logic based on the query results
-      
-          if ($ddl_dialog_status == 'publish' && $ddl_dialog_is_checked == 1) {
-              include plugin_dir_path( __FILE__ ) . './inc/dialog.php';
-          }
+        if ($ddl_dialog_status == 'publish' && $ddl_dialog_is_visible == 1) { ?>
+          
+          <div class="ddl-dialog<?php if ($ddl_dialog_session){ ?> ddl-dialog--session<?php } ?>" role="dialog" aria-modal="false" id="ddlDialog" data-dialog-id="<?php echo $ddl_dialog_post_Id ?>">
+  
+            <div class="ddl-dialog__backdrop" aria-label="Close" data-dialog-close ></div>
+            
+            <div class="ddl-dialog__inner">
+
+              <button class="ddl-dialog__close" aria-label="Close" data-dialog-close tabindex="1" >
+                <span class="hidden">Close</span>
+              </button>
+              
+              <div class="ddl-dialog__body">
+
+                <?php the_content(); ?>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <?php
+          
+        }
       
       }
 
