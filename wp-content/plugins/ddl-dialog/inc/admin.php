@@ -87,7 +87,7 @@ function set_ddl_dialog_meta_boxes( $post ) {
       <tr>
         
         <td>
-          <input type="checkbox" id="ddlDialogShow" name="ddlDialogShow" value="1" <?php echo $ddl_dialog_is_checked; ?>/>
+          <input type="checkbox" id="ddlDialogShow" name="ddlDialogShow" value="1" <?php echo $ddl_dialog_is_checked; ?> />
           <label for="ddlDialogShow">Show dialog?</label>
         </td>
 
@@ -95,20 +95,29 @@ function set_ddl_dialog_meta_boxes( $post ) {
       <tr>
 
         <td>
-          <label for="ddlDialogPage" style="display: block;margin-bottom: 8px;">Select a page:</label>
 
           <?php
-          
-            $ddl_dialog_selected_page = get_post_meta($post->ID, '_ddl_dialog_page', true);
-            wp_dropdown_pages(array(
-              'name' => 'ddlDialogPage',
-              'echo' => 1,
-              'show_option_none' => '-- Select a page --',
-              'option_none_value' => '',
-              'selected' => $ddl_dialog_selected_page
-            ));
+
+          $front_page_id = get_option('page_on_front');
+          $front_page_title = get_the_title($front_page_id);
 
           ?>
+
+          <label for="ddlDialogPage" style="display: block;margin-bottom: 8px;">Enter a &ldquo;Post ID&rdquo; to select a post/page (e.g &ldquo;<?php echo $front_page_id ?>&rdquo; for the &ldquo;<?php echo $front_page_title ?>&rdquo; page):</label>
+
+          <?php           
+
+          $ddl_dialog_selected_page = get_post_meta($post->ID, '_ddl_dialog_page', true); 
+          
+          $ddl_dialog_page_title = get_the_title($ddl_dialog_selected_page);
+
+          ?>
+          
+          <fieldset>
+            <legend class="screen-reader-text"><span>Enter a &ldquo;Post ID&rdquo; to select a post/page</span></legend>
+            <input type="number" name="ddlDialogPageID" id="ddlDialogPageID" value="<?php echo $ddl_dialog_selected_page; ?>"/>
+            <p class="description">Dialog is currently <strong><?php if ( $ddl_dialog_is_checked ) { ?>visible<?php } else { ?>hidden<?php } ?></strong> on the &ldquo;<?php echo $ddl_dialog_page_title ?>&rdquo; <?php if ( get_post_type($ddl_dialog_selected_page) == 'post' ) { ?>post<?php } else { ?>page<?php } ?>.</p>
+          </fieldset>
 
         </td>
 
@@ -127,8 +136,8 @@ function save_ddl_dialog_meta_boxes( $post_id ) {
   $visible = $visible ? 1 : 0;
   update_post_meta( $post_id,  '_ddl_dialog_show', $visible );
 
-  if (isset($_POST['ddlDialogPage'])) {
-      update_post_meta($post_id, '_ddl_dialog_page', $_POST['ddlDialogPage']);
+  if (isset($_POST['ddlDialogPageID'])) {
+    update_post_meta($post_id, '_ddl_dialog_page', sanitize_text_field($_POST['ddlDialogPageID']));
   }
 
 }

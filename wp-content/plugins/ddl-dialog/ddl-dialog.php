@@ -54,21 +54,34 @@ function init_ddl_dialog() {
       
       $ddl_dialog_selected_page = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_page', true);
 
-      // $ddl_dialog_query = new WP_Query(
-      //   array(
-      //     'post_type' => 'any',
-      //     'p' => $ddl_dialog_selected_page
-      //   )
-      // );
+      // if ( is_page($ddl_dialog_selected_page) ) {
 
-      // var_dump($ddl_dialog_query);
+      //   if ($ddl_dialog_status == 'publish' && $ddl_dialog_is_checked == 1) {
+      //     include plugin_dir_path( __FILE__ ) . './inc/dialog.php';
+      //   }
 
-      if ( is_page($ddl_dialog_selected_page) ) {
+      // }
 
-        if ($ddl_dialog_status == 'publish' && $ddl_dialog_is_checked == 1) {
-          include plugin_dir_path( __FILE__ ) . './inc/dialog.php';
-        }
 
+      $ddl_dialog_query = null;
+      
+      if ( isset($ddl_dialog_selected_page) && ( is_page($ddl_dialog_selected_page) || is_single($ddl_dialog_selected_page) ) ) {
+        $ddl_dialog_query = new WP_Query(
+          array(
+            'post_type' => 'any',
+            'p' => $ddl_dialog_selected_page
+          )
+        );
+      }
+      
+      if ( isset($ddl_dialog_query) ) {
+      
+          // Additional logic based on the query results
+      
+          if ($ddl_dialog_status == 'publish' && $ddl_dialog_is_checked == 1) {
+              include plugin_dir_path( __FILE__ ) . './inc/dialog.php';
+          }
+      
       }
 
     endwhile;
