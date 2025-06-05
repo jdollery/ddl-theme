@@ -89,3 +89,32 @@ function include_file($atts) {
 add_shortcode('include', 'include_file');
 
 // [include slug="inc/form"]
+
+
+/* --------------------- GET PRICE FROM A FEE POST AND ACF TABLE ROW --------------------- */
+
+function get_acf_repeater_row_func( $atts ) {
+
+  $atts = shortcode_atts(
+    array(
+      'post_id' => get_the_ID(), // Default to current post ID
+      'row_number' => 0, // Default row number
+    ),
+    $atts,
+    'get_fee'
+  );
+
+  $repeater_field = get_field( 'fees_table', $atts['post_id'] );
+
+  if ( $repeater_field ) {
+    $row = $repeater_field[ $atts['row_number'] ];
+
+    return $row['fees_price'];
+  }
+
+  return '';
+}
+
+add_shortcode( 'get_fee', 'get_acf_repeater_row_func' );
+
+// [get_fee post_id="123" row_number="1"]

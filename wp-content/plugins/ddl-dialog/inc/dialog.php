@@ -1,4 +1,4 @@
-<dialog class="ddl-dialog" role="dialog" id="dialogContact">
+<div class="ddl-dialog ddl-dialog--<?php echo $ddl_dialog_post_Id ?>"role="dialog" aria-modal="false" id="ddlDialog">
   
   <div class="ddl-dialog__backdrop" data-dialog-close></div>
   
@@ -19,4 +19,4 @@
 
   </div>
 
-</dialog>
+</div>

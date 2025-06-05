@@ -36,37 +36,46 @@ add_action( 'wp_enqueue_scripts', 'ddl_dialog_enqueue' );
 include plugin_dir_path( __FILE__ ) . './inc/admin.php';
 include plugin_dir_path( __FILE__ ) . './inc/post-type.php';
 
-function init_dialog() {
-    
-  $dialogLoop = new WP_Query( array(
+function init_ddl_dialog() {
+
+  $ddl_dialog_loop = new WP_Query( array(
     'post_type' => 'ddl-dialogs',
     "numberposts" => 1,
     "posts_per_page" => 1
-    // 'order'  => 'ASC', 
-    // 'orderby' => 'menu_order',
-    // 'post_parent' => get_the_ID(),
-    // 'numberposts' => -1,
   ) );
 
-  if ( $dialogLoop -> have_posts() ) {
+  if ( $ddl_dialog_loop->have_posts() ) {
 
-    while ( $dialogLoop->have_posts() ) : $dialogLoop->the_post();
-    
-      if( is_page(2) ) { // Enter your page ID
+    while ( $ddl_dialog_loop->have_posts() ) : $ddl_dialog_loop->the_post();
 
-        $postId = get_the_ID();
+      $ddl_dialog_post_Id = get_the_ID();
+      $ddl_dialog_status = get_post_status($ddl_dialog_post_Id);
+      $ddl_dialog_is_checked = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_show', true);
+      
+      $ddl_dialog_selected_page = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_page', true);
 
-        $dialogStatus = get_post_status($postId);
-        if ($dialogStatus == 'publish' && $is_checked ) {
+      // $ddl_dialog_query = new WP_Query(
+      //   array(
+      //     'post_type' => 'any',
+      //     'p' => $ddl_dialog_selected_page
+      //   )
+      // );
+
+      // var_dump($ddl_dialog_query);
+
+      if ( is_page($ddl_dialog_selected_page) ) {
+
+        if ($ddl_dialog_status == 'publish' && $ddl_dialog_is_checked == 1) {
           include plugin_dir_path( __FILE__ ) . './inc/dialog.php';
         }
 
       }
 
-    endwhile; wp_reset_query();
+    endwhile;
+    wp_reset_query();
 
   }
 
 }
 
-add_action( 'wp_footer', 'init_dialog', 1 );
+add_action( 'wp_footer', 'init_ddl_dialog', 1 );

@@ -51,36 +51,86 @@
 
 // }
 
-function clients_custom_metaboxes() {
+/*-----------------------------------------------------------------------------------*/
+/* DIALOG POST OPTIONS */
+/*-----------------------------------------------------------------------------------*/
 
-  //Visibility
+/* --------------------- ADD OPTIONS --------------------- */
+
+function add_ddl_dialog_meta_boxes() {
+
   add_meta_box(
-      'clients_visible',
-      __( 'Show on clients page' ),
-      'infotravel_clients_visible_metabox',
-      'ddl-dialogs'
+    'ddl_dialog_options',
+    __( 'Dialog Options' ),
+    'set_ddl_dialog_meta_boxes',
+    'ddl-dialogs'
   );
-}
-
-add_action( 'add_meta_boxes', 'clients_custom_metaboxes' );
-
-function infotravel_clients_visible_metabox( $post ) {
-  wp_nonce_field( 'clients_show', 'clients_show_nonce' );
-  $value = get_post_meta( $post->ID, '_clients_show', true );
-  $is_checked = ((int)$value == 1) ? 'checked' : '';
-  ?>
-  <input type="checkbox" id="chkClientShow" name="chkClientShow" value="1" <?php echo $is_checked; ?>/>
-  <label for="chkClientShow">Show this client on Clients page</label>
-  <?php
-}
-
-
-function infotravel_save_clients_meta( $post_id ) {
-
-  $visible = isset( $_POST['chkClientShow'] ) && $_POST['chkClientShow'] == 1;
-  $visible = (int)$visible;
-  update_post_meta( $post_id,  '_clients_show', $visible );
 
 }
 
-add_action( 'save_post',  'infotravel_save_clients_meta' );
+add_action( 'add_meta_boxes', 'add_ddl_dialog_meta_boxes' );
+
+
+/* --------------------- CREATE OPTIONS --------------------- */
+
+
+function set_ddl_dialog_meta_boxes( $post ) {
+
+    wp_nonce_field( 'ddl_dialog_show', 'ddl_dialog_show_nonce' );
+
+    $ddl_dialog_value = get_post_meta( $post->ID, '_ddl_dialog_show', true );
+    $ddl_dialog_is_checked = ((int)$ddl_dialog_value == 1) ? 'checked' : '';
+
+    ?>
+
+    <table class="form-table" role="presentation">
+      <tr>
+        
+        <td>
+          <input type="checkbox" id="ddlDialogShow" name="ddlDialogShow" value="1" <?php echo $ddl_dialog_is_checked; ?>/>
+          <label for="ddlDialogShow">Show dialog?</label>
+        </td>
+
+      </tr>
+      <tr>
+
+        <td>
+          <label for="ddlDialogPage" style="display: block;margin-bottom: 8px;">Select a page:</label>
+
+          <?php
+          
+            $ddl_dialog_selected_page = get_post_meta($post->ID, '_ddl_dialog_page', true);
+            wp_dropdown_pages(array(
+              'name' => 'ddlDialogPage',
+              'echo' => 1,
+              'show_option_none' => '-- Select a page --',
+              'option_none_value' => '',
+              'selected' => $ddl_dialog_selected_page
+            ));
+
+          ?>
+
+        </td>
+
+      </tr>
+    </table>
+
+    <?php
+}
+
+
+/* --------------------- SAVE OPTIONS --------------------- */
+
+function save_ddl_dialog_meta_boxes( $post_id ) {
+
+  $visible = isset( $_POST['ddlDialogShow'] ) && $_POST['ddlDialogShow'] == 1;
+  $visible = $visible ? 1 : 0;
+  update_post_meta( $post_id,  '_ddl_dialog_show', $visible );
+
+  if (isset($_POST['ddlDialogPage'])) {
+      update_post_meta($post_id, '_ddl_dialog_page', $_POST['ddlDialogPage']);
+  }
+
+}
+
+add_action( 'save_post',  'save_ddl_dialog_meta_boxes' );

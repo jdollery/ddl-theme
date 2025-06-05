@@ -1,0 +1,184 @@
+.ddl-dialog *,
+.ddl-dialog::after,
+.ddl-dialog::before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ddl-dialog a,
+.ddl-dialog area,
+.ddl-dialog button,
+.ddl-dialog [role=button],
+.ddl-dialog input:not([type=range]),
+.ddl-dialog label,
+.ddl-dialog select,
+.ddl-dialog summary,
+.ddl-dialog textarea {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+.ddl-dialog *:focus {
+  outline: none;
+  outline: 0;
+  outline: -webkit-focus-ring-color 0;
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.ddl-dialog button:focus-visible,
+.ddl-dialog a:focus-visible,
+.ddl-dialog input:focus-visible {
+  outline: 1px solid var(--cookie-white) !important;
+  text-decoration: none !important;
+  outline-offset: 1px !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ddl-dialog {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+/* CSS GLOBAL VARIABLES */
+/*-----------------------------------------------------------------------------------*/
+:root {
+  /* --------- COLOURS --------- */
+  --ddl-dialog-white: #ffffff;
+  --ddl-dialog-black: #565656;
+  --ddl-dialog-grey: #F8F8F8;
+  --ddl-dialog-blue: #94C24A;
+  --ddl-dialog-danger: #dc3545;
+  /* --------- GLOBAL --------- */
+  /*-----------------------------------------------------------------------------------*/
+  /* FIXED VARIABLES */
+  /*-----------------------------------------------------------------------------------*/
+  /* --------- FONT SIZE --------- */
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* STYLES */
+/*-----------------------------------------------------------------------------------*/
+html.ddl-dialog-visible {
+  overflow: hidden;
+}
+
+.ddl-dialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--black);
+  opacity: 0;
+  visibility: hidden;
+  appearance: none;
+  z-index: 99999;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+.ddl-dialog__backdrop {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  background: var(--ddl-dialog-black);
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+.ddl-dialog__inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  border: 0;
+  background: transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition-delay: 0.3s;
+  transform: translateY(-5rem);
+  z-index: 999999;
+  width: 70rem;
+  max-width: 100%;
+  height: 100%;
+  padding: 5rem 2rem;
+  margin: 0 auto;
+  overflow-y: auto;
+}
+.ddl-dialog__body {
+  position: relative;
+  width: 100%;
+  padding: var(--space-x);
+  background: var(--ddl-dialog-white);
+}
+.ddl-dialog__close {
+  display: flex;
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  width: 3.8rem;
+  height: 3.8rem;
+  background: var(--ddl-dialog-grey);
+  border-radius: 50%;
+  z-index: 1;
+  padding: 1.3rem;
+  aspect-ratio: 1;
+  transition: background 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+}
+@media (min-width: 480px) {
+  .ddl-dialog__close {
+    width: 4.5rem;
+    height: 4.5rem;
+    padding: 1.5rem;
+  }
+}
+.ddl-dialog__close:hover, .ddl-dialog__close:focus {
+  background: var(--ddl-dialog-black);
+}
+.ddl-dialog__icon {
+  width: 100%;
+  height: 100%;
+  vertical-align: initial;
+  aspect-ratio: 1/1;
+}
+.ddl-dialog__icon svg {
+  fill: var(--ddl-dialog-white);
+}
+.ddl-dialog--visible {
+  opacity: 1;
+  visibility: visible;
+  appearance: auto;
+  transform: translateY(0);
+}
+.ddl-dialog--visible .ddl-dialog__inner {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1ms;
+}
+.ddl-dialog--visible .ddl-dialog__backdrop {
+  opacity: 0.9;
+  visibility: visible;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* HIDE SCROLLBARS */
+/*-----------------------------------------------------------------------------------*/
+.ddl-dialog__inner::-webkit-scrollbar {
+  display: none;
+}
+
+.ddl-dialog__inner {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
