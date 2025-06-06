@@ -75,118 +75,122 @@ add_action( 'add_meta_boxes', 'add_ddl_dialog_meta_boxes' );
 
 function set_ddl_dialog_meta_boxes( $post ) { ?>
 
-    <table class="form-table" role="presentation">
-      <tr>
+  <table class="form-table" role="presentation">
+
+    <tr>
+      
+      <td>
+
+        <?php 
+
+          wp_nonce_field( 'ddl_dialog_show', 'ddl_dialog_show_nonce' );
+
+          $ddl_dialog_show = get_post_meta( $post->ID, '_ddl_dialog_show', true );
+          $ddl_dialog_is_visible = ((int)$ddl_dialog_show == 1) ? 'checked' : '';
+
+        ?>
+
+        <input type="checkbox" id="dialogShow" name="dialogShow" value="1" <?php echo $ddl_dialog_is_visible; ?> />
+        <label for="dialogShow">Show dialog?</label>
+
+      </td>
+
+    </tr>
+    <tr>
+
+      <td>
+
+        <?php
+
+        $front_page_id = get_option('page_on_front');
+        $front_page_title = get_the_title($front_page_id);
         
-        <td>
+        $ddl_dialog_selected_pages = get_post_meta($post->ID, '_ddl_dialog_pages', true);
+        
+        // If no pages are selected yet, add an empty array
+        if (!is_array($ddl_dialog_selected_pages)) {
+          $ddl_dialog_selected_pages = array();
+        }
+        
+        ?>
 
-          <?php 
+        <div class="dialog__status dialog__status--<?php if ($ddl_dialog_is_visible) { ?>visible<?php } else { ?>hidden<?php } ?>">
 
-            wp_nonce_field( 'ddl_dialog_show', 'ddl_dialog_show_nonce' );
-
-            $ddl_dialog_show = get_post_meta( $post->ID, '_ddl_dialog_show', true );
-            $ddl_dialog_is_visible = ((int)$ddl_dialog_show == 1) ? 'checked' : '';
-
-          ?>
-
-          <input type="checkbox" id="ddlDialogShow" name="ddlDialogShow" value="1" <?php echo $ddl_dialog_is_visible; ?> />
-          <label for="ddlDialogShow">Show dialog?</label>
-
-        </td>
-
-      </tr>
-      <tr>
-
-        <td>
-
-          <?php
-
-          $front_page_id = get_option('page_on_front');
-          $front_page_title = get_the_title($front_page_id);
+          <h4>Dialog is currently <?php if ($ddl_dialog_is_visible) { ?><strong>visible</strong><?php } else { ?><strong>hidden</strong><?php } ?> on the following page/s:</h4>
           
-          $ddl_dialog_selected_pages = get_post_meta($post->ID, '_ddl_dialog_pages', true);
-          
-          // If no pages are selected yet, initialise an empty array
-          if (!is_array($ddl_dialog_selected_pages)) {
-            $ddl_dialog_selected_pages = array();
-          }
-          
-          ?>
+          <ol>
 
-          <div class="dialog__status dialog__status--<?php if ($ddl_dialog_is_visible) { ?>visible<?php } else { ?>hidden<?php } ?>">
+            <?php foreach ($ddl_dialog_selected_pages as $selected_page) {
 
-            <h4>Dialog is currently <?php if ($ddl_dialog_is_visible) { ?><strong>visible</strong><?php } else { ?><strong>hidden</strong><?php } ?> on the following page/s:</h4>
-            
-            <ol>
+              $page_title = get_the_title($selected_page);
 
-              <?php foreach ($ddl_dialog_selected_pages as $selected_page) {
+            ?>
 
-                $page_title = get_the_title($selected_page);
+              <li class="description"><?php echo $page_title; ?></li>
+
+            <?php } ?>
+
+          </ol>
+
+        </div>
+        
+        <fieldset>
+
+          <legend class="screen-reader-text"><span>Enter a &ldquo;Post ID&rdquo; to select a post/page</span></legend>
+      
+          <div class="dialog__options">
+
+            <p>Enter a &ldquo;Post ID&rdquo; to select a post/page (e.g &ldquo;<?php echo $front_page_id ?>&rdquo; for the &ldquo;<?php echo $front_page_title ?>&rdquo; page):</p>
+
+            <div class="dialog__list" id="dialogList">
+    
+              <?php foreach ($ddl_dialog_selected_pages as $i => $selected_page) {
+              
+                  echo '<div class="dialog__row"><input type="number" name="dialogPageID[' . $i . ']" value="' . esc_attr($selected_page) . '"/><button type="button" class="dialog__remove button" id="removeDialog">Remove</button></div>';
+              
+                }
 
               ?>
-
-                <li class="description"><?php echo $page_title; ?></li>
-
-              <?php } ?>
-
-            </ol>
-
+    
+            </div>
+    
+            <button type="button" class="dialog__add button-primary" id="addDialog" data-number="<?php echo count($ddl_dialog_selected_pages); ?>">Add</button>
+      
           </div>
-          
-          <fieldset>
-              <legend class="screen-reader-text"><span>Enter a &ldquo;Post ID&rdquo; to select a post/page</span></legend>
-          
-              <div class="dialog__options">
-
-                <p>Enter a &ldquo;Post ID&rdquo; to select a post/page (e.g &ldquo;<?php echo $front_page_id ?>&rdquo; for the &ldquo;<?php echo $front_page_title ?>&rdquo; page):</p>
-
-                <div class="dialog__list" id="dialogList">
         
-                  <?php foreach ($ddl_dialog_selected_pages as $i => $selected_page) {
-                  
-                      echo '<div class="dialog__row"><input type="number" name="dialogPageID[' . $i . ']" value="' . esc_attr($selected_page) . '"/><button type="button" class="dialog__remove button" id="removeDialog">Remove</button></div>';
-                  
-                    }
+        </fieldset>
 
-                  ?>
+      </td>
+
+    </tr>
+    <tr>
+
+      <td>
+
+        <?php 
+
+          wp_nonce_field( 'ddl_dialog_session', 'ddl_dialog_session_nonce' );
+
+          $ddl_dialog_session = get_post_meta( $post->ID, '_ddl_dialog_session', true );
+          $ddl_dialog_is_session = ((int)$ddl_dialog_session == 1) ? 'checked' : '';
+
+        ?>
+
+        <fieldset>
+          <legend class="screen-reader-text"><span>Show dialog only once per session?</span></legend>
+          <input type="checkbox" id="dialogSession" name="dialogSession" value="1" <?php echo $ddl_dialog_is_session; ?> />
+          <label for="dialogSession">Show dialog only once per session?</label>
+          <p class="description">Recommended for a better user experience.</p>
+        </fieldset>
         
-                </div>
-        
-                <button type="button" class="dialog__add button-primary" id="addDialog" data-number="<?php echo count($ddl_dialog_selected_pages); ?>">Add</button>
-          
-              </div>
-          
-          </fieldset>
+      </td>
 
-        </td>
+    </tr>
+    
+  </table>
 
-      </tr>
-      <tr>
+  <?php
 
-        <td>
-
-          <?php 
-
-            wp_nonce_field( 'ddl_dialog_session', 'ddl_dialog_session_nonce' );
-
-            $ddl_dialog_session = get_post_meta( $post->ID, '_ddl_dialog_session', true );
-            $ddl_dialog_is_session = ((int)$ddl_dialog_session == 1) ? 'checked' : '';
-
-          ?>
-
-          <fieldset>
-            <legend class="screen-reader-text"><span>Show dialog only once per session?</span></legend>
-            <input type="checkbox" id="ddlDialogSession" name="ddlDialogSession" value="1" <?php echo $ddl_dialog_is_session; ?> />
-            <label for="ddlDialogSession">Show dialog only once per session?</label>
-            <p class="description">Recommended for a better user experience.</p>
-          </fieldset>
-          
-        </td>
-
-      </tr>
-    </table>
-
-    <?php
 }
 
 
@@ -194,16 +198,16 @@ function set_ddl_dialog_meta_boxes( $post ) { ?>
 
 function save_ddl_dialog_meta_boxes( $post_id ) {
 
-  $ddlDialogVisible = isset( $_POST['ddlDialogShow'] ) && $_POST['ddlDialogShow'] == 1 ? 1 : 0;
-  update_post_meta( $post_id, '_ddl_dialog_show', $ddlDialogVisible );
+  $ddl_dialog_visible = isset( $_POST['dialogShow'] ) && $_POST['dialogShow'] == 1 ? 1 : 0;
+  update_post_meta( $post_id, '_ddl_dialog_show', $ddl_dialog_visible );
 
   if (isset($_POST['dialogPageID'])) {
-    $sanitized_pages = array_map('sanitize_text_field', $_POST['dialogPageID']);
-    update_post_meta($post_id, '_ddl_dialog_pages', $sanitized_pages);
+    $ddl_dialog_pages = array_map('sanitize_text_field', $_POST['dialogPageID']);
+    update_post_meta($post_id, '_ddl_dialog_pages', $ddl_dialog_pages);
   }
 
-  $ddlDialogSession = isset( $_POST['ddlDialogSession'] ) && $_POST['ddlDialogSession'] == 1 ? 1 : 0;
-  update_post_meta( $post_id, '_ddl_dialog_session', $ddlDialogSession );
+  $ddl_dialog_session = isset( $_POST['dialogSession'] ) && $_POST['dialogSession'] == 1 ? 1 : 0;
+  update_post_meta( $post_id, '_ddl_dialog_session', $ddl_dialog_session );
 
 }
 

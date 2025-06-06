@@ -50,6 +50,11 @@ add_action( 'admin_enqueue_scripts', 'ddl_dialog_admin_scripts' );
 include plugin_dir_path( __FILE__ ) . './inc/admin.php';
 include plugin_dir_path( __FILE__ ) . './inc/post-type.php';
 
+
+/*-----------------------------------------------------------------------------------*/
+/* INIT DIALOG TO FOOTER FOR SELECTED PAGES/POSTS */
+/*-----------------------------------------------------------------------------------*/
+
 function init_ddl_dialog() {
 
   $ddl_dialog_loop = new WP_Query( array(
