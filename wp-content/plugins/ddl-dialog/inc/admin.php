@@ -103,23 +103,59 @@ function set_ddl_dialog_meta_boxes( $post ) { ?>
 
           $front_page_id = get_option('page_on_front');
           $front_page_title = get_the_title($front_page_id);
-
-          ?>
-
-          <label for="ddlDialogPage" style="display: block;margin-bottom: 8px;">Enter a &ldquo;Post ID&rdquo; to select a post/page (e.g &ldquo;<?php echo $front_page_id ?>&rdquo; for the &ldquo;<?php echo $front_page_title ?>&rdquo; page):</label>
-
-          <?php           
-
-          $ddl_dialog_selected_page = get_post_meta($post->ID, '_ddl_dialog_page', true); 
           
-          $ddl_dialog_page_title = get_the_title($ddl_dialog_selected_page);
-
+          $ddl_dialog_selected_pages = get_post_meta($post->ID, '_ddl_dialog_pages', true);
+          
+          // If no pages are selected yet, initialise an empty array
+          if (!is_array($ddl_dialog_selected_pages)) {
+            $ddl_dialog_selected_pages = array();
+          }
+          
           ?>
+
+          <div class="dialog__status dialog__status--<?php if ($ddl_dialog_is_visible) { ?>visible<?php } else { ?>hidden<?php } ?>">
+
+            <h4>Dialog is currently <?php if ($ddl_dialog_is_visible) { ?><strong>visible</strong><?php } else { ?><strong>hidden</strong><?php } ?> on the following page/s:</h4>
+            
+            <ol>
+
+              <?php foreach ($ddl_dialog_selected_pages as $selected_page) {
+
+                $page_title = get_the_title($selected_page);
+
+              ?>
+
+                <li class="description"><?php echo $page_title; ?></li>
+
+              <?php } ?>
+
+            </ol>
+
+          </div>
           
           <fieldset>
-            <legend class="screen-reader-text"><span>Enter a &ldquo;Post ID&rdquo; to select a post/page</span></legend>
-            <input type="number" name="ddlDialogPageID" id="ddlDialogPageID" value="<?php echo $ddl_dialog_selected_page; ?>"/>
-            <p class="description">Dialog is currently <?php if ( $ddl_dialog_is_visible ) { ?><strong style="color: #198754">visible</strong><?php } else { ?><strong style="color: #d63638">hidden</strong><?php } ?> on the &ldquo;<?php echo $ddl_dialog_page_title ?>&rdquo; <?php if ( get_post_type($ddl_dialog_selected_page) == 'post' ) { ?>post<?php } else { ?>page<?php } ?>.</p>
+              <legend class="screen-reader-text"><span>Enter a &ldquo;Post ID&rdquo; to select a post/page</span></legend>
+          
+              <div class="dialog__options">
+
+                <p>Enter a &ldquo;Post ID&rdquo; to select a post/page (e.g &ldquo;<?php echo $front_page_id ?>&rdquo; for the &ldquo;<?php echo $front_page_title ?>&rdquo; page):</p>
+
+                <div class="dialog__list" id="dialogList">
+        
+                  <?php foreach ($ddl_dialog_selected_pages as $i => $selected_page) {
+                  
+                      echo '<div class="dialog__row"><input type="number" name="dialogPageID[' . $i . ']" value="' . esc_attr($selected_page) . '"/><button type="button" class="dialog__remove button" id="removeDialog">Remove</button></div>';
+                  
+                    }
+
+                  ?>
+        
+                </div>
+        
+                <button type="button" class="dialog__add button-primary" id="addDialog" data-number="<?php echo count($ddl_dialog_selected_pages); ?>">Add</button>
+          
+              </div>
+          
           </fieldset>
 
         </td>
@@ -161,8 +197,9 @@ function save_ddl_dialog_meta_boxes( $post_id ) {
   $ddlDialogVisible = isset( $_POST['ddlDialogShow'] ) && $_POST['ddlDialogShow'] == 1 ? 1 : 0;
   update_post_meta( $post_id, '_ddl_dialog_show', $ddlDialogVisible );
 
-  if (isset($_POST['ddlDialogPageID'])) {
-    update_post_meta($post_id, '_ddl_dialog_page', sanitize_text_field($_POST['ddlDialogPageID']));
+  if (isset($_POST['dialogPageID'])) {
+    $sanitized_pages = array_map('sanitize_text_field', $_POST['dialogPageID']);
+    update_post_meta($post_id, '_ddl_dialog_pages', $sanitized_pages);
   }
 
   $ddlDialogSession = isset( $_POST['ddlDialogSession'] ) && $_POST['ddlDialogSession'] == 1 ? 1 : 0;

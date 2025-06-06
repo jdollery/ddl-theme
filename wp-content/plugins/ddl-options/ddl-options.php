@@ -356,7 +356,7 @@ function render_site_times() {
   ?>
 
     </div>
-  <button type="button" class="social__add button-primary" id="addChannel" data-number="<?php if ($socials) { echo count($socials); } else { echo '0'; } ?>">Add URL</button></div>
+    <button type="button" class="social__add button-primary" id="addChannel" data-number="<?php if ($socials) { echo count($socials); } else { echo '0'; } ?>">Add URL</button></div>
 
   <?php
 

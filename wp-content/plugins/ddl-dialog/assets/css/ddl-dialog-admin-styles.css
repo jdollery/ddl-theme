@@ -1,0 +1,93 @@
+.dialog {
+  display: grid;
+  row-gap: 15px;
+  border: 1px solid #9c9c9c;
+  max-width: 570px;
+  padding: 17px 15px;
+  border-radius: 4px;
+}
+
+.dialog__status {
+  display: grid;
+  row-gap: 15px;
+  border: 2px solid #9c9c9c;
+  max-width: 570px;
+  padding: 17px 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.dialog__status ol {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.dialog__status--hidden {
+  border-color: #d63638 !important;
+}
+
+.dialog__status--visible {
+  border-color: #198754 !important;
+}
+
+.dialog__status--hidden strong {
+  color: #d63638 !important;
+}
+
+.dialog__status--visible strong {
+  color: #198754 !important;
+}
+
+.dialog__status h4 {
+  margin: 0;
+}
+
+.dialog__status ul {
+  list-style: disk;
+  list-style-position: inside;
+}
+
+.dialog__options {
+  display: grid;
+  row-gap: 1rem;
+  border: 1px solid #9c9c9c;
+  max-width: 570px;
+  padding: 17px 15px;
+  border-radius: 4px;
+}
+
+.form-table td .dialog__options p {
+  margin: 0 !important;
+}
+
+.dialog__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  /* margin-bottom: 20px; */
+}
+
+.dialog__row {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+}
+
+.dialog__row input {
+  flex: 1 0 0;
+  width: 100%;
+}
+
+.dialog__remove {
+  flex: 0 0 auto;
+  width: auto;
+  color: #ffffff !important;
+  border-color: #d63638 !important;
+  background: #d63638 !important;
+}
+
+/* .dialog__add {
+  color: #ffffff !important;
+  border-color: #198754 !important;
+  background: #198754 !important;
+} */
