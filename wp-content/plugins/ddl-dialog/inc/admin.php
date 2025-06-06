@@ -186,7 +186,23 @@ function set_ddl_dialog_meta_boxes( $post ) { ?>
       </td>
 
     </tr>
-    
+    <tr>
+
+      <td>
+
+        <?php 
+        
+          $ddl_dialog_img_desktop = get_post_meta($post->ID, '_ddl_dialog_image_desktop', true);
+        
+        ?>
+        
+        <input type="hidden" id="dialogImageDesktop" name="dialogImageDesktop" value="<?php echo $ddl_dialog_img_desktop; ?>"/>
+        <button type="button" class="button" id="uploadImageButton">Select Image</button>
+
+      </td>
+
+    </tr>
+
   </table>
 
   <?php
@@ -208,6 +224,9 @@ function save_ddl_dialog_meta_boxes( $post_id ) {
 
   $ddl_dialog_session = isset( $_POST['dialogSession'] ) && $_POST['dialogSession'] == 1 ? 1 : 0;
   update_post_meta( $post_id, '_ddl_dialog_session', $ddl_dialog_session );
+
+  $ddl_dialog_img_desktop = isset( $_POST['dialogImageDesktop'] ) ? sanitize_text_field($_POST['dialogImageDesktop']) : '';
+  update_post_meta( $post_id, '_ddl_dialog_image_desktop', $ddl_dialog_img_desktop );
 
 }
 
