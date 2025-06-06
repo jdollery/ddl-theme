@@ -35,35 +35,59 @@
 	});
 
 	jQuery(document).ready(function($){
+	
+		$('.dialog__img').each(function() {
+
+			var button = $(this).find('.dialog__upload');
+			var imgField = $(this).find('.dialog__input');
+			var imgFile = $(this).find('.dialog__file');
+			var imgRemove = $(this).find('.dialog__delete');
+			var imgThumb = $(this).find('.dialog__thumb');
+
 			var customUploader;
-	
-			$('#uploadImageButton').click(function(e) {
-					e.preventDefault();
-	
-					// If the uploader object has already been created, reopen the dialog
-					if (customUploader) {
-							customUploader.open();
-							return;
-					}
-	
-					// Extend the wp.media object
-					customUploader = wp.media.frames.file_frame = wp.media({
-							title: 'Choose Image',
-							button: {
-									text: 'Choose Image'
-							},
-							multiple: false
-					});
-	
-					// When a file is selected, grab the URL and set it as the text field's value
-					customUploader.on('select', function() {
-							var attachment = customUploader.state().get('selection').first().toJSON();
-							$('#dialogImageDesktop').val(attachment.url);
-					});
-	
-					// Open the uploader dialog
+
+			button.click(function(e) {
+
+				e.preventDefault();
+
+				if (customUploader) {
 					customUploader.open();
+					return;
+				}
+
+				customUploader = wp.media.frames.file_frame = wp.media({
+					title: 'Choose Image',
+					button: {
+						text: 'Choose Image'
+					},
+					multiple: false
+				});
+
+				customUploader.on('select', function() {
+
+					var attachment = customUploader.state().get('selection').first().toJSON();
+					imgField.val(attachment.url);
+
+					var filename = attachment.filename;
+					imgFile.text(filename);
+
+					imgThumb.show();
+
+				});
+
+				customUploader.open();
+
 			});
+
+			imgRemove.click(function(e) {
+				e.preventDefault();
+				imgThumb.hide();
+				imgField.val('');
+				imgFile.text('');
+			});
+
+		});
+	
 	});
 
 })( jQuery );

@@ -100,73 +100,6 @@ function set_ddl_dialog_meta_boxes( $post ) { ?>
 
       <td>
 
-        <?php
-
-        $front_page_id = get_option('page_on_front');
-        $front_page_title = get_the_title($front_page_id);
-        
-        $ddl_dialog_selected_pages = get_post_meta($post->ID, '_ddl_dialog_pages', true);
-        
-        // If no pages are selected yet, add an empty array
-        if (!is_array($ddl_dialog_selected_pages)) {
-          $ddl_dialog_selected_pages = array();
-        }
-        
-        ?>
-
-        <div class="dialog__status dialog__status--<?php if ($ddl_dialog_is_visible) { ?>visible<?php } else { ?>hidden<?php } ?>">
-
-          <h4>Dialog is currently <?php if ($ddl_dialog_is_visible) { ?><strong>visible</strong><?php } else { ?><strong>hidden</strong><?php } ?> on the following page/s:</h4>
-          
-          <ol>
-
-            <?php foreach ($ddl_dialog_selected_pages as $selected_page) {
-
-              $page_title = get_the_title($selected_page);
-
-            ?>
-
-              <li class="description"><?php echo $page_title; ?></li>
-
-            <?php } ?>
-
-          </ol>
-
-        </div>
-        
-        <fieldset>
-
-          <legend class="screen-reader-text"><span>Enter a &ldquo;Post ID&rdquo; to select a post/page</span></legend>
-      
-          <div class="dialog__options">
-
-            <p>Enter a &ldquo;Post ID&rdquo; to select a post/page (e.g &ldquo;<?php echo $front_page_id ?>&rdquo; for the &ldquo;<?php echo $front_page_title ?>&rdquo; page):</p>
-
-            <div class="dialog__list" id="dialogList">
-    
-              <?php foreach ($ddl_dialog_selected_pages as $i => $selected_page) {
-              
-                  echo '<div class="dialog__row"><input type="number" name="dialogPageID[' . $i . ']" value="' . esc_attr($selected_page) . '"/><button type="button" class="dialog__remove button" id="removeDialog">Remove</button></div>';
-              
-                }
-
-              ?>
-    
-            </div>
-    
-            <button type="button" class="dialog__add button-primary" id="addDialog" data-number="<?php echo count($ddl_dialog_selected_pages); ?>">Add</button>
-      
-          </div>
-        
-        </fieldset>
-
-      </td>
-
-    </tr>
-    <tr>
-
-      <td>
-
         <?php 
 
           wp_nonce_field( 'ddl_dialog_session', 'ddl_dialog_session_nonce' );
@@ -190,14 +123,139 @@ function set_ddl_dialog_meta_boxes( $post ) { ?>
 
       <td>
 
-        <?php 
+        <?php
+
+        $front_page_id = get_option('page_on_front');
+        $front_page_title = get_the_title($front_page_id);
         
-          $ddl_dialog_img_desktop = get_post_meta($post->ID, '_ddl_dialog_image_desktop', true);
+        $ddl_dialog_selected_pages = get_post_meta($post->ID, '_ddl_dialog_pages', true);
+        
+        // If no pages are selected yet, add an empty array
+        if (!is_array($ddl_dialog_selected_pages)) {
+          $ddl_dialog_selected_pages = array();
+        }
         
         ?>
         
-        <input type="hidden" id="dialogImageDesktop" name="dialogImageDesktop" value="<?php echo $ddl_dialog_img_desktop; ?>"/>
-        <button type="button" class="button" id="uploadImageButton">Select Image</button>
+        <fieldset>
+
+          <legend class="screen-reader-text"><span>Enter a &ldquo;Post ID&rdquo; to select a post/page</span></legend>
+      
+          <div class="dialog__options">
+
+            <p>Enter a &ldquo;Post ID&rdquo; to select a post/page (e.g &ldquo;<?php echo $front_page_id ?>&rdquo; for the &ldquo;<?php echo $front_page_title ?>&rdquo; page):</p>
+
+            <div class="dialog__list" id="dialogList">
+    
+              <?php foreach ($ddl_dialog_selected_pages as $i => $selected_page) {
+              
+                  echo '<div class="dialog__row"><input type="number" name="dialogPageID[' . $i . ']" value="' . esc_attr($selected_page) . '"/><button type="button" class="dialog__remove button" id="removeDialog">Remove</button></div>';
+              
+                }
+
+              ?>
+    
+            </div>
+    
+            <button type="button" class="dialog__add button-primary" id="addDialog" data-number="<?php echo count($ddl_dialog_selected_pages); ?>">Add Post ID</button>
+      
+          </div>
+        
+        </fieldset>
+
+      </td>
+
+    </tr>
+    <tr>
+      <td>
+
+        <div class="dialog__status dialog__status--<?php if ($ddl_dialog_is_visible) { ?>visible<?php } else { ?>hidden<?php } ?>">
+
+          <h4>Dialog is currently <?php if ($ddl_dialog_is_visible) { ?><strong>visible</strong><?php } else { ?><strong>hidden</strong><?php } ?> on the following page/s:</h4>
+          
+          <ol>
+
+            <?php foreach ($ddl_dialog_selected_pages as $selected_page) {
+
+              $page_title = get_the_title($selected_page);
+
+            ?>
+
+              <li class="description"><?php echo $page_title; ?></li>
+
+            <?php } ?>
+
+          </ol>
+
+        </div>
+
+      </td>
+    </tr>
+    <tr>
+
+      <td>
+
+        <div class="dialog__options">
+
+          <p>Image upload</p>
+
+          <div class="dialog__img dialog__img--desktop">
+
+            <?php 
+            
+              $ddl_dialog_img_desktop = get_post_meta($post->ID, '_ddl_dialog_image_desktop', true);
+              $ddl_dialog_img_filename = basename($ddl_dialog_img_desktop);
+            
+            ?>
+
+            <div class="dialog__control">
+
+              <div>
+                <input type="hidden" class="dialog__input" id="dialogImgDesktop" name="dialogImgDesktop" value="<?php echo $ddl_dialog_img_desktop; ?>"/>
+                <button type="button" class="dialog__upload button-primary" id="dialogImgBtnDesktop">Select a desktop image</button>
+              </div>
+            
+              <div class="dialog__thumb">
+                <p class="dialog__file"><?php echo $ddl_dialog_img_filename ?></p>
+                <?php if ($ddl_dialog_img_filename) { ?>
+                  <button type="button" class="dialog__delete button">Remove</button>
+                <?php } ?>
+              </div>
+
+            </div>          
+
+          </div>
+
+          <div class="dialog__img dialog__img--mobile">
+
+            <?php 
+            
+              $ddl_dialog_img_mobile = get_post_meta($post->ID, '_ddl_dialog_image_mobile', true);
+              $ddl_dialog_img_filename = basename($ddl_dialog_img_mobile);
+            
+            ?>
+
+            <div class="dialog__control">
+
+              <div>
+                <input type="hidden" class="dialog__input" id="dialogImgMobile" name="dialogImgMobile" value="<?php echo $ddl_dialog_img_mobile; ?>"/>
+                <button type="button" class="dialog__upload button-primary" id="dialogImgBtnMobile">Select a mobile image</button>
+              </div>
+
+              <div class="dialog__thumb">
+                <p class="dialog__file"><?php echo $ddl_dialog_img_filename ?></p>
+                <?php if ($ddl_dialog_img_filename) { ?>
+                  <button type="button" class="dialog__delete button">Remove</button>
+                <?php } ?>
+              </div> 
+
+            </div>
+
+          </div>
+
+          <p class="description">Adding images will override the content below.</p>
+          
+        </div>
 
       </td>
 
@@ -225,8 +283,11 @@ function save_ddl_dialog_meta_boxes( $post_id ) {
   $ddl_dialog_session = isset( $_POST['dialogSession'] ) && $_POST['dialogSession'] == 1 ? 1 : 0;
   update_post_meta( $post_id, '_ddl_dialog_session', $ddl_dialog_session );
 
-  $ddl_dialog_img_desktop = isset( $_POST['dialogImageDesktop'] ) ? sanitize_text_field($_POST['dialogImageDesktop']) : '';
+  $ddl_dialog_img_desktop = isset( $_POST['dialogImgDesktop'] ) ? sanitize_text_field($_POST['dialogImgDesktop']) : '';
   update_post_meta( $post_id, '_ddl_dialog_image_desktop', $ddl_dialog_img_desktop );
+  
+  $ddl_dialog_img_mobile = isset( $_POST['dialogImgMobile'] ) ? sanitize_text_field($_POST['dialogImgMobile']) : '';
+  update_post_meta( $post_id, '_ddl_dialog_image_mobile', $ddl_dialog_img_mobile );
 
 }
 

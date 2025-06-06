@@ -71,6 +71,8 @@ function init_ddl_dialog() {
       $ddl_dialog_status = get_post_status($ddl_dialog_post_Id);
       $ddl_dialog_is_visible = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_show', true);
       $ddl_dialog_session = get_post_meta( $ddl_dialog_post_Id, '_ddl_dialog_session', true );
+      $ddl_dialog_img_desktop = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_image_desktop', true);
+      $ddl_dialog_img_mobile = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_image_mobile', true);
       
       $ddl_dialog_selected_pages = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_pages', true);
 
@@ -99,9 +101,18 @@ function init_ddl_dialog() {
                 <span class="hidden">Close</span>
               </button>
               
-              <div class="ddl-dialog__body">
+              <div class="ddl-dialog__body<?php if($ddl_dialog_img_desktop) { ?> ddl-dialog__body--img<?php } ?>">
 
-                <?php the_content(); ?>
+                <?php if($ddl_dialog_img_desktop) { ?>
+
+                  <img src="<?php echo $ddl_dialog_img_desktop ?>" alt="">
+                  <img src="<?php echo $ddl_dialog_img_mobile ?>" alt="">
+
+                <?php } else { ?>
+
+                  <?php the_content(); ?>
+
+                <?php } ?>
 
               </div>
 
