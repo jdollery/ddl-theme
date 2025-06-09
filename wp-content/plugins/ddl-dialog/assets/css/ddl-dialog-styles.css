@@ -114,18 +114,29 @@ html.ddl-dialog-visible {
   transition-delay: 0.3s;
   transform: translateY(-50px);
   z-index: 999999;
-  width: 700px;
+  width: 600px;
   max-width: 100%;
   max-height: 100%;
   padding: 50px 20px;
   margin: 0 auto;
   overflow-y: auto;
 }
+.ddl-dialog__inner--banner {
+  width: 800px;
+}
 .ddl-dialog__body {
   position: relative;
   width: 100%;
-  padding: 45px 50px;
   background: var(--ddl-dialog-white);
+  box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.075), 0 2px 2px hsla(0, 0%, 0%, 0.075), 0 4px 4px hsla(0, 0%, 0%, 0.075), 0 8px 8px hsla(0, 0%, 0%, 0.075), 0 16px 16px hsla(0, 0%, 0%, 0.075);
+}
+.ddl-dialog__body:has(.ddl-dialog__body--img) {
+  padding: 45px 50px;
+}
+.ddl-dialog__body img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .ddl-dialog__body p {
   margin-block: 0.8em;

@@ -2,9 +2,9 @@
 
 	'use strict';
 
-	$(function() {
+	jQuery(document).ready(function($){
 
-    let addDialog = document.querySelector('#addDialog');
+		let addDialog = document.querySelector('#addDialog');
 
 		if (addDialog) {
 
@@ -17,24 +17,42 @@
 				addDialog.dataset.number = parseInt(addDialog.dataset.number) + 1;
 			});
 
-			let dialogs = document.querySelectorAll('.dialog__row');
-
-			dialogs.forEach(function(dialog) {
-
-				let removeDialog = dialog.querySelector('#removeDialog');
-
-				removeDialog.addEventListener('click', function() {
-					this.parentNode.remove(dialog);
-				});
+			let removeDialog = document.querySelectorAll('#removeDialog');
 			
+			removeDialog.forEach(function(e) {
+				e.addEventListener('click', function() {
+					this.parentNode.remove();
+				});
 			});
 
 		}
 
+		let addLink = document.querySelector('#addLink');
 
-	});
+		if (addLink) {
 
-	jQuery(document).ready(function($){
+			addLink.addEventListener('click', function() {
+				let number = addLink.getAttribute('data-number');
+
+				let row = `<div class="dialog__row"><input type="text" name="dialogLink[${number}]" value=""/><button type="button" class="dialog__remove button" id="removeLink">Remove</button></div>`;
+				
+				document.getElementById("dialogLinks").insertAdjacentHTML('beforeend', row);
+				addLink.dataset.number = parseInt(addLink.dataset.number) + 1;
+			});
+
+		}
+
+		let removeLink = document.querySelectorAll('.dialog__remove');
+
+		if (removeLink) {
+				
+			removeLink.forEach(function(e) {
+				e.addEventListener('click', function() {
+					this.parentNode.remove();
+				});
+			});
+
+		}
 	
 		$('.dialog__img').each(function() {
 

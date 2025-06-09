@@ -12,6 +12,12 @@
   border-radius: 4px;
 }
 
+.dialog__options hr {
+  width: 100%;
+  border-bottom: 1px solid #cccccc;
+  border-top: 0;
+}
+
 .dialog__status ol {
   margin-top: 0;
   margin-bottom: 0;
@@ -72,10 +78,10 @@
   width: fit-content;
 }
 
-.dialog__img--desktop {
+/* .dialog__img--desktop {
   border-bottom: 1px solid #cccccc;
   padding-bottom: 20px;
-}
+} */
 
 .dialog__control {
   display: grid;

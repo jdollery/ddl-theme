@@ -149,7 +149,7 @@ function set_ddl_dialog_meta_boxes( $post ) { ?>
     
               <?php foreach ($ddl_dialog_selected_pages as $i => $selected_page) {
               
-                  echo '<div class="dialog__row"><input type="number" name="dialogPageID[' . $i . ']" value="' . esc_attr($selected_page) . '"/><button type="button" class="dialog__remove button" id="removeDialog">Remove</button></div>';
+                  echo '<div class="dialog__row dialog__row--pages"><input type="number" name="dialogPageID[' . $i . ']" value="' . esc_attr($selected_page) . '"/><button type="button" class="dialog__remove button" id="removeDialog">Remove</button></div>';
               
                 }
 
@@ -167,6 +167,7 @@ function set_ddl_dialog_meta_boxes( $post ) { ?>
 
     </tr>
     <tr>
+
       <td>
 
         <div class="dialog__status dialog__status--<?php if ($ddl_dialog_is_visible) { ?>visible<?php } else { ?>hidden<?php } ?>">
@@ -190,6 +191,7 @@ function set_ddl_dialog_meta_boxes( $post ) { ?>
         </div>
 
       </td>
+
     </tr>
     <tr>
 
@@ -197,7 +199,7 @@ function set_ddl_dialog_meta_boxes( $post ) { ?>
 
         <div class="dialog__options">
 
-          <p>Image upload</p>
+          <p>Image upload (mobile will show below 700px):</p>
 
           <div class="dialog__img dialog__img--desktop">
 
@@ -254,8 +256,66 @@ function set_ddl_dialog_meta_boxes( $post ) { ?>
           </div>
 
           <p class="description">Adding images will override the content below.</p>
-          
+
+          <hr>
+
+          <label for="dialogImgSize">Image width:</label>
+
+          <table>
+            <tr>
+              <td><input type="radio" name="dialogImgSize" value="standard" <?php if ( get_post_meta( $post->ID, '_ddl_dialog_image_size', true ) === '' || get_post_meta( $post->ID, '_ddl_dialog_image_size', true ) === 'standard' ) echo 'checked="checked"'; ?> /> Standard (600px wide)</td>
+              <td><input type="radio" name="dialogImgSize" value="banner" <?php checked( get_post_meta( $post->ID, '_ddl_dialog_image_size', true ), 'banner' ); ?> /> Banner (800px wide)</td>
+            </tr>
+          </table>
+
+          <p class="description">If no image is added the default width of 600px will be set.</p>
+
         </div>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td>
+
+        <?php
+        
+        $ddl_dialog_links = get_post_meta($post->ID, '_ddl_dialog_links', true);
+        
+        // If no pages are selected yet, add an empty array
+        if (!is_array($ddl_dialog_links)) {
+          $ddl_dialog_links = array();
+        }
+        
+        ?>
+        
+        <fieldset>
+
+          <legend class="screen-reader-text"><span>Enter urls to add links</span></legend>
+      
+          <div class="dialog__options">
+
+            <p>Enter urls to add links:</p>
+
+            <div class="dialog__list" id="dialogLinks">
+    
+              <?php foreach ($ddl_dialog_links as $i => $link) {
+              
+                  echo '<div class="dialog__row"><input type="text" name="dialogLink[' . $i . ']" value="' . esc_attr($link) . '"/><button type="button" class="dialog__remove button" id="removeLink">Remove</button></div>';
+              
+                }
+
+              ?>
+    
+            </div>
+    
+            <button type="button" class="dialog__add button-primary" id="addLink" data-number="<?php echo count($ddl_dialog_links); ?>">Add Link</button>
+      
+          </div>
+        
+        </fieldset>
 
       </td>
 
@@ -275,10 +335,8 @@ function save_ddl_dialog_meta_boxes( $post_id ) {
   $ddl_dialog_visible = isset( $_POST['dialogShow'] ) && $_POST['dialogShow'] == 1 ? 1 : 0;
   update_post_meta( $post_id, '_ddl_dialog_show', $ddl_dialog_visible );
 
-  if (isset($_POST['dialogPageID'])) {
-    $ddl_dialog_pages = array_map('sanitize_text_field', $_POST['dialogPageID']);
-    update_post_meta($post_id, '_ddl_dialog_pages', $ddl_dialog_pages);
-  }
+  $ddl_dialog_pages = !empty($_POST['dialogPageID']) ? array_map('sanitize_text_field', $_POST['dialogPageID']) : array();
+  update_post_meta($post_id, '_ddl_dialog_pages', $ddl_dialog_pages);
 
   $ddl_dialog_session = isset( $_POST['dialogSession'] ) && $_POST['dialogSession'] == 1 ? 1 : 0;
   update_post_meta( $post_id, '_ddl_dialog_session', $ddl_dialog_session );
@@ -288,6 +346,12 @@ function save_ddl_dialog_meta_boxes( $post_id ) {
   
   $ddl_dialog_img_mobile = isset( $_POST['dialogImgMobile'] ) ? sanitize_text_field($_POST['dialogImgMobile']) : '';
   update_post_meta( $post_id, '_ddl_dialog_image_mobile', $ddl_dialog_img_mobile );
+
+  $ddl_dialog_image_size = isset( $_POST['dialogImgSize'] ) ? sanitize_text_field($_POST['dialogImgSize']) : '';
+  update_post_meta( $post_id, '_ddl_dialog_image_size', $ddl_dialog_image_size );
+
+  $ddl_dialog_links = !empty($_POST['dialogLink']) ? array_map('sanitize_text_field', $_POST['dialogLink']) : array();
+  update_post_meta($post_id, '_ddl_dialog_links', $ddl_dialog_links);
 
 }
 

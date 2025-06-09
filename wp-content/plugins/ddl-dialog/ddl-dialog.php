@@ -71,10 +71,15 @@ function init_ddl_dialog() {
       $ddl_dialog_status = get_post_status($ddl_dialog_post_Id);
       $ddl_dialog_is_visible = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_show', true);
       $ddl_dialog_session = get_post_meta( $ddl_dialog_post_Id, '_ddl_dialog_session', true );
+
       $ddl_dialog_img_desktop = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_image_desktop', true);
+      $ddl_dialog_img_desktop_alt = get_post_meta($ddl_dialog_img_desktop, '_wp_attachment_image_alt', true);
+      
       $ddl_dialog_img_mobile = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_image_mobile', true);
       
       $ddl_dialog_selected_pages = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_pages', true);
+
+      $ddl_dialog_width = get_post_meta( $ddl_dialog_post_Id, '_ddl_dialog_image_size', true ) === 'banner';
 
       $ddl_dialog_query = null;
       
@@ -95,7 +100,7 @@ function init_ddl_dialog() {
   
             <div class="ddl-dialog__backdrop" aria-label="Close" data-dialog-close ></div>
             
-            <div class="ddl-dialog__inner">
+            <div class="ddl-dialog__inner<?php if($ddl_dialog_img_desktop && $ddl_dialog_width) { ?> ddl-dialog__inner--banner<?php } ?>">
 
               <button class="ddl-dialog__close" aria-label="Close" data-dialog-close tabindex="1" >
                 <span class="hidden">Close</span>
@@ -103,16 +108,28 @@ function init_ddl_dialog() {
               
               <div class="ddl-dialog__body<?php if($ddl_dialog_img_desktop) { ?> ddl-dialog__body--img<?php } ?>">
 
-                <?php if($ddl_dialog_img_desktop) { ?>
+                <?php if ($ddl_dialog_img_desktop) { ?>
 
-                  <img src="<?php echo $ddl_dialog_img_desktop ?>" alt="">
-                  <img src="<?php echo $ddl_dialog_img_mobile ?>" alt="">
+                  <?php if ($ddl_dialog_img_mobile) { ?>
+                  <picture>
+                    <source type="image/jpg" media="(min-width: 700px)" srcset="<?php echo $ddl_dialog_img_desktop ?>">
+                    <source type="image/jpg" media="(max-width: 699px)" srcset="<?php echo $ddl_dialog_img_mobile ?>">
+                  <?php } ?>
+                    <img 
+                      src="<?php echo $ddl_dialog_img_desktop ?>"
+                      alt="<?php if($ddl_dialog_img_desktop_alt) { echo $ddl_dialog_img_desktop_alt; } else { ?>Pop-up<?php } ?>"
+                      width="200"
+                      height="200"
+                      loading="lazy"
+                      decoding="async"
+                    >
+                  <?php if ($ddl_dialog_img_mobile) { ?></picture><?php } ?>
 
-                <?php } else { ?>
-
-                  <?php the_content(); ?>
-
-                <?php } ?>
+                <?php } else {
+                  
+                  the_content(); 
+                  
+                } ?>
 
               </div>
 
@@ -120,14 +137,13 @@ function init_ddl_dialog() {
 
           </div>
 
-          <?php
-          
-        }
-      
-      }
+        <?php
 
-    endwhile;
-    wp_reset_query();
+        }
+
+      }
+      
+    endwhile; wp_reset_query();
 
   }
 
