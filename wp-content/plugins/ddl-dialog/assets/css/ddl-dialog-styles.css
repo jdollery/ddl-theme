@@ -12,10 +12,6 @@
   --ddl-dialog-grey-light: #dddddd;
   --ddl-dialog-primary: #016775;
   --ddl-dialog-secondary: #02B0AE;
-  --ddl-close-bg: var(--ddl-dialog-grey)
-  --ddl-close-bg-hover: var(--ddl-dialog-black)
-  --ddl-close-cross: var(--ddl-dialog-white)
-  --ddl-close-cross-hover: var(--ddl-dialog-white) ;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -178,7 +174,7 @@ html.ddl-dialog-visible {
   top: 60px;
   width: 35px;
   height: 35px;
-  background-color: var(--ddl-close-bg);
+  background-color: var(--ddl-dialog-grey);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
@@ -191,7 +187,7 @@ html.ddl-dialog-visible {
   z-index: 1;
 }
 .ddl-dialog__close:hover, .ddl-dialog__close:focus {
-  background-color: var(--ddl-close-bg-hover);
+  background-color: var(--ddl-dialog-black);
 }
 .ddl-dialog--visible {
   opacity: 1;
