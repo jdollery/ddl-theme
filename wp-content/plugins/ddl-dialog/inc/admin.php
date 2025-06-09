@@ -263,8 +263,8 @@ function set_ddl_dialog_meta_boxes( $post ) { ?>
 
           <table>
             <tr>
-              <td><input type="radio" name="dialogImgSize" value="standard" <?php if ( get_post_meta( $post->ID, '_ddl_dialog_image_size', true ) === '' || get_post_meta( $post->ID, '_ddl_dialog_image_size', true ) === 'standard' ) echo 'checked="checked"'; ?> /> Standard (600px wide)</td>
-              <td><input type="radio" name="dialogImgSize" value="banner" <?php checked( get_post_meta( $post->ID, '_ddl_dialog_image_size', true ), 'banner' ); ?> /> Banner (800px wide)</td>
+              <td><input type="radio" id="dialogImgStandard" name="dialogImgSize" value="standard" <?php if ( get_post_meta( $post->ID, '_ddl_dialog_image_size', true ) === '' || get_post_meta( $post->ID, '_ddl_dialog_image_size', true ) === 'standard' ) echo 'checked="checked"'; ?> /> <label for="dialogImgStandard">Standard (600px wide)</label></td>
+              <td><input type="radio" id="dialogImgBanner" name="dialogImgSize" value="banner" <?php checked( get_post_meta( $post->ID, '_ddl_dialog_image_size', true ), 'banner' ); ?> /> <label for="dialogImgBanner">Banner (800px wide)</label></td>
             </tr>
           </table>
 
@@ -297,21 +297,30 @@ function set_ddl_dialog_meta_boxes( $post ) { ?>
       
           <div class="dialog__options">
 
-            <p>Enter urls to add links:</p>
+            <p>Add links/buttons:</p>
 
             <div class="dialog__list" id="dialogLinks">
     
               <?php foreach ($ddl_dialog_links as $i => $link) {
-              
-                  echo '<div class="dialog__row"><input type="text" name="dialogLink[' . $i . ']" value="' . esc_attr($link) . '"/><button type="button" class="dialog__remove button" id="removeLink">Remove</button></div>';
-              
-                }
+
+                $link_url = isset($link['0']) ? $link['0'] : '';
+                $link_text = isset($link['1']) ? $link['1'] : '';
+                                          
+                echo '<div class="dialog__row dialog__row--links">
+                        <input type="text" name="dialogLink[' . $i . '][0]" placeholder="URL" value="' . esc_attr($link_url) . '"/>
+                        <input type="text" name="dialogLink[' . $i . '][1]" placeholder="Link/Button text" value="' . esc_attr($link_text) . '" />
+                        <button type="button" class="dialog__remove button" id="removeLink">Remove</button>
+                      </div>';
+
+              }
 
               ?>
     
             </div>
     
             <button type="button" class="dialog__add button-primary" id="addLink" data-number="<?php echo count($ddl_dialog_links); ?>">Add Link</button>
+
+            <p class="description">If there is no image, the button/s will show below the content.<br>If there is an image and multiple links, the buttons will also show below the image.<br>If there is an image, but only one link, the link will wrap around the image.</p>
       
           </div>
         
@@ -350,7 +359,10 @@ function save_ddl_dialog_meta_boxes( $post_id ) {
   $ddl_dialog_image_size = isset( $_POST['dialogImgSize'] ) ? sanitize_text_field($_POST['dialogImgSize']) : '';
   update_post_meta( $post_id, '_ddl_dialog_image_size', $ddl_dialog_image_size );
 
-  $ddl_dialog_links = !empty($_POST['dialogLink']) ? array_map('sanitize_text_field', $_POST['dialogLink']) : array();
+  $ddl_dialog_links = !empty($_POST['dialogLink']) ? array_map( function($link) {
+    return array_map('sanitize_text_field', $link);
+  }, $_POST['dialogLink']) : array();
+  
   update_post_meta($post_id, '_ddl_dialog_links', $ddl_dialog_links);
 
 }

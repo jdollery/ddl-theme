@@ -68,7 +68,9 @@ function init_ddl_dialog() {
     while ( $ddl_dialog_loop->have_posts() ) : $ddl_dialog_loop->the_post();
 
       $ddl_dialog_post_Id = get_the_ID();
+
       $ddl_dialog_status = get_post_status($ddl_dialog_post_Id);
+
       $ddl_dialog_is_visible = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_show', true);
       $ddl_dialog_session = get_post_meta( $ddl_dialog_post_Id, '_ddl_dialog_session', true );
 
@@ -80,6 +82,8 @@ function init_ddl_dialog() {
       $ddl_dialog_selected_pages = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_pages', true);
 
       $ddl_dialog_width = get_post_meta( $ddl_dialog_post_Id, '_ddl_dialog_image_size', true ) === 'banner';
+
+      $ddl_dialog_links = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_links', true);
 
       $ddl_dialog_query = null;
       
@@ -110,26 +114,50 @@ function init_ddl_dialog() {
 
                 <?php if ($ddl_dialog_img_desktop) { ?>
 
-                  <?php if ($ddl_dialog_img_mobile) { ?>
-                  <picture>
-                    <source type="image/jpg" media="(min-width: 700px)" srcset="<?php echo $ddl_dialog_img_desktop ?>">
-                    <source type="image/jpg" media="(max-width: 699px)" srcset="<?php echo $ddl_dialog_img_mobile ?>">
+                  <?php if ($ddl_dialog_links && count($ddl_dialog_links) === 1) { ?>
+                    <a href="<?php echo $ddl_dialog_links[0] ?>">
                   <?php } ?>
-                    <img 
-                      src="<?php echo $ddl_dialog_img_desktop ?>"
-                      alt="<?php if($ddl_dialog_img_desktop_alt) { echo $ddl_dialog_img_desktop_alt; } else { ?>Pop-up<?php } ?>"
-                      width="200"
-                      height="200"
-                      loading="lazy"
-                      decoding="async"
-                    >
-                  <?php if ($ddl_dialog_img_mobile) { ?></picture><?php } ?>
+
+                    <?php if ($ddl_dialog_img_mobile) { ?>
+                      <picture>
+                        <source type="image/jpg" media="(min-width: 700px)" srcset="<?php echo $ddl_dialog_img_desktop ?>">
+                        <source type="image/jpg" media="(max-width: 699px)" srcset="<?php echo $ddl_dialog_img_mobile ?>">
+                      <?php } ?>
+                        <img 
+                          src="<?php echo $ddl_dialog_img_desktop ?>"
+                          alt="<?php if($ddl_dialog_img_desktop_alt) { echo $ddl_dialog_img_desktop_alt; } else { ?>Pop-up<?php } ?>"
+                          width="200"
+                          height="200"
+                          loading="lazy"
+                          decoding="async"
+                        >
+                    <?php if ($ddl_dialog_img_mobile) { ?>
+                      </picture>
+                    <?php } ?>
+
+                  <?php if ($ddl_dialog_links && count($ddl_dialog_links) === 1) { ?>
+                    </a>
+                  <?php } ?>
 
                 <?php } else {
                   
                   the_content(); 
                   
                 } ?>
+
+                <?php if ($ddl_dialog_links && count($ddl_dialog_links) > 1) { ?>
+
+                  <div class="ddl-dialog__links">
+
+                    <?php foreach ($ddl_dialog_links as $link) { ?>
+
+                      <a href="<?php echo $link['0'] ?>"><?php echo $link['1'] ?></a>
+                  
+                    <?php } ?>
+
+                  </div>
+
+                <?php } ?>
 
               </div>
 

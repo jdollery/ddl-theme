@@ -10,11 +10,12 @@
   --ddl-dialog-black: #303030;
   --ddl-dialog-grey: #565656;
   --ddl-dialog-grey-light: #dddddd;
-  /* --------- GLOBAL --------- */
-  /*-----------------------------------------------------------------------------------*/
-  /* FIXED VARIABLES */
-  /*-----------------------------------------------------------------------------------*/
-  /* --------- FONT SIZE --------- */
+  --ddl-dialog-primary: #016775;
+  --ddl-dialog-secondary: #02B0AE;
+  --ddl-close-bg: var(--ddl-dialog-grey)
+  --ddl-close-bg-hover: var(--ddl-dialog-black)
+  --ddl-close-cross: var(--ddl-dialog-white)
+  --ddl-close-cross-hover: var(--ddl-dialog-white) ;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -88,7 +89,7 @@ html.ddl-dialog-visible {
   visibility: hidden;
   appearance: none;
   z-index: 99999;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition: opacity 0.5s cubic-bezier(0.5, 0, 0.5, 1), visibility 0.5s cubic-bezier(0.5, 0, 0.5, 1);
 }
 .ddl-dialog__backdrop {
   opacity: 0;
@@ -100,7 +101,7 @@ html.ddl-dialog-visible {
   width: 100%;
   height: 100%;
   background: var(--ddl-dialog-black);
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition: opacity 0.3s cubic-bezier(0.5, 0, 0.5, 1), visibility 0.3s cubic-bezier(0.5, 0, 0.5, 1);
 }
 .ddl-dialog__inner {
   display: flex;
@@ -110,19 +111,21 @@ html.ddl-dialog-visible {
   border: 0;
   background: transparent;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition: opacity 0.5s cubic-bezier(0.5, 0, 0.5, 1), transform 0.5s cubic-bezier(0.5, 0, 0.5, 1);
   transition-delay: 0.3s;
   transform: translateY(-50px);
   z-index: 999999;
-  width: 600px;
   max-width: 100%;
   max-height: 100%;
   padding: 50px 20px;
   margin: 0 auto;
   overflow-y: auto;
 }
-.ddl-dialog__inner--banner {
+.ddl-dialog__inner.ddl-dialog__inner--banner {
   width: 800px;
+}
+.ddl-dialog__inner:not(.ddl-dialog__inner--banner) {
+  width: 600px;
 }
 .ddl-dialog__body {
   position: relative;
@@ -148,6 +151,26 @@ html.ddl-dialog-visible {
 .ddl-dialog__body p:last-child {
   margin-bottom: 0;
 }
+.ddl-dialog__links {
+  display: flex;
+}
+.ddl-dialog__links a {
+  flex: 1 0 0;
+  text-align: center;
+  padding: 15px 20px;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+}
+.ddl-dialog__links a:nth-child(odd) {
+  color: var(--ddl-dialog-white);
+  background: var(--ddl-dialog-primary);
+}
+.ddl-dialog__links a:nth-child(even) {
+  color: var(--ddl-dialog-white);
+  background: var(--ddl-dialog-secondary);
+}
+.ddl-dialog__links a:hover, .ddl-dialog__links a:focus {
+  opacity: 0.8;
+}
 .ddl-dialog__close {
   display: block;
   position: absolute;
@@ -155,7 +178,7 @@ html.ddl-dialog-visible {
   top: 60px;
   width: 35px;
   height: 35px;
-  background-color: var(--ddl-dialog-grey);
+  background-color: var(--ddl-close-bg);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
@@ -168,7 +191,7 @@ html.ddl-dialog-visible {
   z-index: 1;
 }
 .ddl-dialog__close:hover, .ddl-dialog__close:focus {
-  background-color: var(--ddl-dialog-black);
+  background-color: var(--ddl-close-bg-hover);
 }
 .ddl-dialog--visible {
   opacity: 1;

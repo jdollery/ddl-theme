@@ -34,10 +34,16 @@
 			addLink.addEventListener('click', function() {
 				let number = addLink.getAttribute('data-number');
 
-				let row = `<div class="dialog__row"><input type="text" name="dialogLink[${number}]" value=""/><button type="button" class="dialog__remove button" id="removeLink">Remove</button></div>`;
+				let row = `<div class="dialog__row dialog__row--links">
+										<input type="text" name="dialogLink[${number}][0]" placeholder="URL" value=""/>
+										<input type="text" name="dialogLink[${number}][1]" placeholder="Link/Button text" value="" />
+										<button type="button" class="dialog__remove button" id="removeLink">Remove</button>
+									</div>`;
+
 				
 				document.getElementById("dialogLinks").insertAdjacentHTML('beforeend', row);
 				addLink.dataset.number = parseInt(addLink.dataset.number) + 1;
+
 			});
 
 		}

@@ -67,6 +67,10 @@
   width: 100%;
 }
 
+.dialog__row--links {
+  grid-template-columns: 1fr 1fr auto;
+}
+
 .dialog__remove,
 .dialog__delete {
   color: #ffffff !important;

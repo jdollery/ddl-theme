@@ -10,69 +10,12 @@
   --ddl-dialog-black: #303030; 
   --ddl-dialog-grey: #565656;
   --ddl-dialog-grey-light: #dddddd;
+  --ddl-dialog-primary: #016775;
+  --ddl-dialog-secondary: #02B0AE;
 
-
-  /* --------- GLOBAL --------- */
-
-  // --body-font:  'poppins';
-  // --heading-font:  'poppins';
-  
-  // --regular: 400;
-  // --medium: 500;
-  // --bold: 600;
-
-  // --border-radius: 5rem;
-  // --letter-spacing: 0.02rem;
-
-
-  /*-----------------------------------------------------------------------------------*/
-  /* FIXED VARIABLES */
-  /*-----------------------------------------------------------------------------------*/
-
-  // --body-bg: var(--grey);
-  // --main-bg: var(--white);
-  
-
-  /* --------- FONT SIZE --------- */
-
-  // --h1: #{fluid(36px, 60px)};
-
-  // --h2: #{fluid(18px, 28px)};
-
-  // --h3: #{fluid(22px, 35px)};
-
-  // --h4: #{fluid(17px, 28px)};
-
-  // --h5: #{fluid(15px, 23px)};
-
-  // --h6: #{fluid(13px, 23px)};
-
-  // --body-size: #{fluid(13px, 19px)};
-
-
-  // /* --------- SPACING --------- */
-
-  // /* https://geary.co/clamp-calculator/ */
-
-  // --space-y: #{fluid(30px, 140px)};
-
-  // --space-x: #{fluid(20px, 60px)};
-
-  // --gutter-sm: 1rem;
-  // --negative-gutter-sm: -1rem;
-
-  // --gutter-md: 2rem;
-  // --negative-gutter-md: -2rem;
-
-  // --gutter-lg: 4rem;
-  // --negative-gutter-lg: -4rem;
-  
-  // --gutter-xl: 6rem;
-  // --negative-gutter-xl: -6rem;
-
-  // --space-hero: #{fluid(20px, 30px)};
-  // --space-inner: #{fluid(30px, 100px)};
-
-  // --hero-height: attr(data-height);
+  --ddl-close-bg: var(--ddl-dialog-grey)
+  --ddl-close-bg-hover: var(--ddl-dialog-black)
+  --ddl-close-cross: var(--ddl-dialog-white)
+  --ddl-close-cross-hover: var(--ddl-dialog-white)
   
 }
