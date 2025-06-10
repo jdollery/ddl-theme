@@ -6,11 +6,26 @@
 
   /* --------- COLOURS --------- */
 
-  --ddl-dialog-white: #ffffff;
-  --ddl-dialog-black: #303030; 
-  --ddl-dialog-grey: #565656;
-  --ddl-dialog-grey-light: #dddddd;
-  --ddl-dialog-primary: #016775;
-  --ddl-dialog-secondary: #02B0AE;
+  --ddl-dialog-bg: #ffffff;
+  --ddl-dialog-txt: #303030;
+  --ddl-dialog-drop: #303030;
+
+  --ddl-dialog-close: #565656;
+  --ddl-dialog-close-hover: #303030;
+  --ddl-dialog-icon: #ffffff;
+  --ddl-dialog-icon-hover: #ffffff;
+
+  --ddl-dialog-odd-bg: #565656;
+  --ddl-dialog-odd-bg-hover: #444444;
+  --ddl-dialog-odd-txt: #ffffff;
+  --ddl-dialog-odd-txt-hover: #ffffff;
+
+  --ddl-dialog-even-bg: #303030;
+  --ddl-dialog-even-bg-hover: #1d1d1d;
+  --ddl-dialog-even-txt: #ffffff;
+  --ddl-dialog-even-txt-hover: #ffffff;
   
 }
+
+$ddl-dialog-lg: 700px;
+$ddl-dialog-sm: 480px;

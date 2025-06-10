@@ -37,7 +37,7 @@
 				let row = `<div class="dialog__row dialog__row--links">
 										<input type="text" name="dialogLink[${number}][0]" placeholder="URL" value=""/>
 										<input type="text" name="dialogLink[${number}][1]" placeholder="Link/Button text" value="" />
-										<button type="button" class="dialog__remove button" id="removeLink">Remove</button>
+										<button type="button" class="dialog__remove button">Remove</button>
 									</div>`;
 
 				

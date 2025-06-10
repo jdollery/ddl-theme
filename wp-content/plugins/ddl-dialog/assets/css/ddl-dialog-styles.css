@@ -6,12 +6,21 @@
 /*-----------------------------------------------------------------------------------*/
 :root {
   /* --------- COLOURS --------- */
-  --ddl-dialog-white: #ffffff;
-  --ddl-dialog-black: #303030;
-  --ddl-dialog-grey: #565656;
-  --ddl-dialog-grey-light: #dddddd;
-  --ddl-dialog-primary: #016775;
-  --ddl-dialog-secondary: #02B0AE;
+  --ddl-dialog-bg: #ffffff;
+  --ddl-dialog-txt: #303030;
+  --ddl-dialog-drop: #303030;
+  --ddl-dialog-close: #565656;
+  --ddl-dialog-close-hover: #303030;
+  --ddl-dialog-icon: #ffffff;
+  --ddl-dialog-icon-hover: #ffffff;
+  --ddl-dialog-odd-bg: #565656;
+  --ddl-dialog-odd-bg-hover: #444444;
+  --ddl-dialog-odd-txt: #ffffff;
+  --ddl-dialog-odd-txt-hover: #ffffff;
+  --ddl-dialog-even-bg: #303030;
+  --ddl-dialog-even-bg-hover: #1d1d1d;
+  --ddl-dialog-even-txt: #ffffff;
+  --ddl-dialog-even-txt-hover: #ffffff;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -47,7 +56,7 @@
 .ddl-dialog button:focus-visible,
 .ddl-dialog a:focus-visible,
 .ddl-dialog input:focus-visible {
-  outline: 2px solid var(--ddl-dialog-grey-light) !important;
+  outline: 2px solid #ffffff !important;
   text-decoration: none !important;
   outline-offset: 0 !important;
 }
@@ -80,7 +89,6 @@ html.ddl-dialog-visible {
   padding: 0;
   border: 0;
   background: transparent;
-  color: var(--ddl-dialog-black);
   opacity: 0;
   visibility: hidden;
   appearance: none;
@@ -96,14 +104,14 @@ html.ddl-dialog-visible {
   z-index: 99999;
   width: 100%;
   height: 100%;
-  background: var(--ddl-dialog-black);
+  background: var(--ddl-dialog-drop);
   transition: opacity 0.3s cubic-bezier(0.5, 0, 0.5, 1), visibility 0.3s cubic-bezier(0.5, 0, 0.5, 1);
 }
 .ddl-dialog__inner {
+  position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  position: relative;
   border: 0;
   background: transparent;
   opacity: 0;
@@ -113,9 +121,14 @@ html.ddl-dialog-visible {
   z-index: 999999;
   max-width: 100%;
   max-height: 100%;
-  padding: 50px 20px;
+  padding: 20px;
   margin: 0 auto;
   overflow-y: auto;
+}
+@media (min-width: 480px) {
+  .ddl-dialog__inner {
+    padding: 50px 20px;
+  }
 }
 .ddl-dialog__inner.ddl-dialog__inner--banner {
   width: 800px;
@@ -126,59 +139,149 @@ html.ddl-dialog-visible {
 .ddl-dialog__body {
   position: relative;
   width: 100%;
-  background: var(--ddl-dialog-white);
   box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.075), 0 2px 2px hsla(0, 0%, 0%, 0.075), 0 4px 4px hsla(0, 0%, 0%, 0.075), 0 8px 8px hsla(0, 0%, 0%, 0.075), 0 16px 16px hsla(0, 0%, 0%, 0.075);
-}
-.ddl-dialog__body:has(.ddl-dialog__body--img) {
-  padding: 45px 50px;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .ddl-dialog__body img {
   display: block;
   width: 100%;
   height: auto;
 }
-.ddl-dialog__body p {
+.ddl-dialog__media {
+  background: var(--ddl-dialog-bg);
+}
+.ddl-dialog__content {
+  padding: 42px;
+  color: var(--ddl-dialog-txt);
+  background: var(--ddl-dialog-bg);
+}
+@media (min-width: 480px) {
+  .ddl-dialog__content {
+    padding: 50px;
+  }
+}
+.ddl-dialog__content h1,
+.ddl-dialog__content h2 {
+  font-size: 19px;
+  font-weight: bold;
+  margin-block: 0.5em;
+  margin-block: 0.5lh;
+}
+.ddl-dialog__content h1:first-child,
+.ddl-dialog__content h2:first-child {
+  margin-top: 0;
+}
+.ddl-dialog__content h1:last-child,
+.ddl-dialog__content h2:last-child {
+  margin-bottom: 0;
+}
+@media (min-width: 480px) {
+  .ddl-dialog__content h1,
+  .ddl-dialog__content h2 {
+    font-size: 24px;
+  }
+}
+.ddl-dialog__content h3,
+.ddl-dialog__content h4 {
+  font-size: 17px;
+  font-weight: bold;
+  margin-block: 0.5em;
+  margin-block: 0.5lh;
+}
+.ddl-dialog__content h3:first-child,
+.ddl-dialog__content h4:first-child {
+  margin-top: 0;
+}
+.ddl-dialog__content h3:last-child,
+.ddl-dialog__content h4:last-child {
+  margin-bottom: 0;
+}
+@media (min-width: 480px) {
+  .ddl-dialog__content h3,
+  .ddl-dialog__content h4 {
+    font-size: 20px;
+  }
+}
+.ddl-dialog__content h5,
+.ddl-dialog__content h6,
+.ddl-dialog__content p {
+  font-size: 14px;
   margin-block: 0.8em;
   margin-block: 0.8lh;
 }
-.ddl-dialog__body p:first-child {
+.ddl-dialog__content h5:first-child,
+.ddl-dialog__content h6:first-child,
+.ddl-dialog__content p:first-child {
   margin-top: 0;
 }
-.ddl-dialog__body p:last-child {
+.ddl-dialog__content h5:last-child,
+.ddl-dialog__content h6:last-child,
+.ddl-dialog__content p:last-child {
   margin-bottom: 0;
+}
+@media (min-width: 480px) {
+  .ddl-dialog__content h5,
+  .ddl-dialog__content h6,
+  .ddl-dialog__content p {
+    font-size: 18px;
+  }
 }
 .ddl-dialog__links {
   display: flex;
+  flex-direction: column;
+}
+@media (min-width: 480px) {
+  .ddl-dialog__links {
+    flex-direction: row;
+  }
 }
 .ddl-dialog__links a {
-  flex: 1 0 0;
+  flex: 0 0 auto;
+  width: 100%;
   text-align: center;
+  font-size: 14px;
   padding: 15px 20px;
   transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
 }
+@media (min-width: 480px) {
+  .ddl-dialog__links a {
+    flex: 1 0 0;
+    width: auto;
+  }
+}
+@media (min-width: 700px) {
+  .ddl-dialog__links a {
+    font-size: 18px;
+  }
+}
 .ddl-dialog__links a:nth-child(odd) {
-  color: var(--ddl-dialog-white);
-  background: var(--ddl-dialog-primary);
+  color: var(--ddl-dialog-odd-txt);
+  background: var(--ddl-dialog-odd-bg);
+}
+.ddl-dialog__links a:nth-child(odd):hover, .ddl-dialog__links a:nth-child(odd):focus {
+  color: var(--ddl-dialog-odd-txt-hover);
+  background: var(--ddl-dialog-odd-bg-hover);
 }
 .ddl-dialog__links a:nth-child(even) {
-  color: var(--ddl-dialog-white);
-  background: var(--ddl-dialog-secondary);
+  color: var(--ddl-dialog-even-txt);
+  background: var(--ddl-dialog-even-bg);
 }
-.ddl-dialog__links a:hover, .ddl-dialog__links a:focus {
-  opacity: 0.8;
+.ddl-dialog__links a:nth-child(even):hover, .ddl-dialog__links a:nth-child(even):focus {
+  color: var(--ddl-dialog-even-txt-hover);
+  background: var(--ddl-dialog-even-bg-hover);
 }
 .ddl-dialog__close {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  right: 30px;
-  top: 60px;
+  right: 10px;
+  top: 10px;
   width: 35px;
   height: 35px;
-  background-color: var(--ddl-dialog-grey);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 60%;
+  background-color: var(--ddl-dialog-close);
+  color: var(--ddl-dialog-icon);
   border-radius: 5px;
   border: 0;
   z-index: 1;
@@ -186,8 +289,14 @@ html.ddl-dialog-visible {
   cursor: pointer;
   z-index: 1;
 }
+.ddl-dialog__close svg {
+  display: block;
+  width: 70%;
+  height: 70%;
+}
 .ddl-dialog__close:hover, .ddl-dialog__close:focus {
-  background-color: var(--ddl-dialog-black);
+  background-color: var(--ddl-dialog-close-hover);
+  color: var(--ddl-dialog-icon-hover);
 }
 .ddl-dialog--visible {
   opacity: 1;

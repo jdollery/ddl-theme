@@ -1,43 +1,5 @@
 /*-----------------------------------------------------------------------------------*/
-/* DIALOG OPEN ON CLICK */
-/*-----------------------------------------------------------------------------------*/
-
-// const ddlDialogs = document.querySelectorAll('[data-dialog]'),
-//       ddlHtml = document.querySelector("html");
-
-// ddlDialogs.forEach(function(trigger) {
-
-//   trigger.addEventListener('click', function(event) {
-
-//     event.preventDefault();
-
-//     const dialog = document.getElementById(trigger.dataset.dialog);
-
-//     dialog.classList.add('open');
-//     ddlHtml.classList.add("dialog-visible");
-
-//     const ddlDialogExits = dialog.querySelectorAll('[data-dialog-close]');
-
-//     ddlDialogExits.forEach(function(exit) {
-
-//       exit.addEventListener('click', function(event) {
-
-//         event.preventDefault();
-
-//         dialog.classList.remove('open');
-//         ddlHtml.classList.remove("dialog-visible");
-
-//       });
-
-//     });
-
-//   });
-
-// });
-
-
-/*-----------------------------------------------------------------------------------*/
-/* DIALOG OPEN ON LOAD (ONLY SHOW ONCE) */
+/* DIALOG OPEN ON LOAD */
 /*-----------------------------------------------------------------------------------*/
 
 const initDDLDialog = function () {
