@@ -23,8 +23,43 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function ddl_dialog_enqueue() {
 
-  wp_enqueue_style( 'ddl-dialog-styles', plugins_url('/assets/css/ddl-dialog-styles.css', __FILE__), array(), '', 'all' );
-  wp_enqueue_script( 'ddl-dialog-script', plugins_url('/assets/js/ddl-dialog-script.js', __FILE__), array(), '', true ); 
+  $ddl_dialog_loop = new WP_Query( array(
+    'post_type' => 'ddl-dialogs',
+  ) );
+
+  if ( $ddl_dialog_loop->have_posts() ) {
+
+    while ( $ddl_dialog_loop->have_posts() ) : $ddl_dialog_loop->the_post();
+
+    $ddl_dialog_post_Id = get_the_ID();
+    $ddl_dialog_query = null;
+    $ddl_dialog_status = get_post_status($ddl_dialog_post_Id);
+    $ddl_dialog_is_visible = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_show', true);
+    $ddl_dialog_selected_pages = get_post_meta($ddl_dialog_post_Id, '_ddl_dialog_pages', true);
+      
+    if ( isset($ddl_dialog_selected_pages) && ( is_page($ddl_dialog_selected_pages) || is_single($ddl_dialog_selected_pages) ) ) {
+      $ddl_dialog_query = new WP_Query(
+        array(
+          'post_type' => 'any',
+          'p' => $ddl_dialog_selected_pages
+        )
+      );
+    }
+    
+    if ( isset($ddl_dialog_query) ) {
+    
+      if ($ddl_dialog_status == 'publish' && $ddl_dialog_is_visible == 1) {
+
+        wp_enqueue_style( 'ddl-dialog-styles', plugins_url('/assets/css/ddl-dialog-styles.css', __FILE__), array(), '', 'all' );
+        wp_enqueue_script( 'ddl-dialog-script', plugins_url('/assets/js/ddl-dialog-script.js', __FILE__), array(), '', true ); 
+
+      }
+
+    }
+
+    endwhile; wp_reset_query();
+
+  }
 
 }
 
@@ -193,7 +228,9 @@ function init_ddl_dialog() {
 add_action( 'wp_footer', 'init_ddl_dialog', 1 );
 
 
-
+/*-----------------------------------------------------------------------------------*/
+/* INIT DIALOG STYLES TO HEADER FOR SELECTED PAGES/POSTS */
+/*-----------------------------------------------------------------------------------*/
 
 function ddl_dialog_styles() { 
 
