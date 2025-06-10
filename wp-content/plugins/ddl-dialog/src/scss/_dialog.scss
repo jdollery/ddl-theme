@@ -192,7 +192,7 @@ html {
       text-align: center;
       font-size: 14px;
       padding: 15px 20px;
-      transition: all .3s cubic-bezier(.5,0,.5,1);
+      transition: color .3s cubic-bezier(.5,0,.5,1), background-color .3s cubic-bezier(.5,0,.5,1), font-size .3s cubic-bezier(.5,0,.5,1);
 
       @media (min-width: $ddl-dialog-sm) {
         flex: 1 0 0;
@@ -205,22 +205,22 @@ html {
 
       &:nth-child(odd) {
         color: var(--ddl-dialog-odd-txt);
-        background: var(--ddl-dialog-odd-bg);
+        background-color: var(--ddl-dialog-odd-bg);
 
         @include hover-focus {
           color: var(--ddl-dialog-odd-txt-hover);
-          background: var(--ddl-dialog-odd-bg-hover);
+          background-color: var(--ddl-dialog-odd-bg-hover);
         }
 
       }
 
       &:nth-child(even) {
         color: var(--ddl-dialog-even-txt);
-        background: var(--ddl-dialog-even-bg);
+        background-color: var(--ddl-dialog-even-bg);
 
         @include hover-focus {
           color: var(--ddl-dialog-even-txt-hover);
-          background: var(--ddl-dialog-even-bg-hover);
+          background-color: var(--ddl-dialog-even-bg-hover);
         }
 
       }
@@ -243,7 +243,7 @@ html {
     border-radius: 5px;
     border: 0;
     z-index: 1;
-    transition: all .3s cubic-bezier(.5,0,.5,1);
+    transition: background-color .3s cubic-bezier(.5,0,.5,1), color .3s cubic-bezier(.5,0,.5,1);
     cursor: pointer;
     z-index: 1;
 
