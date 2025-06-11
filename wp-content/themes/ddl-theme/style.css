@@ -55,7 +55,6 @@
   --input-border-width: 0.2rem 0.2rem;
   --input-border-color: var(--grey);
   --input-border-focus: var(--grey-dark);
-  --input-border-width-error: 0.2rem 0.2rem 0 0;
   --label-font-size: clamp(1.4rem, 0.1vw + 1.35rem, 1.6rem);
   --label-color: var(--black);
   --label-weight: var(--regular);

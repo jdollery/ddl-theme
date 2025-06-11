@@ -14,7 +14,7 @@
 
     </footer>
 
-    <?php get_template_part('inc/icons'); ?>
+    <?php get_template_part('includes/icons'); ?>
 
     <?php edit_post_link( __( 'Edit', 'textdomain' ), null, null, null, 'btn btn--edit' ); ?>
 

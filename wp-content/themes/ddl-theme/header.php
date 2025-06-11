@@ -53,7 +53,7 @@
   <body <?php body_class(); ?> >
 
     <?php if(is_active_sidebar('dialog-slot')) { ?>
-      <?php get_template_part('inc/dialog'); ?>
+      <?php get_template_part('includes/dialog'); ?>
     <?php } ?>
 
     <header class="header" id="mainHeader">

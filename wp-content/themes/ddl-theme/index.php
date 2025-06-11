@@ -2,7 +2,7 @@
 
 <article class="article article--blog">
 
-  <?php get_template_part('inc/banner'); ?>
+  <?php get_template_part('includes/banner'); ?>
 
   <?php if ( have_posts() ) { ?>
 
@@ -13,7 +13,7 @@
         <?php while ( have_posts() ) : the_post(); ?>
 
           <li class="loop__item">
-            <?php get_template_part('inc/post'); ?>
+            <?php get_template_part('includes/post'); ?>
           </li>
 
         <?php endwhile; wp_reset_query(); ?>

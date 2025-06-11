@@ -2,7 +2,7 @@
 
 <article class="article article--single">
 
-  <?php get_template_part('inc/banner'); ?>
+  <?php get_template_part('includes/banner'); ?>
 
   <?php if ( !empty( get_the_content() ) ) { ?>
 
@@ -14,7 +14,7 @@
 
   <?php } else {  
 
-    get_template_part('inc/sections'); 
+    get_template_part('includes/sections'); 
 
   }  ?>
 

@@ -42,7 +42,7 @@
           ?>
 
             <li class="loop__item">
-              <?php get_template_part('inc/post'); ?>
+              <?php get_template_part('includes/post'); ?>
             </li>
 
           <?php 

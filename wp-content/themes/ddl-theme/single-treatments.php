@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
-<?php get_template_part('inc/banner'); ?>
-<?php get_template_part('inc/sections'); ?>
+<?php get_template_part('includes/banner'); ?>
+<?php get_template_part('includes/sections'); ?>
 
 <?php
     
@@ -23,7 +23,7 @@ if ( $loop->have_posts() ) { ?>
         <?php  while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
           <li class="loop__item">
-            <?php get_template_part('inc/post'); ?>
+            <?php get_template_part('includes/post'); ?>
           </li>
 
         <?php endwhile; wp_reset_query(); ?>

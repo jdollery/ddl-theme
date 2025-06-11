@@ -2,7 +2,7 @@
 
 <article class="article article--page">
 
-  <?php get_template_part('inc/banner'); ?>
+  <?php get_template_part('includes/banner'); ?>
 
   <div class="content content--white content--top content--bottom">
     <div class="content__fixed">

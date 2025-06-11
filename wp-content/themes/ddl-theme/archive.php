@@ -2,7 +2,7 @@
 
 <article class="article article--archive">
 
-  <?php get_template_part('inc/banner'); ?>
+  <?php get_template_part('includes/banner'); ?>
 
   <?php if ( have_posts() ) { ?>
 

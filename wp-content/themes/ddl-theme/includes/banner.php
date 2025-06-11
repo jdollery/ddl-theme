@@ -60,7 +60,7 @@
 
           <h1 class="banner__title"><?php echo $blog_title ?></h1>
 
-          <?php get_template_part('inc/breadcrumb'); ?>
+          <?php get_template_part('includes/breadcrumb'); ?>
 
           <?php if( $banner_hide_summary == false ) { ?>
 
@@ -81,7 +81,7 @@
 
           <h1 class="banner__title"><?php echo $archive_title; ?></h1>
 
-          <?php get_template_part('inc/breadcrumb'); ?>
+          <?php get_template_part('includes/breadcrumb'); ?>
 
           <?php if($archive_description) { ?>
             <div class="banner__summary"><?php echo $archive_description ?></div>
@@ -102,7 +102,7 @@
 
           <h1 class="banner__title"><?php the_title(); ?></h1>
 
-          <?php get_template_part('inc/breadcrumb'); ?>
+          <?php get_template_part('includes/breadcrumb'); ?>
 
           <div class="banner__meta">
             <ul class="banner__categories list--exempt"><?php echo $categories_list ?></ul>
@@ -129,7 +129,7 @@
             <h1 class="banner__title"><?php the_title(); ?></h1>
           <?php } ?>
 
-          <?php get_template_part('inc/breadcrumb'); ?>
+          <?php get_template_part('includes/breadcrumb'); ?>
 
           <?php if( $banner_hide_summary == false ) { ?>
 

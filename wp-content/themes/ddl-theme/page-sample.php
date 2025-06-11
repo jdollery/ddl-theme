@@ -4,11 +4,11 @@
 
 get_header(); ?>
 
-<?php get_template_part('inc/banner'); ?>
+<?php get_template_part('includes/banner'); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-<?php get_template_part('inc/sections'); ?>
+<?php get_template_part('includes/sections'); ?>
 
   <section class="content content--white content--top content--bottom">
 
