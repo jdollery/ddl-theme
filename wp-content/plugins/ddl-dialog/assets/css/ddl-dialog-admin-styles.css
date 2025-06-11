@@ -4,9 +4,15 @@
 
 .dialog__table {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: repeat(2, 1fr); */
   gap: 25px;
   padding: 20px 15px;
+}
+
+@media (min-width: 1490px) {
+  .dialog__table {
+    grid-template-columns: repeat(2, 1fr);
+  } 
 }
 
 .dialog__table > div {
