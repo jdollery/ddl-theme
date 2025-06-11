@@ -2,29 +2,29 @@
 /* MODULES */
 /*-----------------------------------------------------------------------------------*/
 
-@use 'abstracts/functions' as *;
+// @use 'abstracts/functions' as *;
 @use 'abstracts/utility' as *;
 @use 'abstracts/variables' as *;
 @use 'abstracts/media' as *;
 
-$label-color: var(--grey-dark);
-$label-font-weight: var(--book);
+// $label-color: var(--grey-dark);
+// $label-font-weight: var(--book);
 
-$input-font-weight: var(--book);
-$input-line-height: 1.4;
-$input-color: var(--black);
-$input-font-size: #{fluid(13px, 16px)};
-$input-placeholder: var(--grey-dark);
-$input-background: #f5f5f5;
-$input-border-width: 0 0 0.2rem;
-$input-border-style: solid;
-$input-border-color: var(--blue-light);
-$input-border-focus: var(--blue);
-$input-border-radius: 0;
-// $input-padding-sm: 1.5rem 1.8rem;
-// $input-padding-lg: 1.5rem 2rem;
-$input-padding-sm: 2.5rem 2rem 1rem;
-$input-padding-lg: 2.5rem 2rem 1rem;
+// $input-font-weight: var(--book);
+// $input-line-height: 1.4;
+// $input-color: var(--black);
+// $input-font-size: #{fluid(13px, 16px)};
+// $input-placeholder: var(--grey-dark);
+// $input-background: #f5f5f5;
+// $input-border-width: 0 0 0.2rem;
+// $input-border-style: solid;
+// $input-border-color: var(--grey-light);
+// $input-border-focus: var(--grey);
+// $input-border-radius: 0;
+// // $input-padding-sm: 1.5rem 1.8rem;
+// // $input-padding-lg: 1.5rem 2rem;
+// $input-padding-sm: 2.5rem 2rem 1rem;
+// $input-padding-lg: 2.5rem 2rem 1rem;
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -79,21 +79,24 @@ $input-padding-lg: 2.5rem 2rem 1rem;
   .select2-selection--single {
     display: block;
     width: 100%;
-    padding: 1.8rem 2rem;
-    font-size: $input-font-size;
-    font-weight: $input-font-weight;
-    line-height: $input-line-height;
-    color: $input-color;
-    background-color: $input-background;
-    background-clip: padding-box;
-    border-width: $input-border-width;
+    padding: 1.35rem 1.5rem;
+    font-weight: var(--input-weight);
+    font-size: var(--input-font-size);
+    line-height: var(--input-line-height);
+    color: var(--input-color);
+    background-color: var(--input-background);
+    border-width: var(--input-border-width);
     border-style: solid;
-    border-color: $input-border-color;
-    border-radius: $input-border-radius;
-    transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    border-color: var(--input-border-color);
+    border-radius: var(--input-radius);
+    transition: border 0.3s cubic-bezier(0.5, 0, 0.5, 1), background-color 0.3s cubic-bezier(0.5, 0, 0.5, 1);
 
     &:focus {
-      border-color: $input-border-focus;
+      border-color: var(--input-border-focus);
+    }
+
+    @include media-up(md) {
+      padding: 1.65rem 2rem;
     }
 
     .select2-selection__arrow {
@@ -114,9 +117,9 @@ $input-padding-lg: 2.5rem 2rem 1rem;
 
         &::after {
           display: block;
-          width: 2rem;
+          width: 1.5rem;
           aspect-ratio: 1 / 1;
-          content: $icon-chevron-down-white;
+          content: $icon-chevron-down-black;
         }
 
       }
@@ -134,7 +137,7 @@ $input-padding-lg: 2.5rem 2rem 1rem;
         b {
   
           &::after {
-            content: $icon-chevron-up-white;
+            content: $icon-chevron-up-black;
           }
   
         }
@@ -148,7 +151,7 @@ $input-padding-lg: 2.5rem 2rem 1rem;
 }
 
 .select2-container--default.select2-container--focus .select2-selection--single {
-  background: $input-background;
+  background: var(--input-background);
 }
 
 .select2-container--default.select2-container--open.select2-container--below .select2-selection--single,
@@ -173,16 +176,15 @@ $input-padding-lg: 2.5rem 2rem 1rem;
   left: -100rem;
   width: 100%;
   z-index: 5000;
-  font-size: $input-font-size;
-  font-weight: $input-font-weight;
-  line-height: $input-line-height;
-  color: var(--white);
-  background-color: var(--blue-dark);
-  background-clip: padding-box;
-  border-width: $input-border-width;
+  font-weight: var(--input-weight);
+  font-size: var(--input-font-size);
+  line-height: var(--input-line-height);
+  color: var(--select-color);
+  background-color: var(--select-background);
+  border-width: var(--select-border-width);
   border-style: solid;
-  border-color: $input-border-color;
-  transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  border-color: var(--select-border-color);
+  transition: border 0.3s cubic-bezier(0.5, 0, 0.5, 1), background-color 0.3s cubic-bezier(0.5, 0, 0.5, 1);
   box-shadow: 0 0.2rem 0.3rem rgba(var(--grey-dark), 0.2);
 }
 
@@ -222,7 +224,7 @@ $input-padding-lg: 2.5rem 2rem 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: $input-font-size;
+  font-size: var(--input-font-size);
 }
 
 .select2-container--default .select2-results > .select2-results__options {
@@ -246,32 +248,10 @@ $input-padding-lg: 2.5rem 2rem 1rem;
 }
 
 .select2-container--default .select2-results__option[aria-selected=true] {
-  background-color: var(--grey-dark);
+  background-color: var(--select-selected-background);
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-  background-color: var(--blue);
-  color: var(--white);
-}
-
-
-.currency-select {
-  position: relative;
-  z-index: 10;
-
-  .select2-container--default
-  .select2-selection--single {
-    background-color: transparent;
-    border-width: 0;
-    color: var(--white);
-    font-size: 1.3rem;
-    line-height: 2.5rem;
-    font-weight: var(--light);
-
-    @include media-up(md) {
-      font-size: 1.5rem;
-    }
-
-  }
-
+  color: var(--select-selected-color);
+  background-color: var(--select-selected-background);
 }

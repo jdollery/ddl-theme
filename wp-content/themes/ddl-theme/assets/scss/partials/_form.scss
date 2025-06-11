@@ -25,7 +25,7 @@
 
     @include media-up(md) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
   }
@@ -39,10 +39,6 @@
         grid-column: span 2;
       }
 
-    }
-
-    sup {
-      color: var(--danger);
     }
 
     &--checkbox {
@@ -105,13 +101,25 @@
     &--submit {
       position: relative;
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 2rem;
-  
-      .btn {
-        @include btn-accent;
+      // grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 2rem;  
+      margin-top: 2rem;
+
+      @include media-up(sm) {
+        grid-template-columns: 1fr auto;
+        gap: 3rem; 
       }
-  
+
+      @include media-up(md) {
+        grid-template-columns: auto;
+      }
+
+      @include media-min(1300px) {
+        grid-template-columns: 1fr auto;
+        gap: 6rem;
+      }
+
     }
 
   }
@@ -123,12 +131,12 @@
   }
 
   &__note {
-    display: grid;
-    gap: 1rem;
+    // display: grid;
+    // gap: 1rem;
 
-    @include media-up(xs) {
-      grid-column: span 2;
-    }
+    // @include media-up(xs) {
+    //   grid-column: span 2;
+    // }
 
     a {
       color: inherit;
@@ -137,14 +145,6 @@
       @include hover-focus {
         color: inherit;
         text-decoration: none;
-      }
-
-    }
-
-    .icon--asterisk {
-
-      svg {
-        fill: var(--danger);
       }
 
     }
@@ -158,30 +158,24 @@
   textarea {
     display: block;
     width: 100%;
-    padding: 1.9rem 1.8rem 0.6rem;
-    font-variation-settings: "wght" var(--input-weight);
+    padding: 2.1rem 1.5rem 0.6rem;
     font-weight: var(--input-weight);
     font-size: var(--input-font-size);
-    line-height: 1.3;
-    // color: var(--white);
-    background-color: var(--white);
-    background-clip: padding-box;
-    border-width: 0.2rem;
+    line-height: var(--input-line-height);
+    color: var(--input-color);
+    background-color: var(--input-background);
+    border-width: var(--input-border-width);
     border-style: solid;
-    border-color: var(--grey);
+    border-color: var(--input-border-color);
     border-radius: var(--input-radius);
-    transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    transition: border 0.3s cubic-bezier(0.5, 0, 0.5, 1), background-color 0.3s cubic-bezier(0.5, 0, 0.5, 1);
 
     &:focus {
-      border-color: var(--accent);
+      border-color: var(--input-border-focus);
     }
 
     @include media-up(md) {
-      padding: 2.2rem 1.8rem 0.8rem;
-    }
-
-    @include media-up(xxl) {
-      padding: 2.2rem 2rem 0.8rem;
+      padding: 2.5rem 2rem .8rem;
     }
 
   }
@@ -201,10 +195,10 @@
     label, .label {
       display: inline-flex;
       font-size: var(--input-font-size);
-      font-variation-settings: "wght" var(--label-weight);
+      font-weight: var(--label-font-size);
       margin: 0.5rem 0 1rem;;
       z-index: 2;
-      transition: all 0.3s ease-in-out;
+      @include transition(all);
     }
 
   }
@@ -219,15 +213,14 @@
       left: 0.8rem;
       display: block;
       font-size: 60%;
-      color: var(--accent);
-      font-variation-settings: "wght" var(--label-weight);
+      color: var(--label-color);
+      font-weight: var(--label-weight);
       z-index: 2;
-      transition: all 0.3s ease-in-out;
+      @include transition(all);
       pointer-events: none;
     
       @include media-up(xxl) {
         top: 0.5rem;
-        left: 0.8rem;
       }
     
     }
@@ -238,41 +231,29 @@
       &::placeholder {
         opacity: 1;
         transition: all .2s;
-        color: var(--body-color);
+        color: var(--input-color);
       }
-    
-      // &:placeholder-shown:not(:focus) {
-      //   background-color: transparent;
-      // }
     
       &:placeholder-shown:not(:focus)::placeholder {
         opacity: 0;
       }
     
       &:placeholder-shown:not(:focus) ~ label {
-        top: 1.3rem;
-        left: 1.8rem;
-        color: var(--body-color);
+        top: 1.4rem;
+        left: 1.5rem;
+        color: var(--input-color);
         opacity: 1;
-        font-variation-settings: "wght" var(--regular);
+        font-weight: var(--input-weight);
         font-size: var(--input-font-size);
     
         @include media-up(xxl) {
-          top: 1.4rem;
+          top: 1.6rem;
           left: 2rem;
         }
     
       } 
     
     }
-
-    // textarea {
-
-    //   &:placeholder-shown:not(:focus) ~ label {
-    //     top: 0;
-    //   }
-  
-    // }
 
   }
 
@@ -304,12 +285,11 @@ input[type=radio]::after {
   position: relative;
   content: "";
   display: block;
-  background-color: var(--white);
-  background-clip: padding-box;
+  background-color: var(--checkbox-background);
   border-width: 0.1rem;
   border-style: solid;
-  border-color: var(--black);
-  transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  border-color: var(--checkbox-border);
+  transition: border 0.3s cubic-bezier(0.5, 0, 0.5, 1), background-color 0.3s cubic-bezier(0.5, 0, 0.5, 1);
   height: 2.3rem;
   width: 2.3rem;
 }
@@ -334,41 +314,16 @@ input[type=radio]::before {
 
 }
 
-input[type=checkbox]:focus-visible, 
-input[type=radio]:focus-visible {
-  outline: 0;
-  outline-offset: 0;
-
-  &::after {
-    background-color: #a9a9a9;
-    border-color: #a9a9a9;
-  }
-
-  &::before {
-    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24' fill='%23ffffff' %3E%3Cpath d='M8.2,20.5L.5,12.8c-.5-.5-.5-1.2,0-1.7l1.7-1.7c.5-.5,1.2-.5,1.7,0l5.2,5.2L20.1,3.5c.5-.5,1.2-.5,1.7,0l1.7,1.7c.5.5.5,1.2,0,1.7l-13.6,13.6c-.5.5-1.2.5-1.7,0h0Z'/%3E%3C/svg%3E");
-  }
-
-}
-
 input[type=checkbox]:checked,
 input[type=radio]:checked {
 
   &::after {
-    background-color: var(--accent);
-    border-color: var(--accent);
+    background-color: var(--checkbox-focus);
+    border-color: var(--checkbox-border-focus);
   }
 
   &::before {
     opacity: 1;
-  }
-
-  &:focus-visible {
-  
-    &::after {
-      background-color: #a9a9a9;
-      border-color: #a9a9a9;
-    }
-
   }
 
 }
@@ -419,33 +374,23 @@ input[type=number] {
   textarea:focus,
   .radio,
   .select2-container--default .select2-selection--single {
+    border-radius: var(--input-radius) var(--input-radius) 0 0;
     border-color: var(--danger);
   }
 
 }
 
-// .form__input--success {
-
-//   input:not([type=submit],[type=radio],[type=checkbox]),
-//   input:not([type=submit],[type=radio],[type=checkbox]):focus,
-//   textarea,
-//   textarea:focus {
-//     border-color: var(--success);
-//   }
-
-// }
-
 .form__error {
   display: block;
   font-size: 1.1rem;
-  color: var(--danger);
-  margin-top: 0.4rem;
-  font-weight: var(--bold);
-  letter-spacing: 0;
+  color: var(--white);
+  background-color: var(--danger);
+  padding: 0.7rem 0.9rem;
+  font-weight: var(--regular);
   width: 100%;
 
   @include media-up(sm) {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
 }

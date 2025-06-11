@@ -23,7 +23,7 @@ $success:             #78c468;
 
 :root {
 
-  /* --------- COLOURS --------- */
+  /* --------------------- COLOURS --------------------- */
 
   --white:            #ffffff;
   --black:            #3A4145;
@@ -35,7 +35,7 @@ $success:             #78c468;
   --success:          #78c468;
 
 
-  /* --------- FONT STYLES --------- */
+  /* --------------------- FONT STYLES --------------------- */
 
   --body-font:          'Montserrat';
   --heading-font:       'Montserrat';
@@ -60,7 +60,7 @@ $success:             #78c468;
   --paragraph-margin-block-fb:      0.8em; //fallback
 
 
-  /* --------- HEADINGS --------- */
+  /* --------------------- HEADINGS --------------------- */
 
   --heading-letter-spacing:         0.02rem;
   --heading-line-height:            1.2;
@@ -74,14 +74,14 @@ $success:             #78c468;
   --heading-margin-block-end-fb:    0.5em; //fallback
 
 
-  /* --------- LINK STYLES --------- */
+  /* --------------------- LINK STYLES --------------------- */
 
   --link-color:         var(--accent);
   --link-color-hover:   var(--black);
   --link-weight:        var(--bold);
 
 
-  /* --------- FONT SIZES --------- */
+  /* --------------------- FONT SIZES --------------------- */
 
   --h1:                 #{fluid(28px, 60px)};
   --h2:                 #{fluid(24px, 46px)};
@@ -92,12 +92,42 @@ $success:             #78c468;
   --body-size:          #{fluid(14px, 22px)};
 
 
-  /* --------- SPACING --------- */
+  /* --------------------- SPACING --------------------- */
 
   --space-y:            #{fluid(30px, 125px)};
   --space-x:            #{fluid(25px, 120px)};
   --space-heading:      #{fluid(25px, 80px)};
   --space-footer:       #{fluid(25px, 80px)};
+
+
+  /* --------------------- FORM --------------------- */
+
+  --input-font-size:             #{fluid(14px, 16px)};
+  --input-weight:                var(--regular);
+  --input-line-height:           1.3;
+  --input-radius:                0.3rem;
+  --input-color:                 var(--black);
+  --input-background:            var(--white);
+  --input-border-width:          0.2rem 0.2rem;
+  --input-border-color:          var(--grey);
+  --input-border-focus:          var(--grey-dark);
+
+  --label-font-size:             #{fluid(14px, 16px)};
+  --label-color:                 var(--black);
+  --label-weight:                var(--regular);
+
+  --select-color:                var(--white);
+  --select-background:           var(--grey-dark);
+  --select-border-width:         0.2rem;
+  --select-border-color:         var(--input-border-focus);
+  
+  --select-selected-color:       var(--white);
+  --select-selected-background:  var(--black);
+  
+  --checkbox-background:         var(--input-background);
+  --checkbox-border:             var(--input-border-color);
+  --checkbox-focus:              var(--input-background);
+  --checkbox-border-focus:       var(--input-border-focus);
 
 }
 
@@ -130,14 +160,6 @@ $list-bullet-size:    0.6rem;
 $list-bullet-color:   var(--accent);
 $list-number-weight:  var(--bold);
 $list-inline-gap:     #{fluid(10px, 30px)};
-
-
-/* --------- FORM --------- */
-
-$input-font-size:    var(--body-size);
-$input-weight:       var(--regular);
-$input-radius:       0;
-$label-weight:       var(--regular);
 
 
 /* --------- ICON DataURL --------- */
