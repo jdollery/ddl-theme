@@ -110,7 +110,7 @@ $success:             #78c468;
   --input-background:            var(--white);
   --input-border-width:          0.2rem 0.2rem;
   --input-border-color:          var(--grey);
-  --input-border-focus:          var(--grey-dark);
+  --input-border-focus:          var(--accent);
 
   --label-font-size:             #{fluid(14px, 16px)};
   --label-color:                 var(--black);
@@ -122,7 +122,7 @@ $success:             #78c468;
   --select-border-color:         var(--input-border-focus);
   
   --select-selected-color:       var(--white);
-  --select-selected-background:  var(--black);
+  --select-selected-background:  var(--accent);
   
   --checkbox-background:         var(--input-background);
   --checkbox-border:             var(--input-border-color);

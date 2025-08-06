@@ -93,7 +93,7 @@ function ddl_scripts() {
 	wp_enqueue_script( 'ddl-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '1.0.39', true );
 	wp_enqueue_script( 'ddl-validate', get_template_directory_uri() . '/assets/js/validate.js', array(), '1.19.5', true ); 
 	wp_enqueue_script( 'ddl-select2', get_template_directory_uri() . '/assets/js/select2.js', array(), '4.1.0', true );
-	// wp_enqueue_script( 'ddl-pristine', get_template_directory_uri() . '/assets/js/pristine.js', array(), '0.1.9', true );
+	wp_enqueue_script( 'ddl-submit', get_template_directory_uri() . '/assets/js/submit.js', array(), '1.0.0', true );
 	// wp_enqueue_script( 'ddl-submit', get_template_directory_uri() . '/assets/js/submit.js', array(), '1.0.0', true );
 	// wp_enqueue_script( 'ddl-slick', get_template_directory_uri() . '/assets/js/slick.js', array(), '1.8.0', true );
 	// wp_enqueue_script( 'ddl-map', get_template_directory_uri() . '/assets/js/map.js', array(), '1.0.0', true ); //outdated - need to new version (api keys)

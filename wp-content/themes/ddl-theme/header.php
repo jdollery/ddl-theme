@@ -45,7 +45,7 @@
       });
     </script> -->
 
-    <script async defer type="text/javascript">
+    <script type="text/javascript">
 
       <?php $recaptcha_key = "6LeoAgorAAAAAMkKqQMoxuLoBZ_IA_Mf3J1to1s6"; ?>
 

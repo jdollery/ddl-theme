@@ -1,22 +1,19 @@
 <?php 
 
-  $form_button            =   "Send appointment request"; // Same on both contact section and dialog forms
-  $form_button_sending    =   "Sending request"; // Same on both contact section and dialog forms
-
   $form_patient           =   true; // true = shows new patient radios / false = hides new patient radios
 
   $securedent_form        =   true; // true = enables Securedent form - Secudent key in under locations line 56
   $dengro_form            =   false; // true = enables Dengro form, e.g https://hooks.dengro.com/capture/XXXXXX-XXXX-XXXX-XXXX-XXXXXX
   $mailer_form            =   false; // true = enables PHPMailer form
 
-  $mailchimp_signup       =   false; // true = enables MailChimp
+  $mailchimp_signup       =   true; // true = enables MailChimp
 
 ?>
 
 <?php if ($securedent_form == true) { ?>
-  <form class="form" id="contactForm" method="post" action="https://www.securedent.net/submit.ashx" novalidate="true" data-form="securedent" enctype="multipart/form-data" >
+  <form class="form" id="contactForm" method="post" novalidate="true" data-form="securedent" enctype="multipart/form-data" >
 <?php } elseif($dengro_form == true) { ?>
-  <form class="form" id="contactForm" method="post" action="" novalidate="true" data-form="dengro">
+  <form class="form" id="contactForm" method="post" novalidate="true" data-form="dengro">
 <?php } elseif($mailer_form == true) { ?>
   <form class="form" id="contactForm" novalidate="true" data-form="mailer">
 <?php } ?>
@@ -24,6 +21,7 @@
   <div class="form__row">
 
     <div class="form__input form__input--focus">
+
       <input 
         type="text"
         id="name"
@@ -32,12 +30,14 @@
         required
         aria-required="true"
         aria-label="First name"
-        data-input="first"
+        <?php if($mailchimp_signup) { ?>data-input="first"<?php } ?>
       />
       <label for="name">Your name<sup aria-label="required">*</sup></label>
+
     </div>
 
     <div class="form__input form__input--focus ">
+
       <input 
         type="text"
         id="telephone"
@@ -48,9 +48,11 @@
         aria-label="Telephone number"
       >
       <label for="telephone">Tel number<sup>*</sup></label>
+
     </div>
 
     <div class="form__input form__input--focus form__input--span">
+
       <input 
         type="email"
         id="email"
@@ -62,9 +64,11 @@
         <?php if($mailchimp_signup) { ?>data-input="email"<?php } ?>
       >
       <label for="email">Email address<sup aria-label="required">*</sup></label>
+
     </div>
 
     <div class="form__input form__input--focus form__input--span">
+
       <textarea 
         id="message"
         name="message"
@@ -73,11 +77,12 @@
         aria-label="Please give us a brief description about your enquiry"
       ></textarea>
       <label for="message">Your message</label>
+
     </div>
     
     <div class="form__input form__input--span">
       
-      <label for="treatment">Please select a treatment</label>
+      <label for="treatment">Please select a treatment<sup aria-label="required">*</sup></label>
       <select 
         id="treatment" 
         name="treatment" 
@@ -172,7 +177,7 @@
             value="Yes"
             aria-label="Marketing consent checkbox"
           >
-          <label for="subscribe">Tick this box to subscribe to the <strong><?php echo bloginfo( 'name' ); ?></strong> newsletter and receive up-to-date offers &amp; the latest news.<sup>*</sup></label>
+          <label for="subscribe">Tick this box to subscribe to the <strong><?php echo bloginfo( 'name' ); ?></strong> newsletter and receive up-to-date offers &amp; the latest news.</label>
         </div>
 
       <?php } else { ?>
@@ -201,7 +206,7 @@
 
     </div>
 
-    <div class="form__input--note form__input--span">
+    <div class="form__input form__input--note form__input--span">
       <small>On submitting this form you agree to <strong><?php echo bloginfo( 'name' ); ?></strong> collecting your personal data. To learn more about how we collect, use, share and protect your personal data, please read our <a href="<?php echo get_privacy_policy_url() ?>">privacy policy</a>.</small>
     </div>
 
@@ -219,8 +224,8 @@
 
   <?php if($securedent_form == true) { ?>
 
-    <input type="hidden" name="form_uid" value="d92ea4ec-097e-4711-8886-b55dbd8330a7">
-    <input name="required" type="hidden" value="name,submit_by,treatment,new_patient">
+    <input type="hidden" name="form_uid" value="d92ea4ec-097e-4711-8886-b55dbd8330a7"> 
+    <input name="required" type="hidden" value="name,submit_by,treatment<?php if($form_patient) { ?>,new_patient<?php } ?>">
     <input name="data_order" type="hidden" value="name,submit_by,treatment,<?php if($form_patient) { ?>new_patient,<?php } ?><?php if($mailchimp_signup) { ?>subscribe<?php } else { ?>marketing<?php } ?>">
     <input name="ok_url" type="hidden" id="ok_url" value="<?php echo get_the_permalink( 1 ) // thank you page ?>">
     <input name="not_ok_url" type="hidden" id="not_ok_url" value="<?php echo get_the_permalink( 1 ) // sorry page ?>">

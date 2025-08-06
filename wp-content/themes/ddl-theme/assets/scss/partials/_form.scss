@@ -44,23 +44,10 @@
     &--checkbox {
       display: grid;
       grid-template-columns: auto 1fr;
-      gap: 2rem;
-
-      // label {
-      //   font-weight: var(--input-weight);
-      //   font-size: var(--input-font-size);
-      // }
-
+      column-gap: 2rem;
     }
 
     &--radio {
-
-      .icon--asterisk {
-        position: relative;
-        display: inline-block;
-        top: 0;
-        right: 0;
-      }
 
       .radio {
         display: flex;
@@ -102,7 +89,7 @@
       display: grid;
       align-items: start;
       gap: 2rem;  
-      margin-top: 2rem;
+      margin-top: 1rem;
 
       @include media-up(sm) {
         grid-template-columns: 1fr auto;
@@ -121,7 +108,7 @@
     }
 
     &--note {
-      margin-top: 2rem;
+      margin-top: 0.5rem;
 
       a {
         color: inherit;

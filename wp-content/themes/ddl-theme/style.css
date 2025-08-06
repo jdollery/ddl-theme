@@ -54,7 +54,7 @@
   --input-background: var(--white);
   --input-border-width: 0.2rem 0.2rem;
   --input-border-color: var(--grey);
-  --input-border-focus: var(--grey-dark);
+  --input-border-focus: var(--accent);
   --label-font-size: clamp(1.4rem, 0.1vw + 1.35rem, 1.6rem);
   --label-color: var(--black);
   --label-weight: var(--regular);
@@ -63,7 +63,7 @@
   --select-border-width: 0.2rem;
   --select-border-color: var(--input-border-focus);
   --select-selected-color: var(--white);
-  --select-selected-background: var(--black);
+  --select-selected-background: var(--accent);
   --checkbox-background: var(--input-background);
   --checkbox-border: var(--input-border-color);
   --checkbox-focus: var(--input-background);
@@ -371,7 +371,6 @@ sub,
 sup {
   position: relative;
   font-size: 80%;
-  line-height: 0;
   vertical-align: baseline
 }
 sub {
@@ -1277,13 +1276,7 @@ ul:not(.list--exempt):last-child {
 .form__input--checkbox {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 2rem
-}
-.form__input--radio .icon--asterisk {
-  position: relative;
-  display: inline-block;
-  top: 0;
-  right: 0
+  column-gap: 2rem
 }
 .form__input--radio .radio {
   display: flex;
@@ -1320,7 +1313,7 @@ ul:not(.list--exempt):last-child {
   display: grid;
   align-items: start;
   gap: 2rem;
-  margin-top: 2rem
+  margin-top: 1rem
 }
 @media (min-width:768px) {
   .form__input--submit {
@@ -1340,7 +1333,7 @@ ul:not(.list--exempt):last-child {
   }
 }
 .form__input--note {
-  margin-top: 2rem
+  margin-top: .5rem
 }
 .form__input--note a {
   color: inherit;
