@@ -31,7 +31,9 @@
 
       <?php if ($quicklinks_object) { ?>
 
-        <ul class="loop list--exempt">
+        <?php $count = count($quicklinks_object); ?>
+
+        <ul class="loop loop--<?php echo $count ?> list--exempt">
 
           <?php 
           

@@ -14,7 +14,7 @@
 ?>
 
 <?php if ($securedent_form == true) { ?>
-  <form class="form" id="contactForm" method="post" action="https://www.securedent.net/submit.ashx" novalidate="true" data-form="securedent">
+  <form class="form" id="contactForm" method="post" action="https://www.securedent.net/submit.ashx" novalidate="true" data-form="securedent" enctype="multipart/form-data" >
 <?php } elseif($dengro_form == true) { ?>
   <form class="form" id="contactForm" method="post" action="" novalidate="true" data-form="dengro">
 <?php } elseif($mailer_form == true) { ?>
@@ -34,7 +34,7 @@
         aria-label="First name"
         data-input="first"
       />
-      <label for="name">Your name<sup>*</sup></label>
+      <label for="name">Your name<sup aria-label="required">*</sup></label>
     </div>
 
     <div class="form__input form__input--focus ">
@@ -42,9 +42,9 @@
         type="text"
         id="telephone"
         name="telephone"
-        data-pristine-pattern="/^[0-9]{11}(?:-[0-9]{10})?$/"
-        data-pristine-pattern-message="Invalid telephone number"
         placeholder="Enter your telephone number"
+        required
+        aria-required="true"
         aria-label="Telephone number"
       >
       <label for="telephone">Tel number<sup>*</sup></label>
@@ -53,7 +53,7 @@
     <div class="form__input form__input--focus form__input--span">
       <input 
         type="email"
-        id="email_address"
+        id="email"
         name="submit_by"
         placeholder="Enter your email address"
         required
@@ -61,7 +61,7 @@
         aria-label="Email address"
         <?php if($mailchimp_signup) { ?>data-input="email"<?php } ?>
       >
-      <label for="email">Email address<sup>*</sup></label>
+      <label for="email">Email address<sup aria-label="required">*</sup></label>
     </div>
 
     <div class="form__input form__input--focus form__input--span">
@@ -102,7 +102,7 @@
 
           <?php 
           
-            $patient_legend = 'Are you a new patient?<sup><span class="icon icon--asterisk"><svg role="img"><use xlink:href="#asterisk" href="#asterisk"></use></svg></span></sup>';
+            $patient_legend = 'Are you a new patient?<sup aria-label="required">*</sup>';
 
           ?>
 
@@ -132,7 +132,6 @@
 
             foreach($options as $option) { ?>
 
-            <span class="btn btn--radio">
               <input 
                 type="radio"
                 id="patient_<?php echo $count ?>"
@@ -146,7 +145,6 @@
                 <span class="icon icon--tick"><svg role="img"><use xlink:href="#tick" href="#tick"></use></svg></span>
                 <span><?php echo $option['value'] ?></span>
               </label>
-            </span>
 
             <?php
 
@@ -162,11 +160,11 @@
 
     <?php } ?>   
 
-    <div class="form__input--submit form__input--span">
+    <div class="form__input form__input--submit form__input--span">
 
       <?php if($mailchimp_signup) { ?>
 
-        <div class="form__checkbox">
+        <div class="form__input form__input--checkbox">
           <input 
             type="checkbox"
             id="subscribe"
@@ -179,7 +177,7 @@
 
       <?php } else { ?>
 
-        <div class="form__checkbox">
+        <div class="form__input form__input--checkbox">
           <input 
             type="checkbox"
             id="marketing"
@@ -187,8 +185,7 @@
             value="Yes"
             aria-label="Marketing consent checkbox"
           >
-          <!-- <label for="marketing">Tick this box if you would like to receive information about the latest offers and updates from <strong><?php echo bloginfo( 'name' ); ?></strong>.</label> -->
-          <label for="marketing">Tick this box to receive the latest updates &amp; news from <strong><?php echo bloginfo( 'name' ); ?></strong>.</label>
+          <label for="marketing">Tick this box to receive the latest updates and news from <strong><?php echo bloginfo( 'name' ); ?></strong>.</label>
         </div>
 
       <?php } ?>
@@ -204,8 +201,7 @@
 
     </div>
 
-    <div class="form__note">
-      <small><sup><span class="icon icon--asterisk"><svg role="img"><use xlink:href="#asterisk" href="#asterisk"></use></svg></span></sup>Required fields</small>
+    <div class="form__input--note form__input--span">
       <small>On submitting this form you agree to <strong><?php echo bloginfo( 'name' ); ?></strong> collecting your personal data. To learn more about how we collect, use, share and protect your personal data, please read our <a href="<?php echo get_privacy_policy_url() ?>">privacy policy</a>.</small>
     </div>
 

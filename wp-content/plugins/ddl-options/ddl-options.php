@@ -418,14 +418,14 @@ add_action( 'admin_init', 'admin_init_site_aggregate_section' );
 function render_site_aggregate_value() {
 
   $input = get_option( 'site-aggregate-value' );
-	echo '<input style="width:600px;" type="number" id="site-aggregate-value" name="site-aggregate-value" value="' . $input . '" />';
+	echo '<input style="width:600px;" type="number" id="site-aggregate-value" name="site-aggregate-value" value="' . $input . '" step=".1" />';
 
 }
 
 function render_site_aggregate_count() {
 
   $input = get_option( 'site-aggregate-count' );
-	echo '<input style="width:600px;" type="number" id="site-aggregate-count" name="site-aggregate-count" value="' . $input . '" />';
+	echo '<input style="width:600px;" type="number" id="site-aggregate-count" name="site-aggregate-count" value="' . $input . '" step=".1" />';
 
 }
 

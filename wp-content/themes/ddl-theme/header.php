@@ -45,9 +45,20 @@
       });
     </script> -->
 
-    <script src="https://www.google.com/recaptcha/api.js?render=6LeoAgorAAAAAMkKqQMoxuLoBZ_IA_Mf3J1to1s6"></script>
+    <script async defer type="text/javascript">
+
+      <?php $recaptcha_key = "6LeoAgorAAAAAMkKqQMoxuLoBZ_IA_Mf3J1to1s6"; ?>
+
+      const recaptchaKey = "<?php echo $recaptcha_key ?>"; 
+      const baseURL = "<?php echo site_url() ?>";
+      const themeName = "<?php echo esc_html( get_template() ); ?>";
+
+    </script>
+
+    <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $recaptcha_key ?>"></script>
 
     <?php wp_head(); ?>
+
 	</head>
 
   <body <?php body_class(); ?> >
@@ -85,7 +96,7 @@
 
           <a class="hidden--lg" href="tel:<?php echo $phone_link ?>" aria-label="Call us on <?php echo $phone_number ?>"><span class="icon icon--tel"><svg role="img"><use xlink:href="#tel" href="#tel"></use></svg></span><span hidden><?php echo $phone_number ?></span></a>
 
-          <a class="btn btn--accent visible--sm" href="<?php echo get_the_permalink( 147 ) ?>">Book an appointment</a>
+          <a class="btn btn--accent visible--sm" href="<?php echo get_the_permalink( 147 ) ?>">Book an appointment <span class="icon icon--arrow"><svg role="img"><use xlink:href="#arrow" href="#arrow"></use></svg></span></a>
           
           <button class="burger" id="navToggle" type="button" aria-haspopup="true" aria-controls="headerNav" aria-label="Open menu">
             <span class="burger__inner"></span>

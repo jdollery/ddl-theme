@@ -356,7 +356,7 @@
           addClass(htmlEl, opts.navActiveClass);
           addClass(navToggle, "active");
           nav.style.position = opts.openPos;
-          setAttributes(nav, {"aria-hidden": "false"});
+          // setAttributes(nav, {"aria-hidden": "false"});
           setAttributes(nav, {"aria-expanded": "true"});
           setAttributes(navToggle, {"aria-expanded": "true"});
           navOpen = true;
@@ -373,7 +373,7 @@
           removeClass(nav, "opened");
           removeClass(htmlEl, opts.navActiveClass);
           removeClass(navToggle, "active");
-          setAttributes(nav, {"aria-hidden": "true"});
+          // setAttributes(nav, {"aria-hidden": "true"});
           setAttributes(nav, {"aria-expanded": "false"});
           setAttributes(navToggle, {"aria-expanded": "false"});
 
@@ -428,7 +428,7 @@
 
           // If the navigation is hidden
           if (nav.className.match(/(^|\s)closed(\s|$)/)) {
-            setAttributes(nav, {"aria-hidden": "true"});
+            // setAttributes(nav, {"aria-hidden": "true"});
             nav.style.position = "absolute";
           }
 
@@ -446,7 +446,7 @@
 
           isMobile = false;
           setAttributes(navToggle, {"aria-hidden": "true"});
-          setAttributes(nav, {"aria-hidden": "false"});
+          // setAttributes(nav, {"aria-hidden": "false"});
           nav.removeAttribute("aria-expanded");
           navToggle.removeAttribute("aria-expanded");
           nav.style.position = opts.openPos;
@@ -816,7 +816,7 @@
        // Set menu items with sub menus to aria-haspopup="true" and add toggle button before sub menu.
        for (i = 0, len = subMenus.length; i < len; i++) {
          subMenus[i].parentNode.setAttribute( 'aria-haspopup', 'true' );
-         subMenus[i].insertAdjacentHTML( 'beforebegin', '<button class="dropdown-toggle" aria-expanded="false">' + opts.openDropdown + '</button>' );
+         subMenus[i].insertAdjacentHTML( 'beforebegin', '<button class="dropdown-toggle" aria-label="Toggle dropdown" aria-expanded="false">' + opts.openDropdown + '</button>' );
        }
 
        // Select all dropdown buttons

@@ -163,7 +163,14 @@ jQuery(document).ready(function () { //doc ready start
       errorElement: 'strong',
 
       errorPlacement: function (error, e) {
-        e.parents('.form__input').append(error);
+
+        // if ( e.is(":radio") ) {
+          // error.appendTo('.form__input--radio');
+          // e.parents('.form__input--radio').append(error);
+        // } else {
+          e.closest('.form__input').append(error);
+        // }
+
       },
 
       highlight: function (element) {
@@ -209,17 +216,19 @@ jQuery(document).ready(function () { //doc ready start
 
       if (jQuery(this).valid()) {
 
-        jQuery(this).find('.btn--submit').addClass('btn--sending');
+        const form = jQuery(this);
+
+        form.find(".btn--submit").addClass("btn--sending");
       
         grecaptcha.ready(function() {
-          grecaptcha.execute('XXXXXXXXXXXX', {action: 'submit'}).then(function(token) {
+          grecaptcha.execute(recaptchaKey, { action: "submit" }).then(function(token) {
       
-            let recaptchaResponse = document.getElementById("recaptcha_response")
+            let recaptchaResponse = form.querySelector("#recaptchaResponse");
             recaptchaResponse.value = token 
       
             const data = new FormData(e.target);
       
-            fetch( "https://XXXXXXXXX/wp-content/themes/XXXXXXXXX/actions/validate.php", {
+            fetch( "https://" + baseURL + "/wp-content/themes/" + themeName + "/actions/validate.php", {
               method: 'post',
               body: data,
             })
@@ -227,19 +236,23 @@ jQuery(document).ready(function () { //doc ready start
             .then((response) => response.text())
             .then((response) => {
       
-              const responseText = JSON.parse(response)
+              const googleResponse = JSON.parse(response)
               
-              if (responseText.success) { 
+              if (googleResponse.success) { 
 
-                jQuery(this).find('.btn--submit').removeClass('btn--sending');
-
-                jQuery(this).submit()
+                e.target.action = "https://www.securedent.net/submit.ashx";
+                
+                e.target.submit();
+                
+                form.find('.btn--submit').removeClass('btn--sending');
       
               } else {
 
-                jQuery(this).find('.btn--submit').removeClass('btn--sending');
+                // form.find('.btn--submit').removeClass('btn--sending');
+
+                window.location.href = baseURL + "/sorry/"; 
       
-                console.log('reCAPTCHA error', responseText);
+                // console.log('reCAPTCHA error', responseText);
           
               }
       
@@ -262,6 +275,41 @@ jQuery(document).ready(function () { //doc ready start
   });
 
 }); //doc ready end
+
+
+window.onload = function () {
+
+  const forms = document.querySelectorAll('form');
+
+  if (forms) {
+
+    forms.forEach((e) => {
+
+      let inputs = e.querySelectorAll('input');
+
+      inputs.forEach((i) => {
+
+        i.addEventListener('click', function() {
+            i.scrollIntoView({
+              behavior: 'smooth',
+              block: "center"
+            });
+        });
+        
+        i.addEventListener('touch', function() {
+            i.scrollIntoView({
+              behavior: 'smooth',
+              block: "center"
+            });
+        });
+
+      });
+
+    });
+
+  }
+
+}
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -520,6 +568,12 @@ dropDowns.forEach((dropDown) => {
       dropDown.classList.add('accordion__item--open');
       slideDown(dropDown.nextElementSibling, 500);
       toggle.setAttribute( 'aria-expanded', 'true' );
+
+      toggle.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
     }
 
   });
@@ -950,5 +1004,29 @@ function videoDialog(){}
 //   document.addEventListener("click", function() {
 //     closeAllSelect(null);
 //   });
+
+// });
+
+
+/*-----------------------------------------------------------------------------------*/
+/* COOKIE SCANNER */
+/*-----------------------------------------------------------------------------------*/
+
+// window.addEventListener("load", function() {
+
+//   var cookies = { };
+
+//   if (document.cookie && document.cookie != '') {
+//     var split = document.cookie.split(';');
+//     for (var i = 0; i < split.length; i++) {
+//       var name_value = split[i].split("=");
+//       name_value[0] = name_value[0].replace(/^ /, '');
+//       cookies[decodeURIComponent(name_value[0])] = decodeURIComponent(name_value[1]);
+//     }
+//   }
+
+//   // return cookies;
+
+//   console.log(cookies);
 
 // });

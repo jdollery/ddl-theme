@@ -88,7 +88,7 @@ function include_file($atts) {
 
 add_shortcode('include', 'include_file');
 
-// [include slug="inc/form"]
+// [include slug="includes/form"]
 
 
 /* --------------------- GET PRICE FROM A FEE POST AND ACF TABLE ROW --------------------- */

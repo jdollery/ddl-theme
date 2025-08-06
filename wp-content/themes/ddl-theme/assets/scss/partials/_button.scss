@@ -17,10 +17,27 @@
   background: transparent;
   border-color: var(--black);
 
+  .icon {
+
+    svg {
+      fill: var(--white);
+    }
+
+  }
+
   @include hover {
     color: var(--white);
     background: var(--black);
     border-color: var(--black);
+
+    .icon {
+
+      svg {
+        fill: var(--white);
+      }
+
+    }
+
   }
 
 }
@@ -30,10 +47,27 @@
   background: transparent;
   border-color: var(--white);
 
+  .icon {
+
+    svg {
+      fill: var(--white);
+    }
+
+  }
+
   @include hover {
     color: var(--black);
     background: var(--white);
     border-color: var(--white);
+
+    .icon {
+
+      svg {
+        fill: var(--black);
+      }
+
+    }
+
   }
 
 }
@@ -43,16 +77,42 @@
   background: transparent;
   border-color: var(--accent);
 
+  .icon {
+
+    svg {
+      fill: var(--accent);
+    }
+
+  }
+
   @include hover {
     color: var(--white);
     background: var(--accent);
     border-color: var(--accent);
+
+    .icon {
+
+      svg {
+        fill: var(--white);
+      }
+
+    }
+
   }
 
   &:focus-visible {
     color: var(--white);
     background: var(--accent);
     border-color: var(--accent);
+
+    .icon {
+
+      svg {
+        fill: var(--white);
+      }
+
+    }
+
   }
 
 }
@@ -62,15 +122,23 @@
   background: transparent;
   border-color: var(--accent);
 
+  .icon {
+
+    svg {
+      fill: var(--white);
+    }
+
+  }
+
   @include hover {
     color: var(--white);
     background: var(--accent);
     border-color: var(--accent);
 
-    &.btn--arrow {
-  
-      &::after {
-        background-image: $icon-arrow-accent;
+    .icon {
+
+      svg {
+        fill: var(--white);
       }
 
     }
@@ -78,7 +146,18 @@
   }
 
   &:focus-visible {
-    border-color: var(--grey);
+    color: var(--white);
+    background: var(--accent);
+    border-color: var(--accent);
+
+    .icon {
+
+      svg {
+        fill: var(--white);
+      }
+
+    }
+
   }
 
 }
@@ -105,6 +184,29 @@
 
   @include media-up(xxl) {
     padding: 1.2rem 4rem 1.4rem;
+  }
+
+  &:has(.icon) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+
+    .icon {
+      height: 3.2rem;
+      width: 3.2rem;
+
+      @include media-up(sm) {
+        height: 4rem;
+        width: 4rem; 
+      }
+      
+      svg {
+        @include transition(all);
+      }
+
+    }
+
   }
 
   &--black {
@@ -172,104 +274,64 @@
 
   }
 
-  &--arrow {
-    display: flex;
-    align-items: center;
+  // &--radio {
+  //   display: block !important;
+  //   padding: 0 !important;
+  //   border: 0 !important;
 
-    &::after {
-      position: relative;
-      right: 0;
-      display: block;
-      content: '';
-      background-image: $icon-arrow-white;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 100%;
-      aspect-ratio: 1 / 1;
-      width: 1.3rem;
-      margin: 0 0 0 1.3rem;
-      transition: right .3s cubic-bezier(.5,0,.5,1), background-image .3s cubic-bezier(.5,0,.5,1);
+  //   input[type="radio"] {
+  //     display: none;
 
-      @include media-up(sm) {
-        width: 1.8rem;
-        margin: 0 0 0 1.5rem;
-      }
-
-    }
-
-    @include hover {
-
-      &::after {
-        right: -0.4rem;
-
-        @include media-up(sm) {
-          right: -0.8rem;
-        }
-
-      }
-
-    }
-
-  }
-
-  &--radio {
-    display: block !important;
-    padding: 0 !important;
-    border: 0 !important;
-
-    input[type="radio"] {
-      display: none;
-
-      + label {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0.8rem;
-        font-size: 1.3rem;
-        padding: 1rem 2.5rem 1.05rem;
-        margin: 0 !important;
-        color: var(--black);
-        background: transparent;
-        border-color: var(--accent);
-        border-width: 0.3rem;
-        border-style: solid;
-        border-radius: 5rem;
-        cursor: pointer;
-        white-space: nowrap;
+  //     + label {
+  //       display: flex;
+  //       justify-content: center;
+  //       align-items: center;
+  //       gap: 0.8rem;
+  //       font-size: 1.3rem;
+  //       padding: 1rem 2.5rem 1.05rem;
+  //       margin: 0 !important;
+  //       color: var(--black);
+  //       background: transparent;
+  //       border-color: var(--accent);
+  //       border-width: 0.3rem;
+  //       border-style: solid;
+  //       border-radius: 5rem;
+  //       cursor: pointer;
+  //       white-space: nowrap;
   
-        .icon {
-          aspect-ratio: 1 / 1;
-          width: 1.6rem;
-          display: none;
-          margin: 0 0.2rem 0 0;
-          @include transition(all);
+  //       .icon {
+  //         aspect-ratio: 1 / 1;
+  //         width: 1.6rem;
+  //         display: none;
+  //         margin: 0 0.2rem 0 0;
+  //         @include transition(all);
   
-          svg {
-            fill: var(--white);
-          }
+  //         svg {
+  //           fill: var(--white);
+  //         }
   
-        }
+  //       }
 
-        &:focus-visible {
-          border-color: var(--grey);
-        }
+  //       &:focus-visible {
+  //         border-color: var(--grey);
+  //       }
   
-      }
+  //     }
 
-      &:checked + label {
-        color: var(--white);
-        background: var(--accent);
-        border-color: var(--accent);
+  //     &:checked + label {
+  //       color: var(--white);
+  //       background: var(--accent);
+  //       border-color: var(--accent);
 
-        .icon {
-          display: inline-block;
-        }
+  //       .icon {
+  //         display: inline-block;
+  //       }
 
-      }
+  //     }
 
-    }
+  //   }
 
-  }
+  // }
 
   &--edit {
     color: var(--black);
