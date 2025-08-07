@@ -17,6 +17,9 @@
 
 .form {
   position: relative;
+  display: grid;
+  row-gap: 2.5rem;
+  text-align: left;
 
   &__row {
     display: grid;
@@ -28,6 +31,12 @@
       gap: 1.5rem;
     }
 
+  }
+
+  &__column {
+    display: grid;
+    grid-column: span 2;
+    gap: 1rem;
   }
 
   &__input {
@@ -57,8 +66,10 @@
         row-gap: 1rem;
         column-gap: 2rem;
         width: 100%;
-        background: transparent;
-        border: 0.2rem solid var(--grey);
+        background-color: var(--input-background);
+        border-width: var(--input-border-width);
+        border-style: solid;
+        border-color: var(--input-border-color);
         border-radius: var(--input-radius);
         padding: 1.5rem;
       
@@ -78,6 +89,7 @@
         &__label {
           font-weight: var(--input-weight);
           font-size: var(--input-font-size);
+          color: var(--label-color);
         }
 
       }
@@ -89,7 +101,6 @@
       display: grid;
       align-items: start;
       gap: 2rem;  
-      margin-top: 1rem;
 
       @include media-up(sm) {
         grid-template-columns: 1fr auto;
@@ -108,7 +119,6 @@
     }
 
     &--note {
-      margin-top: 0.5rem;
 
       a {
         color: inherit;
@@ -205,7 +215,7 @@
       &::placeholder {
         opacity: 1;
         transition: all .2s;
-        color: var(--input-color);
+        color: var(--input-placeholder);
       }
     
       &:placeholder-shown:not(:focus)::placeholder {

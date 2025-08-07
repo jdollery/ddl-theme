@@ -14,150 +14,156 @@
 
   <div class="form__row">
 
-    <div class="form__input form__input--focus">
+    <div class="form__column">
 
-      <input 
-        type="text"
-        id="name"
-        name="name"
-        placeholder="Enter your full name"
-        required
-        aria-required="true"
-        aria-label="Full name"
-        <?php if($mailchimp_signup) { ?>data-input="first"<?php } ?>
-      />
-      <label for="name">Your name<sup aria-label="required">*</sup></label>
+      <div class="form__input form__input--focus">
 
-    </div>
-
-    <div class="form__input form__input--focus ">
-
-      <input 
-        type="text"
-        id="telephone"
-        name="telephone"
-        placeholder="Enter your telephone number"
-        required
-        aria-required="true"
-        aria-label="Telephone number"
-      >
-      <label for="telephone">Tel number<sup>*</sup></label>
-
-    </div>
-
-    <div class="form__input form__input--focus form__input--span">
-
-      <input 
-        type="email"
-        id="email_address"
-        name="submit_by"
-        placeholder="Enter your email address"
-        required
-        aria-required="true"
-        aria-label="Email address"
-        <?php if($mailchimp_signup) { ?>data-input="email"<?php } ?>
-      >
-      <label for="email_address">Email address<sup aria-label="required">*</sup></label>
-
-    </div>
-
-    <div class="form__input form__input--focus form__input--span">
-
-      <textarea 
-        id="message"
-        name="message"
-        rows="3"
-        placeholder="Your message"
-        aria-label="Please give us a brief description about your enquiry"
-      ></textarea>
-      <label for="message">Your message</label>
-
-    </div>
-    
-    <div class="form__input form__input--span">
-      
-      <label for="treatment">Please select a treatment<sup aria-label="required">*</sup></label>
-      <select 
-        id="treatment" 
-        name="treatment" 
-        required
-        aria-required="true"
-        data-placeholder="Please select an option" 
-        >
-        <option></option>
-        <option label="Invisalign" value="Invisalign">Invisalign</option>
-        <option label="Implant" value="Implant">Implant</option>
-        <option label="Endodontic" value="Endodontic">Endodontic</option>
-        <option label="Oral surgery" value="Oral surgery">Oral surgery</option>
-      </select>
-
-    </div>
-
-    <?php if($form_patient) { ?>
-
-      <div class="form__input form__input--radio form__input--span">
-        
-        <fieldset class="radio">
-
-          <?php 
-          
-            $patient_legend = 'Are you a new patient?<sup aria-label="required">*</sup>';
-
-          ?>
-
-          <legend hidden><?php echo $patient_legend ?></legend>
-
-          <span class="radio__label"><?php echo $patient_legend ?></span>
-
-          <span class="radio__options">
-
-            <?php 
-
-            $options = array(
-
-              array(
-                "value"     =>   "Yes",
-                "label"     =>   "Yes, I’m a new patient",
-              ),
-
-              array(
-                "value"     =>   "No",
-                "label"     =>   "No, I’m an existing patient",
-              ),
-              
-            );
-            
-            $count = 1;
-
-            foreach($options as $option) { ?>
-
-              <input 
-                type="radio"
-                id="patient_<?php echo $count ?>"
-                name="new_patient"
-                value="<?php echo $option['value'] ?>"
-                aria-label="<?php echo $option['label'] ?>"
-                required
-                aria-required="true"
-              >
-              <label for="patient_<?php echo $count ?>" tabindex="0">
-                <span class="icon icon--tick"><svg role="img"><use xlink:href="#tick" href="#tick"></use></svg></span>
-                <span><?php echo $option['value'] ?></span>
-              </label>
-
-            <?php
-
-            $count++;
-
-            } ?>
-
-          </span>
-
-        </fieldset>
+        <input 
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Enter your full name"
+          required
+          aria-required="true"
+          aria-label="Full name"
+          <?php if($mailchimp_signup) { ?>data-input="first"<?php } ?>
+        />
+        <label for="name">Your name<sup aria-label="required">*</sup></label>
 
       </div>
 
-    <?php } ?>   
+      <div class="form__input form__input--focus ">
+
+        <input 
+          type="text"
+          id="telephone"
+          name="telephone"
+          placeholder="Enter your telephone number"
+          required
+          aria-required="true"
+          aria-label="Telephone number"
+        >
+        <label for="telephone">Tel number<sup>*</sup></label>
+
+      </div>
+
+      <div class="form__input form__input--focus form__input--span">
+
+        <input 
+          type="email"
+          id="email_address"
+          name="submit_by"
+          placeholder="Enter your email address"
+          required
+          aria-required="true"
+          aria-label="Email address"
+          <?php if($mailchimp_signup) { ?>data-input="email"<?php } ?>
+        >
+        <label for="email_address">Email address<sup aria-label="required">*</sup></label>
+
+      </div>
+
+      <div class="form__input form__input--focus form__input--span">
+
+        <textarea 
+          id="message"
+          name="message"
+          rows="3"
+          placeholder="Your message"
+          aria-label="Please give us a brief description about your enquiry"
+        ></textarea>
+        <label for="message">Your message</label>
+
+      </div>
+    
+      <div class="form__input form__input--span">
+        
+        <label for="treatment">Please select a treatment<sup aria-label="required">*</sup></label>
+        <select 
+          id="treatment" 
+          name="treatment" 
+          required
+          aria-required="true"
+          data-placeholder="Please select an option" 
+          >
+          <option></option>
+          <option label="Invisalign" value="Invisalign">Invisalign</option>
+          <option label="Implant" value="Implant">Implant</option>
+          <option label="Endodontic" value="Endodontic">Endodontic</option>
+          <option label="Oral surgery" value="Oral surgery">Oral surgery</option>
+        </select>
+
+      </div>
+
+      <?php if($form_patient) { ?>
+
+        <div class="form__input form__input--radio form__input--span">
+          
+          <fieldset class="radio">
+
+            <?php 
+            
+              $patient_legend = 'Are you a new patient?<sup aria-label="required">*</sup>';
+
+            ?>
+
+            <legend hidden><?php echo $patient_legend ?></legend>
+
+            <span class="radio__label"><?php echo $patient_legend ?></span>
+
+            <span class="radio__options">
+
+              <?php 
+
+              $options = array(
+
+                array(
+                  "value"     =>   "Yes",
+                  "label"     =>   "Yes, I’m a new patient",
+                ),
+
+                array(
+                  "value"     =>   "No",
+                  "label"     =>   "No, I’m an existing patient",
+                ),
+                
+              );
+              
+              $count = 1;
+
+              foreach($options as $option) { ?>
+
+                <input 
+                  type="radio"
+                  id="patient_<?php echo $count ?>"
+                  name="new_patient"
+                  value="<?php echo $option['value'] ?>"
+                  aria-label="<?php echo $option['label'] ?>"
+                  required
+                  aria-required="true"
+                >
+                <label for="patient_<?php echo $count ?>" tabindex="0">
+                  <span class="icon icon--tick"><svg role="img"><use xlink:href="#tick" href="#tick"></use></svg></span>
+                  <span><?php echo $option['value'] ?></span>
+                </label>
+
+              <?php
+
+              $count++;
+
+              } ?>
+
+            </span>
+
+          </fieldset>
+
+        </div>
+
+      <?php } ?>  
+      
+    </div>
+  </div>
+  <div class="form__row">
 
     <div class="form__input form__input--submit form__input--span">
 
@@ -184,7 +190,7 @@
             value="Yes"
             aria-label="Marketing consent checkbox"
           >
-          <label for="marketing">Tick this box to receive the latest updates and news from <strong><?php echo bloginfo( 'name' ); ?></strong>.</label>
+          <label for="marketing">Tick this box to receive all the latest news and updates from <strong><?php echo bloginfo( 'name' ); ?></strong>.</label>
         </div>
 
       <?php } ?>
@@ -199,6 +205,9 @@
       </div>
 
     </div>
+
+  </div>
+  <div class="form__row">
 
     <div class="form__input form__input--note form__input--span">
       <small>On submitting this form you agree to <strong><?php echo bloginfo( 'name' ); ?></strong> collecting your personal data. To learn more about how we collect, use, share and protect your personal data, please read our <a href="<?php echo get_privacy_policy_url() ?>">privacy policy</a>.</small>

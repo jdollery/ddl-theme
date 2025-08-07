@@ -51,6 +51,7 @@
   --input-line-height: 1.3;
   --input-radius: 0.3rem;
   --input-color: var(--black);
+  --input-placeholder: var(--grey);
   --input-background: var(--white);
   --input-border-width: 0.2rem 0.2rem;
   --input-border-color: var(--grey);
@@ -1252,7 +1253,10 @@ ul:not(.list--exempt):last-child {
   aspect-ratio: 1/1
 }
 .form {
-  position: relative
+  position: relative;
+  display: grid;
+  row-gap: 2.5rem;
+  text-align: left
 }
 .form__row {
   display: grid;
@@ -1264,6 +1268,11 @@ ul:not(.list--exempt):last-child {
     grid-template-columns: repeat(2,1fr);
     gap: 1.5rem
   }
+}
+.form__column {
+  display: grid;
+  grid-column: span 2;
+  gap: 1rem
 }
 .form__input {
   position: relative
@@ -1286,8 +1295,10 @@ ul:not(.list--exempt):last-child {
   row-gap: 1rem;
   column-gap: 2rem;
   width: 100%;
-  background: 0 0;
-  border: .2rem solid var(--grey);
+  background-color: var(--input-background);
+  border-width: var(--input-border-width);
+  border-style: solid;
+  border-color: var(--input-border-color);
   border-radius: var(--input-radius);
   padding: 1.5rem
 }
@@ -1306,14 +1317,14 @@ ul:not(.list--exempt):last-child {
 }
 .form__input--radio .radio__label {
   font-weight: var(--input-weight);
-  font-size: var(--input-font-size)
+  font-size: var(--input-font-size);
+  color: var(--label-color)
 }
 .form__input--submit {
   position: relative;
   display: grid;
   align-items: start;
-  gap: 2rem;
-  margin-top: 1rem
+  gap: 2rem
 }
 @media (min-width:768px) {
   .form__input--submit {
@@ -1331,9 +1342,6 @@ ul:not(.list--exempt):last-child {
     grid-template-columns: 1fr auto;
     gap: 6rem
   }
-}
-.form__input--note {
-  margin-top: .5rem
 }
 .form__input--note a {
   color: inherit;
@@ -1408,7 +1416,7 @@ ul:not(.list--exempt):last-child {
 .form .form__input--focus textarea::placeholder {
   opacity: 1;
   transition: all .2s;
-  color: var(--input-color)
+  color: var(--input-placeholder)
 }
 .form .form__input--focus input:not([type=submit],[type=radio],[type=checkbox]):placeholder-shown:not(:focus)::placeholder,
 .form .form__input--focus textarea:placeholder-shown:not(:focus)::placeholder {
