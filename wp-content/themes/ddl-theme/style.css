@@ -1269,6 +1269,29 @@ ul:not(.list--exempt):last-child {
     gap: 1.5rem
   }
 }
+.form__row--submit {
+  position: relative;
+  display: grid;
+  align-items: start;
+  gap: 2rem
+}
+@media (min-width:768px) {
+  .form__row--submit {
+    grid-template-columns: 1fr auto;
+    gap: 3rem
+  }
+}
+@media (min-width:992px) {
+  .form__row--submit {
+    grid-template-columns: auto
+  }
+}
+@media (min-width:1300px) {
+  .form__row--submit {
+    grid-template-columns: 1fr auto;
+    gap: 6rem
+  }
+}
 .form__column {
   display: grid;
   grid-column: span 2;
@@ -1319,29 +1342,6 @@ ul:not(.list--exempt):last-child {
   font-weight: var(--input-weight);
   font-size: var(--input-font-size);
   color: var(--label-color)
-}
-.form__input--submit {
-  position: relative;
-  display: grid;
-  align-items: start;
-  gap: 2rem
-}
-@media (min-width:768px) {
-  .form__input--submit {
-    grid-template-columns: 1fr auto;
-    gap: 3rem
-  }
-}
-@media (min-width:992px) {
-  .form__input--submit {
-    grid-template-columns: auto
-  }
-}
-@media (min-width:1300px) {
-  .form__input--submit {
-    grid-template-columns: 1fr auto;
-    gap: 6rem
-  }
 }
 .form__input--note a {
   color: inherit;

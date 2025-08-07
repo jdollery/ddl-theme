@@ -163,48 +163,40 @@
       
     </div>
   </div>
-  <div class="form__row">
+  <div class="form__row form__row--submit">
 
-    <div class="form__input form__input--submit form__input--span">
+    <?php if($mailchimp_signup) { ?>
 
-      <?php if($mailchimp_signup) { ?>
-
-        <div class="form__input form__input--checkbox">
-          <input 
-            type="checkbox"
-            id="subscribe"
-            name="subscribe"
-            value="Yes"
-            aria-label="Marketing consent checkbox"
-          >
-          <label for="subscribe">Tick this box to subscribe to the <strong><?php echo bloginfo( 'name' ); ?></strong> newsletter and receive up-to-date offers &amp; the latest news.</label>
-        </div>
-
-      <?php } else { ?>
-
-        <div class="form__input form__input--checkbox">
-          <input 
-            type="checkbox"
-            id="marketing"
-            name="marketing"
-            value="Yes"
-            aria-label="Marketing consent checkbox"
-          >
-          <label for="marketing">Tick this box to receive all the latest news and updates from <strong><?php echo bloginfo( 'name' ); ?></strong>.</label>
-        </div>
-
-      <?php } ?>
-
-      <div>
-
-        <button class="btn btn--submit" type="submit">
-          <span class="btn__text">Send message</span>
-          <span class="btn__sending">Sending <span class="icon icon--loader"><svg role="img"><use xlink:href="#loader" href="#loader"></use></svg></span></span></span>
-        </button>
-
+      <div class="form__input form__input--checkbox">
+        <input 
+          type="checkbox"
+          id="subscribe"
+          name="subscribe"
+          value="Yes"
+          aria-label="Marketing consent checkbox"
+        >
+        <label for="subscribe">Tick this box to subscribe to the <strong><?php echo bloginfo( 'name' ); ?></strong> newsletter and receive up-to-date offers &amp; the latest news.</label>
       </div>
 
-    </div>
+    <?php } else { ?>
+
+      <div class="form__input form__input--checkbox">
+        <input 
+          type="checkbox"
+          id="marketing"
+          name="marketing"
+          value="Yes"
+          aria-label="Marketing consent checkbox"
+        >
+        <label for="marketing">Tick this box to receive all the latest news and updates from <strong><?php echo bloginfo( 'name' ); ?></strong>.</label>
+      </div>
+
+    <?php } ?>
+
+    <button class="btn btn--submit" type="submit">
+      <span class="btn__text">Send message</span>
+      <span class="btn__sending">Sending <span class="icon icon--loader"><svg role="img"><use xlink:href="#loader" href="#loader"></use></svg></span></span></span>
+    </button>
 
   </div>
   <div class="form__row">
