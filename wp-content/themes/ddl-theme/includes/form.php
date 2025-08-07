@@ -1,21 +1,15 @@
 <?php 
 
   $form_patient           =   true; // true = shows new patient radios / false = hides new patient radios
-
-  $securedent_form        =   true; // true = enables Securedent form - Secudent key in under locations line 56
-  $dengro_form            =   false; // true = enables Dengro form, e.g https://hooks.dengro.com/capture/XXXXXX-XXXX-XXXX-XXXX-XXXXXX
-  $mailer_form            =   false; // true = enables PHPMailer form
-
+  $dengro_form            =   false; // true = enables Dengro form - add hook to submit.js e.g https://hooks.dengro.com/capture/XXXXXX-XXXX-XXXX-XXXX-XXXXXX
   $mailchimp_signup       =   true; // true = enables MailChimp
 
 ?>
 
-<?php if ($securedent_form == true) { ?>
-  <form class="form" id="contactForm" method="post" novalidate="true" data-form="securedent" enctype="multipart/form-data" >
-<?php } elseif($dengro_form == true) { ?>
+<?php if($dengro_form == true) { ?>
   <form class="form" id="contactForm" method="post" novalidate="true" data-form="dengro">
-<?php } elseif($mailer_form == true) { ?>
-  <form class="form" id="contactForm" novalidate="true" data-form="mailer">
+<?php } else { ?>
+  <form class="form" id="contactForm" method="post" novalidate="true" data-form="securedent" enctype="multipart/form-data" >
 <?php } ?>
 
   <div class="form__row">
@@ -29,7 +23,7 @@
         placeholder="Enter your full name"
         required
         aria-required="true"
-        aria-label="First name"
+        aria-label="Full name"
         <?php if($mailchimp_signup) { ?>data-input="first"<?php } ?>
       />
       <label for="name">Your name<sup aria-label="required">*</sup></label>
@@ -55,7 +49,7 @@
 
       <input 
         type="email"
-        id="email"
+        id="email_address"
         name="submit_by"
         placeholder="Enter your email address"
         required
@@ -63,7 +57,7 @@
         aria-label="Email address"
         <?php if($mailchimp_signup) { ?>data-input="email"<?php } ?>
       >
-      <label for="email">Email address<sup aria-label="required">*</sup></label>
+      <label for="email_address">Email address<sup aria-label="required">*</sup></label>
 
     </div>
 
@@ -222,15 +216,7 @@
 
   <?php } ?>
 
-  <?php if($securedent_form == true) { ?>
-
-    <input type="hidden" name="form_uid" value="d92ea4ec-097e-4711-8886-b55dbd8330a7"> 
-    <input name="required" type="hidden" value="name,submit_by,treatment<?php if($form_patient) { ?>,new_patient<?php } ?>">
-    <input name="data_order" type="hidden" value="name,submit_by,treatment,<?php if($form_patient) { ?>new_patient,<?php } ?><?php if($mailchimp_signup) { ?>subscribe<?php } else { ?>marketing<?php } ?>">
-    <input name="ok_url" type="hidden" id="ok_url" value="<?php echo get_the_permalink( 1 ) // thank you page ?>">
-    <input name="not_ok_url" type="hidden" id="not_ok_url" value="<?php echo get_the_permalink( 1 ) // sorry page ?>">
-
-  <?php } elseif ($dengro_form == true) { ?>
+  <?php if($dengro_form == true) { ?>
 
     <input type="hidden" name="attribution" value="practice">
     <input type="hidden" name="utm_source" value="google">
@@ -238,11 +224,13 @@
     <input type="hidden" name="landing_url" value="<?php echo site_url() ?>">
     <input type="hidden" name="capture_url" value="<?php echo site_url() ?>">
 
-  <?php } elseif($mailer_form == true) { ?>
+  <?php } else { ?>
 
-    <input name="practice_name" type="hidden" id="practice_name" value="<?php bloginfo( 'name' ); ?>">
-    <input name="form_name" type="hidden" id="form_name" value="Contact">
-    <input type="hidden" name="data_order" value="name,submit_by,treatment,<?php if($form_patient) { ?>new_patient,<?php } ?><?php if($mailchimp_signup) { ?>subscribe<?php } else { ?>marketing<?php } ?>">
+    <input type="hidden" name="form_uid" value="d92ea4ec-097e-4711-8886-b55dbd8330a7"> 
+    <input name="required" type="hidden" value="name,submit_by,treatment<?php if($form_patient) { ?>,new_patient<?php } ?>">
+    <input name="data_order" type="hidden" value="name,submit_by,treatment,<?php if($form_patient) { ?>new_patient,<?php } ?><?php if($mailchimp_signup) { ?>subscribe<?php } else { ?>marketing<?php } ?>">
+    <input name="ok_url" type="hidden" id="ok_url" value="<?php echo get_the_permalink( 1 ) // thank you page ?>">
+    <input name="not_ok_url" type="hidden" id="not_ok_url" value="<?php echo get_the_permalink( 1 ) // sorry page ?>">
 
   <?php } ?>
 

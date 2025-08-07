@@ -45,6 +45,8 @@
       });
     </script> -->
 
+    <?php wp_head(); ?>
+
     <script type="text/javascript">
 
       <?php $recaptcha_key = "6LeoAgorAAAAAMkKqQMoxuLoBZ_IA_Mf3J1to1s6"; ?>
@@ -56,8 +58,6 @@
     </script>
 
     <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $recaptcha_key ?>"></script>
-
-    <?php wp_head(); ?>
 
 	</head>
 

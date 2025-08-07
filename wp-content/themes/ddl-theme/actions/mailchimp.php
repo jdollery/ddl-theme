@@ -1,6 +1,7 @@
 <?php 
 
-require_once __DIR__ . '../../variables/global.php';
+$mailchimp_api_key      =   'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; //https://us2.admin.mailchimp.com/account/api/ 
+$mailchimp_list_id      =   'XXXXXXX'; // https://us2.admin.mailchimp.com/lists/settings/defaults?id=1789974
 
 $error_output = '';
 $success_output = '';

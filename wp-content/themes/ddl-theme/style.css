@@ -1854,7 +1854,7 @@ input[type=number] {
 }
 .main__overlay {
   display: block;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -1866,7 +1866,7 @@ input[type=number] {
   visibility: hidden;
   background: var(--accent);
   z-index: 10;
-  transition: all .5s ease-out
+  transition: all .3s cubic-bezier(.5,0,.5,1)
 }
 @media (max-width:1179px) {
   html.js-nav-active .main__overlay {

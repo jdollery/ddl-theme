@@ -13,32 +13,63 @@ jQuery(document).ready(function () { //doc ready start
 
 
   /*-----------------------------------------------------------------------------------*/
-  /* VALIDATION */
+  /* FORMS */
   /*-----------------------------------------------------------------------------------*/
 
   jQuery('form').each(function() {
 
-    var validobj = jQuery(this).validate({
+    const form = jQuery(this);
+
+    /*-----------------------------------------------------------------------------------*/
+    /* MAILCHIMP INPUT FILLER */
+    /*-----------------------------------------------------------------------------------*/
+
+    const subscribe = document.querySelector("#subscribe");
+
+    if (subscribe) {
+
+      const input = document.querySelectorAll('input');
+
+      input.forEach((item) => {
+        item.addEventListener('change', function() {
+          const input_id = this.getAttribute('data-input');
+          if (input_id) {
+            const input_value = this.value;
+            const output_id = document.getElementById(input_id);
+            if (output_id) {
+              output_id.value = input_value;
+            }
+          }
+        });
+      });
+
+    }
+
+    /*-----------------------------------------------------------------------------------*/
+    /* VALIDATE */
+    /*-----------------------------------------------------------------------------------*/
+
+    const validobj = jQuery(this).validate({
 
       onkeyup: false,
       errorClass: "form__error",
       errorElement: 'strong',
 
-      errorPlacement: function (error, e) {
-        e.closest('.form__input').append(error);
+      errorPlacement: function (error, event) {
+        event.closest('.form__input').append(error);
       },
 
       highlight: function (element) {
-        var e = jQuery(element);
+        const event = jQuery(element);
 
-        e.closest('.form__input').removeClass('form__input--success form__input--error').addClass('form__input--error');
-        e.closest('.form__error').remove();
+        event.closest('.form__input').removeClass('form__input--success form__input--error').addClass('form__input--error');
+        event.closest('.form__error').remove();
 
       },
 
-      success: function (e) {
-        e.closest('.form__input').removeClass('form__input--success form__input--error');
-        e.closest('.form__error').remove();
+      success: function (event) {
+        event.closest('.form__input').removeClass('form__input--success form__input--error');
+        event.closest('.form__error').remove();
       }, rules:  {
         select: {required: true}
       }, messages: {
@@ -70,23 +101,45 @@ jQuery(document).ready(function () { //doc ready start
     /* SUBMIT WITH RECAPTCHA */
     /*-----------------------------------------------------------------------------------*/
 
-    jQuery(this).on( "submit", function(e) {
+    jQuery(this).on( "submit", function(event) {
 
-      e.preventDefault();
+      event.preventDefault();
 
       if (jQuery(this).valid()) {
 
-        const form = jQuery(this);
+        const type = form.data('form');
 
         form.find(".btn--submit").addClass("btn--sending");
+
+        /*----------- Submit Functions & Variables -----------*/
+
+        function securedentSubmit() {
+          event.target.action = "https://www.securedent.net/submit.ashx";
+        }
+
+        const dengroSubmit = "XXXXXXXXXXXXXXX"; // Need whole url, e.g https://hooks.dengro.com/capture/XXXXXX-XXXX-XXXX-XXXX-XXXXXX
+
+        function successSubmit() {
+          event.target.submit();
+          form.find('.btn--submit').removeClass('btn--sending');
+        }
+
+        function failedSubmit() {
+          window.location.href = baseURL + "/sorry/"; 
+          form.find('.btn--submit').removeClass('btn--sending');
+        }
+
+        /*----------- Google reCaptcha -----------*/
       
         grecaptcha.ready(function() {
-          grecaptcha.execute(recaptchaKey, { action: "submit" }).then(function(token) {
+          grecaptcha.execute(recaptchaKey, { action: "submit" }).then(function(token) { //variables located in header.php
       
-            let recaptchaResponse = document.getElementById("recaptchaResponse")
+            const recaptchaResponse = document.getElementById("recaptchaResponse")
             recaptchaResponse.value = token 
       
-            const data = new FormData(e.target);
+            const data = new FormData(event.target);
+
+            /*----------- Google Fetch -----------*/
       
             fetch( baseURL + "/wp-content/themes/" + themeName + "/actions/validate.php", { //variables located in header.php
               method: 'post',
@@ -95,34 +148,139 @@ jQuery(document).ready(function () { //doc ready start
       
             .then((response) => response.text())
             .then((response) => {
-
-              function securedentSubmit() {
-                e.target.action = "https://www.securedent.net/submit.ashx";
-                e.target.submit();
-                form.find('.btn--submit').removeClass('btn--sending');
-              }
       
-              const googleResponse = JSON.parse(response)
+              const googleResponse = JSON.parse(response);
+
+              /*----------- Google Response = Success -----------*/
               
               if (googleResponse.success) { 
 
-                securedentSubmit();
+                /*----------- Mailchimp Start -----------*/
+
+                if (subscribe) {
+
+                  if (subscribe.checked) {
+
+                    fetch( baseURL + "/wp-content/themes/" + themeName + "/actions/mailchimp.php", { //variables located in header.php
+                      method: 'post',
+                      body: data,
+                    })
+
+                    .then((response) => response.text())
+                    .then((response) => {
+                      const chimpResponse = JSON.parse(response);
+
+                      /*----------- Mailchimp Response = Success -----------*/
+
+                      if (chimpResponse.success) {
+
+                        if (type === 'dengro') {
+
+                          /*----------- Dengro Fetch -----------*/
+
+                          fetch(dengroSubmit, {  
+                            method: 'post',
+                            body: data,
+                          })
+
+                          .then((dengroResponse) => {
+
+                            /*----------- Dengro Response -----------*/
+
+                            if (dengroResponse.ok) {
+
+                              successSubmit();
+                            
+                            } else {
+
+                              failedSubmit();
+
+                            }
+
+                            event.target.reset();
+
+                          })
+
+                        } else {
+
+                          /*----------- Securedent Submit -----------*/
+
+                          securedentSubmit();
+                          successSubmit();
+
+                        }
+
+                      /*----------- Mailchimp Response = Failed -----------*/
+                      
+                      } else {
+
+                        failedSubmit();
+                    
+                      }
+
+                    });
+
+                  }
+
+                }
+
+                /*----------- Mailchimp Finish -----------*/
+
+                if (type === 'dengro') {
+
+                  /*----------- Dengro Fetch -----------*/
+
+                  fetch(dengroSubmit, {  
+                    method: 'post',
+                    body: data,
+                  })
+
+                  .then((dengroResponse) => {
+
+                    /*----------- Dengro Response -----------*/
+
+                    if (dengroResponse.ok) {
+
+                      successSubmit();
+                    
+                    } else {
+
+                      failedSubmit();
+
+                    }
+
+                    event.target.reset();
+
+                  })
+
+                } else {
+
+                  /*----------- Securedent Submit -----------*/
+
+                  securedentSubmit();
+                  successSubmit();
+
+                }
+
+              /*----------- Google Response = Failed -----------*/
       
               } else {
 
-                // form.find('.btn--submit').removeClass('btn--sending');
-
-                window.location.href = baseURL + "/sorry/"; 
+                failedSubmit();
       
                 // console.log('reCAPTCHA error', responseText);
           
               }
       
             })
+
+            /*----------- Submit Failed -----------*/
       
             .catch(error => {
       
-              console.log('server side error');
+              failedSubmit();
+
+              // console.log('server side error');
       
             })
       

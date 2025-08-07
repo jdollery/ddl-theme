@@ -2,6 +2,7 @@
 /* MODULES */
 /*-----------------------------------------------------------------------------------*/
 
+@use 'abstracts/utility' as *;
 @use 'abstracts/variables' as *;
 @use 'abstracts/media' as *;
 
@@ -16,7 +17,7 @@
 
   &__overlay {
     display: block;
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -28,7 +29,7 @@
     visibility: hidden;
     background: var(--accent);
     z-index: 10;
-    transition: all .5s ease-out;
+    @include transition(all);
   }
 
 }
