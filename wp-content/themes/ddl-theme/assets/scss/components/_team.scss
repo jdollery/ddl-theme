@@ -23,6 +23,21 @@
     @include fixed;
   }
 
+  &__anchor {
+    position: absolute;
+    top: -20rem; 
+    left: 0;
+  }
+
+  &__heading {
+    width: 100%;
+    max-width: 90rem;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    margin-block-end: var(--space-heading);
+  }
+
   &__list {
     list-style: none;
     display: flex;

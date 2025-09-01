@@ -4,6 +4,12 @@
 
   <?php get_template_part('includes/banner'); ?>
 
+  <?php if ( is_page(161) ) { 
+
+    get_template_part('includes/team');
+
+  } ?>
+
   <?php if ( !empty( get_the_content() ) ) { ?>
 
     <div class="content content--white content--top content--bottom">
@@ -17,12 +23,6 @@
     get_template_part('includes/sections'); 
 
   }  ?>
-
-  <?php if ( is_page(161) ) { 
-
-    get_template_part('includes/team');
-
-  } ?>
 
 </article>
 

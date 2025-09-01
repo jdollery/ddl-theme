@@ -3271,6 +3271,19 @@ html.js-dialog-active {
     max-width: 205rem
   }
 }
+.team__anchor {
+  position: absolute;
+  top: -20rem;
+  left: 0
+}
+.team__heading {
+  width: 100%;
+  max-width: 90rem;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  margin-block-end: var(--space-heading)
+}
 .team__list {
   list-style: none;
   display: flex;
