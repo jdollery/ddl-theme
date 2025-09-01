@@ -11,12 +11,10 @@
         <ul class="loop list--exempt">
 
         <?php while ( have_posts() ) : the_post(); ?>
-
           <li class="loop__item">
             <?php get_template_part('includes/post'); ?>
           </li>
-
-        <?php endwhile; wp_reset_query(); ?>
+        <?php endwhile; ?>
 
         </ul>
 

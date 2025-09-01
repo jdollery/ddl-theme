@@ -51,8 +51,8 @@ if( have_rows('content_section') ){
               ?>
 
               <picture>
-                <source type="image/jpg" media="(min-width: 480px)" srcset="<?php echo $poster_url_lg ?>">
-                <source type="image/jpg" media="(max-width: 479px)" srcset="<?php echo $poster_url_sm ?>">
+                <source type="image/jpg" media="(width >= 480px)" srcset="<?php echo $poster_url_lg ?>">
+                <source type="image/jpg" media="(width < 480px)" srcset="<?php echo $poster_url_sm ?>">
                 <img 
                   id="videoToggle"
                   class="content__img"
@@ -69,8 +69,8 @@ if( have_rows('content_section') ){
             <?php } else { ?>
 
               <picture>
-                <source type="image/jpg" media="(min-width: 480px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-poster-lg.jpg">
-                <source type="image/jpg" media="(max-width: 479px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-poster-sm.jpg">
+                <source type="image/jpg" media="(width >= 480px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-poster-lg.jpg">
+                <source type="image/jpg" media="(width < 480px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-poster-sm.jpg">
                 <img 
                   id="videoToggle"
                   class="content__img"
@@ -115,8 +115,8 @@ if( have_rows('content_section') ){
               ?>
 
               <picture>
-                <source type="image/jpg" media="(min-width: 480px)" srcset="<?php echo $thumb_url_lg ?>">
-                <source type="image/jpg" media="(max-width: 479px)" srcset="<?php echo $thumb_url_sm ?>">
+                <source type="image/jpg" media="(width >= 480px)" srcset="<?php echo $thumb_url_lg ?>">
+                <source type="image/jpg" media="(width < 480px)" srcset="<?php echo $thumb_url_sm ?>">
                 <img 
                   class="content__img"
                   src="<?php echo esc_url($content_img['url']) ?>"
@@ -131,8 +131,8 @@ if( have_rows('content_section') ){
             <?php } else { ?>
 
                 <picture>
-                  <source type="image/jpg" media="(min-width: 480px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-lg.jpg">
-                  <source type="image/jpg" media="(max-width: 479px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-sm.jpg">
+                  <source type="image/jpg" media="(width >= 480px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-lg.jpg">
+                  <source type="image/jpg" media="(width < 480px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-sm.jpg">
                   <img 
                     class="content__img"
                     src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-lg.jpg"

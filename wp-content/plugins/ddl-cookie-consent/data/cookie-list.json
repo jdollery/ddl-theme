@@ -1,0 +1,45 @@
+[
+  {
+    "name": "_ga",
+    "provider": "Google",
+    "category": "performance",
+    "type": "third-party",
+    "description": "Google Analytics cookie Analytics cookie used to generate statistical information on the use of a website."
+  },
+  {
+    "name": "_gid",
+    "provider": "Google",
+    "category": "performance",
+    "type": "third-party",
+    "description": "Google Analytics cookie used to distinguish users and sessions."
+  },
+  {
+    "name": "_gat",
+    "provider": "Google",
+    "category": "performance",
+    "type": "third-party",
+    "description": "Google Analytics cookie used to throttle request rate."
+  },
+  {
+    "name": "_gcl_au",
+    "provider": "Google",
+    "category": "targeting",
+    "type": "third-party",
+    "description": "Google AdSense cookie used to experiment with advertisement efficiency across websites using their services."
+  },
+  {
+    "name": "_fbp",
+    "provider": "Facebook",
+    "category": "targeting",
+    "type": "third-party",
+    "description": "Facebook cookie used to deliver a series of advertisement products such as real time bidding from third party advertisers."
+  },
+  {
+    "name": "cookieConsent",
+    "provider": "localserver",
+    "category": "necessary",
+    "type": "first-party",
+    "description": "Cookie used to manage user consent for cookies."
+  }
+]  
+

@@ -3,7 +3,7 @@
 if ( ! function_exists( 'ddl_setup' ) ) :
 
 	/*-----------------------------------------------------------------------------------*/
-	/* BASIC THEAME SETUP */
+	/* BASIC THEME SETUP */
 	/*-----------------------------------------------------------------------------------*/
 
 	function ddl_setup() {
@@ -99,7 +99,7 @@ function ddl_scripts() {
 	// wp_enqueue_script( 'ddl-map', get_template_directory_uri() . '/assets/js/map.js', array(), '1.0.0', true ); //outdated - need to new version (api keys)
 	// wp_enqueue_script( 'ddl-wow', get_template_directory_uri() . '/assets/js/wow.js', array(), '3.0.0', true );
 	wp_enqueue_script( 'ddl-script', get_template_directory_uri() . '/assets/js/script.js', array(), '1.0.0', true );
-	wp_enqueue_script( 'ddl-elfsight', 'https://static.elfsight.com/platform/platform.js', array(), '', false );
+	wp_enqueue_script( 'ddl-elfsight', 'https://static.elfsight.com/platform/platform.js', array(), '1.0.0', false );
 
   // if ( (is_page('19')) ) {
   //   wp_enqueue_script( 'ddl-map', get_template_directory_uri() . '/assets/js/map.js', array(), '1.0.0', true );
@@ -277,10 +277,10 @@ add_filter( 'acf_the_content', 'shortcode_unautop', 100 );
 
 function remove_some_ptags( $content ) {
 	$content = preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
-	$content = preg_replace('/<p>\s*(<script.*>*.<\/script>)\s*<\/p>/iU', '\1', $content);
-	$content = preg_replace('/<p>\s*(<iframe.*>*.<\/iframe>)\s*<\/p>/iU', '\1', $content);
-	$content = preg_replace('/<p>\s*(<video.*>*.<\/video>)\s*<\/p>/iU', '\1', $content);
-	$content = preg_replace('/<p>\s*(<img.*>*.<\/img>)\s*<\/p>/iU', '\1', $content);
+	$content = preg_replace('/<p>\s*(<script.*>.*<\/script>)\s*<\/p>/iU', '\1', $content);
+	$content = preg_replace('/<p>\s*(<iframe.*>.*<\/iframe>)\s*<\/p>/iU', '\1', $content);
+	$content = preg_replace('/<p>\s*(<video.*>.*<\/video>)\s*<\/p>/iU', '\1', $content);
+	$content = preg_replace('/<p>\s*(<img.*>.*<\/img>)\s*<\/p>/iU', '\1', $content);
 	return $content;
 }
 
@@ -289,10 +289,10 @@ add_filter( 'the_content', 'remove_some_ptags' );
 
 function remove_acf_some_ptags( $content ) {
 	$content = preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
-	$content = preg_replace('/<p>\s*(<script.*>*.<\/script>)\s*<\/p>/iU', '\1', $content);
-	$content = preg_replace('/<p>\s*(<iframe.*>*.<\/iframe>)\s*<\/p>/iU', '\1', $content);
-	$content = preg_replace('/<p>\s*(<video.*>*.<\/video>)\s*<\/p>/iU', '\1', $content);
-	$content = preg_replace('/<p>\s*(<img.*>*.<\/img>)\s*<\/p>/iU', '\1', $content);
+	$content = preg_replace('/<p>\s*(<script.*>.*<\/script>)\s*<\/p>/iU', '\1', $content);
+	$content = preg_replace('/<p>\s*(<iframe.*>.*<\/iframe>)\s*<\/p>/iU', '\1', $content);
+	$content = preg_replace('/<p>\s*(<video.*>.*<\/video>)\s*<\/p>/iU', '\1', $content);
+	$content = preg_replace('/<p>\s*(<img.*>.*<\/img>)\s*<\/p>/iU', '\1', $content);
 	return $content;
 }
 

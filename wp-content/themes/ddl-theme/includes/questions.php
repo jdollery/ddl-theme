@@ -7,7 +7,7 @@ if( have_rows('questions_section') ){
     $questions_hide = get_sub_field('questions_hide');
     $questions_top = get_sub_field('questions_top');
     $questions_heading = get_sub_field('questions_heading');
-    $questions_summary = get_sub_field('questions_summary');
+    $questions_standfirst = get_sub_field('questions_standfirst');
     $questions_intro = get_sub_field('questions_intro');
     $questions_list = 'questions_list';
 
@@ -23,7 +23,7 @@ if( have_rows('questions_section') ){
             
           <div class="content__heading">
             <h2><?php if ($questions_heading) { echo $questions_heading; } else { ?>Frequently asked questions<?php } ?></h2>
-            <?php if($questions_summary) { echo $questions_summary; } ?>
+            <?php if($questions_standfirst) { echo $questions_standfirst; } ?>
           </div>
 
         <?php } ?>

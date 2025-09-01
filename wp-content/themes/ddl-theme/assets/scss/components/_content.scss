@@ -41,7 +41,7 @@
           &:nth-child(1) {
             order: 2;
 
-            @include media-up(lg) {
+            @include media-up(md) {
               order: 1;
             }
 
@@ -50,7 +50,7 @@
           &:nth-child(2) {
             order: 1;
 
-            @include media-up(lg) {
+            @include media-up(md) {
               order: 2;
             }
 
@@ -58,7 +58,7 @@
 
           &--body {
 
-            @include media-up(lg) {
+            @include media-up(md) {
               padding-left: var(--space-x);
             }
 
@@ -90,7 +90,7 @@
 
           &--body {
 
-            @include media-up(lg) {
+            @include media-up(md) {
               padding-right: var(--space-x);
             }
 
@@ -150,7 +150,7 @@
     &:has(.content__column--media) {
       display: grid;
 
-      @include media-up(lg) {
+      @include media-up(md) {
       
         grid-template-columns: repeat(2, 1fr);
 
@@ -173,7 +173,7 @@
 
     &--body {
 
-      @include media-down(lg) {
+      @include media-down(md) {
         padding-bottom: var(--space-y);
       }
 
@@ -200,12 +200,12 @@
     &--video {
       z-index: 1;
 
-      @include media-down(lg) {
+      @include media-down(md) {
         max-height: 55rem;
         aspect-ratio: 7 / 5;
       }
 
-      @include media-up(lg) {
+      @include media-up(md) {
         height: 35vw;
         max-height: 80rem;
       }

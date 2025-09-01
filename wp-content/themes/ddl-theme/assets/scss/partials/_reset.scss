@@ -19,6 +19,7 @@ html {
   line-height: 1.5;
   overflow-x: hidden;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 
   -webkit-overflow-scrolling: touch;
   text-rendering: optimizeLegibility;
@@ -30,7 +31,6 @@ html {
   -webkit-tap-highlight-color: transparent;
   // -ms-text-size-adjust: 100%;
   // -ms-overflow-style: scrollbar;
-
 }
 
 *,
@@ -181,7 +181,7 @@ input{
 
 [type=search] {
   -webkit-appearance: textfield;
-  outline-offset: -2px
+  outline-offset: -0.2rem
 }
 
 [type=search]::-webkit-search-decoration {
@@ -413,6 +413,7 @@ a:not([class]) {
 
 a,
 button,
+[role=button],
 input,
 textarea,
 .btn--radio input[type=radio] + label,

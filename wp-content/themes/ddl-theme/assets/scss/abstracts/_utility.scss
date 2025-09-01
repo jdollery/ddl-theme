@@ -96,22 +96,29 @@ $colors: (
   }
 }
 
-@mixin plain-hover-focus {
-  &,
-  &:hover,
-  &:focus {
-    @content;
-  }
-}
-
-@mixin hover-focus-active {
+@mixin hover-focus-visible {
   &:hover,
   &:focus,
-  &:active {
+  &:focus-visible {
     @content;
   }
 }
 
+// @mixin plain-hover-focus {
+//   &,
+//   &:hover,
+//   &:focus {
+//     @content;
+//   }
+// }
+
+// @mixin hover-focus-active {
+//   &:hover,
+//   &:focus,
+//   &:active {
+//     @content;
+//   }
+// }
 
 @mixin focus {
   &:focus, &:focus:active {

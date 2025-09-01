@@ -243,13 +243,28 @@ if(window.location.href.indexOf('team') != -1) {
 
 }
 
+
+/*----------- Scroll to team anchor else normal anchor -----------*/
+
 const links = document.querySelectorAll('a');
 
-links.forEach((e) => {
+Array.from(links).forEach((e) => {
   if (e.href && e.href.includes("/team/")) {
     e.addEventListener('click', function(event) {
       event.preventDefault();
       window.open(this.href, '_self');
+    });
+  } else if (e.href && e.href.includes("#")) {
+    e.addEventListener('click', function(event) {
+      event.preventDefault();
+      const targetId = this.href.split('#')[1];
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+        });
+      }
     });
   }
 });
@@ -419,67 +434,57 @@ dropDowns.forEach((dropDown) => {
 
 // https://stackoverflow.com/questions/7717527/smooth-scrolling-when-clicking-an-anchor-link
 
-jQuery('a[href*="#"]')
-// Remove links that don't actually link to anything
-.not('[href="#"]')
-.not('[href="#0"]')
-.click(function(event) {
-  // On-page links
-  if (
-    location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
-    && 
-    location.hostname == this.hostname
-  ) {
-    // Figure out element to scroll to
-    var target = jQuery(this.hash);
-    target = target.length ? target : jQuery('[name=' + this.hash.slice(1) + ']');
-    // Does a scroll target exist?
-    if (target.length) {
-      // Only prevent default if animation is actually gonna happen
-      event.preventDefault();
+// jQuery('a[href*="#"]')
+// // Remove links that don't actually link to anything
+// .not('[href="#"]')
+// .not('[href="#0"]')
+// .click(function(event) {
+//   // On-page links
+//   if (
+//     location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+//     && 
+//     location.hostname == this.hostname
+//   ) {
+//     // Figure out element to scroll to
+//     var target = jQuery(this.hash);
+//     target = target.length ? target : jQuery('[name=' + this.hash.slice(1) + ']');
+//     // Does a scroll target exist?
+//     if (target.length) {
+//       // Only prevent default if animation is actually gonna happen
+//       event.preventDefault();
 
-      jQuery('html, body').animate({
-        scrollTop: target.offset().top-165
-      }, 1000, function() {
-        // Callback after animation
-        // Must change focus!
-        var $target = jQuery(target);
-        $target.focus();
-        if ($target.is(":focus")) { // Checking if the target was focused
-          return false;
-        } else {
-          $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-          $target.focus(); // Set focus again
-        };
-      });
+//       jQuery('html, body').animate({
+//         scrollTop: target.offset().top-165
+//       }, 1000, function() {
+//         // Callback after animation
+//         // Must change focus!
+//         var $target = jQuery(target);
+//         $target.focus();
+//         if ($target.is(":focus")) { // Checking if the target was focused
+//           return false;
+//         } else {
+//           $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+//           $target.focus(); // Set focus again
+//         };
+//       });
 
-    }
-  }
-  return false;
-});
+//     }
+//   }
+//   return false;
+// });
 
 
 /*-----------------------------------------------------------------------------------*/
 /* INIT WOW */
 /*-----------------------------------------------------------------------------------*/
 
-// function afterReveal (element) {
-// 	if (element.classList.contains('trigger')) {
-// 		element.addEventListener('animationend', function () {
-// 			console.log('This runs once finished!');
-//       // element.style.opacity ='1';
-// 		});
-// 	}
-// }
-
 // wow = new WOW(
-//   {
+// {
 //     boxClass: 'wow',
 //     animateClass: 'animated',
 //     offset: 0,
 //     mobile: true,
 //     live: true,
-//     // callback: afterReveal
 //   }
 // )
 // wow.init();

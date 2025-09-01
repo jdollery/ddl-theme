@@ -1,0 +1,268 @@
+/*-----------------------------------------------------------------------------------*/
+/* MODULES */
+/*-----------------------------------------------------------------------------------*/
+
+@use 'abstracts/functions' as *;
+@use 'abstracts/utility' as *;
+@use 'abstracts/variables' as *;
+@use 'abstracts/media' as *;
+// @use 'partials/button' as *;
+
+
+/*-----------------------------------------------------------------------------------*/
+/* MEMBER STYLES */
+/*-----------------------------------------------------------------------------------*/
+
+.member {
+  position: relative;
+
+  &__anchor {
+    position: absolute;
+    top: -20rem; 
+    left: 0;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+  }
+
+  &__media {
+    position: relative;
+    overflow: hidden;
+
+    img {
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      aspect-ratio: 16 / 12;
+      @include object-fit (cover);
+      @include object-position (center);
+      @include transition(all);
+    }
+
+    &--open {
+
+      @include hover-focus-visible {
+
+        img {
+          transform: scale(1.1);
+        }
+        
+      }
+
+    }
+
+  }
+
+  &__profile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--white);
+    color: var(--black);
+    text-align: center;
+    padding: 4rem;
+
+    &:has(.btn) {
+      
+      .member__details {
+        padding: 0 0 2.5rem;
+      }
+
+    }
+
+  }
+
+  &__title {
+    font-size: var(--h4);
+    margin-block-end: .4em;
+    margin-block-end: .4lh;
+  }
+
+  &__list {
+    list-style: none;
+
+    li {
+
+      &:not(:first-child) {
+        margin-top: 0.5rem;
+      }
+
+    }
+
+  }
+
+  a:not(.btn) {
+    color: inherit;
+    font-variation-settings: "wght" var(--bold);
+
+    @include hover-focus-visible {
+      opacity: 0.5;
+    }
+
+  }
+
+  .btn {
+    margin: 0 auto;
+  }
+
+  &__edit {
+    display: inline-block;
+    width: fit-content;
+    margin: 2rem auto 0;
+  }
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* SLIDEOUT STYLES */
+/*-----------------------------------------------------------------------------------*/
+
+html.js-slideout-active {
+	overflow: hidden;
+}
+
+.slideout {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 9999999;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+
+  &__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background: var(--accent);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+  }
+
+  &__row {
+    display: flex;
+    height: 100%;
+    justify-content: flex-end;
+  }
+
+  &__body {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 60rem;
+    overflow-y: scroll;
+    color: var(--black);
+    background: var(--white);
+    padding: 2rem 2rem 6rem;
+    z-index: 2;
+    right: -100%;
+    transition: right 0.7s cubic-bezier(0.5, 0, 0.5, 1);
+
+    @include media-up(xs) {
+      padding: 5rem;
+    }
+
+  }
+
+  &__media {
+    position: relative;
+    max-width: 30rem;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+
+    img {
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      aspect-ratio: 16 / 14;
+      @include object-fit (cover);
+      @include object-position (center);
+      @include transition(all);
+    }
+
+  }
+
+  &__meta {
+    list-style: none;
+
+    li {
+      margin: 0;
+
+      &:not(:first-child) {
+        margin-top: 1rem;
+      }
+
+    }
+
+  }
+
+  a:not(.btn) {
+    color: inherit;
+    font-variation-settings: "wght" var(--bold);
+
+    @include hover-focus-visible {
+      opacity: 0.5;
+    }
+
+  }
+
+  .btn {
+    width: 100%;
+    font-size: 90%;
+    padding: 1.5rem;
+    margin-top: 4rem;
+    justify-content: center;
+  }
+
+  &__close {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--accent);
+    background-image: $icon-close-white;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    border-radius: 0.3rem;
+    border: 0;
+    z-index: 1;
+    @include transition(all);
+    cursor: pointer;
+  }
+
+  &--open {
+    visibility: visible;
+    opacity: 1;
+
+    .slideout {
+
+      &__backdrop {
+        visibility: visible;
+        opacity: 0.8;
+      }
+
+      &__body {
+        right: 0;
+      }
+
+    }
+
+  }
+
+}

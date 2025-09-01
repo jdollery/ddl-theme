@@ -18,7 +18,7 @@
 
   }  ?>
 
-  <?php if ( is_page(192) ) { 
+  <?php if ( is_page(161) ) { 
 
     get_template_part('includes/team');
 

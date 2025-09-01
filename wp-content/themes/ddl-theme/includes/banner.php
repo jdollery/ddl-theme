@@ -179,8 +179,8 @@
         ?>
 
           <picture>
-            <source type="image/jpg" media="(min-width: 480px)" srcset="<?php echo $media_url_lg ?>">
-            <source type="image/jpg" media="(max-width: 479px)" srcset="<?php echo $media_url_sm ?>">
+            <source type="image/jpg" media="(width >= 480px)" srcset="<?php echo $media_url_lg ?>">
+            <source type="image/jpg" media="(width < 480px)" srcset="<?php echo $media_url_sm ?>">
             <img 
               class="banner__img"
               src="<?php echo $media_url_lg ?>"
@@ -194,8 +194,8 @@
         <?php  } else { ?>
 
           <picture>
-            <source type="image/jpg" media="(min-width: 480px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-banner-lg.jpg">
-            <source type="image/jpg" media="(max-width: 479px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-banner-sm.jpg">
+            <source type="image/jpg" media="(width >= 480px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-banner-lg.jpg">
+            <source type="image/jpg" media="(width < 480px)" srcset="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-banner-sm.jpg">
             <img 
               class="banner__img"
               src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder-banner-lg.jpg"

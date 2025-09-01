@@ -8,7 +8,7 @@
   $quicklinks_spacing = get_sub_field('quicklinks_spacing');
   $quicklinks_bg = get_sub_field('quicklinks_bg');
   $quicklinks_heading = get_sub_field('quicklinks_heading');
-  $quicklinks_summary = get_sub_field('quicklinks_summary');
+  $quicklinks_standfirst = get_sub_field('quicklinks_standfirst');
   $quicklinks_object = get_sub_field('quicklinks_object');
   $quicklinks_btn = get_sub_field('quicklinks_btn');
 
@@ -24,7 +24,7 @@
           
         <div class="content__heading">
           <h2><?php echo $quicklinks_heading ?></h2>
-          <?php if($quicklinks_summary) { echo $quicklinks_summary; } ?>
+          <?php if($quicklinks_standfirst) { echo $quicklinks_standfirst; } ?>
         </div>
 
       <?php } ?>

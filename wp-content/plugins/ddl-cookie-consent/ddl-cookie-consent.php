@@ -241,6 +241,7 @@ function render_cookie_whatconverts() {
 /* ADD COOKIE PAGE ON INSTALL */
 /*-----------------------------------------------------------------------------------*/
 
+
 /* --------------------- CREATE PAGE ON ACTIVATION --------------------- */
 
 define( 'COOKIE_PLUGIN_FILE', __FILE__ );
@@ -445,6 +446,7 @@ function cookie_scripts() {
 
   wp_enqueue_style( 'cookie-styles', 'https://cdn.jsdelivr.net/gh/dental-design/cookie-consent@latest/cookie-styles.css', array(), '', 'all' );
   wp_enqueue_script( 'cookie-script', 'https://cdn.jsdelivr.net/gh/dental-design/cookie-consent@latest/cookie-script.js', array(), '', true ); 
+  wp_enqueue_script( 'cookie-scraper', plugins_url('/assets/js/cookie-scraper.js', __FILE__), array(), '', true ); 
 
   } 
 
